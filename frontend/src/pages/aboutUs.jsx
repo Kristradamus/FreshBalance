@@ -48,6 +48,29 @@ export default function AboutUs() {
           Our story is one of passion, dedication, and a deep belief in the transformative power of proper nutrition. 
           Let us take you on a journey through who we are, what we stand for, and why we are here to serve you.
         </p>
+        <ul className="mainAboutUs">
+          {aboutUsData.map((section, index) => (
+            <div key={index}>
+              <h2>{section.title}</h2>
+              <p>{section.text}</p>
+              {section.points && <h3>{section.points}</h3>}
+              {section.subPoints && (
+                <ul>
+                  {section.subPoints.map((subSection, subIndex) => (
+                    <li key={subIndex}>
+                      {subSection.photo && <img className="teamPhoto" src={subSection.photo} alt={subSection.subTitle} />}
+                      <i className="fa-solid fa-check"></i>
+                      <strong>{subSection.subTitle}: {subSection.subText}</strong>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </ul>
+        <p>This About Us page combines your brand story, mission, and values with a personal touch, while also guiding customers 
+          toward the next steps. It’s designed to build trust, create connection, and inspire action.
+        </p>
       </div>
     </div>
   );
