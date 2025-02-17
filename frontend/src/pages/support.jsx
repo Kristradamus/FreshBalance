@@ -10,7 +10,7 @@ export default function Support() {
   const searchBoxRef = useRef(null);
 
 {/*--------------------------------------ISSUES--------------------------------------*/}
-  const data = {
+  const supportData = {
     Account: [
       {issue: "Can't Log in",solution: "If you're unable to log in, double-check that you're entering the correct email address and password. Make sure that Caps Lock is not on, and try resetting your password if needed. If you're still having issues, clear your browser’s cache and cookies, and try logging in again. For further assistance, contact customer support and we’ll help you regain access to your account."},
       {issue: "Forgot Username or Email",solution: "If you've forgotten your username or email address, try checking your previous email accounts for any registration emails. If you're still unsure, contact our support team and provide any possible details you remember. We can help recover your account and assist in retrieving your username or email."},
@@ -43,8 +43,8 @@ export default function Support() {
   };
 
 {/*--------------------------------------FILTERING--------------------------------------*/}
-  const filteredData = Object.keys(data).reduce((info, category) => {
-    const filteredTopics = data[category].filter((item) =>
+  const filteredData = Object.keys(supportData).reduce((info, category) => {
+    const filteredTopics = supportData[category].filter((item) =>
       item.issue.toLowerCase().includes(searchQuery.toLowerCase())
     );
     if (filteredTopics.length > 0) {

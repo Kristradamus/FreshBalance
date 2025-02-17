@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 20px;
 }
+/*--------------------------SEARCH-BAR-----------------------------------*/
 .supportSearchBox {
   display:flex;
   flex-direction:row;
@@ -49,6 +50,7 @@
     transform: translateY(-50%);
     z-index:1000;
 }
+/*------------------------------------------SIDE-BAR------------------------------------------*/
 .supportContent {
   display: flex;
   gap: 20px;
@@ -77,6 +79,7 @@
 .supportSideElement a:hover {
   text-decoration: underline;
 }
+/*-------------------------------------SUPPORT-MAIN-----------------------------------*/
 .supportMain {
   background-color:var(--white);
   box-shadow:var(--boxShadow);

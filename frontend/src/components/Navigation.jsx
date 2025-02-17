@@ -13,7 +13,7 @@ export default function Navigation() {
   const location = useLocation();
 
 {/*--------------------------------------LINKS-ICONS----------------------------------------*/}
-  const categories = [
+  const navCategories = [
     {
       name: "Best Sellers",
       subcategories: [
@@ -207,7 +207,7 @@ export default function Navigation() {
             <i className="fa-solid fa-bars"></i> CATEGORIES
           </a>
           <ul ref={dropContentRef} className={`navDropDownContent ${isDropdownVisible ? "show" : ""}`}>
-            {categories.map((category, index) => (
+            {navCategories.map((category, index) => (
               <li key={index}>
                 <a href={category.link}>{category.name}</a>
                 <ul className="navSubMenu">
