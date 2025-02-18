@@ -16,6 +16,8 @@
   --iconDistance:8px;
   --radius:15px;
   --font:15px;
+  --width:100px;
+  --gap:20px;
   --transition-a: 0.3s;
   --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
   --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.2);
