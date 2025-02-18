@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./aboutUs.css";
 
+function subSection({photo, subTitle, subText}) => {
+  return photo ? (
+    <div className="aboutUsPhotoContainer"></div>
+  )
+}
 export default function AboutUs() {
   const aboutUsData = [
     {title:"Our Brand Story",text:`FreshBalance was founded out of a personal journey. As a fitness enthusiast 
@@ -18,7 +23,7 @@ export default function AboutUs() {
       points:"Our product line includes:",
       subPoints:[
         {subTitle:"Proteins",subText:`To support muscle recovery and growth.`}, 
-        {subTitle:"Amino Acids", subTitle:`To enhance performance and endurance.`},
+        {subTitle:"Amino Acids", subText:`To enhance performance and endurance.`},
         {subTitle:"Vitamins", subText:`To fill nutritional gaps and boost overall health.`},
         {subTitle:"Minerals", subText:`To support essential bodily functions and overall well-being.`},
         {subTitle:"Performance Enhancers", subText:`To optimize physical and mental performance during workouts and daily activities.`},
@@ -37,40 +42,52 @@ export default function AboutUs() {
       FreshBalance is a small but passionate team dedicated to making a big impact.`,
       points:"Meet the people who make it all happen:",
       subPoints:[
-      {photo:"",subTitle:"Kristiyan Krustev",subText: `Founder & Nutrition Enthusiast`},
-      {photo:"",subTitle:"Kristiyan Krustev",subText: `Head of Product Development`},
-      {photo:"",subTitle:"Kristiyan Krustev",subText:`Customer Experience Specialist`}],
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "Founder & Nutrition Enthusiast" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "Head of Product Development" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "Frontend Developer" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "Backend Developer" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "UI/UX Designer" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "Project Manager" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "DevOps Engineer" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "SEO & Content Writer" },
+        { photo: "", subTitle: "Kristiyan Krustev", subText: "QA Tester" }],
     }]
   return(
     <div className="aboutUs">
       <div className="aboutUsBox">
-        <p>Welcome to FreshBalance, your trusted partner in achieving optimal health and wellness through premium nutrition. 
-          Our story is one of passion, dedication, and a deep belief in the transformative power of proper nutrition. 
-          Let us take you on a journey through who we are, what we stand for, and why we are here to serve you.
-        </p>
-        <ul className="mainAboutUs">
+        <div className="aboutUsInsideBox">
+          <div>
+          <p className="aboutUsText">Welcome to FreshBalance, your trusted partner in achieving optimal health and wellness through premium nutrition. 
+            Our story is one of passion, dedication, and a deep belief in the transformative power of proper nutrition. 
+            Let us take you on a journey through who we are, what we stand for, and why we are here to serve you.
+          </p>
+          <hr></hr>
+          </div>
           {aboutUsData.map((section, index) => (
-            <div key={index}>
-              <h2>{section.title}</h2>
-              <p>{section.text}</p>
-              {section.points && <h3>{section.points}</h3>}
-              {section.subPoints && (
-                <ul>
-                  {section.subPoints.map((subSection, subIndex) => (
-                    <li key={subIndex}>
-                      {subSection.photo && <img className="teamPhoto" src={subSection.photo} alt={subSection.subTitle} />}
-                      <i className="fa-solid fa-check"></i>
-                      <strong>{subSection.subTitle}: {subSection.subText}</strong>
-                    </li>
-                  ))}
-                </ul>
+            <ul className="mainAboutUs" key={index}>
+            <h2 className="aboutUsTitle">{section.title}</h2>
+            <p className="aboutUsInsideText">{section.text}</p>
+            {section.points && <h4 className="aboutUsSubTitle">{section.points}</h4>}
+            {section.subPoints && (
+              <ul>
+                {section.subPoints.map((subSection, subIndex) => (
+                <li key={subIndex} className="aboutUsSubPoints">
+                  {subSection.photo && <img className="teamPhoto" src={subSection.photo} alt={subSection.subTitle} />}
+                  {!subSection.photo && <i className="fa-solid fa-check"></i>}
+                  <strong>{subSection.subTitle}: </strong>{subSection.subText}
+                </li>
+                ))}
+              </ul>
               )}
-            </div>
+            </ul>
           ))}
-        </ul>
-        <p>This About Us page combines your brand story, mission, and values with a personal touch, while also guiding customers 
-          toward the next steps. It’s designed to build trust, create connection, and inspire action.
-        </p>
+          <div>
+            <hr></hr>
+            <p className="aboutUsText">This About Us page combines your brand story, mission, and values with a personal touch, while also guiding customers 
+              toward the next steps. It’s designed to build trust, create connection, and inspire action.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

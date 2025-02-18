@@ -6,7 +6,7 @@
 }
 :root {
   --green: #2e8b57;
-  --lightGreen: #45bb5717;
+  --lightGreen: #4bbe5cde;
   --white: white;
   --light: #f9f9f9;
   --darker: rgb(73, 73, 73);
@@ -38,4 +38,12 @@ a,
 .search-bar {
   display: flex;
   flex-direction: row;
+}
+hr{
+  background-color: var(--green);
+  border: none;
+  border-radius:var(--radius);
+  height: 2px;
+  width: 100%;
+  margin: 10px 0;
 }
