@@ -13,6 +13,7 @@ export default function Navigation() {
   const location = useLocation();
 
 {/*--------------------------------------LINKS-ICONS----------------------------------------*/}
+  const breakPoints = [1300, 1200, 1100, 1000, 900];
   const navCategories = [
     {
       name: "Best Sellers",
@@ -175,7 +176,6 @@ export default function Navigation() {
     COMMUNITIES:"fa-regular fa-comment",
     SUPPORT:"fa-solid fa-headset",
   }
-
   const handleCategoryToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();

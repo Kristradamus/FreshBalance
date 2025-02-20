@@ -17,7 +17,7 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    gap:calc(var(--gap) * 2);
+    gap:40px;
     color:var(--darker);
  }
  .aboutUsText{
@@ -28,7 +28,7 @@
  .aboutUsMain{
     display:flex;
     flex-direction:column;
-    gap:calc(var(--gap) / 2);
+    gap:10px;
     color:var(--darker);
  }
  .aboutUsTitle,
@@ -44,7 +44,7 @@
  .aboutUsSubPointsBox {
     display: flex;
     flex-direction: column;
-    gap: calc(var(--gap) - 15px);
+    gap: 5px;
   }
  .aboutUsSubPoints .withPhoto{
     color:var(--darker);
@@ -88,7 +88,7 @@
     .aboutUsSubPointsBox.withPhoto{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap:calc(var(--gap) - 10px);
+        gap:10px;
      }
  }
  @media(max-width:780px){
@@ -104,7 +104,7 @@
     .aboutUsSubPointsBox.withPhoto{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        gap:calc(var(--gap) - 15px);
+        gap:5px;
     }
  }
  

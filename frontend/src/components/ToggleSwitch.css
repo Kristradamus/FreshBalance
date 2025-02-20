@@ -1,0 +1,40 @@
+.toggle-container {
+    width: 56px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 2px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  /* Background color for ON state */
+  .toggle-container.on {
+    background-color: #22c55e; /* Green */
+  }
+  
+  /* Background color for OFF state */
+  .toggle-container.off {
+    background-color: #9ca3af; /* Gray */
+  }
+  
+  /* Toggle circle (moving part) */
+  .toggle-circle {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Move right when ON */
+  .move-right {
+    transform: translateX(28px);
+  }
+  
+  /* Stay on the left when OFF */
+  .move-left {
+    transform: translateX(0);
+  }

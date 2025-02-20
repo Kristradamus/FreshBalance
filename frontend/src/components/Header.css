@@ -120,7 +120,7 @@
   color: var(--darker);
 }
 .headerSearchBar:focus::placeholder {
-  transition: var(--transition-a);
+  transition: var(--transition);
   color: transparent;
 }
 

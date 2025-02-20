@@ -27,7 +27,7 @@
 .navCatToggle.active,
 .navMenuElement a:hover,
 .navMenuElement a.active{
-  transition: var(--transition-a);
+  transition: var(--transition);
   border: 1px solid var(--white);
 }
 /*----------------------------------DROPDOWN-MENU--------------------------------------------*/

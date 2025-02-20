@@ -1,38 +1,123 @@
 .subscriptions{
-    margin:0px;
+    margin:20px;
     padding:0px;
+ }
+ .subBox{
     display:flex;
     flex-direction:column;
-    align-items:stretch;
+    align-items:center;
     justify-content:center;
-}
-.subCategories{
+ }
+ /*----------------------------------TOGGLE---------------------------------*/
+ .subToggleContainer {
+   width: 200px;
+   height: 50px;
+   display: flex;
+   align-items: center;
+   position: relative;
+   border-radius: calc(var(--radius) * 3);
+   border: 2px solid var(--green);
+   background-color: transparent;
+   cursor: pointer;
+   transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
+   font-size: var(--font);
+   color: var(--darker);
+   overflow: hidden;
+ }
+ .subToggleContainer:hover {
+   border-color: var(--dark-green);
+ }
+ .subToggleCircle {
+   position: absolute;
+   width: 70px;
+   height: 30px;
+   background: var(--green);
+   border-radius: calc(var(--radius) * 3);
+   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+ }
+ .subToggleCircle.moveRight {
+   transform: translateX(120px);
+ }
+ .subToggleCircle.moveLeft {
+   transform: translateX(10px);
+ }
+ .subToggleText {
+   flex: 1;
+   text-align: center;
+   font-size: 14px;
+   font-weight: bold;
+   z-index: 1;
+   transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   opacity: 0.7;
+ }
+ .subToggleText.active {
+   color: white;
+   opacity: 1;
+   font-weight: 600;
+ }
+ .subToggleText:first-child {
+   margin-right: 10px;
+ }
+ .subToggleText:last-child {
+   margin-left: 10px;
+ }
+ /*----------------------------------CATEGORIES------------------------------------*/
+ .subCategories{
     display:flex;
     flex-direction:row;
+    align-items:stretch;
     flex-wrap:wrap;
     justify-content:center;
-    margin:30px 30px;
+    margin:20px;
     padding:0;
-}
-.subPlan{
+    font-size: var(--font);
+    color:var(--darker);
+ }
+ .subPlan{
+    padding:20px;
     border-radius:var(--radius);
     background-color:var(--white);
-    margin:20px 20px;
+    margin:20px;
     width:100%;
     max-width:400px;
-    height:100%;
     box-shadow:var(--boxShadow);
-    justify-content:space-between;
-}
-.subcategories{
-    font-size: var(--font);
-    color:var(--green);
-}
-.subPrice{
     display:flex;
-    flex-direction:row;
-}
-.subSidePrice{
+    align-items:center;
+    flex-direction:column;
+    flex:1;
+ }
+ /*---------------------------------------TOP------------------------------*/
+ .subPlanTop{
     display:flex;
     flex-direction:column;
-}
+    justify-items:center;
+    align-items:center;
+    width:100%;
+    color:var(--green);
+ }
+ .subPrice{
+    display:flex;
+    flex-direction:row;
+ }
+ .subSidePrice{
+    display:flex;
+    flex-direction:column;
+ }
+ .subButtons{
+    display:flex;
+    flex-direction:row;
+ }
+ .subButtons button{
+ border-radius:var(--radius);
+ border:none;
+ box-shadow:var(--boxShadow);
+ margin:20px;
+ padding:10px 20px;
+ color:var(--white);
+ background-color:var(--green);
+ }
+ /*-----------------------------------BOTTOM------------------------------*/
+ 
+ 
+ 
