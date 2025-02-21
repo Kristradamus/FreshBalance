@@ -73,8 +73,9 @@
   border-radius:var(--radius);
   background-color:var(--white);
   margin:20px;
-  width:100%;
-  max-width:400px;
+  width:90%;
+  max-width:410px;
+  min-width:410px;
   box-shadow:var(--boxShadow);
   display:flex;
   align-items:center;
@@ -154,12 +155,26 @@
   margin-right:var(--iconDistance);
   color:var(--green);
  }
- /*-----------------------------------RESPONSIVE------------------------------*/
- @media(max-width:1200px){
- 
- 
+ .subBenefit{
+  display:flex;
+  flex-direction:column;
  }
- @media(max-width:780px){
- 
- 
+ .subDescription{
+  opacity:0.75;
+  font-size:var(--font);
+ }
+ /*-----------------------------------RESPONSIVE------------------------------*/
+ @media(max-width:450px){
+  .subPlan{
+    padding:20px;
+    max-width:400px;
+    min-width:320px;
+   }
+   .subBottom{
+    padding:10px 5px;
+    font-size:calc(var(--font) - 2px);
+   }
+   .subDescription{
+    font-size:calc(var(--font) - 2px);
+   }
  } 

@@ -73,9 +73,10 @@ return (
    <div className={`subBottom sub${plan.type}Bottom`}>
      <ul className={`subBenefits sub${plan.type}Benefits`}>
        {plan.benefits.map((item, index) => (
-         <li key={index}>
-           <i className="fa-solid fa-check"></i>
-           <strong className="subBenefitTitle">{item.benefit}:</strong> {item.description}
+         <li key={index} className="subBenefit">
+          <strong className="subBenefitTitle"><i className="fa-solid fa-check"></i>
+            {item.benefit}:</strong>
+          <p className="subDescription">{item.description}</p>
          </li>
        ))}
      </ul>
