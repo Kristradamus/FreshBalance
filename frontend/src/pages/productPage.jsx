@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./productPage.css";
 
 const ProductPage = () => {
-  const { promotionName } = useParams();  // Get URL parameter
+  const { promotionName } = useParams();
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,19 +17,17 @@ const ProductPage = () => {
 
     const fetchProductData = async () => {
       try {
-        // Make the fetch request to the API
         const url = `http://localhost:5000/products/${promotionName}`;
         
-        // Check if the response is okay (status 200)
         if (!response.ok) {
           throw new Error(`Failed to fetch. Status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log("Fetched data:", data); // Log the data to inspect its structure
+        console.log("Fetched data:", data);
         setProductData(data);
       } catch (err) {
-        console.error("Error fetching product data:", err); // Log the error for debugging
+        console.error("Error fetching product data:", err);
         setError(`Failed to load product data: ${err.message || err}`);
       } finally {
         setLoading(false);

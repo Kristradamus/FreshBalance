@@ -57,7 +57,9 @@
     padding:5px 0px;
     margin:10px 0px;
     transition:var(--transition);
+    box-shadow:var(--boxShadowLight);
 }
 .communitiesGoToSub:hover{
     background-color:var(--lightGreen);
+    box-shadow:none;
 }

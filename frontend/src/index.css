@@ -14,7 +14,8 @@
   --lightDark:#ececec;
   --black:black;
   --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
-  --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.2);
+  --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.171);
+  --boxShadowLight:0 6px 12px rgba(0, 0, 0, 0.089);
   --transition: 0.3s;
   --iconDistance:8px;
   --radius:15px;

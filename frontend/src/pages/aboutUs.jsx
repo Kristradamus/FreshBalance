@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import developer1 from "../images/developer1.jpg";
 import developer2 from "../images/developer2.jpg";
 import developer3 from "../images/developer3.jpg";
@@ -89,9 +89,9 @@ export default function AboutUs() {
          </div>
          {aboutUsData.map((section, index) => (
            <ul className="aboutUsMain" key={index}>
-           <h2 className="aboutUsTitle">{section.title}</h2>
+           <h1 className="aboutUsTitle">{section.title}</h1>
            <p className="aboutUsInsideText">{section.text}</p>
-           {section.points && <h4 className="aboutUsSubTitle">{section.points}</h4>}
+           {section.points && <h3 className="aboutUsSubTitle">{section.points}</h3>}
            {section.subPoints && (
              <ul className={`aboutUsSubPointsBox ${section.subPoints.some(subSection => subSection.photo) ? "withPhoto" : ""}`}>
                {section.subPoints.map((subSection, subIndex) => (

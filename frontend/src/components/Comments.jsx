@@ -1,15 +1,15 @@
-import { useState } from "react";
-import "./services.css";
+import { useState, useRef, useEffect } from "react";
+import "./Comments.css";
 
-export default function Services() {
-  const [comments, setComments] = useState([]); // Store user comments
-  const [newComment, setNewComment] = useState(""); // Input field value
+export default function Comments() {
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
 
   const handleAddComment = () => {
-    if (newComment.trim() === "") return; // Prevent empty comments
-
-    setComments([...comments, newComment]); // Add new comment to the list
-    setNewComment(""); // Clear input field
+    if (newComment.trim() === "") return;
+    
+    setComments([...comments, newComment]);
+    setNewComment("");
   };
 
   return (

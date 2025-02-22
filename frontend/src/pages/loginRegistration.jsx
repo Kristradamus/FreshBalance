@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./loginRegistration.css";
 import logo from "../images/freshBalance.png";
 import { Link } from 'react-router-dom';

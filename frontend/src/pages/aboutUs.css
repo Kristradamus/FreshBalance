@@ -8,7 +8,7 @@
  .aboutUsBox{
     background-color:var(--white);
     box-shadow:var(--boxShadow);
-    width:80%;
+    width:81%;
     border-radius:calc(var(--radius) + 20px);
     padding:30px;
  }
@@ -33,7 +33,7 @@
  }
  .aboutUsTitle,
  .aboutUsSubTitle{
-    color:var(--green);
+    color:var(--darker);
  }
  /*-------------------------------SUB-MAIN-------------------------------------*/
  .aboutUsSubPointsBox.withPhoto{
@@ -79,6 +79,7 @@
     object-fit:cover;
     object-position:center;
     width:var(--width);
+    margin-bottom:10px;
  }
  /*------------------------------RESPONSIVE------------------------------------------*/
  @media(max-width:1450px){

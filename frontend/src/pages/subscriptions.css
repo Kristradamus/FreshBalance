@@ -118,6 +118,7 @@
   cursor:pointer;
   padding:10px 20px;
   margin:0px 10px;
+  box-shadow:var(--boxShadowLight);
  }
  .subTryFree{
   border-radius:var(--radius);
@@ -127,6 +128,7 @@
  }
  .subTryFree:hover{
   background-color:var(--lightGreen);
+  box-shadow:none;
  }
  .subBuyNow{
   background-color:transparent;
@@ -139,6 +141,7 @@
  .subBuyNow:hover{
   color:var(--lightGreen);
   border:2px solid var(--lightGreen);
+  box-shadow:none;
  }
  /*-----------------------------------BOTTOM------------------------------*/
  .subBottom{
