@@ -3,29 +3,39 @@
   flex-direction: column;
   align-items: center;
   justify-content:center;
-  padding: 30px;
+  padding: 0px 20px;
  }
-  /*------------------------------SERV-HEADER----------------------------------*/
- .servHeader {
+  /*------------------------------SERV-BOX-HEADER----------------------------------*/
+ .servHeader{
   text-align: center;
-  color:var(--black);
+  color:var(--darker);
+  margin-bottom:20px;
+  margin-top:60px;
  }
  .servHeader h1 {
-  font-size:calc(var(--font) * 3);
   margin-bottom: 10px;
+  color:var(--green);
  }
- .servHeader p {
-  font-size: calc(var(--font) + 5);
+.servHeader{
+  max-width:1000px;
+  width:100%;
+  background:var(--white);
+  border-radius: var(--radius);
+  box-shadow:var(--boxShadow);
+  padding:20px;
+}
+.servBox {
+  width: 100%;
+  max-width: 1000px;
+  margin:20px 50px;
  }
-
  /*------------------------------SERVICES----------------------------------*/
  .servServices {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   width: 100%;
-  max-width: 1600px;
-  margin: 40px 10px;
+  max-width: 1500px;
  }
  .servService {
   background-color:var(--white);
@@ -45,60 +55,110 @@
   margin-bottom: 15px;
  }
  .servServiceTitle{
-  font-size:calc(var(--font) * 1.5);
   color: var(--darker);
   margin-bottom: 10px;
  }
  .servServiceDescription{
-  font-size: calc(var(--font) + 2.5);
+  font-size:var(--font);
   color: var(--darker);
  }
 /*------------------------------LOCATION----------------------------------*/
+ .servSmallerHeader p{
+  font-size:calc(var(--font) + 2.5);
+  margin-top:10px;
+ }
  .servLocation {
-  text-align: center;
-  width: 100%;
-  max-width: 800px;
-  margin-bottom: 40px;
- }
- .servLocation h2 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 10px;
- }
- .servLocation p {
-  font-size: 1.2rem;
-  color: #7f8c8d;
-  margin-bottom: 20px;
- }
- .servLocationCard {
-  background: #ffffff;
-  border-radius: 10px;
+  background:var(--white);
+  border-radius: var(--radius);
+  box-shadow:var(--boxShadow);
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
  }
- .servLocationCard h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
+ .servLocationText {
+  font-size: var(--font);
+  color: var(--darker);
   margin-bottom: 10px;
  }
- .servLocationCard p {
-  font-size: 1rem;
-  color: #7f8c8d;
-  margin-bottom: 10px;
- }
- iframe {
+ .servMap{
   border-radius: 10px;
   margin-top: 20px;
+  border:none;
+  width:100%;
+  height:400px;
  }
+ 
  /*------------------------------DELIVERY----------------------------------*/
+.servDelivery {
+  gap:20px;
+  display:flex;
+  flex-direction:column;
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--boxShadow);
+  padding:20px;
+}
+.servDeliveryAreas{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+}
+.servCitiesBox {
+  position: relative;
+  color: var(--black);
+  padding: 15px;
+  background-color: var(--lightDark);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  text-align: center;
+  margin: 10px;
+  transition:var(--transition);
+  overflow: hidden;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.servCitiesBox:hover {
+  transform: scale(1.025);
+  background-color: var(--white);
+  color: var(--darker);
+  border: 2px solid var(--lightDark);
+}
+.servDeliveryTerms {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.servDelivery h3{
+  color:var(--darker);
+}
+.servTerms {
+  font-size: var(--font);
+  color: var(--black);
+  background-color: var(--lightDark);
+  padding: 15px;
+  border-radius: var(--radius);
+  list-style-type: none;
+  transition:var(--transition);
+}
+.servTerms:hover{
+  transform:translateY(-5px);
+}
  /*------------------------------COMMENTS----------------------------------*/
  /*------------------------------RESPONSIVE----------------------------------*/
- @media (max-width:1300px){
+ @media (max-width:1600px){
   .servServices {
     display: flex;
     flex-direction:column;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
    }
+   .servDeliveryAreas{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+  }
+ }
+ @media (max-width:600px){
+  .servDeliveryAreas{
+    display:grid;
+    grid-template-columns:repeat(1, 1fr);
+  }
  }

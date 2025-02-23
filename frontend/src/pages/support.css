@@ -73,7 +73,7 @@
 }
 .supportSideElement a {
   text-decoration: none;
-  color: var(--green);
+  color: var(--darker);
   font-weight: bold;
 }
 .supportSideElement a:hover {

@@ -15,16 +15,13 @@ export default function Comments() {
   return (
     <div className="services">
       <div className="servicesHeader">
-        <h1>Our Services</h1>
-        <p>Discover how we can help you achieve your health and wellness goals.</p>
+        <h1>Comments</h1>
+        <p>Check some of the comments other clients left us or leave one yourself.</p>
       </div>
 
-      {/* Services List */}
       <div className="servicesList">
-        {/* Map through services here */}
       </div>
 
-      {/* Comments Section */}
       <div className="comments-section">
         <h2>Leave a Comment</h2>
         <textarea 
@@ -34,7 +31,6 @@ export default function Comments() {
         />
         <button onClick={handleAddComment}>Submit</button>
 
-        {/* Display Comments */}
         <div className="comments-list">
           {comments.map((comment, index) => (
             <div key={index} className="comment">
