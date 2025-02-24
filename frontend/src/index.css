@@ -6,7 +6,8 @@
 }
 :root {
   --green: #2e8b57;
-  --lightGreen: #4bbe5cde;
+  --lightGreen: #3fac4fdc;
+  --reallyLightGreen:#42c05559;
   --white: white;
   --light: #f9f9f9;
   --darker: rgb(73, 73, 73);
@@ -18,7 +19,7 @@
   --boxShadowLight:0 6px 12px rgba(0, 0, 0, 0.089);
   --transition: 0.3s;
   --iconDistance:8px;
-  --radius:15px;
+  --radius:14px;
   --font:15px;
   --width:100px;
   --button:20px 10px;

@@ -2,41 +2,13 @@
   max-width: 80vw;
   margin: 0 auto;
   padding: 20px;
-}
-/*--------------------------SEARCH-BAR-----------------------------------
-.headerSearchBox i:hover {
-  background-color:var(--lightDark);
-}
-.headerSearchBox2 .fa-x {
-  opacity: 0;
-  display: none;
-  transition: var(--transition);
-}
-.headerSearchBox2 .fa-x.clicked {
-  opacity: 1;
-  display: inline;
-}
-.headerSearchBar {
-  position: relative;
-  outline: none;
-  background: transparent;
-  border: none;
-  flex: 1;
-  margin: 0 5px;
-  width: 100%;
-  font-size: var(--font);
-  color: var(--darker);
-  transition: var(--transition);
-}
-.headerSearchBar::placeholder {
-  color: var(--darker);
-}
-.headerSearchBar:focus::placeholder {
-  transition: var(--transition);
-  color: transparent;
-}
-*/
-.supportSearchBox {
+ }
+ .supportContent {
+  display: flex;
+  flex-direction:row;
+ }
+ /*--------------------------SEARCH-BAR-----------------------------------*/
+ .supportSearchBox {
   position: relative;
   display: flex;
   flex-direction:row;
@@ -46,22 +18,23 @@
   transition: var(--transition);
   border-radius:var(--radius);
   background: var(--white);
-  border: 1px solid var(--dark);
+  border: 2px solid var(--dark);
+  box-shadow:var(--boxShadow);
   cursor: text;
-  z-index: 10;
   margin-bottom:20px;
-}
-.supportSearchBox i{
+  height:40px;
+ }
+ .supportSearchBox i{
   font-size: calc(var(--font) + 5px);
   color: var(--green);
   cursor: pointer;
-  padding:10px 20px;
   transition: var(--transition);
-}
-.supportSearchBox i:hover {
+  padding:10px 20px;
+ }
+ .supportSearchBox i:hover {
   background-color:var(--lightDark);
-}
-.supportSearchBar{
+ }
+ .supportSearchBar{
   position: relative;
   outline: none;
   background: transparent;
@@ -72,118 +45,174 @@
   font-size: var(--font);
   color: var(--darker);
   transition:var(--transition);
-}
-.headerSearchBar::placeholder {
+ }
+ .headerSearchBar::placeholder {
   color: var(--darker);
-}
-.supportSearchBox.clicked{
+ }
+ .supportSearchBox.clicked{
   border:2px solid var(--green);
-}
-.supportInput{
+ }
+ .supportInput{
   width: 100%;
   padding: 10px;
   font-size: var(--font);
   animation:none;
   outline:none;
   border:none;
-}
-.supportSearchBox.clicked .fa-x{
+ }
+ .supportSearchBox.clicked .fa-x{
     font-size: var(--font);
     color: var(--green);
     cursor:pointer;
     padding:10px
-}
-/*------------------------------------------SIDE-BAR------------------------------------------*/
-.supportContent {
-  display: flex;
-  gap: 20px;
-}
-.supportSideBar {
+ }
+ /*------------------------------------------SIDE-BAR------------------------------------------*/
+ .supportSideBarBox {
   background-color:var(--white);
   box-shadow:var(--boxShadow);
   border-radius:var(--radius);
-}
-.supportSideBar h3 {
-  margin-bottom: 10px;
-  color: #333;
-}
-.supportSideElements {
+  padding:10px 20px;
+  margin-right:20px;
+ }
+ .supportSideBarBox.NoElements {
+  padding:0px;
+  margin-right:0px;
+ }
+ .supportSideBar{
+  margin-top:10px;
+ }
+ .supportSideBar h3 {
+  margin-bottom: 5px;
+  color:var(--darker);
+ }
+ .supportSideElements {
   list-style: none;
-  padding: 0;
-}
-.supportSideElement {
-  margin-bottom: 10px;
-}
-.supportSideElement a {
+  font-size:calc(var(--font) + 2px);
+  margin-bottom:5px;
+ }
+ .supportSideElement {
+  padding:5px 0px;
+  cursor:pointer;
+ }
+ .supportSideElement a {
+  position: relative;
   text-decoration: none;
   color: var(--darker);
-  font-weight: bold;
+  padding:0px;
+  transition:var(--transition);
+  display: inline-block;
+ }
+ .supportSideElement a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: var(--green);
+  transition: width 0.4s ease;
 }
-.supportSideElement a:hover {
-  text-decoration: underline;
+.supportSideElement:hover a::after {
+  width: 100%;
 }
-/*-------------------------------------SUPPORT-MAIN-----------------------------------*/
-.supportMain {
+.supportSideElement:hover a {
+  color: var(--green);
+}
+ /*-------------------------------------SUPPORT-MAIN-----------------------------------*/
+ .supportMain {
   background-color:var(--white);
   box-shadow:var(--boxShadow);
   border-radius:var(--radius);
   flex:1;
-}
-.supportMain h1 {
-  color: #333;
-  margin-bottom: 20px;
-}
-.supportMain p {
-  color: #555;
-  line-height: 1.6;
-}
-.backButton {
-  margin-bottom: 20px;
+  padding:20px;
+ }
+ .supportMain h1 {
+  color:var(--darker);
+  margin-bottom: 10px;
+ }
+ .supportMain p {
+  color: var(--darker);
+ }
+ .supportMain button{
+  border-radius:var(--radius);
   padding: 10px 20px;
   background-color: var(--green);
   color: var(--white);
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-}
-.contactButton {
+  transition:var(--transition);
+ }
+ .supportMain button:hover{
+  background-color: var(--lightGreen);
+ }
+ .supportBackButton {
+  margin-bottom: 20px;
+ }
+ .supportContactButton {
   margin-top: 20px;
-  padding: 10px 20px;
-  background-color: var(--green);
-  color: var(--white);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.contactForm {
+ }
+ .supportContactFormBox {
   margin-top: 20px;
-}
-.contactForm label {
+  color:var(--darker);
+ }
+ .supportContactForm{
+  margin-top:5px;
+ }
+ .supportContactForm label {
   display: block;
   margin-bottom: 5px;
+  font-size:var(--font);
   font-weight: bold;
-}
-.contactForm input,
-.contactForm textarea {
+ }
+ .supportContactForm input,
+ .supportContactForm textarea {
   width: 100%;
   padding: 10px;
+  color:var(--darker);
   margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--dark);
+  border-radius: var(--radius);
+  transition:var(--transition);
+  outline-color: var(--green);
+ }
+ .supportContactForm input[type="email"]:valid,
+ .supportContactForm input[type="text"]:valid,
+ .supportContactForm textarea:valid{
+  border:1px solid var(--green);
 }
-.contactForm button {
-  padding: 10px 20px;
-  background-color: var(--green);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+/*----------------------------------------RESPONSIVE----------------------------------------------------*/
+@media(max-width:900px){
+  .supportContent {
+    display: flex;
+    flex-direction:column;
+   }
+   .supportSideBarBox {
+    margin-right:0px;
+    margin-bottom:20px;
+   }
 }
-@media (max-width: 768px) {
+ @media (max-width: 780px) {
+  .support {
+    max-width: 90vw;
+    padding:20px 10px;
+   }
   .supportContent {
     flex-direction: column;
   }
   .supportSideBar {
     width: 100%;
   }
-}
+ }
+ @media (max-width: 600px) {
+  .support {
+    max-width: 95vw;
+    padding:20px 5px;
+   }
+  .supportContent {
+    flex-direction: column;
+  }
+  .supportSideBar {
+    width: 100%;
+  }
+ }
+ 

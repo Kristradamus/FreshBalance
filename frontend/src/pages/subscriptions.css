@@ -28,6 +28,9 @@
  .subToggleContainer:hover{
   border: 2px solid var(--lightGreen);
  }
+ .subToggleContainer:hover .subToggleCircle{
+  background-color:var(--lightGreen);
+ }
  .subToggleCircle {
  position: absolute;
  width: 90px;

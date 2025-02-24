@@ -74,6 +74,7 @@ const handleKeyDown = (e) => {
 };
 const handleClearSearch = () => {
   setSearchQuery("");
+  searchInputRef.current?.focus();
 };
 useEffect(() => {
   const handleClickOutside = (e) => {
@@ -89,20 +90,21 @@ useEffect(() => {
 
 return (
   <div className="support">
-    <div className={`supportSearchBox ${isSearchFocused ? "clicked" : ""}`} onClick={() => setIsSearchFocused(true)} ref={searchBoxRef}>
+    <div className={`supportSearchBox ${isSearchFocused ? "clicked" : ""}`} onClick={() => {setIsSearchFocused(true); searchInputRef.current?.focus();}} ref={searchBoxRef}>
       <input ref={searchInputRef} className="supportSearchBar" placeholder="Search for solution..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
       {isSearchFocused && (<i className="fa-solid fa-x" onClick={handleClearSearch}/>)}
     </div>
 {/*--------------------------------------SIDE-BAR---------------------------------------*/}
     <div className="supportContent">
+      <div className={`supportSideBarBox ${Object.keys(filteredData).length === 0 ? "NoElements" : ""}`}>
       <div className="supportSideBar">
       {Object.keys(filteredData).map((category) => (
         <div key={category}>
-          <h3>{category}</h3>
+          <h3><strong>{category}</strong></h3>
           <ul className="supportSideElements">
             {filteredData[category].map((item, index) => (
-            <li className="supportSideElement" key={index}>
-              <a href="#" onClick={() => handleContentChange(item.issue, item.solution)}>
+            <li className="supportSideElement" key={index} onClick={() => handleContentChange(item.issue, item.solution)}>
+              <a href="#">
                 {item.issue}
               </a>
             </li>
@@ -111,31 +113,23 @@ return (
         </div>
       ))}
       </div>
+      </div>
 {/*--------------------------------------MAIN---------------------------------------*/}
         <div className="supportMain">
-          {selected.title && (
-            <button className="backButton" onClick={handleBack}>
-              Back to Support
-            </button>
-          )}
-          <h1>{selected.title || "Welcome to Support"}</h1>
+          {selected.title && (<button className="supportBackButton" onClick={handleBack}>Back to Support</button>)}
+          <h1><strong>{selected.title || "Welcome to Support"}</strong></h1>
           <p>{selected.content || "Select a topic from the sidebar to see more details."}</p>
-
-          {!selected.title && (
-            <button className="contactButton" onClick={() => setShowContactForm(true)}>
-              Contact Support
-            </button>
-          )}
+          {!selected.title && (<button className="supportContactButton" onClick={() => setShowContactForm(true)}>Contact Support</button>)}
           {showContactForm && (
-            <div className="contactForm">
-              <h2>Contact Support</h2>
-              <form>
+            <div className="supportContactFormBox">
+              <h2 className="title"><strong>Contact Support:</strong></h2>
+              <form className="supportContactForm">
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" required />
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" name="email" required />
                 <label htmlFor="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea id="message" name="message" rows="15" required></textarea>
                 <button type="submit">Submit</button>
               </form>
             </div>
