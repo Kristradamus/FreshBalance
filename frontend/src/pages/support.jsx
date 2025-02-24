@@ -62,22 +62,19 @@ export default function Support() {
     setSelected({ title: "", content: "" });
     setShowContactForm(false);
   };
-{/*--------------------------------------SEARCH-BAR-JS--------------------------------------*/}
+{/*--------------------------------------SEARCH-BAR--------------------------------------*/}
 const handleInputChange = (e) => {
   setSearchQuery(e.target.value);
 };
-
 const handleKeyDown = (e) => {
   if (e.key === "Escape") {
+    setIsSearchFocused(false);
     searchInputRef.current?.blur();
   }
 };
-
 const handleClearSearch = () => {
   setSearchQuery("");
-  searchInputRef.current?.focus();
 };
-
 useEffect(() => {
   const handleClickOutside = (e) => {
     if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
@@ -93,10 +90,10 @@ useEffect(() => {
 return (
   <div className="support">
     <div className={`supportSearchBox ${isSearchFocused ? "clicked" : ""}`} onClick={() => setIsSearchFocused(true)} ref={searchBoxRef}>
-      <input ref={searchInputRef} className="supportSearchBar" placeholder="Search for solution..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown} onFocus={() => setIsSearchFocused(true)}/>
-      {searchQuery && (<i className="fa-solid fa-x" onClick={handleClearSearch}/>)}
+      <input ref={searchInputRef} className="supportSearchBar" placeholder="Search for solution..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+      {isSearchFocused && (<i className="fa-solid fa-x" onClick={handleClearSearch}/>)}
     </div>
-{/*--------------------------------------SIDE-BAR-HTML--------------------------------------*/}
+{/*--------------------------------------SIDE-BAR---------------------------------------*/}
     <div className="supportContent">
       <div className="supportSideBar">
       {Object.keys(filteredData).map((category) => (
@@ -114,7 +111,7 @@ return (
         </div>
       ))}
       </div>
-{/*--------------------------------------MAIN-HTML--------------------------------------*/}
+{/*--------------------------------------MAIN---------------------------------------*/}
         <div className="supportMain">
           {selected.title && (
             <button className="backButton" onClick={handleBack}>

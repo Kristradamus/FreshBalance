@@ -3,17 +3,63 @@
   margin: 0 auto;
   padding: 20px;
 }
-/*--------------------------SEARCH-BAR-----------------------------------*/
+/*--------------------------SEARCH-BAR-----------------------------------
+.headerSearchBox i:hover {
+  background-color:var(--lightDark);
+}
+.headerSearchBox2 .fa-x {
+  opacity: 0;
+  display: none;
+  transition: var(--transition);
+}
+.headerSearchBox2 .fa-x.clicked {
+  opacity: 1;
+  display: inline;
+}
+.headerSearchBar {
+  position: relative;
+  outline: none;
+  background: transparent;
+  border: none;
+  flex: 1;
+  margin: 0 5px;
+  width: 100%;
+  font-size: var(--font);
+  color: var(--darker);
+  transition: var(--transition);
+}
+.headerSearchBar::placeholder {
+  color: var(--darker);
+}
+.headerSearchBar:focus::placeholder {
+  transition: var(--transition);
+  color: transparent;
+}
+*/
 .supportSearchBox {
-  display:flex;
+  position: relative;
+  display: flex;
   flex-direction:row;
-  margin-bottom: 20px;
+  align-items: center;
   overflow:hidden;
-  background-color:var(--white);
-  box-shadow:var(--boxShadow);
-  border-radius: calc(var(--radius) + 5px);
-  border:1px solid var(--dark);
-  padding:10px 0px
+  width: 100%;
+  transition: var(--transition);
+  border-radius:var(--radius);
+  background: var(--white);
+  border: 1px solid var(--dark);
+  cursor: text;
+  z-index: 10;
+  margin-bottom:20px;
+}
+.supportSearchBox i{
+  font-size: calc(var(--font) + 5px);
+  color: var(--green);
+  cursor: pointer;
+  padding:10px 20px;
+  transition: var(--transition);
+}
+.supportSearchBox i:hover {
+  background-color:var(--lightDark);
 }
 .supportSearchBar{
   position: relative;
@@ -25,13 +71,13 @@
   width: 100%;
   font-size: var(--font);
   color: var(--darker);
-  transition: all 0.3s ease;
+  transition:var(--transition);
 }
 .headerSearchBar::placeholder {
   color: var(--darker);
 }
-.suppoortSearchBox.clicked{
-  border:20px solid var(--green);
+.supportSearchBox.clicked{
+  border:2px solid var(--green);
 }
 .supportInput{
   width: 100%;
@@ -42,13 +88,10 @@
   border:none;
 }
 .supportSearchBox.clicked .fa-x{
-    font-size: 20px;
-    color: #000;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index:1000;
+    font-size: var(--font);
+    color: var(--green);
+    cursor:pointer;
+    padding:10px
 }
 /*------------------------------------------SIDE-BAR------------------------------------------*/
 .supportContent {
