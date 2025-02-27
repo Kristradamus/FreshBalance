@@ -6,14 +6,14 @@ import { Link, useLocation } from "react-router-dom";
 export default function Navigation() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isDropdownMoreVisible, setIsDropdownMoreVisible] = useState(false);
+  const [hiddenNavLinks, setHiddenNavLinks] = useState([]);
   const catToggleRef = useRef(null);
   const moreToggleRef = useRef(null);
   const dropContentRef = useRef(null);
   const moreDropContentRef = useRef(null);
+  const linkRefs = useRef([]);
   const location = useLocation();
-
 {/*--------------------------------------LINKS-ICONS----------------------------------------*/}
-  const breakPoints = [1300, 1200, 1100, 1000, 900];
   const navCategories = [
     {
       name: "Best Sellers",
@@ -188,6 +188,25 @@ export default function Navigation() {
     setIsDropdownMoreVisible((prev) => !prev);
     setIsDropdownVisible(false);
   };
+  {/*useEffect(() => {
+    const handleResize = () => {
+      const hiddenLinks = [];
+
+      linkRefs.current.forEach((link, index) => {
+        if (link && window.getComputedStyle(link).display === "none") {
+          hiddenLinks.push(navNavLinks[index]);
+        }
+      });
+      setHiddenNavLinks(hiddenLinks);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [navNavLinks]);*/}
+
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if ((dropContentRef.current && !dropContentRef.current.contains(e.target) && catToggleRef.current && !catToggleRef.current.contains(e.target)) ||
@@ -234,12 +253,12 @@ export default function Navigation() {
           </ul>
         </li>
 {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
-        <li className="navMore">
+        {hiddenNavLinks.length > 0 && (<li className="navMore">
           <a ref={moreToggleRef} className="navCatToggle" href="#" onClick={handleMoreToggle}>
             MORE
           </a>
           <ul ref={moreDropContentRef} className={`navDropDownMore ${isDropdownMoreVisible ? "show" : ""}`}>
-          {navNavLinks.map((item, index) => (
+          {hiddenNavLinks.map((item, index) => (
             <li key={index}>
               <Link to={item.path}>
                 {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
@@ -247,14 +266,15 @@ export default function Navigation() {
               </Link>
             </li>))}
           </ul>
-        </li>
+        </li>)}
         {navNavLinks.map((item, index) => (
-        <li className="navMenuElement" key={index}>
-          <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>
-            {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
-            {item.name}
-          </Link>
-        </li>))}
+  <li className="navMenuElement" key={index} ref={(el) => (linkRefs.current[index] = el)}>
+    <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>
+      {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
+      {item.name}
+    </Link>
+  </li>
+))}
       </ul>
     </div>
   );

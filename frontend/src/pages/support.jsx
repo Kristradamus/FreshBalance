@@ -88,6 +88,36 @@ useEffect(() => {
   };
 }, []);
 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    message: formData.get('message')
+  };
+
+  try {
+    const response = await fetch('http://localhost:5000/send-message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      alert('Message sent successfully!');
+      setShowContactForm(false);
+    } else {
+      alert('Failed to send message.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while sending the message.');
+  }
+};
+
 return (
   <div className="support">
     <div className={`supportSearchBox ${isSearchFocused ? "clicked" : ""}`} onClick={() => {setIsSearchFocused(true); searchInputRef.current?.focus();}} ref={searchBoxRef}>
@@ -123,7 +153,7 @@ return (
           {showContactForm && (
             <div className="supportContactFormBox">
               <h2 className="title"><strong>Contact Support:</strong></h2>
-              <form className="supportContactForm">
+              <form className="supportContactForm" onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" required />
                 <label htmlFor="email">Email:</label>

@@ -13,16 +13,8 @@ export default function Comments() {
   };
 
   return (
-    <div className="services">
-      <div className="servicesHeader">
-        <h1>Comments</h1>
-        <p>Check some of the comments other clients left us or leave one yourself.</p>
-      </div>
-
-      <div className="servicesList">
-      </div>
-
-      <div className="comments-section">
+    <div className="comments">
+      <div className="commentsSection">
         <h2>Leave a Comment</h2>
         <textarea 
           value={newComment} 
@@ -31,7 +23,7 @@ export default function Comments() {
         />
         <button onClick={handleAddComment}>Submit</button>
 
-        <div className="comments-list">
+        <div className="commentsList">
           {comments.map((comment, index) => (
             <div key={index} className="comment">
               <p>{comment}</p>
