@@ -19,7 +19,7 @@
     "url": "https://github.com/Kristradamus/NutritionWebsite2.0/issues"
   },
   "homepage": "https://github.com/Kristradamus/NutritionWebsite2.0#readme",
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^9.1.2"
   }
 }
