@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env-shell \"if exist start.bat (start.bat) else (bash start.sh)\"",
-    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+    "start": "npm run build && npm run start:frontend && npm run start:backend",
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "start:frontend": "cd frontend && npm run deploy",
+    "start:backend": "cd backend && npm start",
+    "build": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,6 @@
   },
   "homepage": "https://github.com/Kristradamus/NutritionWebsite2.0#readme",
   "dependencies": {
-    "concurrently": "^9.1.2",
-    "cross-env": "^7.0.3"
+    "concurrently": "^9.1.2"
   }
 }
