@@ -2,162 +2,167 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   padding: 0px 20px;
- }
-  /*------------------------------SERV-BOX-HEADER----------------------------------*/
- .servHeader{
+}
+/*------------------------------SERV-BOX-HEADER----------------------------------*/
+.servHeader {
   text-align: center;
-  color:var(--darker);
-  margin-bottom:20px;
-  margin-top:60px;
- }
- .servHeader h1 {
+  color: var(--mainTextColor);
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+.servHeader h1 {
   margin-bottom: 10px;
-  color:var(--green);
- }
-.servHeader{
-  max-width:1000px;
-  width:100%;
-  background:var(--white);
-  border-radius: var(--radius);
-  box-shadow:var(--boxShadow);
-  padding:20px;
+  color: var(--green);
+}
+.servHeader {
+  max-width: 1000px;
+  width: 100%;
+  background: var(--white);
+  border-radius: var(--normalRadius);
+  box-shadow: var(--boxShadow);
+  padding: var(--boxPadding);
 }
 .servBox {
   width: 100%;
   max-width: 1000px;
-  margin:20px 50px;
- }
- /*------------------------------SERVICES----------------------------------*/
- .servServices {
+  margin: 20px 50px;
+}
+/*------------------------------SERVICES----------------------------------*/
+.servServices {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   width: 100%;
   max-width: 1500px;
- }
- .servService {
-  background-color:var(--white);
-  border-radius: var(--radius);
-  padding: 20px;
+}
+.servService {
+  background-color: var(--white);
+  border-radius: var(--normalRadius);
+  padding: var(--boxPadding);
   box-shadow: var(--boxShadowBottom);
   text-align: center;
   transition: var(--transition);
- }
- .servService:hover {
+}
+.servService:hover {
   transform: translateY(-5px);
   box-shadow: var(--boxShadowLight);
- }
- .servService i {
-  font-size: calc(var(--font) * 2.5);
+}
+.servService i {
+  font-size: calc(var(--iconFont) * 2);
   color: var(--green);
   margin-bottom: 15px;
- }
- .servServiceTitle{
-  color: var(--darker);
+}
+.servServiceTitle {
+  color: var(--mainTextColor);
   margin-bottom: 10px;
- }
- .servServiceDescription{
-  font-size:var(--font);
-  color: var(--darker);
- }
+}
+.servServiceDescription {
+  font-size: var(--textFont);
+  color: var(--mainTextColor);
+}
 /*------------------------------LOCATION----------------------------------*/
- .servSmallerHeader p{
-  font-size:calc(var(--font) + 2.5);
-  margin-top:10px;
- }
- .servLocation {
-  background:var(--white);
-  border-radius: var(--radius);
-  box-shadow:var(--boxShadow);
-  padding: 20px;
- }
- .servLocationText {
-  font-size: var(--font);
-  color: var(--darker);
-  margin-bottom: 10px;
- }
- .servMap{
-  border-radius: 10px;
-  margin-top: 20px;
-  border:none;
-  width:100%;
-  height:400px;
- }
- 
- /*------------------------------DELIVERY----------------------------------*/
-.servDelivery {
-  gap:20px;
-  display:flex;
-  flex-direction:column;
-  background-color: var(--white);
-  border-radius: var(--radius);
+.servSmallerHeader p {
+  margin-top: 10px;
+}
+.servLocation {
+  background: var(--white);
+  border-radius: var(--normalRadius);
   box-shadow: var(--boxShadow);
-  padding:20px;
+  padding: var(--boxPadding);
 }
-.servDeliveryAreas{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
+.servLocationText {
+  font-size: var(--textFont);
+  color: var(--mainTextColor);
+  margin-bottom: 10px;
 }
-.servCitiesBox {
+.servMap {
+  border-radius: var(--normalRadius);
+  margin-top: 20px;
+  border: none;
+  width: 100%;
+  height: 400px;
+}
+
+/*------------------------------DELIVERY----------------------------------*/
+.servDelivery {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-radius: var(--normalRadius);
+  box-shadow: var(--boxShadow);
+  padding:var(--boxPadding);
+}
+.servDeliveryAreas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.servCities {
   position: relative;
-  color: var(--black);
+  color: var(--mainTextColor);
   padding: 15px;
-  background-color: var(--lightDark);
+  background-color: var(--secondBackground);
   border: 2px solid transparent;
-  border-radius: var(--radius);
+  border-radius: var(--smallRadius);
   text-align: center;
   margin: 10px;
-  transition:var(--transition);
+  transition: var(--transition);
   overflow: hidden;
   max-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.servCitiesBox:hover {
+.servCities:hover {
   background-color: var(--white);
-  color: var(--darker);
-  border: 2px solid var(--lightDark);
+  color: var(--mainTextColor);
+  border: 2px solid var(--secondBackground);
 }
 .servDeliveryTerms {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.servDelivery h3{
-  color:var(--darker);
+.servDelivery h3 {
+  color: var(--mainTextColor);
 }
 .servTerms {
-  font-size: var(--font);
-  color: var(--black);
-  background-color: var(--lightDark);
+  font-size: var(--textFont);
+  color: var(--mainTextColor);
+  background-color: var(--secondBackground);
   padding: 15px;
-  border-radius: var(--radius);
+  border-radius: var(--smallRadius);
   list-style-type: none;
-  transition:var(--transition);
+  transition: var(--transition);
 }
-.servTerms:hover{
-  transform:translateY(-5px);
+.servTerms:hover {
+  transform: translateY(-5px);
 }
- /*------------------------------COMMENTS----------------------------------*/
- /*------------------------------RESPONSIVE----------------------------------*/
- @media (max-width:1600px){
+/*------------------------------COMMENTS----------------------------------*/
+/*------------------------------RESPONSIVE----------------------------------*/
+@media (max-width: 1600px) {
+  .servBox {
+    margin: 20px 20px;
+  }
   .servServices {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     width: 100%;
     max-width: 1000px;
-   }
-   .servDeliveryAreas{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
   }
- }
- @media (max-width:600px){
-  .servDeliveryAreas{
-    display:grid;
-    grid-template-columns:repeat(1, 1fr);
+  .servDeliveryAreas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
- }
+}
+@media (max-width: 600px) {
+  .servBox {
+    margin: 10px 0px;
+  }
+  .servDeliveryAreas {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

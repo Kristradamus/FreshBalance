@@ -253,7 +253,8 @@ export default function Navigation() {
           </ul>
         </li>
 {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
-        {hiddenNavLinks.length > 0 && (<li className="navMore">
+        {hiddenNavLinks.length > 0 && (
+        <li className="navMore">
           <a ref={moreToggleRef} className="navCatToggle" href="#" onClick={handleMoreToggle}>
             MORE
           </a>
@@ -268,13 +269,13 @@ export default function Navigation() {
           </ul>
         </li>)}
         {navNavLinks.map((item, index) => (
-  <li className="navMenuElement" key={index} ref={(el) => (linkRefs.current[index] = el)}>
-    <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>
-      {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
-      {item.name}
-    </Link>
-  </li>
-))}
+        <li className="navMenuElement" key={index} ref={(el) => (linkRefs.current[index] = el)}>
+        <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>
+        {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
+        {item.name}
+        </Link>
+        </li>
+        ))}
       </ul>
     </div>
   );

@@ -5,5 +5,5 @@
 }
 .mainLayout {
   flex-grow: 1;
-  background-color: var(--light);
+  background-color: var(--mainBackground);
 }

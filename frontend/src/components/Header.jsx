@@ -13,7 +13,9 @@ export default function Header() {
   const searchBoxRef = useRef(null);
   const location = useLocation();
 
-{/*--------------------------------RECOMMENDATIONS-LINKS-ICONS-----------------------------------*/}
+  {
+    /*--------------------------------RECOMMENDATIONS-LINKS-ICONS-----------------------------------*/
+  }
   const headerRecommendations = [
     "Recommendation1",
     "Recommendation2",
@@ -31,10 +33,12 @@ export default function Header() {
     Cart: "fa-solid fa-cart-shopping",
   };
 
-{/*--------------------------------SEARCH-BAR-----------------------------------*/}
-  const handleFavCartLogClick = (item) => {
-    navigate(item.link)
+  {
+    /*--------------------------------SEARCH-BAR-----------------------------------*/
   }
+  const handleFavCartLogClick = (item) => {
+    navigate(item.link);
+  };
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     setIsDropdownVisible(true);
@@ -72,36 +76,41 @@ export default function Header() {
   const handleClearSearch = () => {
     setSearchQuery("");
   };
-  const filteredRecommendations = searchQuery ? [searchQuery,...headerRecommendations.filter(item =>
-      item.toLowerCase().includes(searchQuery.toLowerCase()) && item.toLowerCase() !== searchQuery.toLowerCase())]
-  : headerRecommendations;
+  const filteredRecommendations = searchQuery
+    ? [
+        searchQuery,
+        ...headerRecommendations.filter(
+          (item) =>
+            item.toLowerCase().includes(searchQuery.toLowerCase()) &&
+            item.toLowerCase() !== searchQuery.toLowerCase()
+        ),
+      ]
+    : headerRecommendations;
 
   return (
     <div className="header">
-      <div className={`headerDarkOverlay ${isSearchExpanded ? "clicked" : ""}`} />
+      <div className={`headersecondTextColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
       <Link to="/">
         <img className="headerLogo" src={logo} alt="freshBalance" />
       </Link>
       {/*--------------------------------SEARCH-BAR-----------------------------------*/}
       <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
         <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
-        <i className="fa-solid fa-magnifying-glass" onClick={() => {
-          const trimmedQuery = searchQuery.trim().toLowerCase();
-          if (trimmedQuery !== "") 
-            {
+          <i className="fa-solid fa-magnifying-glass" onClick={() => {const trimmedQuery = searchQuery.trim().toLowerCase();
+            if (trimmedQuery !== "") {
               navigate(`/product-page/${trimmedQuery}`);
-            }
-          }}></i>
-        <input ref={searchInputRef} className="headerSearchBar" placeholder="Search..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
-        <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
+            }}}>
+          </i>
+          <input ref={searchInputRef} className="headerSearchBar" placeholder="Search..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+          <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
         </div>
         {/*--------------------------------DROP-DOWN-----------------------------------*/}
         <ul className="headerSearchDropdown">
           {filteredRecommendations.map((item, index) => (
-              <li className="headerRecommendations" key={index} onClick={() => {setSearchQuery(item); navigate(`/product-page/${item.toLowerCase()}`)}}>
-                {item}
-              </li>
-            ))}
+            <li className="headerRecommendations" key={index} onClick={() => {setSearchQuery(item); navigate(`/product-page/${item.toLowerCase()}`);}}>
+              <p>{item}</p>
+            </li>
+          ))}
         </ul>
       </div>
       {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
@@ -109,8 +118,10 @@ export default function Header() {
         {headerNav.map((item, index) => (
           <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
             <Link to={item.link}>
-              {headerIcons[item.name] && <i className={headerIcons[item.name]}></i>}
-              {item.name}
+              {headerIcons[item.name] && (
+                <i className={headerIcons[item.name]}></i>
+              )}
+              <p>{item.name}</p>
             </Link>
           </li>
         ))}

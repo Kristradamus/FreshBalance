@@ -73,7 +73,7 @@ export default function Services() {
       <div className="servDelivery">
         <ul className="servDeliveryAreas">
         {servDelivery.areas.map((area, index) => (
-        <li className="servCitiesBox" key={index}>{area}</li>
+        <li className="servCities" key={index}>{area}</li>
         ))}
         </ul>
         <h3><strong>Our delivery terms and conditions: </strong></h3>

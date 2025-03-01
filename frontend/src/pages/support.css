@@ -1,40 +1,40 @@
 .support {
   max-width: 80vw;
   margin: 0 auto;
-  padding: 20px;
- }
- .supportContent {
+  padding: var(--boxPadding);
+}
+.supportContent {
   display: flex;
-  flex-direction:row;
- }
- /*--------------------------SEARCH-BAR-----------------------------------*/
- .supportSearchBox {
+  flex-direction: row;
+}
+/*--------------------------SEARCH-BAR-----------------------------------*/
+.supportSearchBox {
   position: relative;
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   align-items: center;
-  overflow:hidden;
+  overflow: hidden;
   width: 100%;
   transition: var(--transition);
-  border-radius:var(--radius);
+  border-radius: var(--smallRadius);
   background: var(--white);
-  border: 2px solid var(--dark);
-  box-shadow:var(--boxShadow);
+  border: 2px solid var(--secondTextColor);
+  box-shadow: var(--boxShadow);
   cursor: text;
-  margin-bottom:20px;
-  height:40px;
- }
- .supportSearchBox i{
-  font-size: calc(var(--font) + 5px);
+  margin-bottom: 20px;
+  height: 40px;
+}
+.supportSearchBox i {
+
   color: var(--green);
   cursor: pointer;
   transition: var(--transition);
-  padding:10px 20px;
- }
- .supportSearchBox i:hover {
-  background-color:var(--lightDark);
- }
- .supportSearchBar{
+  padding: 15px 15px;
+}
+.supportSearchBox i:hover {
+  background-color: var(--secondBackground);
+}
+.supportSearchBar {
   position: relative;
   outline: none;
   background: transparent;
@@ -42,73 +42,62 @@
   flex: 1;
   margin: 0 15px;
   width: 100%;
-  font-size: var(--font);
-  color: var(--darker);
-  transition:var(--transition);
- }
- .headerSearchBar::placeholder {
-  color: var(--darker);
- }
- .supportSearchBox.clicked{
-  border:2px solid var(--green);
- }
- .supportInput{
+  font-size: var(--textFont);
+  color: var(--mainTextColor);
+  transition: var(--transition);
+}
+.headerSearchBar::placeholder {
+  color: var(--mainTextColor);
+}
+.supportSearchBox.clicked {
+  border: 2px solid var(--green);
+}
+.supportInput {
   width: 100%;
   padding: 10px;
-  font-size: var(--font);
-  animation:none;
-  outline:none;
-  border:none;
- }
- .supportSearchBox.clicked .fa-x{
-    font-size: var(--font);
-    color: var(--green);
-    cursor:pointer;
-    padding:10px
- }
- /*------------------------------------------SIDE-BAR------------------------------------------*/
- .supportSideBarBox {
-  background-color:var(--white);
-  box-shadow:var(--boxShadow);
-  border-radius:var(--radius);
-  padding:10px 20px;
-  margin-right:20px;
- }
- .supportSideBarBox.NoElements {
-  padding:0px;
-  margin-right:0px;
- }
- .supportSideBar{
-  margin-top:10px;
- }
- .supportSideBar h3 {
-  margin-bottom: 5px;
-  color:var(--darker);
- }
- .supportSideElements {
+  font-size: var(--textFont);
+  animation: none;
+  outline: none;
+  border: none;
+}
+/*------------------------------------------SIDE-BAR------------------------------------------*/
+.supportSideBarBox {
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--normalRadius);
+  padding: var(--boxPadding);
+  margin-right: 20px;
+}
+.supportSideBarBox.NoElements {
+  padding: 0px;
+  margin-right: 0px;
+}
+.supportSideBar h3 {
+  color: var(--mainTextColor);
+}
+.supportSideElements {
   list-style: none;
-  font-size:calc(var(--font) + 2px);
-  margin-bottom:5px;
- }
- .supportSideElement {
-  padding:5px 0px;
-  cursor:pointer;
- }
- .supportSideElement a {
+  font-size: calc(var(--textFont) + 2px);
+}
+.supportSideElement {
+  cursor: pointer;
+}
+.supportSideElement a {
   position: relative;
   text-decoration: none;
-  color: var(--darker);
-  padding:0px;
-  transition:var(--transition);
+  color: var(--mainTextColor);
+  padding: 5px 0px;
+  transition: var(--transition);
   display: inline-block;
- }
- .supportSideElement a::after {
+}
+.supportSideElement a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -3px;
+  bottom: 0px;
   width: 0;
   height: 2px;
+  border-radius:var(--normalRadius);
   background-color: var(--green);
   transition: width 0.4s ease;
 }
@@ -118,101 +107,100 @@
 .supportSideElement:hover a {
   color: var(--green);
 }
- /*-------------------------------------SUPPORT-MAIN-----------------------------------*/
- .supportMain {
-  background-color:var(--white);
-  box-shadow:var(--boxShadow);
-  border-radius:var(--radius);
-  flex:1;
-  padding:20px;
- }
- .supportMain h1 {
-  color:var(--darker);
+/*-------------------------------------SUPPORT-MAIN-----------------------------------*/
+.supportMain {
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--normalRadius);
+  flex: 1;
+  padding: var(--boxPadding);
+}
+.supportMain h1 {
+  color: var(--mainTextColor);
   margin-bottom: 10px;
- }
- .supportMain p {
-  color: var(--darker);
- }
- .supportMain button{
-  border-radius:var(--radius);
+}
+.supportMain p {
+  color: var(--mainTextColor);
+}
+.supportMain button {
+  border-radius: var(--smallRadius);
   padding: 10px 20px;
   background-color: var(--green);
   color: var(--white);
   border: none;
   cursor: pointer;
-  transition:var(--transition);
- }
- .supportMain button:hover{
+  transition: var(--transition);
+}
+.supportMain button:hover {
   background-color: var(--lightGreen);
- }
- .supportBackButton {
+}
+.supportBackButton {
   margin-bottom: 20px;
- }
- .supportContactButton {
+}
+.supportContactButton {
   margin-top: 20px;
- }
- .supportContactFormBox {
+}
+.supportContactFormBox {
   margin-top: 20px;
-  color:var(--darker);
- }
- .supportContactForm{
-  margin-top:5px;
- }
- .supportContactForm label {
+  color: var(--mainTextColor);
+}
+.supportContactForm {
+  margin-top: 5px;
+}
+.supportContactForm label {
   display: block;
   margin-bottom: 5px;
-  font-size:var(--font);
+  font-size: var(--textFont);
   font-weight: bold;
- }
- .supportContactForm input,
- .supportContactForm textarea {
+}
+.supportContactForm input,
+.supportContactForm textarea {
   width: 100%;
   padding: 10px;
-  color:var(--darker);
+  color: var(--mainTextColor);
   margin-bottom: 15px;
-  border: 1px solid var(--dark);
-  border-radius: var(--radius);
-  transition:var(--transition);
+  border: 1px solid var(--secondTextColor);
+  border-radius: var(--smallRadius);
+  transition: var(--transition);
   outline-color: var(--green);
- }
- .supportContactForm input[type="email"]:valid,
- .supportContactForm input[type="text"]:valid,
- .supportContactForm textarea:valid{
-  border:1px solid var(--green);
+}
+.supportContactForm input[type="email"]:valid,
+.supportContactForm input[type="text"]:valid,
+.supportContactForm textarea:valid {
+  border: 1px solid var(--green);
 }
 /*----------------------------------------RESPONSIVE----------------------------------------------------*/
-@media(max-width:900px){
+@media (max-width: 900px) {
   .supportContent {
     display: flex;
-    flex-direction:column;
-   }
-   .supportSideBarBox {
-    margin-right:0px;
-    margin-bottom:20px;
-   }
+    flex-direction: column;
+  }
+  .supportSideBarBox {
+    margin-right: 0px;
+    margin-bottom: 20px;
+  }
 }
- @media (max-width: 780px) {
+@media (max-width: 780px) {
   .support {
     max-width: 90vw;
-    padding:20px 10px;
-   }
+    padding: 20px 10px;
+  }
   .supportContent {
     flex-direction: column;
   }
   .supportSideBar {
     width: 100%;
   }
- }
- @media (max-width: 600px) {
+}
+@media (max-width: 600px) {
   .support {
     max-width: 95vw;
-    padding:20px 5px;
-   }
+    padding: 20px 5px;
+  }
   .supportContent {
     flex-direction: column;
   }
   .supportSideBar {
     width: 100%;
   }
- }
- 
+}

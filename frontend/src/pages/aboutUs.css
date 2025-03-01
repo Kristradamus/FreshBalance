@@ -1,111 +1,109 @@
-.aboutUs{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 15vw;
-    padding: 0;
- }
- .aboutUsBox{
-    background-color:var(--white);
-    box-shadow:var(--boxShadow);
-    width:81%;
-    border-radius:calc(var(--radius) + 20px);
-    padding:30px;
- }
- .aboutUsInsideBox{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
-    color:var(--darker);
- }
- .aboutUsText{
-    font-size:calc(var(--font) - 1px);
-    text-align:center;
- }
- /*------------------------------MAIN------------------------------------------*/
- .aboutUsMain{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    color:var(--darker);
- }
- .aboutUsTitle,
- .aboutUsSubTitle{
-    color:var(--darker);
- }
- /*-------------------------------SUB-MAIN-------------------------------------*/
- .aboutUsSubPointsBox.withPhoto{
+.aboutUs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 15vw;
+  padding: 0;
+}
+.aboutUsBox {
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
+  width: 81%;
+  border-radius: var(--bigRadius);
+  padding: var(--boxPadding);
+}
+.aboutUsInsideBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  color: var(--mainTextColor);
+}
+.aboutUsText {
+  font-size: calc(var(--textFont) - 1px);
+  text-align: center;
+}
+/*------------------------------MAIN------------------------------------------*/
+.aboutUsMain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--mainTextColor);
+}
+.aboutUsTitle,
+.aboutUsSubTitle {
+  color: var(--mainTextColor);
+}
+/*-------------------------------SUB-MAIN-------------------------------------*/
+.aboutUsSubPointsBox.withPhoto {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
+}
+.aboutUsSubPointsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.aboutUsSubPoints .withPhoto {
+  color: var(--mainTextColor);
+  max-width: 400px;
+}
+.aboutUsSubPoints {
+  width: 100%;
+}
+.aboutUsTextContainer .fa-check {
+  color: var(--green);
+  margin-right: var(--iconDistance);
+}
+.aboutUsPhotoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--mainTextColor);
+  margin: 20px 10px;
+}
+.aboutUsPhotoContainer hr {
+  width: 170px;
+}
+.aboutUsTextContainer {
+  color: var(--mainTextColor);
+}
+.aboutUsTeamPhoto {
+  height: 100px;
+  border: 2px solid var(--green);
+  border-radius: var(--circle);
+  object-fit: cover;
+  object-position: center;
+  width: 100px;
+  margin-bottom: 10px;
+}
+/*------------------------------RESPONSIVE------------------------------------------*/
+@media (max-width: 1450px) {
+  .aboutUs {
+    margin: 20px 10vw;
+  }
+  .aboutUsSubPointsBox.withPhoto {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top:10px;
- }
- .aboutUsSubPointsBox {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+@media (max-width: 780px) {
+  .aboutUs {
+    margin: 20px 20px;
+  }
+  .aboutUsBox {
+    width: 90%;
+  }
+  .aboutUsPhotoContainer {
+    margin: 20px 0px;
+  }
+  .aboutUsSubPointsBox.withPhoto {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 5px;
   }
- .aboutUsSubPoints .withPhoto{
-    color:var(--darker);
-    max-width:400px;
- }
- .aboutUsSubPoints{
-    width:100%;
- }
- .aboutUsTextContainer .fa-check{
-    color:var(--green);
-    margin-right:var(--iconDistance);
- }
- .aboutUsPhotoContainer{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    color:var(--darker);
-    margin:20px 10px;
- }
- .aboutUsPhotoContainer hr{
-    width:170px;
- }
- .aboutUsTextContainer{
-    color:var(--darker);
- }
- .aboutUsTeamPhoto{
-    width:var(--width);
-    height:100px;
-    border: 2px solid var(--green);
-    border-radius:50%;
-    object-fit:cover;
-    object-position:center;
-    width:var(--width);
-    margin-bottom:10px;
- }
- /*------------------------------RESPONSIVE------------------------------------------*/
- @media(max-width:1450px){
-    .aboutUs{
-        margin: 20px 10vw;
-    }
-    .aboutUsSubPointsBox.withPhoto{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap:10px;
-     }
- }
- @media(max-width:780px){
-    .aboutUs{
-        margin: 20px 20px;
-    }
-    .aboutUsBox{
-        width:90%;
-    }
-    .aboutUsPhotoContainer{
-        margin:20px 0px;
-    }
-    .aboutUsSubPointsBox.withPhoto{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap:5px;
-    }
- }
- 
+}

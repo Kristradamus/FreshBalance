@@ -5,34 +5,54 @@
   box-sizing: border-box;
 }
 :root {
-  --green: #2e8b57;
+  /*----------------------COLORS---------------------*/
+  --green: #2e8b56;
   --lightGreen: #3fac4fdc;
-  --reallyLightGreen:#42c05559;
   --white: white;
-  --light: #f9f9f9;
-  --darker: rgb(73, 73, 73);
-  --dark: rgb(175, 175, 175);
-  --lightDark:#ecececb7;
-  --black:black;
+
+  /*------------------ELEMENT-COLORS-----------------*/
+  --mainBackground: #f9f9f9;
+  --secondBackground:#ecececb7;
+
+  --mainTextColor: rgba(58, 58, 58, 0.911);
+  --secondTextColor: rgba(27, 27, 27, 0.575);
+
+  /*------------------ELEMENT-RADIUS-----------------*/
+  --circle: 50%;
+  --bigRadius: 30px;
+  --normalRadius: 25px;
+  --smallRadius: 15px;
+
+  /*------------------ELEMENT-SHADOW-----------------*/
   --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
   --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.171);
-  --boxShadowLight:0 6px 12px rgba(0, 0, 0, 0.089);
+  --boxShadowLight: 0 6px 12px rgba(0, 0, 0, 0.089);
+
+  /*------------------ELEMENT-TRANSITION-------------*/
   --transition: 0.3s;
-  --iconDistance:8px;
-  --radius:14px;
-  --font:15px;
-  --width:100px;
-  --button:20px 10px;
- }
+
+  /*-------------------ELEMENT-SIZE------------------*/
+  --boxPadding:20px;
+  --textFont: 15px;
+  --smallTextFont:14px;
+  --iconFont:17px;
+  
+  /*-----------------ELEMENT-DISTANCE----------------*/
+  --iconDistance: 8px;
+
+}
 body {
   background: var(--white);
 }
 a {
   text-decoration: none;
-  color: var(--darker);
+  color: var(--mainTextColor);
 }
 li {
   list-style: none;
+}
+p{
+  font-size:var(--textFont);
 }
 a,
 .header,
@@ -43,10 +63,10 @@ a,
   display: flex;
   flex-direction: row;
 }
-hr{
+hr {
   background-color: var(--green);
   border: none;
-  border-radius:var(--radius);
+  border-radius: var(--normalRadius);
   height: 2px;
   width: 100%;
   margin: 10px 0;

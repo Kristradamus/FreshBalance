@@ -1,186 +1,190 @@
-.subscriptions{
-  margin:30px;
-  padding:0px;
- }
- .subBox{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
- }
- /*----------------------------------TOGGLE---------------------------------*/
- .subToggleContainer {
- width: 200px;
- height: 50px;
- display: flex;
- align-items: center;
- position: relative;
- border-radius: calc(var(--radius) * 3);
- border: 2px solid var(--green);
- background-color: var(--white);
- box-shadow:var(--boxShadow);
- cursor: pointer;
- transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
- font-size: var(--font);
- color: var(--darker);
- overflow: hidden;
- }
- .subToggleContainer:hover{
+.subscriptions {
+  margin: 30px;
+  padding: 0px;
+}
+.subBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/*----------------------------------TOGGLE---------------------------------*/
+.subToggleContainer {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 30px;
+  border: 2px solid var(--green);
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  font-size: var(--textFont);
+  color: var(--mainTextColor);
+  overflow: hidden;
+}
+.subToggleContainer:hover {
   border: 2px solid var(--lightGreen);
- }
- .subToggleContainer:hover .subToggleCircle{
-  background-color:var(--lightGreen);
- }
- .subToggleCircle {
- position: absolute;
- width: 90px;
- height: 40px;
- background: var(--green);
- border-radius: calc(var(--radius) * 3);
- transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
- box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
- }
- .subToggleCircle.moveRight {
- transform: translateX(100px);
- }
- .subToggleCircle.moveLeft {
- transform: translateX(6px);
- }
- .subToggleText {
- flex: 1;
- text-align: center;
- font-size: var(--font);
- font-weight: bold;
- z-index: 1;
- transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
- opacity: 1;
- }
- .subToggleText.active {
- color: var(--white);
- opacity: 1;
- }
- /*----------------------------------CATEGORIES------------------------------------*/
- .subCategories{
+}
+.subToggleContainer:hover .subToggleCircle {
+  background-color: var(--lightGreen);
+}
+.subToggleCircle {
+  position: absolute;
+  width: 90px;
+  height: 40px;
+  background: var(--green);
+  border-radius: 30px;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.subToggleCircle.moveRight {
+  transform: translateX(102px);
+}
+.subToggleCircle.moveLeft {
+  transform: translateX(4px);
+}
+.subToggleText {
+  flex: 1;
+  text-align: center;
+  font-size: var(--textFont);
+  font-weight: bold;
+  z-index: 1;
+  transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+.subToggleText.active {
+  color: var(--white);
+  opacity: 1;
+}
+/*----------------------------------CATEGORIES------------------------------------*/
+.subCategories {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+  padding: 0;
+  font-size: var(--textFont);
+  color: var(--mainTextColor);
+}
+.subPlan {
+  padding: var(--boxPadding);
+  border-radius: var(--normalRadius);
+  background-color: var(--white);
+  margin: 20px;
+  width: 90%;
+  max-width: 410px;
+  min-width: 410px;
+  box-shadow: var(--boxShadow);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+/*---------------------------------------TOP------------------------------*/
+.subPlanTop {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  color: var(--mainTextColor);
+}
+.subTopTitle {
+  font-size: 40px;
+  margin: 10px;
+}
+.subPrice {
+  display: flex;
+  flex-direction: row;
+}
+.subSidePrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.subSidePrice {
+  color: var(--green);
+}
+.subButtons {
+  display: flex;
+  flex-direction: row;
+}
+.subButtons button {
+  transition: var(--transition);
+  border-radius: var(--normalRadius);
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0px 10px;
+  box-shadow: var(--boxShadowLight);
+}
+.subTryFree {
+  border-radius: var(--normalRadius);
+  border: none;
+  color: var(--white);
+  background-color: var(--green);
+}
+.subTryFree:hover {
+  background-color: var(--lightGreen);
+  box-shadow: none;
+}
+.subBuyNow {
   display:flex;
   flex-direction:row;
-  align-items:stretch;
-  flex-wrap:wrap;
   justify-content:center;
-  margin:20px;
-  padding:0;
-  font-size: var(--font);
-  color:var(--darker);
- }
- .subPlan{
-  padding:30px;
-  border-radius:var(--radius);
-  background-color:var(--white);
-  margin:20px;
-  width:90%;
-  max-width:410px;
-  min-width:410px;
-  box-shadow:var(--boxShadow);
-  display:flex;
   align-items:center;
-  flex-direction:column;
-  flex:1;
- }
- /*---------------------------------------TOP------------------------------*/
- .subPlanTop{
-  display:flex;
-  flex-direction:column;
-  justify-items:center;
-  align-items:center;
-  gap:10px;
-  width:100%;
-  color:var(--darker);
- }
- .subTopTitle{
-  font-size:40px;
-  margin:10px;
- }
- .subPrice{
-  display:flex;
-  flex-direction:row;
- }
- .subSidePrice{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
- }
- .subSidePrice{
- color:var(--green);
- }
- .subButtons{
-  display:flex;
-  flex-direction:row;
- }
- .subButtons button{
-  transition:var(--transition);
-  border-radius:calc(var(--radius) * 2);
-  cursor:pointer;
-  padding:10px 20px;
-  margin:0px 10px;
-  box-shadow:var(--boxShadowLight);
- }
- .subTryFree{
-  border-radius:var(--radius);
-  border:none;
-  color:var(--white);
-  background-color:var(--green);
- }
- .subTryFree:hover{
-  background-color:var(--lightGreen);
-  box-shadow:none;
- }
- .subBuyNow{
-  background-color:transparent;
-  color:var(--green);
-  border:2px solid var(--green);
- }
- .subBuyNow i{
-  margin-left:var(--iconDistance);
- }
- .subBuyNow:hover{
-  color:var(--lightGreen);
-  border:2px solid var(--lightGreen);
-  box-shadow:none;
- }
- /*-----------------------------------BOTTOM------------------------------*/
- .subBottom{
-  padding:20px;
-  display:flex;
-  flex-direction:column;
- }
- .subBenefits{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
- }
- .subBenefits .fa-check{
-  margin-right:var(--iconDistance);
-  color:var(--green);
- }
- .subBenefit{
-  display:flex;
-  flex-direction:column;
- }
- .subDescription{
-  opacity:0.75;
-  font-size:var(--font);
- }
- /*-----------------------------------RESPONSIVE------------------------------*/
- @media(max-width:450px){
-  .subPlan{
-    padding:20px;
-    max-width:400px;
-    min-width:320px;
-   }
-   .subBottom{
-    padding:10px 5px;
-    font-size:calc(var(--font) - 2px);
-   }
-   .subDescription{
-    font-size:calc(var(--font) - 2px);
-   }
- } 
+  background-color: transparent;
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+.subBuyNow i {
+  margin-left: var(--iconDistance);
+}
+.subBuyNow:hover {
+  color: var(--lightGreen);
+  border: 2px solid var(--lightGreen);
+  box-shadow: none;
+}
+/*-----------------------------------BOTTOM------------------------------*/
+.subBottom {
+  padding: var(--boxPadding);
+  display: flex;
+  flex-direction: column;
+}
+.subBenefits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.subBenefits .fa-check {
+  margin-right: var(--iconDistance);
+  color: var(--green);
+}
+.subBenefit {
+  display: flex;
+  flex-direction: column;
+}
+.subDescription {
+  color:var(--secondTextColor);
+  font-size: var(--textFont);
+}
+/*-----------------------------------RESPONSIVE------------------------------*/
+@media (max-width: 450px) {
+  .subPlan {
+    padding: var(--boxPadding);
+    max-width: 400px;
+    min-width: 320px;
+  }
+  .subBottom {
+    padding: 10px 5px;
+    font-size: calc(var(--textFont) - 2px);
+  }
+  .subDescription {
+    font-size: calc(var(--textFont) - 2px);
+  }
+}

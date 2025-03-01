@@ -12,19 +12,19 @@
 }
 .logRegNeedHelp {
   color: var(--green);
-  font: var(--font);
+  font: var(--textFont);
 }
 .logRegNeedHelp:hover {
   cursor: pointer;
 }
 /*---------------------------EMAIL-BOX------------------------------*/
-.logRegEmailBox{
+.logRegEmailBox {
   text-align: center;
   margin: 20px auto;
-  padding: 20px;
+  padding: var(--paddingBox);
   max-width: 400px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: var(--bigRadius);
   box-shadow: var(--boxShadow);
   background-color: #fff;
 }
@@ -34,24 +34,24 @@
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: var(--normalRadius);
 }
-.logRegContinue{
+.logRegContinue {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: var(--boxPadding);
+  border-radius: var(--normalRadius);
   cursor: pointer;
   margin: 10px 0;
 }
 .logRegGoogleButt,
-.logRegFacebookButt{
+.logRegFacebookButt {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
   padding: 10px 15px;
   margin: 5px 0;
-  border-radius: 4px;
+  border-radius: var(--normalRadius);
   cursor: pointer;
 }
 .logRegGoogleButt:hover,
@@ -59,12 +59,12 @@
   background-color: #e0e0e0;
 }
 /*------------------------------LOGIN-------------------------------*/
-.login{
-  display:none;
-  opacity:none;
+.login {
+  display: none;
+  opacity: none;
 }
 /*------------------------------REGISTER-------------------------------*/
-.register{
-  display:none;
-  opacity:none;
+.register {
+  display: none;
+  opacity: none;
 }
