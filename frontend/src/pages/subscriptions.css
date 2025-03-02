@@ -72,7 +72,7 @@
   color: var(--mainTextColor);
 }
 .subPlan {
-  padding: var(--boxPadding);
+  padding: 20px;
   border-radius: var(--normalRadius);
   background-color: var(--white);
   margin: 20px;
@@ -134,10 +134,10 @@
   box-shadow: none;
 }
 .subBuyNow {
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   color: var(--green);
   border: 2px solid var(--green);
@@ -152,7 +152,7 @@
 }
 /*-----------------------------------BOTTOM------------------------------*/
 .subBottom {
-  padding: var(--boxPadding);
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -170,21 +170,20 @@
   flex-direction: column;
 }
 .subDescription {
-  color:var(--secondTextColor);
-  font-size: var(--textFont);
+  color: var(--secondTextColor);
 }
 /*-----------------------------------RESPONSIVE------------------------------*/
 @media (max-width: 450px) {
   .subPlan {
-    padding: var(--boxPadding);
+    padding: 20px;
     max-width: 400px;
     min-width: 320px;
   }
   .subBottom {
     padding: 10px 5px;
-    font-size: calc(var(--textFont) - 2px);
+    font-size: var(--smallTextFont);
   }
   .subDescription {
-    font-size: calc(var(--textFont) - 2px);
+    font-size: var(--smallTextFont);
   }
 }

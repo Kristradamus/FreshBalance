@@ -10,7 +10,7 @@
   box-shadow: var(--boxShadow);
   width: 81%;
   border-radius: var(--bigRadius);
-  padding: var(--boxPadding);
+  padding: 20px;
 }
 .aboutUsInsideBox {
   display: flex;
@@ -21,7 +21,7 @@
   color: var(--mainTextColor);
 }
 .aboutUsText {
-  font-size: calc(var(--textFont) - 1px);
+  font-size: var(--smallTextFont);
   text-align: center;
 }
 /*------------------------------MAIN------------------------------------------*/
@@ -53,6 +53,11 @@
 .aboutUsSubPoints {
   width: 100%;
 }
+.aboutUsTextContainer {
+  color: var(--mainTextColor);
+  display:flex;
+  flex-direction:row;
+}
 .aboutUsTextContainer .fa-check {
   color: var(--green);
   margin-right: var(--iconDistance);
@@ -67,9 +72,6 @@
 }
 .aboutUsPhotoContainer hr {
   width: 170px;
-}
-.aboutUsTextContainer {
-  color: var(--mainTextColor);
 }
 .aboutUsTeamPhoto {
   height: 100px;
@@ -93,7 +95,7 @@
 }
 @media (max-width: 780px) {
   .aboutUs {
-    margin: 20px 20px;
+    margin: 20px 0px;
   }
   .aboutUsBox {
     width: 90%;

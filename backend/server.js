@@ -1,17 +1,9 @@
 const express = require('express');
-const path = require('path');
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const {sendEmail} = require("./email");
 const app = express();
+const PORT = 5000;
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'frontend/build')));
-
-// Handle all other routes by serving index.html for React Router
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'frontend/build', 'index.html'));
-});
-
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.use(cors());
+app.use(bodyParser.json());

@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import Header from "../components/Header.jsx";
+import Navigation from "../components/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
 import "./communities.css";
 
@@ -9,8 +11,11 @@ export default function Communities() {
     navigate(path);
   };
   return (
+    <>
+    <Header/>
+    <Navigation/>
     <div className="communities">
-      <div className="communitiessecondTextColorOverlay">
+      <div className="communitiesColorOverlay">
         <div className="communitiesBox">
           <div className="communitiesTop">
             <h1>Access denied!</h1>
@@ -24,5 +29,6 @@ export default function Communities() {
         </div>
       </div>
     </div>
+    </>
   );
 }

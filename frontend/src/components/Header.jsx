@@ -89,7 +89,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div className={`headersecondTextColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
+      <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
       <Link to="/">
         <img className="headerLogo" src={logo} alt="freshBalance" />
       </Link>

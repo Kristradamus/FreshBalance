@@ -22,7 +22,7 @@
   background: var(--white);
   border-radius: var(--normalRadius);
   box-shadow: var(--boxShadow);
-  padding: var(--boxPadding);
+  padding: 20px;
 }
 .servBox {
   width: 100%;
@@ -40,7 +40,7 @@
 .servService {
   background-color: var(--white);
   border-radius: var(--normalRadius);
-  padding: var(--boxPadding);
+  padding: 20px;
   box-shadow: var(--boxShadowBottom);
   text-align: center;
   transition: var(--transition);
@@ -70,7 +70,7 @@
   background: var(--white);
   border-radius: var(--normalRadius);
   box-shadow: var(--boxShadow);
-  padding: var(--boxPadding);
+  padding: 20px;
 }
 .servLocationText {
   font-size: var(--textFont);
@@ -93,7 +93,7 @@
   background-color: var(--white);
   border-radius: var(--normalRadius);
   box-shadow: var(--boxShadow);
-  padding:var(--boxPadding);
+  padding: 20px;
 }
 .servDeliveryAreas {
   display: grid;
@@ -102,7 +102,7 @@
 .servCities {
   position: relative;
   color: var(--mainTextColor);
-  padding: 15px;
+  padding: 10px;
   background-color: var(--secondBackground);
   border: 2px solid transparent;
   border-radius: var(--smallRadius);
@@ -114,6 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size:var(--textFont);
 }
 .servCities:hover {
   background-color: var(--white);
@@ -132,7 +133,7 @@
   font-size: var(--textFont);
   color: var(--mainTextColor);
   background-color: var(--secondBackground);
-  padding: 15px;
+  padding: 10px;
   border-radius: var(--smallRadius);
   list-style-type: none;
   transition: var(--transition);

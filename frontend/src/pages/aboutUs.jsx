@@ -15,15 +15,14 @@ const SubSection = ({ photo, subTitle, subText }) => {
  return photo ? (
    <div className="aboutUsPhotoContainer">
      <img className="aboutUsTeamPhoto" src={photo}/>
-     <strong>{subTitle}: </strong>
+     <p><strong>{subTitle}: </strong></p>
      <hr />
-     {subText}
+     <p>{subText}</p>
    </div>
  ) : (
    <div className="aboutUsTextContainer">
      <i className="fa-solid fa-check"></i>
-     <strong>{subTitle}: </strong>
-     {subText}
+     <p><strong>{subTitle}: </strong> {subText}</p>
    </div>
  );
 };

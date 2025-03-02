@@ -5,7 +5,7 @@
   width: 100%;
   z-index: 1;
 }
-.communitiessecondTextColorOverlay {
+.communitiesColorOverlay {
   display: flex;
   position: fixed;
   justify-content: center;
@@ -23,10 +23,11 @@
   border-radius: var(--normalRadius);
   overflow: hidden;
   position: relative;
-  top: -150px;
   justify-content: center;
   align-items: center;
-  max-width: 600px;
+  top:-100px;
+  width:100%;
+  max-width: 400px;
 }
 .communitiesTop {
   background-color: transparent;
@@ -44,7 +45,7 @@
   color: var(--green);
   border-radius: var(--normalRadius);
   font-size: calc(var(--textFont) + 5px);
-  padding: var(--boxPadding);
+  padding: 20px;
 }
 .communitiesGoToSub {
   background-color: var(--green);
@@ -56,11 +57,16 @@
   cursor: pointer;
   padding: 10px 20px;
   margin: 10px 0px;
-  margin-top:15px;
+  margin-top: 15px;
   transition: var(--transition);
   box-shadow: var(--boxShadowLight);
 }
 .communitiesGoToSub:hover {
   background-color: var(--lightGreen);
   box-shadow: none;
+}
+@media(max-width:780px){
+  .communitiesBox{
+    max-width:300px;
+  }
 }

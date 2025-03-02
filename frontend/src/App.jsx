@@ -24,7 +24,6 @@ export default function App() {
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/communities" element={<Communities />} />
               <Route path="/" element={<FrontPage />} />
               <Route path="/services" element={<Services />} />
               <Route path="/subscriptions" element={<Subscriptions />} />
@@ -34,6 +33,7 @@ export default function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/product-page/:promotionName" element={<ProductPage />}/>
             </Route>
+            <Route path="/communities" element={<Communities />} />
             <Route path="/login" element={<LoginRegistration />} />
           </Routes>
         </Suspense>

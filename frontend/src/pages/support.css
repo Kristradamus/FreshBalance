@@ -1,7 +1,7 @@
 .support {
   max-width: 80vw;
   margin: 0 auto;
-  padding: var(--boxPadding);
+  padding: 20px;
 }
 .supportContent {
   display: flex;
@@ -25,7 +25,6 @@
   height: 40px;
 }
 .supportSearchBox i {
-
   color: var(--green);
   cursor: pointer;
   transition: var(--transition);
@@ -65,7 +64,7 @@
   background-color: var(--white);
   box-shadow: var(--boxShadow);
   border-radius: var(--normalRadius);
-  padding: var(--boxPadding);
+  padding: 20px;
   margin-right: 20px;
 }
 .supportSideBarBox.NoElements {
@@ -97,7 +96,7 @@
   bottom: 0px;
   width: 0;
   height: 2px;
-  border-radius:var(--normalRadius);
+  border-radius: var(--normalRadius);
   background-color: var(--green);
   transition: width 0.4s ease;
 }
@@ -113,7 +112,7 @@
   box-shadow: var(--boxShadow);
   border-radius: var(--normalRadius);
   flex: 1;
-  padding: var(--boxPadding);
+  padding: 20px;
 }
 .supportMain h1 {
   color: var(--mainTextColor);

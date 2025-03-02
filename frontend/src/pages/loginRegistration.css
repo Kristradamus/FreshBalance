@@ -40,7 +40,7 @@
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: var(--boxPadding);
+  padding: 20px;
   border-radius: var(--normalRadius);
   cursor: pointer;
   margin: 10px 0;
