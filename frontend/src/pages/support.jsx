@@ -87,34 +87,35 @@ useEffect(() => {
     document.removeEventListener("mousedown", handleClickOutside);
   };
 }, []);
-
+{/*----------------------------------EMAIL-SENDING-------------------------------------*/}
 const handleSubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    message: formData.get('message')
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message"),
   };
 
   try {
-    const response = await fetch('http://localhost:5000/send-message', {
-      method: 'POST',
+    const response = await fetch("http://localhost:5000/send-message", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
 
     if (response.ok) {
-      alert('Message sent successfully!');
+      alert("Message sent successfully!");
       setShowContactForm(false);
     } else {
-      alert('Failed to send message.');
+      const errorData = await response.json();
+      alert(`Failed to send message: ${errorData.message}`);
     }
   } catch (error) {
-    console.error('Error:', error);
-    alert('An error occurred while sending the message.');
+    console.error("Error:", error);
+    alert("An error occurred while sending the message.");
   }
 };
 
@@ -129,7 +130,7 @@ return (
       <div className={`supportSideBarBox ${Object.keys(filteredData).length === 0 ? "NoElements" : ""}`}>
       <div className="supportSideBar">
       {Object.keys(filteredData).map((category) => (
-        <div key={category}>
+        <div key={category} className="supportSideBarGap">
           <h3><strong>{category}</strong></h3>
           <ul className="supportSideElements">
             {filteredData[category].map((item, index) => (

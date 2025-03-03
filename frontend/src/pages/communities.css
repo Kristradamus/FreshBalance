@@ -5,6 +5,9 @@
   width: 100%;
   z-index: 1;
 }
+.communities h1{
+  color:var(--white);
+}
 .communitiesColorOverlay {
   display: flex;
   position: fixed;

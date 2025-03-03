@@ -15,7 +15,9 @@
   --secondBackground:#ecececb7;
 
   --mainTextColor: rgba(58, 58, 58, 0.911);
-  --secondTextColor: rgba(27, 27, 27, 0.575);
+  --secondTextColor: rgba(36, 36, 36, 0.658);
+
+  --errorColor: rgb(216, 27, 27);
 
   /*------------------ELEMENT-RADIUS-----------------*/
   --circle: 50%;
@@ -27,7 +29,8 @@
   --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
   --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.171);
   --boxShadowLight: 0 6px 12px rgba(0, 0, 0, 0.089);
-
+  --errorBoxShadow: 0 0 0 2px rgba(182, 47, 47, 0.247);
+  
   /*------------------ELEMENT-TRANSITION-------------*/
   --transition: 0.3s;
 
@@ -52,6 +55,14 @@ li {
 }
 p{
   font-size:var(--textFont);
+  color:var(--mainTextColor);
+}
+h1,
+h2,
+h3,
+h4,
+h5{
+  color:var(--mainTextColor);
 }
 a,
 .header,

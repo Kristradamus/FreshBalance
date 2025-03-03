@@ -21,7 +21,7 @@ export default function Communities() {
             <h1>Access denied!</h1>
           </div>
           <div className="communitiesBottom">
-            <p>You need to get a personal plan first!</p>
+            <h5 className="communitiesPlan"><strong>You need to get a personal plan first!</strong></h5>
             <button className="communitiesGoToSub" onClick={() => goToSubscriptions("/subscriptions")}>
               Go to Subscriptions
             </button>

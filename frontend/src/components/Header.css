@@ -116,7 +116,7 @@
   margin: 0 5px;
   width: 100%;
   font-size: var(--textFont);
-  color: var(--mainTextColorer);
+  color: var(--mainTextColor);
   transition: var(--transition);
 }
 .headerSearchBar::placeholder {

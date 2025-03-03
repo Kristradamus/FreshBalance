@@ -5,6 +5,12 @@
   margin: 20px 15vw;
   padding: 0;
 }
+.aboutUs p{
+  color:var(--secondTextColor);
+}
+.aboutUs strong{
+  color:var(--mainTextColor);
+}
 .aboutUsBox {
   background-color: var(--white);
   box-shadow: var(--boxShadow);

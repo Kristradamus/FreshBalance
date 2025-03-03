@@ -1,70 +1,173 @@
 /*-----------------------------BASE--------------------------------*/
-.loginRegister {
+.loginRegister{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:5vw 20vw;
+  gap:10px;
+}
+.loginRegisterLogo{
+  width:150px;
+  margin-bottom:10px;
+}
+.loginRegisterNeedHelp p{
+  transition:var(--transition);
+  color:var(--green);
+}
+.loginRegisterNeedHelp p:hover{
+  color:var(--lightGreen);
+}
+
+/*------------------------EMAIL-BOX---------------------------*/
+.emailBox,
+.emailTop,
+.emailBottom{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.emailBox{
+  padding:20px;
+  background-color:var(--white);
+  box-shadow:var(--boxShadow);
+  max-width:400px;
+  border-radius:var(--smallRadius);
+}
+.emailTop,
+.emailBottom{
+  padding:0px 10px;
+  gap:15px;
+}
+.emailDivider {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  gap: 15px;
+  width:100%;
 }
-.logRegLogo {
-  display: block;
-  margin: 20px 20px;
-  width: 150px;
+.emailDivider hr{
+  height:1px;
 }
-.logRegNeedHelp {
-  color: var(--green);
-  font: var(--textFont);
+/*--------------------EMAIL-BOX-TOP--------------------*/
+.emailTop h1{
+  padding:10px 0px;
 }
-.logRegNeedHelp:hover {
-  cursor: pointer;
+.emailPls{
+  margin-bottom:-5px;
 }
-/*---------------------------EMAIL-BOX------------------------------*/
-.logRegEmailBox {
-  text-align: center;
-  margin: 20px auto;
-  padding: var(--paddingBox);
-  max-width: 400px;
-  border: 1px solid #ddd;
-  border-radius: var(--bigRadius);
-  box-shadow: var(--boxShadow);
-  background-color: #fff;
+.emailInputBox{
+  padding:10px;
+  width:100%;
+  border:1px solid var(--secondTextColor);
+  background-color:var(--white);
+  border-radius:var(--normalRadius);
+  box-shadow: 0 0 10px rgba(0, 0, 20, 0.15);
 }
-.logRegEmail {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: var(--normalRadius);
+.emailInput{
+  background-color:transparent;
+  border:none;
+  outline:none;
+  width:100%;
+  color:var(--mainTextColor);
 }
-.logRegContinue {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 20px;
-  border-radius: var(--normalRadius);
-  cursor: pointer;
-  margin: 10px 0;
+.emailInputBox.Error{
+  border: 1px solid var(--errorColor);
+  box-shadow:var(--errorBoxShadow);
 }
-.logRegGoogleButt,
-.logRegFacebookButt {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  padding: 10px 15px;
-  margin: 5px 0;
-  border-radius: var(--normalRadius);
-  cursor: pointer;
+.emailErrorMessage{
+  color:var(--errorColor);
+  text-align:left;
+  width:100%;
+  margin:-10px 0px 0px 10px ;
+  font-size:var(--smallTextFont);
 }
-.logRegGoogleButt:hover,
-.logRegFacebookButt:hover {
-  background-color: #e0e0e0;
+.emailContinue{
+  width:100%;
+  padding:15px;
+  border-radius:var(--normalRadius);
+  background-color:var(--green);
+  color:var(--white);
+  border:none;
+  transition:var(--transition);
 }
-/*------------------------------LOGIN-------------------------------*/
-.login {
-  display: none;
-  opacity: none;
+.emailContinue:hover{
+  background-color:var(--lightGreen);
 }
+.emailDontWorry{
+  text-align:center;
+  font-size:var(--smallTextFont);
+}
+/*------------------EMAIL-BOX-BOTTOM---------------------*/
+.emailBottom{
+  width:100%;
+}
+.emailAlso{
+  font-size:var(--smallTextFont);
+}
+.emailGoogle,
+.emailFacebook {
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  align-items:center;
+}
+.emailGoogleButt,
+.emailFacebookButt{
+  width:100%;
+  cursor:pointer;
+  padding:15px;
+  border-radius:var(--normalRadius);
+  border:none;
+  transition:var(--transition);
+}
+.emailGoogleButt{
+  background-color:rgba(234, 68, 53, 0.89);
+  color:var(--white);
+}
+.emailFacebookButt{
+  background-color:rgba(39, 39, 182, 0.89);
+  color:var(--white);
+}
+.emailGoogleButt:hover{
+  background-color:rgba(250, 68, 52, 0.767);
+}
+.emailFacebookButt:hover{
+  background-color:rgba(66, 66, 218, 0.829);
+}
+.emailGoogle i,
+.emailFacebook i{
+  position:absolute;
+  color:var(--white);
+  font-size:var(--iconFont);
+  border-right:1px solid white;
+}
+.emailGoogle i{
+  margin-left:5px;
+  padding:5px 10px;
+}
+.emailFacebook i{
+  margin-left:5px;
+  padding:5px 12.5px;
+}
+/*------------------------------------LOGIN-----------------------------------*/
+
 /*------------------------------REGISTER-------------------------------*/
-.register {
-  display: none;
-  opacity: none;
+/*-----------------------------RESPONSIVE-------------------------------*/
+@media(max-width:1200px){
+  .loginRegister{
+    padding:5vw 10vw;
+    }
+}
+@media(max-width:780px){
+  .loginRegister{
+    padding:5vw 3vw;
+  }
+  .loginRegister p{
+    font-size:calc(var(--textFont) - 2px);
+  }
+  .logRegEmailBox{
+    padding:15px;
+  }
 }

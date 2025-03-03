@@ -5,13 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && npm run start:frontend && npm run start:backend",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start:frontend": "cd frontend && npm run deploy",
-    "start:backend": "cd backend && npm start",
-    "dev": "npm run dev:frontend && npm run dev:backend",
+    "start:backend": "cd backend && npm run start",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "build": "cd frontend && npm run build"
+    "dev:backend": "cd backend && npm run dev"
   },
   "repository": {
     "type": "git",
@@ -24,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Kristradamus/NutritionWebsite2.0/issues"
   },
-  "homepage": "https://github.com/Kristradamus/NutritionWebsite2.0#readme"
+  "homepage": "https://github.com/Kristradamus/NutritionWebsite2.0#readme",
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
 }

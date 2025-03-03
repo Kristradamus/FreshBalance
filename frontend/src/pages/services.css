@@ -60,7 +60,7 @@
 }
 .servServiceDescription {
   font-size: var(--textFont);
-  color: var(--mainTextColor);
+  color: var(--secondTextColor);
 }
 /*------------------------------LOCATION----------------------------------*/
 .servSmallerHeader p {
@@ -83,6 +83,12 @@
   border: none;
   width: 100%;
   height: 400px;
+}
+.servLocationText{
+  color:var(--secondTextColor);
+}
+.servLocationText strong{
+  color:var(--mainTextColor);
 }
 
 /*------------------------------DELIVERY----------------------------------*/

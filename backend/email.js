@@ -15,12 +15,12 @@ const sendEmail = async(name, email, message) => {
     text:`Name: ${name}, \nEmail: ${email}, \nMessage:${message}`
   }
   try{
-    await transporter.sendMail(mailOption);
+    await transporter.sendMail(mailOptions);
     return {success: true, message:"Message sent successfully!"};
   }
   catch(error){
-    console.log("Error sending email:", error);
-    return{success:false, message:"Failed to send message."};
+    console.error("Error sending email:", error);
+    return{success:false, message:`Failed to send message: ${error.message}`};
   }
 }
 module.exports = {sendEmail};
