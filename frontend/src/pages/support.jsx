@@ -130,7 +130,7 @@ return (
       <div className={`supportSideBarBox ${Object.keys(filteredData).length === 0 ? "NoElements" : ""}`}>
       <div className="supportSideBar">
       {Object.keys(filteredData).map((category) => (
-        <div key={category} className="supportSideBarGap">
+        <div key={category} className="supportSideElements">
           <h3><strong>{category}</strong></h3>
           <ul className="supportSideElements">
             {filteredData[category].map((item, index) => (

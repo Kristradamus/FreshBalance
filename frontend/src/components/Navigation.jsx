@@ -6,13 +6,13 @@ import { Link, useLocation } from "react-router-dom";
 export default function Navigation() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isDropdownMoreVisible, setIsDropdownMoreVisible] = useState(false);
-  const [hiddenNavLinks, setHiddenNavLinks] = useState([]);
   const catToggleRef = useRef(null);
   const moreToggleRef = useRef(null);
   const dropContentRef = useRef(null);
   const moreDropContentRef = useRef(null);
   const linkRefs = useRef([]);
   const location = useLocation();
+  
 {/*--------------------------------------LINKS-ICONS----------------------------------------*/}
   const navCategories = [
     {
@@ -188,24 +188,6 @@ export default function Navigation() {
     setIsDropdownMoreVisible((prev) => !prev);
     setIsDropdownVisible(false);
   };
-  {/*useEffect(() => {
-    const handleResize = () => {
-      const hiddenLinks = [];
-
-      linkRefs.current.forEach((link, index) => {
-        if (link && window.getComputedStyle(link).display === "none") {
-          hiddenLinks.push(navNavLinks[index]);
-        }
-      });
-      setHiddenNavLinks(hiddenLinks);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [navNavLinks]);*/}
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -227,39 +209,33 @@ export default function Navigation() {
           </a>
           <ul ref={dropContentRef} className={`navDropDownContent ${isDropdownVisible ? "show" : ""}`}>
             {navCategories.map((category, index) => (
-              <li key={index}>
-                <a href={category.link}>{category.name}</a>
+              <li className="navDropDownElement"key={index}>
+                <a className="navDropDownElementA" href={category.link}>{category.name}</a>
                 <ul className="navSubMenu">
                   <h2>{category.name}</h2>
-                  {category.subcategories.map((subCategory, subIndex) =>
-                    subCategory.items ? (
-                      <div key={subIndex}>
-                        <h3>{subCategory.title}</h3>
-                        {subCategory.items.map((item, itemIndex) => (
-                          <li key={itemIndex}>
-                            <Link to={item.link}>{item.name}</Link>
-                          </li>
-                        ))}
-                      </div>) : 
-                    (
-                      <li key={subIndex}>
-                        <Link to={subCategory.link}>{subCategory.name}</Link>
-                      </li>
-                    )
-                  )}
+                  {category.subcategories.map((subCategory, subIndex) => subCategory.items ? (
+                  <div key={subIndex}>
+                    <h3>{subCategory.title}</h3>
+                    {subCategory.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>
+                      <Link to={item.link}>{item.name}</Link>
+                    </li>))}
+                  </div>) : 
+                  (<li key={subIndex}>
+                    <Link to={subCategory.link}>{subCategory.name}</Link>
+                  </li>))}
                 </ul>
               </li>
             ))}
           </ul>
         </li>
 {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
-        {hiddenNavLinks.length > 0 && (
         <li className="navMore">
           <a ref={moreToggleRef} className="navCatToggle" href="#" onClick={handleMoreToggle}>
             MORE
           </a>
           <ul ref={moreDropContentRef} className={`navDropDownMore ${isDropdownMoreVisible ? "show" : ""}`}>
-          {hiddenNavLinks.map((item, index) => (
+          {navNavLinks.map((item, index) => (
             <li key={index}>
               <Link to={item.path}>
                 {navIcons[item.name] && <i className={navIcons[item.name]}></i>}
@@ -267,7 +243,7 @@ export default function Navigation() {
               </Link>
             </li>))}
           </ul>
-        </li>)}
+        </li>
         {navNavLinks.map((item, index) => (
         <li className="navMenuElement" key={index} ref={(el) => (linkRefs.current[index] = el)}>
         <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path}>

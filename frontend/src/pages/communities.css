@@ -44,7 +44,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: var(--mainBackground);
+  background-color: var(--white);
   color: var(--green);
   border-radius: var(--normalRadius);
   font-size: calc(var(--textFont) + 5px);
