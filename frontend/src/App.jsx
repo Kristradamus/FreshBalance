@@ -1,6 +1,7 @@
-import { Suspense } from "react"; 
+import { Suspense, useState, useEffect } from "react"; 
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Axios from "axios";
 
 const AboutUs = React.lazy(() => import("./pages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/communities.jsx"));
