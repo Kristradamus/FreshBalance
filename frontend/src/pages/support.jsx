@@ -96,30 +96,26 @@ const handleSubmit = async (e) => {
     email: formData.get("email"),
     message: formData.get("message"),
   };
-
-  console.log("Submitting form data:", data); // Log the data being sent
-
+  console.log("Submitting form data:", data);
   try {
-    const response = await fetch("http://localhost:5000/send-message", {
+    {/*const response = await fetch("http://localhost:5000/send-message",*/}const response = await fetch("http://192.168.0.156:5000/send-message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-
-    console.log("Response status:", response.status); // Log the response status
-
+    console.log("Response status:", response.status);
     if (response.ok) {
       alert("Message sent successfully!");
       setShowContactForm(false);
     } else {
       const errorData = await response.json();
-      console.error("Error response:", errorData); // Log the error response
+      console.error("Error response:", errorData);
       alert(`Failed to send message: ${errorData.message}`);
     }
   } catch (error) {
-    console.error("Error:", error); // Log any unexpected errors
+    console.error("Error:", error);
     alert("An error occurred while sending the message.");
   }
 };
