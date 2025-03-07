@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../images/freshBalance.png";
 import "./Header.css";
+import LanguageSwitcher from "./LanguageSwitcher.jsx";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -126,6 +127,7 @@ export default function Header() {
           </li>
         ))}
       </ul>
+      <LanguageSwitcher/>
     </div>
   );
 }

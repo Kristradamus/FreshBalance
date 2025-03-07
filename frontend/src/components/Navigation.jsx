@@ -2,7 +2,6 @@ import "./Navigation.css";
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 export default function Navigation() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isDropdownMoreVisible, setIsDropdownMoreVisible] = useState(false);

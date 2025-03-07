@@ -1,0 +1,73 @@
+{
+"greeting":"mazna",
+    "aboutUs": {
+        "brandStoryTitle": "Our Brand Story",
+        "brandStoryText": "FreshBalance was founded out of a personal journey. As a fitness enthusiast and nutrition advocate, our founder Kristiyan Krustev experienced firsthand the challenges of finding high-quality, trustworthy nutrition products that delivered real results. Frustrated by the lack of transparency and effectiveness in the market, Kristiyan Krustev decided to take matters into his own hands. What started as a mission to create a better solution for himself soon grew into a vision to help others. FreshBalance was born to fill the gap in the market. FreshBalance is a brand that prioritizes quality, science, and customer trust above all else. Every product we offer is a reflection of our commitment to helping you live a healthier, more balanced life.",
+
+        "whoWeServeTitle": "Who We Serve",
+        "whoWeServeText": "At FreshBalance, we cater to everyone who values their health and wellness. Whether you are a professional athlete, a busy parent, a fitness newbie, or someone simply looking to improve your daily nutrition, we’ve got something for you. We understand that no two journeys are the same, which is why we offer a diverse range of products to meet your unique needs. Our goal is to empower you to take control of your health and achieve your goals with confidence.",
+
+        "productLineTitle": "Our product line includes:",
+        "products": [
+            { "productName": "Proteins", "productDescription": "To support muscle recovery and growth." },
+            { "productName": "Amino Acids", "productDescription": "To enhance performance and endurance." },
+            { "productName": "Vitamins", "productDescription": "To fill nutritional gaps and boost overall health." },
+            { "productName": "Minerals", "productDescription": "To support essential bodily functions and overall well-being." },
+            { "productName": "Performance Enhancers", "productDescription": "To optimize physical and mental performance during workouts and daily activities." },
+            { "productName": "Cosmetics", "productDescription": "Skincare and beauty products infused with natural, nourishing ingredients to enhance your outer glow." },
+            { "productName": "Bio Products", "productDescription": "Organic and eco-friendly products designed to promote a sustainable and healthy lifestyle." },
+            { "productName": "Weight Management", "productDescription": "Supplements and meal replacements designed to support healthy weight loss, metabolism, and appetite control." }
+        ],
+
+        "howWeOperateTitle": "How We Operate",
+        "howWeOperateText": "Transparency and quality are at the heart of everything we do. All FreshBalance products are crafted using scientifically backed formulas and ethically sourced ingredients. We work closely with trusted manufacturers to ensure every product meets our strict standards for purity, potency, and effectiveness. What sets us apart is our commitment to education and customer care. We don’t just sell products—we provide resources, guidance, and support to help you make informed decisions about your nutrition.",
+
+        "teamTitle": "The Face of FreshBalance",
+        "teamText": "We’re proud to share our journey with you, and we’d love for you to get to know us better. FreshBalance is a small but passionate team dedicated to making a big impact.",
+        "teamIntroduction": "Meet the people who make it all happen:"
+    },
+    "cart":{
+
+
+    },
+    "communities":{
+
+
+    },
+    "favourites":{
+
+
+    },
+    "frontPage":{
+
+
+    },
+    "loginRegistration":{
+
+
+    },
+    "productPage":{
+
+
+    },
+    "profile":{
+
+
+    },
+    "services":{
+
+
+    },
+    "singleProductPage":{
+
+
+    },
+    "subscriptions":{
+
+
+    },
+    "support":{
+       
+    }
+}
+
