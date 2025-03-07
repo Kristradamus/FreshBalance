@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./Comments.css";
 
 export default function Comments() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+  const { t } = useTranslation();
 
   const handleAddComment = () => {
     if (newComment.trim() === "") return;

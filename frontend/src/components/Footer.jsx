@@ -1,11 +1,13 @@
-import "./Footer.css";
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-import logo from "../images/freshBalance.png";
+import logo from "../../public/images/freshBalance.png";
+import "./Footer.css";
 
 
 export default function Footer() {
  const navigate = useNavigate();
+ const { t } = useTranslation();
 
 
  const footerData = {

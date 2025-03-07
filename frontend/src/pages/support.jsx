@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./support.css";
 
 export default function Support() {
@@ -8,6 +9,7 @@ export default function Support() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchInputRef = useRef(null);
   const searchBoxRef = useRef(null);
+  const { t } = useTranslation();
 
 {/*--------------------------------------ISSUES--------------------------------------*/}
   const supportData = {
@@ -98,7 +100,7 @@ const handleSubmit = async (e) => {
   };
   console.log("Submitting form data:", data);
   try {
-    {/*const response = await fetch("http://localhost:5000/send-message",*/}const response = await fetch("http://192.168.0.156:5000/send-message", {
+    const response = await fetch("http://localhost:5000/send-message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

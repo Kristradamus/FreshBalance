@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import logo from "../images/freshBalance.png";
+import { useTranslation } from 'react-i18next';
+import logo from "../../public/images/freshBalance.png";
 import "./Header.css";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 
@@ -13,6 +14,7 @@ export default function Header() {
   const searchInputRef = useRef(null);
   const searchBoxRef = useRef(null);
   const location = useLocation();
+  const { t } = useTranslation();
 
   {
     /*--------------------------------RECOMMENDATIONS-LINKS-ICONS-----------------------------------*/

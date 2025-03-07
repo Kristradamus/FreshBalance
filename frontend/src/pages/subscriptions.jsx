@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./subscriptions.css"
 
 export default function Subscriptions() {
 const [isYearly,setIsYearly] = useState(false);
+const { t } = useTranslation();
 
 {/*------------------------------------BENEFITS---------------------------------------------*/}
 const subscriptionPlans = [

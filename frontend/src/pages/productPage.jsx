@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import "./productPage.css";
 
 const ProductPage = () => {
@@ -7,6 +8,7 @@ const ProductPage = () => {
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!promotionName) {
@@ -36,12 +38,11 @@ const ProductPage = () => {
 
     fetchProductData();
 
-    // Cleanup in case of component unmount
     return () => {
-      setLoading(false); // Stop loading if component is unmounted
-      setProductData(null); // Clear any old data
+      setLoading(false);
+      setProductData(null);
     };
-  }, [promotionName]); // Dependency on promotionName to refetch on change
+  }, [promotionName]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

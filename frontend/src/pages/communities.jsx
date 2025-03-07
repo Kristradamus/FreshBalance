@@ -2,10 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import Navigation from "../components/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import "./communities.css";
 
 export default function Communities() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const goToSubscriptions = (path) => {
     navigate(path);
@@ -18,12 +20,12 @@ export default function Communities() {
       <div className="communitiesColorOverlay">
         <div className="communitiesBox">
           <div className="communitiesTop">
-            <h1>Access denied!</h1>
+            <h1>{t("communities.accessDenied")}</h1>
           </div>
           <div className="communitiesBottom">
-            <h5 className="communitiesPlan"><strong>You need to get a personal plan first!</strong></h5>
+            <h5 className="communitiesPlan"><strong>{t("communities.personalPlan")}</strong></h5>
             <button className="communitiesGoToSub" onClick={() => goToSubscriptions("/subscriptions")}>
-              Go to Subscriptions
+              {t("communities.goToSubscriptions")}
             </button>
           </div>
         </div>

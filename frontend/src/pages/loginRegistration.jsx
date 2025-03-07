@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./loginRegistration.css";
-import logo from "../images/freshBalance.png";
+import logo from "../../public/images/freshBalance.png";
 import { Link } from 'react-router-dom';
 
 export default function LoginRegistration() {
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [emailError, setEmailError] = useState(false);
   const [hasError, setHasError] = useState("");
+  const { t } = useTranslation();
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,7 +22,7 @@ export default function LoginRegistration() {
 
   const handleContinue = () => {
     if (!validateEmail(email)) {
-      setEmailError("Please, enter a valid email address!");
+      setEmailError(true);
       setHasError(true)
     } 
     else 
@@ -37,22 +39,22 @@ export default function LoginRegistration() {
       </Link>
       <div className="emailBox">
         <div className="emailTop">
-          <h1><strong>Hello!</strong></h1>
-          <p className="emailPls">Please enter your email address</p>
+          <h1><strong>{t("loginRegistration.emailGreeting")}</strong></h1>
+          <p className="emailPls">{t("loginRegistration.emailPls")}</p>
           <div className={`emailInputBox ${hasError ? "Error" : ""}`}>
-            <input className="emailInput" placeholder="Email..."value={email} onChange={handleEmailChange}/>
+            <input className="emailInput" placeholder={t("loginRegistration.emailPlaceholder")} value={email} onChange={handleEmailChange}/>
           </div>
-          {emailError && <p className="emailErrorMessage">{emailError}</p>}
-          <button className="emailContinue" onClick={handleContinue}><strong>Continue</strong></button>
-          <p className="emailDontWorry">You don't have an account? Don't worry, just input the email with which you want to create one.</p>
+          {emailError && <p className="emailErrorMessage">{t("loginRegistration.emailWarning")}</p>}
+          <button className="emailContinue" onClick={handleContinue}><strong>{t("loginRegistration.emailContinue")}</strong></button>
+          <p className="emailDontWorry">{t("loginRegistration.emailDontWorry")}</p>
         </div>
         <div className="emailDivider">
           <hr/>
-          <p>or</p>
+          <p>{t("loginRegistration.emailOr")}</p>
           <hr/>
         </div>
         <div className="emailBottom">
-          <p className="emailAlso">You can also login with:</p>
+          <p className="emailAlso">{t("loginRegistration.emailAlso")}</p>
           <div className="emailGoogle">
             <i className="fa-brands fa-google"></i>
             <button className="emailGoogleButt"><strong>Google</strong></button>
@@ -69,7 +71,7 @@ export default function LoginRegistration() {
         <div className="logRegRegister">
         </div>*/}
       </div>
-      <Link className="loginRegisterNeedHelp" to="/support"><p><strong>Need help?</strong></p></Link>
+      <Link className="loginRegisterNeedHelp" to="/support"><p><strong>{t("loginRegister.needHelp")}</strong></p></Link>
     </div>
   );
 }

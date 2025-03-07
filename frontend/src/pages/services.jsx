@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./services.css";
 import Comments from "../components/Comments.jsx";
 
 
 export default function Services() {
+  const { t } = useTranslation();
+  
  const services = [
    {title: "Personalized Meal Plans", description: `Get meal plans tailored to your dietary needs, lifestyle, and fitness goals. Our expert nutritionists craft customized meal plans that align with your preferences, whether you're looking to lose weight, build muscle, or simply eat healthier. Each plan includes balanced recipes, portion guidance, and nutritional breakdowns to help you stay on track and achieve sustainable results.`, icon: "fa-solid fa-utensils"},
    {title: "Workshops & Seminars", description: `Join interactive workshops on healthy eating, meal prep, and nutrition. Our expert-led sessions cover a variety of topics, including meal planning, understanding macronutrients, and mindful eating techniques. Whether you're a beginner or looking to deepen your knowledge, these engaging workshops provide practical tips and hands-on experience to help you build long-term healthy habits.`, icon: "fa-solid fa-chalkboard-user"},

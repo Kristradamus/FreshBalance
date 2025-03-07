@@ -1,6 +1,7 @@
-import "./Navigation.css";
+import { useTranslation } from 'react-i18next';
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import "./Navigation.css";
 
 export default function Navigation() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -11,6 +12,7 @@ export default function Navigation() {
   const moreDropContentRef = useRef(null);
   const linkRefs = useRef([]);
   const location = useLocation();
+  const { t } = useTranslation();
   
 {/*--------------------------------------LINKS-ICONS----------------------------------------*/}
   const navCategories = [
