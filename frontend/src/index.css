@@ -41,14 +41,32 @@
   
   /*-----------------ELEMENT-DISTANCE----------------*/
   --iconDistance: 8px;
-
 }
+.darkMode {
+  /*------------------ELEMENT-COLORS-----------------*/
+  --mainBackground: rgb(27, 27, 27);
+  --secondBackground: rgb(51, 51, 51);
+
+  --mainTextColor: rgba(255, 255, 255, 0.911);
+  --secondTextColor: rgba(255, 255, 255, 0.623);
+
+  /*------------------ELEMENT-SHADOW-----------------*/
+  --boxShadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  --boxShadowBottom: 0 10px 15px rgba(255, 255, 255, 0.1);
+  --boxShadowLight: 0 6px 12px rgba(255, 255, 255, 0.05);
+  --errorBoxShadow: 0 0 0 2px rgba(216, 27, 27, 0.5);
+}
+
 body {
+  transition: background-color var(--transition), color var(--transition);
   background: var(--white);
+  color: var(--mainTextColor);
 }
 a {
   text-decoration: none;
   color: var(--mainTextColor);
+  display: flex;
+  flex-direction: row;
 }
 li {
   list-style: none;
@@ -63,15 +81,6 @@ h3,
 h4,
 h5{
   color:var(--mainTextColor);
-}
-a,
-.header,
-.navigation,
-.menu,
-.search-box,
-.search-bar {
-  display: flex;
-  flex-direction: row;
 }
 hr {
   background-color: var(--green);

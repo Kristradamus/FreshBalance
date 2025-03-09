@@ -19,10 +19,11 @@ const Cart = React.lazy(() => import("./pages/cart.jsx"));
 
 export default function App() {
   const { t } = useTranslation();
+
   return (
     <>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div style ={{padding:"20px"}}>{t("app.loading")}</div>}>
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/about-us" element={<AboutUs />} />

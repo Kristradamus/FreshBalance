@@ -1,0 +1,610 @@
+{
+    "aboutUs": {
+      "aboutUsData": [
+        {
+          "title": "Nuestra Historia de la Marca",
+          "text": "'FreshBalance' fue fundada a partir de un viaje personal. Como entusiasta del fitness y defensor de la nutrición, nuestro fundador, Kristiyan Krustev, experimentó de primera mano los desafíos de encontrar productos nutricionales de alta calidad y confiables que ofrecieran resultados reales. Frustrado por la falta de transparencia y efectividad en el mercado, Kristiyan Krustev decidió tomar el asunto en sus propias manos. Lo que comenzó como una misión para crear una mejor solución para sí mismo pronto se convirtió en una visión para ayudar a otros. 'FreshBalance' nació para llenar el vacío en el mercado. 'FreshBalance' es una marca que prioriza la calidad, la ciencia y la confianza del cliente por encima de todo. Cada producto que ofrecemos es un reflejo de nuestro compromiso de ayudarte a vivir una vida más saludable y equilibrada."
+        },
+        {
+          "title": "A Quién Servimos",
+          "text": "En 'FreshBalance', atendemos a todos aquellos que valoran su salud y bienestar. Ya seas un atleta profesional, un padre ocupado, un principiante en el fitness o alguien que simplemente busca mejorar su nutrición diaria, tenemos algo para ti. Entendemos que no hay dos viajes iguales, por lo que ofrecemos una amplia gama de productos para satisfacer tus necesidades únicas. Nuestro objetivo es empoderarte para que tomes el control de tu salud y alcances tus metas con confianza.",
+          "points": "Nuestra línea de productos incluye:",
+          "subPoints": [
+            { "subTitle": "Proteínas", "subText": "Para apoyar la recuperación y el crecimiento muscular." },
+            { "subTitle": "Aminoácidos", "subText": "Para mejorar el rendimiento y la resistencia." },
+            { "subTitle": "Vitaminas", "subText": "Para cubrir las brechas nutricionales y mejorar la salud en general." },
+            { "subTitle": "Minerales", "subText": "Para apoyar las funciones corporales esenciales y el bienestar general." },
+            { "subTitle": "Potenciadores de Rendimiento", "subText": "Para optimizar el rendimiento físico y mental durante los entrenamientos y las actividades diarias." },
+            { "subTitle": "Cosméticos", "subText": "Productos de cuidado de la piel y belleza infundidos con ingredientes naturales y nutritivos para realzar tu brillo exterior." },
+            { "subTitle": "Productos Bio", "subText": "Productos orgánicos y ecológicos diseñados para promover un estilo de vida sostenible y saludable." },
+            { "subTitle": "Control de Peso", "subText": "Suplementos y reemplazos de comidas diseñados para apoyar la pérdida de peso saludable, el metabolismo y el control del apetito." }
+          ]
+        },
+        {
+          "title": "Cómo Operamos",
+          "text": "La transparencia y la calidad están en el corazón de todo lo que hacemos. Todos los productos de 'FreshBalance' están elaborados con fórmulas respaldadas científicamente e ingredientes de origen ético. Trabajamos estrechamente con fabricantes de confianza para garantizar que cada producto cumpla con nuestros estrictos estándares de pureza, potencia y efectividad. Lo que nos distingue es nuestro compromiso con la educación y el cuidado del cliente. No solo vendemos productos, sino que también brindamos recursos, orientación y apoyo para ayudarte a tomar decisiones informadas sobre tu nutrición."
+        },
+        {
+          "title": "El Rostro de 'FreshBalance'",
+          "text": "Estamos orgullosos de compartir nuestro viaje contigo y nos encantaría que nos conozcas mejor. 'FreshBalance' es un equipo pequeño pero apasionado, dedicado a hacer un gran impacto.",
+          "points": "Conoce a las personas que lo hacen posible:",
+          "subPoints": [
+              { "photo": "../../images/developer1.jpg", "subText": "Fundador y Entusiasta de la Nutrición" },
+              { "photo": "../../images/developer2.jpg", "subText": "Jefe de Desarrollo de Productos" },
+              { "photo": "../../images/developer3.jpg", "subText": "Desarrollador Frontend" },
+              { "photo": "../../images/developer4.jpg", "subText": "Desarrollador Backend" },
+              { "photo": "../../images/developer5.jpg", "subText": "Diseñador UI/UX" },
+              { "photo": "../../images/developer6.jpg", "subText": "Gerente de Proyectos" },
+              { "photo": "../../images/developer7.jpg", "subText": "Ingeniero DevOps" },
+              { "photo": "../../images/developer8.jpg", "subText": "Escritor de Contenido y SEO" },
+              { "photo": "../../images/developer9.jpg", "subText": "Tester de Control de Calidad" }
+          ]
+        }
+      ],
+      "starter": "Bienvenido a 'FreshBalance', tu socio de confianza para lograr una salud y bienestar óptimos a través de una nutrición premium. Nuestra historia es una de pasión, dedicación y una profunda creencia en el poder transformador de una nutrición adecuada. Permítenos llevarte en un viaje a través de quiénes somos, qué defendemos y por qué estamos aquí para servirte.",
+      "finisher": "Esta página 'Sobre Nosotros' combina la historia de nuestra marca, misión y valores con un toque personal, mientras guía a los clientes hacia los próximos pasos para una vida mejor. Está diseñada para generar confianza, crear conexión e inspirar acción.",
+      "developer": "Kristiyan Krustev"
+    },
+    "communities": {
+      "accessDenied": "¡Acceso denegado!",
+      "personalPlan": "¡Necesitas obtener un plan personal primero!",
+      "goToSubscriptions": "Ir a Suscripciones"
+    },
+    "frontPage": {
+      "heroSectionTitle1": "PRODUCTOS DE NUTRICIÓN PREMIUM",
+      "heroSectionTitle2": "GUÍA DE EXPERTOS",
+      "heroSectionSubTitle1": "Explora más de 100 productos, conéctate con entrenadores personales y únete a una comunidad próspera",
+      "heroSectionLearnMore": "Aprende más",
+      "topProductsSectionTitle1": "CONSULTA ALGUNOS DE NUESTROS PRODUCTOS DESTACADOS"
+    },
+    "loginRegistration": {
+      "emailGreeting": "¡Hola!",
+      "emailPls": "Por favor, introduce tu dirección de correo electrónico",
+      "emailPlaceholder": "Correo electrónico...",
+      "emailWarning": "¡Por favor, introduce una dirección de correo electrónico válida!",
+      "emailContinue": "Continuar",
+      "emailDontWorry": "¿No tienes una cuenta? No te preocupes, solo introduce el correo electrónico con el que deseas crear una.",
+      "emailOr": "o",
+      "emailAlso": "También puedes iniciar sesión con:",
+      "needHelp": "¿Necesitas ayuda?"
+    },
+    "services": {
+      "servicesData": {
+        "paragraphs": {
+          "services": {
+            "title": "Servicios",
+            "subTitle": "Descubre cómo podemos ayudarte a alcanzar tus objetivos de salud y bienestar."
+          },
+          "location": {
+            "title": "Ubicación",
+            "subTitle": "Visítanos en nuestra oficina de Varna o contáctanos para más información."
+          },
+          "delivery": {
+            "title": "Áreas de Entrega y Directrices",
+            "subTitle": "Entregamos en las siguientes áreas:"
+          },
+          "comments": {
+            "title": "Comentarios y Reseñas",
+            "subTitle": "Consulta lo que nuestros clientes dicen sobre nuestros servicios o deja un comentario tú mismo:"
+          }
+        },
+        "services": [
+          {
+            "title": "Planes de Comidas Personalizados",
+            "description": "Obtén planes de comidas adaptados a tus necesidades dietéticas, estilo de vida y objetivos de fitness. Nuestros expertos en nutrición crean planes personalizados que se alinean con tus preferencias, ya sea que busques perder peso, ganar músculo o simplemente comer más saludable. Cada plan incluye recetas equilibradas, guías de porciones y desgloses nutricionales para ayudarte a mantenerte en el camino y lograr resultados sostenibles.",
+            "icon": "fa-solid fa-utensils"
+          },
+          {
+            "title": "Talleres y Seminarios",
+            "description": "Únete a talleres interactivos sobre alimentación saludable, preparación de comidas y nutrición. Nuestras sesiones dirigidas por expertos cubren una variedad de temas, incluyendo planificación de comidas, comprensión de macronutrientes y técnicas de alimentación consciente. Ya seas un principiante o busques profundizar tu conocimiento, estos talleres ofrecen consejos prácticos y experiencia práctica para ayudarte a construir hábitos saludables a largo plazo.",
+            "icon": "fa-solid fa-chalkboard-user"
+          },
+          {
+            "title": "Programas de Control de Peso",
+            "description": "Logra un control de peso duradero a través de estrategias personalizadas de nutrición y fitness. Nuestros programas estructurados se centran en crear hábitos sostenibles combinando planes de comidas personalizados, recomendaciones de ejercicio y coaching conductual. Enfatizamos la pérdida de peso saludable sin dietas extremas, asegurando que mantengas el progreso y te sientas mejor a largo plazo.",
+            "icon": "fa-solid fa-weight-scale"
+          },
+          {
+            "title": "Consultas en Línea",
+            "description": "Obtén orientación nutricional experta desde casa con consultas virtuales. Ya sea que necesites ayuda con la planificación de comidas, restricciones dietéticas o control de peso, nuestros nutricionistas certificados ofrecen apoyo personalizado a través de videollamadas. Nuestras sesiones en línea flexibles hacen que sea fácil obtener asesoramiento personalizado sin importar dónde te encuentres, ayudándote a mantenerte responsable y motivado en tu viaje de salud.",
+            "icon": "fa-solid fa-user-nurse"
+          }
+        ],
+        "location": {
+          "name": "Oficina de Varna",
+          "address": { "addressTitle": "Dirección: ", "addressDescription": "Levski Primorski, st. \"Studentska\" 1, 9010 Varna" },
+          "phone": { "phoneTitle": "Teléfono: ", "phoneDescription": "+359 89 876 4348" },
+          "workHours": {
+            "workHoursTitle": "Horario de trabajo: ",
+            "workHoursDescription": [
+              { "hours": "Lun-Vie: 8 AM - 8 PM" },
+              { "hours": "Sáb-Dom: 10 AM - 6 PM" }
+            ]
+          },
+          "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.141318950937!2d27.9386521!3d43.2241237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a45580c8146d6b%3A0x887e796bb95a5497!2sProfessional%20High%20School%20of%20Computer%20Modeling%20and%20Systems%20%22Academic%20Blagovest%20Sendov%22!5e0!3m2!1sen!2sbg!4v1691234567890!5m2!1sen!2sbg"
+        },
+        "delivery": {
+          "subTitle1": "Nuestros términos y condiciones de entrega:",
+          "areas": ["Sofía", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora", "Pleven", "Sliven", "Dobrich", "Shumen"],
+          "terms": [
+            {
+              "title": "Áreas de Servicio: ",
+              "description": "La entrega está disponible dentro de los límites de la ciudad de las áreas listadas. Si no estás seguro de si tu ubicación está cubierta, por favor contacta a nuestro equipo de soporte."
+            },
+            {
+              "title": "Tarifas de Entrega: ",
+              "description": "Las tarifas varían dependiendo de tu ubicación y el tamaño del pedido. Los cargos exactos se calcularán al finalizar la compra."
+            },
+            {
+              "title": "Entrega Gratuita: ",
+              "description": "Disfruta de entrega gratuita en todos los pedidos superiores a 100 BGN. Los pedidos más pequeños pueden estar sujetos a tarifas de entrega estándar."
+            },
+            {
+              "title": "Franjas Horarias de Entrega: ",
+              "description": "Las entregas se programan en franjas horarias específicas para garantizar la eficiencia. Puedes seleccionar una hora preferida al realizar tu pedido."
+            },
+            {
+              "title": "Seguimiento de Pedidos: ",
+              "description": "Rastrea tu pedido en tiempo real a través de nuestro sistema en línea. Recibirás actualizaciones en vivo y tiempos estimados de llegada."
+            },
+            {
+              "title": "Devoluciones y Reembolsos: ",
+              "description": "Si hay algún problema con tu pedido, por favor repórtalo dentro de las 24 horas para un reembolso o reemplazo."
+            },
+            {
+              "title": "Solicitudes Especiales: ",
+              "description": "Acomodamos solicitudes especiales como restricciones dietéticas o instrucciones de entrega específicas. ¡Háznoslo saber con anticipación!"
+            }
+          ]
+        }
+      }
+    },
+    "subscriptions": {
+      "subscriptionPlans": [
+        {
+          "type": "Nuevo",
+          "priceMonth": 5.99,
+          "priceYear": 69.99,
+          "benefits": [
+            {
+              "benefit": "Acceso a Guías Básicas de Nutrición",
+              "description": "Planes de comidas simples y fáciles de seguir, junto con consejos nutricionales básicos."
+            },
+            {
+              "benefit": "Consejos Semanales",
+              "description": "Correo electrónico con consejos nutricionales básicos para mejorar la salud y el bienestar general."
+            },
+            {
+              "benefit": "Recetas Básicas",
+              "description": "Acceso a una selección de recetas saludables para comenzar tu viaje de nutrición."
+            },
+            {
+              "benefit": "Acceso Limitado a Comunidades",
+              "description": "Acceso a la página de la comunidad y diferentes servidores, pero con funciones limitadas."
+            },
+            {
+              "benefit": "1 Consulta Gratuita (15 minutos)",
+              "description": "Una consulta introductoria única para entender tus necesidades."
+            }
+          ]
+        },
+        {
+          "type": "Intermedio",
+          "priceMonth": 15.99,
+          "priceYear": 199.99,
+          "benefits": [
+            {
+              "benefit": "Planes de Comidas Personalizados",
+              "description": "Planes de comidas adaptados a tus objetivos."
+            },
+            {
+              "benefit": "Revisiones Semanales",
+              "description": "Revisiones regulares para seguir el progreso y hacer pequeños ajustes a los planes de comidas según sea necesario."
+            },
+            {
+              "benefit": "Recetas Exclusivas y Consejos de Preparación de Comidas",
+              "description": "Acceso a una biblioteca ampliada de recetas y guías de preparación de comidas."
+            },
+            {
+              "benefit": "Acceso a Desafíos/Programas",
+              "description": "Participa en desafíos de nutrición mensuales o sigue programas especializados."
+            },
+            {
+              "benefit": "Acceso a Seminarios Web de Expertos",
+              "description": "Seminarios web o sesiones en vivo mensuales sobre temas avanzados de nutrición."
+            },
+            {
+              "benefit": "Descuento en Suplementos/Productos",
+              "description": "Descuentos exclusivos en productos relacionados con la salud, como suplementos, equipos y más."
+            }
+          ]
+        },
+        {
+          "type": "Profesional",
+          "priceMonth": 25.99,
+          "priceYear": 299.99,
+          "benefits": [
+            {
+              "benefit": "Planes de Nutrición Completamente Personalizados",
+              "description": "Planes detallados y completamente personalizados adaptados a tus necesidades específicas por profesionales."
+            },
+            {
+              "benefit": "Coaching Personalizado (Semanal)",
+              "description": "Coaching directo y personalizado con un nutricionista certificado o entrenador de salud para optimizar tu dieta y objetivos."
+            },
+            {
+              "benefit": "Herramientas Avanzadas de Seguimiento de Comidas",
+              "description": "Acceso a herramientas avanzadas de seguimiento y aplicaciones para registrar comidas, monitorear nutrientes y hacer ajustes basados en datos."
+            },
+            {
+              "benefit": "Soporte Prioritario",
+              "description": "Servicio al cliente VIP con respuestas prioritarias a todas tus consultas y preocupaciones."
+            },
+            {
+              "benefit": "Contenido Exclusivo para Profesionales",
+              "description": "Acceso a artículos, videos y cursos exclusivos sobre estrategias avanzadas de nutrición."
+            },
+            {
+              "benefit": "Consultas Privadas 1 a 1 (Mensuales)",
+              "description": "Consultas detalladas regulares para asegurarte de que estás en el camino correcto con tu plan de nutrición."
+            },
+            {
+              "benefit": "Acceso Completo a la Comunidad",
+              "description": "Membresía VIP en una comunidad o foro especializado para discusiones de alto nivel, preguntas y respuestas, y apoyo de otros profesionales."
+            },
+            {
+              "benefit": "Descuentos Adicionales",
+              "description": "Descuentos más altos en productos o servicios como consultas, suplementos y más."
+            },
+            {
+              "benefit": "Bonus: Plan de Fitness Personalizado",
+              "description": "Acceso a un plan de fitness además de nutrición, creando un enfoque holístico para tus objetivos."
+            }
+          ]
+        }
+      ],
+      "tryFree": "Prueba gratis",
+      "buyNow": "Comprar ahora",
+      "monthly": "Mensual",
+      "yearly": "Anual",
+      "lv": "lv."
+    },
+    "support": {
+      "supportData": {
+        "Account": [
+          {
+            "issue": "No Puedo Iniciar Sesión",
+            "solution": "Si no puedes iniciar sesión, verifica que estás ingresando la dirección de correo electrónico y la contraseña correctas. Asegúrate de que la tecla Bloq Mayús no esté activada y, si es necesario, intenta restablecer tu contraseña. Si sigues teniendo problemas, borra la caché y las cookies de tu navegador e intenta iniciar sesión nuevamente. Para obtener más ayuda, contacta al soporte al cliente y te ayudaremos a recuperar el acceso a tu cuenta."
+          },
+          {
+            "issue": "Nombre de Usuario o Correo Electrónico Olvidado",
+            "solution": "Si has olvidado tu nombre de usuario o dirección de correo electrónico, revisa tus cuentas de correo anteriores en busca de correos de registro. Si aún no estás seguro, contacta a nuestro equipo de soporte y proporciona cualquier detalle que recuerdes. Podemos ayudarte a recuperar tu cuenta y a recuperar tu nombre de usuario o correo electrónico."
+          },
+          {
+            "issue": "Cuenta Bloqueada",
+            "solution": "Si tu cuenta está bloqueada, puede deberse a actividad sospechosa o preocupaciones de seguridad. Para recuperar el acceso, intenta restablecer tu contraseña. Si no puedes desbloquear tu cuenta, contacta al soporte al cliente para obtener ayuda. Ellos te ayudarán a verificar tu identidad y a asegurar tu cuenta lo antes posible."
+          }
+        ],
+        "Billing": [
+          {
+            "issue": "Problemas de Pago",
+            "solution": "Si tienes problemas con el pago, primero asegúrate de que tus datos de pago estén actualizados y que tu método de pago tenga fondos suficientes. Verifica si hay algún problema con tu banco o proveedor de pago. Si un pago es rechazado, contacta a tu banco para resolver el problema. Además, puedes visitar nuestra guía de solución de problemas de pago para obtener instrucciones paso a paso sobre cómo solucionar problemas comunes de pago."
+          },
+          {
+            "issue": "Suscripción No Funciona",
+            "solution": "Si tu suscripción no funciona, asegúrate de que tu suscripción esté activa y que tu pago se haya procesado correctamente. Puedes verificar el estado de tu suscripción en la configuración de tu cuenta. Si todo parece correcto pero el problema persiste, por favor contacta a nuestro equipo de soporte para obtener más ayuda."
+          },
+          {
+            "issue": "Problemas con Solicitudes de Reembolso",
+            "solution": "Si tienes problemas para enviar una solicitud de reembolso, asegúrate de que tu compra sea elegible según nuestra política de reembolsos. Puedes revisar las condiciones bajo las cuales se otorgan reembolsos en nuestro sitio web. Si aún no estás seguro o necesitas más ayuda, contacta a nuestro equipo de soporte y te guiarán a través del proceso de reembolso."
+          }
+        ],
+        "Technical": [
+          {
+            "issue": "Rendimiento Lento del Sitio Web",
+            "solution": "Si experimentas un rendimiento lento del sitio web, intenta borrar la caché y los datos de la aplicación de tu navegador. Asegúrate de estar utilizando la última versión de tu navegador o aplicación, ya que las versiones desactualizadas pueden afectar el rendimiento. Si el problema persiste, revisa nuestra página de estado del sistema para ver si hay problemas actuales que afecten la velocidad del sitio."
+          },
+          {
+            "issue": "No Se Puede Instalar el Software/App",
+            "solution": "Si no puedes instalar nuestro software o aplicación, asegúrate de que tu dispositivo cumple con los requisitos mínimos del sistema. Reinicia tu dispositivo e intenta nuevamente, ya que algunos problemas pueden resolverse con un simple reinicio. Si la instalación falla, consulta nuestra guía de instalación para obtener consejos adicionales de solución de problemas o contacta al soporte para obtener más ayuda."
+          },
+          {
+            "issue": "La App Se Bloquea o Se Congela",
+            "solution": "Si la aplicación se bloquea o se congela, intenta reiniciar la aplicación y asegúrate de tener la última versión instalada. A veces, borrar la caché de la aplicación o reinstalarla puede solucionar problemas persistentes. Si el problema continúa, consulta nuestra guía de solución de problemas o contacta al soporte para obtener opciones de solución de problemas más avanzadas."
+          },
+          {
+            "issue": "Mensajes de Error",
+            "solution": "Si encuentras un mensaje de error, anota el código de error y el mensaje que se muestra. Consulta nuestra página de solución de problemas de mensajes de error para obtener una lista de errores comunes y sus soluciones. Si no puedes resolver el problema usando la guía, contacta al soporte y proporciona los detalles del error para que podamos ayudarte de manera más eficiente."
+          }
+        ],
+        "Security": [
+          {
+            "issue": "Problemas con la Autenticación de Dos Factores",
+            "solution": "Si tienes problemas con la autenticación de dos factores (2FA), asegúrate de tener acceso a la aplicación de autenticación o a los códigos de respaldo. Si has perdido acceso al método de autenticación, es posible que necesites restablecer la configuración de 2FA. Si no puedes hacer esto por tu cuenta, contacta al soporte al cliente y te ayudaremos a recuperar el acceso a tu cuenta."
+          },
+          {
+            "issue": "Cuenta Hackeada",
+            "solution": "Si sospechas que tu cuenta ha sido hackeada, restablece tu contraseña de inmediato para asegurar tu cuenta. Habilita la autenticación de dos factores (2FA) para una protección adicional. Revisa cualquier actividad reciente de la cuenta en busca de signos de acceso no autorizado e informa cualquier comportamiento sospechoso a nuestro equipo de seguridad. Investigaremos y te ayudaremos a recuperar el control de tu cuenta."
+          }
+        ],
+        "Orders": [
+          {
+            "issue": "Pedidos o Entregas Perdidas",
+            "solution": "En caso de que tu pedido esté perdido o retrasado, primero confirma los detalles de tu pedido, incluido el número de seguimiento. Consulta con el proveedor de entrega para obtener actualizaciones. Si la entrega está significativamente retrasada o perdida, informa el problema a nuestro equipo de soporte al cliente y ellos te ayudarán a resolver el problema con el proveedor."
+          }
+        ],
+        "Email": [
+          {
+            "issue": "No Se Recibe el Correo Electrónico",
+            "solution": "Si no estás recibiendo tus correos electrónicos, revisa tu carpeta de spam o correo no deseado, ya que el correo puede haber sido filtrado incorrectamente. Verifica que tu dirección de correo electrónico sea correcta y que tu buzón no esté lleno. Si aún no has recibido el correo, intenta solicitar un reenvío. Si el problema persiste, contacta al soporte y lo investigaremos más a fondo."
+          }
+        ],
+        "Subscriptions": [
+          {
+            "issue": "No Se Puede Cancelar la Suscripción",
+            "solution": "Si tienes problemas para cancelar tu suscripción, primero asegúrate de haber iniciado sesión en la cuenta correcta. Ve a la configuración de tu cuenta y busca la sección de gestión de suscripciones. Si aún no puedes cancelar, contacta a nuestro equipo de soporte lo antes posible para evitar cargos adicionales, especialmente antes de tu próximo ciclo de facturación."
+          }
+        ]
+      },
+      "messageSent": "¡Mensaje enviado con éxito!",
+      "messageFail": "¡Error al enviar el mensaje!",
+      "messageError": "Ocurrió un error al enviar el mensaje.",
+      "placeholder": "Buscar solución...",
+      "backToSupport": "Volver al Soporte",
+      "welcome": "Bienvenido al Soporte",
+      "selectTopic": "Selecciona un tema de la barra lateral para ver más detalles.",
+      "contactSupport": "Contactar al Soporte",
+      "name": "Nombre:",
+      "email": "Correo electrónico:",
+      "message": "Mensaje:",
+      "submit": "Enviar"
+    },
+    "app": {
+      "loading": "Cargando..."
+    },
+    "footer": {
+      "footerData": {
+        "brand": {
+          "logo": "../../images/freshBalance.png",
+          "name": "Fresh Balance",
+          "description": "En 'FreshBalance', creamos productos de nutrición respaldados por la ciencia diseñados para tu estilo de vida ocupado. Tu tiempo es importante, así que permítenos ayudarte a alcanzar tus objetivos de salud sin esfuerzo."
+        },
+        "browse": {
+          "title": "Navegar",
+          "links": [
+            { "name": "Inicio", "link": "/" },
+            { "name": "Sobre Nosotros", "link": "/about-us" },
+            { "name": "Servicios", "link": "/services" },
+            { "name": "Suscripciones", "link": "/subscriptions" },
+            { "name": "Comunidades", "link": "/communities" },
+            { "name": "Soporte", "link": "/support" }
+          ]
+        },
+        "services": {
+          "title": "Servicios",
+          "items": [
+            { "text": "Planes de Comidas Personalizados" },
+            { "text": "Coaching de Nutrición" },
+            { "text": "Guías de Suplementos" },
+            { "text": "Programas de Fitness" },
+            { "text": "Talleres de Bienestar" },
+            { "text": "Bienestar Corporativo" }
+          ]
+        },
+        "contacts": {
+          "title": "Contactos",
+          "items": [
+            { "icon": "fa-solid fa-location-dot", "text": "Primorski, st. \"Studentska\" 1, 9010 Varna" },
+            { "icon": "fa-solid fa-envelope", "text": "KrissKrastev06@gmail.com" },
+            { "icon": "fa-solid fa-phone", "text": "+359 898 764 348" }
+          ]
+        },
+        "socialMedia": {
+          "title": "Redes Sociales",
+          "items": [
+            { "icon": "fa-brands fa-instagram", "link": "https://www.instagram.com/kriskrustev/" },
+            { "icon": "fa-brands fa-facebook-f", "link": "https://www.facebook.com/kriskrustev.32/" },
+            { "icon": "fa-brands fa-youtube", "link": "https://www.youtube.com/channel/UCjylqcGRrvzHlY-S5979iTg" }
+          ]
+        }
+      },
+      "copyright": "2025 FreshBalance | TODOS LOS DERECHOS RESERVADOS",
+      "createdBy": "| Creado por",
+      "creator": "Kristradamus"
+    },
+    "header": {
+      "headerData": {
+        "recommendations": [
+          "Recomendación1",
+          "Recomendación2",
+          "Recomendación3",
+          "Recomendación4"
+        ],
+        "nav": [
+          { "name": "Ingresar", "link": "/login" },
+          { "name": "Favoritos", "link": "/favourites" },
+          { "name": "Carrito", "link": "/cart" }
+        ],
+        "icons": {
+          "Iniciar Sesión": "fa-solid fa-user",
+          "Favoritos": "fa-solid fa-heart",
+          "Carrito": "fa-solid fa-cart-shopping"
+        }
+      },
+      "searchPlaceholder": "Buscar..."
+    },
+    "languageSwitcher": {
+      "currentLanguage":"Español",
+      "english": "Inglés",
+      "bulgarian": "Búlgaro",
+      "spanish": "Español",
+      "german": "Alemán",
+      "japanese": "Japonés"
+    },
+    "navigation": {
+      "navData": {
+        "categories": [
+          {
+            "name": "Más Vendidos",
+            "subcategories": [
+              { "name": "Productos Destacados", "link": "/product-page/featured-products" },
+              { "name": "Favoritos de los Clientes", "link": "/product-page/customer-favorites" },
+              { "name": "Productos Mejor Valorados", "link": "/product-page/top-rated-products" },
+              { "name": "Nuevos Lanzamientos", "link": "/product-page/new-arrivals" },
+              { "name": "Tendencias Actuales", "link": "/product-page/trending-now" },
+              { "name": "Productos Imprescindibles", "link": "/product-page/must-have-products" },
+              { "name": "Especiales de Temporada", "link": "/product-page/seasonal-specials" }
+            ]
+          },
+          {
+            "name": "Promociones",
+            "subcategories": [
+              { "name": "Ofertas de Tiempo Limitado", "link": "/product-page/limited-time-offers" },
+              { "name": "Ventas de Temporada", "link": "/product-page/seasonal-sales" },
+              { "name": "Artículos en Liquidación", "link": "/product-page/clearance-items" },
+              { "name": "Paquetes con Descuento", "link": "/product-page/discounted-bundles" },
+              { "name": "Compra 1 y Lleva 1 Gratis", "link": "/product-page/buy-1-get-1-free" },
+              { "name": "Ventas Flash", "link": "/product-page/flash-sales" },
+              { "name": "Descuentos Exclusivos", "link": "/product-page/exclusive-discounts" },
+              { "name": "Ofertas de Envío Gratis", "link": "/product-page/free-shipping-deals" },
+              { "name": "Ofertas Especiales para Miembros", "link": "/product-page/special-offers-for-members" }
+            ]
+          },
+          {
+            "name": "Bio",
+            "subcategories": [
+              { "name": "Productos Orgánicos", "link": "/product-page/organic-products" },
+              { "name": "Productos Ecológicos", "link": "/product-page/eco-friendly-products" },
+              { "name": "Suplementos Basados en Plantas", "link": "/product-page/plant-based-supplements" },
+              { "name": "Productos No Transgénicos", "link": "/product-page/non-gmo-items" },
+              { "name": "Marcas Sostenibles", "link": "/product-page/sustainable-brands" },
+              { "name": "Productos Libres de Crueldad", "link": "/product-page/cruelty-free-products" },
+              { "name": "Cuidado Natural de la Piel", "link": "/product-page/natural-skincare" },
+              { "name": "Remedios Herbales", "link": "/product-page/herbal-remedies" }
+            ]
+          },
+          {
+            "name": "Proteínas y Aminoácidos",
+            "subcategories": [
+              { "name": "Proteína de Suero", "link": "/product-page/whey-protein" },
+              { "name": "Proteína Basada en Plantas", "link": "/product-page/plant-based-protein" },
+              { "name": "Proteína Pre-Entrenamiento", "link": "/product-page/pre-workout-protein" },
+              { "name": "Proteína de Caseína", "link": "/product-page/casein-protein" },
+              { "name": "Proteína Vegana", "link": "/product-page/vegan-protein" },
+              { "name": "Batidos y Barras de Proteína", "link": "/product-page/protein-shake-bars" },
+              { "name": "Suplementos de Aminoácidos", "link": "/product-page/amino-acid-supplements" },
+              { "name": "BCAA", "link": "/product-page/bcaa" }
+            ]
+          },
+          {
+            "name": "Vitaminas y Minerales",
+            "subcategories": [
+              { "name": "Vitamina C", "link": "/product-page/vit-c" },
+              { "name": "Vitamina D3", "link": "/product-page/vit-d3" },
+              { "name": "Vitamina B12", "link": "/product-page/vit-b12" },
+              { "name": "Multivitamínicos", "link": "/product-page/multi-vit" },
+              { "name": "Antioxidantes", "link": "/product-page/antioxidants" },
+              { "name": "Calcio", "link": "/product-page/calcium" },
+              { "name": "Suplementos de Hierro", "link": "/product-page/iron-supplements" },
+              { "name": "Magnesio", "link": "/product-page/magnesium" },
+              { "name": "Aceite de Pescado Omega-3", "link": "/product-page/omega-3-fish-oil" },
+              { "name": "Probióticos", "link": "/product-page/probiotics" }
+            ]
+          },
+          {
+            "name": "Potenciadores de Rendimiento",
+            "subcategories": [
+              { "name": "Suplementos Pre-Entrenamiento", "link": "/product-page/pre-workout-supplements" },
+              { "name": "Recuperación Post-Entrenamiento", "link": "/product-page/post-workout-recovery" },
+              { "name": "Potenciadores de Energía", "link": "/product-page/energy-boosters" },
+              { "name": "Ganadores de Masa Muscular", "link": "/product-page/muscle-mass-gainers" },
+              { "name": "Suplementos de Resistencia", "link": "/product-page/endurance-supplements" },
+              { "name": "Creatina", "link": "/product-page/creatine" },
+              { "name": "Potenciadores de Óxido Nítrico", "link": "/product-page/nitric-oxide-boosters" },
+              { "name": "Suplementos de Enfoque y Cognición", "link": "/product-page/focus-cognitive-supplements" },
+              { "name": "Potenciadores de Fuerza", "link": "/product-page/strength-enhancers" }
+            ]
+          },
+          {
+            "name": "Control de Peso",
+            "subcategories": [
+              { "name": "Quemadores de Grasa", "link": "/product-page/fat-burners" },
+              { "name": "Supresores del Apetito", "link": "/product-page/appetite-suppressants" },
+              { "name": "Snacks Bajos en Calorías", "link": "/product-page/low-calorie-snacks" },
+              { "name": "Batidos de Reemplazo de Comidas", "link": "/product-page/meal-replacement-shakes" },
+              { "name": "Productos de Desintoxicación y Limpieza", "link": "/product-page/detox-cleanse-products" },
+              { "name": "Suplementos para Pérdida de Peso", "link": "/product-page/weight-loss-supplements" },
+              { "name": "Productos para Aumento de Peso Saludable", "link": "/product-page/healthy-weight-gain-products" },
+              { "name": "Potenciadores del Metabolismo", "link": "/product-page/metabolism-boosters" },
+              { "name": "Productos para Dieta Keto", "link": "/product-page/keto-diet-products" },
+              { "name": "Snacks Bajos en Carbohidratos", "link": "/product-page/low-carb-snacks" }
+            ]
+          },
+          {
+            "name": "Cosméticos",
+            "subcategories": [
+              {
+                "title": "Cuidado de la Piel",
+                "items": [
+                  { "name": "Hidratantes", "link": "/product-page/moisturizers" },
+                  { "name": "Mascarillas Faciales", "link": "/product-page/face-masks" },
+                  { "name": "Productos Anti-Edad", "link": "/product-page/anti-aging-products" },
+                  { "name": "Cremas para los Ojos", "link": "/product-page/eye-creams" },
+                  { "name": "Sérums", "link": "/product-page/serums" }
+                ]
+              },
+              {
+                "title": "Cuidado del Cabello",
+                "items": [
+                  { "name": "Champú y Acondicionador", "link": "/product-page/shampoo-conditioner" },
+                  { "name": "Mascarillas para el Cabello", "link": "/product-page/hair-masks" },
+                  { "name": "Aceites para el Cabello", "link": "/product-page/hair-oils" },
+                  { "name": "Productos para el Crecimiento del Cabello", "link": "/product-page/hair-growth-products" }
+                ]
+              },
+              {
+                "title": "Maquillaje",
+                "items": [
+                  { "name": "Bases", "link": "/product-page/foundations" },
+                  { "name": "Lápices Labiales", "link": "/product-page/lipsticks" },
+                  { "name": "Sombra de Ojos", "link": "/product-page/eyeshadow" },
+                  { "name": "Máscara de Pestañas", "link": "/product-page/mascara" }
+                ]
+              },
+              {
+                "title": "Herramientas de Belleza",
+                "items": [
+                  { "name": "Rodillos Faciales", "link": "/product-page/face-rollers" },
+                  { "name": "Herramientas de Dermaplaning", "link": "/product-page/dermaplaning-tools" },
+                  { "name": "Máscaras LED", "link": "/product-page/led-masks" }
+                ]
+              },
+              {
+                "title": "Cuidado de Uñas",
+                "items": [
+                  { "name": "Esmalte de Uñas", "link": "/product-page/nail-polish" },
+                  { "name": "Tratamientos para Uñas", "link": "/product-page/nail-treatments" },
+                  { "name": "Aceites para Cutículas", "link": "/product-page/cuticle-oils" }
+                ]
+              }
+            ]
+          }
+        ],
+        "links": [
+          { "name": "SOBRE NOSOTROS", "path": "/about-us" },
+          { "name": "SERVICIOS", "path": "/services" },
+          { "name": "SUSCRIPCIONES", "path": "/subscriptions" },
+          { "name": "COMUNIDADES", "path": "/communities" },
+          { "name": "SOPORTE", "path": "/support" }
+        ],
+        "icons": {
+          "SERVICIOS": "fa-solid fa-location-dot",
+          "SUSCRIPCIONES": "fa-solid fa-dollar-sign",
+          "COMUNIDADES": "fa-regular fa-comment",
+          "SOPORTE": "fa-solid fa-headset"
+        }
+      },
+      "categories": "CATEGORÍAS",
+      "more": "MÁS"
+    }
+}

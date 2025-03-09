@@ -71,7 +71,7 @@ export default function LoginRegistration() {
         <div className="logRegRegister">
         </div>*/}
       </div>
-      <Link className="loginRegisterNeedHelp" to="/support"><p><strong>{t("loginRegister.needHelp")}</strong></p></Link>
+      <Link className="loginRegisterNeedHelp" to="/support"><p><strong>{t("loginRegistration.needHelp")}</strong></p></Link>
     </div>
   );
 }

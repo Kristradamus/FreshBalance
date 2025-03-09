@@ -1,66 +1,18 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
-import logo from "../../public/images/freshBalance.png";
 import "./Footer.css";
 
 
 export default function Footer() {
  const navigate = useNavigate();
+
  const { t } = useTranslation();
-
-
- const footerData = {
-   brand: {
-     logo: logo,
-     name: "Fresh Balance",
-     description: `At FreshBalance, we create science-backed nutrition products designed for your busy lifestyle. Your time matters, so let us help you achieve your health goals effortlessly.`,
-   },
-   browse: {
-     title: "Browse",
-     links: [
-       { name: "Home", link: "/" },
-       { name: "About us", link: "/about-us" },
-       { name: "Services", link: "/services" },
-       { name: "Subscriptions", link: "/subscriptions" },
-       { name: "Communities", link: "/communities" },
-       { name: "Support", link: "/support" }
-     ],
-   },
-   services: {
-     title: "Services",
-     items: [
-       { text: "Custom Meal Plans" },
-       { text: "Nutrition Coaching" },
-       { text: "Supplement Guides" },
-       { text: "Fitness Programs" },
-       { text: "Wellness Workshops" },
-       { text: "Corporate Wellness" },
-     ],
-   },
-   contacts: {
-     title: "Contacts",
-     items: [
-       { icon: "fa-solid fa-location-dot", text: `LevskiPrimorski, st. "Studentska" 1, 9010 Varna` },
-       { icon: "fa-solid fa-envelope", text: "KrissKrastev06@gmail.com" },
-       { icon: "fa-solid fa-phone", text: "+359 898 764 348" },
-     ],
-   },
-   socialMedia: {
-     title: "Social Media",
-     items: [
-       { icon: "fa-brands fa-instagram", link:"https://www.instagram.com/kriskrustev/"},
-       { icon: "fa-brands fa-facebook-f", link:"https://www.facebook.com/kriskrustev.32/"},
-       { icon: "fa-brands fa-youtube", link:"https://www.youtube.com/channel/UCjylqcGRrvzHlY-S5979iTg"},
-     ],
-   },
- };
-
+ const footerData = t("footer.footerData", {returnObject:true});
 
  const handleFooterNavClick = (link) => {
    navigate(link);
  };
-
 
  return (
    <div className="footer">
@@ -121,8 +73,8 @@ export default function Footer() {
      {/*-----------------------------------------------FOOTER-BOTTOM--------------------------------------------*/}
      <hr></hr>
      <div className="footerBottom">
-         <p className="footerCopyright"><i className="fa-regular fa-copyright"></i>2025 FreshBalance | ALL RIGHTS RESERVED&nbsp;</p>
-         <p className="footerCreator"> | Created by&nbsp;<a href="https://github.com/Kristradamus"><strong>Kristradamus</strong></a></p>
+         <p className="footerCopyright"><i className="fa-regular fa-copyright"></i>{t("footer.copyright")}&nbsp;</p>
+         <p className="footerCreator">{t("footer.createdBy")}&nbsp;<a href="https://github.com/Kristradamus"><strong>{t("footer.creator")}</strong></a></p>
      </div>
    </div>
  );

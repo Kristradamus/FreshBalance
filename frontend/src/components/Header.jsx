@@ -14,31 +14,11 @@ export default function Header() {
   const searchInputRef = useRef(null);
   const searchBoxRef = useRef(null);
   const location = useLocation();
+
   const { t } = useTranslation();
+  const headerData = t("header.headerData",{returnObject:true});
 
-  {
-    /*--------------------------------RECOMMENDATIONS-LINKS-ICONS-----------------------------------*/
-  }
-  const headerRecommendations = [
-    "Recommendation1",
-    "Recommendation2",
-    "Recommendation3",
-    "Recommendation4",
-  ];
-  const headerNav = [
-    { name: "Login", link: "/login" },
-    { name: "Favourites", link: "/favourites" },
-    { name: "Cart", link: "/cart" },
-  ];
-  const headerIcons = {
-    Login: "fa-solid fa-user",
-    Favourites: "fa-solid fa-heart",
-    Cart: "fa-solid fa-cart-shopping",
-  };
-
-  {
-    /*--------------------------------SEARCH-BAR-----------------------------------*/
-  }
+{/*--------------------------------SEARCH-BAR-----------------------------------*/}
   const handleFavCartLogClick = (item) => {
     navigate(item.link);
   };
@@ -82,14 +62,15 @@ export default function Header() {
   const filteredRecommendations = searchQuery
     ? [
         searchQuery,
-        ...headerRecommendations.filter(
+        ...headerData.recommendations.filter(
           (item) =>
             item.toLowerCase().includes(searchQuery.toLowerCase()) &&
             item.toLowerCase() !== searchQuery.toLowerCase()
         ),
       ]
-    : headerRecommendations;
+    : headerData.recommendations;
 
+{/*------------------------------------------------MAIN--------------------------------------------------*/}
   return (
     <div className="header">
       <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
@@ -104,7 +85,7 @@ export default function Header() {
               navigate(`/product-page/${trimmedQuery}`);
             }}}>
           </i>
-          <input ref={searchInputRef} className="headerSearchBar" placeholder="Search..." value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+          <input ref={searchInputRef} className="headerSearchBar" placeholder={t("header.searchPlaceholder")} value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
           <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
         </div>
         {/*--------------------------------DROP-DOWN-----------------------------------*/}
@@ -118,11 +99,11 @@ export default function Header() {
       </div>
       {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
       <ul className="headerFavCartLog">
-        {headerNav.map((item, index) => (
+        {headerData.nav.map((item, index) => (
           <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
             <Link to={item.link}>
-              {headerIcons[item.name] && (
-                <i className={headerIcons[item.name]}></i>
+              {headerData.icons[item.name] && (
+                <i className={headerData.icons[item.name]}></i>
               )}
               <p>{item.name}</p>
             </Link>

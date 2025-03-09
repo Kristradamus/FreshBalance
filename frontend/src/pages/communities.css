@@ -4,6 +4,7 @@
   height: 100%;
   width: 100%;
   z-index: 1;
+  text-align:center;
 }
 .communities h1{
   color:var(--white);

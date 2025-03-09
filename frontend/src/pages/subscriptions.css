@@ -187,3 +187,13 @@
     font-size: var(--smallTextFont);
   }
 }
+@media (max-width: 400px) {
+  .subPlan {
+    max-width: 300px;
+    min-width: 300px;
+  }
+  .subTopTitle{
+    font-size:30px;
+  }
+}
+

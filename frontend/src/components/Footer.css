@@ -4,6 +4,7 @@
   flex-direction: column;
   background-color: var(--white);
   box-shadow: var(--boxShadow);
+  box-sizing: border-box;
 }
 .footer hr {
   height: 1px;
@@ -53,8 +54,8 @@
 
 /*-----------------------------------FIRST-COLUMN-----------------------------------*/
 .footerFirstColumn {
-  min-width: 350px;
-  max-width: 350px;
+  min-width: 400px;
+  max-width: 400px;
 }
 .footerFirstColumn img {
   width: 130px;
@@ -85,7 +86,7 @@
 /*-----------------------------------THIRD-COLUMN-----------------------------------*/
 .footerThirdColumn {
   min-width: 150px;
-  max-width: 150px;
+  max-width: 350px;
 }
 .footerServices {
   display: flex;
@@ -164,6 +165,7 @@
   display:flex;
   flex-direction:row;
   color:var(--mainTextColor);
+  font-size:var(--smallTextFont);
 }
 .footerBottom .fa-copyright {
   margin-right: 5px;
@@ -177,6 +179,7 @@
 .footerCreator a{
   color:var(--green);
   transition:var(--transition);
+  
 }
 .footerCreator a:hover{
   color:var(--lightGreen);
@@ -184,7 +187,7 @@
 }
 
 /*-----------------------------------------------RESPONSIVE--------------------------------------------*/
-@media (max-width: 1400px) {
+@media (max-width: 1700px) {
   .footerTop {
     padding: 20px 5vw;
   }
@@ -206,6 +209,7 @@
     justify-content:center;
     align-items:center;
     text-align:center;
+    min-width:200px;
     max-width:500px;
   }
   .footerNav,
@@ -220,6 +224,9 @@
   .footerTop{
     padding:20px 8px;
   }
+  .footerBottom{
+    padding:15px 5px;
+  }
   .footerMiddleColumn{
     flex-direction:column;
     gap:30px;
@@ -227,9 +234,25 @@
   .footerFirstColumn,
   .footerSecondColumn,
   .footerThirdColumn,
-  .footerFourthColumn,
-  .footerSocialMediaBox,
-  .footerContactsBox{
-    max-width:400px;
+  .footerFourthColumn {
+    min-width: 100%;
+    max-width: 100%;
   }
-}
+@media (max-width: 400px) {
+  .footerTop {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .footerMiddleColumn {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footerFirstColumn,
+  .footerSecondColumn,
+  .footerThirdColumn,
+  .footerFourthColumn {
+    align-items: center;
+    text-align: center;
+  }
+}}

@@ -88,6 +88,10 @@
   width: 100px;
   margin-bottom: 10px;
 }
+.aboutUsPhotoContainer p{
+  text-align: center;
+  justify-content: center;
+}
 /*------------------------------RESPONSIVE------------------------------------------*/
 @media (max-width: 1450px) {
   .aboutUs {

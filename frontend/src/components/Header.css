@@ -1,5 +1,7 @@
 /*-------------------HEADER------------------*/
 .header {
+  display:flex;
+  flex-direction:row;
   margin: 0px calc(10vw + 20px);
   align-items: center;
   position: relative;
@@ -206,5 +208,9 @@
     cursor: pointer;
     padding: 10px 15px;
     transition: var(--transition);
+  }
+  .headerNavElement {
+    padding: 15px 5px;
+    margin: 5px 10px;
   }
 }
