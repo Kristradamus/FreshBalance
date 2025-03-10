@@ -1,13 +1,14 @@
 {
+"---------------------------------------------------------ABOUT-US-----------------------------------------------------------":{},
   "aboutUs":{
     "aboutUsData": [
       {
         "title": "Our Brand Story",
-        "text": "'FreshBalance' was founded out of a personal journey. As a fitness enthusiast and nutrition advocate, our founder Kristiyan Krustev experienced firsthand the challenges of finding high-quality, trustworthy nutrition products that delivered real results. Frustrated by the lack of transparency and effectiveness in the market, Kristiyan Krustev decided to take matters into their own hands. What started as a mission to create a better solution for themselves soon grew into a vision to help others. 'FreshBalance' was born to fill the gap in the market. 'FreshBalance' is a brand that prioritizes quality, science, and customer trust above all else. Every product we offer is a reflection of our commitment to helping you live a healthier, more balanced life."
+        "text": "„FreshBalance“ was founded out of a personal journey. As a fitness enthusiast and nutrition advocate, our founder Kristiyan Krustev experienced firsthand the challenges of finding high-quality, trustworthy nutrition products that delivered real results. Frustrated by the lack of transparency and effectiveness in the market, Kristiyan Krustev decided to take matters into their own hands. What started as a mission to create a better solution for themselves soon grew into a vision to help others. „FreshBalance“ was born to fill the gap in the market. „FreshBalance“ is a brand that prioritizes quality, science, and customer trust above all else. Every product we offer is a reflection of our commitment to helping you live a healthier, more balanced life."
       },
       {
         "title": "Who We Serve",
-        "text": "At 'FreshBalance', we cater to everyone who values their health and wellness. Whether you are a professional athlete, a busy parent, a fitness newbie, or someone simply looking to improve your daily nutrition, we’ve got something for you. We understand that no two journeys are the same, which is why we offer a diverse range of products to meet your unique needs. Our goal is to empower you to take control of your health and achieve your goals with confidence.",
+        "text": "At „FreshBalance“, we cater to everyone who values their health and wellness. Whether you are a professional athlete, a busy parent, a fitness newbie, or someone simply looking to improve your daily nutrition, we’ve got something for you. We understand that no two journeys are the same, which is why we offer a diverse range of products to meet your unique needs. Our goal is to empower you to take control of your health and achieve your goals with confidence.",
         "points": "Our product line includes:",
         "subPoints": [
           { "subTitle": "Proteins", "subText": "To support muscle recovery and growth." },
@@ -22,11 +23,11 @@
       },
       {
         "title": "How We Operate",
-        "text": "Transparency and quality are at the heart of everything we do. All 'FreshBalance' products are crafted using scientifically backed formulas and ethically sourced ingredients. We work closely with trusted manufacturers to ensure every product meets our strict standards for purity, potency, and effectiveness. What sets us apart is our commitment to education and customer care. We don’t just sell products—we provide resources, guidance, and support to help you make informed decisions about your nutrition."
+        "text": "Transparency and quality are at the heart of everything we do. All „FreshBalance“ products are crafted using scientifically backed formulas and ethically sourced ingredients. We work closely with trusted manufacturers to ensure every product meets our strict standards for purity, potency, and effectiveness. What sets us apart is our commitment to education and customer care. We don’t just sell products—we provide resources, guidance, and support to help you make informed decisions about your nutrition."
       },
       {
-        "title": "The Face of 'FreshBalance'",
-        "text": "We’re proud to share our journey with you, and we’d love for you to get to know us better. 'FreshBalance' is a small but passionate team dedicated to making a big impact.",
+        "title": "The Face of „FreshBalance“",
+        "text": "We’re proud to share our journey with you, and we’d love for you to get to know us better. „FreshBalance“ is a small but passionate team dedicated to making a big impact.",
         "points": "Meet the people who make it all happen:",
         "subPoints": [
             { "photo": "../../images/developer1.jpg", "subText": "Founder & Nutrition Enthusiast" },
@@ -41,37 +42,42 @@
         ]
       }
     ],
-    "starter":"Welcome to 'FreshBalance', your trusted partner in achieving optimal health and wellness through premium nutrition. Our story is one of passion, dedication, and a deep belief in the transformative power of proper nutrition. Let us take you on a journey through who we are, what we stand for, and why we are here to serve you.",
+    "starter":"Welcome to „FreshBalance“, your trusted partner in achieving optimal health and wellness through premium nutrition. Our story is one of passion, dedication, and a deep belief in the transformative power of proper nutrition. Let us take you on a journey through who we are, what we stand for, and why we are here to serve you.",
     "finisher":"This About Us page combines our brand story, mission, and values with a personal touch, while also guiding customers toward the next steps to better life. It’s designed to build trust, create connection, and inspire action.",
     "developer":"Kristiyan Krustev"
   },
-"--------------------------------------------------------------CART------------------------------------------------------------------------------------":{},
+"---------------------------------------------------------CART---------------------------------------------------------------":{},
   "cart":{
-    
+   
   },
-"--------------------------------------------------------------COMMUNITIES------------------------------------------------------------------------------------":{},
+"-----------------------------------------------------------COMMUNITIES------------------------------------------------------":{},
   "communities":{
         "accessDenied":"Access denied!",
         "personalPlan":"You need to get a personal plan first!",
         "goToSubscriptions":"Go to Subscriptions"
   },
-"--------------------------------------------------------------FAVOURITES------------------------------------------------------------------------------------":{},
+"---------------------------------------------------------FAVOURITES----------------------------------------------------------":{},
   "favourites":{
-
+ 
+ 
   },
-"--------------------------------------------------------------FRONT-PAGE------------------------------------------------------------------------------------":{},
+"-----------------------------------------------------------FRONT-PAGE--------------------------------------------------------":{},
   "frontPage":{
         "heroSectionTitle1":"PREMIUM NUTRITION PRODUCTS",
         "heroSectionTitle2":"EXPERT GUIDANCE",
         "heroSectionSubTitle1":"Explore Over 100 Products, Connect with Personal Trainers, and Join a Thriving Community",
         "heroSectionLearnMore":"Learn more",
-
+ 
+ 
         "topProductsSectionTitle1":"CHECK SOME OF OUR TOP PRODUCTS"
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
   },
-"--------------------------------------------------------------LOGIN-REGISTRATION------------------------------------------------------------------------":{},
+"--------------------------------------------------------------LOGIN-REGISTRATION--------------------------------------------":{},
   "loginRegistration":{
         "emailGreeting":"Hello!",
         "emailPls":"Please enter your email address",
@@ -81,20 +87,25 @@
         "emailDontWorry":"You don't have an account? Don't worry, just input the email with which you want to create one.",
         "emailOr":"or",
         "emailAlso":"You can also login with:",
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
         "needHelp":"Need help?"
   },
-"--------------------------------------------------------------PRODUCT-PAGE-------------------------------------------------------------------------------":{},
+"--------------------------------------------------------------PRODUCT-PAGE---------------------------------------------------":{},
   "productPage":{
-
+ 
+ 
   },
-"--------------------------------------------------------------PROFILE------------------------------------------------------------------------------------":{},
+"---------------------------------------------------------PROFILE--------------------------------------------------------------":{},
   "profile":{
-
+ 
+ 
   },
-"--------------------------------------------------------------SERVICES------------------------------------------------------------------------------------":{},
+"----------------------------------------------------SERVICES------------------------------------------------------------------":{},
   "services":{
     "servicesData": {
       "paragraphs": {
@@ -185,11 +196,11 @@
       }
     }
   },
-"--------------------------------------------------------------SINGLE-PRODUCT-PAGE------------------------------------------------------------------------------------":{},
+"---------------------------------------------------SINGLE-PRODUCT-PAGE------------------------------------------------------":{},
   "singleProductPage":{
-    
+   
   },
-"--------------------------------------------------------------SUBSCRIPTIONS------------------------------------------------------------------------------------":{},
+"--------------------------------------------------------SUBSCRIPTIONS--------------------------------------------------------":{},
   "subscriptions": {
     "subscriptionPlans": [
     {
@@ -296,7 +307,7 @@
     "yearly":"Yearly",
     "lv":"lv."
   },
-"--------------------------------------------------------------SUPPORT------------------------------------------------------------------------------------":{},
+"----------------------------------------------------------SUPPORT-----------------------------------------------------------":{},
   "support": {
     "supportData":{
       "Account": [
@@ -380,21 +391,22 @@
     "message":"Message:",
     "submit":"Submit"
   },
-"--------------------------------------------------------------APP------------------------------------------------------------------------------":{},
+"-----------------------------------------------------------APP--------------------------------------------------------------":{},
   "app":{
     "loading":"Loading..."
   },
-"--------------------------------------------------------------COMMENTS------------------------------------------------------------------------------":{},
+"------------------------------------------------------COMMENTS--------------------------------------------------------------":{},
   "comments":{
-
+ 
+ 
   },
-"--------------------------------------------------------------FOOTER------------------------------------------------------------------------------":{},
+"-------------------------------------------------------FOOTER---------------------------------------------------------------":{},
   "footer":{
     "footerData":{
       "brand": {
         "logo": "../../images/freshBalance.png",
         "name": "Fresh Balance",
-        "description": "At 'FreshBalance', we offer science-backed nutrition products designed for your busy lifestyle. Your time matters, so let us help you achieve your health goals effortlessly."
+        "description": "At „FreshBalance“, we offer science-backed nutrition products designed for your busy lifestyle. Your time matters, so let us help you achieve your health goals effortlessly."
       },
       "browse": {
         "title": "Browse",
@@ -435,11 +447,11 @@
         ]
       }
     },
-    "copyright":"2025 FreshBalance | ALL RIGHTS RESERVED",
+    "copyright":"2025 FreshBalance | All rights reserved",
     "createdBy":"| Created by",
     "creator":"Kristradamus"
   },
-"--------------------------------------------------------------HEADER------------------------------------------------------------------------------":{},
+"----------------------------------------------------------HEADER-----------------------------------------------------------":{},
   "header":{
     "headerData": {
       "recommendations": [
@@ -461,16 +473,15 @@
     },
     "searchPlaceholder":"Search..."
   },
-"--------------------------------------------------------------LANGUAGE-SWITCHER------------------------------------------------------------------------------":{},
+"-----------------------------------------------LANGUAGE-SWITCHER-------------------------------------------------------------":{},
   "languageSwitcher":{
     "currentLanguage":"English",
     "english":"English",
     "bulgarian":"Bulgarian",
     "spanish":"Spanish",
-    "german":"German",
-    "japanese":"Japanese"
+    "german":"German"
   },
-"---------------------------------------------------------------NAVIGATION------------------------------------------------------------------------------":{},
+"---------------------------------------------------------NAVIGATION----------------------------------------------------------":{},
   "navigation":{
     "navData": {
       "categories": [

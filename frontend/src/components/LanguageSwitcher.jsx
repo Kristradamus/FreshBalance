@@ -13,7 +13,6 @@ export default function LanguageSwitcher() {
     { name: "bul", label: t("languageSwitcher.bulgarian") },
     { name: "ger", label: t("languageSwitcher.german") },
     { name: "spa", label: t("languageSwitcher.spanish") },
-    { name: "jap", label: t("languageSwitcher.japanese") },
   ];
 
   const changeLanguage = (lng) => {
