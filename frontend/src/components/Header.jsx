@@ -74,9 +74,14 @@ export default function Header() {
   return (
     <div className="header">
       <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
-      <Link to="/">
-        <img className="headerLogo" src={logo} alt="freshBalance" />
-      </Link>
+      <div className="headerLogoBox">
+        <Link to="/">
+          <img className="headerLogo" src={logo} alt="freshBalance" />
+        </Link>
+        <div className="headerLanguageSwitcherBox1">
+        <LanguageSwitcher/>
+        </div>
+      </div>
       {/*--------------------------------SEARCH-BAR-----------------------------------*/}
       <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
         <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
@@ -110,7 +115,9 @@ export default function Header() {
           </li>
         ))}
       </ul>
-      <LanguageSwitcher/>
+      <div className="headerLanguageSwitcherBox2">
+        <LanguageSwitcher/>
+      </div>
     </div>
   );
 }

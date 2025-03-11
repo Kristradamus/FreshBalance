@@ -636,13 +636,13 @@
       ],
       "links": [
         { "name": "ÜBER UNS", "path": "/about-us" },
-        { "name": "DIENSTLEISTUNGEN", "path": "/services" },
+        { "name": "DIENSTE", "path": "/services" },
         { "name": "ABONNEMENTS", "path": "/subscriptions" },
         { "name": "COMMUNITIES", "path": "/communities" },
         { "name": "SUPPORT", "path": "/support" }
       ],
       "icons": {
-        "DIENSTLEISTUNGEN": "fa-solid fa-location-dot",
+        "DIENSTE": "fa-solid fa-location-dot",
         "ABONNEMENTS": "fa-solid fa-dollar-sign",
         "COMMUNITIES": "fa-regular fa-comment",
         "SUPPORT": "fa-solid fa-headset"

@@ -1,79 +1,78 @@
 .languageSwitcher {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .languageSwitcherToggle {
-    background-color: var(--green); /* Use your green color variable */
-    color: var(--white); /* White text for contrast */
-    border: none;
-    border-radius: var(--smallRadius); /* Use your small radius variable */
-    padding: 10px 20px;
-    font-size: var(--textFont); /* Use your text font variable */
-    cursor: pointer;
-    box-shadow: var(--boxShadow); /* Add a subtle shadow */
-    transition: background-color var(--transition), transform var(--transition); /* Smooth transitions */
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Space between text and arrow */
-  }
-  
-  .languageSwitcherToggle:hover {
-    background-color: var(--lightGreen); /* Light green on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  .languageSwitcherToggle:active {
-    transform: scale(0.95); /* Slightly shrink on click */
-  }
-  
-  .arrow {
-    font-size: 12px;
-  }
-  
-  .languageSwitcherDropDown {
-    position: absolute;
-    top: 100%; /* Position below the toggle button */
-    left: 0;
-    background-color: var(--white); /* White background */
-    border-radius: var(--smallRadius); /* Use your small radius variable */
-    box-shadow: var(--boxShadow); /* Add a subtle shadow */
-    list-style: none;
-    padding: 10px 0;
-    margin: 5px 0 0;
-    width: 100%; /* Match the width of the toggle button */
-    z-index: 1000; /* Ensure it's above other elements */
-  }
-  
-  .languageSwitcherDropDown li {
-    padding: 10px 20px;
-    cursor: pointer;
-    color: var(--mainTextColor); /* Use your main text color variable */
-    transition: background-color var(--transition); /* Smooth transitions */
-  }
-  
-  .languageSwitcherDropDown li:hover {
-    background-color: var(--secondBackground); /* Light background on hover */
-  }
-  
-  /* Dark mode styles */
-  .dark-mode .languageSwitcherToggle {
-    background-color: var(--mainTextColor); /* Darker background in dark mode */
-    color: var(--white); /* Keep text white */
-  }
-  
-  .dark-mode .languageSwitcherToggle:hover {
-    background-color: var(--secondTextColor); /* Lighter hover in dark mode */
-  }
-  
-  .dark-mode .languageSwitcherDropDown {
-    background-color: var(--secondBackground); /* Darker background in dark mode */
-  }
-  
-  .dark-mode .languageSwitcherDropDown li {
-    color: var(--mainTextColor); /* Light text in dark mode */
-  }
-  
-  .dark-mode .languageSwitcherDropDown li:hover {
-    background-color: var(--mainBackground); /* Lighter hover in dark mode */
-  }
+  position: relative;
+  display: inline-block;
+}
+/*-------------------------------------------BUTTON------------------------------------------------*/
+.languageSwitcherToggle {
+  display: flex;
+  flex-direction:row;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  box-shadow:var(--boxShadow);
+  border-radius: var(--smallRadius);
+  padding: 10px 20px;
+  font-size: var(--textFont);
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+  align-items: center;
+  gap: var(--iconDistance);
+}
+.languageSwitcherArrow {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+.languageSwitcherArrow.rotateUp {
+  transform: rotate(-180deg);
+}
+.languageSwitcherArrow.rotateDown {
+  transform: rotate(0deg);
+}
+
+/*-------------------------------------------DROP-DOWN------------------------------------------------*/
+.languageSwitcherDropDown {
+  position: absolute;
+  top: 100%; /* Position below the toggle button */
+  left: 0;
+  background-color: var(--white); /* White background */
+  border-radius: var(--smallRadius); /* Use your small radius variable */
+  box-shadow: var(--boxShadow); /* Add a subtle shadow */
+  list-style: none;
+  padding: 10px 0;
+  margin: 5px 0 0;
+  width: 100%; /* Match the width of the toggle button */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.languageSwitcherDropDown li {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: var(--mainTextColor); /* Use your main text color variable */
+  transition: background-color var(--transition); /* Smooth transitions */
+}
+
+.languageSwitcherDropDown li:hover {
+  background-color: var(--secondBackground); /* Light background on hover */
+}
+
+/* Dark mode styles */
+.dark-mode .languageSwitcherToggle {
+  background-color: var(--mainTextColor); /* Darker background in dark mode */
+  color: var(--white); /* Keep text white */
+}
+
+.dark-mode .languageSwitcherToggle:hover {
+  background-color: var(--secondTextColor); /* Lighter hover in dark mode */
+}
+
+.dark-mode .languageSwitcherDropDown {
+  background-color: var(--secondBackground); /* Darker background in dark mode */
+}
+
+.dark-mode .languageSwitcherDropDown li {
+  color: var(--mainTextColor); /* Light text in dark mode */
+}
+
+.dark-mode .languageSwitcherDropDown li:hover {
+  background-color: var(--mainBackground); /* Lighter hover in dark mode */
+}

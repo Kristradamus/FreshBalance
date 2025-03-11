@@ -22,40 +22,34 @@ export default function LanguageSwitcher() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (dropDownRef.current && !dropDownRef.current.contains(event.target)) {
         setIsDropdownVisible(false);
       }
     };
-    if (isDropdownVisible) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isDropdownVisible]);
+  }, []);
 
   return (
-    <div className="languageSwitcher">
+    <div className="languageSwitcher" ref={dropDownRef}>
       <button className="languageSwitcherToggle" onClick={() => setIsDropdownVisible(!isDropdownVisible)} aria-expanded={isDropdownVisible} aria-haspopup="true">
-        {t("languageSwitcher.currentLanguage")} {/* Display current language */}
-        <span className="arrow">{isDropdownVisible ? "▲" : "▼"}</span>
+        {t("languageSwitcher.currentLanguage")}
+        <span className={`languageSwitcherArrow ${isDropdownVisible ? "rotateUp" : "rotateDown"}`}>
+          <i className="fa-solid fa-chevron-down"></i>
+        </span>
       </button>
+
       {isDropdownVisible && (
-        <ul className="languageSwitcherDropDown">
-          {languages.map((item, index) => (
-            <li
-              key={index}
-              onClick={() => changeLanguage(item.name)}
-              role="menuitem"
-              tabIndex={0}
-              onKeyPress={(e) => e.key === "Enter" && changeLanguage(item.name)}
-            >
-              {item.label}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="languageSwitcherDropDown">
+        {languages.map((item, index) => (
+          <li key={index} onClick={() => changeLanguage(item.name)} tabIndex={0}>
+            {item.label}
+          </li>
+        ))}
+      </ul>)}
     </div>
   );
 }

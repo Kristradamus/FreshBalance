@@ -12,7 +12,18 @@
 /*-------------------LOGO------------------*/
 .headerLogo {
   width: 100px;
+}
+.headerLogoBox{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
   margin: 0 30px;
+  gap:20vw;
+}
+.headerLanguageSwitcherBox1{
+  display:none;
+  opacity:0;
 }
 
 /*-------------------FAV-CART-LOG------------------*/
@@ -211,6 +222,20 @@
   }
   .headerNavElement {
     padding: 15px 5px;
+    margin: 5px 10px;
+  }
+  .headerLanguageSwitcherBox1{
+    display:block;
+    opacity:1;
+  }
+  .headerLanguageSwitcherBox2{
+    display:none;
+    opacity:0;
+  }
+}
+@media (max-width: 1000px){
+  .headerNavElement {
+    padding: 10px 0px;
     margin: 5px 10px;
   }
 }
