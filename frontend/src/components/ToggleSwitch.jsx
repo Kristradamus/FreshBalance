@@ -1,6 +1,5 @@
-import React from "react";
 import "./ToggleSwitch.css";
-
+{/*
 const ToggleSwitch = ({ checked, onToggle, label }) => {
     return (
     <div className={`toggleContainer ${isOn ? "on" : "off"}`} onClick={() => onToggle(!isOn)}>
@@ -8,4 +7,4 @@ const ToggleSwitch = ({ checked, onToggle, label }) => {
     </div>
     );
 };
-export default ToggleSwitch
+export default ToggleSwitch*/}

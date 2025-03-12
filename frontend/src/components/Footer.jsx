@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from "react-router-dom";
-import React from "react";
 import "./Footer.css";
-
 
 export default function Footer() {
  const navigate = useNavigate();

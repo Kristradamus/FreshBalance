@@ -11,12 +11,11 @@
     "deploy": "npm run build && http-server dist/."
   },
   "dependencies": {
-    "axios": "^1.8.1",
+    "axios": "^1.8.2",
     "http-server": "^14.1.1",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
     "i18next-http-backend": "^3.0.2",
-    "json5": "^2.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",

@@ -6,13 +6,23 @@
 img {
     width:100px;
 }
+.frontPage hr{
+    padding:0;
+    margin:0;
+    height:4px;
+    background-color:var(--lightGreen);
+}
 /*-------------------------------HERO-SECTION---------------------------------*/
 .fPHeroSection{
-    background-color:rgb(255, 252, 239);
+    background-image: url(../../public/images/HeroSection1.jpeg);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
     width:100%;
     display:flex;
     flex-direction:column;
-    padding:20vw 20vw;
+    padding:17.5vw 10vw;
+    padding-right:20vw;
 }
 .fPHeroSectionTitle1{
     color:var(--green);
@@ -30,7 +40,11 @@ img {
     margin:10px 0px;
     padding:15px 20px;
     transition:var(--transition);
-    font-size:var(--textFont);
+    font-size:calc(var(--textFont) + 2px);
+    cursor:pointer;
+}
+.fPHeroSectionLearnMore i{
+    margin-left:var(--iconDistance);
 }
 .fPHeroSectionLearnMore:hover{
     background-color:var(--lightGreen);
@@ -41,5 +55,59 @@ img {
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    padding:10vw 0vw;
+}
+.fPTopProductsTitleBox {
+    background-color: var(--lightGreen);
+    padding: 10px 20px;
+    border-radius: var(--normalRadius);
+    margin:0px 20px;
+    margin-top: -20vw;
+}
+.fPTopProductsTitle1{
+    color:var(--white);
 }
 /*-------------------------------WHO-WE-ARE---------------------------------*/
+.fPWhoWeAre{
+    background-color:var(--green);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:10vw 0vw;
+}
+/*-------------------------------RESPONSIVE---------------------------------*/
+@media (max-width: 1200px) {
+    .fPHeroSection {
+        padding: 15vw 5vw;
+        padding-right: 40vw;
+    }
+    .fPHeroSectionTitle1,
+    .fPHeroSectionTitle2{
+        font-size: calc(var(--textFont) + 15px);
+    }
+
+    .fHeroSectionSubTitle {
+        font-size: var(--smallTextFont);
+    }
+}
+@media (max-width: 780px) {
+    .fPHeroSection {
+        padding: 15vw 5vw;
+        padding-right: 25vw;
+    }
+
+    .fPHeroSectionTitle1,
+    .fPHeroSectionTitle2{
+        font-size: calc(var(--textFont) + 10px);
+    }
+
+    .fHeroSectionSubTitle {
+        font-size: var(--smallTextFont);
+    }
+}
+@media (max-width: 600px) {
+    .fPTopProductsTitle1{
+        font-size: calc(var(--smallTextFont));
+    }
+}

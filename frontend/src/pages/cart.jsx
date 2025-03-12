@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import "./cart.css"
 
@@ -7,7 +6,9 @@ export default function Cart() {
   
   return (
     <div className="cart">
-      <div></div>
+      <div>
+        {t("")}
+      </div>
     </div>
   )
 }

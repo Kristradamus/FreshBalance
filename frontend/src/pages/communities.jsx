@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect } from "react";
 import Header from "../components/Header.jsx";
 import Navigation from "../components/Navigation.jsx";
 import { useNavigate } from "react-router-dom";

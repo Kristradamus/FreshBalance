@@ -13,6 +13,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
+{/*---------------------------------SUPPORT--------------------------------------*/}
 app.post('/send-message', async (req, res) => {
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
@@ -30,6 +32,8 @@ app.post('/send-message', async (req, res) => {
     res.status(500).json({ message: 'An error occurred while sending the message' });
   }
 });
+
+{/*---------------------------------EMAIL-LOGIN-REGISTER--------------------------------------*/}
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

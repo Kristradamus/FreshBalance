@@ -1,9 +1,8 @@
-import { Suspense, useState, useEffect } from "react"; 
+import { Suspense} from "react"; 
 import { useTranslation } from 'react-i18next';
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
-import Axios from "axios";
 
 const AboutUs = React.lazy(() => import("./pages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/communities.jsx"));

@@ -1,12 +1,9 @@
-import { useState, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import "./aboutUs.css";
-
 
 export default function AboutUs() {
  const { t } = useTranslation();
  const aboutUsData = t("aboutUs.aboutUsData", {returnObject: true});
-
 
  const SubSection = ({ photo, subTitle, subText }) => {
   return photo ? (
@@ -23,8 +20,6 @@ export default function AboutUs() {
     </div>
   );
  };
-
-
  return(
    <div className="aboutUs">
      <div className="aboutUsBox">

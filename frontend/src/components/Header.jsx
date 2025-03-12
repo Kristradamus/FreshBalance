@@ -10,7 +10,6 @@ export default function Header() {
   const navigate = useNavigate();
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const searchInputRef = useRef(null);
   const searchBoxRef = useRef(null);
   const location = useLocation();
@@ -22,32 +21,42 @@ export default function Header() {
   const handleFavCartLogClick = (item) => {
     navigate(item.link);
   };
+
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
-    setIsDropdownVisible(true);
     searchInputRef.current?.focus();
+  };
+  const handleRecommendationClick = (item, e) => {
+    e.stopPropagation();
+    setSearchQuery(item);
+    setIsSearchExpanded(false);
+    navigate(`/product-page/${item.toLowerCase()}`);
   };
   const handleSearchClose = (e) => {
     if (e) e.stopPropagation();
     setIsSearchExpanded(false);
-    setIsDropdownVisible(false);
     searchInputRef.current?.blur();
   };
+
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
-    setIsDropdownVisible(e.target.value.length > 0);
   };
+
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
       handleSearchClose(e);
-    } else if (e.key === "Enter" && searchQuery.trim(e) !== "") {
-      navigate(`/product-page/${e.toLowerCase()}`);
+    } else if (e.key === "Enter") {
+      const trimmedQuery = searchQuery.trim().toLowerCase();
+      if (trimmedQuery !== "") {
+        navigate(`/product-page/${trimmedQuery}`);
+        handleSearchClose();
+      }
     }
   };
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (searchBoxRef.current && !searchBoxRef.current.contains(e.target)) {
-        setIsDropdownVisible(false);
         setIsSearchExpanded(false);
       }
     };
@@ -73,6 +82,7 @@ export default function Header() {
 {/*------------------------------------------------MAIN--------------------------------------------------*/}
   return (
     <div className="header">
+    <div className="headerBox">
       <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
       <div className="headerLogoBox">
         <Link to="/">
@@ -94,9 +104,9 @@ export default function Header() {
           <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
         </div>
         {/*--------------------------------DROP-DOWN-----------------------------------*/}
-        <ul className="headerSearchDropdown">
+        <ul className={`headerSearchDropdown`}>
           {filteredRecommendations.map((item, index) => (
-            <li className="headerRecommendations" key={index} onClick={() => {setSearchQuery(item); navigate(`/product-page/${item.toLowerCase()}`);}}>
+            <li className="headerRecommendations" key={index} onClick={(e) => handleRecommendationClick(item, e)}>
               <p>{item}</p>
             </li>
           ))}
@@ -118,6 +128,8 @@ export default function Header() {
       <div className="headerLanguageSwitcherBox2">
         <LanguageSwitcher/>
       </div>
+    </div>
+    <hr></hr>
     </div>
   );
 }
