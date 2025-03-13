@@ -62,7 +62,6 @@
 .emailInputBox{
   padding:10px;
   width:100%;
-  border:1px solid var(--secondTextColor);
   background-color:var(--white);
   border-radius:var(--normalRadius);
   box-shadow: 0 0 10px rgba(0, 0, 20, 0.15);

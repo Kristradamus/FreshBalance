@@ -5,8 +5,11 @@ export default function Favourites() {
   const { t } = useTranslation();
   return (
     <div className="favourites">
-      <div>
+      <div className="favouritesSideBar">
         {t("")}
+      </div>
+      <div className="favouritesMain">
+        
       </div>
     </div>
   )

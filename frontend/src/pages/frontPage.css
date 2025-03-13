@@ -38,7 +38,7 @@ img {
     color:var(--white);
     border-radius:var(--normalRadius);
     margin:10px 0px;
-    padding:15px 20px;
+    padding:15px 15px;
     transition:var(--transition);
     font-size:calc(var(--textFont) + 2px);
     cursor:pointer;
@@ -68,14 +68,51 @@ img {
     color:var(--white);
 }
 /*-------------------------------WHO-WE-ARE---------------------------------*/
-.fPWhoWeAre{
-    background-color:var(--green);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:10vw 0vw;
+.fPWhoWeAre {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the title box horizontally */
+    justify-content: center; /* Center the title box vertically */
+    padding: 10vw 0vw; /* Match the padding of .fPTopProducts */
+    margin:30px;
+    background:var(--white);
+    box-shadow:var(--boxShadow);
+    border-radius:var(--normalRadius);
 }
+
+.fPWhoWeAreTitleBox {
+    background-color: var(--lightGreen);
+    padding: 10px 20px;
+    border-radius: var(--normalRadius);
+    margin: 0px 20px;
+    margin-top: -20vw; /* Match the margin-top of .fPTopProductsTitleBox */
+}
+
+.fPWhoWeAreTitle {
+    color: var(--white);
+}
+
+
+/*-------------------------------WHO-WE-WORK-WITH--------------------------------*/
+.fPWhoWeWorkWith{
+    background-image: url(../../public/images/HeroSection1.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10vw 10vw;
+    margin-bottom:30px;
+    padding-right: 20vw;
+    clip-path: polygon(
+        0% 10%,
+        100% 0%,
+        100% 90%,
+        0% 100%
+    );
+}
+/*-------------------------------REVIEWS--------------------------------*/
 /*-------------------------------RESPONSIVE---------------------------------*/
 @media (max-width: 1200px) {
     .fPHeroSection {
@@ -86,28 +123,53 @@ img {
     .fPHeroSectionTitle2{
         font-size: calc(var(--textFont) + 15px);
     }
-
-    .fHeroSectionSubTitle {
+    .fPHeroSectionSubTitle {
         font-size: var(--smallTextFont);
     }
+    .fPHeroSectionLearnMore{
+        max-width:175px;
+        padding:15px 10px;
+    }
+/*--------------TOP-PRODUCTS----------------*/
 }
 @media (max-width: 780px) {
     .fPHeroSection {
         padding: 15vw 5vw;
         padding-right: 25vw;
     }
-
     .fPHeroSectionTitle1,
     .fPHeroSectionTitle2{
         font-size: calc(var(--textFont) + 10px);
     }
-
-    .fHeroSectionSubTitle {
+    .fPHeroSectionSubTitle {
         font-size: var(--smallTextFont);
+    }
+    .fPHeroSectionLearnMore{
+        max-width:150px;
+        padding:12.5px 7.5px;
+    }
+/*--------------TOP-PRODUCTS----------------*/
+    .fPTopProductsTitleBox {
+        padding: 10px 15px;
+        margin:0px 15px;
+        margin-top: -20vw;
     }
 }
 @media (max-width: 600px) {
+    .fPHeroSectionTitle1,
+    .fPHeroSectionTitle2{
+        font-size: calc(var(--textFont) + 5px);
+    }
+    .fPHeroSectionLearnMore{
+        padding:10px 0px;
+    }
+/*--------------TOP-PRODUCTS----------------*/
     .fPTopProductsTitle1{
         font-size: calc(var(--smallTextFont));
+    }
+    .fPTopProductsTitleBox {
+        padding: 10px 15px;
+        margin:0px 5px;
+        margin-top: -20vw;
     }
 }

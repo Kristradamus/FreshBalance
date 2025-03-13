@@ -1,6 +1,7 @@
 import { useNavigate} from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import "./frontPage.css";
+
 export default function FrontPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -28,13 +29,14 @@ return (
       </div>
     </div>
     <div className="fPWhoWeAre">
-      <h2 className="fPTopProductsTitle1">WHO WE ARE</h2>
-      <div>
-
+      <div className="fPWhoWeAreTitleBox">
+        <h2 className="fPWhoWeAreTitle">WHO WE ARE</h2>
       </div>
     </div>
     <div className="fPWhoWeWorkWith">
+      <div>
 
+      </div>
     </div>
     <div className="fPReviews">
       

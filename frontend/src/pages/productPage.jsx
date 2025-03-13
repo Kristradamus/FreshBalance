@@ -35,11 +35,13 @@ export default function ProductPage (){
   }, [productName]);
 
   if (loading) {
-    return <div>{t("productPage.loading")}</div>;
+    return <div style={{ padding: "20px", fontWeight:"bold"}}>
+    {t("productPage.loading")}
+  </div>
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div style={{ padding: "20px",fontWeight:"bold" }}>{error}</div>;
   }
 
   return (
