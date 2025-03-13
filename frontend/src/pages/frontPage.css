@@ -2,18 +2,18 @@
 .frontPage{
     display:flex;
     flex-direction:column;
-}
-img {
+ }
+ img {
     width:100px;
-}
-.frontPage hr{
+ }
+ .frontPage hr{
     padding:0;
     margin:0;
-    height:4px;
-    background-color:var(--lightGreen);
-}
-/*-------------------------------HERO-SECTION---------------------------------*/
-.fPHeroSection{
+    height:2px;
+    background-color:var(--green);
+ }
+ /*-------------------------------HERO-SECTION---------------------------------*/
+ .fPHeroSection{
     background-image: url(../../public/images/HeroSection1.jpeg);
     background-repeat:no-repeat;
     background-position:center;
@@ -23,15 +23,15 @@ img {
     flex-direction:column;
     padding:17.5vw 10vw;
     padding-right:20vw;
-}
-.fPHeroSectionTitle1{
+ }
+ .fPHeroSectionTitle1{
     color:var(--green);
-}
-.fPHeroSectionTitle2{
+ }
+ .fPHeroSectionTitle2{
     color:var(--mainTextColor);
     margin-bottom:10px;
-}
-.fPHeroSectionLearnMore{
+ }
+ .fPHeroSectionLearnMore{
     max-width:200px;
     border:none;
     background-color:var(--green);
@@ -42,79 +42,104 @@ img {
     transition:var(--transition);
     font-size:calc(var(--textFont) + 2px);
     cursor:pointer;
-}
-.fPHeroSectionLearnMore i{
+ }
+ .fPHeroSectionLearnMore i{
     margin-left:var(--iconDistance);
-}
-.fPHeroSectionLearnMore:hover{
+ }
+ .fPHeroSectionLearnMore:hover{
     background-color:var(--lightGreen);
-}
-/*-------------------------------TOP-PRODUCTS---------------------------------*/
-.fPTopProducts{
+ }
+ /*-------------------------------TOP-PRODUCTS---------------------------------*/
+ .fPTopProducts{
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     padding:10vw 0vw;
-}
-.fPTopProductsTitleBox {
-    background-color: var(--lightGreen);
+ }
+ .fPTopProductsTitleBox {
+    background-color: var(--green);
     padding: 10px 20px;
     border-radius: var(--normalRadius);
     margin:0px 20px;
     margin-top: -20vw;
-}
-.fPTopProductsTitle1{
+ }
+ .fPTopProductsTitle1{
     color:var(--white);
-}
-/*-------------------------------WHO-WE-ARE---------------------------------*/
-.fPWhoWeAre {
+ }
+ /*-------------------------------WHO-WE-ARE---------------------------------*/
+ .fPWhoWeAre{
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the title box horizontally */
-    justify-content: center; /* Center the title box vertically */
-    padding: 10vw 0vw; /* Match the padding of .fPTopProducts */
-    margin:30px;
-    background:var(--white);
-    box-shadow:var(--boxShadow);
-    border-radius:var(--normalRadius);
-}
-
-.fPWhoWeAreTitleBox {
-    background-color: var(--lightGreen);
+    align-items: center;
+    justify-content: center;
+    padding: 10vw 0vw;
+    margin: 30px;
+    background: var(--white);
+    box-shadow: var(--boxShadow);
+    border-radius: var(--normalRadius);
+    position: relative;
+ }
+ .fPWhoWeAreBixBox{
+    padding:30px;
+ }
+ 
+ 
+ .fPWhoWeAreTitleBox {
+    background-color: var(--green);
     padding: 10px 20px;
     border-radius: var(--normalRadius);
-    margin: 0px 20px;
-    margin-top: -20vw; /* Match the margin-top of .fPTopProductsTitleBox */
-}
-
-.fPWhoWeAreTitle {
+    margin:0px 20px;
+    margin-top: -20vw;
+ }
+ 
+ 
+ .fPWhoWeAreTitle {
     color: var(--white);
-}
-
-
-/*-------------------------------WHO-WE-WORK-WITH--------------------------------*/
-.fPWhoWeWorkWith{
-    background-image: url(../../public/images/HeroSection1.jpeg);
+ }
+ .fPWhoWeAreSubTitle1{
+    color:var(--mainTextColor);
+ }
+ /*-------------------------------WHO-WE-WORK-WITH--------------------------------*/
+ .fPWhoWeWorkWith{
+    background-color:var(--green);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10vw 10vw;
+    padding: 30vw 10vw;
     margin-bottom:30px;
     padding-right: 20vw;
     clip-path: polygon(
-        0% 10%,
+        0% 30%,
         100% 0%,
         100% 90%,
-        0% 100%
+        0% 80%
     );
-}
-/*-------------------------------REVIEWS--------------------------------*/
-/*-------------------------------RESPONSIVE---------------------------------*/
-@media (max-width: 1200px) {
+ }
+ /*-------------------------------REVIEWS--------------------------------*/
+ .fPReviews{
+    background-color:var(--green);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30vw 10vw;
+    margin-bottom:30px;
+    padding-right: 20vw;
+    clip-path: polygon(
+        0% 0%,
+        100% 15%,
+        100% 70%,
+        0% 90%
+    );
+ }
+ /*-------------------------------RESPONSIVE---------------------------------*/
+ @media (max-width: 1200px) {
     .fPHeroSection {
         padding: 15vw 5vw;
         padding-right: 40vw;
@@ -130,9 +155,9 @@ img {
         max-width:175px;
         padding:15px 10px;
     }
-/*--------------TOP-PRODUCTS----------------*/
-}
-@media (max-width: 780px) {
+ /*--------------TOP-PRODUCTS----------------*/
+ }
+ @media (max-width: 780px) {
     .fPHeroSection {
         padding: 15vw 5vw;
         padding-right: 25vw;
@@ -148,14 +173,14 @@ img {
         max-width:150px;
         padding:12.5px 7.5px;
     }
-/*--------------TOP-PRODUCTS----------------*/
+ /*--------------TOP-PRODUCTS----------------*/
     .fPTopProductsTitleBox {
         padding: 10px 15px;
         margin:0px 15px;
         margin-top: -20vw;
     }
-}
-@media (max-width: 600px) {
+ }
+ @media (max-width: 600px) {
     .fPHeroSectionTitle1,
     .fPHeroSectionTitle2{
         font-size: calc(var(--textFont) + 5px);
@@ -163,7 +188,7 @@ img {
     .fPHeroSectionLearnMore{
         padding:10px 0px;
     }
-/*--------------TOP-PRODUCTS----------------*/
+ /*--------------TOP-PRODUCTS----------------*/
     .fPTopProductsTitle1{
         font-size: calc(var(--smallTextFont));
     }
@@ -172,4 +197,4 @@ img {
         margin:0px 5px;
         margin-top: -20vw;
     }
-}
+ } 
