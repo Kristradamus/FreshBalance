@@ -1,5 +1,6 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import dotenv from "dotenv";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,5 +12,8 @@ export default defineConfig({
       changeOrigin: true,
       rewrite: (path) => path.replace(/^\/api/, ''),
     },
+  },
+  define:{
+    'process.env.VITE_BASE_API':JSON.stringify(process.env.VITE_BASE_API),
   },
 })

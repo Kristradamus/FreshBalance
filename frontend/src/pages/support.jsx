@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import "./support.css";
-const baseApi = import.meta.env.BASE_API;
+const baseApi = import.meta.env.VITE_BASE_API;
 
 export default function Support() {
   const [selected, setSelected] = useState({ title: "", content: "" });
@@ -75,7 +75,7 @@ export default function Support() {
 
     console.log("Submitting form data:", data);
     try {
-      const response = await fetch(/*"http://localhost:5000/send-message"*/"/api/send-message", {
+      const response = await fetch(`${baseApi}/send-message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
