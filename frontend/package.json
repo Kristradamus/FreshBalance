@@ -8,10 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && http-server dist/."
+    "deploy": "npm run build && serve -s dist"
   },
   "dependencies": {
     "axios": "^1.8.2",
+    "dotenv": "^16.4.7",
     "http-server": "^14.1.1",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
