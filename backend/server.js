@@ -8,23 +8,22 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: ['https://nutritionwebsitedemo.onrender.com'],
+    origin: ['http://localhost:5173','https://nutritionwebsitedemo.onrender.com','http://localhost:3000','http://192.168.0.156:3000',],
     credentials: true,
   })
 );
 app.use(bodyParser.json());
-app.options('/send-message', (req, res) => {
+{/*app.options('/send-message', (req, res) => {
   res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.send();
-});
-
+})*/}
 {/*---------------------------------SUPPORT--------------------------------------*/}
 app.post('/send-message', async (req, res) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  {/*res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');*/}
 
   const { name, email, message } = req.body;
   if (!name || !email || !message) {

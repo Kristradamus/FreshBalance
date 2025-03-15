@@ -74,21 +74,22 @@ const handleSubmit = async (e) => {
 
   console.log("Submitting form data:", data);
   try {
-    const response = await fetch('https://nutritionwebsite2-0.onrender.com/send-message', {
+    const response = await fetch('http://localhost:5000/send-message'/*'https://nutritionwebsite2-0.onrender.com/send-message'*/,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-
     console.log("Response status:", response.status);
+
     if (response.ok) {
       const responseData = await response.json();
       console.log("Response data:", responseData);
       alert(t("support.messageSent"));
       setShowContactForm(false);
-    } else {
+    } 
+    else {
       const errorData = await response.json();
       console.error("Error response:", errorData);
       alert(t("support.messageFail"));
