@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import "./support.css";
-const baseApi = import.meta.env.VITE_BASE_API;
 
 export default function Support() {
   const [selected, setSelected] = useState({ title: "", content: "" });
@@ -64,41 +63,41 @@ export default function Support() {
   }, []);
 
 {/*----------------------------------EMAIL-SENDING-------------------------------------*/}
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message")
-    };
-
-    console.log("Submitting form data:", data);
-    try {
-      const response = await fetch(/*'http://localhost:5000/send-message'*/`https://nutritionwebsite2-0.onrender.com/send-message`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      console.log("Response status:", response.status);
-      if (response.ok) {
-        alert(t("support.messageSent"));
-        setShowContactForm(false);
-      } 
-      else{
-        const errorData = await response.json();
-        console.error("Error response:", errorData);
-        alert(t("support.messageFail"));
-      }
-    } 
-    catch (error) {
-      console.error("Error:", error);
-      alert(t("support.messageError"));
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    message: formData.get("message")
   };
+
+  console.log("Submitting form data:", data);
+  try {
+    const response = await fetch('https://nutritionwebsite2-0.onrender.com/send-message', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    console.log("Response status:", response.status);
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log("Response data:", responseData);
+      alert("Message sent successfully!");
+      setShowContactForm(false);
+    } else {
+      const errorData = await response.json();
+      console.error("Error response:", errorData);
+      alert("Failed to send message.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("An error occurred while sending the message.");
+  }
+};
 {/*--------------------------------------------------MAIN-----------------------------------------------------*/}
 return (
   <div className="support">

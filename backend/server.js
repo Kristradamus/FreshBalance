@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000', 'http://192.168.0.156:3000', 'https://nutritionwebsitedemo.onrender.com'],
+    origin: ['https://nutritionwebsitedemo.onrender.com'],
     credentials: true,
   })
 );
