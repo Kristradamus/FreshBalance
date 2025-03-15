@@ -49,7 +49,7 @@ export default function Footer() {
          <ul className="footerContacts">
            {footerData.contacts.items.map((item, index) => (
              <li key={index} className="footerContact">
-               <i className={item.icon}></i><p>{item.text}</p> 
+               <i className={item.icon}></i><p className="footerContactText">{item.text}</p> 
              </li>
            ))}
          </ul>

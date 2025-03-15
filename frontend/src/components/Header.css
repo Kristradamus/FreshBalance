@@ -31,7 +31,7 @@
   align-items:center;
   justify-content:space-between;
   margin: 0 30px;
-  gap:20vw;
+  gap:10vw;
 }
 .headerLanguageSwitcherBox1{
   display:none;
@@ -49,7 +49,7 @@
 .headerNavElement {
   display: flex;
   position: relative;
-  font-size: var(--textFont);
+  font-size:calc(var(--textFont) - 1px);
   padding: 15px 10px;
   margin: 5px 15px;
   align-items: center;
@@ -242,10 +242,9 @@
     display:none;
     opacity:0;
   }
-}
-@media (max-width: 1000px){
   .headerNavElement {
     padding: 10px 0px;
     margin: 5px 10px;
+    font-size:calc(var(--textFont) - 2px);
   }
 }

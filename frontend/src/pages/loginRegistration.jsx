@@ -1,8 +1,10 @@
 import { useState} from "react";
 import { useTranslation } from 'react-i18next';
-import "./loginRegistration.css";
+import axios from 'axios';
 import logo from "../../public/images/freshBalance.png";
 import { Link } from 'react-router-dom';
+import "./loginRegistration.css";
+const baseApi = import.meta.env.VITE_BASE_API
 
 export default function LoginRegistration() {
   const [email, setEmail] = useState("");
@@ -20,15 +22,26 @@ export default function LoginRegistration() {
     setHasError(false);
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (!validateEmail(email)) {
       setEmailError(true);
-      setHasError(true)
-    } 
-    else 
-    {
-      setEmailError("");
-      setHasError("false");
+      setHasError(true);
+      return;
+    }
+    try {
+      const response = await axios.post('http://localhost:5000/check-email', { email });
+
+      if (response.data.exists) {
+        // Email exists, redirect to the Login page
+        navigate('/login', { state: { email } }); // Pass the email as state
+      } else {
+        // Email does not exist, redirect to the Registration page
+        navigate('/register', { state: { email } }); // Pass the email as state
+      }
+    } catch (error) {
+      console.error('Error checking email:', error);
+      setHasError(true);
+      setEmailError(true);
     }
   };
 

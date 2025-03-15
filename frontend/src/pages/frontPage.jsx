@@ -5,13 +5,8 @@ import "./frontPage.css";
 export default function FrontPage() {
 const navigate = useNavigate();
 const { t } = useTranslation();
+const fPTopProductsData = t("frontPage.topProductsData", {returnObject: true});
 
-
-const fPTopProductsData = [
-  {icon:"fa-solid fa-truck-fast", text:"Free shipping over 100lv."},
-  {icon:"fa-solid fa-percent", text:"10% off orders over 200lv."},
-  {icon:"fa-solid fa-leaf", text:"100% bio products"},
-];
 const fPWhoWeAreData = [
 
 
@@ -31,22 +26,25 @@ return (
       <div className="fPTopProductsTitleBox">
         <h2 className="fPTopProductsTitle1">{t("frontPage.topProductsSectionTitle1")}</h2>
       </div>
-      <div className="fPTopProductsBenefits">
-      {fPTopProductsData.map((item, index) => {
-        <ul>
-          <li key={index}>
-            <div className="fPTopProductBenefit">
-              <img src={item.icon}></img><p>{item.text}</p>
-            </div>
+      <ul className="fPTopProductsBenefitsBox">
+      {fPTopProductsData.map((item, index) => (
+          <li key={index} className="fPTopProductsBenefit">
+            <div className="fPTopProductsIconBox"><i className={item.icon}></i></div>
+            <p className="fPTopProductsBenefitText">{item.text}</p>
           </li>
-        </ul>
-        })}
+        ))}
+      </ul>
+      <div className="fPTopProductsPart1">
+        <div className="fPTopProductsPart1Column1">
+          <button></button>
+        </div>
+        <div className="fPTopProductsPart1Column2">
+          <div>
+
+          </div>
+        </div>
       </div>
-      <div className="fPLongRow">
-      </div>
-      <div className="fPMiddleRow">
-      </div>
-      <div className="fPLongRow">
+      <div className="fPTopProductsPart2">
       </div>
     </div>
 {/*---------------------------------------WHO-WE-ARE--------------------------------*/}

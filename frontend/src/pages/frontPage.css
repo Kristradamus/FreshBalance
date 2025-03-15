@@ -50,60 +50,93 @@ img {
    align-items:center;
    justify-content:center;
    gap:40px;
-   padding:10vw 0vw;
+   padding:3vw 5vw;
 }
 .fPTopProductsTitleBox {
-   background-color: var(--green);
-   padding: 10px 20px;
    border-radius: var(--normalRadius);
    margin:0px 20px;
-   margin-top:-11.5vw;
 }
-.fPTopProductsTitle1{
-   color:var(--white);
+.fPTopProductsTitleBox h2{
+   color:var(--green);
 }
-.fPLongRow,
-.fPMiddleRow{
-  display:flex;
-  flex-direction:row;
-  gap:40px;
+.fPTopProductsTitleBox {
+   padding-bottom:10px;
+   text-align: center;
 }
-.fPMiddleRow div,
-.fPLongRow div{
-  padding:150px 100px;
-  border-radius:var(--normalRadius);
-  box-shadow:var(--boxShadow);
-  background-color:var(--white)
+
+.fPTopProductsTitleBox h2 {
+   color: var(--green);
+   position:relative;
 }
-/*-------------------------------WHO-WE-ARE---------------------------------*/
-.fPWhoWeAre{
+
+.fPTopProductsTitleBox h2::after {
+   content: "";
+   display: block;
+   height: 3px;
+   border-radius: var(--normalRadius);
+   background-color: var(--mainTextColor);
+   width: 15vw;
+   position: absolute;
+   left: 0;
+   margin-top:5px;
+   transform: translateY(-50%);
+}
+
+.fPTopProductsBenefitsBox {
    display: flex;
-   flex-direction: column;
-   align-items: center;
+   flex-direction: row;
+   gap: 2vw;
    justify-content: center;
-   padding: 10vw 0vw;
-   margin: 30px;
-   background: var(--white);
-   box-shadow: var(--boxShadow);
-   border-radius: var(--normalRadius);
-   position: relative;
-}
-.fPWhoWeAreBixBox{
-   padding:30px;
-}
-.fPWhoWeAreTitleBox {
+   background-color: var(--lightBackground);
+   border-radius: var(--smallRadius);
+   align-items: stretch;
+ }
+ .fPTopProductsBenefit {
+   display: flex;
+   flex-direction: row;
+   border: 3px solid var(--green);
+   border-radius: var(--smallRadius);
+   padding: 8px;
+   justify-content:flex-start;
+   align-items: center;
+   gap: 10px;
+   color: var(--green);
+   background-color: var(--mainBackground);
+   transition: var(--transition);
+   box-shadow: var(--boxShadowBottom);
+   flex-grow: 1;
+   min-width:250px;
+ }
+ .fPTopProductsBenefit:hover {
+   background-color:var(--mainBackground);
+   transform: translateY(-5px);
+   box-shadow: var(--boxShadowLight);
+ }
+ .fPTopProductsIconBox {
+   width: 50px;
+   height: 50px;
+   border: 3px solid var(--green);
+   border-radius: var(--smallRadius);
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    background-color: var(--green);
-   padding: 10px 20px;
-   border-radius: var(--normalRadius);
-   margin:0px 20px;
-   margin-top: -20vw;
-}
-.fPWhoWeAreTitle {
    color: var(--white);
-}
-.fPWhoWeAreSubTitle1{
-   color:var(--mainTextColor);
-}
+ }
+ .fPTopProductsIconBox i{
+   font-size:var(--iconFont);
+ }
+ .fPTopProductsBenefitText {
+   color: var(--mainTextColor);
+   font-weight: bold;
+   font-size:calc(var(--textFont) + 2px);
+ }
+
+ 
+
+/*-------------------------------WHO-WE-ARE---------------------------------*/
+
 /*-------------------------------WHO-WE-WORK-WITH--------------------------------*/
 .fPWhoWeWorkWith{
    background-color:var(--green);
@@ -156,10 +189,25 @@ img {
        font-size: var(--smallTextFont);
    }
    .fPHeroSectionLearnMore{
-       max-width:175px;
+       max-width:190px;
        padding:15px 10px;
    }
 /*--------------TOP-PRODUCTS----------------*/
+   .fPTopProductsBenefitsBox{
+      flex-direction:column;
+   }
+   .fPTopProducts{
+      gap:15px;
+   }
+   .fPTopProductsTitleBox h2::after {
+      width: 25vw;
+   }
+   .fPTopProductsTitleBox h2{
+      font-size: calc(var(--textFont) + 10px);
+   }
+   .fPTopProductsTitleBox {
+      padding-top:10px;
+   }
 }
 @media (max-width: 780px) {
    .fPHeroSection {
@@ -174,14 +222,29 @@ img {
        font-size: var(--smallTextFont);
    }
    .fPHeroSectionLearnMore{
-       max-width:150px;
-       padding:12.5px 7.5px;
+       max-width:180px;
+       padding:15px 7.5px;
    }
 /*--------------TOP-PRODUCTS----------------*/
-   .fPTopProductsTitleBox {
-       padding: 10px 15px;
-       margin:0px 15px;
-       margin-top: -20vw;
+   .fPTopProductsBenefitText {
+   font-size:var(--smallTextFont);
+   }
+   .fPTopProductsBenefit{
+      padding:5px;
+   }
+   .fPTopProductsIconBox {
+      width: 40px;
+      height: 40px;
+      padding:10px;
+   }
+   .fPTopProductsTitleBox{
+      margin:0px 10px;
+   }
+   .fPTopProductsTitleBox h2::after {
+      width: 35vw;
+   }
+   .fPTopProductsTitleBox h2{
+      font-size: calc(var(--textFont) + 5px);
    }
 }
 @media (max-width: 600px) {
@@ -190,15 +253,10 @@ img {
        font-size: calc(var(--textFont) + 5px);
    }
    .fPHeroSectionLearnMore{
-       padding:10px 0px;
+       padding:12.5px 0px;
    }
 /*--------------TOP-PRODUCTS----------------*/
-   .fPTopProductsTitle1{
-       font-size: calc(var(--smallTextFont));
-   }
-   .fPTopProductsTitleBox {
-       padding: 10px 15px;
-       margin:0px 5px;
-       margin-top:-13vw;
+   .fPTopProductsTitleBox h2{
+      font-size:var(--smallTextFont);
    }
 }

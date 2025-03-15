@@ -51,9 +51,9 @@
    },
 "-----------------------------------------------------------COMMUNITIES-----------------------------------------------------":{},
   "communities": {
-    "accessDenied": "Zugriff verweigert!",
-    "personalPlan": "Sie müssen zuerst einen persönlichen Plan erwerben!",
-    "goToSubscriptions": "Zu den Abonnements"
+    "accessDenied": "Zugriff verweigert",
+    "personalPlan": "Persönlichen Plan erwerben",
+    "goToSubscriptions": "Zu Abonnements"
   },
 "---------------------------------------------------FAVOURITES---------------------------------------------------------------":{},
   "favourites":{
@@ -62,11 +62,17 @@
   },
 "--------------------------------------------------------------FRONT-PAGE---------------------------------------------------":{},
   "frontPage": {
-    "heroSectionTitle1": "PREMIUM-ERNÄHRUNGSPRODUKTE",
+    "heroSectionTitle1": "PREMIUM-ERNÄHRUNG",
     "heroSectionTitle2": "EXPERTENBERATUNG",
-    "heroSectionSubTitle1": "Entdecken Sie über 100 Produkte, verbinden Sie sich mit Personal Trainern und treten Sie einer lebendigen Community bei",
+    "heroSectionSubTitle1": "Über 100 Produkte, Personal Trainer & lebendige Community entdecken",
     "heroSectionLearnMore": "Mehr erfahren",
-    "topProductsSectionTitle1": "ENTDECKEN SIE EINIGE UNSERER TOP-PRODUKTE"
+
+    "topProductsSectionTitle1": "TOP-PRODUKTE ENTDECKEN",
+    "topProductsData": [
+      {"icon": "fa-solid fa-truck-fast", "text": "Versand frei ab 100 lv."},
+      {"icon": "fa-solid fa-percent", "text": "10% Rabatt ab 200 lv."},
+      {"icon": "fa-solid fa-leaf", "text": "100% Bio"}
+    ]
   },
 "--------------------------------------------------LOGIN-REGISTRATION-------------------------------------------------------":{},
   "loginRegistration": {

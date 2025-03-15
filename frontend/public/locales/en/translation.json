@@ -68,9 +68,12 @@
         "heroSectionSubTitle1":"Explore Over 100 Products, Connect with Personal Trainers, and Join a Thriving Community",
         "heroSectionLearnMore":"Learn more",
  
- 
-        "topProductsSectionTitle1":"CHECK SOME OF OUR TOP PRODUCTS"
- 
+        "topProductsSectionTitle1":"CHECK SOME OF OUR TOP PRODUCTS",
+        "topProductsData":[
+          {"icon":"fa-solid fa-truck-fast", "text":"Free shipping over 100lv."},
+          {"icon":"fa-solid fa-percent", "text":"10% off orders over 200lv."},
+          {"icon":"fa-solid fa-leaf", "text":"100% bio products"}
+        ]
  
  
  

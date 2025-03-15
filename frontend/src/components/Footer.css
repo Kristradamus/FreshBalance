@@ -118,6 +118,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  font-size:var(--textFont);
 }
 .footerContact i {
   color: var(--green);
@@ -238,6 +239,15 @@
     min-width: 100%;
     max-width: 100%;
   }
+  .footerCreator, 
+  .footerBottom .fa-copyright,
+  .footerCopyright{
+    font-size:calc(var(--smallTextFont) - 1px);
+  }
+  .footerContactText{
+    font-size:var(--smallTextFont);
+  }
+   
 @media (max-width: 400px) {
   .footerTop {
     flex-direction: column;

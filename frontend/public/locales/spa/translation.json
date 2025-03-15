@@ -51,8 +51,8 @@
   },
 "-----------------------------------------------------------COMMUNITIES-----------------------------------------------------":{},
   "communities": {
-    "accessDenied": "¡Acceso denegado!",
-    "personalPlan": "¡Necesitas obtener un plan personal primero!",
+    "accessDenied": "Acceso denegado",
+    "personalPlan": "Obtén un plan personal",
     "goToSubscriptions": "Ir a Suscripciones"
   },
 "---------------------------------------------------FAVOURITES---------------------------------------------------------------":{},
@@ -66,18 +66,28 @@
     "heroSectionTitle2": "GUÍA DE EXPERTOS",
     "heroSectionSubTitle1": "Explora más de 100 productos, conéctate con entrenadores personales y únete a una comunidad próspera",
     "heroSectionLearnMore": "Aprende más",
-    "topProductsSectionTitle1": "CONSULTA ALGUNOS DE NUESTROS PRODUCTOS DESTACADOS"
+
+    "topProductsSectionTitle1": "TOP PRODUCTOS DESTACADOS",
+    "topProductsData": [
+      {"icon": "fa-solid fa-truck-fast", "text": "Envío gratis por compras mayores a 100 lv."},
+      {"icon": "fa-solid fa-percent", "text": "10% de descuento en pedidos mayores a 200 lv."},
+      {"icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos"}
+    ]
+
+
+
   },
+"--------------------------------------------------------------LOGIN-REGISTRATION---------------------------------------------------":{},
   "loginRegistration": {
-    "emailGreeting": "¡Hola!",
-    "emailPls": "Por favor, introduce tu dirección de correo electrónico",
+    "emailGreeting": "Hola",
+    "emailPls": "Introduce tu correo electrónico",
     "emailPlaceholder": "Correo electrónico...",
-    "emailWarning": "¡Por favor, introduce una dirección de correo electrónico válida!",
+    "emailWarning": "Introduce un correo válido",
     "emailContinue": "Continuar",
-    "emailDontWorry": "¿No tienes una cuenta? No te preocupes, solo introduce el correo electrónico con el que deseas crear una.",
+    "emailDontWorry": "¿Sin cuenta? Usa el correo que quieras.",
     "emailOr": "o",
-    "emailAlso": "También puedes iniciar sesión con:",
-    "needHelp": "¿Necesitas ayuda?"
+    "emailAlso": "Inicia sesión con:",
+    "needHelp": "¿Ayuda?"
   },
 "-------------------------------------------------------------PRODUCT-PAGE---------------------------------------------------":{},
   "productPage":{
@@ -463,7 +473,7 @@
         { "name": "Carrito", "link": "/cart" }
       ],
       "icons": {
-        "Iniciar Sesión": "fa-solid fa-user",
+        "Ingresar": "fa-solid fa-user",
         "Favoritos": "fa-solid fa-heart",
         "Carrito": "fa-solid fa-cart-shopping"
       }
