@@ -86,16 +86,16 @@ const handleSubmit = async (e) => {
     if (response.ok) {
       const responseData = await response.json();
       console.log("Response data:", responseData);
-      alert("Message sent successfully!");
+      alert(t("support.messageSent"));
       setShowContactForm(false);
     } else {
       const errorData = await response.json();
       console.error("Error response:", errorData);
-      alert("Failed to send message.");
+      alert(t("support.messageFail"));
     }
   } catch (error) {
     console.error("Error:", error);
-    alert("An error occurred while sending the message.");
+    alert(t("support.messageError"));
   }
 };
 {/*--------------------------------------------------MAIN-----------------------------------------------------*/}
