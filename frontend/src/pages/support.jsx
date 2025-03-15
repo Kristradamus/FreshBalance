@@ -74,7 +74,7 @@ const handleSubmit = async (e) => {
 
   console.log("Submitting form data:", data);
   try {
-    const response = await fetch('http://localhost:5000/send-message'/*'https://nutritionwebsite2-0.onrender.com/send-message'*/,{
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-message`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

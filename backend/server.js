@@ -13,17 +13,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-{/*app.options('/send-message', (req, res) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.send();
-})*/}
 {/*---------------------------------SUPPORT--------------------------------------*/}
 app.post('/send-message', async (req, res) => {
-  {/*res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');*/}
 
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
