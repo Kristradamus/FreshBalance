@@ -75,7 +75,7 @@ export default function Support() {
 
     console.log("Submitting form data:", data);
     try {
-      const response = await fetch(`http://localhost:5000/send-message`, {
+      const response = await fetch(/*'http://localhost:5000/send-message'*/`https://nutritionwebsite2-0.onrender.com/send-message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
