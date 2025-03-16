@@ -60,6 +60,7 @@
 .footerFirstColumn img {
   width: 130px;
   margin: 10px 0px;
+  cursor:pointer;
 }
 
 /*-----------------------------------SECOND-COLUMN-----------------------------------*/
@@ -71,14 +72,14 @@
   display: flex;
   flex-direction: column;
 }
-.footerNavElement p {
+.footerNavElement p{
   font-size: var(--textFont);
   cursor: pointer;
   padding:2.5px;
   color: var(--secondTextColor);
   transition: var(--transition);
 }
-.footerNavElement p:hover {
+.footerNavElement:hover p{
   color: var(--mainTextColor);
   text-decoration:underline;
 }

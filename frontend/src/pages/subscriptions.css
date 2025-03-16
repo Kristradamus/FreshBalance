@@ -131,7 +131,7 @@
 }
 .subTryFree:hover {
   background-color: var(--lightGreen);
-  box-shadow: none;
+  box-shadow:none;
 }
 .subBuyNow {
   display: flex;

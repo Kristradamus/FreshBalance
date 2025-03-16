@@ -22,7 +22,7 @@
 }
 
 /*------------------------EMAIL-BOX---------------------------*/
-.emailBox,
+.emailLogRegBox,
 .emailTop,
 .emailBottom{
   display:flex;
@@ -30,7 +30,7 @@
   align-items:center;
   justify-content:center;
 }
-.emailBox{
+.emailLogRegBox{
   padding:20px;
   background-color:var(--white);
   box-shadow:var(--boxShadow);
@@ -60,15 +60,18 @@
   margin-bottom:-5px;
 }
 .emailInputBox{
-  padding:10px;
+  padding:0px 7px;
   width:100%;
   background-color:var(--white);
   border-radius:var(--normalRadius);
   box-shadow: 0 0 10px rgba(0, 0, 20, 0.15);
+  cursor:text;
 }
 .emailInput{
   background-color:transparent;
+  font-size:var(--smallTextFont);
   border:none;
+  padding:13px 5px;
   outline:none;
   width:100%;
   color:var(--mainTextColor);
@@ -167,8 +170,5 @@
   }
   .loginRegister p{
     font-size:calc(var(--textFont) - 2px);
-  }
-  .logRegEmailBox{
-    padding:15px;
   }
 }

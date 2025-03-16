@@ -7,7 +7,7 @@
 :root {
   /*----------------------COLORS---------------------*/
   --green: #2e8b56;
-  --lightGreen: #3fac4f;
+  --lightGreen: #4ca55a;
   --white: white;
 
   /*------------------ELEMENT-COLORS-----------------*/
@@ -27,8 +27,8 @@
 
   /*------------------ELEMENT-SHADOW-----------------*/
   --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
-  --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.171);
   --boxShadowLight: 0 6px 12px rgba(0, 0, 0, 0.089);
+  --boxShadowBottom: 0 10px 15px rgba(0, 0, 3, 0.171);
   --errorBoxShadow: 0 0 0 2px rgba(182, 47, 47, 0.247);
   
   /*------------------ELEMENT-TRANSITION-------------*/

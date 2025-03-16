@@ -116,7 +116,7 @@ export default function Header() {
       <ul className="headerFavCartLog">
         {headerData.nav.map((item, index) => (
           <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
-            <Link to={item.link}>
+            <Link className="" to={item.link}>
               {headerData.icons[item.name] && (
                 <i className={headerData.icons[item.name]}></i>
               )}

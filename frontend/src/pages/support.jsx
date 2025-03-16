@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
       alert(t("support.messageFail"));
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.log("Error:", error.response.data);
     alert(t("support.messageError"));
   }
 };

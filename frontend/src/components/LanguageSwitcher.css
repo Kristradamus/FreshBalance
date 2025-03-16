@@ -15,24 +15,24 @@
   padding: 10px 20px;
   font-size: var(--textFont);
   cursor: pointer;
-  transition: background-color var(--transition), transform var(--transition);
+  transition: var(--transition);
   align-items: center;
   gap: var(--iconDistance);
 }
-
 .languageSwitcherArrow {
   display: inline-block;
   transition: transform 0.3s ease-in-out;
 }
-
 .languageSwitcherArrow.rotateUp {
   transform: rotate(-180deg);
 }
-
 .languageSwitcherArrow.rotateDown {
   transform: rotate(0deg);
 }
-
+.languageSwitcherToggle:hover{
+  background-color:var(--lightGreen);
+  box-shadow: var(--boxShadowLight);
+}
 /*-------------------------------------------DROP-DOWN------------------------------------------------*/
 .languageSwitcherDropDown {
   position: absolute;

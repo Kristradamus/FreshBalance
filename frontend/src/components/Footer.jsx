@@ -17,7 +17,7 @@ export default function Footer() {
      {/*-----------------------------------------------FOOTER-TOP--------------------------------------------*/}
      <div className="footerTop">
        <div className="footerFirstColumn">
-         <img src={footerData.brand.logo} alt="FreshBalance Logo" />
+         <img src={footerData.brand.logo} alt="FreshBalance Logo" onClick={() => navigate("/")}/>
          <h3>{footerData.brand.name}</h3>
          <p>{footerData.brand.description}</p>
        </div>

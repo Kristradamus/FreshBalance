@@ -6,6 +6,7 @@
 img {
    width:100px;
 }
+
 /*-------------------------------HERO-SECTION---------------------------------*/
 .fPHeroSection{
    background-image: url(../../public/images/HeroSection1.jpeg);
@@ -43,6 +44,23 @@ img {
 .fPHeroSectionLearnMore:hover{
    background-color:var(--lightGreen);
 }
+
+/*--------------------------HERO-SECTION-ANIMATIONS---------------------------*/
+.fPHeroSectionTitle1.hidden{
+   opacity: 0;
+   transition: var(--transition);
+   transform: translateX(-50px);
+ }
+ .fPHeroSectionTitle2.hidden{
+   opacity: 0;
+   transition: var(--transition);
+   transform: translateX(50px);
+ }
+ .fPHeroSectionTitle1.show,
+ .fPHeroSectionTitle2.show{
+   opacity:1;
+   transform:translateX(0px);
+ }
 /*-------------------------------TOP-PRODUCTS---------------------------------*/
 .fPTopProducts{
    display:flex;
@@ -68,7 +86,6 @@ img {
    color: var(--green);
    position:relative;
 }
-
 .fPTopProductsTitleBox h2::after {
    content: "";
    display: block;
@@ -81,7 +98,7 @@ img {
    margin-top:5px;
    transform: translateY(-50%);
 }
-
+/*--------------------------BENEFITS----------------------------*/
 .fPTopProductsBenefitsBox {
    display: flex;
    flex-direction: row;
@@ -111,6 +128,11 @@ img {
    background-color:var(--mainBackground);
    transform: translateY(-5px);
    box-shadow: var(--boxShadowLight);
+   border:3px solid var(--lightGreen);
+ }
+ .fPTopProductsBenefit:hover .fPTopProductsIconBox{
+   background-color:var(--lightGreen);
+   border:2px solid var(--lightGreen);
  }
  .fPTopProductsIconBox {
    width: 50px;
@@ -123,6 +145,7 @@ img {
    align-items: center;
    background-color: var(--green);
    color: var(--white);
+   transition:var(--transition);
  }
  .fPTopProductsIconBox i{
    font-size:var(--iconFont);
@@ -132,10 +155,49 @@ img {
    font-weight: bold;
    font-size:calc(var(--textFont) + 2px);
  }
-
+ /*--------------------PRODUCTS-----------------------*/
  
+/*------------------TOP-PRODUCTS-ANIMATIONS------------------*/
+.fPTopProductsTitle1.hidden{
+   opacity:0;
+   transition:var(--transition);
+}
+.fPTopProductsTitle1.show{
+   opacity:1;
+}
 
 /*-------------------------------WHO-WE-ARE---------------------------------*/
+.fPWhoWeAre{
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+}
+.fPWhoWeAreTitleBox{
+   display:flex;
+   flex-direction:column;
+   gap:10px;
+}
+.fPWhoWeAreTitle1{
+   color:var(--green);
+   position:relative;
+}
+.fPWhoWeAreTitle1::after{
+   content: "";
+   display: block;
+   height: 3px;
+   border-radius: var(--normalRadius);
+   background-color: var(--mainTextColor);
+   width: 5vw;
+   position: absolute;
+   left: 0;
+   margin-top:5px;
+   transform: translateY(-50%);
+}
+.fPWhoWeAreTextBox{
+   display:flex;
+   flex-direction:row;
+}
+
 
 /*-------------------------------WHO-WE-WORK-WITH--------------------------------*/
 .fPWhoWeWorkWith{
@@ -146,15 +208,18 @@ img {
    width: 100%;
    display: flex;
    flex-direction: column;
-   padding: 30vw 10vw;
+   align-items:center;
+   padding: 30vw 0vw;
    margin-bottom:30px;
-   padding-right: 20vw;
    clip-path: polygon(
-       0% 30%,
+       0% 20%,
        100% 0%,
        100% 90%,
        0% 80%
    );
+}
+.fPWhoWeWorkWithTitle1{
+   color:var(--white);
 }
 /*-------------------------------REVIEWS--------------------------------*/
 .fPReviews{
