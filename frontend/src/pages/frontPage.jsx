@@ -56,7 +56,7 @@ return (
           </li>
         ))}
       </ul>
-      <div className="fPTopProductsPart1">
+      <div className="fPTopProductsPart1">{/*TODO:Finish the TOP PRODUCTS part of the homepage*/}
         <div className="fPTopProductsPart1Column1">
           <button></button>
         </div>

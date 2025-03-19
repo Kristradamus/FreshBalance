@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 const AboutUs = React.lazy(() => import("./pages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/communities.jsx"));
@@ -15,6 +16,7 @@ const Support = React.lazy(() => import("./pages/support.jsx"));
 const ProductPage = React.lazy(() => import("./pages/productPage.jsx"));
 const Favourites = React.lazy(() => import("./pages/favourites.jsx"));
 const Cart = React.lazy(() => import("./pages/cart.jsx"));
+const LegalPage = React.lazy(() => import("./pages/legalPage.jsx"));
 
 export default function App() {
   const { t } = useTranslation();
@@ -22,7 +24,8 @@ export default function App() {
   return (
     <>
       <BrowserRouter>
-        <Suspense fallback={<div style ={{padding:"20px"}}>{t("app.loading")}</div>}>
+        {/*<Suspense fallback={<div style ={{padding:"20px"}}>{t("app.loading")}</div>}>*/}
+        <ScrollToTop/>
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/about-us" element={<AboutUs />} />
@@ -34,11 +37,12 @@ export default function App() {
               <Route path="/favourites" element={<Favourites />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/product-page/:promotionName" element={<ProductPage />}/>
+              <Route path="/legal" element={<LegalPage />}/>
             </Route>
             <Route path="/communities" element={<Communities />} />
             <Route path="/login" element={<LoginRegistration />} />
           </Routes>
-        </Suspense>
+        {/*</Suspense>*/}
       </BrowserRouter>
     </>
   );

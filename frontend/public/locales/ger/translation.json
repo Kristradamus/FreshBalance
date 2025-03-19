@@ -497,7 +497,7 @@
       "categories": [
         {
           "name": "Bestseller",
-          "subcategories": [
+          "category": [
             { "name": "Empfohlene Produkte", "link": "/product-page/featured-products" },
             { "name": "Kundenfavoriten", "link": "/product-page/customer-favorites" },
             { "name": "Top bewertete Produkte", "link": "/product-page/top-rated-products" },
@@ -509,7 +509,7 @@
         },
         {
           "name": "Aktionen",
-          "subcategories": [
+          "category": [
             { "name": "Zeitlich begrenzte Angebote", "link": "/product-page/limited-time-offers" },
             { "name": "Saisonale Rabatte", "link": "/product-page/seasonal-sales" },
             { "name": "Restposten", "link": "/product-page/clearance-items" },
@@ -523,7 +523,7 @@
         },
         {
           "name": "Bio",
-          "subcategories": [
+          "category": [
             { "name": "Bio-Produkte", "link": "/product-page/organic-products" },
             { "name": "Umweltfreundliche Produkte", "link": "/product-page/eco-friendly-products" },
             { "name": "Pflanzliche Nahrungsergänzungsmittel", "link": "/product-page/plant-based-supplements" },
@@ -536,7 +536,7 @@
         },
         {
           "name": "Proteine & Aminosäuren",
-          "subcategories": [
+          "category": [
             { "name": "Molkenprotein", "link": "/product-page/whey-protein" },
             { "name": "Pflanzliches Protein", "link": "/product-page/plant-based-protein" },
             { "name": "Pre-Workout-Protein", "link": "/product-page/pre-workout-protein" },
@@ -549,7 +549,7 @@
         },
         {
           "name": "Vitamine & Mineralien",
-          "subcategories": [
+          "category": [
             { "name": "Vitamin C", "link": "/product-page/vit-c" },
             { "name": "Vitamin D3", "link": "/product-page/vit-d3" },
             { "name": "Vitamin B12", "link": "/product-page/vit-b12" },
@@ -564,7 +564,7 @@
         },
         {
           "name": "Leistungssteigerer",
-          "subcategories": [
+          "category": [
             { "name": "Pre-Workout-Ergänzungen", "link": "/product-page/pre-workout-supplements" },
             { "name": "Post-Workout-Erholung", "link": "/product-page/post-workout-recovery" },
             { "name": "Energiebooster", "link": "/product-page/energy-boosters" },
@@ -578,7 +578,7 @@
         },
         {
           "name": "Gewichtsmanagement",
-          "subcategories": [
+          "category": [
             { "name": "Fettverbrenner", "link": "/product-page/fat-burners" },
             { "name": "Appetitzügler", "link": "/product-page/appetite-suppressants" },
             { "name": "Kalorienarme Snacks", "link": "/product-page/low-calorie-snacks" },
@@ -593,10 +593,10 @@
         },
         {
           "name": "Kosmetik",
-          "subcategories": [
+          "category": [
             {
               "title": "Hautpflege",
-              "items": [
+              "subcategory": [
                 { "name": "Feuchtigkeitscremes", "link": "/product-page/moisturizers" },
                 { "name": "Gesichtsmasken", "link": "/product-page/face-masks" },
                 { "name": "Anti-Aging-Produkte", "link": "/product-page/anti-aging-products" },
@@ -606,7 +606,7 @@
             },
             {
               "title": "Haarpflege",
-              "items": [
+              "subcategory": [
                 { "name": "Shampoo & Conditioner", "link": "/product-page/shampoo-conditioner" },
                 { "name": "Haarmasken", "link": "/product-page/hair-masks" },
                 { "name": "Haaröle", "link": "/product-page/hair-oils" },
@@ -615,7 +615,7 @@
             },
             {
               "title": "Make-up",
-              "items": [
+              "subcategory": [
                 { "name": "Foundation", "link": "/product-page/foundations" },
                 { "name": "Lippenstifte", "link": "/product-page/lipsticks" },
                 { "name": "Lidschatten", "link": "/product-page/eyeshadow" },
@@ -624,7 +624,7 @@
             },
             {
               "title": "Schönheitswerkzeuge",
-              "items": [
+              "subcategory": [
                 { "name": "Gesichtsroller", "link": "/product-page/face-rollers" },
                 { "name": "Dermaplaning-Werkzeuge", "link": "/product-page/dermaplaning-tools" },
                 { "name": "LED-Masken", "link": "/product-page/led-masks" }
@@ -632,7 +632,7 @@
             },
             {
               "title": "Nagelpflege",
-              "items": [
+              "subcategory": [
                 { "name": "Nagellack", "link": "/product-page/nail-polish" },
                 { "name": "Nagelbehandlungen", "link": "/product-page/nail-treatments" },
                 { "name": "Nagelhautöle", "link": "/product-page/cuticle-oils" }

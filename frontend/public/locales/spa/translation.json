@@ -494,7 +494,7 @@
       "categories": [
         {
           "name": "Más Vendidos",
-          "subcategories": [
+          "category": [
             { "name": "Productos Destacados", "link": "/product-page/featured-products" },
             { "name": "Favoritos de los Clientes", "link": "/product-page/customer-favorites" },
             { "name": "Productos Mejor Valorados", "link": "/product-page/top-rated-products" },
@@ -506,7 +506,7 @@
         },
         {
           "name": "Promociones",
-          "subcategories": [
+          "category": [
             { "name": "Ofertas de Tiempo Limitado", "link": "/product-page/limited-time-offers" },
             { "name": "Ventas de Temporada", "link": "/product-page/seasonal-sales" },
             { "name": "Artículos en Liquidación", "link": "/product-page/clearance-items" },
@@ -520,7 +520,7 @@
         },
         {
           "name": "Bio",
-          "subcategories": [
+          "category": [
             { "name": "Productos Orgánicos", "link": "/product-page/organic-products" },
             { "name": "Productos Ecológicos", "link": "/product-page/eco-friendly-products" },
             { "name": "Suplementos Basados en Plantas", "link": "/product-page/plant-based-supplements" },
@@ -533,7 +533,7 @@
         },
         {
           "name": "Proteínas y Aminoácidos",
-          "subcategories": [
+          "category": [
             { "name": "Proteína de Suero", "link": "/product-page/whey-protein" },
             { "name": "Proteína Basada en Plantas", "link": "/product-page/plant-based-protein" },
             { "name": "Proteína Pre-Entrenamiento", "link": "/product-page/pre-workout-protein" },
@@ -546,7 +546,7 @@
         },
         {
           "name": "Vitaminas y Minerales",
-          "subcategories": [
+          "category": [
             { "name": "Vitamina C", "link": "/product-page/vit-c" },
             { "name": "Vitamina D3", "link": "/product-page/vit-d3" },
             { "name": "Vitamina B12", "link": "/product-page/vit-b12" },
@@ -561,7 +561,7 @@
         },
         {
           "name": "Potenciadores de Rendimiento",
-          "subcategories": [
+          "category": [
             { "name": "Suplementos Pre-Entrenamiento", "link": "/product-page/pre-workout-supplements" },
             { "name": "Recuperación Post-Entrenamiento", "link": "/product-page/post-workout-recovery" },
             { "name": "Potenciadores de Energía", "link": "/product-page/energy-boosters" },
@@ -575,7 +575,7 @@
         },
         {
           "name": "Control de Peso",
-          "subcategories": [
+          "category": [
             { "name": "Quemadores de Grasa", "link": "/product-page/fat-burners" },
             { "name": "Supresores del Apetito", "link": "/product-page/appetite-suppressants" },
             { "name": "Snacks Bajos en Calorías", "link": "/product-page/low-calorie-snacks" },
@@ -590,10 +590,10 @@
         },
         {
           "name": "Cosméticos",
-          "subcategories": [
+          "category": [
             {
               "title": "Cuidado de la Piel",
-              "items": [
+              "subcategory": [
                 { "name": "Hidratantes", "link": "/product-page/moisturizers" },
                 { "name": "Mascarillas Faciales", "link": "/product-page/face-masks" },
                 { "name": "Productos Anti-Edad", "link": "/product-page/anti-aging-products" },
@@ -603,7 +603,7 @@
             },
             {
               "title": "Cuidado del Cabello",
-              "items": [
+              "subcategory": [
                 { "name": "Champú y Acondicionador", "link": "/product-page/shampoo-conditioner" },
                 { "name": "Mascarillas para el Cabello", "link": "/product-page/hair-masks" },
                 { "name": "Aceites para el Cabello", "link": "/product-page/hair-oils" },
@@ -612,7 +612,7 @@
             },
             {
               "title": "Maquillaje",
-              "items": [
+              "subcategory": [
                 { "name": "Bases", "link": "/product-page/foundations" },
                 { "name": "Lápices Labiales", "link": "/product-page/lipsticks" },
                 { "name": "Sombra de Ojos", "link": "/product-page/eyeshadow" },
@@ -621,7 +621,7 @@
             },
             {
               "title": "Herramientas de Belleza",
-              "items": [
+              "subcategory": [
                 { "name": "Rodillos Faciales", "link": "/product-page/face-rollers" },
                 { "name": "Herramientas de Dermaplaning", "link": "/product-page/dermaplaning-tools" },
                 { "name": "Máscaras LED", "link": "/product-page/led-masks" }
@@ -629,7 +629,7 @@
             },
             {
               "title": "Cuidado de Uñas",
-              "items": [
+              "subcategory": [
                 { "name": "Esmalte de Uñas", "link": "/product-page/nail-polish" },
                 { "name": "Tratamientos para Uñas", "link": "/product-page/nail-treatments" },
                 { "name": "Aceites para Cutículas", "link": "/product-page/cuticle-oils" }

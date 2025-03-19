@@ -57,25 +57,42 @@ app.post("/check-email", async (req, res) => {
   }
 });
 
+{/*-----------------------------------USERNAME-----------------------------------------*/}
+app.get("/user", async (req, res) => {
+  const { email } = req.query;
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+  try {
+    const [rows] = await pool.query("SELECT user_name FROM users WHERE user_email = ?", [email]);
+    if (rows.length > 0) {
+      res.status(200).json({ username: rows[0].user_name });
+    } else {
+      res.status(404).json({ error: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    res.status(500).json({ error: "Database error" });
+  }
+});
 {/*-----------------------------------CONSOLE-LOGS----------------------------------------*/}
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-pool.getConnection((err, connection) => {
-  if (err) {
-    console.error("Error connecting to the database:", err);
-    return;
-  }
-  console.log("Connected to the database!");
-  connection.release();
 
-  connection.query("SELECT * FROM users", (err, result) => {
-    if(err){
-      console.log("Error executing query:", err)
-      return;
-    }
-    else{
-      console.log("Query data:", result);
-    }
-  })
-})
+const startServer = async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log("Connected to the database!");
+    connection.release();
+
+    const [rows] = await pool.query("SELECT * FROM users");
+    console.log("Query data:", rows);
+
+  } 
+    catch (err) {
+    console.error("Error connecting to the database:", err);
+  }
+};
+startServer();

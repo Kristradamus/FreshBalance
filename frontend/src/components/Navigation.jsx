@@ -29,6 +29,14 @@ export default function Navigation() {
     setIsDropdownMoreVisible((prev) => !prev);
     setIsDropdownVisible(false);
   };
+  const handleNavReload = (item) => {
+    if(location.pathname === item.link){
+      window.location.reload();
+    }
+    else{
+      navigate(item.link)
+    }
+  }
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -50,21 +58,21 @@ export default function Navigation() {
             <i className="fa-solid fa-bars"></i> {t("navigation.categories")}
           </a>
           <ul ref={dropContentRef} className={`navDropDownContent ${isDropdownVisible ? "show" : ""}`}>
-            {navData.categories.map((category, index) => (
+            {navData.categories.map((item, index) => (
               <li className="navDropDownElement"key={index}>
-                <a className="navDropDownElementA" href={category.link}>{category.name}</a>
+                <a className="navDropDownElementA" href={item.link}>{item.name}</a>
                 <ul className="navSubMenu">
-                  <h2>{category.name}</h2>
-                  {category.subcategories.map((subCategory, subIndex) => subCategory.items ? (
+                  <h2>{item.name}</h2>
+                  {item.category.map((subItem, subIndex) => subItem.subcategory ? (
                   <div key={subIndex}>
-                    <h3>{subCategory.title}</h3>
-                    {subCategory.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>
-                      <Link to={item.link}>{item.name}</Link>
+                    <h3>{subItem.title}</h3>
+                    {subItem.subcategory.map((subSubItem, subSubIndex) => (
+                    <li key={subSubIndex}>
+                      <Link to={subSubItem.link} onClick={handleNavReload}>{subSubItem.name}</Link>
                     </li>))}
                   </div>) : 
                   (<li key={subIndex}>
-                    <Link to={subCategory.link}>{subCategory.name}</Link>
+                    <Link to={subItem.link} onClick={handleNavReload}>{subItem.name}</Link>
                   </li>))}
                 </ul>
               </li>

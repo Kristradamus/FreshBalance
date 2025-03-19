@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Footer.css";
 
 export default function Footer() {
@@ -8,8 +8,22 @@ export default function Footer() {
  const { t } = useTranslation();
  const footerData = t("footer.footerData", {returnObject:true});
 
+{/*-----------------------------------------------JS--------------------------------------------*/}
+ const handleLogoClick = () => {
+  if(location.pathname === "/"){
+    window.location.reload();
+  }
+  else{
+    navigate("/");
+  }
+}
  const handleFooterNavClick = (link) => {
-   navigate(link);
+  if(location.pathname === link){
+    window.location.reload();
+  }
+  else{
+    navigate(link);
+  }
  };
 
  return (
@@ -17,7 +31,7 @@ export default function Footer() {
      {/*-----------------------------------------------FOOTER-TOP--------------------------------------------*/}
      <div className="footerTop">
        <div className="footerFirstColumn">
-         <img src={footerData.brand.logo} alt="FreshBalance Logo" onClick={() => navigate("/")}/>
+         <img src={footerData.brand.logo} alt="FreshBalance Logo" onClick={handleLogoClick}/>
          <h3>{footerData.brand.name}</h3>
          <p>{footerData.brand.description}</p>
        </div>

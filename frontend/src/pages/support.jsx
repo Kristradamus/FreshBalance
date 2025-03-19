@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import TermsAndConditions from "./legalPage.jsx";
 import "./support.css";
 
 export default function Support() {
@@ -71,7 +74,7 @@ const handleSubmit = async (e) => {
     email: formData.get("email"),
     message: formData.get("message")
   };
-
+  e.target.reset();
   console.log("Submitting form data:", data);
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-message`,{
@@ -87,7 +90,6 @@ const handleSubmit = async (e) => {
       const responseData = await response.json();
       console.log("Response data:", responseData);
       alert(t("support.messageSent"));
-      setShowContactForm(false);
     } 
     else {
       const errorData = await response.json();
@@ -130,7 +132,11 @@ return (
         <div className="supportMain">
           {selected.title && (<button className="supportBackButton" onClick={handleBack}>{t("support.backToSupport")}</button>)}
           <h1><strong>{selected.title || t("support.welcome")}</strong></h1>
-          <p>{selected.content || t("support.selectTopic")}</p>
+          {selected.title !== "Terms and Conditions" ?(
+                      <p>{selected.content || t("support.selectTopic")}</p>
+          ) : (
+            <TermsAndConditions/>
+          )}
           {!selected.title && (<button className="supportContactButton" onClick={() => setShowContactForm(true)}>{t("support.contactSupport")}</button>)}
           {showContactForm && (
             <div className="supportContactFormBox">

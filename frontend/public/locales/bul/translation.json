@@ -499,7 +499,7 @@
       "categories": [
       {
         "name": "Най-продавани",
-        "subcategories": [
+        "category": [
           { "name": "Препоръчани продукти", "link": "/product-page/featured-products" },
           { "name": "Любими на клиентите", "link": "/product-page/customer-favorites" },
           { "name": "Най-харесвани продукти", "link": "/product-page/top-rated-products" },
@@ -511,7 +511,7 @@
       },
       {
         "name": "Промоции",
-        "subcategories": [
+        "category": [
           { "name": "Оферти за ограничено време", "link": "/product-page/limited-time-offers" },
           { "name": "Сезонни разпродажби", "link": "/product-page/seasonal-sales" },
           { "name": "Последни бройки", "link": "/product-page/clearance-items" },
@@ -525,7 +525,7 @@
       },
       {
         "name": "Био",
-        "subcategories": [
+        "category": [
           { "name": "Органични продукти", "link": "/product-page/organic-products" },
           { "name": "Екологични продукти", "link": "/product-page/eco-friendly-products" },
           { "name": "Растителни добавки", "link": "/product-page/plant-based-supplements" },
@@ -538,7 +538,7 @@
       },
       {
         "name": "Протеини и аминокиселини",
-        "subcategories": [
+        "category": [
           { "name": "Суроватъчен протеин", "link": "/product-page/whey-protein" },
           { "name": "Растителен протеин", "link": "/product-page/plant-based-protein" },
           { "name": "Протеин преди тренировка", "link": "/product-page/pre-workout-protein" },
@@ -552,7 +552,7 @@
       },
       {
         "name": "Витамини и минерали",
-        "subcategories": [
+        "category": [
           { "name": "Витамин C", "link": "/product-page/vit-c" },
           { "name": "Витамин D3", "link": "/product-page/vit-d3" },
           { "name": "Витамин B12", "link": "/product-page/vit-b12" },
@@ -567,7 +567,7 @@
       },
       {
         "name": "Подобрители на производителността",
-        "subcategories": [
+        "category": [
           { "name": "Добавки преди тренировка", "link": "/product-page/pre-workout-supplements" },
           { "name": "Възстановяване след тренировка", "link": "/product-page/post-workout-recovery" },
           { "name": "Енергийни бустери", "link": "/product-page/energy-boosters" },
@@ -581,7 +581,7 @@
       },
       {
         "name": "Управление на теглото",
-        "subcategories": [
+        "category": [
           { "name": "Мастни изгарятели", "link": "/product-page/fat-burners" },
           { "name": "Потискатели на апетита", "link": "/product-page/appetite-suppressants" },
           { "name": "Нискокалорични закуски", "link": "/product-page/low-calorie-snacks" },
@@ -596,10 +596,10 @@
       },
       {
         "name": "Козметика",
-        "subcategories": [
+        "category": [
           {
             "title": "Грижа за кожата",
-            "items": [
+            "subcategory": [
               { "name": "Овлажнители", "link": "/product-page/moisturizers" },
               { "name": "Маски за лице", "link": "/product-page/face-masks" },
               { "name": "Продукти против старене", "link": "/product-page/anti-aging-products" },
@@ -609,7 +609,7 @@
           },
           {
             "title": "Грижа за косата",
-            "items": [
+            "subcategory": [
               { "name": "Шампоани и балсами", "link": "/product-page/shampoo-conditioner" },
               { "name": "Маски за коса", "link": "/product-page/hair-masks" },
               { "name": "Масла за коса", "link": "/product-page/hair-oils" },
@@ -618,7 +618,7 @@
           },
           {
             "title": "Грим",
-            "items": [
+            "subcategory": [
               { "name": "Фондации", "link": "/product-page/foundations" },
               { "name": "Червила", "link": "/product-page/lipsticks" },
               { "name": "Сенки за очи", "link": "/product-page/eyeshadow" },
@@ -627,7 +627,7 @@
           },
           {
             "title": "Аксесоари за красота",
-            "items": [
+            "subcategory": [
               { "name": "Ролки за лице", "link": "/product-page/face-rollers" },
               { "name": "Инструменти за дермапланинг", "link": "/product-page/dermaplaning-tools" },
               { "name": "LED маски", "link": "/product-page/led-masks" }
@@ -635,7 +635,7 @@
           },
           {
             "title": "Грижа за ноктите",
-            "items": [
+            "subcategory": [
               { "name": "Лак за нокти", "link": "/product-page/nail-polish" },
               { "name": "Препарати за нокти", "link": "/product-page/nail-treatments" },
               { "name": "Масла за кутикула", "link": "/product-page/cuticle-oils" }
@@ -659,5 +659,9 @@
     },
     "categories":"КАТЕГОРИИ",
     "more":"ОЩЕ"
+  },
+  "--------------------------------------------------TERMS-AND-CONDITIONS-------------------------------------------":{},
+  "termsAndConditions":{
+    
   }
 }  

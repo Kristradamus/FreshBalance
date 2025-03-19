@@ -19,9 +19,22 @@ export default function Header() {
 
 {/*--------------------------------SEARCH-BAR-----------------------------------*/}
   const handleFavCartLogClick = (item) => {
-    navigate(item.link);
+    if(location.pathname === item.link)
+    {
+      window.location.reload();
+    }
+    else{
+      navigate(item.link);
+    }
   };
-
+  const handleLogoClick = () => {
+    if(location.pathname === "/"){
+      window.location.reload();
+    }
+    else{
+      navigate("/");
+    }
+  }
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     searchInputRef.current?.focus();
@@ -85,7 +98,7 @@ export default function Header() {
     <div className="headerBox">
       <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
       <div className="headerLogoBox">
-        <Link to="/">
+        <Link to="/" onClick={handleLogoClick}>
           <img className="headerLogo" src={logo} alt="freshBalance" />
         </Link>
         <div className="headerLanguageSwitcherBox1">
