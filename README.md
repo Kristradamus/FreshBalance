@@ -1,2 +1,2 @@
-# NutritionWebsite2.0
+# FreshBalance
  A website for selling nutrition products
