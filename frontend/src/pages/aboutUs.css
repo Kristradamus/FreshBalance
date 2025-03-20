@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 15vw;
+  margin: 20px 20vw;
   padding: 0;
 }
 .aboutUs p{
@@ -14,7 +14,6 @@
 .aboutUsBox {
   background-color: var(--white);
   box-shadow: var(--boxShadow);
-  width: 81%;
   border-radius: var(--bigRadius);
   padding: 20px;
 }

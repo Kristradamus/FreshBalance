@@ -1,0 +1,62 @@
+.legalPoliciesBox{
+  padding:20px;
+  border-radius:var(--normalRadius);
+  box-shadow:var(--boxShadow);
+  background-color:var(--white);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+}
+.legalPoliciesThemeBox{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.legalPoliciesTitleBox{
+  padding:20px;
+  display:flex;
+  gap:5px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.legalPoliciesText{
+  text-align:center;
+}
+.legalPoliciesTitle{
+  text-align:center;
+}
+.legalPoliciesTextBox{
+  display:flex;
+  flex-direction:column;
+}
+.legalPoliciesSubTitle{
+  margin:5px 0px;
+}
+.legalPoliciesSubPointsBox{
+  display:flex;
+  flex-direction:column;
+  margin:5px 0px;
+  gap:5px;
+}
+.legalPoliciesSubPoints {
+
+  list-style-type: none;
+  padding-left:10px;
+  position: relative;
+}
+.legalPoliciesSubPoints::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color:var(--mainTextColor);
+}
+/*----------------------------------------RESPONSIVE-------------------------------------------*/
+@media (max-width: 780px) {
+    .legalPoliciesBox {
+      width: 90%;
+    }
+}
+  

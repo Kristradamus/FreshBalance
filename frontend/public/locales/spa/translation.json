@@ -1,5 +1,5 @@
 {
-"---------------------------------------------------------ABOUT-US----------------------------------------------------------":{},
+  "---------------------------------------------------------ABOUT-US----------------------------------------------------------": {},
   "aboutUs": {
     "aboutUsData": [
       {
@@ -11,14 +11,38 @@
         "text": "En „FreshBalance“, atendemos a todos aquellos que valoran su salud y bienestar. Ya seas un atleta profesional, un padre ocupado, un principiante en el fitness o alguien que simplemente busca mejorar su nutrición diaria, tenemos algo para ti. Entendemos que no hay dos viajes iguales, por lo que ofrecemos una amplia gama de productos para satisfacer tus necesidades únicas. Nuestro objetivo es empoderarte para que tomes el control de tu salud y alcances tus metas con confianza.",
         "points": "Nuestra línea de productos incluye:",
         "subPoints": [
-          { "subTitle": "Proteínas", "subText": "Para apoyar la recuperación y el crecimiento muscular." },
-          { "subTitle": "Aminoácidos", "subText": "Para mejorar el rendimiento y la resistencia." },
-          { "subTitle": "Vitaminas", "subText": "Para cubrir las brechas nutricionales y mejorar la salud en general." },
-          { "subTitle": "Minerales", "subText": "Para apoyar las funciones corporales esenciales y el bienestar general." },
-          { "subTitle": "Potenciadores de Rendimiento", "subText": "Para optimizar el rendimiento físico y mental durante los entrenamientos y las actividades diarias." },
-          { "subTitle": "Cosméticos", "subText": "Productos de cuidado de la piel y belleza infundidos con ingredientes naturales y nutritivos para realzar tu brillo exterior." },
-          { "subTitle": "Productos Bio", "subText": "Productos orgánicos y ecológicos diseñados para promover un estilo de vida sostenible y saludable." },
-          { "subTitle": "Control de Peso", "subText": "Suplementos y reemplazos de comidas diseñados para apoyar la pérdida de peso saludable, el metabolismo y el control del apetito." }
+          {
+            "subTitle": "Proteínas",
+            "subText": "Para apoyar la recuperación y el crecimiento muscular."
+          },
+          {
+            "subTitle": "Aminoácidos",
+            "subText": "Para mejorar el rendimiento y la resistencia."
+          },
+          {
+            "subTitle": "Vitaminas",
+            "subText": "Para cubrir las brechas nutricionales y mejorar la salud en general."
+          },
+          {
+            "subTitle": "Minerales",
+            "subText": "Para apoyar las funciones corporales esenciales y el bienestar general."
+          },
+          {
+            "subTitle": "Potenciadores de Rendimiento",
+            "subText": "Para optimizar el rendimiento físico y mental durante los entrenamientos y las actividades diarias."
+          },
+          {
+            "subTitle": "Cosméticos",
+            "subText": "Productos de cuidado de la piel y belleza infundidos con ingredientes naturales y nutritivos para realzar tu brillo exterior."
+          },
+          {
+            "subTitle": "Productos Bio",
+            "subText": "Productos orgánicos y ecológicos diseñados para promover un estilo de vida sostenible y saludable."
+          },
+          {
+            "subTitle": "Control de Peso",
+            "subText": "Suplementos y reemplazos de comidas diseñados para apoyar la pérdida de peso saludable, el metabolismo y el control del apetito."
+          }
         ]
       },
       {
@@ -30,15 +54,42 @@
         "text": "Estamos orgullosos de compartir nuestro viaje contigo y nos encantaría que nos conozcas mejor. „FreshBalance“ es un equipo pequeño pero apasionado, dedicado a hacer un gran impacto.",
         "points": "Conoce a las personas que lo hacen posible:",
         "subPoints": [
-            { "photo": "../../images/developer1.jpg", "subText": "Fundador y Entusiasta de la Nutrición" },
-            { "photo": "../../images/developer2.jpg", "subText": "Jefe de Desarrollo de Productos" },
-            { "photo": "../../images/developer3.jpg", "subText": "Desarrollador Frontend" },
-            { "photo": "../../images/developer4.jpg", "subText": "Desarrollador Backend" },
-            { "photo": "../../images/developer5.jpg", "subText": "Diseñador UI/UX" },
-            { "photo": "../../images/developer6.jpg", "subText": "Gerente de Proyectos" },
-            { "photo": "../../images/developer7.jpg", "subText": "Ingeniero DevOps" },
-            { "photo": "../../images/developer8.jpg", "subText": "Escritor de Contenido y SEO" },
-            { "photo": "../../images/developer9.jpg", "subText": "Tester de Control de Calidad" }
+          {
+            "photo": "../../images/developer1.jpg",
+            "subText": "Fundador y Entusiasta de la Nutrición"
+          },
+          {
+            "photo": "../../images/developer2.jpg",
+            "subText": "Jefe de Desarrollo de Productos"
+          },
+          {
+            "photo": "../../images/developer3.jpg",
+            "subText": "Desarrollador Frontend"
+          },
+          {
+            "photo": "../../images/developer4.jpg",
+            "subText": "Desarrollador Backend"
+          },
+          {
+            "photo": "../../images/developer5.jpg",
+            "subText": "Diseñador UI/UX"
+          },
+          {
+            "photo": "../../images/developer6.jpg",
+            "subText": "Gerente de Proyectos"
+          },
+          {
+            "photo": "../../images/developer7.jpg",
+            "subText": "Ingeniero DevOps"
+          },
+          {
+            "photo": "../../images/developer8.jpg",
+            "subText": "Escritor de Contenido y SEO"
+          },
+          {
+            "photo": "../../images/developer9.jpg",
+            "subText": "Tester de Control de Calidad"
+          }
         ]
       }
     ],
@@ -46,21 +97,17 @@
     "finisher": "Esta página 'Sobre Nosotros' combina la historia de nuestra marca, misión y valores con un toque personal, mientras guía a los clientes hacia los próximos pasos para una vida mejor. Está diseñada para generar confianza, crear conexión e inspirar acción.",
     "developer": "Kristiyan Krustev"
   },
-"---------------------------------------------------------CART---------------------------------------------------------------":{},
-  "cart":{
-  },
-"-----------------------------------------------------------COMMUNITIES-----------------------------------------------------":{},
+  "---------------------------------------------------------CART---------------------------------------------------------------": {},
+  "cart": {},
+  "-----------------------------------------------------------COMMUNITIES-----------------------------------------------------": {},
   "communities": {
     "accessDenied": "Acceso denegado",
     "personalPlan": "Obtén un plan personal",
     "goToSubscriptions": "Ir a Suscripciones"
   },
-"---------------------------------------------------FAVOURITES---------------------------------------------------------------":{},
-  "favourites":{
- 
- 
-  },
-"--------------------------------------------------------------FRONT-PAGE---------------------------------------------------":{},
+  "---------------------------------------------------FAVOURITES---------------------------------------------------------------": {},
+  "favourites": {},
+  "--------------------------------------------------------------FRONT-PAGE---------------------------------------------------": {},
   "frontPage": {
     "heroSectionTitle1": "PRODUCTOS DE NUTRICIÓN PREMIUM",
     "heroSectionTitle2": "GUÍA DE EXPERTOS",
@@ -69,15 +116,18 @@
 
     "topProductsSectionTitle1": "TOP PRODUCTOS DESTACADOS",
     "topProductsData": [
-      {"icon": "fa-solid fa-truck-fast", "text": "Envío gratis por compras mayores a 100 lv."},
-      {"icon": "fa-solid fa-percent", "text": "10% de descuento en pedidos mayores a 200 lv."},
-      {"icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos"}
+      {
+        "icon": "fa-solid fa-truck-fast",
+        "text": "Envío gratis por compras mayores a 100 lv."
+      },
+      {
+        "icon": "fa-solid fa-percent",
+        "text": "10% de descuento en pedidos mayores a 200 lv."
+      },
+      { "icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos" }
     ]
-
-
-
   },
-"--------------------------------------------------------------LOGIN-REGISTRATION---------------------------------------------------":{},
+  "--------------------------------------------------------------LOGIN-REGISTRATION---------------------------------------------------": {},
   "loginRegistration": {
     "emailGreeting": "Hola",
     "emailPls": "Introduce tu correo electrónico",
@@ -89,18 +139,14 @@
     "emailAlso": "Inicia sesión con:",
     "needHelp": "¿Ayuda?"
   },
-"-------------------------------------------------------------PRODUCT-PAGE---------------------------------------------------":{},
-  "productPage":{
+  "-------------------------------------------------------------product---------------------------------------------------": {},
+  "productPage": {
     "loading": "Cargando...",
     "errorLoading": "Parece que hay un problema con la página del producto. Por favor, inténtelo de nuevo."
- 
   },
-"---------------------------------------------------------PROFILE--------------------------------------------------------------":{},
-  "profile":{
- 
- 
-  },
-"-------------------------------------------------------SERVICES--------------------------------------------------------------":{},
+  "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
+  "profile": {},
+  "-------------------------------------------------------SERVICES--------------------------------------------------------------": {},
   "services": {
     "servicesData": {
       "paragraphs": {
@@ -145,8 +191,14 @@
       ],
       "location": {
         "name": "Oficina de Varna",
-        "address": { "addressTitle": "Dirección: ", "addressDescription": "Levski Primorski, st. \"Studentska\" 1, 9010 Varna" },
-        "phone": { "phoneTitle": "Teléfono: ", "phoneDescription": "+359 89 876 4348" },
+        "address": {
+          "addressTitle": "Dirección: ",
+          "addressDescription": "Levski Primorski, st. \"Studentska\" 1, 9010 Varna"
+        },
+        "phone": {
+          "phoneTitle": "Teléfono: ",
+          "phoneDescription": "+359 89 876 4348"
+        },
         "workHours": {
           "workHoursTitle": "Horario de trabajo: ",
           "workHoursDescription": [
@@ -158,7 +210,18 @@
       },
       "delivery": {
         "subTitle1": "Nuestros términos y condiciones de entrega:",
-        "areas": ["Sofía", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora", "Pleven", "Sliven", "Dobrich", "Shumen"],
+        "areas": [
+          "Sofía",
+          "Plovdiv",
+          "Varna",
+          "Burgas",
+          "Ruse",
+          "Stara Zagora",
+          "Pleven",
+          "Sliven",
+          "Dobrich",
+          "Shumen"
+        ],
         "terms": [
           {
             "title": "Áreas de Servicio: ",
@@ -192,11 +255,9 @@
       }
     }
   },
-"-------------------------------------------------SINGLE-PRODUCT-PAGE--------------------------------------------------------":{},
-  "singleProductPage":{
-   
-  },
-"-----------------------------------------------------------SUBSCRIPTIONS-----------------------------------------------------":{},
+  "-------------------------------------------------SINGLE-product--------------------------------------------------------": {},
+  "singleProductPage": {},
+  "-----------------------------------------------------------SUBSCRIPTIONS-----------------------------------------------------": {},
   "subscriptions": {
     "subscriptionPlans": [
       {
@@ -307,7 +368,7 @@
     "yearly": "Anual",
     "lv": "lv."
   },
-"----------------------------------------------------------SUPPORT-----------------------------------------------------------":{},
+  "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {
       "Account": [
@@ -398,16 +459,13 @@
     "message": "Mensaje:",
     "submit": "Enviar"
   },
-"----------------------------------------------------------APP-----------------------------------------------------------":{},
+  "----------------------------------------------------------APP-----------------------------------------------------------": {},
   "app": {
     "loading": "Cargando..."
   },
-"------------------------------------------------------COMMENTS--------------------------------------------------------------":{},
-  "comments":{
- 
- 
-  },
-"-------------------------------------------------------FOOTER---------------------------------------------------------------":{},
+  "------------------------------------------------------COMMENTS--------------------------------------------------------------": {},
+  "comments": {},
+  "-------------------------------------------------------FOOTER---------------------------------------------------------------": {},
   "footer": {
     "footerData": {
       "brand": {
@@ -440,17 +498,32 @@
       "contacts": {
         "title": "Contactos",
         "items": [
-          { "icon": "fa-solid fa-location-dot", "text": "Primorski, st. \"Studentska\" 1, 9010 Varna" },
-          { "icon": "fa-solid fa-envelope", "text": "KrissKrastev06@gmail.com" },
+          {
+            "icon": "fa-solid fa-location-dot",
+            "text": "Primorski, st. \"Studentska\" 1, 9010 Varna"
+          },
+          {
+            "icon": "fa-solid fa-envelope",
+            "text": "KrissKrastev06@gmail.com"
+          },
           { "icon": "fa-solid fa-phone", "text": "+359 898 764 348" }
         ]
       },
       "socialMedia": {
         "title": "Redes Sociales",
         "items": [
-          { "icon": "fa-brands fa-instagram", "link": "https://www.instagram.com/kriskrustev/" },
-          { "icon": "fa-brands fa-facebook-f", "link": "https://www.facebook.com/kriskrustev.32/" },
-          { "icon": "fa-brands fa-youtube", "link": "https://www.youtube.com/channel/UCjylqcGRrvzHlY-S5979iTg" }
+          {
+            "icon": "fa-brands fa-instagram",
+            "link": "https://www.instagram.com/kriskrustev/"
+          },
+          {
+            "icon": "fa-brands fa-facebook-f",
+            "link": "https://www.facebook.com/kriskrustev.32/"
+          },
+          {
+            "icon": "fa-brands fa-youtube",
+            "link": "https://www.youtube.com/channel/UCjylqcGRrvzHlY-S5979iTg"
+          }
         ]
       }
     },
@@ -458,7 +531,7 @@
     "createdBy": "| Creado por",
     "creator": "Kristradamus"
   },
-"----------------------------------------------------------HEADER-----------------------------------------------------------":{},
+  "----------------------------------------------------------HEADER-----------------------------------------------------------": {},
   "header": {
     "headerData": {
       "recommendations": [
@@ -480,112 +553,244 @@
     },
     "searchPlaceholder": "Buscar..."
   },
-"-----------------------------------------------LANGUAGE-SWITCHER-------------------------------------------------------------":{},
+  "-----------------------------------------------LANGUAGE-SWITCHER-------------------------------------------------------------": {},
   "languageSwitcher": {
-    "currentLanguage":"Español",
+    "currentLanguage": "Español",
     "english": "Inglés",
     "bulgarian": "Búlgaro",
     "spanish": "Español",
     "german": "Alemán"
   },
-"---------------------------------------------------------NAVIGATION----------------------------------------------------------":{},
+  "---------------------------------------------------------NAVIGATION----------------------------------------------------------": {},
   "navigation": {
     "navData": {
       "categories": [
         {
           "name": "Más Vendidos",
           "category": [
-            { "name": "Productos Destacados", "link": "/product-page/featured-products" },
-            { "name": "Favoritos de los Clientes", "link": "/product-page/customer-favorites" },
-            { "name": "Productos Mejor Valorados", "link": "/product-page/top-rated-products" },
-            { "name": "Nuevos Lanzamientos", "link": "/product-page/new-arrivals" },
-            { "name": "Tendencias Actuales", "link": "/product-page/trending-now" },
-            { "name": "Productos Imprescindibles", "link": "/product-page/must-have-products" },
-            { "name": "Especiales de Temporada", "link": "/product-page/seasonal-specials" }
+            {
+              "name": "Productos Destacados",
+              "link": "/product/featured-products"
+            },
+            {
+              "name": "Favoritos de los Clientes",
+              "link": "/product/customer-favorites"
+            },
+            {
+              "name": "Productos Mejor Valorados",
+              "link": "/product/top-rated-products"
+            },
+            { "name": "Nuevos Lanzamientos", "link": "/product/new-arrivals" },
+            { "name": "Tendencias Actuales", "link": "/product/trending-now" },
+            {
+              "name": "Productos Imprescindibles",
+              "link": "/product/must-have-products"
+            },
+            {
+              "name": "Especiales de Temporada",
+              "link": "/product/seasonal-specials"
+            }
           ]
         },
         {
           "name": "Promociones",
           "category": [
-            { "name": "Ofertas de Tiempo Limitado", "link": "/product-page/limited-time-offers" },
-            { "name": "Ventas de Temporada", "link": "/product-page/seasonal-sales" },
-            { "name": "Artículos en Liquidación", "link": "/product-page/clearance-items" },
-            { "name": "Paquetes con Descuento", "link": "/product-page/discounted-bundles" },
-            { "name": "Compra 1 y Lleva 1 Gratis", "link": "/product-page/buy-1-get-1-free" },
-            { "name": "Ventas Flash", "link": "/product-page/flash-sales" },
-            { "name": "Descuentos Exclusivos", "link": "/product-page/exclusive-discounts" },
-            { "name": "Ofertas de Envío Gratis", "link": "/product-page/free-shipping-deals" },
-            { "name": "Ofertas Especiales para Miembros", "link": "/product-page/special-offers-for-members" }
+            {
+              "name": "Ofertas de Tiempo Limitado",
+              "link": "/product/limited-time-offers"
+            },
+            {
+              "name": "Ventas de Temporada",
+              "link": "/product/seasonal-sales"
+            },
+            {
+              "name": "Artículos en Liquidación",
+              "link": "/product/clearance-items"
+            },
+            {
+              "name": "Paquetes con Descuento",
+              "link": "/product/discounted-bundles"
+            },
+            {
+              "name": "Compra 1 y Lleva 1 Gratis",
+              "link": "/product/buy-1-get-1-free"
+            },
+            { "name": "Ventas Flash", "link": "/product/flash-sales" },
+            {
+              "name": "Descuentos Exclusivos",
+              "link": "/product/exclusive-discounts"
+            },
+            {
+              "name": "Ofertas de Envío Gratis",
+              "link": "/product/free-shipping-deals"
+            },
+            {
+              "name": "Ofertas Especiales para Miembros",
+              "link": "/product/special-offers-for-members"
+            }
           ]
         },
         {
           "name": "Bio",
           "category": [
-            { "name": "Productos Orgánicos", "link": "/product-page/organic-products" },
-            { "name": "Productos Ecológicos", "link": "/product-page/eco-friendly-products" },
-            { "name": "Suplementos Basados en Plantas", "link": "/product-page/plant-based-supplements" },
-            { "name": "Productos No Transgénicos", "link": "/product-page/non-gmo-items" },
-            { "name": "Marcas Sostenibles", "link": "/product-page/sustainable-brands" },
-            { "name": "Productos Libres de Crueldad", "link": "/product-page/cruelty-free-products" },
-            { "name": "Cuidado Natural de la Piel", "link": "/product-page/natural-skincare" },
-            { "name": "Remedios Herbales", "link": "/product-page/herbal-remedies" }
+            {
+              "name": "Productos Orgánicos",
+              "link": "/product/organic-products"
+            },
+            {
+              "name": "Productos Ecológicos",
+              "link": "/product/eco-friendly-products"
+            },
+            {
+              "name": "Suplementos Basados en Plantas",
+              "link": "/product/plant-based-supplements"
+            },
+            {
+              "name": "Productos No Transgénicos",
+              "link": "/product/non-gmo-items"
+            },
+            {
+              "name": "Marcas Sostenibles",
+              "link": "/product/sustainable-brands"
+            },
+            {
+              "name": "Productos Libres de Crueldad",
+              "link": "/product/cruelty-free-products"
+            },
+            {
+              "name": "Cuidado Natural de la Piel",
+              "link": "/product/natural-skincare"
+            },
+            { "name": "Remedios Herbales", "link": "/product/herbal-remedies" }
           ]
         },
         {
           "name": "Proteínas y Aminoácidos",
           "category": [
-            { "name": "Proteína de Suero", "link": "/product-page/whey-protein" },
-            { "name": "Proteína Basada en Plantas", "link": "/product-page/plant-based-protein" },
-            { "name": "Proteína Pre-Entrenamiento", "link": "/product-page/pre-workout-protein" },
-            { "name": "Proteína de Caseína", "link": "/product-page/casein-protein" },
-            { "name": "Proteína Vegana", "link": "/product-page/vegan-protein" },
-            { "name": "Batidos y Barras de Proteína", "link": "/product-page/protein-shake-bars" },
-            { "name": "Suplementos de Aminoácidos", "link": "/product-page/amino-acid-supplements" },
-            { "name": "BCAA", "link": "/product-page/bcaa" }
+            { "name": "Proteína de Suero", "link": "/product/whey-protein" },
+            {
+              "name": "Proteína Basada en Plantas",
+              "link": "/product/plant-based-protein"
+            },
+            {
+              "name": "Proteína Pre-Entrenamiento",
+              "link": "/product/pre-workout-protein"
+            },
+            {
+              "name": "Proteína de Caseína",
+              "link": "/product/casein-protein"
+            },
+            { "name": "Proteína Vegana", "link": "/product/vegan-protein" },
+            {
+              "name": "Batidos y Barras de Proteína",
+              "link": "/product/protein-shake-bars"
+            },
+            {
+              "name": "Suplementos de Aminoácidos",
+              "link": "/product/amino-acid-supplements"
+            },
+            { "name": "BCAA", "link": "/product/bcaa" }
           ]
         },
         {
           "name": "Vitaminas y Minerales",
           "category": [
-            { "name": "Vitamina C", "link": "/product-page/vit-c" },
-            { "name": "Vitamina D3", "link": "/product-page/vit-d3" },
-            { "name": "Vitamina B12", "link": "/product-page/vit-b12" },
-            { "name": "Multivitamínicos", "link": "/product-page/multi-vit" },
-            { "name": "Antioxidantes", "link": "/product-page/antioxidants" },
-            { "name": "Calcio", "link": "/product-page/calcium" },
-            { "name": "Suplementos de Hierro", "link": "/product-page/iron-supplements" },
-            { "name": "Magnesio", "link": "/product-page/magnesium" },
-            { "name": "Aceite de Pescado Omega-3", "link": "/product-page/omega-3-fish-oil" },
-            { "name": "Probióticos", "link": "/product-page/probiotics" }
+            { "name": "Vitamina C", "link": "/product/vit-c" },
+            { "name": "Vitamina D3", "link": "/product/vit-d3" },
+            { "name": "Vitamina B12", "link": "/product/vit-b12" },
+            { "name": "Multivitamínicos", "link": "/product/multi-vit" },
+            { "name": "Antioxidantes", "link": "/product/antioxidants" },
+            { "name": "Calcio", "link": "/product/calcium" },
+            {
+              "name": "Suplementos de Hierro",
+              "link": "/product/iron-supplements"
+            },
+            { "name": "Magnesio", "link": "/product/magnesium" },
+            {
+              "name": "Aceite de Pescado Omega-3",
+              "link": "/product/omega-3-fish-oil"
+            },
+            { "name": "Probióticos", "link": "/product/probiotics" }
           ]
         },
         {
           "name": "Potenciadores de Rendimiento",
           "category": [
-            { "name": "Suplementos Pre-Entrenamiento", "link": "/product-page/pre-workout-supplements" },
-            { "name": "Recuperación Post-Entrenamiento", "link": "/product-page/post-workout-recovery" },
-            { "name": "Potenciadores de Energía", "link": "/product-page/energy-boosters" },
-            { "name": "Ganadores de Masa Muscular", "link": "/product-page/muscle-mass-gainers" },
-            { "name": "Suplementos de Resistencia", "link": "/product-page/endurance-supplements" },
-            { "name": "Creatina", "link": "/product-page/creatine" },
-            { "name": "Potenciadores de Óxido Nítrico", "link": "/product-page/nitric-oxide-boosters" },
-            { "name": "Suplementos de Enfoque y Cognición", "link": "/product-page/focus-cognitive-supplements" },
-            { "name": "Potenciadores de Fuerza", "link": "/product-page/strength-enhancers" }
+            {
+              "name": "Suplementos Pre-Entrenamiento",
+              "link": "/product/pre-workout-supplements"
+            },
+            {
+              "name": "Recuperación Post-Entrenamiento",
+              "link": "/product/post-workout-recovery"
+            },
+            {
+              "name": "Potenciadores de Energía",
+              "link": "/product/energy-boosters"
+            },
+            {
+              "name": "Ganadores de Masa Muscular",
+              "link": "/product/muscle-mass-gainers"
+            },
+            {
+              "name": "Suplementos de Resistencia",
+              "link": "/product/endurance-supplements"
+            },
+            { "name": "Creatina", "link": "/product/creatine" },
+            {
+              "name": "Potenciadores de Óxido Nítrico",
+              "link": "/product/nitric-oxide-boosters"
+            },
+            {
+              "name": "Suplementos de Enfoque y Cognición",
+              "link": "/product/focus-cognitive-supplements"
+            },
+            {
+              "name": "Potenciadores de Fuerza",
+              "link": "/product/strength-enhancers"
+            }
           ]
         },
         {
           "name": "Control de Peso",
           "category": [
-            { "name": "Quemadores de Grasa", "link": "/product-page/fat-burners" },
-            { "name": "Supresores del Apetito", "link": "/product-page/appetite-suppressants" },
-            { "name": "Snacks Bajos en Calorías", "link": "/product-page/low-calorie-snacks" },
-            { "name": "Batidos de Reemplazo de Comidas", "link": "/product-page/meal-replacement-shakes" },
-            { "name": "Productos de Desintoxicación y Limpieza", "link": "/product-page/detox-cleanse-products" },
-            { "name": "Suplementos para Pérdida de Peso", "link": "/product-page/weight-loss-supplements" },
-            { "name": "Productos para Aumento de Peso Saludable", "link": "/product-page/healthy-weight-gain-products" },
-            { "name": "Potenciadores del Metabolismo", "link": "/product-page/metabolism-boosters" },
-            { "name": "Productos para Dieta Keto", "link": "/product-page/keto-diet-products" },
-            { "name": "Snacks Bajos en Carbohidratos", "link": "/product-page/low-carb-snacks" }
+            { "name": "Quemadores de Grasa", "link": "/product/fat-burners" },
+            {
+              "name": "Supresores del Apetito",
+              "link": "/product/appetite-suppressants"
+            },
+            {
+              "name": "Snacks Bajos en Calorías",
+              "link": "/product/low-calorie-snacks"
+            },
+            {
+              "name": "Batidos de Reemplazo de Comidas",
+              "link": "/product/meal-replacement-shakes"
+            },
+            {
+              "name": "Productos de Desintoxicación y Limpieza",
+              "link": "/product/detox-cleanse-products"
+            },
+            {
+              "name": "Suplementos para Pérdida de Peso",
+              "link": "/product/weight-loss-supplements"
+            },
+            {
+              "name": "Productos para Aumento de Peso Saludable",
+              "link": "/product/healthy-weight-gain-products"
+            },
+            {
+              "name": "Potenciadores del Metabolismo",
+              "link": "/product/metabolism-boosters"
+            },
+            {
+              "name": "Productos para Dieta Keto",
+              "link": "/product/keto-diet-products"
+            },
+            {
+              "name": "Snacks Bajos en Carbohidratos",
+              "link": "/product/low-carb-snacks"
+            }
           ]
         },
         {
@@ -594,45 +799,78 @@
             {
               "title": "Cuidado de la Piel",
               "subcategory": [
-                { "name": "Hidratantes", "link": "/product-page/moisturizers" },
-                { "name": "Mascarillas Faciales", "link": "/product-page/face-masks" },
-                { "name": "Productos Anti-Edad", "link": "/product-page/anti-aging-products" },
-                { "name": "Cremas para los Ojos", "link": "/product-page/eye-creams" },
-                { "name": "Sérums", "link": "/product-page/serums" }
+                { "name": "Hidratantes", "link": "/product/moisturizers" },
+                {
+                  "name": "Mascarillas Faciales",
+                  "link": "/product/face-masks"
+                },
+                {
+                  "name": "Productos Anti-Edad",
+                  "link": "/product/anti-aging-products"
+                },
+                {
+                  "name": "Cremas para los Ojos",
+                  "link": "/product/eye-creams"
+                },
+                { "name": "Sérums", "link": "/product/serums" }
               ]
             },
             {
               "title": "Cuidado del Cabello",
               "subcategory": [
-                { "name": "Champú y Acondicionador", "link": "/product-page/shampoo-conditioner" },
-                { "name": "Mascarillas para el Cabello", "link": "/product-page/hair-masks" },
-                { "name": "Aceites para el Cabello", "link": "/product-page/hair-oils" },
-                { "name": "Productos para el Crecimiento del Cabello", "link": "/product-page/hair-growth-products" }
+                {
+                  "name": "Champú y Acondicionador",
+                  "link": "/product/shampoo-conditioner"
+                },
+                {
+                  "name": "Mascarillas para el Cabello",
+                  "link": "/product/hair-masks"
+                },
+                {
+                  "name": "Aceites para el Cabello",
+                  "link": "/product/hair-oils"
+                },
+                {
+                  "name": "Productos para el Crecimiento del Cabello",
+                  "link": "/product/hair-growth-products"
+                }
               ]
             },
             {
               "title": "Maquillaje",
               "subcategory": [
-                { "name": "Bases", "link": "/product-page/foundations" },
-                { "name": "Lápices Labiales", "link": "/product-page/lipsticks" },
-                { "name": "Sombra de Ojos", "link": "/product-page/eyeshadow" },
-                { "name": "Máscara de Pestañas", "link": "/product-page/mascara" }
+                { "name": "Bases", "link": "/product/foundations" },
+                { "name": "Lápices Labiales", "link": "/product/lipsticks" },
+                { "name": "Sombra de Ojos", "link": "/product/eyeshadow" },
+                { "name": "Máscara de Pestañas", "link": "/product/mascara" }
               ]
             },
             {
               "title": "Herramientas de Belleza",
               "subcategory": [
-                { "name": "Rodillos Faciales", "link": "/product-page/face-rollers" },
-                { "name": "Herramientas de Dermaplaning", "link": "/product-page/dermaplaning-tools" },
-                { "name": "Máscaras LED", "link": "/product-page/led-masks" }
+                {
+                  "name": "Rodillos Faciales",
+                  "link": "/product/face-rollers"
+                },
+                {
+                  "name": "Herramientas de Dermaplaning",
+                  "link": "/product/dermaplaning-tools"
+                },
+                { "name": "Máscaras LED", "link": "/product/led-masks" }
               ]
             },
             {
               "title": "Cuidado de Uñas",
               "subcategory": [
-                { "name": "Esmalte de Uñas", "link": "/product-page/nail-polish" },
-                { "name": "Tratamientos para Uñas", "link": "/product-page/nail-treatments" },
-                { "name": "Aceites para Cutículas", "link": "/product-page/cuticle-oils" }
+                { "name": "Esmalte de Uñas", "link": "/product/nail-polish" },
+                {
+                  "name": "Tratamientos para Uñas",
+                  "link": "/product/nail-treatments"
+                },
+                {
+                  "name": "Aceites para Cutículas",
+                  "link": "/product/cuticle-oils"
+                }
               ]
             }
           ]
@@ -654,5 +892,110 @@
     },
     "categories": "CATEGORÍAS",
     "more": "MÁS"
+  },
+  "--------------------------------------------------LEGAL-POLICIES-------------------------------------------": {},
+  "legalPolicies": {
+    "data": [
+      {
+        "title": "Términos y Condiciones",
+        "beginning": "Bienvenido a „FreshBalance“! Los siguientes Términos y Condiciones regulan el uso de los servicios de „FreshBalance“, disponibles en https://freshbalance.onrender.com. Al acceder a este sitio web, usted acepta plenamente estos Términos y Condiciones. Si no está de acuerdo con alguna o todas las disposiciones, le rogamos que cese inmediatamente el uso de la plataforma.",
+        "mainPoints": [
+          {
+            "heading": "Derechos de Propiedad Intelectual",
+            "content": "A menos que se indique lo contrario, „FreshBalance“ y/o sus licenciantes son los titulares de los derechos de propiedad intelectual sobre todo el contenido de la plataforma. Todos los derechos están reservados. Usted puede acceder a este contenido para uso personal, siempre que cumpla con las restricciones establecidas en estos Términos y Condiciones.",
+            "subPoints": [
+              "Publicar contenido de „FreshBalance“ sin el consentimiento previo por escrito.",
+              "Vender, alquilar o sublicenciar contenido de „FreshBalance“.",
+              "Reproducir, duplicar o copiar contenido de „FreshBalance“ con fines comerciales.",
+              "Redistribuir contenido de „FreshBalance“, a menos que esté específicamente destinado para su redistribución."
+            ]
+          },
+          {
+            "heading": "Venta y Compra de Productos",
+            "content": "Al comprar productos en „FreshBalance“, usted acepta lo siguiente:",
+            "subPoints": [
+              "Todos los productos se ofrecen \"tal cual\" y están sujetos a disponibilidad. Nos reservamos el derecho de limitar las cantidades y descontinuar productos en cualquier momento.",
+              "Los precios están sujetos a cambios sin previo aviso. No nos hacemos responsables de errores tipográficos en los precios o descripciones de los productos.",
+              "Usted es responsable de proporcionar información precisa de envío y facturación. Información incorrecta puede resultar en retrasos o cargos adicionales.",
+              "Nos reservamos el derecho de rechazar o cancelar cualquier pedido por cualquier motivo, incluyendo, pero no limitado a, disponibilidad de productos, errores en los precios o sospecha de actividades fraudulentas."
+            ]
+          },
+          {
+            "heading": "Responsabilidades del Usuario",
+            "content": "Al utilizar „FreshBalance“, usted acepta lo siguiente:",
+            "subPoints": [
+              "No utilizará este sitio web de manera que cause o pueda causar daños al sitio o afecte su disponibilidad.",
+              "No utilizará este sitio web para fines ilegales, fraudulentos o perjudiciales.",
+              "No realizará actividades sistemáticas o automatizadas de recopilación de datos (incluyendo scraping, minería de datos o extracción de datos) sin nuestro consentimiento previo por escrito.",
+              "No utilizará este sitio web para copiar, almacenar, alojar, transmitir, enviar, utilizar, publicar o distribuir material que contenga (o esté vinculado a) spyware, virus informáticos, troyanos, gusanos, keyloggers, rootkits u otro software malicioso."
+            ]
+          },
+          {
+            "heading": "Limitación de Responsabilidad",
+            "content": "En ningún caso „FreshBalance“, ni sus empleados, directores o representantes serán responsables por daños derivados o relacionados con el uso de este sitio web. „FreshBalance“, incluyendo sus empleados y representantes, no será responsable por daños indirectos, consecuentes o especiales relacionados con el uso de la plataforma."
+          },
+          {
+            "heading": "Indemnización",
+            "content": "Usted se compromete a indemnizar a „FreshBalance“ de cualquier reclamación, costo, daño o gasto (incluyendo honorarios razonables de abogados) que surjan de o estén relacionados con el incumplimiento de estos Términos y Condiciones."
+          },
+          {
+            "heading": "Divisibilidad",
+            "content": "Si alguna disposición de estos Términos y Condiciones es declarada inválida según la ley aplicable, dicha disposición será eliminada sin afectar la validez de las restantes. Las disposiciones restantes continuarán siendo válidas y ejecutables."
+          },
+          {
+            "heading": "Modificaciones de los Términos",
+            "content": "„FreshBalance“ se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Se le notificará cualquier cambio mediante la publicación de los Términos actualizados en este sitio web. Su uso continuado de la plataforma después de los cambios constituye su aceptación de los Términos modificados."
+          },
+          {
+            "heading": "Ley Aplicable y Jurisdicción",
+            "content": "Estos Términos y Condiciones se rigen por las leyes de la República de Bulgaria. Usted se somete a la jurisdicción exclusiva de los tribunales de la República de Bulgaria para la resolución de cualquier disputa."
+          },
+          {
+            "heading": "Acuerdo Completo",
+            "content": "Estos Términos y Condiciones constituyen el acuerdo completo entre „FreshBalance“ y usted con respecto al uso de este sitio web y reemplazan todos los acuerdos previos o contemporáneos."
+          }
+        ]
+      },
+      {
+        "title": "Política de Privacidad",
+        "beginning": "Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos su información personal cuando visita nuestro sitio web https://freshbalance.onrender.com o utiliza nuestros servicios.",
+        "mainPoints": [
+          {
+            "heading": "Información que Recopilamos",
+            "content": "Podemos recopilar los siguientes tipos de información:",
+            "subPoints": [
+              "Información personal: Nombre, dirección de correo electrónico, número de teléfono, etc.",
+              "Datos de uso: Dirección IP, tipo de navegador, páginas visitadas, etc.",
+              "Cookies: Utilizamos cookies para mejorar su experiencia en nuestro sitio."
+            ]
+          },
+          {
+            "heading": "Cómo Utilizamos su Información",
+            "content": "Utilizamos la información recopilada para los siguientes fines:",
+            "subPoints": [
+              "Para proporcionar y mantener nuestros servicios.",
+              "Para notificarle sobre cambios en nuestros servicios.",
+              "Para permitirle participar en funciones interactivas de nuestros servicios.",
+              "Para brindar soporte al cliente.",
+              "Para recopilar análisis o información valiosa que nos permita mejorar nuestros servicios.",
+              "Para monitorear el uso de nuestros servicios.",
+              "Para detectar, prevenir y resolver problemas técnicos."
+            ]
+          },
+          {
+            "heading": "Seguridad de los Datos",
+            "content": "Valoramos su confianza al proporcionarnos su información personal y nos esforzamos por utilizar medios comercialmente aceptables para protegerla. Sin embargo, ningún método de transmisión por Internet o almacenamiento electrónico es 100% seguro, y no podemos garantizar su seguridad absoluta."
+          },
+          {
+            "heading": "Proveedores de Servicios de Terceros",
+            "content": "Podemos emplear empresas y personas terceras para facilitar nuestros servicios, prestar servicios en nuestro nombre, realizar servicios relacionados con nuestros servicios o ayudarnos a analizar cómo se utilizan nuestros servicios. Estos terceros tienen acceso a su información personal solo para realizar estas tareas en nuestro nombre y están obligados a no divulgarla ni utilizarla para otros fines."
+          },
+          {
+            "heading": "Cambios en la Política de Privacidad",
+            "content": "Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. Le notificaremos cualquier cambio publicando la Política actualizada en este sitio web. Le recomendamos que revise esta Política periódicamente para estar al tanto de las actualizaciones."
+          }
+        ]
+      }
+    ]
   }
 }

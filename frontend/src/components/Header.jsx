@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import logo from "../../public/images/freshBalance.png";
 import "./Header.css";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
@@ -15,26 +15,25 @@ export default function Header() {
   const location = useLocation();
 
   const { t } = useTranslation();
-  const headerData = t("header.headerData",{returnObject:true});
+  const headerData = t("header.headerData", { returnObject: true });
 
-{/*--------------------------------SEARCH-BAR-----------------------------------*/}
+  {
+    /*--------------------------------SEARCH-BAR-----------------------------------*/
+  }
   const handleFavCartLogClick = (item) => {
-    if(location.pathname === item.link)
-    {
+    if (location.pathname === item.link) {
       window.location.reload();
-    }
-    else{
+    } else {
       navigate(item.link);
     }
   };
   const handleLogoClick = () => {
-    if(location.pathname === "/"){
+    if (location.pathname === "/") {
       window.location.reload();
-    }
-    else{
+    } else {
       navigate("/");
     }
-  }
+  };
   const handleSearchBoxClick = () => {
     setIsSearchExpanded(true);
     searchInputRef.current?.focus();
@@ -43,7 +42,7 @@ export default function Header() {
     e.stopPropagation();
     setSearchQuery(item);
     setIsSearchExpanded(false);
-    navigate(`/product-page/${item.toLowerCase()}`);
+    navigate(`/product/${item.toLowerCase()}`);
   };
   const handleSearchClose = (e) => {
     if (e) e.stopPropagation();
@@ -61,7 +60,7 @@ export default function Header() {
     } else if (e.key === "Enter") {
       const trimmedQuery = searchQuery.trim().toLowerCase();
       if (trimmedQuery !== "") {
-        navigate(`/product-page/${trimmedQuery}`);
+        navigate(`/product/${trimmedQuery}`);
         handleSearchClose();
       }
     }
@@ -92,57 +91,93 @@ export default function Header() {
       ]
     : headerData.recommendations;
 
-{/*------------------------------------------------MAIN--------------------------------------------------*/}
+  {
+    /*------------------------------------------------MAIN--------------------------------------------------*/
+  }
   return (
     <div className="header">
-    <div className="headerBox">
-      <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
-      <div className="headerLogoBox">
-        <Link to="/" onClick={handleLogoClick}>
-          <img className="headerLogo" src={logo} alt="freshBalance" />
-        </Link>
-        <div className="headerLanguageSwitcherBox1">
-        <LanguageSwitcher/>
+      <div className="headerBox">
+        <div
+          className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}
+        />
+        <div className="headerLogoBox">
+          <Link to="/" onClick={handleLogoClick}>
+            <img className="headerLogo" src={logo} alt="freshBalance" />
+          </Link>
+          <div className="headerLanguageSwitcherBox1">
+            <LanguageSwitcher />
+          </div>
         </div>
-      </div>
-      {/*--------------------------------SEARCH-BAR-----------------------------------*/}
-      <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
-        <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
-          <i className="fa-solid fa-magnifying-glass" onClick={() => {const trimmedQuery = searchQuery.trim().toLowerCase();
-            if (trimmedQuery !== "") {
-              navigate(`/product-page/${trimmedQuery}`);
-            }}}>
-          </i>
-          <input ref={searchInputRef} className="headerSearchBar" placeholder={t("header.searchPlaceholder")} value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
-          <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
+        {/*--------------------------------SEARCH-BAR-----------------------------------*/}
+        <div
+          className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`}
+          onClick={handleSearchBoxClick}
+          ref={searchBoxRef}
+        >
+          <div
+            className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`}
+            onClick={handleSearchBoxClick}
+            ref={searchBoxRef}
+          >
+            <i
+              className="fa-solid fa-magnifying-glass"
+              onClick={() => {
+                const trimmedQuery = searchQuery.trim().toLowerCase();
+                if (trimmedQuery !== "") {
+                  navigate(`/product/${trimmedQuery}`);
+                }
+              }}
+            ></i>
+            <input
+              ref={searchInputRef}
+              className="headerSearchBar"
+              placeholder={t("header.searchPlaceholder")}
+              value={searchQuery}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+            />
+            <i
+              className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`}
+              onClick={handleClearSearch}
+            />
+          </div>
+          {/*--------------------------------DROP-DOWN-----------------------------------*/}
+          <ul className={`headerSearchDropdown`}>
+            {filteredRecommendations.map((item, index) => (
+              <li
+                className="headerRecommendations"
+                key={index}
+                onClick={(e) => handleRecommendationClick(item, e)}
+              >
+                <p>{item}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-        {/*--------------------------------DROP-DOWN-----------------------------------*/}
-        <ul className={`headerSearchDropdown`}>
-          {filteredRecommendations.map((item, index) => (
-            <li className="headerRecommendations" key={index} onClick={(e) => handleRecommendationClick(item, e)}>
-              <p>{item}</p>
+        {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
+        <ul className="headerFavCartLog">
+          {headerData.nav.map((item, index) => (
+            <li
+              key={index}
+              className={`headerNavElement ${
+                location.pathname === item.link ? "active" : ""
+              }`}
+              onClick={() => handleFavCartLogClick(item)}
+            >
+              <Link className="" to={item.link}>
+                {headerData.icons[item.name] && (
+                  <i className={headerData.icons[item.name]}></i>
+                )}
+                <p>{item.name}</p>
+              </Link>
             </li>
           ))}
         </ul>
+        <div className="headerLanguageSwitcherBox2">
+          <LanguageSwitcher />
+        </div>
       </div>
-      {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
-      <ul className="headerFavCartLog">
-        {headerData.nav.map((item, index) => (
-          <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
-            <Link className="" to={item.link}>
-              {headerData.icons[item.name] && (
-                <i className={headerData.icons[item.name]}></i>
-              )}
-              <p>{item.name}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div className="headerLanguageSwitcherBox2">
-        <LanguageSwitcher/>
-      </div>
-    </div>
-    <hr></hr>
+      <hr></hr>
     </div>
   );
 }

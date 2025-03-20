@@ -47,7 +47,7 @@
 .footerMiddleColumn{
   display:flex;
   flex-direction:row;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
   gap:50px;
 }
@@ -103,6 +103,8 @@
   max-width: 100%;
   display:flex;
   flex-direction:column;
+  justify-content:center;
+  align-items:center;
   gap:20px;
 }
 .footerContactsBox {
@@ -129,6 +131,7 @@
 .footerSocialMediaBox {
   display: flex;
   flex-direction: column;
+  width:100%;
 }
 .footerSocialMedia {
   display: flex;
