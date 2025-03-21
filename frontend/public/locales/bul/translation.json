@@ -538,7 +538,7 @@
         "Препоръка4"
       ],
       "nav": [
-        { "name": "Вход", "link": "/login" },
+        { "name": "Вход", "link": "/email-check" },
         { "name": "Любими", "link": "/favourites" },
         { "name": "Количка", "link": "/cart" }
       ],

@@ -541,7 +541,7 @@
         "Recomendación4"
       ],
       "nav": [
-        { "name": "Ingresar", "link": "/login" },
+        { "name": "Ingresar", "link": "/email-check" },
         { "name": "Favoritos", "link": "/favourites" },
         { "name": "Carrito", "link": "/cart" }
       ],

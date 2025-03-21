@@ -8,9 +8,7 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 const AboutUs = React.lazy(() => import("./pages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/communities.jsx"));
 const FrontPage = React.lazy(() => import("./pages/frontPage.jsx"));
-const LoginRegistration = React.lazy(() =>
-  import("./pages/loginRegistration.jsx")
-);
+const LoginRegistration = React.lazy(() =>import("./pages/loginRegistration.jsx"));
 const Profile = React.lazy(() => import("./pages/profile.jsx"));
 const Services = React.lazy(() => import("./pages/services.jsx"));
 const Subscriptions = React.lazy(() => import("./pages/subscriptions.jsx"));
@@ -42,7 +40,7 @@ return (
           <Route path="/legal-policies" element={<LegalPage />} />
         </Route>
         <Route path="/communities" element={<Communities />} />
-        <Route path="/login" element={<LoginRegistration />} />
+        <Route path="/email-check/*" element={<LoginRegistration />} />
       </Routes>
       {/*</Suspense>*/}
     </BrowserRouter>

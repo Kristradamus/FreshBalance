@@ -533,7 +533,7 @@
         "Empfehlung4"
       ],
       "nav": [
-        { "name": "Anmelden", "link": "/login" },
+        { "name": "Anmelden", "link": "/email-check" },
         { "name": "Favoriten", "link": "/favourites" },
         { "name": "Warenkorb", "link": "/cart" }
       ],

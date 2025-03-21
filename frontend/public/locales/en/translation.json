@@ -550,7 +550,7 @@
         "Recommendation4"
       ],
       "nav": [
-        { "name": "Login", "link": "/login" },
+        { "name": "Login", "link": "/email-check" },
         { "name": "Favourites", "link": "/favourites" },
         { "name": "Cart", "link": "/cart" }
       ],
