@@ -1,10 +1,10 @@
 .communities {
   position: fixed;
-  background-color: var(--mainBackground);
+  text-align:center;
   height: 100%;
   width: 100%;
   z-index: 1;
-  text-align:center;
+  background-color: var(--mainBackground);
 }
 .communities h1{
   color:var(--white);
@@ -16,15 +16,12 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .communitiesBox {
   display: flex;
   flex-direction: column;
-  background-color: var(--green);
-  border: 3px solid var(--green);
-  border-radius: var(--normalRadius);
   overflow: hidden;
   position: relative;
   justify-content: center;
@@ -32,12 +29,15 @@
   top:-100px;
   width:100%;
   max-width: 400px;
+  background-color: var(--green);
+  border: 3px solid var(--green);
+  border-radius: var(--normalRadius);
 }
 .communitiesTop {
   background-color: transparent;
   padding: 5px 0px;
-  color: var(--white);
   margin: 0px;
+  color: var(--white);
 }
 .communitiesBottom {
   display: flex;
@@ -45,30 +45,32 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 20px;
   background-color: var(--white);
   color: var(--green);
   border-radius: var(--normalRadius);
   font-size: calc(var(--textFont) + 5px);
-  padding: 20px;
 }
 .communitiesGoToSub {
-  background-color: var(--green);
-  border-radius: var(--normalRadius);
   border: none;
-  color: var(--white);
-  width: 80%;
-  font-size: calc(var(--textFont) + 2.5px);
   cursor: pointer;
+  width: 80%;
   padding: 10px 20px;
   margin: 10px 0px;
   margin-top: 15px;
+  background-color: var(--green);
+  border-radius: var(--normalRadius);
+  color: var(--white);
   transition: var(--transition);
   box-shadow: var(--boxShadowLight);
+  font-size: calc(var(--textFont) + 2.5px);
 }
 .communitiesGoToSub:hover {
-  background-color: var(--lightGreen);
   box-shadow: none;
+  background-color: var(--lightGreen);
 }
+
+/*------------------------------------------RESPONSIVE----------------------------------------*/
 @media(max-width:780px){
   .communitiesBox{
     max-width:300px;

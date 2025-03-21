@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "./Footer.css";
 
 export default function Footer() {
- const navigate = useNavigate();
+const navigate = useNavigate();
+const { t } = useTranslation();
+const footerData = t("footer.footerData", {returnObject:true});
 
- const { t } = useTranslation();
- const footerData = t("footer.footerData", {returnObject:true});
-
-{/*-----------------------------------------------JS--------------------------------------------*/}
- const handleLogoClick = () => {
+{/*----------------------------------------------SMALL-JS--------------------------------------------*/}
+const handleLogoClick = () => {
   if(location.pathname === "/"){
     window.location.reload();
   }
@@ -17,7 +16,8 @@ export default function Footer() {
     navigate("/");
   }
 }
- const handleFooterNavClick = (link) => {
+
+const handleFooterNavClick = (link) => {
   if(location.pathname === link){
     window.location.reload();
   }
@@ -26,8 +26,9 @@ export default function Footer() {
   }
  };
 
- return (
+return (
   <div className="footer">
+
     {/*-----------------------------------------------FOOTER-TOP--------------------------------------------*/}
     <div className="footerTop">
       <div className="footerFirstColumn">
@@ -82,6 +83,7 @@ export default function Footer() {
         </div>
       </div>
     </div>
+
     {/*-----------------------------------------------FOOTER-BOTTOM--------------------------------------------*/}
     <hr></hr>
     <div className="footerBottom">
@@ -89,5 +91,4 @@ export default function Footer() {
       <p className="footerCreator">{t("footer.createdBy")}&nbsp;<a href="https://github.com/Kristradamus"><strong>{t("footer.creator")}</strong></a></p>
     </div>
   </div>
-  );
-}
+);};

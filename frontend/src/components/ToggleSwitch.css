@@ -1,24 +1,24 @@
 .toggle-container {
-  width: 56px;
-  height: 28px;
   display: flex;
   align-items: center;
-  border-radius: var(--normalRadius);
-  padding: 2px;
   cursor: pointer;
+  border-radius: var(--normalRadius);
+  width: 56px;
+  height: 28px;
+  padding: 2px;
   transition: background 0.3s ease-in-out;
 }
 .toggle-container.on {
-  background-color: #22c55e;
+  background-color: var(--green);
 }
 .toggle-container.off {
-  background-color: #9ca3af;
+  background-color: var(--mainBackground);
 }
 .toggle-circle {
+  background: var(--white);
+  border-radius: var(--cirlce);
   width: 24px;
   height: 24px;
-  background: white;
-  border-radius: var(--cirlce);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
 }

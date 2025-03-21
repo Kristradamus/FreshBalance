@@ -7,16 +7,16 @@
 .languageSwitcherToggle {
   display: flex;
   flex-direction: row;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  padding: 10px 20px;
   background-color: var(--green);
   color: var(--white);
-  border: none;
   box-shadow: var(--boxShadow);
   border-radius: var(--smallRadius);
-  padding: 10px 20px;
   font-size: var(--textFont);
-  cursor: pointer;
   transition: var(--transition);
-  align-items: center;
   gap: var(--iconDistance);
 }
 .languageSwitcherArrow {
@@ -33,33 +33,34 @@
   background-color:var(--lightGreen);
   box-shadow: var(--boxShadowLight);
 }
+
 /*-------------------------------------------DROP-DOWN------------------------------------------------*/
 .languageSwitcherDropDown {
   position: absolute;
+  list-style: none;
+  visibility: hidden;
   top: 100%;
   left: 0;
-  background-color: var(--white);
-  border-radius: var(--smallRadius);
-  box-shadow: var(--boxShadow);
-  list-style: none;
   padding: 10px 0;
   margin: 5px 0 0;
   width: 100%;
   z-index: 1000;
   opacity: 0;
-  visibility: hidden;
+  background-color: var(--white);
+  border-radius: var(--smallRadius);
+  box-shadow: var(--boxShadow);
   transform: translateY(-10px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
 }
 .languageSwitcherDropDown.open {
-  opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  opacity: 1;
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
 }
 .languageSwitcherDropDown li {
-  padding: 10px 20px;
   cursor: pointer;
+  padding: 10px 20px;
   color: var(--mainTextColor);
   transition: background-color var(--transition);
 }

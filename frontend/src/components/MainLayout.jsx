@@ -5,14 +5,14 @@ import "./MainLayout.css";
 import { Outlet } from "react-router-dom";
 
 export default function MainLayout() {
-  return (
-    <div className="layout">
-      <Header />
-       <Navigation/>
-      <div className="mainLayout">
-        <Outlet />
-      </div>
-      <Footer />
+
+return (
+  <div className="layout">
+    <Header />
+    <Navigation/>
+    <div className="mainLayout">
+      <Outlet />
     </div>
-  );
-}
+    <Footer />
+  </div>
+);};

@@ -1,20 +1,18 @@
-/*----------------------------------FRONT-PAGE-----------------------------------*/
+/*------------------------------------------FRONT-PAGE-----------------------------------------------*/
 .frontPage{
    display:flex;
    flex-direction:column;
 }
-img {
-   width:100px;
-}
-/*-------------------------------HERO-SECTION---------------------------------*/
+
+/*------------------------------------------HERO-SECTION---------------------------------------------*/
 .fPHeroSection{
    background-image: url(../../public/images/HeroSection1.jpeg);
    background-repeat:no-repeat;
    background-position:center;
    background-size:cover;
-   width:100%;
    display:flex;
    flex-direction:column;
+   width:100%;
    padding:17.5vw 10vw;
    padding-right:20vw;
 }
@@ -22,20 +20,20 @@ img {
    color:var(--green);
 }
 .fPHeroSectionTitle2{
-   color:var(--mainTextColor);
    margin-bottom:10px;
+   color:var(--mainTextColor);
 }
 .fPHeroSectionLearnMore{
-   max-width:200px;
    border:none;
+   cursor:pointer;
+   max-width:200px;
+   margin:10px 0px;
+   padding:15px 15px;
    background-color:var(--green);
    color:var(--white);
    border-radius:var(--normalRadius);
-   margin:10px 0px;
-   padding:15px 15px;
    transition:var(--transition);
    font-size:calc(var(--textFont) + 2px);
-   cursor:pointer;
 }
 .fPHeroSectionLearnMore i{
    margin-left:var(--iconDistance);
@@ -43,33 +41,34 @@ img {
 .fPHeroSectionLearnMore:hover{
    background-color:var(--lightGreen);
 }
-
-/*--------------------------HERO-SECTION-ANIMATIONS---------------------------*/
+ 
+/*-----------------HERO-SECTION-ANIMATIONS-----------------*/
 .fPHeroSectionTitle1.hidden{
    opacity: 0;
    transition:0.4s ease-in-out;
    transform: translateX(-40px);
- }
- .fPHeroSectionTitle2.hidden{
+}
+.fPHeroSectionTitle2.hidden{
    opacity: 0;
    transition:0.4s ease-in-out;
    transform: translateX(40px);
- }
- .fPHeroSectionTitle1.show,
- .fPHeroSectionTitle2.show{
+}
+.fPHeroSectionTitle1.show,
+.fPHeroSectionTitle2.show{
    opacity:1;
    transform:translateX(0px);
- }
- .fPHeroSectionSubTitle.hidden,
- .fPHeroSectionLearnMore.hidden{
+}
+.fPHeroSectionSubTitle.hidden,
+.fPHeroSectionLearnMore.hidden{
    opacity:0;
    transition:0.4s ease-in-out;
- }
- .fPHeroSectionSubTitle.show,
- .fPHeroSectionLearnMore.show{
+}
+.fPHeroSectionSubTitle.show,
+.fPHeroSectionLearnMore.show{
    opacity:1;
- }
-/*-------------------------------TOP-PRODUCTS---------------------------------*/
+}
+
+/*-------------------------------------------TOP-PRODUCTS---------------------------------------------*/
 .fPTopProducts{
    display:flex;
    flex-direction:column;
@@ -79,126 +78,143 @@ img {
    padding:3vw 5vw;
 }
 .fPTopProductsTitleBox {
-   border-radius: var(--normalRadius);
+   text-align: center;
    margin:0px 20px;
+   padding-bottom:10px;
+   border-radius: var(--normalRadius);
 }
 .fPTopProductsTitle1{
+   position: relative;
    color:var(--green);
 }
-.fPTopProductsTitleBox {
-   padding-bottom:10px;
-   text-align: center;
-}
-.fPTopProductsTitle1 {
-   color: var(--green);
-   position: relative;
- }
- .fPTopProductsTitle1 {
-   color: var(--green);
-   position: relative;
- }
- .fPTopProductsTitle1::after {
-   content: "";
+.fPTopProductsTitle1::after {
    display: block;
-   height: 3px;
-   border-radius: var(--normalRadius);
-   background-color: var(--mainTextColor);
-   width: 0;
    position: absolute;
+   content: "";
+   height: 3px;
+   width: 0;
    left: 0;
    margin-top: 5px;
+   border-radius: var(--normalRadius);
+   background-color: var(--mainTextColor);
    transform: translateY(-50%);
- }
- .fPTopProductsTitle1.hidden::after {
+}
+
+/*--------------TOP-PRODUCTS-ANIMATIONS----------------*/
+.fPTopProductsTitle1.hidden::after {
    width: 0vw;
    transition: 0.5s ease-out;
- }
- .fPTopProductsTitle1.show::after{
+}
+.fPTopProductsTitle1.show::after{
    width: 13vw;
- }
-/*--------------------------BENEFITS----------------------------*/
+}
+
+/*---------------------BENEFITS-------------------------*/
 .fPTopProductsBenefitsBox {
    display: flex;
    flex-direction: row;
-   gap: 2vw;
    justify-content: center;
+   align-items: stretch;
+   gap: 2vw;
    background-color: var(--lightBackground);
    border-radius: var(--smallRadius);
-   align-items: stretch;
- }
- .fPTopProductsBenefit {
+}
+.fPTopProductsBenefit {
    display: flex;
    flex-direction: row;
+   justify-content:flex-start;
+   align-items: center;
    border: 3px solid var(--green);
    border-radius: var(--smallRadius);
    padding: 8px;
-   justify-content:flex-start;
-   align-items: center;
    gap: 10px;
+   flex-grow: 1;
+   min-width:250px;
    color: var(--green);
    background-color: var(--mainBackground);
    transition: var(--transition);
    box-shadow: var(--boxShadowBottom);
-   flex-grow: 1;
-   min-width:250px;
- }
- .fPTopProductsBenefit:hover {
-   background-color:var(--mainBackground);
-   box-shadow: var(--boxShadowLight);
-   border:3px solid var(--lightGreen);
- }
- .fPTopProductsBenefit:hover .fPTopProductsIconBox{
-   background-color:var(--lightGreen);
-   border:2px solid var(--lightGreen);
- }
- .fPTopProductsIconBox {
-   width: 50px;
-   height: 50px;
-   border: 3px solid var(--green);
-   border-radius: var(--smallRadius);
-   padding: 20px;
+}
+.fPTopProductsIconBox {
    display: flex;
    justify-content: center;
    align-items: center;
+   width: 50px;
+   height: 50px;
+   padding: 20px;
+   border: 3px solid var(--green);
+   border-radius: var(--smallRadius);
    background-color: var(--green);
    color: var(--white);
    transition:var(--transition);
- }
- .fPTopProductsIconBox i{
+}
+.fPTopProductsIconBox i{
    font-size:var(--iconFont);
- }
- .fPTopProductsBenefitText {
-   color: var(--mainTextColor);
+}
+.fPTopProductsBenefitText {
    font-weight: bold;
+   color: var(--mainTextColor);
    font-size:calc(var(--textFont) + 2px);
- }
- @keyframes slideInLeft {
+}
+
+/*-----------------BENEFITS-ANIMATIONS-----------------*/
+.fPTopProductsBenefit:hover {
+   background-color:var(--mainBackground);
+   box-shadow: var(--boxShadowLight);
+   border:3px solid var(--lightGreen);
+}
+.fPTopProductsBenefit:hover .fPTopProductsIconBox{
+   background-color:var(--lightGreen);
+   border:2px solid var(--lightGreen);
+}
+@keyframes slideInLeft {
    from {
-     transform: translateY(50px);
-     opacity: 0;
+      transform: translateY(50px);
+      opacity: 0;
    }
    to {
-     transform: translateY(0);
-     opacity: 1;
+      transform: translateY(0);
+      opacity: 1;
    }
- }
- .fPTopProductsBenefit {
+}
+.fPTopProductsBenefit {
    opacity: 0;
    transform: translateY(50px);
- }
- .fPTopProductsBenefit.show {
+}
+.fPTopProductsBenefit.show {
    animation: slideInLeft 0.5s ease-out forwards;
- }
- /*--------------------PRODUCTS-----------------------*/
- 
-/*-------------------------------WHO-WE-ARE---------------------------------*/
+}
+
+/*--------------------PRODUCTS-----------------------*/
+.fPTopProductsPart1{
+   display:flex;
+   flex-direction:row;
+}
+.fPTopProductsPart1Column1{
+   display:flex;
+   flex-direction:column;
+}
+.fPTopProductsPart1Column2{
+   display:flex;
+   flex-direction:column;
+}
+.fPTopProductsPart2{
+   display:flex;
+   flex-direction:column;
+}
+.fPTopProductsPart2Row1{
+   display:flex;
+   flex-direction:row;
+}
+
+/*-------------------------------------------WHO-WE-ARE---------------------------------------------*/
 .fPWhoWeAre{
    display:flex;
    flex-direction:column;
    align-items:center;
-   background-color:var(--frontPageBackground);
    padding-top:70px;
    gap:20px;
+   background-color:var(--frontPageBackground);
 }
 .fPWhoWeAreBox{
    display:flex;
@@ -211,103 +227,150 @@ img {
    justify-content:center;
    align-items:center;
    gap: 30px;
-   border-radius:var(--normalRadius);
    width: 100%;
    max-width: 1200px;
    padding: 20px;
+   border-radius:var(--normalRadius);
 }
 .fPWhoWeAreImage1,
 .fPWhoWeAreImage3{
+   width:600px;
    border:2px solid var(--green);
    border-radius:var(--normalRadius);
-   width:600px;
 }
-.fPWhoWeAreImage3.hidden{
-   transition: transform 0.5s ease, opacity 0.3s ease;
-   opacity: 0;
-   transform: rotate(-10deg);
-}
-.fPWhoWeAreImage3.show{
-   opacity: 1;
-   transform: rotate(3deg);
-}
-.fPWhoWeAreImage1.hidden{
-   transition: transform 0.5s ease, opacity 0.3s ease;
-   opacity: 0;
-   transform: rotate(10deg);
-}
-.fPWhoWeAreImage1.show{
-   opacity: 1;
-   transform: rotate(-3deg);
+.fPWhoWeAreTitle{
+   position:relative;
+   color:var(--green);
 }
 .fPWhoWeAreTextBox{
    display:flex;
    flex-direction:column;
    gap:20px;
 }
-.fPWhoWeAreTitle{
-   color:var(--green);
-   position:relative;
+.fPWhoWeAreText{
+   font-weight: bold;
+   color: var(--mainTextColor);
+   font-size:calc(var(--textFont) + 2px);
+}
+
+/*-------------WHO-WE-ARE-ANIMATIONS-------------*/
+.fPWhoWeAreImage3.hidden{
+   opacity: 0;
+   transform: rotate(-10deg);
+   transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.fPWhoWeAreImage3.show{
+   opacity: 1;
+   transform: rotate(3deg);
+}
+.fPWhoWeAreImage1.hidden{
+   opacity: 0;
+   transform: rotate(10deg);
+   transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.fPWhoWeAreImage1.show{
+   opacity: 1;
+   transform: rotate(-3deg);
 }
 .fPWhoWeAreTitle::after{
    content: "";
+   position: absolute;
    display: block;
    height: 3px;
-   border-radius: var(--normalRadius);
-   background-color: var(--mainTextColor);
    width: 10vw;
-   position: absolute;
    left: 0;
    margin-top:5px;
+   border-radius: var(--normalRadius);
+   background-color: var(--mainTextColor);
    transform: translateY(-50%);
 }
- .fPWhoWeAreTitle.hidden::after {
+.fPWhoWeAreTitle.hidden::after {
    width: 0vw;
    transition: 0.5s ease-out;
- }
- .fPWhoWeAreTitle.show::after{
-   width: 13vw;
- }
- .fPWhoWeAreText{
-   color: var(--mainTextColor);
-   font-weight: bold;
-   font-size:calc(var(--textFont) + 2px);
 }
-/*-------------------------------WHO-WE-WORK-WITH--------------------------------*/
+.fPWhoWeAreTitle.show::after{
+   width: 13vw;
+}
+
+/*------------------------------------------WHO-WE-WORK-WITH-----------------------------------------*/
 .fPWhoWeWorkWith{
-   background-color:var(--frontPageBackground);
    margin-top:0px;
+   padding:0px 0px;
+   background-color:var(--frontPageBackground);
 }
 .fPWhoWeWorkWithMainBox{
-   background-color:var(--mainBackground);
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: cover;
-   width: 100%;
    display: flex;
    flex-direction: column;
    align-items:center;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   background-color:var(--green);
+   width: 100%;
    padding: 30vw 0vw;
    margin-bottom:30px;
    clip-path: polygon(
-       0% 20%,
-       100% 10%,
-       100% 90%,
-       0% 80%
+      0% 20%,
+      100% 10%,
+      100% 90%,
+      0% 80%
    );
 }
 .fPWhoWeWorkWithTitle1{
-   color:var(--mainBackground);
+   display:flex;
+   justify-content:flex-start;
+   color:var(--white);
 }
-.fPWhoWeWorkWithImageBox img{
-   background-color:transparent;
+.fPWhoWeWorkWithImagesBox{
+   display:flex;
+   flex-direction:row;
+   flex-wrap:wrap;
+   justify-content:center;
+   gap:10px;
+}
+.fPWhoWeWorkWithImageBox{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   width:100px;
+   height:100px;
+   opacity:0;
+   background-color:var(--white);
+   border-radius:var(--normalRadius);
+   box-shadow:var(--boxShadow);
+   transition:var(--transition);
+}
+.fPWhoWeWorkWithCollaborator{
+   width:100px;
 }
 
-/*-------------------------------REVIEWS--------------------------------*/
+/*------------WHO-WE-WORK-WITH-ANIMATIONS-------------*/
+.fPWhoWeWorkWithImageBox:hover{
+   box-shadow:var(--boxShadowLight);
+}
+@keyframes collaboratorsComeUp{
+   from{
+      opacity:0;
+      transform:translateY((30px));
+   }
+   to{
+      opacity:1;
+      transform:translateY((0px));
+   }
+}
+.fPWhoWeWorkWithImageBox.hidden{
+   opacity:0;
+   transform:translateY((30px))
+}
+.fPWhoWeWorkWithImageBox.show{
+   animation: slideInLeft 0.5s ease-out forwards;
+}
+ 
+/*---------------------------------------REVIEWS------------------------------------------*/
 .fPReviews{
-   background-color:var(--frontPageBackground);
    display:flex;
    flex-direction:column;
+   background-color:var(--frontPageBackground);
 }
 .fPReviewsTitleBox{
    display:flex;
@@ -315,25 +378,27 @@ img {
    align-items:center;
    justify-content:center;
 }
-
-/*-------------------------------RESPONSIVE---------------------------------*/
+ 
+ /*----------------------------------------RESPONSIVE---------------------------------------*/
 @media (max-width: 1200px) {
+
+/*--------------HERO-SECTION----------------*/
    .fPHeroSection {
-       padding: 15vw 5vw;
-       padding-right: 40vw;
+      padding: 15vw 5vw;
+      padding-right: 40vw;
    }
    .fPHeroSectionTitle1,
    .fPHeroSectionTitle2{
-       font-size: calc(var(--textFont) + 15px);
+      font-size: calc(var(--textFont) + 15px);
    }
    .fPHeroSectionSubTitle {
-       font-size: var(--smallTextFont);
+      font-size: var(--smallTextFont);
    }
    .fPHeroSectionLearnMore{
-       max-width:190px;
-       padding:15px 10px;
+      max-width:190px;
+      padding:15px 10px;
    }
-
+ 
 /*--------------TOP-PRODUCTS----------------*/
    .fPTopProductsBenefitsBox{
       flex-direction:column;
@@ -343,66 +408,66 @@ img {
    }
    .fPTopProductsTitle1.show::after{
       width: 26vw;
-    }
+   }
    .fPTopProductsTitle1{
       font-size: calc(var(--textFont) + 10px);
    }
    .fPTopProductsTitleBox {
       padding-top:10px;
    }
-
+ 
 /*---------------WHO-WE-ARE-----------------*/
    .fPWhoWeAre{
       padding-top:60px;
    }
-  .fPWhoWeAreRow{
-   flex-direction:column;
-   max-width:780px;
-  }
-  .fPWhoWeAreTextBox{
-   justify-content:center;
-   align-items:center;
-  }
-  .fPWhoWeAreTitle{
-   font-size: calc(var(--textFont) + 10px);
-  }
-  .fPWhoWeAreText{
-   text-align:center;
-  }
-  .fPWhoWeAreImage1,
-  .fPWhoWeAreImage3{
-   width:400px;
-}
-  .fPWhoWeAreImage3 {
-   order: 1;
- }
- .fPWhoWeAreTextBox {
-   order: 2;
- }
- .fPWhoWeAreTitle.show::after{
-   width: 28vw;
- }
+   .fPWhoWeAreRow{
+      flex-direction:column;
+      max-width:780px;
+   }
+   .fPWhoWeAreTitle{
+      font-size: calc(var(--textFont) + 10px);
+   }
+   .fPWhoWeAreText{
+      text-align:center;
+   }
+   .fPWhoWeAreImage1,
+   .fPWhoWeAreImage3{
+      width:400px;
+   }
+   .fPWhoWeAreTitle.show::after{
+      width: 28vw;
+   }
+   .fPWhoWeAreImage3 {
+      order: 1;
+   }
+   .fPWhoWeAreTextBox{
+      justify-content:center;
+      align-items:center;
+      order: 2;
+   }
 }
 @media (max-width: 780px) {
+
+/*--------------HERO-SECTION----------------*/
    .fPHeroSection {
-       padding: 15vw 5vw;
-       padding-right: 25vw;
+      padding: 15vw 5vw;
+      padding-right: 25vw;
    }
    .fPHeroSectionTitle1,
    .fPHeroSectionTitle2{
-       font-size: calc(var(--textFont) + 10px);
+      font-size: calc(var(--textFont) + 10px);
    }
    .fPHeroSectionSubTitle {
-       font-size: var(--smallTextFont);
+      font-size: var(--smallTextFont);
    }
    .fPHeroSectionLearnMore{
-       max-width:180px;
-       padding:15px 7.5px;
+      max-width:180px;
+      padding:15px 7.5px;
    }
-
+ 
 /*--------------TOP-PRODUCTS----------------*/
    .fPTopProductsBenefitText {
-   font-size:var(--smallTextFont);
+      font-size:var(--smallTextFont);
    }
    .fPTopProductsBenefit{
       padding:5px;
@@ -421,7 +486,7 @@ img {
    .fPTopProductsTitle1{
       font-size: calc(var(--textFont) + 5px);
    }
-
+ 
 /*-------------------WHO-WE-ARE-----------------------*/
    .fPWhoWeAre{
       padding-top:50px;
@@ -441,14 +506,15 @@ img {
    }
 }
 @media (max-width: 600px) {
+/*--------------HERO-SECTION----------------*/
    .fPHeroSectionTitle1,
    .fPHeroSectionTitle2{
-       font-size: calc(var(--textFont) + 5px);
+      font-size: calc(var(--textFont) + 5px);
    }
    .fPHeroSectionLearnMore{
-       padding:12.5px 0px;
+      padding:12.5px 0px;
    }
-
+ 
 /*--------------TOP-PRODUCTS----------------*/
    .fPTopProductsTitle1{
       font-size:var(--smallTextFont);
@@ -456,7 +522,7 @@ img {
    .fPTopProductsTitle1.show::after{
       width: 40vw;
    }
-
+ 
 /*---------------------WHO-WE-ARE---------------------------*/
    .fPWhoWeAre{
       padding-top:40px;

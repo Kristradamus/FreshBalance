@@ -1,32 +1,36 @@
 .support {
-  max-width: 80vw;
   margin: 0 auto;
   padding: 20px;
+  max-width: 80vw;
 }
 .supportContent {
   display: flex;
   flex-direction: row;
 }
-/*--------------------------SEARCH-BAR-----------------------------------*/
+
+/*--------------------------------SEARCH-BAR---------------------------------------*/
 .supportSearchBox {
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   overflow: hidden;
-  width: 100%;
+  cursor: text;
   transition: var(--transition);
   border-radius: var(--smallRadius);
   background: var(--white);
-  border: 1px solid var(--secondTextColor);
   box-shadow: var(--boxShadow);
-  cursor: text;
+  border: 1px solid var(--secondTextColor);
+  width: 100%;
   margin-bottom: 20px;
   height: 40px;
 }
+.supportSearchBox.clicked {
+  border: 1px solid var(--green);
+}
 .supportSearchBox i {
-  color: var(--green);
   cursor: pointer;
+  color: var(--green);
   transition: var(--transition);
   padding: 15px 15px;
 }
@@ -48,17 +52,15 @@
 .headerSearchBar::placeholder {
   color: var(--mainTextColor);
 }
-.supportSearchBox.clicked {
-  border: 1px solid var(--green);
-}
 .supportInput {
-  width: 100%;
-  padding: 10px;
-  font-size: var(--textFont);
   animation: none;
   outline: none;
   border: none;
+  width: 100%;
+  padding: 10px;
+  font-size: var(--textFont);
 }
+
 /*------------------------------------------SIDE-BAR------------------------------------------*/
 .supportSideBarBox {
   background-color: var(--white);
@@ -88,13 +90,13 @@
   cursor: pointer;
 }
 .supportSideElement a {
+  display: inline-block;
   position: relative;
   text-decoration: none;
   color: var(--secondTextColor);
-  padding: 5px 0px;
   transition: var(--transition);
-  display: inline-block;
   font-size:calc(var(--textFont) + 1px);
+  padding: 5px 0px;
 }
 .supportSideElement a::after {
   content: "";
@@ -114,6 +116,7 @@
 .supportSideElement:hover a {
   color: var(--green);
 }
+
 /*-------------------------------------SUPPORT-MAIN-----------------------------------*/
 .supportMain {
   background-color: var(--white);
@@ -130,12 +133,12 @@
   color: var(--secondTextColor);
 }
 .supportMain button {
-  border-radius: var(--smallRadius);
-  padding: 10px 20px;
-  background-color: var(--green);
-  color: var(--white);
   border: none;
   cursor: pointer;
+  padding: 10px 20px;
+  border-radius: var(--smallRadius);
+  background-color: var(--green);
+  color: var(--white);
   transition: var(--transition);
 }
 .supportMain button:hover {
@@ -156,17 +159,17 @@
 }
 .supportContactForm label {
   display: block;
+  font-weight: bold;
   margin-bottom: 5px;
   font-size: var(--textFont);
-  font-weight: bold;
 }
 .supportContactForm input,
 .supportContactForm textarea {
   width: 100%;
   padding: 10px;
-  color: var(--mainTextColor);
   margin-bottom: 15px;
   border: 1px solid var(--secondTextColor);
+  color: var(--mainTextColor);
   border-radius: var(--smallRadius);
   transition: var(--transition);
   outline-color: var(--green);
@@ -176,6 +179,7 @@
 .supportContactForm textarea:valid {
   border: 1px solid var(--green);
 }
+
 /*----------------------------------------RESPONSIVE----------------------------------------------------*/
 @media (max-width: 900px) {
   .supportContent {

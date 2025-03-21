@@ -6,6 +6,8 @@ const { t } = useTranslation();
 
 return (
   <div className="singleProductPage">
-    <div>{t("")}</div>
+    <div>
+      {t("")}
+    </div>
   </div>
 )};

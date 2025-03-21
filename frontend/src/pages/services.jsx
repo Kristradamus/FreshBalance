@@ -8,12 +8,14 @@ const servicesData = t("services.servicesData", {returnObject:true});
   
 return (
   <div className="services">
-{/*------------------------------HEADER----------------------------------*/}
+
+    {/*------------------------------HEADER----------------------------------*/}
     <div className="servHeader">
       <h1><strong>{servicesData.paragraphs.services.title}</strong></h1>
       <h3><strong>{servicesData.paragraphs.services.subTitle}</strong></h3>
     </div>
-{/*------------------------------SERVICES----------------------------------*/}
+
+    {/*------------------------------SERVICES----------------------------------*/}
     <div className="servServices">
       {servicesData.services.map((service, index) => (
         <div className="servService" key={index}>
@@ -23,7 +25,8 @@ return (
         </div>
       ))}
     </div>
-{/*------------------------------LOCATION----------------------------------*/}
+
+    {/*------------------------------LOCATION----------------------------------*/}
     <div className="servBox">
     <div className="servHeader">
       <h1><strong>{servicesData.paragraphs.location.title}</strong></h1>
@@ -40,7 +43,8 @@ return (
         <iframe title={servicesData.location.name} src={servicesData.location.mapUrl} className="servMap" allowFullScreen="" loading="lazy"></iframe>
       </div>
     </div>
-{/*------------------------------DELIVERY----------------------------------*/}
+
+    {/*------------------------------DELIVERY----------------------------------*/}
     <div className="servBox">
       <div className="servHeader">
         <h1><strong>{servicesData.paragraphs.delivery.title}</strong></h1>
@@ -60,7 +64,8 @@ return (
         </ul>
       </div>
     </div>
-{/*------------------------------COMMENTS----------------------------------*/}
+    
+    {/*------------------------------COMMENTS----------------------------------*/}
     <div className="servBox">
       <div className="servHeader">
         <h1><strong>{servicesData.paragraphs.comments.title}</strong></h1>

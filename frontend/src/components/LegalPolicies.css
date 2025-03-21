@@ -1,13 +1,13 @@
 .legalPoliciesBox{
-  padding:20px;
-  border-radius:var(--normalRadius);
-  box-shadow:var(--boxShadow);
-  background-color:var(--white);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  border-radius:var(--normalRadius);
+  box-shadow:var(--boxShadow);
+  background-color:var(--white);
   gap:20px;
+  padding:20px;
 }
 .legalPoliciesThemeBox{
   display:flex;
@@ -15,12 +15,12 @@
   gap:10px;
 }
 .legalPoliciesTitleBox{
-  padding:20px;
   display:flex;
-  gap:5px;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  padding:20px;
+  gap:5px;
 }
 .legalPoliciesText{
   text-align:center;
@@ -42,21 +42,21 @@
   gap:5px;
 }
 .legalPoliciesSubPoints {
-
+  position: relative;
   list-style-type: none;
   padding-left:10px;
-  position: relative;
 }
 .legalPoliciesSubPoints::before {
-  content: "•";
   position: absolute;
+  content: "•";
   left: 0;
   color:var(--mainTextColor);
 }
+
 /*----------------------------------------RESPONSIVE-------------------------------------------*/
 @media (max-width: 780px) {
-    .legalPoliciesBox {
-      width: 90%;
-    }
+  .legalPoliciesBox {
+    width: 90%;
+  }
 }
   

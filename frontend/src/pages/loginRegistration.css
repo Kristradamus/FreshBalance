@@ -1,4 +1,4 @@
-/*-----------------------------BASE--------------------------------*/
+/*---------------------------------------BASE--------------------------------------------*/
 .loginRegister {
   display: flex;
   flex-direction: column;
@@ -22,72 +22,72 @@
   color: var(--lightGreen);
 }
 .emailLogRegBox {
-  position:relative;
-  padding: 20px;
-  background-color: var(--white);
-  box-shadow: var(--boxShadow);
-  max-width: 400px;
-  min-width:400px;
-  border-radius: var(--smallRadius);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content:center;
+  position:relative;
+  padding: 20px;
+  max-width: 400px;
+  min-width:400px;
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--smallRadius);
 }
 .logRegGoBackButton {
   position: absolute;
+  border: none;
+  cursor: pointer;
   left: 0px;
   top: 0px;
-  border-radius: var(--smallRadius) 0 var(--smallRadius) 0;
   padding: 7.5px 15px;
+  border-radius: var(--smallRadius) 0 var(--smallRadius) 0;
   background-color: var(--green);
   color: var(--white);
   font-size:var(--smallTextFont);
-  border: none;
-  cursor: pointer;
   transition: var(--transition);
 }
 .logRegGoBackButton:hover {
   background-color: var(--lightGreen);
 }
 .emailLogRegContinue {
+  border: none;
+  cursor: pointer;
   width: 100%;
   padding: 15px;
   border-radius: var(--normalRadius);
   background-color: var(--green);
   color: var(--white);
-  border: none;
-  cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--boxShadow);
   font-size:var(--smallTextFont);
 }
 .emailLogRegInputBox {
-  padding: 0px 7px;
-  width: 100%;
-  background-color: var(--white);
-  border-radius: var(--normalRadius);
-  box-shadow: 0 0 10px rgba(0, 0, 20, 0.15);
   cursor: text;
   display:flex;
   flex-direction:row;
   align-items:center;
+  background-color: var(--white);
+  border-radius: var(--normalRadius);
+  padding: 0px 7px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 20, 0.15);
 }
 .emailLogRegInputBox i{
   display:flex;
   justify-content:center;
   align-items:center;
-  margin-right:var(--iconDistance);
   padding-left:8px;
+  margin-right:var(--iconDistance);
   color:var(--secondTextColor);
 }
 .emailLogRegInput {
   background-color: transparent;
-  font-size: var(--smallTextFont);
   border: none;
-  padding: 13px 5px;
   outline: none;
+  padding: 13px 5px;
   width: 100%;
+  font-size: var(--smallTextFont);
   color: var(--mainTextColor);
 }
 .emailLogRegInputBox.Error {
@@ -100,13 +100,14 @@
 .fa-eye-slash,
 .fa-eye{
   cursor: pointer;
+  text-align: center;
   font-size:var(--iconFont);
   width: 16px;
   height: 16px;
-  text-align: center;
   padding-right:5px;
 }
-/*------------------------EMAIL-BOX---------------------------*/
+
+/*----------------------------------------EMAIL-BOX-------------------------------------------*/
 .emailTop,
 .emailBottom {
   display: flex;
@@ -134,10 +135,10 @@
   margin-bottom: -5px;
 }
 .emailErrorMessage {
-  color: var(--errorColor);
   text-align: left;
   width: 100%;
   margin: -10px 0px 0px 10px;
+  color: var(--errorColor);
   font-size: var(--smallTextFont);
 }
 .emailLogRegContinue:hover {
@@ -147,6 +148,7 @@
   text-align: center;
   font-size: var(--smallTextFont);
 }
+
 /*------------------EMAIL-BOX-BOTTOM---------------------*/
 .emailBottom {
   width: 100%;
@@ -158,22 +160,22 @@
 .emailFacebook {
   display: flex;
   flex-direction: row;
-  width: 100%;
   align-items: center;
   cursor: pointer;
   overflow: hidden;
+  width: 100%;
   border-radius: var(--normalRadius);
   transition: var(--transition);
 }
 .emailGoogleText,
 .emailFacebookText {
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  font-size: var(--textFont);
+  width: 100%;
   padding: 15px 10px;
+    color: var(--white);
+  font-size: var(--textFont);
   border-radius: var(--normalRadius);
 }
 .emailGoogle {
@@ -185,7 +187,7 @@
   color: var(--white);
 }
 .emailGoogle:hover {
-  background-color: #f55243c4;
+  background-color:rgba(255, 110, 96, 0.89);
 }
 .emailFacebook:hover {
   background-color: rgba(66, 66, 218, 0.829);
@@ -194,7 +196,6 @@
 .emailFacebook i {
   position: absolute;
   color: var(--white);
-  justify-content: flex-start;
   font-size: var(--iconFont);
   border-right: 1px solid white;
 }
@@ -206,10 +207,11 @@
   margin-left: 5px;
   padding: 5px 12.5px;
 }
-/*------------------------------------LOGIN-----------------------------------*/
 
-/*-----------------------------------REGISTER----------------------------------*/
-/*--------------------------REGISTER-TOP---------------------------*/
+/*----------------------------------------------LOGIN----------------------------------------*/
+
+/*-----------------------------------------REGISTER--------------------------------------------*/
+/*-------------------------REGISTER-TOP--------------------------*/
 .registerTop{
   display:flex;
   flex-direction:column;
@@ -231,7 +233,8 @@
 .registerEmail{
   align-items:center;
 }
-/*--------------------------REGISTER-BOTTOM---------------------------*/
+
+/*-----------------------REGISTER-BOTTOM-------------------------*/
 .registerBottom {
   display: flex;
   flex-direction: column;
@@ -258,28 +261,28 @@
 }
 .registerTermsAndConditionsLink{
   display: inline;
+  cursor:pointer;
   color: var(--green);
+  transition:var(--transition);
   text-decoration: none;
   transition: color 0.2s ease;
-  cursor:pointer;
-  transition:var(--transition);
 }
 .registerTermsAndConditionsLink:hover {
-  color: var(--lightGreen);
   text-decoration:underline;
+  color: var(--lightGreen);
 }
 .registerTermsAndConditionsBox input[type="checkbox"] {
+  cursor: pointer;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   max-width: 20px;
   min-width: 20px;
   max-height: 20px;
   min-height: 20px;
   border: 2px solid var(--green);
   border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .registerTermsAndConditionsBox input[type="checkbox"]:checked {
   border-color: var(--lightGreen);
@@ -287,16 +290,16 @@
 .registerTermsAndConditionsBox input[type="checkbox"]::after {
   content: "";
   position: absolute;
+  background-color: var(--green);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   max-width: 12px;
   min-width: 12px;
   max-height: 12px;
   min-height: 12px;
-  background-color: var(--green);
   border-radius: 2px;
   opacity: 0;
+  transform: translate(-50%, -50%);
   transition:calc(var(--transition) - 0.1s);
 }
 .registerTermsAndConditionsBox input[type="checkbox"]:checked::after {
@@ -304,50 +307,8 @@
   background-color: var(--lightGreen);
 }
 
-/*-----------------------------TERMS-AND-CONDITIONS-----------------------------*/
-/* TermsAndConditions.css */
-.terms-and-conditions {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 20px;
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #f9f9f9;
-  color: #333;
-}
+/*---------------------------------TERMS-AND-CONDITIONS-----------------------------------*/
 
-.terms-and-conditions h1 {
-  text-align: center;
-  color: #2c3e50;
-}
-
-.terms-and-conditions h2 {
-  color: #34495e;
-  margin-top: 30px;
-}
-
-.terms-and-conditions p {
-  margin: 15px 0;
-}
-
-.terms-and-conditions a {
-  color: #3498db;
-  text-decoration: none;
-}
-
-.terms-and-conditions a:hover {
-  text-decoration: underline;
-}
-
-.terms-and-conditions ul {
-  margin: 15px 0;
-  padding-left: 20px;
-}
-
-.terms-and-conditions li {
-  margin-bottom: 10px;
-}
 /*---------------------------------RESPONSIVE----------------------------------*/
 @media (max-width: 1200px) {
   .loginRegister {

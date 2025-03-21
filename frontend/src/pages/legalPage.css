@@ -6,14 +6,15 @@
     margin: 20px 20vw;
     padding: 0;
 }
+
 /*--------------------------------RESPONSIVE-----------------------------------*/
 @media (max-width: 1450px) {
-    .legalPage {
-      margin: 20px 10vw;
-    }
+  .legalPage {
+    margin: 20px 10vw;
+  }
 }
-  @media (max-width: 780px) {
-    .legalPage {
-        margin: 20px 0px;
-    }
+@media (max-width: 780px) {
+  .legalPage {
+    margin: 20px 0px;
+  }
 }

@@ -4,11 +4,10 @@ import "./subscriptions.css"
 
 export default function Subscriptions() {
 const [isYearly,setIsYearly] = useState(false);
-
 const { t } = useTranslation();
 const subscriptionPlans = t("subscriptions.subscriptionPlans", {returnObject:true});
 
-{/*--------------------------------------HANDLE-TOGGLE--------------------------------------*/}
+{/*-----------------------------------SMALL-JS----------------------------------*/}
 const subHandleToggle = () => {
 setIsYearly(!isYearly);
 }
@@ -36,29 +35,29 @@ return (
       <ul className={`subBenefits sub${plan.type}Benefits`}>
         {plan.benefits.map((item, index) => (
           <li key={index} className="subBenefit">
-          <strong className="subBenefitTitle"><i className="fa-solid fa-check"></i>{item.benefit}:</strong>
-          <p className="subDescription">{item.description}</p>
+            <strong className="subBenefitTitle"><i className="fa-solid fa-check"></i>{item.benefit}:</strong>
+            <p className="subDescription">{item.description}</p>
           </li>
         ))}
       </ul>
     </div>
   </div>
-)};
+);};
 
 {/*--------------------------------------MAIN--------------------------------------*/}
 return (
-<div className="subscriptions">
-  <div className="subBox">
-    <div className="subToggleContainer" onClick={subHandleToggle}>
-      <div className={`subToggleCircle ${isYearly ? "moveRight" : "moveLeft"}`}></div>
-      <span className={`subToggleText ${!isYearly ? "active" : ""}`}><strong>{t("subscriptions.monthly")}</strong></span>
-      <span className={`subToggleText ${isYearly ? "active" : ""}`}><strong>{t("subscriptions.yearly")}</strong></span>
-    </div>
-    <div className="subCategories">
-    {subscriptionPlans.map((plan, index) => (
-      <SubscriptionPlan key={index} plan={plan}/>
-    ))}
+  <div className="subscriptions">
+    <div className="subBox">
+      <div className="subToggleContainer" onClick={subHandleToggle}>
+        <div className={`subToggleCircle ${isYearly ? "moveRight" : "moveLeft"}`}></div>
+        <span className={`subToggleText ${!isYearly ? "active" : ""}`}><strong>{t("subscriptions.monthly")}</strong></span>
+        <span className={`subToggleText ${isYearly ? "active" : ""}`}><strong>{t("subscriptions.yearly")}</strong></span>
+      </div>
+      <div className="subCategories">
+        {subscriptionPlans.map((plan, index) => (
+          <SubscriptionPlan key={index} plan={plan}/>
+        ))}
+      </div>
     </div>
   </div>
-</div>
 )};

@@ -5,82 +5,80 @@
   justify-content: center;
   padding: 0px 20px;
 }
+
 /*------------------------------SERV-BOX-HEADER----------------------------------*/
 .servHeader {
   text-align: center;
-  color: var(--mainTextColor);
   margin-bottom: 20px;
   margin-top: 60px;
+  padding: 20px;
+  max-width: 1000px;
+  width: 100%;
+  color: var(--mainTextColor);
+  background: var(--white);
+  border-radius: var(--normalRadius);
+  box-shadow: var(--boxShadow);
 }
 .servHeader h1 {
   margin-bottom: 10px;
   color: var(--green);
-}
-.servHeader {
-  max-width: 1000px;
-  width: 100%;
-  background: var(--white);
-  border-radius: var(--normalRadius);
-  box-shadow: var(--boxShadow);
-  padding: 20px;
 }
 .servBox {
   width: 100%;
   max-width: 1000px;
   margin: 20px 50px;
 }
+
 /*------------------------------SERVICES----------------------------------*/
 .servServices {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   width: 100%;
   max-width: 1500px;
+  grid-template-columns: repeat(2, 1fr);
 }
 .servService {
-  background-color: var(--white);
-  border-radius: var(--normalRadius);
+  text-align: center;
   padding: 20px;
   box-shadow: var(--boxShadowBottom);
-  text-align: center;
+  background-color: var(--white);
+  border-radius: var(--normalRadius);
   transition: var(--transition);
+}
+.servService i {
+  margin-bottom: 15px;
+  font-size: calc(var(--iconFont) * 2);
+  color: var(--green);
 }
 .servService:hover {
   transform: translateY(-5px);
   box-shadow: var(--boxShadowLight);
 }
-.servService i {
-  font-size: calc(var(--iconFont) * 2);
-  color: var(--green);
-  margin-bottom: 15px;
-}
 .servServiceTitle {
-  color: var(--mainTextColor);
   margin-bottom: 10px;
+  color: var(--mainTextColor);
 }
 .servServiceDescription {
   font-size: var(--textFont);
   color: var(--secondTextColor);
 }
+
 /*------------------------------LOCATION----------------------------------*/
-.servSmallerHeader p {
-  margin-top: 10px;
-}
 .servLocation {
+  padding: 20px;
   background: var(--white);
   border-radius: var(--normalRadius);
   box-shadow: var(--boxShadow);
-  padding: 20px;
 }
 .servLocationText {
+  margin-bottom: 10px;
   font-size: var(--textFont);
   color: var(--mainTextColor);
-  margin-bottom: 10px;
 }
 .servMap {
+  border: none;
   border-radius: var(--normalRadius);
   margin-top: 20px;
-  border: none;
   width: 100%;
   height: 400px;
 }
@@ -93,12 +91,12 @@
 
 /*------------------------------DELIVERY----------------------------------*/
 .servDelivery {
-  gap: 20px;
   display: flex;
   flex-direction: column;
   background-color: var(--white);
   border-radius: var(--normalRadius);
   box-shadow: var(--boxShadow);
+  gap: 20px;
   padding: 20px;
 }
 .servDeliveryAreas {
@@ -106,20 +104,20 @@
   grid-template-columns: repeat(3, 1fr);
 }
 .servCities {
-  position: relative;
-  color: var(--mainTextColor);
-  padding: 10px;
-  background-color: var(--secondBackground);
-  border: 2px solid transparent;
-  border-radius: var(--smallRadius);
-  text-align: center;
-  margin: 10px;
-  transition: var(--transition);
-  overflow: hidden;
-  max-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border: 2px solid transparent;
+  padding: 10px;
+  margin: 10px;
+  max-height: 50px;
+  color: var(--mainTextColor);
+  background-color: var(--secondBackground);
+  border-radius: var(--smallRadius);
+  transition: var(--transition);
   font-size:var(--textFont);
 }
 .servCities:hover {
@@ -136,18 +134,20 @@
   color: var(--mainTextColor);
 }
 .servTerms {
+  list-style-type: none;
   font-size: var(--textFont);
   color: var(--mainTextColor);
   background-color: var(--secondBackground);
-  padding: 10px;
   border-radius: var(--smallRadius);
-  list-style-type: none;
   transition: var(--transition);
+  padding: 10px;
 }
 .servTerms:hover {
   transform: translateY(-5px);
 }
+
 /*------------------------------COMMENTS----------------------------------*/
+
 /*------------------------------RESPONSIVE----------------------------------*/
 @media (max-width: 1600px) {
   .servBox {

@@ -1,29 +1,29 @@
 .footer {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
   background-color: var(--white);
   box-shadow: var(--boxShadow);
-  box-sizing: border-box;
 }
 .footer hr {
-  height: 1px;
   border: none;
-  background-color: var(--green);
+  height: 1px;
   margin:0;
+  background-color: var(--green);
 }
 
 /*-----------------------------------------------FOOTER-TOP--------------------------------------------*/
 .footerTop {
-  background-color: var(--white);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  background-color: var(--white);
+  color: var(--secondTextColor);
   gap: 50px;
   padding: 20px 10vw;
-  color: var(--secondTextColor);
 }
 .footerTop h3 {
   color: var(--mainTextColor);
@@ -58,9 +58,9 @@
   max-width: 400px;
 }
 .footerFirstColumn img {
+  cursor:pointer;
   width: 130px;
   margin: 10px 0px;
-  cursor:pointer;
 }
 
 /*-----------------------------------SECOND-COLUMN-----------------------------------*/
@@ -73,15 +73,15 @@
   flex-direction: column;
 }
 .footerNavElement p{
-  font-size: var(--textFont);
   cursor: pointer;
   padding:2.5px;
+  font-size: var(--textFont);
   color: var(--secondTextColor);
   transition: var(--transition);
 }
 .footerNavElement:hover p{
-  color: var(--mainTextColor);
   text-decoration:underline;
+  color: var(--mainTextColor);
 }
 
 /*-----------------------------------THIRD-COLUMN-----------------------------------*/
@@ -99,12 +99,12 @@
 
 /*-----------------------------------FOURTH-COLUMN-----------------------------------*/
 .footerFourthColumn {
-  min-width: 300px;
-  max-width: 100%;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  min-width: 300px;
+  max-width: 100%;
   gap:20px;
 }
 .footerContactsBox {
@@ -116,10 +116,10 @@
   flex-direction:column;
 }
 .footerContact {
-  margin:2.5px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin:2.5px;
   gap: 10px;
   font-size:var(--textFont);
 }
@@ -140,13 +140,13 @@
 }
 .footerSocialMedia li {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   background-color: var(--green);
   border-radius: var(--circle);
   height: calc(var(--iconFont) * 2);
   width: calc(var(--iconFont) * 2);
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
   transition: var(--transition);
 }
 .footerSocialMedia li:hover {
@@ -158,11 +158,11 @@
 
 /*-----------------------------------------------FOOTER-BOTTOM--------------------------------------------*/
 .footerBottom {
-  background-color: var(--white);
   display: flex;
   flex-direction:row;
   justify-content: center;
   align-items: center;
+  background-color: var(--white);
   color: var(--mainTextColour);
   padding:15px 10px;
 }
@@ -187,8 +187,8 @@
   
 }
 .footerCreator a:hover{
-  color:var(--lightGreen);
   text-decoration:underline;
+  color:var(--lightGreen);
 }
 
 /*-----------------------------------------------RESPONSIVE--------------------------------------------*/

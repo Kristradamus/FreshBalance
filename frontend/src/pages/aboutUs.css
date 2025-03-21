@@ -12,10 +12,10 @@
   color:var(--mainTextColor);
 }
 .aboutUsBox {
+  padding: 20px;
   background-color: var(--white);
   box-shadow: var(--boxShadow);
   border-radius: var(--bigRadius);
-  padding: 20px;
 }
 .aboutUsInsideBox {
   display: flex;
@@ -26,9 +26,10 @@
   color: var(--mainTextColor);
 }
 .aboutUsText {
-  font-size: var(--smallTextFont);
   text-align: center;
+  font-size: var(--smallTextFont);
 }
+
 /*------------------------------MAIN------------------------------------------*/
 .aboutUsMain {
   display: flex;
@@ -40,6 +41,7 @@
 .aboutUsSubTitle {
   color: var(--mainTextColor);
 }
+
 /*-------------------------------SUB-MAIN-------------------------------------*/
 .aboutUsSubPointsBox.withPhoto {
   display: grid;
@@ -52,16 +54,16 @@
   gap: 5px;
 }
 .aboutUsSubPoints .withPhoto {
-  color: var(--mainTextColor);
   max-width: 400px;
+  color: var(--mainTextColor);
 }
 .aboutUsSubPoints {
   width: 100%;
 }
 .aboutUsTextContainer {
-  color: var(--mainTextColor);
   display:flex;
   flex-direction:row;
+  color: var(--mainTextColor);
 }
 .aboutUsTextContainer .fa-check {
   color: var(--green);
@@ -72,25 +74,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--mainTextColor);
   margin: 20px 10px;
+  color: var(--mainTextColor);
 }
 .aboutUsPhotoContainer hr {
   width: 170px;
 }
 .aboutUsTeamPhoto {
-  height: 100px;
-  border: 2px solid var(--green);
-  border-radius: var(--circle);
   object-fit: cover;
   object-position: center;
+  height: 100px;
   width: 100px;
   margin-bottom: 10px;
+  border: 2px solid var(--green);
+  border-radius: var(--circle);
 }
 .aboutUsPhotoContainer p{
   text-align: center;
   justify-content: center;
 }
+
 /*------------------------------RESPONSIVE------------------------------------------*/
 @media (max-width: 1450px) {
   .aboutUs {

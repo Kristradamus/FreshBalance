@@ -8,37 +8,38 @@
   align-items: center;
   justify-content: center;
 }
+
 /*----------------------------------TOGGLE---------------------------------*/
 .subToggleContainer {
-  width: 200px;
-  height: 50px;
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 200px;
+  height: 50px;
   border-radius: 30px;
   border: 2px solid var(--green);
   background-color: var(--white);
   box-shadow: var(--boxShadow);
-  cursor: pointer;
-  transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
   font-size: var(--textFont);
   color: var(--mainTextColor);
-  overflow: hidden;
+  transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+.subToggleCircle {
+  position: absolute;
+  background: var(--green);
+  width: 90px;
+  height: 40px;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-in-out, background 0.3s ease-in-out;
 }
 .subToggleContainer:hover {
   border: 2px solid var(--lightGreen);
 }
 .subToggleContainer:hover .subToggleCircle {
   background-color: var(--lightGreen);
-}
-.subToggleCircle {
-  position: absolute;
-  width: 90px;
-  height: 40px;
-  background: var(--green);
-  border-radius: 30px;
-  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .subToggleCircle.moveRight {
   transform: translateX(102px);
@@ -47,19 +48,18 @@
   transform: translateX(4px);
 }
 .subToggleText {
-  flex: 1;
   text-align: center;
-  font-size: var(--textFont);
   font-weight: bold;
+  font-size: var(--textFont);
+  flex: 1;
   z-index: 1;
-  transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  opacity: 1;
+  transition: color 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 .subToggleText.active {
   color: var(--white);
-  opacity: 1;
 }
-/*----------------------------------CATEGORIES------------------------------------*/
+
+/*-------------------------------------CATEGORIES--------------------------------------*/
 .subCategories {
   display: flex;
   flex-direction: row;
@@ -72,20 +72,21 @@
   color: var(--mainTextColor);
 }
 .subPlan {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   padding: 20px;
-  border-radius: var(--normalRadius);
-  background-color: var(--white);
   margin: 20px;
   width: 90%;
   max-width: 410px;
   min-width: 410px;
-  box-shadow: var(--boxShadow);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   flex: 1;
+  border-radius: var(--normalRadius);
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
 }
-/*---------------------------------------TOP------------------------------*/
+
+/*-------------------------CATEGORIES-TOP-----------------------*/
 .subPlanTop {
   display: flex;
   flex-direction: column;
@@ -107,8 +108,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-.subSidePrice {
   color: var(--green);
 }
 .subButtons {
@@ -116,22 +115,22 @@
   flex-direction: row;
 }
 .subButtons button {
-  transition: var(--transition);
-  border-radius: var(--normalRadius);
   cursor: pointer;
   padding: 10px 20px;
   margin: 0px 10px;
   box-shadow: var(--boxShadowLight);
+  border-radius: var(--normalRadius);
+  transition: var(--transition);
 }
 .subTryFree {
-  border-radius: var(--normalRadius);
   border: none;
+  border-radius: var(--normalRadius);
   color: var(--white);
   background-color: var(--green);
 }
 .subTryFree:hover {
-  background-color: var(--lightGreen);
   box-shadow:none;
+  background-color: var(--lightGreen);
 }
 .subBuyNow {
   display: flex;
@@ -146,15 +145,16 @@
   margin-left: var(--iconDistance);
 }
 .subBuyNow:hover {
+  box-shadow: none;
   color: var(--lightGreen);
   border: 2px solid var(--lightGreen);
-  box-shadow: none;
 }
-/*-----------------------------------BOTTOM------------------------------*/
+
+/*--------------------CATEGORIES-BOTTOM------------------------*/
 .subBottom {
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 .subBenefits {
   display: flex;
@@ -172,6 +172,7 @@
 .subDescription {
   color: var(--secondTextColor);
 }
+
 /*-----------------------------------RESPONSIVE------------------------------*/
 @media (max-width: 450px) {
   .subPlan {
