@@ -12,7 +12,7 @@
 
   /*------------------ELEMENT-COLORS-----------------*/
   --mainBackground: rgb(255, 252, 239);
-  --secondBackground:#ecececb7;
+  --secondBackground:#e6e6e6b7;
   --frontPageBackground:rgb(250, 243, 211);
 
   --mainTextColor: rgba(58, 58, 58, 0.911);
@@ -39,6 +39,7 @@
   --textFont: 16px;
   --smallTextFont:15px;
   --iconFont:17px;
+  --headerHeight: 60px;
   
   /*-----------------ELEMENT-DISTANCE----------------*/
   --iconDistance: 8px;

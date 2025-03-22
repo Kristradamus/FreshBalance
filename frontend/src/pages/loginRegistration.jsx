@@ -8,21 +8,21 @@ import { Link } from "react-router-dom";
 import "./loginRegistration.css";
 
 export default function LoginRegistration() {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [emailExists, setEmailExists] = useState(false);
-  const [emailCheckComplete, setEmailCheckComplete] = useState(false);
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
-  const [isTermsAndConditionsVisible, setIsTermsAndConditionsVisible] = useState(false);
-  const [username, setUsername] = useState("");
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
-  const emailInputRef = useRef(null);
-  const { t } = useTranslation();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const currentStep = location.pathname.split("/").pop();
-  const [userProgress, setUserProgress] = useState({emailChecked:false, emailVerified:false})
+const [email, setEmail] = useState("");
+const [emailError, setEmailError] = useState(false);
+const [emailExists, setEmailExists] = useState(false);
+const [emailCheckComplete, setEmailCheckComplete] = useState(false);
+const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
+const [isTermsAndConditionsVisible, setIsTermsAndConditionsVisible] = useState(false);
+const [username, setUsername] = useState("");
+const [isTermsAccepted, setIsTermsAccepted] = useState(false);
+const emailInputRef = useRef(null);
+const { t } = useTranslation();
+const navigate = useNavigate();
+const location = useLocation();
+const currentStep = location.pathname.split("/").pop();
+const [userProgress, setUserProgress] = useState({emailChecked:false, emailVerified:false})
 
 {/*---------------------------------RELOAD-STOPPER-----------------------------------*/}
 useEffect(() => {

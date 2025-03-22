@@ -8,7 +8,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.navigation{
+  z-index:2;
+}
 /*----------------------------------TOGGLE---------------------------------*/
 .subToggleContainer {
   display: flex;

@@ -3,6 +3,8 @@
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  overflow-wrap:break-word;
+  word-break:break-word;
   border-radius:var(--normalRadius);
   box-shadow:var(--boxShadow);
   background-color:var(--white);

@@ -127,6 +127,20 @@
       { "icon": "fa-solid fa-truck-fast", "text": "Free shipping over 100lv." },
       { "icon": "fa-solid fa-percent", "text": "10% off orders over 200lv." },
       { "icon": "fa-solid fa-leaf", "text": "100% bio products" }
+    ],
+    "whoWeAreData":[
+      {
+        "img": "../../public/images/frontPageWhoWeAre1.jpg",
+        "imgClassName": "fPWhoWeAreImage1",
+        "title": "HOW WE ARE TRANSFORMING LIVES",
+        "text": "At FreshBalance, we have had the honor of supporting over 500 individuals in transforming their lives through the strength of community and expert guidance. By empowering individuals to take charge of their health, we have cultivated a dynamic network committed to achieving wellness objectives. Our community consistently inspires one another, turning every milestone into a collective triumph."
+      },
+      {
+        "img": "../../public/images/frontPageWhoWeAre2.jpeg",
+        "imgClassName": "fPWhoWeAreImage2",
+        "title": "CURATING WELLNESS SOLUTIONS",
+        "text": "We’ve carefully selected over 100 science-backed products to meet diverse health needs. From high quality nutritious snacks to premium supplements, our offerings are designed to support your journey toward better health and vitality."
+      }
     ]
   },
   "--------------------------------------------------------------LOGIN-REGISTRATION--------------------------------------------": {},

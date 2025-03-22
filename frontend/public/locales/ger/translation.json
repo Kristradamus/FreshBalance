@@ -116,6 +116,20 @@
       { "icon": "fa-solid fa-truck-fast", "text": "Versand frei ab 100 lv." },
       { "icon": "fa-solid fa-percent", "text": "10% Rabatt ab 200 lv." },
       { "icon": "fa-solid fa-leaf", "text": "100% Bio" }
+    ],
+    "whoWeAreData": [
+      {
+        "img": "../../public/images/frontPageWhoWeAre1.jpg",
+        "imgClassName": "fPWhoWeAreImage1",
+        "title": "LEBEN VERÄNDERN",
+        "text": "Bei „FreshBalance“ haben wir bereits über 500 Menschen auf ihrem Weg zu einem gesünderen und ausgeglicheneren Lebensstil begleitet. Durch die Kombination aus fundiertem Fachwissen und einer starken Community ermöglichen wir es unseren Kunden, ihre Gesundheitsziele zu erreichen. Unsere Gemeinschaft steht für Inspiration, Motivation und gemeinsamen Erfolg."
+      },
+      {
+        "img": "../../public/images/frontPageWhoWeAre2.jpeg",
+        "imgClassName": "fPWhoWeAreImage2",
+        "title": "GESUNDHEITSLÖSUNGEN",
+        "text": "Unser Sortiment umfasst über 100 wissenschaftlich fundierte Produkte, die auf die individuellen Bedürfnisse unserer Kunden abgestimmt sind. Von nahrhaften Mahlzeiten bis hin zu hochwertigen Nahrungsergänzungsmitteln – unsere Lösungen unterstützen Sie auf Ihrem Weg zu mehr Wohlbefinden und Vitalität."
+      }
     ]
   },
   "--------------------------------------------------LOGIN-REGISTRATION-------------------------------------------------------": {},
@@ -533,14 +547,14 @@
         "Empfehlung4"
       ],
       "nav": [
-        { "name": "Anmelden", "link": "/email-check" },
+        { "name": "Login", "link": "/email-check" },
         { "name": "Favoriten", "link": "/favourites" },
-        { "name": "Warenkorb", "link": "/cart" }
+        { "name": "Korb", "link": "/cart" }
       ],
       "icons": {
-        "Anmelden": "fa-solid fa-user",
+        "Login": "fa-solid fa-user",
         "Favoriten": "fa-solid fa-heart",
-        "Warenkorb": "fa-solid fa-cart-shopping"
+        "Korb": "fa-solid fa-cart-shopping"
       }
     },
     "searchPlaceholder": "Suchen..."

@@ -116,15 +116,23 @@
 
     "topProductsSectionTitle1": "TOP PRODUCTOS DESTACADOS",
     "topProductsData": [
+      {"icon": "fa-solid fa-truck-fast", "text": "Envío gratis por compras mayores a 100 lv."},
+      {"icon": "fa-solid fa-percent", "text": "10% de descuento en pedidos mayores a 200 lv."},
+      {"icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos"}
+    ],
+    "whoWeAreData": [
       {
-        "icon": "fa-solid fa-truck-fast",
-        "text": "Envío gratis por compras mayores a 100 lv."
+        "img": "../../public/images/frontPageWhoWeAre1.jpg",
+        "imgClassName": "fPWhoWeAreImage1",
+        "title": "TRANSFORMANDO VIDAS",
+        "text": "En FreshBalance, hemos acompañado a más de 500 personas en su camino hacia un estilo de vida más saludable y equilibrado. Combinamos conocimiento experto con el poder de una comunidad sólida para ayudar a nuestros clientes a alcanzar sus metas de bienestar. Nuestra comunidad es sinónimo de inspiración, motivación y éxito compartido."
       },
       {
-        "icon": "fa-solid fa-percent",
-        "text": "10% de descuento en pedidos mayores a 200 lv."
-      },
-      { "icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos" }
+        "img": "../../public/images/frontPageWhoWeAre2.jpeg",
+        "imgClassName": "fPWhoWeAreImage2",
+        "title": "SOLUCIONES DE BIENESTAR A MEDIDA",
+        "text": "Ofrecemos una selección de más de 100 productos respaldados científicamente, diseñados para satisfacer las necesidades individuales de nuestros clientes. Desde opciones nutritivas hasta suplementos de calidad premium, nuestras soluciones están diseñadas para apoyarle en su camino hacia una vida más saludable y plena."
+      }
     ]
   },
   "--------------------------------------------------------------LOGIN-REGISTRATION---------------------------------------------------": {},

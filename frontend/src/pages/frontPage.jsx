@@ -2,13 +2,12 @@ import { useNavigate} from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import {useEffect} from "react";
 import "./frontPage.css";
-import whoWeAre1 from "../../public/images/frontPageWhoWeAre1.jpg";
-import whoWeAre3 from "../../public/images/frontPageWhoWeAre3.jpeg";
 
 export default function FrontPage() {
 const navigate = useNavigate();
 const { t } = useTranslation();
 const fPTopProductsData = t("frontPage.topProductsData", {returnObject: true});
+const fPWhoWeAreData = t("frontPage.whoWeAreData", {returnObject: true});
 
 {/*-----------------------------HOME-PAGE-DATA----------------------------*/}
 const fPImagesData = [
@@ -98,20 +97,15 @@ return (
     {/*---------------------------------------WHO-WE-ARE--------------------------------*/}
     <div className="fPWhoWeAre">
       <div className="fPWhoWeAreBox">
-        <div className="fPWhoWeAreRow">
-          <img src={whoWeAre1} className="fPWhoWeAreImage1 hidden"/>
-          <div className="fPWhoWeAreTextBox">
-            <h2 className="fPWhoWeAreTitle hidden">HOW WE ARE TRANSFORMING LIVES</h2>
-            <p className="fPWhoWeAreText">At FreshBalance, we have had the honor of supporting over 500 individuals in transforming their lives through the strength of community and expert guidance. By empowering individuals to take charge of their health, we have cultivated a dynamic network committed to achieving wellness objectives. Our community consistently inspires one another, turning every milestone into a collective triumph.</p>
+        {fPWhoWeAreData.map((item, index) => (
+          <div key={index} className="fPWhoWeAreRow">
+            <img src={item.img} className={`${item.imgClassName} hidden`}/>
+            <div className="fPWhoWeAreTextBox">
+              <h2 className="fPWhoWeAreTitle hidden">{item.title}</h2>
+              <p className="fPWhoWeAreText">{item.text}</p>
+            </div>
           </div>
-        </div>
-        <div className="fPWhoWeAreRow">
-          <div className="fPWhoWeAreTextBox">
-            <h2 className="fPWhoWeAreTitle hidden">CURATING WELLNESS SOLUTIONS</h2>
-            <p className="fPWhoWeAreText">We’ve carefully selected over 100 science-backed products to meet diverse health needs. From nutritious meal options to premium supplements, our offerings are designed to support your journey toward better health and vitality.</p>
-          </div>
-          <img src={whoWeAre3} className="fPWhoWeAreImage3 hidden"/>
-        </div>
+        ))}
       </div>
     </div>
   

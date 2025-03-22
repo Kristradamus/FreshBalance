@@ -102,9 +102,7 @@ const filteredRecommendations = searchQuery ? [searchQuery,
 return (
   <div className="header">
     <div className="headerBox">
-      <div
-        className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}
-      />
+      <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
       <div className="headerLogoBox">
         <Link to="/" onClick={handleLogoClick}>
           <img className="headerLogo" src={logo} alt="freshBalance" />
@@ -114,46 +112,22 @@ return (
         </div>
       </div>
       {/*--------------------------------SEARCH-BAR-----------------------------------*/}
-      <div
-        className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`}
-        onClick={handleSearchBoxClick}
-        ref={searchBoxRef}
-      >
-        <div
-          className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`}
-          onClick={handleSearchBoxClick}
-          ref={searchBoxRef}
-        >
-          <i
-            className="fa-solid fa-magnifying-glass"
-            onClick={() => {
-              const trimmedQuery = searchQuery.trim().toLowerCase();
+      <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
+        <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef}>
+          <i className="fa-solid fa-magnifying-glass" onClick={() => {
+            const trimmedQuery = searchQuery.trim().toLowerCase();
               if (trimmedQuery !== "") {
                 navigate(`/product/${trimmedQuery}`);
               }
             }}
           ></i>
-          <input
-            ref={searchInputRef}
-            className="headerSearchBar"
-            placeholder={t("header.searchPlaceholder")}
-            value={searchQuery}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-          />
-          <i
-            className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`}
-            onClick={handleClearSearch}
-          />
+          <input ref={searchInputRef} className="headerSearchBar" placeholder={t("header.searchPlaceholder")} value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+          <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch}/>
         </div>
         {/*--------------------------------DROP-DOWN-----------------------------------*/}
         <ul className={`headerSearchDropdown`}>
           {filteredRecommendations.map((item, index) => (
-            <li
-              className="headerRecommendations"
-              key={index}
-              onClick={(e) => handleRecommendationClick(item, e)}
-            >
+            <li className="headerRecommendations" key={index} onClick={(e) => handleRecommendationClick(item, e)}>
               <p>{item}</p>
             </li>
           ))}
@@ -162,13 +136,7 @@ return (
       {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
       <ul className="headerFavCartLog">
         {headerData.nav.map((item, index) => (
-          <li
-            key={index}
-            className={`headerNavElement ${
-              location.pathname === item.link ? "active" : ""
-            }`}
-            onClick={() => handleFavCartLogClick(item)}
-          >
+          <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
             <Link className="" to={item.link}>
               {headerData.icons[item.name] && (
                 <i className={headerData.icons[item.name]}></i>
