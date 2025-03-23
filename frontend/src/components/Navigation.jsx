@@ -6,6 +6,7 @@ import "./Navigation.css";
 export default function Navigation() {
 const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 const [isDropdownMoreVisible, setIsDropdownMoreVisible] = useState(false);
+const [expandedSubMenuIndex, setExpandedSubMenuIndex] = useState(null);
 const catToggleRef = useRef(null);
 const moreToggleRef = useRef(null);
 const dropContentRef = useRef(null);
@@ -21,6 +22,7 @@ const handleCategoryToggle = (e) => {
   e.stopPropagation();
   setIsDropdownVisible((prev) => !prev);
   setIsDropdownMoreVisible(false);
+  setExpandedSubMenuIndex(null);
 };
 
 const handleMoreToggle = (e) => {
@@ -28,13 +30,21 @@ const handleMoreToggle = (e) => {
   e.stopPropagation();
   setIsDropdownMoreVisible((prev) => !prev);
   setIsDropdownVisible(false);
+  setExpandedSubMenuIndex(null);
 };
 
-const handleDropDownClosing = (e) => {
+const handleDropDownClosing = () => {
   setIsDropdownVisible(false);
   setIsDropdownMoreVisible(false);
+  setExpandedSubMenuIndex(null);
 }
 
+const handleSubMenuExpansion = (index, e) => {
+  e.stopPropagation();
+  setIsDropdownVisible(true);
+  setExpandedSubMenuIndex(prevIndex => prevIndex === index ? null : index);
+
+}
 const handleNavReload = (item) => {
   if(location.pathname === item.link){
     window.location.reload();
@@ -46,15 +56,21 @@ const handleNavReload = (item) => {
 
 useEffect(() => {
   const handleOutsideClick = (e) => {
-    if ((dropContentRef.current && !dropContentRef.current.contains(e.target) && catToggleRef.current && !catToggleRef.current.contains(e.target)) ||
-    (moreDropContentRef.current && !moreDropContentRef.current.contains(e.target) && moreToggleRef.current && !moreToggleRef.current.contains(e.target))){
+    const isOutsideDropdown = dropContentRef.current && !dropContentRef.current.contains(e.target) &&  catToggleRef.current &&  !catToggleRef.current.contains(e.target);                     
+    const isOutsideMoreDropdown = moreDropContentRef.current &&  !moreDropContentRef.current.contains(e.target) &&  moreToggleRef.current &&  !moreToggleRef.current.contains(e.target);
+    
+    if (isOutsideDropdown && isOutsideMoreDropdown) {
       setIsDropdownVisible(false);
       setIsDropdownMoreVisible(false);
+      setExpandedSubMenuIndex(null);
     }
   };
+  
   document.addEventListener("click", handleOutsideClick);
-  return () => {document.removeEventListener("click", handleOutsideClick);  
-};}, []);
+  return () => {
+    document.removeEventListener("click", handleOutsideClick);  
+  };
+}, []);
 
 {/*--------------------------------------MAIN---------------------------------------------------*/}
 return (
@@ -74,12 +90,12 @@ return (
             <hr></hr>
           </li>
           {navData.categories.map((item, index) => (
-            <li className="navDropDownElement"key={index}>
-              <div className="navDropDownElementABox">
+            <li className={`navDropDownElement ${expandedSubMenuIndex === index ? "active" : ""}`} key={index}>
+              <div className="navDropDownElementABox" onClick={(e) => handleSubMenuExpansion(index, e)}>
                 <a className="navDropDownElementA" href={item.link}>{item.name}</a>
-                <i class="fa-solid fa-angle-down"></i>
+                <i className="fa-solid fa-angle-down"></i>
               </div>
-              <ul className="navSubMenu">
+              <ul className={`navSubMenu ${expandedSubMenuIndex === index ? "show" : ""}`}>
                 <h2 className="navSubMenuTitle">{item.name}</h2>
                 {item.category.map((subItem, subIndex) => subItem.subcategory ? (
                   <div key={subIndex}>

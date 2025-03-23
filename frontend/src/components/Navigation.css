@@ -275,8 +275,35 @@
     display: contents;
     display:flex;
   }
-  .navDropDownElementABox i {
+  .navDropDownElementABox .fa-angle-down{
     display: flex;
+    transition:0.5s;
+  }
+  .navDropDownElement.active .fa-angle-down{
+    transform: rotate(-180deg);
+  }
+  .navDropDownElement:hover .navDropDownElementABox, 
+  .navDropDownElement:focus-within .navDropDownElementABox{
+    border-right: initial;
+    box-shadow: none;
+    z-index: initial;
+    cursor:pointer;
+    background-color:initial;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    color: var(--mainTextColor);
+  }
+  .navDropDownElement.active .navDropDownElementABox{
+    border-top: 1px solid var(--secondBackground);
+    border-bottom: 1px solid var(--secondBackground);
+  }
+  .navDropDownElementA{
+    transition:var(--transition);
+  }
+  .navDropDownElement:hover .navDropDownElementA,
+  .navDropDownElement.active .navDropDownElementA{
+    color:var(--green);
+    text-decoration:underline;
   }
   .navDropDownClosing {
     display: flex;
@@ -293,30 +320,39 @@
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     padding-bottom: 100px;
     transform: translateX(-100%);
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
+    transition: var(--transition);
+  }
+  .navDropDownElement:last-child .navDropDownElementABox{
+    border-bottom-left-radius: 0;
   }
   .navSubMenu {
     position: static;
     width: auto;
     transform: none;
-    display: none;
+    display: block;
     height: auto;
     box-shadow: none;
-    overflow: visible;
+    overflow: hidden;
     max-width: 100%;
+    max-height: 0;
     columns: 1;
-    opacity: 1;
-    margin-left: 20px;
-    margin-right: 10px;
+    opacity: 0;
     padding-left: 0;
-    border-left: 4px solid var(--green);
+    transition: max-height 0.5s ease-in-out;
+    margin:0px 0px;
+    margin-left: 20px;
+  }
+  .navSubMenu.show {
+    max-height: 1000px;
+    opacity: 1;
+    pointer-events: auto;
   }
   .navDropDownContent.show,
   .navDropDownMore.show{
     transform: translateX(0);
     visibility: visible;
     opacity: 1;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:var(--transition)
   }
   .navDropDownContent li:last-child a,
   .navDropDownMore li:last-child a {
@@ -325,19 +361,6 @@
   .navDropDownContent,
   .navDropDownMore {
     padding-top: 40px;
-  }
-  .navSubMenu {
-    position: static;
-    transform: none;
-    display: none;
-    height: auto;
-    box-shadow: none;
-    width: 100%;
-    columns: 1;
-    opacity: 1;
-    border-left: 4px solid var(--green);
-    margin-left: 20px;
-    padding-left: 0;
   }
   .navOverlay {
     position: fixed;

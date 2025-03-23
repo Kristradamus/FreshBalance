@@ -313,8 +313,8 @@
    background-size: cover;
    background-color:var(--green);
    width: 100%;
-   padding: 30vw 0vw;
-   margin-bottom:30px;
+   padding: 10vw 1vw;
+   gap:20px;
    clip-path: polygon(
       0% 20%,
       100% 10%,
@@ -451,6 +451,22 @@
       align-items:center;
       order: 2;
    }
+/*---------------WHO-WE-WORK-WITH---------------*/
+   .fPWhoWeWorkWithMainBox{
+      padding: 15vw 1vw;
+      gap:20px;
+   }
+   .fPWhoWeWorkWithTitle1{
+      font-size: calc(var(--textFont) + 10px);
+   }
+   .fPWhoWeWorkWithImageBox{
+      width:80px;
+      height:80px;
+   }
+   .fPWhoWeWorkWithCollaborator{
+      width:80px;
+   }
+   
 }
 @media (max-width: 780px) {
 
@@ -510,6 +526,14 @@
    .fPWhoWeAreTitle.show::after{
       width: 36vw;
    }
+   /*---------------WHO-WE-WORK-WITH---------------*/
+   .fPWhoWeWorkWithMainBox{
+      padding: 30vw 1vw;
+      gap:20px;
+   }
+   .fPWhoWeWorkWithTitle1{
+      font-size: calc(var(--textFont) + 5px);
+   }
 }
 @media (max-width: 600px) {
 /*--------------HERO-SECTION----------------*/
@@ -545,5 +569,14 @@
    }
    .fPWhoWeAreTitle.show::after{
       width: 40vw;
+   }
+   /*---------------WHO-WE-WORK-WITH---------------*/
+   .fPWhoWeWorkWithMainBox{
+      padding:150px 10px;
+      padding-top:200px;
+      gap:20px;
+   }
+   .fPWhoWeWorkWithTitle1{
+      font-size: var(--smallTextFont);
    }
 }

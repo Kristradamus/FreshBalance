@@ -113,7 +113,7 @@ return (
     <div className="fPWhoWeWorkWith">
       <div className="fPWhoWeWorkWithMainBox">
         <div className="fPWhoWeWorkWithTitleBox">
-          <h1 className="fPWhoWeWorkWithTitle1">Here are some of the brands we work with:</h1>
+          <h2 className="fPWhoWeWorkWithTitle1">{t("frontPage.whoWeWorkWith")}</h2>
         </div>
         <div className="fPWhoWeWorkWithImagesBox">
           {fPImagesData.map((item, index) => (
