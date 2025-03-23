@@ -158,8 +158,14 @@
     "registerTitleUsername": "Username",
     "registerTitlePassword": "Password",
     "registerTitleConfirmPassword": "Confirm Password",
-    "termsAndConditions": "I have read and agree to the",
+    "registerTerms": "I have read and agree to the",
     "registerContinue": "Continue",
+    "registerPasswordsDoNotMatch": "Passwords do not match!",
+    "registerPasswordRequired": "Password is required!",
+    "registerUsernameRequired": "Username is required!",
+    "registerUsernameTaken": "This username is already taken!",
+    "registerTermsRequired": "You must accept the Legal Policies to continue!",
+
     "needHelp": "Need help?"
   },
   "--------------------------------------------------------------product---------------------------------------------------": {},

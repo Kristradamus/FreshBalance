@@ -76,6 +76,26 @@ app.get("/user", async (req, res) => {
     res.status(500).json({ error: "Database error" });
   }
 });
+
+{/*-----------------------------------USERNAME-CHECK----------------------------------------*/}
+app.post("/username-check", async (req, res) => {
+  const { username } = req.body;
+  if (!username) {
+    return res.status(400).json({ error: "Username is required" });
+  }
+  try {
+    const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [username]);
+    if (rows.length > 0) {
+      res.status(200).json({ exists: true });
+    } else {
+      res.status(200).json({ exists: false });
+    }
+  } 
+  catch (error) {
+    console.error("Error checking username:", error);
+    res.status(500).json({ error: "Database error" });
+  }
+});
 {/*-----------------------------------CONSOLE-LOGS----------------------------------------*/}
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
