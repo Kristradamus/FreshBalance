@@ -135,14 +135,35 @@
   },
   "--------------------------------------------------LOGIN-REGISTRATION-------------------------------------------------------": {},
   "loginRegistration": {
+    "loginRegisterGoBack": "Zurück",
+
     "emailGreeting": "Hallo!",
     "emailPls": "Bitte geben Sie Ihre E-Mail-Adresse ein",
     "emailPlaceholder": "E-Mail...",
     "emailWarning": "Bitte geben Sie eine gültige E-Mail-Adresse ein!",
     "emailContinue": "Weiter",
-    "emailDontWorry": "Sie haben kein Konto? Keine Sorge, geben Sie einfach die E-Mail-Adresse ein, mit der Sie eines erstellen möchten.",
+    "emailDontWorry": "Sie haben noch kein Konto? Kein Problem, geben Sie einfach die E-Mail-Adresse ein, mit der Sie eines erstellen möchten.",
     "emailOr": "oder",
     "emailAlso": "Sie können sich auch anmelden mit:",
+
+    "registerWelcome": "Konto erstellen",
+    "registerLegalPolicies": "Rechtliche Bestimmungen",
+    "registerTitleUsername": "Benutzername",
+    "registerTitlePassword": "Passwort",
+    "registerTitleConfirmPassword": "Passwort bestätigen",
+    "registerTerms": "Ich habe die",
+    "registerContinue": "Weiter",
+    "registerPasswordsDoNotMatch": "Die Passwörter stimmen nicht überein!",
+    "registerPasswordRequired": "Passwort ist erforderlich!",
+    "registerUsernameRequired": "Benutzername ist erforderlich!",
+    "registerUsernameTaken": "Dieser Benutzername ist bereits vergeben!",
+    "registerTermsRequired": "Sie müssen die rechtlichen Bestimmungen akzeptieren, um fortzufahren!",
+
+    "loginWelcome": "Hallo",
+    "loginForgottenPassword": "Passwort vergessen?",
+    "loginLogIn": "Anmelden",
+    "loginRememberMe": "Angemeldet bleiben",
+    "loginPlsPassword":"",
 
     "needHelp": "Brauchen Sie Hilfe?"
   },

@@ -6,6 +6,7 @@ import logo from "../../public/images/freshBalance.png";
 import LegalPolicies from "../components/LegalPolicies.jsx";
 import { Link } from "react-router-dom";
 import "./loginRegistration.css";
+import GoBackButton from "../components/LRGoBackButton.jsx";
 
 export default function LoginRegistration() {
 const emailInputRef = useRef(null);
@@ -45,7 +46,6 @@ const [isTermsVisible, setIsTermsVisible] = useState(false);
 
 {/*------------------------LOGIN--------------------------------}*/}
 const [username, setUsername] = useState("");
-
 {/*---------------------------------RELOAD-STOPPER-----------------------------------*/}
 
 //This is reload and leave-site preventer
@@ -315,7 +315,24 @@ const handleTermsVisibility = () => {
 };
 
 {/*------------------------------------LOGIN--------------------------------------*/}
+const handleLoginSubmit = async() => {
+  setPasswordError(false);
+  
+  let isValid = true;
 
+  if(!passwordInput){
+    setPasswordError(true);
+    setPasswordErrorMessage(t("loginRegistration.loginPlsPassword"));
+  }
+  else{
+    try{
+
+    }
+    catch{
+
+    }
+  }
+}
 return (
   <div className="loginRegister">
     <Link to="/">
@@ -364,19 +381,30 @@ return (
     {/*-------------------------------------------------LOGIN---------------------------------------------------*/}
     {emailCheckComplete && emailExists && currentStep === "login" && (
       <div className="emailLogRegBox">
-        <button className="logRegGoBackButton" onClick={() => navigate("/email-check")}>Go back</button>
-        <h1 className="loginWelcome">Hi {username}!</h1>
-        <i className="fa-thin fa-circle-user"></i>
+        <GoBackButton path="/email-check"/>
+        <h1 className="loginWelcome">{t("loginRegistration.loginWelcome")}&nbsp;<p className="loginWelcomeUsername">{username}</p>&nbsp;!</h1>
+        <i class="fa-solid fa-circle-user"></i>
         <div className="loginTop">
-          <div className="loginPassword"></div>
+          <div>
+            <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick}>
+              <i className="fa-solid fa-lock"></i>
+              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange} onBlur={handlePasswordBlur}></input>
+              {isPasswordVisible ? (
+                  <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility}></i>
+                ) : (
+                  <i className="fa-solid fa-eye" onClick={handlePasswordVisibility}></i>
+                )}
+            </div>
+            {passwordError && <p className="emailLogRegErrorMessage">{passwordErrorMessage}</p>}
+          </div>
         </div>
         <div className="loginBottom">
-          <div className="loginRememberMeBox">
-            <input className="loginRememberMe" type="checkbox" />
-            <p className="loginRememberMeText">Remember me</p>
+          <div className={`registerTermsAndConditionsBox ${termsError ? "error" : ""}`}>
+            <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsAcceptance} />
+            <p className="registerTermsAndConditions">{t("loginRegistration.loginRememberMe")}</p>
           </div>
-          <button className="emailLogRegContinue">Log in</button>
-          <a className="loginForgotPassword">You forgot your password, don't worry click here for a password reset</a>
+          <button className="emailLogRegContinue" onClick={handleLoginSubmit}>{t("loginRegistration.loginLogIn")}</button>
+          <a className="loginForgotPassword">{t("loginRegistration.loginForgottenPassword")}</a>
         </div>
       </div>
     )}
@@ -384,9 +412,9 @@ return (
     {/*-------------------------------------------------REGISTER-----------------------------------------------*/}
     {emailCheckComplete && !emailExists && (currentStep === "register" || currentStep === "terms") && (!isTermsVisible || currentStep !== "terms" ? (
       <div className="emailLogRegBox">
-        <button className="logRegGoBackButton" onClick={() => navigate("/email-check")}>Go back</button>
+        <GoBackButton path="/email-check"/>
         <div className="registerWelcomeBox">
-          <h1 className="registerWelcome">Create an account</h1>
+          <h1 className="registerWelcome">{t("loginRegistration.registerWelcome")}</h1>
           <p className="registerEmail">{email}</p>
         </div>
         <div className="registerTop">
@@ -426,8 +454,8 @@ return (
             <div className={`registerTermsAndConditionsBox ${termsError ? "error" : ""}`}>
               <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsAcceptance} />
               <p className="registerTermsAndConditions">
-                {t("loginRegistration.termsAndConditions")}&nbsp;
-                <a className="registerTermsAndConditionsLink" onClick={handleTermsVisibility}><strong>Legal Policies</strong></a>
+                {t("loginRegistration.registerTerms")}&nbsp;
+                <a className="registerTermsAndConditionsLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registerLegalPolicies")}</strong></a>
               </p>
             </div>
             {termsError && <p className="emailLogRegErrorMessage">{termsErrorMessage}</p>}
@@ -437,7 +465,7 @@ return (
       </div>
     ) : (
       <div className="termsPageBox">
-        <button className="termsGoBackButton" onClick={() => {navigate("/email-check/register"); setIsTermsVisible(false);}}>Go back</button>
+        <button className="termsGoBackButton" onClick={() => {navigate("/email-check/register"); setIsTermsVisible(false);}}>{t("loginRegistration.loginRegisterGoBack")}</button>
         <LegalPolicies />
       </div>
     ))}

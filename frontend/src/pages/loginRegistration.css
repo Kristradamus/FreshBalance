@@ -36,22 +36,6 @@
   box-shadow: var(--boxShadow);
   border-radius: var(--smallRadius);
 }
-.logRegGoBackButton {
-  position: absolute;
-  border: none;
-  cursor: pointer;
-  left: 0px;
-  top: 0px;
-  padding: 7.5px 15px;
-  border-radius: var(--smallRadius) 0 var(--smallRadius) 0;
-  background-color: var(--green);
-  color: var(--white);
-  font-size:var(--smallTextFont);
-  transition: var(--transition);
-}
-.logRegGoBackButton:hover {
-  background-color: var(--lightGreen);
-}
 .emailLogRegContinue {
   border: none;
   cursor: pointer;
@@ -117,6 +101,7 @@
   align-items: center;
   justify-content: center;
   padding: 0px 10px;
+  width:100%;
   gap: 15px;
 }
 .emailDivider {
@@ -211,6 +196,27 @@
 }
 
 /*----------------------------------------------LOGIN----------------------------------------*/
+.loginWelcome{
+  margin:20px 0px;
+}
+.loginWelcome,
+.loginWelcomeUsername{
+  display:flex;
+  font-size:calc(var(--textFont) + 10px);
+}
+.loginWelcomeUsername{
+  color:var(--green);
+  text-decoration:underline;
+}
+.fa-circle-user{
+  font-size:150px;
+  color:var(--secondBackground);
+}
+.loginTop,
+.loginBottom{
+  width:100%;
+}
+
 
 /*-----------------------------------------REGISTER--------------------------------------------*/
 .registerInputErrorBox{
@@ -363,9 +369,6 @@
 @media (max-width: 780px) {
   .loginRegister {
     padding:15vw 3vw;
-  }
-  .loginRegister p {
-    font-size: calc(var(--textFont) - 2px);
   }
   .emailLogRegBox{
     max-width:320px;

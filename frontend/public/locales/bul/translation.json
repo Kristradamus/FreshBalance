@@ -138,6 +138,8 @@
   },
   "------------------------------------------------------LOGIN-REGISTRATION-------------------------------------------------------": {},
   "loginRegistration": {
+    "loginRegisterGoBack": "Назад",
+
     "emailGreeting": "Здравейте!",
     "emailPls": "Моля, въведете вашия имейл адрес",
     "emailPlaceholder": "Имейл...",
@@ -146,7 +148,26 @@
     "emailDontWorry": "Нямате акаунт? Не се притеснявайте, просто въведете имейла, с който искате да създадете такъв.",
     "emailOr": "или",
     "emailAlso": "Можете също да влезете с:",
-    "needHelp": "Нуждаете се от помощ?"
+
+    "registerWelcome": "Създаване на акаунт",
+    "registerLegalPolicies": "Правните политики",
+    "registerTitleUsername": "Потребителско име",
+    "registerTitlePassword": "Парола",
+    "registerTitleConfirmPassword": "Потвърди парола",
+    "registerTerms": "Прочетох и приемам",
+    "registerContinue": "Продължи",
+    "registerPasswordsDoNotMatch": "Паролите не съвпадат!",
+    "registerPasswordRequired": "Паролата е задължителна!",
+    "registerUsernameRequired": "Потребителското име е задължително!",
+    "registerUsernameTaken": "Това потребителско име е заето!",
+    "registerTermsRequired": "Трябва да приемете Правните политики, за да продължите!",
+
+    "loginWelcome": "Здравей",
+    "loginForgottenPassword": "Забравена парола?",
+    "loginLogIn": "Вход",
+    "loginRememberMe": "Запомни ме",
+
+    "needHelp": "Нужда от помощ?"
   },
   "----------------------------------------------------product-------------------------------------------------------------": {},
   "productPage": {

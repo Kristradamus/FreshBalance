@@ -146,6 +146,8 @@
   },
   "--------------------------------------------------------------LOGIN-REGISTRATION--------------------------------------------": {},
   "loginRegistration": {
+    "loginRegisterGoBack":"Go back",
+
     "emailGreeting": "Hello!",
     "emailPls": "Please enter your email address",
     "emailPlaceholder": "Email...",
@@ -155,6 +157,8 @@
     "emailOr": "or",
     "emailAlso": "You can also log in with:",
 
+    "registerWelcome":"Create an account",
+    "registerLegalPolicies":"Legal Policies",
     "registerTitleUsername": "Username",
     "registerTitlePassword": "Password",
     "registerTitleConfirmPassword": "Confirm Password",
@@ -165,6 +169,12 @@
     "registerUsernameRequired": "Username is required!",
     "registerUsernameTaken": "This username is already taken!",
     "registerTermsRequired": "You must accept the Legal Policies to continue!",
+
+    "loginWelcome":"Hi",
+    "loginForgottenPassword":"Forgotten password?",
+    "loginLogIn":"Log in",
+    "loginRememberMe":"Remember me",
+    "loginPlsPassword":"Please enter your password!",
 
     "needHelp": "Need help?"
   },
