@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "./LRGoBackButton.css";
 
 export default function GoBackButton({path}){

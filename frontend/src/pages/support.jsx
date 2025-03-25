@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import TermsAndConditions from "./legalPage.jsx";
 import axios from "axios";
 import "./support.css";
@@ -110,7 +110,8 @@ const handleSubmit = async (e) => {
       status: error.response?.status,
       config: error.config
     });
-    alert(t("support.messageError"));
+    const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || t("support.messageError");
+    alert(errorMessage);
   }
 };
 

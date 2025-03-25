@@ -7,6 +7,7 @@ import LegalPolicies from "../components/LegalPolicies.jsx";
 import { Link } from "react-router-dom";
 import "./loginRegistration.css";
 import GoBackButton from "../components/LRGoBackButton.jsx";
+import validator from "validator";
 
 export default function LoginRegistration() {
 const emailInputRef = useRef(null);
@@ -21,6 +22,7 @@ const [emailError, setEmailError] = useState(false);
 const [emailExists, setEmailExists] = useState(false);
 const [emailCheckComplete, setEmailCheckComplete] = useState(false);
 const [email, setEmail] = useState("");
+const [displayEmail, setDisplayEmail] = useState("");
 
 {/*------------------------REGISTER--------------------------------}*/}
 const [passwordError, setPasswordError] = useState(false);
@@ -95,7 +97,10 @@ useEffect(() => {
 
 {/*---------------------------------EMAIL-CHECK-----------------------------------*/}
 const handleEmailChange = (e) => {
-  const newEmail = e.target.value;
+  const rawInput = e.target.value;
+  const newEmail = rawInput.trim().toLowerCase();
+  setDisplayEmail(rawInput);
+  setEmail(newEmail);
   
   if (userProgress.emailChecked && email !== newEmail) {
     setUserProgress({emailChecked: false, emailVerified: false, termsViewed: false});
@@ -103,8 +108,6 @@ const handleEmailChange = (e) => {
     setEmailExists(false);
     resetFormData();
   }
-  
-  setEmail(newEmail);
   setEmailError(false);
 };
 const resetFormData = () => {
@@ -144,13 +147,8 @@ const handleEmailKeyChange = (e) => {
 const handleEmailBlur = () => {
   setEmailError(false);
 };
-const validateEmail = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
 const handleEmailCheckContinue = async () => {
-  if (!validateEmail(email)) {
+  if (!validator.isEmail(email)) {
     setEmailError(true);
     return;
   }
@@ -169,7 +167,8 @@ const handleEmailCheckContinue = async () => {
       setEmailExists(false);
     }
     setEmailCheckComplete(true);
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error checking email:", error.response?.data || error.message);
     setEmailError(true);
   }
@@ -286,20 +285,33 @@ const hadnleRegistrationSubmit = async () => {
   }
 
   if(isValid === true){
-    navigate("/email-check");
-  }
-  try {
-    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/username-check`, {username: usernameInput});
-    if (response.data.exists) {
-      setUsernameError(true);
-      setUsernameErrorMessage(t("loginRegistration.registerUsernameTaken"));
-      return;
+    try {
+      const response = await axios.post('/register', {
+        email,
+        username: usernameInput,
+        password: passwordInput,
+        confirmPassword: confirmPasswordInput,
+        termsAccepted: isTermsAccepted
+      });
+      // Handle successful registration
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        // Handle specific validation errors
+        error.response.data.errors.forEach(err => {
+          switch(err.field) {
+            case 'username':
+              setUsernameError(true);
+              setUsernameErrorMessage(err.message);
+              break;
+            case 'password':
+              setPasswordError(true);
+              setPasswordErrorMessage(err.message);
+              break;
+            // Add more cases
+          }
+        });
+      }
     }
-
-    console.log("Registration valid, proceeding with signup");
-    
-  } catch (error) {
-    console.error("Error checking username:", error.response?.data || error.message);
   }
 }
 {/*--------------LEGAL-POLICIES----------------*/}
@@ -347,7 +359,7 @@ return (
           <p className="emailPls">{t("loginRegistration.emailPls")}</p>
           <div className={`emailLogRegInputBox ${emailError ? "Error" : ""}`} onClick={handleEmailDivClick}>
             <i className="fa-solid fa-envelope"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.emailPlaceholder")} value={email} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange} onBlur={handleEmailBlur} />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.emailPlaceholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange} onBlur={handleEmailBlur} />
           </div>
           {emailError && <p className="emailLogRegErrorMessage">{t("loginRegistration.emailWarning")}</p>}
           <button className="emailLogRegContinue" onClick={handleEmailCheckContinue}>

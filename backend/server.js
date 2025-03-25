@@ -1,11 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const { sendEmail } = require('./support.js');
-require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const { sendEmail } = require("./support.js");
 const app = express();
 const pool = require("./dataBase");
+const dns = require("dns");
+const validator = require("validator")
 const PORT = process.env.PORT || 5000;
+require('dotenv').config();
 
 app.use(
   cors({
@@ -14,6 +16,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+
 {/*---------------------------------SUPPORT--------------------------------------*/}
 app.post('/send-message', async (req, res) => {
   try {
@@ -36,7 +39,7 @@ app.post("/check-email", async (req, res) => {
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
   }
-
+  
   try {
     const [rows] = await pool.query("SELECT * FROM users WHERE user_email = ?", [email]);
     console.log(rows);

@@ -1,7 +1,7 @@
 import Header from "../components/Header.jsx";
 import Navigation from "../components/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "./communities.css";
 
 export default function Communities() {

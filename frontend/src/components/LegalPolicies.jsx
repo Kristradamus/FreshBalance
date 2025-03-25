@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import "./LegalPolicies.css";
 
 export default function LegalPolicies(){
