@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import "./LanguageSwitcher.css";
 
 export default function LanguageSwitcher() {
-const { t } = useTranslation();
 const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 const dropDownRef = useRef(null);
+const { t } = useTranslation();
 const languages = [
   { name: "eng", label: t("languageSwitcher.english") },
   { name: "bul", label: t("languageSwitcher.bulgarian") },

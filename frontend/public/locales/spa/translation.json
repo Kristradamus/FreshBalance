@@ -510,7 +510,8 @@
           { "name": "Servicios", "link": "/services" },
           { "name": "Suscripciones", "link": "/subscriptions" },
           { "name": "Comunidades", "link": "/communities" },
-          { "name": "Soporte", "link": "/support" }
+          { "name": "Soporte", "link": "/support" },
+          { "name": "Políticas Legales", "link": "/legal-policies" }
         ]
       },
       "services": {

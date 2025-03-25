@@ -509,7 +509,8 @@
           { "name": "Dienstleistungen", "link": "/services" },
           { "name": "Abonnements", "link": "/subscriptions" },
           { "name": "Communities", "link": "/communities" },
-          { "name": "Support", "link": "/support" }
+          { "name": "Support", "link": "/support" },
+          { "name": "Rechtliche Regeln", "link": "/legal-policies" }
         ]
       },
       "services": {

@@ -511,7 +511,8 @@
           { "name": "Услуги", "link": "/services" },
           { "name": "Абонаменти", "link": "/subscriptions" },
           { "name": "Общности", "link": "/communities" },
-          { "name": "Помощ", "link": "/support" }
+          { "name": "Помощ", "link": "/support" },
+          { "name": "Правни политики", "link": "/legal-policies" }
         ]
       },
       "services": {
