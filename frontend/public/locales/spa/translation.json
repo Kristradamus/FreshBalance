@@ -476,7 +476,6 @@
       ]
     },
     "messageSent": "¡Mensaje enviado con éxito!",
-    "messageFail": "¡Error al enviar el mensaje!",
     "messageError": "Ocurrió un error al enviar el mensaje.",
     "placeholder": "Buscar solución...",
     "backToSupport": "Volver al Soporte",
@@ -486,7 +485,9 @@
     "name": "Nombre:",
     "email": "Correo electrónico:",
     "message": "Mensaje:",
-    "submit": "Enviar"
+    "submit": "Enviar",
+    "messageIsTooLong": "El mensaje excede el límite (máx. 3000 caracteres)",
+    "nameIsTooLong": "El nombre excede el límite (máx. 100 caracteres)"
   },
   "----------------------------------------------------------APP-----------------------------------------------------------": {},
   "app": {

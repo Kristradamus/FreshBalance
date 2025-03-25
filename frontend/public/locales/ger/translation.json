@@ -475,7 +475,6 @@
       ]
     },
     "messageSent": "Nachricht erfolgreich gesendet!",
-    "messageFail": "Nachricht konnte nicht gesendet werden!",
     "messageError": "Beim Senden der Nachricht ist ein Fehler aufgetreten.",
     "placeholder": "Nach Lösung suchen...",
     "backToSupport": "Zurück zum Support",
@@ -485,7 +484,9 @@
     "name": "Name:",
     "email": "E-Mail:",
     "message": "Nachricht:",
-    "submit": "Senden"
+    "submit": "Senden",
+    "messageIsTooLong": "Die Nachricht ist zu lang (max. 3000 Zeichen)",
+    "nameIsTooLong": "Der Name ist zu lang (max. 100 Zeichen)"
   },
   "----------------------------------------------------------APP-----------------------------------------------------------": {},
   "app": {

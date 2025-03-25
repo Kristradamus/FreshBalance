@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import TermsAndConditions from "./legalPage.jsx";
+import axios from "axios";
 import "./support.css";
 
 export default function Support() {
@@ -10,6 +9,7 @@ const [selected, setSelected] = useState({ title: "", content: "" });
 const [searchQuery, setSearchQuery] = useState("");
 const [showContactForm, setShowContactForm] = useState(false);
 const [isSearchFocused, setIsSearchFocused] = useState(false);
+const [charCount, setCharCount] = useState({ name: 0, message: 0 });
 const searchInputRef = useRef(null);
 const searchBoxRef = useRef(null);
 const { t } = useTranslation();
@@ -42,8 +42,13 @@ const handleInputChange = (e) => {
 
 const handleKeyDown = (e) => {
   if (e.key === "Escape") {
-    setIsSearchFocused(false);
-    searchInputRef.current?.blur();
+    if (e.target === searchInputRef.current) {
+      setIsSearchFocused(false);
+      searchInputRef.current?.blur();
+    }
+    else if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+      e.target.blur();
+    }
   }
 };
 
@@ -65,40 +70,46 @@ useEffect(() => {
 }, []);
 
 {/*----------------------------------EMAIL-SENDING-------------------------------------*/}
+const handleFormInputChange = (field) => (e) => {
+  setCharCount(prev => ({
+    ...prev,
+    [field]: e.target.value.length
+  }));
+};
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const data = {
     name: formData.get("name"),
     email: formData.get("email"),
-    message: formData.get("message")
+    message: formData.get("message"),
   };
 
+  if (data.name.length > 100) {
+    alert(t("support.nameIsTooLong"));
+    return;
+  }
+  if (data.message.length > 3000) {
+    alert(t("support.messageIsTooLong"));
+    return;
+  }
   e.target.reset();
+  setCharCount({ name: 0, message: 0 });
   console.log("Submitting form data:", data);
-  try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-message`,{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log("Response status:", response.status);
 
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log("Response data:", responseData);
-      alert(t("support.messageSent"));
-    } 
-    else {
-      const errorData = await response.json();
-      console.error("Error response:", errorData);
-      alert(t("support.messageFail"));
-    }
+  try {
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/send-message`, data);
+    console.log("Success response:", response.data);
+    alert(t("support.messageSent"));
   } 
   catch (error) {
-    console.log("Error:", error.response.data);
+    console.error("Error details:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      config: error.config
+    });
     alert(t("support.messageError"));
   }
 };
@@ -147,12 +158,22 @@ return (
           <div className="supportContactFormBox">
             <h2 className="title"><strong>{t("support.contactSupport")}:</strong></h2>
             <form className="supportContactForm" onSubmit={handleSubmit}>
-              <label htmlFor="name">{t("support.name")}</label>
-              <input type="text" id="name" name="name" required />
+              <label htmlFor="name">
+                {t("support.name")}
+                <span className={`supportCharCounter ${charCount.name > 100 ? 'error' : ''}`}>
+                  {charCount.name}/100
+                </span>
+              </label>
+              <input type="text" id="name" name="name" required onChange={handleFormInputChange('name')} onKeyDown={handleKeyDown}/>
               <label htmlFor="email">{t("support.email")}</label>
-              <input type="email" id="email" name="email" required />
-              <label htmlFor="message">{t("support.message")}</label>
-              <textarea id="message" name="message" rows="15" required></textarea>
+              <input type="email" id="email" name="email" required onKeyDown={handleKeyDown}/>
+              <label htmlFor="message">
+                  {t("support.message")}
+                  <span className={`supportCharCounter ${charCount.message > 3000 ? 'error' : ''}`}>
+                    {charCount.message}/3000
+                  </span>
+              </label>
+              <textarea id="message" name="message" rows="15" required onChange={handleFormInputChange('message')} onKeyDown={handleKeyDown}></textarea>
               <button type="submit">{t("support.submit")}</button>
             </form>
           </div>

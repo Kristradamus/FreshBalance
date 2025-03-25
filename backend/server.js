@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { sendEmail } = require('./email');
+const { sendEmail } = require('./support.js');
 require('dotenv').config();
 const app = express();
 const pool = require("./dataBase");
@@ -16,21 +16,15 @@ app.use(
 app.use(bodyParser.json());
 {/*---------------------------------SUPPORT--------------------------------------*/}
 app.post('/send-message', async (req, res) => {
-
-  const { name, email, message } = req.body;
-  if (!name || !email || !message) {
-    return res.status(400).json({ message: 'Name, email, and message are required' });
-  }
   try {
-    const result = await sendEmail(name, email, message);
-    if (result.success) {
-      res.status(200).json({ message: result.message });
-    } else {
-      res.status(500).json({ message: result.message });
-    }
-  } catch (error) {
-    console.error('Error in /send-message route:', error);
-    res.status(500).json({ message: 'An error occurred while sending the message' });
+    const result = await sendEmail(req.body.name, req.body.email, req.body.message);
+    res.status(200).json(result);
+  } 
+  catch (error) {
+    res.status(400).json({
+      status: 'error',
+      message: error.message
+    });
   }
 });
 

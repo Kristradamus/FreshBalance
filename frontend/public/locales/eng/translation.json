@@ -486,7 +486,6 @@
       ]
     },
     "messageSent": "Message sent successfully!",
-    "messageFail": "Failed to send message!",
     "messageError": "An error occurred while sending the message.",
     "placeholder": "Search for solution...",
     "backToSupport": "Back to Support",
@@ -496,7 +495,9 @@
     "name": "Name:",
     "email": "Email:",
     "message": "Message:",
-    "submit": "Submit"
+    "submit": "Submit",
+    "messageIsTooLong":"Message is too long (max 3000 characters)",
+    "nameIsTooLong":"Name is too long (max 100 characters)"
   },
   "-----------------------------------------------------------APP--------------------------------------------------------------": {},
   "app": {

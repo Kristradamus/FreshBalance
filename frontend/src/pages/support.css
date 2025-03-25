@@ -179,6 +179,13 @@
 .supportContactForm textarea:valid {
   border: 1px solid var(--green);
 }
+.supportCharCounter {
+  margin-left:5px;
+}
+.supportFormLabel.error,
+.supportCharCounter.error {
+  color: var(--errorColor);
+}
 
 /*----------------------------------------RESPONSIVE----------------------------------------------------*/
 @media (max-width: 900px) {
