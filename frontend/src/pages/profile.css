@@ -1,0 +1,118 @@
+
+  .profile{
+    display: flex;
+    flex-direction:row;
+    min-height: 100vh;
+    padding:20px;
+    gap:20px;
+  }
+  .profileSidebar {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    width: 300px;
+    padding: 20px;
+    background-color:var(--white);
+    border-radius:var(--smallRadius);
+    box-shadow: var(--boxShadowLight);
+  }
+  .profileSidebar .fa-circle-user{
+    color:var(--secondBackground);
+    font-size:150px;
+  }
+  .profileSidebarNav{
+    width:100%;
+  }
+  .profileButton {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius:5px;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    transition:var(--transition);
+  }
+  .profileButton i{
+    margin-right:var(--iconDistance);
+  }
+  .profileButton:hover {
+    background-color: var(--secondBackground);
+  }
+  .profileButton.active{
+    background-color:var(--veryLightGreen);
+    color:var(--green);
+  }
+  .profileContentArea {
+    flex-grow: 1;
+  }
+
+
+
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .form-group {
+    flex-grow: 1;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .save-btn {
+    display: flex;
+    align-items: center;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    gap: 10px;
+  }
+  
+  .save-btn:hover {
+    background-color: #0052a3;
+  }
+  
+  .favourites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .favourites-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  .favourites-item button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

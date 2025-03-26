@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { z } from 'zod';
 import axios from "axios";
 import logo from "../../public/images/freshBalance.png";
 import LegalPolicies from "../components/LegalPolicies.jsx";
-import { Link } from "react-router-dom";
 import "./loginRegistration.css";
 import GoBackButton from "../components/LRGoBackButton.jsx";
 import validator from "validator";
@@ -31,7 +32,7 @@ const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
 const [passwordInput, setPasswordInput] = useState("");
 
 const [usernameError, setUsernameError] = useState(false);
-const [usernameAvailable, setUsernameAvailable] = useState(false);
+const [usernameAvailable, setUsernameAvailable] = useState(true);
 const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
 const [usernameInput, setUsernameInput] = useState("");
 
@@ -49,6 +50,7 @@ const [isTermsVisible, setIsTermsVisible] = useState(false);
 
 {/*------------------------LOGIN--------------------------------}*/}
 const [username, setUsername] = useState("");
+
 {/*---------------------------------RELOAD-STOPPER-----------------------------------*/}
 
 {/*RELOAD AND LEAVE SITE PREVENTER*/}
@@ -148,9 +150,6 @@ const handleEmailKeyChange = (e) => {
     handleEmailCheckContinue();
   }
 };
-const handleEmailBlur = () => {
-  setEmailError(false);
-};
 
 {/*SUBMIT-CODE*/}
 const handleEmailCheckContinue = async () => {
@@ -186,7 +185,7 @@ const handleEmailCheckContinue = async () => {
   catch (error) {
     console.error("Error checking email:", error);
     setEmailError(true);
-    const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || "An unknown error occurred";
+    const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || t("loginRegistration.registerEmailError");
     alert(errorMessage);
   }
 };
@@ -210,9 +209,6 @@ const handleUsernameKeyChange = (e) => {
     passwordInputRef.current.focus();
   }
 };
-const handleUsernameBlur = () => {
-  setUsernameError(false);
-};
 
 //PASSWORD
 const handlePasswordChange = (e) => {
@@ -231,9 +227,6 @@ const handlePasswordKeyChange = (e) => {
   if (e.key === "Enter") {
     confirmPasswordInputRef.current.focus();
   }
-};
-const handlePasswordBlur = () => {
-  setPasswordError(false);
 };
 const handlePasswordVisibility = () => {
   setIsPasswordVisible(!isPasswordVisible);
@@ -257,9 +250,6 @@ const handleConfirmPasswordKeyChange = (e) => {
     handleRegistrationSubmit();
   }
 };
-const handleConfirmPasswordBlur = () => {
-  setPasswordError(false);
-};
 const handleConfirmPasswordVisibility = () => {
   setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
 };
@@ -271,6 +261,31 @@ const handleTermsAcceptance = (e) => {
 };
 
 {/*------------REGISTRATION-SUBMIT------------*/}
+const RegistrationSchema = z.object({
+  username: z.string()
+    .max(30, { message: t("loginRegistration.registerUsername30Chars")})
+    .min(3, { message: t("loginRegistration.registerUsername3Chars")})
+    .regex(/^[a-zA-Z0-9_]+$/, {message: t("loginRegistration.registerUsernameAllowedCharacters")})
+    .min(1, { message: t("loginRegistration.registerUsernameRequired")})
+    .trim(),
+  confirmPassword: z.string()
+    .min(1, { message: t("loginRegistration.registerConfirmPassword")})
+    .trim(),
+  password: z.string()
+    .regex(/[A-Z]/, {message: t("loginRegistration.registerPasswordUpperCaseLetter")})
+    .regex(/[0-9]/, { message: t("loginRegistration.registerPassword1Number")})
+    .min(8, { message: t("loginRegistration.registerPassword8Chars")})
+    .min(1, { message: t("loginRegistration.registerPasswordRequired")})
+    .trim(),
+  termsAccepted: z.literal(true, {
+    errorMap: () => ({ message: t("loginRegistration.registerTermsRequired")}),
+  })
+})
+.refine(data => data.password === data.confirmPassword, {
+  message: t("loginRegistration.registerPasswordsDoNotMatch"),
+  path: ["confirmPassword"]
+});
+
 useEffect(() => {
   const timer = setTimeout(async () => {
     if (usernameInput.trim().length > 0) {
@@ -285,9 +300,10 @@ useEffect(() => {
         else {
           setUsernameAvailable(false);
           setUsernameError(true);
-          setUsernameErrorMessage("Username is already taken");
+          setUsernameErrorMessage(t("loginRegistration.registerUsernameTaken"));
         }
-      } catch (error) {
+      } 
+      catch (error) {
         console.error("Username check failed:", error);
       }
     }
@@ -301,73 +317,77 @@ const handleRegistrationSubmit = async () => {
   setPasswordError(false);
   setTermsError(false);
 
+  setUsernameErrorMessage("");
+
   let isValid = true;
 
   if (!usernameAvailable) {
     setUsernameError(true);
-    setUsernameErrorMessage("Username is already taken");
+    setUsernameErrorMessage(t("loginRegistration.registerUsernameTaken"));
     isValid = false;
   }
-  if(!usernameInput.trim()){
-    setUsernameError(true);
-    setUsernameErrorMessage(t("loginRegistration.registerUsernameRequired"));
-    isValid = false;
-  }
-  if(!passwordInput.trim()){
-    setPasswordError(true);
-    setPasswordErrorMessage(t("loginRegistration.registerPasswordRequired"));
-    isValid = false;
-  }
-  else if(passwordInput.trim() !== confirmPasswordInput.trim()){
-    setPasswordError(true);
-    setPasswordErrorMessage(t("loginRegistration.registerPasswordsDoNotMatch"));
-    isValid = false;
-  }
-  if(!isTermsAccepted){
-    setTermsError(true);
-    setTermsErrorMessage(t("loginRegistration.registerTermsRequired"))
-    isValid = false;
-  }
-
+  
   if(isValid){
     try {
-      const token = sessionStorage.getItem('emailVerificationToken');
-      const verifiedEmail = sessionStorage.getItem('verifiedEmail');
-
-      console.log('Frontend - Token:', token);
-      console.log('Frontend - Email:', verifiedEmail);
-      console.log('Frontend - Username:', usernameInput);
-      console.log('Frontend - Password:', passwordInput);
-
-      
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
-        email: verifiedEmail,
-        token: token,
+      const validatedData = await RegistrationSchema.parseAsync({
         username: usernameInput,
-        password: passwordInput
-      },{
-        // This helps capture more detailed error information
-        validateStatus: function (status) {
-          return status >= 200 && status < 300 || status === 401;
-        }
+        password: passwordInput,
+        confirmPassword: confirmPasswordInput,
+        termsAccepted: isTermsAccepted
       });
-      
-      console.log('Full Response:', response);
+      try {
+        const token = sessionStorage.getItem('emailVerificationToken');
+        const verifiedEmail = sessionStorage.getItem('verifiedEmail');
 
-      if(response.status === 200 || response.status === 201){
-        alert("REGISTRATION SUCCESFULL");
-        sessionStorage.removeItem('emailVerificationToken');
-        sessionStorage.removeItem('verifiedEmail');
-        navigate("/");
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
+          email: verifiedEmail,
+          token: token,
+          username: validatedData.username,
+          password: validatedData.password
+        }, 
+        {
+          validateStatus: status => status >= 200 && status < 300 || status === 401
+        });
+
+        console.log('Full Response:', response);
+
+        if(response.status === 200 || response.status === 201){
+          sessionStorage.removeItem('emailVerificationToken');
+          sessionStorage.removeItem('verifiedEmail');
+          alert(t("loginRegistration.registrationSuccessfull"));
+          navigate("/");
+        }
+      } 
+      catch (error) {
+        const errorMessage = error.response?.data?.message || t("loginRegistration.registrationFailed");
+        alert(errorMessage);
+        console.error("Registration failed:", error);
       }
-    } 
+    }
     catch (error) {
-      /*const errorMessage = error.response?.data?.message
-      alert(errorMessage);*/
-      console.error("Registration failed:", error);;
+      if (error instanceof z.ZodError) {
+        error.errors.forEach((err) => {
+          switch(err.path[0]) {
+            case 'username':
+              setUsernameError(true);
+              setUsernameErrorMessage(err.message);
+              break;
+            case 'password':
+            case 'confirmPassword':
+              setPasswordError(true);
+              setPasswordErrorMessage(err.message);
+              break;
+            case 'termsAccepted':
+              setTermsError(true);
+              setTermsErrorMessage(err.message);
+              break;
+          }
+        })
+      }
     }
   }
 };
+
 {/*--------------LEGAL-POLICIES----------------*/}
 const handleTermsVisibility = () => {
   const newVisibility = !isTermsVisible;
@@ -389,16 +409,49 @@ const handleLoginSubmit = async() => {
   if(!passwordInput){
     setPasswordError(true);
     setPasswordErrorMessage(t("loginRegistration.loginPlsPassword"));
+    isValid = false;
   }
-  else{
+  if(isValid){
     try{
-
+      const verifiedEmail = sessionStorage.getItem('verifiedEmail');
+      if (!verifiedEmail) {
+        throw new Error("Email verification missing!");
+      }
+  
+      const verificationToken = sessionStorage.getItem('emailVerificationToken');
+  
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+        email: verifiedEmail,
+        password: passwordInput.trim(),
+        ...(verificationToken && { token: verificationToken })
+      });
+  
+      if (response.data.token) {
+        sessionStorage.setItem('authToken', response.data.token);
+      }
+      
+      sessionStorage.removeItem('emailVerificationToken');
+      sessionStorage.removeItem('verifiedEmail');
+      
+      navigate("/");
+  
+    } catch (error) {
+      if (error.message.includes("Email verification")) {
+        alert(t("loginRegistration.sessionExpired"));
+        navigate("/login");
+      } 
+      else if (error.response?.data?.error === "invalidPassword") {
+        setPasswordError(true);
+        setPasswordErrorMessage(t("loginRegistration.invalidPassword"));
+      }
+      else {
+        console.error("Login error:", error);
+        alert(t("loginRegistration.generalError"));
+      }
     }
-    catch{
-
-    }
-  }
+  };
 }
+
 return (
   <div className="loginRegister">
     <Link to="/">
@@ -413,7 +466,7 @@ return (
           <p className="emailPls">{t("loginRegistration.emailPls")}</p>
           <div className={`emailLogRegInputBox ${emailError ? "Error" : ""}`} onClick={handleEmailDivClick}>
             <i className="fa-solid fa-envelope"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.emailPlaceholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange} onBlur={handleEmailBlur} />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.emailPlaceholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange}/>
           </div>
           {emailError && <p className="emailLogRegErrorMessage">{t("loginRegistration.emailWarning")}</p>}
           <button className="emailLogRegContinue" onClick={handleEmailCheckContinue}>
@@ -451,10 +504,10 @@ return (
         <h1 className="loginWelcome">{t("loginRegistration.loginWelcome")}&nbsp;<p className="loginWelcomeUsername">{username}</p>&nbsp;!</h1>
         <i class="fa-solid fa-circle-user"></i>
         <div className="loginTop">
-          <div>
+          <div className="registerInputErrorBox">
             <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick}>
               <i className="fa-solid fa-lock"></i>
-              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange} onBlur={handlePasswordBlur}></input>
+              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}></input>
               {isPasswordVisible ? (
                   <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility}></i>
                 ) : (
@@ -465,16 +518,15 @@ return (
           </div>
         </div>
         <div className="loginBottom">
-          <div className={`registerTermsAndConditionsBox ${termsError ? "error" : ""}`}>
+          <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
             <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsAcceptance} />
-            <p className="registerTermsAndConditions">{t("loginRegistration.loginRememberMe")}</p>
+            <p className="emailLogRegCheckbox">{t("loginRegistration.loginRememberMe")}</p>
           </div>
           <button className="emailLogRegContinue" onClick={handleLoginSubmit}>{t("loginRegistration.loginLogIn")}</button>
           <a className="loginForgotPassword">{t("loginRegistration.loginForgottenPassword")}</a>
         </div>
       </div>
     )}
-
     {/*-------------------------------------------------REGISTER-----------------------------------------------*/}
     {emailCheckComplete && !emailExists && (currentStep === "register" || currentStep === "terms") && (!isTermsVisible || currentStep !== "terms" ? (
       <div className="emailLogRegBox">
@@ -487,14 +539,14 @@ return (
           <div className="registerInputErrorBox">
             <div className={`emailLogRegInputBox ${usernameError ? "Error" : ""}`} onClick={handleUsernameDivClick}>
               <i className="fa-solid fa-user"></i>
-              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleUsername") + "..."} value={usernameInput} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange} onBlur={handleUsernameBlur}/>
+              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleUsername") + "..."} value={usernameInput} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange}/>
             </div>
             {usernameError && <p className="emailLogRegErrorMessage">{usernameErrorMessage}</p>}
           </div>
           <div className="registerInputErrorBox">
             <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick}>
               <i className="fa-solid fa-lock"></i>
-              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange} onBlur={handlePasswordBlur}/>
+              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}/>
               {isPasswordVisible ? (
                 <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility}></i>
               ) : (
@@ -505,7 +557,7 @@ return (
           <div className="registerInputErrorBox">
             <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handleConfirmPasswordDivClick}>
               <i className="fa-solid fa-lock"></i>
-              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleConfirmPassword") + "..."} type={isConfirmPasswordVisible ? "text" : "password"} value={confirmPasswordInput} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange} onBlur={handleConfirmPasswordBlur}/>
+              <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleConfirmPassword") + "..."} type={isConfirmPasswordVisible ? "text" : "password"} value={confirmPasswordInput} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange}/>
               {isConfirmPasswordVisible ? (
                 <i className="fa-solid fa-eye-slash" onClick={handleConfirmPasswordVisibility}></i>
               ) : (
@@ -517,11 +569,11 @@ return (
         </div>
         <div className="registerBottom">
           <div className="registerInputErrorBox">
-            <div className={`registerTermsAndConditionsBox ${termsError ? "error" : ""}`}>
+            <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
               <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsAcceptance} />
-              <p className="registerTermsAndConditions">
+              <p className="emailLogRegCheckbox">
                 {t("loginRegistration.registerTerms")}&nbsp;
-                <a className="registerTermsAndConditionsLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registerLegalPolicies")}</strong></a>
+                <a className="emailLogRegCheckboxLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registerLegalPolicies")}</strong></a>
               </p>
             </div>
             {termsError && <p className="emailLogRegErrorMessage">{termsErrorMessage}</p>}

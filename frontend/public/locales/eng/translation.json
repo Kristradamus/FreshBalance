@@ -156,6 +156,7 @@
     "emailDontWorry": "You don't have an account? Don't worry, just input the email with which you want to create one.",
     "emailOr": "or",
     "emailAlso": "You can also log in with:",
+    "emailError":"Server error during email verification. Please contact support if this persists.",
 
     "registerWelcome":"Create an account",
     "registerLegalPolicies":"Legal Policies",
@@ -164,11 +165,22 @@
     "registerTitleConfirmPassword": "Confirm Password",
     "registerTerms": "I have read and agree to the",
     "registerContinue": "Continue",
-    "registerPasswordsDoNotMatch": "Passwords do not match!",
-    "registerPasswordRequired": "Password is required!",
+    "registerTermsRequired": "You must accept the Legal Policies to continue!",
+    "registrationSuccessfull":"Registration successfull!",
+    "registrationFailed":"RegistrationFailed!",
+
     "registerUsernameRequired": "Username is required!",
     "registerUsernameTaken": "This username is already taken!",
-    "registerTermsRequired": "You must accept the Legal Policies to continue!",
+    "registerUsername3Chars": "Username must contain at least 3 characters!",
+    "registerUsername30Chars": "Username cannot exceed 30 characters!",
+    "registerUsernameAllowedCharacters": "Only letters, numbers, and underscores are allowed in the username!",
+
+    "registerConfirmPassword":"Please confirm your password!",
+    "registerPasswordsDoNotMatch": "Passwords do not match!",
+    "registerPasswordRequired": "Password is required!",
+    "registerPassword8Chars": "Password must be atleast 8 characters!",
+    "registerPassword1Number":"Password must contain atleast one number!",
+    "registerPasswordUpperCaseLetter":"Password must contain atleast one uppercase letter!",
 
     "loginWelcome":"Hi",
     "loginForgottenPassword":"Forgotten password?",
@@ -184,7 +196,14 @@
     "errorLoading": "There seems to be an issue with the product page. Please try again."
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
-  "profile": {},
+  "profile": {
+    "securityMainTitle":"Security",
+    "securityChangePasswordTitle":"Change Password",
+    "securityChange":"Change",
+    "securityRecommendation":"Recommended to use a strong password with mix of characters",
+    "securityTwoFactorVerificationTitle":"Two-Factor Authentication",
+    "securityTwoFactorVerificationText":"Add an extra layer of security to your account"
+  },
   "----------------------------------------------------SERVICES------------------------------------------------------------------": {},
   "services": {
     "servicesData": {
@@ -584,8 +603,8 @@
       ],
       "nav": [
         { "name": "Login", "link": "/email-check" },
-        { "name": "Favourites", "link": "/favourites" },
-        { "name": "Cart", "link": "/cart" }
+        { "name": "Favourites", "link": "/profile/favourites" },
+        { "name": "Cart", "link": "/profile/cart" }
       ],
       "icons": {
         "Login": "fa-solid fa-user",

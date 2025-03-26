@@ -137,35 +137,49 @@
     "whoWeWorkWith":"NUESTRAS MARCAS COLABORADORAS"
   },
   "--------------------------------------------------------------LOGIN-REGISTRATION---------------------------------------------------": {},
-  "loginRegistration": {
+"loginRegistration": {
     "loginRegisterGoBack": "Atrás",
 
-    "emailGreeting": "¡Hola!",
+    "emailGreeting": "Bienvenido",
     "emailPls": "Ingresa tu email",
-    "emailPlaceholder": "Email...",
+    "emailPlaceholder": "Email",
     "emailWarning": "Email inválido",
-    "emailContinue": "Siguiente",
-    "emailDontWorry": "¿Sin cuenta? Usa el email para crearla",
+    "emailContinue": "Continuar",
+    "emailDontWorry": "¿Sin cuenta? Ingresa email para registrarte",
     "emailOr": "o",
-    "emailAlso": "Inicia con:",
+    "emailAlso": "También puedes ingresar con:",
+    "emailError": "Error al verificar email",
 
-    "registerWelcome": "Regístrate",
+    "registerWelcome": "Crear cuenta",
     "registerLegalPolicies": "Términos",
     "registerTitleUsername": "Usuario",
     "registerTitlePassword": "Contraseña",
-    "registerTitleConfirmPassword": "Confirmar",
-    "registerTerms": "Acepto los términos",
-    "registerContinue": "Registrarse",
-    "registerPasswordsDoNotMatch": "Contraseñas no coinciden",
-    "registerPasswordRequired": "Requiere contraseña",
-    "registerUsernameRequired": "Requiere usuario",
-    "registerUsernameTaken": "Usuario ocupado",
-    "registerTermsRequired": "Acepta los términos",
+    "registerTitleConfirmPassword": "Confirmar contraseña",
+    "registerTerms": "Acepto los",
+    "registerContinue": "Continuar",
+    "registerTermsRequired": "Debes aceptar los términos",
+    "registrationSuccessfull": "Registro exitoso",
+    "registrationFailed": "Registro fallido",
 
-    "loginWelcome": "Hola",
-    "loginForgottenPassword": "¿Olvidaste contraseña?",
-    "loginLogIn": "Entrar",
-    "loginRememberMe": "Recordar",
+    "registerUsernameRequired": "Usuario requerido",
+    "registerUsernameTaken": "Usuario ya existe",
+    "registerUsername3Chars": "Mín. 3 caracteres",
+    "registerUsername30Chars": "Máx. 30 caracteres",
+    "registerUsernameAllowedCharacters": "Solo letras, números y guiones bajos",
+
+    "registerConfirmPassword": "Confirmar contraseña",
+    "registerPasswordsDoNotMatch": "Las contraseñas no coinciden",
+    "registerPasswordRequired": "Contraseña requerida",
+    "registerPassword8Chars": "Mín. 8 caracteres",
+    "registerPassword1Number": "Mín. 1 número",
+    "registerPasswordUpperCaseLetter": "Mín. 1 mayúscula",
+
+    "loginWelcome": "Ingresar",
+    "loginForgottenPassword": "¿Olvidaste tu contraseña?",
+    "loginLogIn": "Iniciar sesión",
+    "loginRememberMe": "Recordarme",
+    "loginPlsPassword": "Ingresa tu contraseña",
+
     "needHelp": "¿Ayuda?"
   },
   "-------------------------------------------------------------product---------------------------------------------------": {},
@@ -574,8 +588,8 @@
       ],
       "nav": [
         { "name": "Ingresar", "link": "/email-check" },
-        { "name": "Favoritos", "link": "/favourites" },
-        { "name": "Carrito", "link": "/cart" }
+        { "name": "Favoritos", "link": "/profile/favourites" },
+        { "name": "Carrito", "link": "/profile/cart" }
       ],
       "icons": {
         "Ingresar": "fa-solid fa-user",

@@ -137,35 +137,47 @@
   "loginRegistration": {
     "loginRegisterGoBack": "Zurück",
 
-    "emailGreeting": "Hallo!",
-    "emailPls": "Bitte geben Sie Ihre E-Mail-Adresse ein",
-    "emailPlaceholder": "E-Mail...",
-    "emailWarning": "Bitte geben Sie eine gültige E-Mail-Adresse ein!",
+    "emailGreeting": "Willkommen",
+    "emailPls": "E-Mail eingeben",
+    "emailPlaceholder": "E-Mail",
+    "emailWarning": "Ungültige E-Mail",
     "emailContinue": "Weiter",
-    "emailDontWorry": "Sie haben noch kein Konto? Kein Problem, geben Sie einfach die E-Mail-Adresse ein, mit der Sie eines erstellen möchten.",
+    "emailDontWorry": "Kein Konto? E-Mail für Neuregistrierung eingeben",
     "emailOr": "oder",
-    "emailAlso": "Sie können sich auch anmelden mit:",
+    "emailAlso": "Alternativ anmelden mit:",
+    "emailError": "Fehler bei E-Mail-Prüfung",
 
-    "registerWelcome": "Konto erstellen",
-    "registerLegalPolicies": "Rechtliche Bestimmungen",
+    "registerWelcome": "Neues Konto",
+    "registerLegalPolicies": "AGB",
     "registerTitleUsername": "Benutzername",
     "registerTitlePassword": "Passwort",
-    "registerTitleConfirmPassword": "Passwort bestätigen",
-    "registerTerms": "Ich habe die",
+    "registerTitleConfirmPassword": "Passwort wiederholen",
+    "registerTerms": "Ich akzeptiere die",
     "registerContinue": "Weiter",
-    "registerPasswordsDoNotMatch": "Die Passwörter stimmen nicht überein!",
-    "registerPasswordRequired": "Passwort ist erforderlich!",
-    "registerUsernameRequired": "Benutzername ist erforderlich!",
-    "registerUsernameTaken": "Dieser Benutzername ist bereits vergeben!",
-    "registerTermsRequired": "Sie müssen die rechtlichen Bestimmungen akzeptieren, um fortzufahren!",
+    "registerTermsRequired": "AGB müssen akzeptiert werden",
+    "registrationSuccessfull": "Erfolgreich registriert",
+    "registrationFailed": "Registrierung fehlgeschlagen",
 
-    "loginWelcome": "Hallo",
+    "registerUsernameRequired": "Benutzername benötigt",
+    "registerUsernameTaken": "Benutzername vergeben",
+    "registerUsername3Chars": "Mind. 3 Zeichen",
+    "registerUsername30Chars": "Max. 30 Zeichen",
+    "registerUsernameAllowedCharacters": "Nur Buchstaben, Zahlen, Unterstriche",
+
+    "registerConfirmPassword": "Passwort bestätigen",
+    "registerPasswordsDoNotMatch": "Passwörter unterschiedlich",
+    "registerPasswordRequired": "Passwort benötigt",
+    "registerPassword8Chars": "Mind. 8 Zeichen",
+    "registerPassword1Number": "Mind. 1 Zahl",
+    "registerPasswordUpperCaseLetter": "Mind. 1 Großbuchstabe",
+
+    "loginWelcome": "Anmeldung",
     "loginForgottenPassword": "Passwort vergessen?",
     "loginLogIn": "Anmelden",
-    "loginRememberMe": "Angemeldet bleiben",
-    "loginPlsPassword":"",
+    "loginRememberMe": "Eingeloggt bleiben",
+    "loginPlsPassword": "Passwort eingeben",
 
-    "needHelp": "Brauchen Sie Hilfe?"
+    "needHelp": "Hilfe?"
   },
   "-------------------------------------------------------------product---------------------------------------------------": {},
   "productPage": {
@@ -573,8 +585,8 @@
       ],
       "nav": [
         { "name": "Login", "link": "/email-check" },
-        { "name": "Favoriten", "link": "/favourites" },
-        { "name": "Korb", "link": "/cart" }
+        { "name": "Favoriten", "link": "/profile/favourites" },
+        { "name": "Korb", "link": "/profile/cart" }
       ],
       "icons": {
         "Login": "fa-solid fa-user",

@@ -196,6 +196,20 @@
 }
 
 /*----------------------------------------------LOGIN----------------------------------------*/
+.loginTop,
+.loginBottom{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  padding:5px 10px;
+  gap:10px;
+}
+
+/*---------------------LOGIN-TOP----------------------*/
+.loginTop{
+  padding-top:20px;
+}
+
 .loginWelcome{
   margin:20px 0px;
 }
@@ -212,11 +226,27 @@
   font-size:150px;
   color:var(--secondBackground);
 }
-.loginTop,
-.loginBottom{
-  width:100%;
-}
 
+/*---------------------LOGIN-BOTTOM----------------------*/
+.loginBottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.emailLogRegCheckboxBox {
+  grid-column: 1;
+  justify-self: start;
+}
+.loginForgotPassword {
+  grid-column: 1;
+  justify-self: center;
+  text-align: center;
+  cursor:pointer;
+  transition:var(--transition);
+}
+.loginForgotPassword:hover{
+  color:var(--green);
+}
 
 /*-----------------------------------------REGISTER--------------------------------------------*/
 .registerInputErrorBox{
@@ -257,22 +287,18 @@
   margin-top:20px;
   width:100%;
 }
-.registerTermsAndConditionsBox{
+.emailLogRegCheckboxBox{
   display:flex;
   flex-direction:row;
+  align-items: center;
   gap:10px;
   padding:0px 10px;
 }
-.registerTermsAndConditions {
+.emailLogRegCheckbox {
   font-size: var(--smallTextFont);
   color: var(--mainTextColor);
 }
-.registerTermsAndConditionsBox {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.registerTermsAndConditionsLink{
+.emailLogRegCheckboxLink{
   display: inline;
   cursor:pointer;
   color: var(--green);
@@ -280,11 +306,11 @@
   text-decoration: none;
   transition: color 0.2s ease;
 }
-.registerTermsAndConditionsLink:hover {
+.emailLogRegCheckboxLink:hover {
   text-decoration:underline;
   color: var(--lightGreen);
 }
-.registerTermsAndConditionsBox input[type="checkbox"] {
+.emailLogRegCheckboxBox input[type="checkbox"] {
   cursor: pointer;
   position: relative;
   appearance: none;
@@ -298,16 +324,16 @@
   border-radius: 4px;
   transition:var(--transition);
 }
-.registerTermsAndConditionsBox.error input[type="checkbox"]{
+.emailLogRegCheckboxBox.error input[type="checkbox"]{
   border: 2px solid var(--errorColor);
 }
-.registerTermsAndConditionsBox.error .registerTermsAndConditionsLink{
+.emailLogRegCheckboxBox.error .emailLogRegCheckboxLink{
   color:var(--errorColor);
 }
-.registerTermsAndConditionsBox input[type="checkbox"]:checked {
+.emailLogRegCheckboxBox input[type="checkbox"]:checked {
   border-color: var(--lightGreen);
 }
-.registerTermsAndConditionsBox input[type="checkbox"]::after {
+.emailLogRegCheckboxBox input[type="checkbox"]::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -322,7 +348,7 @@
   transform: translate(-50%, -50%);
   transition:calc(var(--transition) - 0.1s);
 }
-.registerTermsAndConditionsBox input[type="checkbox"]:checked::after {
+.emailLogRegCheckboxBox input[type="checkbox"]:checked::after {
   opacity: 1;
   background-color: var(--lightGreen);
 }

@@ -11,6 +11,7 @@ const dns = require("dns");
 const validator = require("validator")
 const emailVerificationTokens = new Map();
 const PORT = process.env.PORT || 5000;
+const { z } = require('zod');
 
 require('dotenv').config();
 
@@ -103,98 +104,95 @@ const cleanExpiredTokens = () => {
 setInterval(cleanExpiredTokens, 10 * 60 * 1000);
 
 const verifyEmailToken = (req, res, next) => {
-  const { email: submittedEmail, token } = req.body; // Destructure email from reque
+  const { email: submittedEmail, token } = req.body;
 
-  // 1. Check if token exists for ANY email
-  const tokenEntry = Array.from(emailVerificationTokens.entries())
-    .find(([_, tokenData]) => tokenData.token === token);
-
-  if (!tokenEntry) {
-    return res.status(401).json({ error: "Invalid or expired token" });
+  if (!submittedEmail || !token) {
+    return res.status(400).json({ error: "Email and token are required!" });
   }
 
-  const [tokenBoundEmail, tokenData] = tokenEntry;
+  const tokenEntry = emailVerificationTokens.get(submittedEmail);
 
-  // 2. Verify the submitted email MATCHES the token-bound email
-  if (submittedEmail !== tokenBoundEmail) {
+  if (!tokenEntry) {
+    return res.status(401).json({ error: "No verification token found for this email!" });
+  }
+
+  if (tokenEntry.token !== token) {
     return res.status(403).json({ 
-      error: "Token does not match this email",
-      detail: "Registration email must match the email that requested the token"
+      error: "Invalid token!",
+      detail: "The provided token does not match the expected token."
     });
   }
 
-  // 3. Proceed if all checks pass
+  const currentTime = Date.now();
+  const tokenAge = currentTime - tokenEntry.createdAt;
+  const TOKEN_EXPIRATION = 15 * 60 * 1000;
+
+  if (tokenAge > TOKEN_EXPIRATION) {
+    emailVerificationTokens.delete(submittedEmail);
+    return res.status(401).json({ 
+      error: "Token has expired!",
+      detail: "Please request a new verification token."
+    });
+  }
+
+  emailVerificationTokens.delete(submittedEmail);
   next();
 };
 
 {/*--------------------------------------REGISTER-----------------------------------------*/}
 app.post("/register",verifyEmailToken, async (req, res) => {
   try {
-    const { email, token, username, password } = req.body;
-    console.log(email);
-    console.log(token);
-    console.log(username);
-    console.log(password);
-    // 1. Basic validation
-    if (!email || !username || !password) {
-      return res.status(400).json({ error: "All fields are required" });
+    const { email, username, password } = req.body;
+
+    const registerSchema = z.object({
+      username: z.string()
+        .max(30, "Username cannot exceed 30 characters!")
+        .min(3, "Username must contain at least 3 characters!")
+        .regex(/^[a-zA-Z0-9_]+$/, "Only letters, numbers, and underscores are allowed in the username!")
+        .min(1, "Username is required!")
+        .trim(),
+      password: z.string()
+        .regex(/[A-Z]/, "Password must contain atleast one uppercase letter!")
+        .regex(/[0-9]/, "Password must contain atleast one number!")
+        .min(8, "Password must be atleast 8 characters!")
+        .min(1, "Password is required!")
+        .trim(),
+    })
+
+    const validationResult = registerSchema.safeParse({username, password });
+    if (!validationResult.success) {
+      const errorMessages = validationResult.error.errors.map(err => err.message);
+      return res.status(400).json({ 
+        error: "Validation failed",
+        messages: errorMessages
+      });
     }
 
-    // 2. Validate email format
-    if (!validator.isEmail(email)) {
-      return res.status(400).json({ error: "Invalid email format" });
-    }
-
-    // 3. Validate username (3-20 alphanumeric + underscore)
-    if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
-      return res.status(400).json({ error: "Username must be 3-20 characters (letters, numbers, _)" });
-    }
-
-    // 4. Validate password (min 8 chars)
-    if (password.length < 8) {
-      return res.status(400).json({ error: "Password must be at least 8 characters" });
-    }
-
-    // 5. Check if email already exists
-    const [emailExists] = await pool.query(
-      "SELECT user_id FROM users WHERE user_email = ?", 
-      [email]
-    );
-    if (emailExists.length > 0) {
-      return res.status(400).json({ error: "Email already registered" });
-    }
-
-    // 6. Check if username already exists
-    const [usernameExists] = await pool.query(
-      "SELECT user_id FROM users WHERE user_name = ?", 
-      [username]
-    );
+    const [usernameExists] = await pool.query("SELECT user_id FROM users WHERE user_name = ?", [username]);
     if (usernameExists.length > 0) {
-      return res.status(400).json({ error: "Username already taken" });
+      return res.status(409).json({ error: "Username is already taken!" });
     }
 
-    // 7. Hash password and create user
     const hashedPassword = await bcrypt.hash(password, 12);
-    await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)",
-      [username, email, hashedPassword]
-    );
+    await pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)",[username, email, hashedPassword]);
 
+    emailVerificationTokens.delete(email);
     res.status(201).json({ success: true });
+    console.log(`New registration: ${username} (${email})`);
+  } 
+  catch (error) {
+    console.error("Registration error:", error);
+    
+    const errorResponse = {
+      error: "Registration failed",
+      message: "An error occurred during registration"
+    };
 
-  } catch (error) {
-    if (error.response) {
-      console.error("Registration server error:", error.response.data);
-      alert(error.response.data.error || "Registration failed");
-    } 
-    else if (error.request) {
-      console.error("No response received:", error.request);
-      alert("No response from server. Please check your connection.");
-    } 
-    else {
-      console.error("Error setting up registration request:", error.message);
-      alert("An unexpected error occurred during registration");
+    if (error.code === 'ER_DUP_ENTRY') {
+      errorResponse.details = "Email already registered";
     }
+
+    res.status(500).json(errorResponse);
   }
 });
 

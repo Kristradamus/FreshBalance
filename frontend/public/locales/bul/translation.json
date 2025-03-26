@@ -148,6 +148,7 @@
     "emailDontWorry": "Нямате акаунт? Не се притеснявайте, просто въведете имейла, с който искате да създадете такъв.",
     "emailOr": "или",
     "emailAlso": "Можете също да влезете с:",
+    "emailError": "Възникна грешка при проверка на имейла. Моля, свържете се с поддръжката при продължаване на проблема.",
 
     "registerWelcome": "Създаване на акаунт",
     "registerLegalPolicies": "Правните политики",
@@ -156,16 +157,28 @@
     "registerTitleConfirmPassword": "Потвърди парола",
     "registerTerms": "Прочетох и приемам",
     "registerContinue": "Продължи",
-    "registerPasswordsDoNotMatch": "Паролите не съвпадат!",
-    "registerPasswordRequired": "Паролата е задължителна!",
-    "registerUsernameRequired": "Потребителското име е задължително!",
-    "registerUsernameTaken": "Това потребителско име е заето!",
+    "registrationSuccessfull": "Успешна регистрация!",
+    "registrationFailed": "Неуспешна регистрация!",
     "registerTermsRequired": "Трябва да приемете Правните политики, за да продължите!",
 
-    "loginWelcome": "Здравей",
+    "registerUsernameRequired": "Потребителското име е задължително!",
+    "registerUsernameTaken": "Потребителското име е заето!",
+    "registerUsername3Chars": "Потребителското име трябва да съдържа минимум 3 символа!",
+    "registerUsername30Chars": "Потребителското име не може да надвишава 30 символа!",
+    "registerUsernameAllowedCharacters": "Позволени са само букви, цифри и долна черта!",
+
+    "registerConfirmPassword": "Моля, потвърдете паролата!",
+    "registerPasswordsDoNotMatch": "Паролите не съвпадат!",
+    "registerPasswordRequired": "Паролата е задължителна!",
+    "registerPassword8Chars": "Паролата трябва да съдържа минимум 8 символа!",
+    "registerPassword1Number": "Паролата трябва да съдържа минимум една цифра!",
+    "registerPasswordUpperCaseLetter": "Паролата трябва да съдържа минимум една главна буква!",
+
+    "loginWelcome": "Здравейте",
     "loginForgottenPassword": "Забравена парола?",
     "loginLogIn": "Вход",
     "loginRememberMe": "Запомни ме",
+    "loginPlsPassword": "Моля, въведете паролата си!",
 
     "needHelp": "Нужда от помощ?"
   },
@@ -575,8 +588,8 @@
       ],
       "nav": [
         { "name": "Вход", "link": "/email-check" },
-        { "name": "Любими", "link": "/favourites" },
-        { "name": "Количка", "link": "/cart" }
+        { "name": "Любими", "link": "/profile/favourites" },
+        { "name": "Количка", "link": "/profile/cart" }
       ],
       "icons": {
         "Вход": "fa-solid fa-user",

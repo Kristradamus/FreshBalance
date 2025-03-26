@@ -14,8 +14,6 @@ const Services = React.lazy(() => import("./pages/services.jsx"));
 const Subscriptions = React.lazy(() => import("./pages/subscriptions.jsx"));
 const Support = React.lazy(() => import("./pages/support.jsx"));
 const ProductPage = React.lazy(() => import("./pages/productPage.jsx"));
-const Favourites = React.lazy(() => import("./pages/favourites.jsx"));
-const Cart = React.lazy(() => import("./pages/cart.jsx"));
 const LegalPage = React.lazy(() => import("./pages/legalPage.jsx"));
 
 export default function App() {
@@ -24,7 +22,7 @@ const { t } = useTranslation();
 return (
   <div>
     <BrowserRouter>
-      {/*\<Suspense fallback={<div style ={{padding:"20px"}}>{t("app.loading")}</div>}>*/}
+      <Suspense fallback={<div style ={{padding:"20px"}}>{t("app.loading")}</div>}>
       <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
@@ -33,16 +31,16 @@ return (
           <Route path="/services" element={<Services />} />
           <Route path="/subscriptions" element={<Subscriptions />} />
           <Route path="/support" element={<Support />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Profile />} />
+          <Route path="/favourites" element={<Profile />} />
+          <Route path="/profile/*" element={<Profile />} />
           <Route path="/product/:promotionName" element={<ProductPage />} />
           <Route path="/legal-policies" element={<LegalPage />} />
         </Route>
         <Route path="/communities" element={<Communities />} />
         <Route path="/email-check/*" element={<LoginRegistration />} />
       </Routes>
-      {/*</Suspense>*/}
+      </Suspense>
     </BrowserRouter>
   </div>
 );};
