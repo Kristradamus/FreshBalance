@@ -1,14 +1,28 @@
 const nodemailer = require("nodemailer");
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 const validator = require("validator");
 const dns = require("dns");
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+});
+
+const emailIpRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 1,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => req.ip,
+  message: "Too many attempts. Please try again in 15 minutes.",
+  skip: (req) => {
+    const whitelist = ["84.43.144.178", "::1", "127.0.0.1"];
+    return whitelist.includes(req.ip);
+  }
 });
 
 const verifyEmailDomain = async (email) => {
@@ -17,7 +31,7 @@ const verifyEmailDomain = async (email) => {
     await dns.promises.resolveMx(domain);
     return true;
   } catch (error) {
-    console.error('DNS verification failed:', error);
+    console.error("DNS verification failed:", error);
     return false;
   }
 };
@@ -25,20 +39,20 @@ const verifyEmailDomain = async (email) => {
 const sendEmail = async (name, email, message) => {
   const errors = [];
   if (!name || !email || !message) {
-    errors.push('All fields are required!');
+    errors.push("All fields are required!");
   }
   if (email && !validator.isEmail(email)){
-    errors.push('Invalid email address!');
+    errors.push("Invalid email address!");
   }
   if (email && !await verifyEmailDomain(email)) {
-    errors.push('Email domain does not exist or cannot receive emails!');
+    errors.push("Email does not exist or cannot receive emails!");
   }
   if (name && validator.escape(name).length > 100){
-    errors.push('Name is too long (max 100 chars)');
+    errors.push("Name is too long (max 100 chars)");
   }
   if (message && validator.escape(message).length > 3000)
   { 
-    errors.push('Message is too long (max 3000 chars)');
+    errors.push("Message is too long (max 3000 chars)");
   }
 
   if (errors.length > 0) {
@@ -53,12 +67,12 @@ const sendEmail = async (name, email, message) => {
       text: `Name: ${validator.escape(name)}\nEmail: ${email}\nMessage: ${validator.escape(message)}`,
       html: `<p>Name: ${validator.escape(name)}</p><p>Email: ${email}</p><p>Message: ${validator.escape(message)}</p>`
     });
-    return { status: 'success', message: 'Message sent successfully' };
+    return { status: "success", message: "Message sent successfully" };
   }
   catch (error) {
-    console.error('Email send error:', error);
-    throw new Error('Failed to send message');
+    console.error("Email send error:", error);
+    throw new Error("Failed to send message");
   }
 };
 
-module.exports = { sendEmail };
+module.exports = { sendEmail, emailIpRateLimiter };

@@ -31,6 +31,7 @@ const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
 const [passwordInput, setPasswordInput] = useState("");
 
 const [usernameError, setUsernameError] = useState(false);
+const [usernameAvailable, setUsernameAvailable] = useState(false);
 const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
 const [usernameInput, setUsernameInput] = useState("");
 
@@ -50,7 +51,7 @@ const [isTermsVisible, setIsTermsVisible] = useState(false);
 const [username, setUsername] = useState("");
 {/*---------------------------------RELOAD-STOPPER-----------------------------------*/}
 
-//This is reload and leave-site preventer
+{/*RELOAD AND LEAVE SITE PREVENTER*/}
 useEffect(() => {
   const handleBeforeUnload = (e) => {
     if (email) {
@@ -65,7 +66,7 @@ useEffect(() => {
   };
 }, [email]);
 
-//This blocks the user from skipping the email-check
+{/*BLOCKS THE USER FROM SKIPPING THE EMAIL CHECK*/}
 useEffect(() => {
   if(currentStep==="login" || currentStep==="register" || currentStep==="terms"){
     if (!userProgress.emailChecked) {
@@ -74,7 +75,7 @@ useEffect(() => {
   }
 }, [currentStep, userProgress.emailChecked, navigate]);
 
-//This checks on which step is the user
+{/*CHECKS ON WHICH STEP IS THE USER*/}
 useEffect(() => {
   if (currentStep === "login") {
     setEmailCheckComplete(true);
@@ -96,6 +97,8 @@ useEffect(() => {
 }, [currentStep]);
 
 {/*---------------------------------EMAIL-CHECK-----------------------------------*/}
+
+{/*IF USER GOES BACK AND CHANGES HIS EMAIL TO RESET ALL VARIABLES*/}
 const handleEmailChange = (e) => {
   const rawInput = e.target.value;
   const newEmail = rawInput.trim().toLowerCase();
@@ -131,6 +134,7 @@ const resetFormData = () => {
   setIsTermsVisible(false);
 };
 
+{/*INPUT-CUSTOMIZATIONS*/}
 const handleEmailDivClick = () => {
   if (emailInputRef.current) {
     emailInputRef.current.focus();
@@ -147,6 +151,8 @@ const handleEmailKeyChange = (e) => {
 const handleEmailBlur = () => {
   setEmailError(false);
 };
+
+{/*SUBMIT-CODE*/}
 const handleEmailCheckContinue = async () => {
   if (!validator.isEmail(email)) {
     setEmailError(true);
@@ -154,6 +160,15 @@ const handleEmailCheckContinue = async () => {
   }
   try {
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/check-email`, { email });
+    sessionStorage.setItem("emailVerificationToken", response.data.token);
+    sessionStorage.setItem("verifiedEmail", email);
+    if (!sessionStorage.getItem('emailVerificationToken')) {
+      console.error("Token failed to persist in sessionStorage!");
+    }
+    else{
+      console.log("Token was stored successfully!")
+    }
+
     if (response.data.exists) {
       setUserProgress((prev) => ({ ...prev, emailChecked: true, emailVerified: true }));
       navigate("/email-check/login");
@@ -169,14 +184,15 @@ const handleEmailCheckContinue = async () => {
     setEmailCheckComplete(true);
   } 
   catch (error) {
-    console.error("Error checking email:", error.response?.data || error.message);
+    console.error("Error checking email:", error);
     setEmailError(true);
+    const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || "An unknown error occurred";
+    alert(errorMessage);
   }
 };
 
 {/*------------------------------------REGISTER-----------------------------------*/}
-
-{/*---------------USERNAME---------------*/}
+{/*---------------INPUT-CUSTOMIZATIONS---------------*/}
 const handleUsernameChange = (e) => {
   setUsernameInput(e.target.value);
   setUsernameError(false);
@@ -198,7 +214,7 @@ const handleUsernameBlur = () => {
   setUsernameError(false);
 };
 
-{/*---------------PASSWORD---------------*/}
+//PASSWORD
 const handlePasswordChange = (e) => {
   setPasswordInput(e.target.value);
   setPasswordError(false);
@@ -219,8 +235,11 @@ const handlePasswordKeyChange = (e) => {
 const handlePasswordBlur = () => {
   setPasswordError(false);
 };
+const handlePasswordVisibility = () => {
+  setIsPasswordVisible(!isPasswordVisible);
+};
 
-{/*------------CONFIRM-PASSWORD------------*/}
+//CONFIRM-PASSWORD
 const handleConfirmPasswordChange = (e) => {
   setConfirmPasswordInput(e.target.value);
   setPasswordError(false);
@@ -235,38 +254,65 @@ const handleConfirmPasswordKeyChange = (e) => {
     e.target.blur();
   }
   if (e.key === "Enter") {
-    hadnleRegistrationSubmit();
+    handleRegistrationSubmit();
   }
 };
 const handleConfirmPasswordBlur = () => {
   setPasswordError(false);
 };
-
-{/*------------OTHER-STUFF------------*/}
-const handleTermsAcceptance = (e) => {
-  setIsTermsAccepted(e.target.checked);
-  setTermsError(false);
-};
-const handlePasswordVisibility = () => {
-  setIsPasswordVisible(!isPasswordVisible);
-};
 const handleConfirmPasswordVisibility = () => {
   setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
 };
 
-const hadnleRegistrationSubmit = async () => {
+//LEGAL-POLICIES
+const handleTermsAcceptance = (e) => {
+  setIsTermsAccepted(e.target.checked);
+  setTermsError(false);
+};
+
+{/*------------REGISTRATION-SUBMIT------------*/}
+useEffect(() => {
+  const timer = setTimeout(async () => {
+    if (usernameInput.trim().length > 0) {
+      try {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/username-check`, {
+          username: usernameInput.trim()
+        });
+        if (!response.data.exists) {
+          setUsernameAvailable(true);
+          setUsernameError(false);
+        }
+        else {
+          setUsernameAvailable(false);
+          setUsernameError(true);
+          setUsernameErrorMessage("Username is already taken");
+        }
+      } catch (error) {
+        console.error("Username check failed:", error);
+      }
+    }
+  }, 1000);
+
+  return () => clearTimeout(timer);
+}, [usernameInput]);
+
+const handleRegistrationSubmit = async () => {
   setUsernameError(false);
   setPasswordError(false);
   setTermsError(false);
 
   let isValid = true;
 
+  if (!usernameAvailable) {
+    setUsernameError(true);
+    setUsernameErrorMessage("Username is already taken");
+    isValid = false;
+  }
   if(!usernameInput.trim()){
     setUsernameError(true);
     setUsernameErrorMessage(t("loginRegistration.registerUsernameRequired"));
     isValid = false;
   }
-
   if(!passwordInput.trim()){
     setPasswordError(true);
     setPasswordErrorMessage(t("loginRegistration.registerPasswordRequired"));
@@ -277,43 +323,51 @@ const hadnleRegistrationSubmit = async () => {
     setPasswordErrorMessage(t("loginRegistration.registerPasswordsDoNotMatch"));
     isValid = false;
   }
-
   if(!isTermsAccepted){
     setTermsError(true);
     setTermsErrorMessage(t("loginRegistration.registerTermsRequired"))
     isValid = false;
   }
 
-  if(isValid === true){
+  if(isValid){
     try {
-      const response = await axios.post('/register', {
-        email,
+      const token = sessionStorage.getItem('emailVerificationToken');
+      const verifiedEmail = sessionStorage.getItem('verifiedEmail');
+
+      console.log('Frontend - Token:', token);
+      console.log('Frontend - Email:', verifiedEmail);
+      console.log('Frontend - Username:', usernameInput);
+      console.log('Frontend - Password:', passwordInput);
+
+      
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
+        email: verifiedEmail,
+        token: token,
         username: usernameInput,
-        password: passwordInput,
-        confirmPassword: confirmPasswordInput,
-        termsAccepted: isTermsAccepted
+        password: passwordInput
+      },{
+        // This helps capture more detailed error information
+        validateStatus: function (status) {
+          return status >= 200 && status < 300 || status === 401;
+        }
       });
-      // Handle successful registration
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        // Handle specific validation errors
-        error.response.data.errors.forEach(err => {
-          switch(err.field) {
-            case 'username':
-              setUsernameError(true);
-              setUsernameErrorMessage(err.message);
-              break;
-            case 'password':
-              setPasswordError(true);
-              setPasswordErrorMessage(err.message);
-              break;
-            // Add more cases
-          }
-        });
+      
+      console.log('Full Response:', response);
+
+      if(response.status === 200 || response.status === 201){
+        alert("REGISTRATION SUCCESFULL");
+        sessionStorage.removeItem('emailVerificationToken');
+        sessionStorage.removeItem('verifiedEmail');
+        navigate("/");
       }
+    } 
+    catch (error) {
+      /*const errorMessage = error.response?.data?.message
+      alert(errorMessage);*/
+      console.error("Registration failed:", error);;
     }
   }
-}
+};
 {/*--------------LEGAL-POLICIES----------------*/}
 const handleTermsVisibility = () => {
   const newVisibility = !isTermsVisible;
@@ -472,7 +526,7 @@ return (
             </div>
             {termsError && <p className="emailLogRegErrorMessage">{termsErrorMessage}</p>}
           </div>
-          <button className="emailLogRegContinue" onClick={hadnleRegistrationSubmit}>{t("loginRegistration.registerContinue")}</button>
+          <button className="emailLogRegContinue" onClick={handleRegistrationSubmit}>{t("loginRegistration.registerContinue")}</button>
         </div>
       </div>
     ) : (

@@ -110,11 +110,23 @@ const handleSubmit = async (e) => {
       status: error.response?.status,
       config: error.config
     });
-    const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || t("support.messageError");
+    let errorMessage;
+
+    if (error.response) {
+      if (error.response.status === 429) {
+        errorMessage = error.response.data?.message || t("support.tooManyAttempts");
+      } 
+      else if (error.response.status === 400) {
+        errorMessage = error.response.data?.message || error.response.data?.error || "Invalid input";
+      }
+    } 
+    else {
+      errorMessage = t("support.messageError");
+    }
     alert(errorMessage);
   }
-};
-
+}
+  
 {/*--------------------------------------------------MAIN-----------------------------------------------------*/}
 return (
   <div className="support">

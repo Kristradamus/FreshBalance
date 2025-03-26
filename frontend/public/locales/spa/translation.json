@@ -487,7 +487,8 @@
     "message": "Mensaje:",
     "submit": "Enviar",
     "messageIsTooLong": "El mensaje excede el límite (máx. 3000 caracteres)",
-    "nameIsTooLong": "El nombre excede el límite (máx. 100 caracteres)"
+    "nameIsTooLong": "El nombre excede el límite (máx. 100 caracteres)",
+    "tooManyAttempts": "Demasiados intentos. Por favor, inténtalo de nuevo en 15 minutos."
   },
   "----------------------------------------------------------APP-----------------------------------------------------------": {},
   "app": {

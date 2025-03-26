@@ -497,7 +497,8 @@
     "message": "Message:",
     "submit": "Submit",
     "messageIsTooLong":"Message is too long (max 3000 characters)",
-    "nameIsTooLong":"Name is too long (max 100 characters)"
+    "nameIsTooLong":"Name is too long (max 100 characters)",
+    "tooManyAttempts":"Too many attempts. Please try again in 15 minutes."
   },
   "-----------------------------------------------------------APP--------------------------------------------------------------": {},
   "app": {
