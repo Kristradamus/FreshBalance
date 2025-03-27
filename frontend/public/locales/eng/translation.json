@@ -197,12 +197,25 @@
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {
+    "sideBarMainTitle":"My Account",
+
     "securityMainTitle":"Security",
     "securityChangePasswordTitle":"Change Password",
     "securityChange":"Change",
     "securityRecommendation":"Recommended to use a strong password with mix of characters",
     "securityTwoFactorVerificationTitle":"Two-Factor Authentication",
-    "securityTwoFactorVerificationText":"Add an extra layer of security to your account"
+    "securityTwoFactorVerificationText":"Add an extra layer of security to your account",
+
+    "favouritesMainTitle":"Favourites",
+
+    "settingsMainTitle":"Profile Settings",
+    "settingsEmail":"Email",
+    "settingsFirstName":"First Name",
+    "settingsLastName":"Last Name",
+    "settingsPhoneNumber":"Phone Number",
+    "settingsSaveChanges":"Save Changes",
+    
+    "cartMainTitle":"Cart"
   },
   "----------------------------------------------------SERVICES------------------------------------------------------------------": {},
   "services": {

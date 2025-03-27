@@ -1,0 +1,26 @@
+.cart{
+  display:flex;
+  flex-direction:row;
+  gap:20px;
+}
+.cartMainList{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  flex-grow: 1;
+}
+.cartTitleBox{
+  display:flex;
+  flex-direction:row;
+  padding:20px;
+  background-color:var(--white);
+  border-radius:var(--smallRadius);
+  box-shadow:var(--boxShadowLight);
+  width:100%;
+}
+.cartMainTitle{
+  color:var(--mainTextColor);
+}
+.cartMainTitleNumber{
+  color:var(--green);
+}

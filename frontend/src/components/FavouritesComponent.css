@@ -1,0 +1,22 @@
+.profileContentAriaFavourites{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.favouritesMainTitleBox{
+  display:flex;
+  flex-direction:row;
+  background-color:var(--white);
+  padding:20px;
+  border-radius:var(--smallRadius);
+  box-shadow:var(--boxShadowLight);
+}
+.favouritesMainTitle{
+  color:var(--mainTextColor);
+}
+.favouritesMainTitleNumber{
+  color:var(--green);
+}
+.favouritesList{
+  width:100%;
+}

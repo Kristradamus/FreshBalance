@@ -11,8 +11,8 @@ return (
     <div className="securitySection">
       <div className="securityItem">
         <div className="securityHeader">
-          <div className="securityItemTitle">
-            <h3>{t("profile.securityChangePasswordTitle")}</h3>
+          <div className="securityItemTitleBox">
+            <h3 className="securityItemTitle">{t("profile.securityChangePasswordTitle")}</h3>
           </div>
           <button className="securityButton">{t("profile.securityChange")}</button>
         </div>
@@ -20,8 +20,8 @@ return (
       </div>
       <div className="securityItem">
         <div className="securityHeader">
-          <div className="securityItemTitle">
-            <h3>{t("profile.securityTwoFactorVerificationTitle")}</h3>
+          <div className="securityItemTitleBox">
+            <h3 className="securityItemTitle">{t("profile.securityTwoFactorVerificationTitle")}</h3>
           </div>
           <label className="toggleSwitch">
             <input type="checkbox" />

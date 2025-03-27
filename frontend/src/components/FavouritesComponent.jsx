@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
 import './FavouritesComponent.css';
+import { useTranslation } from "react-i18next";
 
 export default function FavouritesComponent(){
-    return (
-        <div className="profile-content">
-          <h2>Favourites</h2>
-          <div className="favourites-list">
-            {[
-              { name: 'Smartphone X', category: 'Electronics' },
-              { name: 'Wireless Headphones', category: 'Audio' },
-              { name: 'Smart Watch', category: 'Wearables' }
-            ].map((item, index) => (
-              <div key={index} className="favourites-item">
-                <div>
-                  <h3>{item.name}</h3>
-                  <p>{item.category}</p>
-                </div>
-                <button>Remove</button>
-              </div>
-            ))}
-          </div>
-        </div>
-    );
-}
+const { t } = useTranslation()
+return (
+  <div className="profileContentAriaFavourites">
+    <div className="favouritesMainTitleBox">
+      <h2 className="favouritesMainTitle">{t("profile.favouritesMainTitle")}:&nbsp;</h2>
+      <h2 className="favouritesMainTitleNumber">0 products</h2>
+    </div>
+    <div className="favouritesList">
+    </div>
+  </div>
+);};
