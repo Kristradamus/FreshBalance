@@ -2,17 +2,17 @@ const express = require("express");
 const rateLimit = require('express-rate-limit');
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { sendEmail, emailIpRateLimiter } = require("./support.js");
 const app = express();
 const crypto = require("crypto");
 const pool = require("./dataBase");
 const bcrypt = require('bcryptjs');
 const dns = require("dns");
-const validator = require("validator")
+const validator = require("validator");
+const { sendEmail, emailIpRateLimiter } = require("./support.js");
+const { generateToken } = require('./jwtUtils');
+const { z } = require('zod');
 const emailVerificationTokens = new Map();
 const PORT = process.env.PORT || 5000;
-const { z } = require('zod');
-
 require('dotenv').config();
 
 app.use(
@@ -221,7 +221,6 @@ app.post("/login", verifyEmailToken, async (req, res) => {
   const { email, password } = req.body;
   
   try {
-    // 1. Find user
     const [users] = await pool.query(
       "SELECT * FROM users WHERE user_email = ?", 
       [email]
@@ -233,18 +232,12 @@ app.post("/login", verifyEmailToken, async (req, res) => {
 
     const user = users[0];
     
-    // 2. Verify password
     const isPasswordValid = await bcrypt.compare(password, user.user_password);
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    // 3. Create new session
-    const authToken = crypto.randomBytes(32).toString('hex');
-    await pool.query(
-      "INSERT INTO user_session (user_session_user_id, user_session_token) VALUES (?, ?)",
-      [user.user_id, authToken]
-    );
+    const token = generateToken(user.user_id, user.user_name, user.user_email);
 
     res.json({ 
       token: authToken,

@@ -1,0 +1,101 @@
+.loadingScreen {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--mainBackground);
+  z-index: 9999;
+}
+
+.spinnerContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.spinnerArc {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 0 solid transparent;
+  animation: taperedSpin 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.spinnerArc1 {
+  border-top: 8px solid #4da35a;
+  border-right: 2px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 2px solid transparent;
+  animation-delay: 0.1s;
+  filter: blur(0.35px);
+}
+
+.spinnerArc2 {
+  border-top: 6px solid var(--lightGreen);
+  border-right: 1px solid transparent;
+  border-bottom: 0.5px solid transparent;
+  border-left: 1px solid transparent;
+  animation-delay: 0.2s;
+  filter: blur(0.3px);
+}
+
+.spinnerArc3 {
+  border-top: 4px solid #459952;
+  border-right: 0.5px solid transparent;
+  border-bottom: 0.25px solid transparent;
+  border-left: 0.5px solid transparent;
+  animation-delay:0.3s;
+  filter: blur(0.25px);
+}
+
+.textBox {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.textBox h2 {
+  font-weight: bold;
+  color: var(--mainTextColor);
+  filter: blur(0.25px);
+}
+
+@keyframes taperedSpin {
+  0%{
+    transform: rotate(0deg);
+    border-top-width: 8px;
+    border-right-width: 3px;
+    animation-timing-function: ease-out;
+  }
+  25% {
+    border-top-width: 6px;
+    border-right-width: 4px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: rotate(180deg);
+    border-top-width: 4px;
+    border-right-width: 5px;
+    animation-timing-function: ease-out;
+  }
+  75% {
+    border-top-width: 6px;
+    border-right-width: 4px;
+    animation-timing-function: ease-in;
+  }
+  100%{
+    transform: rotate(360deg);
+    border-top-width: 8px;
+    border-right-width: 3px;
+    animation-timing-function: ease-in;
+  }
+}
