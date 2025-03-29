@@ -502,7 +502,7 @@ return (
       <div className="emailLogRegBox">
         <GoBackButton path="/email-check"/>
         <h1 className="loginWelcome">{t("loginRegistration.loginWelcome")}&nbsp;<p className="loginWelcomeUsername">{username}</p>&nbsp;!</h1>
-        <i class="fa-solid fa-circle-user"></i>
+        <i className="fa-solid fa-circle-user"></i>
         <div className="loginTop">
           <div className="registerInputErrorBox">
             <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick}>

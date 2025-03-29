@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../../public/images/freshBalance.png";
 import "./Header.css";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
+import { AuthContext } from "./AuthContext.jsx";
 
 export default function Header() {
 const navigate = useNavigate();
@@ -13,9 +14,19 @@ const [searchQuery, setSearchQuery] = useState("");
 const searchInputRef = useRef(null);
 const searchBoxRef = useRef(null);
 const location = useLocation();
+const { isAuthenticated, user } = useContext(AuthContext);
 const { t } = useTranslation();
 const headerData = t("header.headerData", { returnObject: true });
+const headerNav = isAuthenticated 
+    ? headerData?.navUser 
+    : headerData?.navGuest;
 
+useEffect(() => {
+  if (true) {
+    console.log("Auth state:", { isAuthenticated, user });
+    console.log("Navigation items:", headerNav);
+  }
+}, [isAuthenticated, headerNav]);
 {/*--------------------------------SMALL-JS-----------------------------------*/}
 const handleFavCartLogClick = (item) => {
   if (location.pathname === item.link) {
@@ -135,7 +146,7 @@ return (
       </div>
       {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
       <ul className="headerFavCartLog">
-        {headerData.nav.map((item, index) => (
+        {headerNav.map((item, index) => (
           <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : ""}`} onClick={() => handleFavCartLogClick(item)}>
             <Link className="" to={item.link}>
               {headerData.icons[item.name] && (

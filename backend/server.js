@@ -8,12 +8,16 @@ const pool = require("./dataBase");
 const bcrypt = require('bcryptjs');
 const dns = require("dns");
 const validator = require("validator");
+const jwt = require('jsonwebtoken');
 const { sendEmail, emailIpRateLimiter } = require("./support.js");
-const { generateToken } = require('./jwtUtils');
 const { z } = require('zod');
+const cookieParser = require('cookie-parser');
 const emailVerificationTokens = new Map();
 const PORT = process.env.PORT || 5000;
 require('dotenv').config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
 
 app.use(
   cors({
@@ -21,7 +25,45 @@ app.use(
     credentials: true,
   })
 );
-app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(bodyParser.json()); 
+
+{/*---------------------------------JWT-BASE--------------------------------------*/}
+const generateToken = (userId, username, email) => {
+  return jwt.sign(
+    { userId, username, email },
+    JWT_SECRET,
+    { expiresIn: JWT_EXPIRES_IN }
+  );
+};
+
+const verifyToken = (token) => {
+  try{
+    return jwt.verify(token, JWT_SECRET);
+  }
+  catch(err){
+    console.error("JWT verification error:", err);
+    return null;
+  }
+}
+
+{/*-----------------------------JWT-AUTH-MIDDLEWARE---------------------------------*/}
+const authenticateJWT = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.split(' ')[1] || req.cookies.authToken;
+
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  const decoded = verifyToken(token);
+  if (!decoded) {
+    return res.status(401).json({ error: "Invalid token" });
+  }
+
+  req.user = decoded;
+  next();
+};
 
 {/*---------------------------------SUPPORT--------------------------------------*/}
 app.post('/send-message', emailIpRateLimiter, async (req, res) => {
@@ -217,41 +259,48 @@ app.post("/username-check", async (req, res) => {
 });
 
 {/*----------------------------------------LOGIN------------------------------------------*/}
-app.post("/login", verifyEmailToken, async (req, res) => {
-  const { email, password } = req.body;
-  
+app.post("/login", async (req, res) => {
+  const { email, password, token } = req.body;
+  console.log('Login request received:', req.body);
   try {
+    if (token) {
+      const tokenEntry = emailVerificationTokens.get(email);
+      if (!tokenEntry || tokenEntry.token !== token) {
+        return res.status(401).json({ error: "Invalid token" });
+      }
+      emailVerificationTokens.delete(email);
+    }
+
     const [users] = await pool.query(
       "SELECT * FROM users WHERE user_email = ?", 
       [email]
     );
-    
     if (users.length === 0) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Invalid credentials!" });
     }
 
     const user = users[0];
-    
     const isPasswordValid = await bcrypt.compare(password, user.user_password);
     if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Invalid password!" });
     }
 
-    const token = generateToken(user.user_id, user.user_name, user.user_email);
-
+    const authToken = generateToken(user.user_id, user.user_name, user.user_email);
     res.json({ 
       token: authToken,
       user: {
         id: user.user_id,
-        name: user.user_name,
+        username: user.user_name,
         email: user.user_email
       }
     });
     
-  } catch (error) {
+  } 
+  catch (error) {
+    console.error("Login error:", error);
     res.status(500).json({ 
       error: "Login failed",
-      details: process.env.NODE_ENV === "development" ? error.message : null
+      details: error.message
     });
   }
 });

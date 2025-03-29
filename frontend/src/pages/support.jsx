@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import TermsAndConditions from "./legalPage.jsx";
 import axios from "axios";
+import { z } from "zod";
 import "./support.css";
 
 export default function Support() {
@@ -77,53 +78,55 @@ const handleFormInputChange = (field) => (e) => {
   }));
 };
 
+const contactFormSchema = z.object({
+  name: z.string()
+    .min(3, "Name must be at least 3 characters!")
+    .max(100, "Name must be less than 100 characters!")
+    .min(1, "Name is required!"),
+  email: z.string()
+    .email("Invalid email address!")
+    .min(1, "Email is required!"),
+  message: z.string()
+    .max(3000, "Message must be less than 3000 characters!")
+    .min(1, "Message is required!"),
+});
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  const data = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  };
-
-  if (data.name.length > 100) {
-    alert(t("support.nameIsTooLong"));
-    return;
-  }
-  if (data.message.length > 3000) {
-    alert(t("support.messageIsTooLong"));
-    return;
-  }
-  e.target.reset();
-  setCharCount({ name: 0, message: 0 });
-  console.log("Submitting form data:", data);
-
+  
   try {
+    const data = contactFormSchema.parse({
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    });
+    e.target.reset();
+    setCharCount({ name: 0, message: 0 });
+
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/send-message`, data);
-    console.log("Success response:", response.data);
     alert(t("support.messageSent"));
+    console.log("Success response:", response.data);
+    
   } 
   catch (error) {
-    console.error("Error details:", {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status,
-      config: error.config
-    });
-    let errorMessage;
-
-    if (error.response) {
+    if (error instanceof z.ZodError) {
+      const firstError = error.errors[0];
+      alert(firstError.message);
+    } 
+    else if (error.response) {
+      let errorMessage;
       if (error.response.status === 429) {
         errorMessage = error.response.data?.message || t("support.tooManyAttempts");
-      } 
-      else if (error.response.status === 400) {
-        errorMessage = error.response.data?.message || error.response.data?.error || "Invalid input";
+      } else if (error.response.status === 400) {
+        errorMessage = error.response.data?.message || error.response.data?.error || t("support.messageError");
       }
+      alert(errorMessage);
     } 
     else {
-      errorMessage = t("support.messageError");
+      alert(t("support.messageError"));
     }
-    alert(errorMessage);
+    console.error("Error details:", error);
   }
 }
   

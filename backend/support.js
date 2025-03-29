@@ -3,6 +3,7 @@ const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 const validator = require("validator");
 const dns = require("dns");
+const { z } = require("zod");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -36,42 +37,46 @@ const verifyEmailDomain = async (email) => {
   }
 };
 
+const contactFormSchema = z.object({
+  name: z.string()
+    .max(100,"Name must be less than 100 characters!")
+    .min(3, "Name must be more than 3 characters!")
+    .min(1, "Name is required!")
+    .transform(val => validator.escape(val.trim())),
+  email: z.string()
+    .email("Invalid email address!")
+    .min(1, "Email is required!")
+    .refine(async (email) => await verifyEmailDomain(email), "Email does not exist or cannot receive emails!"),
+  message: z.string()
+    .max(3000, "Message must be less than 3000 characters!")
+    .min(1, "Message is required!")
+    .transform(val => validator.escape(val.trim()))
+}).strict();
+
 const sendEmail = async (name, email, message) => {
-  const errors = [];
-  if (!name || !email || !message) {
-    errors.push("All fields are required!");
-  }
-  if (email && !validator.isEmail(email)){
-    errors.push("Invalid email address!");
-  }
-  if (email && !await verifyEmailDomain(email)) {
-    errors.push("Email does not exist or cannot receive emails!");
-  }
-  if (name && validator.escape(name).length > 100){
-    errors.push("Name is too long (max 100 chars)");
-  }
-  if (message && validator.escape(message).length > 3000)
-  { 
-    errors.push("Message is too long (max 3000 chars)");
-  }
-
-  if (errors.length > 0) {
-    throw new Error(errors.join(', '));
-  }
-
   try {
+    const result = await contactFormSchema.safeParseAsync({ name, email, message });
+
+    if (!result.success) {
+      const errors = result.error.issues.map(issue => issue.message);
+      throw new Error(errors.join(', '));
+    }
+
+    const { name: safeName, email: safeEmail, message: safeMessage } = result.data;
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
-      subject: `New Support Message from ${validator.escape(name)}`,
-      text: `Name: ${validator.escape(name)}\nEmail: ${email}\nMessage: ${validator.escape(message)}`,
-      html: `<p>Name: ${validator.escape(name)}</p><p>Email: ${email}</p><p>Message: ${validator.escape(message)}</p>`
+      subject: `New Support Message from ${safeName}`,
+      text: `Name: ${safeName}\nEmail: ${safeEmail}\nMessage: ${safeMessage}`,
+      html: `<p>Name: ${safeName}</p><p>Email: ${safeEmail}</p><p>Message: ${safeMessage}</p>`
     });
-    return { status: "success", message: "Message sent successfully" };
-  }
+
+    return { status: "success", message: "Message sent successfully!" };
+  } 
   catch (error) {
-    console.error("Email send error:", error);
-    throw new Error("Failed to send message");
+    console.error("Error:", error);
+    throw new Error(error.message || "Failed to send message!");
   }
 };
 
