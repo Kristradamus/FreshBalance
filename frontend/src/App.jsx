@@ -33,6 +33,8 @@ return (
               <Route path="/services" element={<Services />} />
               <Route path="/subscriptions" element={<Subscriptions />} />
               <Route path="/support" element={<Support />} />
+              <Route path="/support/topic/:topicId" element={<Support />} />
+              <Route path="/support/contact" element={<Support />} />
               <Route path="/cart" element={<Profile />} />
               <Route path="/favourites" element={<Profile />} />
               <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

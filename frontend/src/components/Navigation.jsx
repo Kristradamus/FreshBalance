@@ -138,7 +138,7 @@ return (
       </li>
       {navData.links.map((item, index) => (
         <li className="navMenuElement" key={index} ref={(el) => (linkRefs.current[index] = el)}>
-          <Link className={`${location.pathname === item.path ? "active" : ""}`} to={item.path} onClick={handleNavReload}>
+          <Link className={`${location.pathname.startsWith(item.path) ? "active" : ""}`} to={item.path} onClick={handleNavReload}>
             {navData.icons[item.name] && <i className={navData.icons[item.name]}></i>}
             {item.name}
           </Link>
