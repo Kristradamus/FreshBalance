@@ -586,8 +586,13 @@
         "Препоръка3",
         "Препоръка4"
       ],
-      "nav": [
+      "navGuest": [
         { "name": "Вход", "link": "/email-check" },
+        { "name": "Любими", "link": "/profile/favourites" },
+        { "name": "Количка", "link": "/profile/cart" }
+      ],
+      "navUser": [
+        { "name": "Профил", "link": "/profile/settings" },
         { "name": "Любими", "link": "/profile/favourites" },
         { "name": "Количка", "link": "/profile/cart" }
       ],

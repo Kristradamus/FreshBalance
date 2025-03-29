@@ -583,8 +583,13 @@
         "Empfehlung3",
         "Empfehlung4"
       ],
-      "nav": [
+      "navGuest": [
         { "name": "Login", "link": "/email-check" },
+        { "name": "Favoriten", "link": "/profile/favourites" },
+        { "name": "Korb", "link": "/profile/cart" }
+      ],
+      "navUser": [
+        { "name": "Profil", "link": "/profile/settings" },
         { "name": "Favoriten", "link": "/profile/favourites" },
         { "name": "Korb", "link": "/profile/cart" }
       ],
