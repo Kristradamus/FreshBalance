@@ -55,39 +55,39 @@
         "points": "Запознайте се с хората, които правят всичко възможно:",
         "subPoints": [
           {
-            "photo": "../../images/developer1.jpg",
+            "photo": "../../../images/developer1.jpg",
             "subText": "Основател и ентусиаст по хранене"
           },
           {
-            "photo": "../../images/developer2.jpg",
+            "photo": "../../../images/developer2.jpg",
             "subText": "Ръководител на разработката на продукти"
           },
           {
-            "photo": "../../images/developer3.jpg",
+            "photo": "../../../images/developer3.jpg",
             "subText": "Външен разработчик"
           },
           {
-            "photo": "../../images/developer4.jpg",
+            "photo": "../../../images/developer4.jpg",
             "subText": "Вътрешен разработчик"
           },
           {
-            "photo": "../../images/developer5.jpg",
+            "photo": "../../../images/developer5.jpg",
             "subText": "Главен дизайнер"
           },
           {
-            "photo": "../../images/developer6.jpg",
+            "photo": "../../../images/developer6.jpg",
             "subText": "Мениджър на проекти"
           },
           {
-            "photo": "../../images/developer7.jpg",
+            "photo": "../../../images/developer7.jpg",
             "subText": "Главен инженер"
           },
           {
-            "photo": "../../images/developer8.jpg",
+            "photo": "../../../images/developer8.jpg",
             "subText": "Автор на съдържание"
           },
           {
-            "photo": "../../images/developer9.jpg",
+            "photo": "../../../images/developer9.jpg",
             "subText": "Тестер за качество"
           }
         ]

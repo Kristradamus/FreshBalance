@@ -2,8 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
-import TermsAndConditions from "./legalPage.jsx";
-import ScrollToTop from "../components/ScrollToTop.jsx";
+import ScrollToTop from "../../components/ScrollToTop.jsx";
 import axios from "axios";
 import { z } from "zod";
 import "./support.css";

@@ -1,22 +1,22 @@
 import { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
-import MainLayout from "./components/MainLayout";
+import MainLayout from "./components/layout/MainLayout.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
-import LoadingAnimation from "./components/LoadingAnimation.jsx";
+import LoadingAnimation from "./components/layout/LoadingAnimation.jsx";
 import { AuthProvider } from "./components/AuthContext.jsx";
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
-const AboutUs = React.lazy(() => import("./pages/aboutUs.jsx"));
-const Communities = React.lazy(() => import("./pages/communities.jsx"));
+const AboutUs = React.lazy(() => import("./pages/navigationPages/aboutUs.jsx"));
+const Communities = React.lazy(() => import("./pages/navigationPages/communities.jsx"));
 const FrontPage = React.lazy(() => import("./pages/frontPage.jsx"));
 const LoginRegistration = React.lazy(() =>import("./pages/loginRegistration.jsx"));
 const Profile = React.lazy(() => import("./pages/profile.jsx"));
-const Services = React.lazy(() => import("./pages/services.jsx"));
-const Subscriptions = React.lazy(() => import("./pages/subscriptions.jsx"));
-const Support = React.lazy(() => import("./pages/support.jsx"));
-const ProductPage = React.lazy(() => import("./pages/productPage.jsx"));
-const LegalPage = React.lazy(() => import("./pages/legalPage.jsx"));
+const Services = React.lazy(() => import("./pages/navigationPages/services.jsx"));
+const Subscriptions = React.lazy(() => import("./pages/navigationPages/subscriptions.jsx"));
+const Support = React.lazy(() => import("./pages/navigationPages/support.jsx"));
+const ProductPage = React.lazy(() => import("./pages/productPages/productPage.jsx"));
+const LegalPage = React.lazy(() => import("./pages/navigationPages/legalPage.jsx"));
 
 export default function App() {
 

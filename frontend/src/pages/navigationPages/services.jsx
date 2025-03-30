@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Comments from "../components/Comments.jsx";
+import Comments from "../../components/reusableComponents/Comments.jsx";
 import "./services.css";
 
 export default function Services() {

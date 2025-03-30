@@ -1,4 +1,4 @@
-import TermsAndConditions from "../components/LegalPolicies.jsx";
+import TermsAndConditions from "../../components/reusableComponents/LegalPolicies.jsx";
 import "./legalPage.css";
 
 export default function legalPage() {

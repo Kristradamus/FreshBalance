@@ -55,38 +55,38 @@
         "points": "Lernen Sie die Menschen kennen, die alles möglich machen:",
         "subPoints": [
           {
-            "photo": "../../images/developer1.jpg",
+            "photo": "../../../images/developer1.jpg",
             "subText": "Gründer & Ernährungsexperte"
           },
           {
-            "photo": "../../images/developer2.jpg",
+            "photo": "../../../images/developer2.jpg",
             "subText": "Leiter der Produktentwicklung"
           },
           {
-            "photo": "../../images/developer3.jpg",
+            "photo": "../../../images/developer3.jpg",
             "subText": "Frontend-Entwickler"
           },
           {
-            "photo": "../../images/developer4.jpg",
+            "photo": "../../../images/developer4.jpg",
             "subText": "Backend-Entwickler"
           },
           {
-            "photo": "../../images/developer5.jpg",
+            "photo": "../../../images/developer5.jpg",
             "subText": "UI/UX-Designer"
           },
           {
-            "photo": "../../images/developer6.jpg",
+            "photo": "../../../images/developer6.jpg",
             "subText": "Projektmanager"
           },
           {
-            "photo": "../../images/developer7.jpg",
+            "photo": "../../../images/developer7.jpg",
             "subText": "DevOps-Ingenieur"
           },
           {
-            "photo": "../../images/developer8.jpg",
+            "photo": "../../../images/developer8.jpg",
             "subText": "SEO- und Content-Autor"
           },
-          { "photo": "../../images/developer9.jpg", "subText": "QA-Tester" }
+          { "photo": "../../../images/developer9.jpg", "subText": "QA-Tester" }
         ]
       }
     ],

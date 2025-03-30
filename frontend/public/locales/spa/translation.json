@@ -55,39 +55,39 @@
         "points": "Conoce a las personas que lo hacen posible:",
         "subPoints": [
           {
-            "photo": "../../images/developer1.jpg",
+            "photo": "../../../images/developer1.jpg",
             "subText": "Fundador y Entusiasta de la Nutrición"
           },
           {
-            "photo": "../../images/developer2.jpg",
+            "photo": "../../../images/developer2.jpg",
             "subText": "Jefe de Desarrollo de Productos"
           },
           {
-            "photo": "../../images/developer3.jpg",
+            "photo": "../../../images/developer3.jpg",
             "subText": "Desarrollador Frontend"
           },
           {
-            "photo": "../../images/developer4.jpg",
+            "photo": "../../../images/developer4.jpg",
             "subText": "Desarrollador Backend"
           },
           {
-            "photo": "../../images/developer5.jpg",
+            "photo": "../../../images/developer5.jpg",
             "subText": "Diseñador UI/UX"
           },
           {
-            "photo": "../../images/developer6.jpg",
+            "photo": "../../../images/developer6.jpg",
             "subText": "Gerente de Proyectos"
           },
           {
-            "photo": "../../images/developer7.jpg",
+            "photo": "../../../images/developer7.jpg",
             "subText": "Ingeniero DevOps"
           },
           {
-            "photo": "../../images/developer8.jpg",
+            "photo": "../../../images/developer8.jpg",
             "subText": "Escritor de Contenido y SEO"
           },
           {
-            "photo": "../../images/developer9.jpg",
+            "photo": "../../../images/developer9.jpg",
             "subText": "Tester de Control de Calidad"
           }
         ]

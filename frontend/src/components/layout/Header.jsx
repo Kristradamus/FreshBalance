@@ -2,10 +2,10 @@ import { useState, useRef, useEffect, useContext} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import logo from "../../public/images/freshBalance.png";
+import logo from "../../../public/images/freshBalance.png";
 import "./Header.css";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
-import { AuthContext } from "./AuthContext.jsx";
+import { AuthContext } from "../AuthContext.jsx";
 
 export default function Header() {
 const navigate = useNavigate();

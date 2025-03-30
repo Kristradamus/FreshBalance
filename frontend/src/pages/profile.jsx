@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, useNavigate, useLocation, Outlet } from 'react-router-dom';
-import FavouritesComponent from "../components/FavouritesComponent.jsx";
-import CartComponent from "../components/CartComponent.jsx";
-import SecurityComponent from "../components/SecurityComponent.jsx";
+import FavouritesComponent from "../components/profileComponents/FavouritesComponent.jsx";
+import CartComponent from "../components/profileComponents/CartComponent.jsx";
+import SecurityComponent from "../components/profileComponents/SecurityComponent.jsx";
 import { useTranslation } from "react-i18next";
 import './profile.css';
 
