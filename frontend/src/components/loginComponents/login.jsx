@@ -69,19 +69,22 @@ const handleLoginSubmit = async() => {
         throw new Error("Email verification missing!");
       }
   
-      const verificationToken = sessionStorage.getItem('emailVerificationToken');
+      const VerificationCode = sessionStorage.getItem('emailVerificationCode');
   
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
         email: verifiedEmail,
         password: passwordInput.trim(),
-        ...(verificationToken && { token: verificationToken })
+        ...(VerificationCode && { verificationCode: VerificationCode })
       });
   
       if (response.data.token) {
-        sessionStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('authToken', response.data.token);
+      
+        const storedToken = localStorage.getItem('authToken');
+        console.log("Token stored successfully:", storedToken);
       }
       
-      sessionStorage.removeItem('emailVerificationToken');
+      sessionStorage.removeItem('emailVerificationCode');
       sessionStorage.removeItem('verifiedEmail');
       
       navigate("/");

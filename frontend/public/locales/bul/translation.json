@@ -597,6 +597,7 @@
         { "name": "Количка", "link": "/profile/cart" }
       ],
       "icons": {
+        "Профил": "fa-solid fa-user",
         "Вход": "fa-solid fa-user",
         "Любими": "fa-solid fa-heart",
         "Количка": "fa-solid fa-cart-shopping"

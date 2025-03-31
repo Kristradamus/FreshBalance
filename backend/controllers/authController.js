@@ -1,24 +1,24 @@
-const bcrypt = require('bcryptjs');
-const rateLimit = require('express-rate-limit');
+const bcrypt = require("bcryptjs");
+const rateLimit = require("express-rate-limit");
 const validator = require("validator");
 const dns = require("dns");
 const crypto = require("crypto");
-const { z } = require('zod');
+const { z } = require("zod");
 const pool = require("../dataBase");
-const { generateToken } = require('../middleware/authMiddleware');
+const { generateToken } = require("../middleware/authMiddleware");
 
 /*--------------------------------------------------------START----------------------------------------------------*/
-const emailVerificationTokens = new Map();
+const emailVerificationCode = new Map();
 
-const cleanExpiredTokens = () => {
+const cleanExpiredVerificationCodes = () => {
   const now = Date.now();
-  emailVerificationTokens.forEach((value, key) => {
+  emailVerificationCode.forEach((value, key) => {
     if (now - value.createdAt > 15 * 60 * 1000) {
-      emailVerificationTokens.delete(key);
+      emailVerificationCode.delete(key);
     }
   });
 };
-setInterval(cleanExpiredTokens, 10 * 60 * 1000);
+setInterval(cleanExpiredVerificationCodes, 10 * 60 * 1000);
 
 /*-------------------------------------------------EMAIL-VALIDATION--------------------------------------------------*/
 const emailCheckLimiter = rateLimit({
@@ -28,16 +28,15 @@ const emailCheckLimiter = rateLimit({
   skip: (req) => {
     const whitelist = ["84.43.144.178", "::1", "127.0.0.1"];
     return whitelist.includes(req.ip);
-  }
+  },
 });
 
 const verifyEmailDomain = async (email) => {
   try {
-    const domain = email.split('@')[1];
+    const domain = email.split("@")[1];
     const mxRecords = await dns.promises.resolveMx(domain);
     return mxRecords && mxRecords.length > 0;
-  }
-  catch (error) {
+  } catch (error) {
     console.error("DNS verification failed:", error);
     return false;
   }
@@ -50,68 +49,71 @@ const checkEmail = async (req, res) => {
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
   }
-  if(!validator.isEmail(email)){
-    return res.status(400).json({ error: "Invalid email address!"});
+  if (!validator.isEmail(email)) {
+    return res.status(400).json({ error: "Invalid email address!" });
   }
-  
+
   try {
     const isDomainValid = await verifyEmailDomain(email);
     if (!isDomainValid) {
       return res.status(400).json({ error: "Email does not exist!" });
     }
-    
-    const [rows] = await pool.query("SELECT * FROM users WHERE user_email = ?", [email]);
-    const token = crypto.randomBytes(32).toString('hex');
-    emailVerificationTokens.set(email, {token, createdAt: Date.now()});
+
+    const [rows] = await pool.query(
+      "SELECT * FROM users WHERE user_email = ?",
+      [email]
+    );
+    const verificationCode = crypto.randomBytes(32).toString("hex");
+    emailVerificationCode.set(email, { verificationCode, createdAt: Date.now() });
 
     console.log(rows);
     if (rows.length > 0) {
-      res.status(200).json({ exists: true, token });
-    } 
-    else {
-      res.status(200).json({ exists: false, token });
+      res.status(200).json({ exists: true, verificationCode });
+    } else {
+      res.status(200).json({ exists: false, verificationCode });
     }
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Error checking email:", error);
     res.status(500).json({ error: "Database error" });
   }
 };
 
-/*------------------------------------------EMAIL-TOKEN-VERIFICATION-------------------------------------------*/
-const verifyEmailToken = (req, res, next) => {
-  const { email: submittedEmail, token } = req.body;
+/*------------------------------------------EMAIL-VERIFICATION-CODE------------------------------------------*/
+const verifyEmailVerificationCode = (req, res, next) => {
+  const { email: submittedEmail, verificationCode } = req.body;
 
-  if (!submittedEmail || !token) {
-    return res.status(400).json({ error: "Email and token are required!" });
+  if (!submittedEmail || !verificationCode) {
+    return res.status(400).json({ error: "Email and verification code are required!" });
   }
 
-  const tokenEntry = emailVerificationTokens.get(submittedEmail);
+  const verificationCodeEntry = emailVerificationCode.get(submittedEmail);
 
-  if (!tokenEntry) {
-    return res.status(401).json({ error: "No verification token found for this email!" });
+  if (!verificationCodeEntry) {
+    return res
+      .status(401)
+      .json({ error: "No verification code found for this email!" });
   }
 
-  if (tokenEntry.token !== token) {
-    return res.status(403).json({ 
-      error: "Invalid token!",
-      detail: "The provided token does not match the expected token."
+  if (verificationCodeEntry.verificationCode !== verificationCode) {
+    return res.status(403).json({
+      error: "Invalid verification code!",
+      detail: "The provided verification code does not match the expected verification code.",
     });
   }
 
   const currentTime = Date.now();
-  const tokenAge = currentTime - tokenEntry.createdAt;
-  const TOKEN_EXPIRATION = 15 * 60 * 1000;
+  const verificationCodeAge = currentTime - verificationCodeEntry.createdAt;
+  const CODE_EXPIRATION = 15 * 60 * 1000;
 
-  if (tokenAge > TOKEN_EXPIRATION) {
-    emailVerificationTokens.delete(submittedEmail);
-    return res.status(401).json({ 
-      error: "Token has expired!",
-      detail: "Please request a new verification token."
+  if (verificationCodeAge > CODE_EXPIRATION) {
+    emailVerificationCode.delete(submittedEmail);
+    return res.status(401).json({
+      error: "Verification code has expired!",
+      detail: "Please request a new verification code.",
     });
   }
 
-  emailVerificationTokens.delete(submittedEmail);
+  emailVerificationCode.delete(submittedEmail);
   next();
 };
 
@@ -121,13 +123,18 @@ const register = async (req, res) => {
     const { email, username, password } = req.body;
 
     const registerSchema = z.object({
-      username: z.string()
+      username: z
+        .string()
         .max(30, "Username cannot exceed 30 characters!")
         .min(3, "Username must contain at least 3 characters!")
-        .regex(/^[a-zA-Z0-9_]+$/, "Only letters, numbers, and underscores are allowed in the username!")
+        .regex(
+          /^[a-zA-Z0-9_]+$/,
+          "Only letters, numbers, and underscores are allowed in the username!"
+        )
         .min(1, "Username is required!")
         .trim(),
-      password: z.string()
+      password: z
+        .string()
         .regex(/[A-Z]/, "Password must contain atleast one uppercase letter!")
         .regex(/[0-9]/, "Password must contain atleast one number!")
         .min(8, "Password must be atleast 8 characters!")
@@ -135,36 +142,43 @@ const register = async (req, res) => {
         .trim(),
     });
 
-    const validationResult = registerSchema.safeParse({username, password });
+    const validationResult = registerSchema.safeParse({ username, password });
     if (!validationResult.success) {
-      const errorMessages = validationResult.error.errors.map(err => err.message);
-      return res.status(400).json({ 
+      const errorMessages = validationResult.error.errors.map(
+        (err) => err.message
+      );
+      return res.status(400).json({
         error: "Validation failed",
-        messages: errorMessages
+        messages: errorMessages,
       });
     }
 
-    const [usernameExists] = await pool.query("SELECT user_id FROM users WHERE user_name = ?", [username]);
+    const [usernameExists] = await pool.query(
+      "SELECT user_id FROM users WHERE user_name = ?",
+      [username]
+    );
     if (usernameExists.length > 0) {
       return res.status(409).json({ error: "Username is already taken!" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    await pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)",[username, email, hashedPassword]);
+    await pool.query(
+      "INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)",
+      [username, email, hashedPassword]
+    );
 
-    emailVerificationTokens.delete(email);
+    emailVerificationCode.delete(email);
     res.status(201).json({ success: true });
     console.log(`New registration: ${username} (${email})`);
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Registration error:", error);
-    
+
     const errorResponse = {
       error: "Registration failed",
-      message: "An error occurred during registration"
+      message: "An error occurred during registration",
     };
 
-    if (error.code === 'ER_DUP_ENTRY') {
+    if (error.code === "ER_DUP_ENTRY") {
       errorResponse.details = "Email already registered";
     }
 
@@ -179,14 +193,15 @@ const checkUsername = async (req, res) => {
     return res.status(400).json({ error: "Username is required!" });
   }
   try {
-    const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [username]);
+    const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [
+      username,
+    ]);
     if (rows.length > 0) {
       res.status(200).json({ exists: true });
     } else {
       res.status(200).json({ exists: false });
     }
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Error checking username:", error);
     res.status(500).json({ error: "Database error" });
   }
@@ -194,19 +209,22 @@ const checkUsername = async (req, res) => {
 
 /*----------------------------------------------LOGIN-------------------------------------------------*/
 const login = async (req, res) => {
-  const { email, password, token } = req.body;
-  console.log('Login request received:', req.body);
+  const { email, password, verificationCode } = req.body;
+  console.log("Login request received:", req.body);
   try {
-    if (token) {
-      const tokenEntry = emailVerificationTokens.get(email);
-      if (!tokenEntry || tokenEntry.token !== token) {
-        return res.status(401).json({ error: "Invalid token" });
+    if (!verificationCode) {
+      return res.status(401).json({ error: "Verification code is required!" });
+    }
+    if (verificationCode) {
+      const verificationCodeEntry = emailVerificationCode.get(email);
+      if (!verificationCodeEntry || verificationCodeEntry.verificationCode !== verificationCode) {
+        return res.status(401).json({ error: "Invalid verification code!" });
       }
-      emailVerificationTokens.delete(email);
+      emailVerificationCode.delete(email);
     }
 
     const [users] = await pool.query(
-      "SELECT * FROM users WHERE user_email = ?", 
+      "SELECT * FROM users WHERE user_email = ?",
       [email]
     );
     if (users.length === 0) {
@@ -219,21 +237,24 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Invalid password!" });
     }
 
-    const authToken = generateToken(user.user_id, user.user_name, user.user_email);
-    res.json({ 
+    const authToken = generateToken(
+      user.user_id,
+      user.user_name,
+      user.user_email
+    );
+    res.json({
       token: authToken,
       user: {
         id: user.user_id,
         username: user.user_name,
-        email: user.user_email
-      }
+        email: user.user_email,
+      },
     });
-  } 
-  catch (error) {
+  } catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: "Login failed",
-      details: error.message
+      details: error.message,
     });
   }
 };
@@ -246,7 +267,10 @@ const getUser = async (req, res) => {
     return res.status(400).json({ error: "Email is required" });
   }
   try {
-    const [rows] = await pool.query("SELECT user_name FROM users WHERE user_email = ?", [email]);
+    const [rows] = await pool.query(
+      "SELECT user_name FROM users WHERE user_email = ?",
+      [email]
+    );
     if (rows.length > 0) {
       res.status(200).json({ username: rows[0].user_name });
     } else {
@@ -260,10 +284,10 @@ const getUser = async (req, res) => {
 
 module.exports = {
   emailCheckLimiter,
-  verifyEmailToken,
+  verifyEmailVerificationCode,
   checkEmail,
   register,
   checkUsername,
   login,
-  getUser
+  getUser,
 };

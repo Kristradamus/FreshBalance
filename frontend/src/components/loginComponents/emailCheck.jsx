@@ -71,13 +71,13 @@ const handleEmailCheckContinue = async () => {
   }
   try {
     const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/check-email`, { email });
-    sessionStorage.setItem("emailVerificationToken", response.data.token);
+    sessionStorage.setItem("emailVerificationCode", response.data.verificationCode);
     sessionStorage.setItem("verifiedEmail", email);
-    if (!sessionStorage.getItem('emailVerificationToken')) {
-      console.error("Token failed to persist in sessionStorage!");
+    if (!sessionStorage.getItem('emailVerificationCode')) {
+      console.error("Verification code failed to persist in sessionStorage!");
     }
     else{
-      console.log("Token was stored successfully!")
+      console.log("Verification code was stored successfully!")
     }
 
     if (response.data.exists) {

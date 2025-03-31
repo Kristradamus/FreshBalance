@@ -197,11 +197,11 @@ const handleRegistrationSubmit = async () => {
         termsAccepted: isTermsAccepted
       });
       try {
-        const token = sessionStorage.getItem('emailVerificationToken');
+        const verificationCode = sessionStorage.getItem('emailVerificationCode');
         const verifiedEmail = sessionStorage.getItem('verifiedEmail');
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
           email: verifiedEmail,
-          token: token,
+          verificationCode: verificationCode,
           username: validatedData.username,
           password: validatedData.password
         }, 
@@ -210,7 +210,7 @@ const handleRegistrationSubmit = async () => {
         });
         console.log('Full Response:', response);
         if(response.status === 200 || response.status === 201){
-          sessionStorage.removeItem('emailVerificationToken');
+          sessionStorage.removeItem('emailVerificationCode');
           sessionStorage.removeItem('verifiedEmail');
           alert(t("loginRegistration.registrationSuccessfull"));
           navigate("/");

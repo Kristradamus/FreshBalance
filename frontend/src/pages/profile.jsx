@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate, useLocation, Outlet } from 'react-router-do
 import FavouritesComponent from "../components/profileComponents/FavouritesComponent.jsx";
 import CartComponent from "../components/profileComponents/CartComponent.jsx";
 import SecurityComponent from "../components/profileComponents/SecurityComponent.jsx";
+import LogOutComponent from "../components/profileComponents/LogOut.jsx"
 import { useTranslation } from "react-i18next";
 import './profile.css';
 
@@ -16,13 +17,17 @@ const sidebarItems = [
   {icon: "fa-solid fa-gear", title: 'Profile Settings', key: 'settings',path: 'settings' },
   {icon: "fa-solid fa-heart", title: 'Favourites', key: 'favourites', path: 'favourites'},
   {icon: "fa-solid fa-cart-shopping", title: 'Cart', key: 'cart', path: 'cart'},
-  {icon: "fa-solid fa-shield-halved", title: 'Security', key: 'security', path: 'security'}
+  {icon: "fa-solid fa-shield-halved", title: 'Security', key: 'security', path: 'security'},
+  {icon: "fa-solid fa-right-from-bracket", title:"Log out", key: 'logout', path:"logout", isLogout:true}
 ];
 
-const handleNavigation = (path) => {
-  navigate(`/profile/${path}`);
+const handleNavigation = (item) => {
+  if (item.isLogout) {
+    navigate('logout');  // Changed from '/profile/logout' to just 'logout'
+  } else {
+    navigate(item.path); // Changed from `/profile/${item.path}` to just item.path
+  }
 };
-
 return (
   <div className="profile">
     <div className="profileSidebar">
@@ -30,7 +35,7 @@ return (
       <i className="fa-solid fa-circle-user"></i>
       <div className="profileSidebarNav">
         {sidebarItems.map((item) => (
-          <button key={item.key} className={`profileButton ${activeSection === item.path ? 'active' : ''}`} onClick={() => handleNavigation(item.path)}>
+          <button key={item.key} className={`profileButton ${activeSection === item.path ? 'active' : ''}`} onClick={() => handleNavigation(item)}>
             <i className={item.icon}/>
             <p>{item.title}</p>
           </button>
@@ -83,6 +88,7 @@ return (
       <Route path="favourites" element={<FavouritesComponent />} />
       <Route path="cart" element={<CartComponent />} />
       <Route path="security" element={<SecurityComponent />} />
+      <Route path="logout" element={<LogOutComponent />} />
       <Route index element={<ProfileSettings />} />
     </Route>
   </Routes>

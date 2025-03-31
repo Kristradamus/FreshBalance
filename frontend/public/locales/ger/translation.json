@@ -594,6 +594,7 @@
         { "name": "Korb", "link": "/profile/cart" }
       ],
       "icons": {
+        "Profil":"fa-solid fa-user",
         "Login": "fa-solid fa-user",
         "Favoriten": "fa-solid fa-heart",
         "Korb": "fa-solid fa-cart-shopping"

@@ -1,82 +1,59 @@
-import { createContext, useState, useEffect, useCallback } from "react";
-import axios from "axios";
-
+import React, { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = useState({
-    isAuthenticated: false,
-    user: null,
-    isLoading: true
-  });
-
-  const verifyAuth = useCallback(async () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const checkAuthStatus = () => {
+    setIsLoading(true);
     const token = localStorage.getItem('authToken');
-    
+
     if (!token) {
-      setAuthState(prev => ({ ...prev, isAuthenticated: false, user: null, isLoading: false }));
+      setIsAuthenticated(false);
+      setUser(null);
+      setIsLoading(false);
       return;
     }
-
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/verify-token`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const decoded = JSON.parse(atob(token.split('.')[1]));
       
-      setAuthState({
-        isAuthenticated: true,
-        user: response.data.user,
-        isLoading: false
-      });
+      if (decoded.exp * 1000 > Date.now()) {
+        setIsAuthenticated(true);
+        setUser({
+          id: decoded.userId,
+          username: decoded.username,
+          email: decoded.email
+        });
+      } else {
+        localStorage.removeItem('authToken');
+        setIsAuthenticated(false);
+        setUser(null);
+      }
     } catch (error) {
-      console.error("Auth verification failed:", error);
+      console.error("Token validation error:", error);
       localStorage.removeItem('authToken');
-      setAuthState({
-        isAuthenticated: false,
-        user: null,
-        isLoading: false
-      });
+      setIsAuthenticated(false);
+      setUser(null);
+    } finally {
+      setIsLoading(false);
     }
-  }, []);
+  };
 
-  const login = useCallback(async (token, userData) => {
-    localStorage.setItem('authToken', token);
-    setAuthState({
-      isAuthenticated: true,
-      user: userData,
-      isLoading: false
-    });
-    // Optional: Verify with backend
-    await verifyAuth();
-  }, [verifyAuth]);
-
-  const logout = useCallback(() => {
+  const logout = () => {
     localStorage.removeItem('authToken');
-    setAuthState({
-      isAuthenticated: false,
-      user: null,
-      isLoading: false
-    });
-  }, []);
+    setIsAuthenticated(false);
+    setUser(null);
+  };
 
-  // Initialize auth state
   useEffect(() => {
-    verifyAuth();
-    
-    // Sync across tabs
-    const handleStorageChange = () => verifyAuth();
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, [verifyAuth]);
+    checkAuthStatus();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ 
-      ...authState,
-      login,
-      logout,
-      verifyAuth
-    }}>
-      {!authState.isLoading && children}
+    <AuthContext.Provider value={{ isAuthenticated, user, checkAuthStatus, isLoading, logout}}>
+      {children}
     </AuthContext.Provider>
   );
 };

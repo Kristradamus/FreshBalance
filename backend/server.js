@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.post("/check-email", authController.emailCheckLimiter, authController.checkEmail);
-app.post("/register", authController.verifyEmailToken, authController.register);
+app.post("/register", authController.verifyEmailVerificationCode, authController.register);
 app.post("/login", authController.login);
 app.post("/username-check", authController.checkUsername);
 app.get("/user", authController.getUser);
