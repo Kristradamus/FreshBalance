@@ -28,7 +28,7 @@ const emailIpRateLimiter = rateLimit({
 
 const verifyEmailDomain = async (email) => {
   try {
-    const domain = email.split('@')[1];
+    const domain = email.split("@")[1];
     await dns.promises.resolveMx(domain);
     return true;
   } catch (error) {
@@ -59,7 +59,7 @@ const sendEmail = async (name, email, message) => {
 
     if (!result.success) {
       const errors = result.error.issues.map(issue => issue.message);
-      throw new Error(errors.join(', '));
+      throw new Error(errors.join(", "));
     }
 
     const { name: safeName, email: safeEmail, message: safeMessage } = result.data;

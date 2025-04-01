@@ -13,7 +13,7 @@ const goToSubscriptions = (path) => {
 };
 
 return (
-  <>
+<>
   <Header/>
   <Navigation/>
   <div className="communities">
@@ -31,5 +31,5 @@ return (
       </div>
     </div>
   </div>
-  </>
+</>
 );};

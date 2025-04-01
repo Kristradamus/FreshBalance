@@ -1,109 +1,92 @@
-/* LogOut.css */
-.logout-container {
+.logoutContainer {
   position: relative;
 }
-
-.logout-button {
-  background: none;
-  border: none;
-  color: #ff4444;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.logout-button:hover {
-  background-color: rgba(255, 68, 68, 0.1);
-}
-
-.logout-alert-overlay {
+.logoutAlertOverlay {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1000;
+  background-color: var(--darkOverlay);
+  backdrop-filter: blur(1px);
+  animation: fadeIn var(--transition);
 }
-
-.logout-alert {
-  background-color: white;
-  padding: 24px;
-  border-radius: 8px;
+.logoutAlert {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background-color: var(--white);
+  border-radius:var(--smallRadius);
+  gap:20px;
+  padding: 20px 10px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 0.3s ease;
+  box-shadow:var(--boxShadowLight);
+  animation: slideUp var(--transition);
 }
-
-.logout-alert-header {
+.logoutAlertHeader {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  flex-direction:column;
+    align-items: center;
+  gap: 10px;
 }
-
-.warning-icon {
-  color: #ff9800;
-  font-size: 24px;
+.logoutTitle,
+.logoutSubTitle{
+  color: var(--mainTextColor);
 }
-
-.logout-alert h3 {
-  margin: 0;
-  color: #333;
-  font-size: 18px;
-}
-
-.logout-alert p {
-  margin: 0 0 24px 0;
-  color: #666;
-  font-size: 16px;
-}
-
-.logout-alert-buttons {
+.logoutAlertButtons {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
 }
-
-.cancel-button, .confirm-button {
-  padding: 8px 16px;
-  border-radius: 4px;
+.logoutCancelButton, .logoutConfirmButton {
+  border:none;
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  padding: 12px 20px;
+  min-width:120px;
+  border-radius: var(--smallRadius);
+  font-size:var(--textFont);
+  transition: var(--transition);
+}
+.logoutCancelButton {
+  background-color: var(--secondButtonColor);
+  color: var(--mainTextColor);
+}
+.logoutCancelButton:hover {
+  background-color: var(--secondButtonHover);
+  transform:translateY(-1px);
+}
+.logoutConfirmButton {
+  background-color:var(--thirdButtonColor);
+  color: var(--white);
+}
+.logoutConfirmButton:hover {
+  background-color: var(--thirdButtonHover);
+  transform:translateY(-1px);
 }
 
-.cancel-button {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 1px solid #ddd;
-}
-
-.cancel-button:hover {
-  background-color: #e0e0e0;
-}
-
-.confirm-button {
-  background-color: #ff4444;
-  color: white;
-  border: 1px solid #ff4444;
-}
-
-.confirm-button:hover {
-  background-color: #cc0000;
-  border-color: #cc0000;
-}
-
+/*------------------------------------------ANIMATION----------------------------------------*/
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/*----------------------------------------RESPONSIVE----------------------------------------*/
+@media (max-width: 480px) {
+  .authAlertBox {
+    padding: 20px 15px;
+  }
+  .logoutAlertButtons {
+    flex-direction: column;  
+    width: 100%;
+    gap: 10px;
+  }
 }

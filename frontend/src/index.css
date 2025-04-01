@@ -10,6 +10,7 @@
   --lightGreen: #4ba359;
   --veryLightGreen: #7bce8744;
   --white: white;
+  --darkOverlay:rgba(0, 0, 0, 0.5);
 
   /*------------------ELEMENT-COLORS-----------------*/
   --mainBackground: rgb(255, 252, 239);
@@ -34,7 +35,7 @@
   --errorBoxShadow: 0 0 0 2px rgba(182, 47, 47, 0.247);
   
   /*------------------ELEMENT-TRANSITION-------------*/
-  --transition: 0.3s;
+  --transition: 0.3s ease-out;
 
   /*-------------------ELEMENT-SIZE------------------*/
   --textFont: 16px;
@@ -50,7 +51,10 @@
   --mainButtonHover: #348b5a;
   --secondButtonColor: #e3e3e3bb;
   --secondButtonHover: #d6d6d6bb; 
+  --thirdButtonColor: rgb(216, 27, 27);
+  --thirdButtonHover: hsl(0, 77%, 45%);
 }
+/*----------------------------------------DARK-MODE-----------------------------------------*/
 .darkMode {
   /*------------------ELEMENT-COLORS-----------------*/
   --mainBackground: rgb(27, 27, 27);
@@ -64,6 +68,12 @@
   --boxShadowBottom: 0 10px 15px rgba(255, 255, 255, 0.1);
   --boxShadowLight: 0 6px 12px rgba(255, 255, 255, 0.05);
   --errorBoxShadow: 0 0 0 2px rgba(216, 27, 27, 0.5);
+
+  /*---------------------BUTTONS---------------------*/
+  --mainButtonColor: #3a9e65;
+  --mainButtonHover: #348b5a;
+  --secondButtonColor: #e3e3e3bb;
+  --secondButtonHover: #d6d6d6bb; 
 }
 
 body {

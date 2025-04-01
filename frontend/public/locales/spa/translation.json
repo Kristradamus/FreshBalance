@@ -1054,7 +1054,8 @@
   "protectedRoute": {
     "loginRequiredTitle": "Acceso requerido!",
     "loginRequiredSubTitle": "Inicia sesión para continuar.",
-    "cancel": "Cancelar",
     "login": "Iniciar sesión"
-  }
+  },
+  "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
+  "cancel": "Cancelar"
 }

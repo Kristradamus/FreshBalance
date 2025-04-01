@@ -21,7 +21,7 @@
 }
 .languageSwitcherArrow {
   display: inline-block;
-  transition: transform 0.3s ease-in-out;
+  transition: transform var(--transition);
 }
 .languageSwitcherArrow.rotateUp {
   transform: rotate(-180deg);

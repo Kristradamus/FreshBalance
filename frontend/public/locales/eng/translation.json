@@ -215,7 +215,11 @@
     "settingsPhoneNumber":"Phone Number",
     "settingsSaveChanges":"Save Changes",
     
-    "cartMainTitle":"Cart"
+    "cartMainTitle":"Cart",
+
+    "logoutConfirmTitle":"Confirm Logout",
+    "logoutConfirmMessage":"Are you sure you want to log out?",
+    "logoutConfirm":"Yes, Log out"
   },
   "----------------------------------------------------SERVICES------------------------------------------------------------------": {},
   "services": {
@@ -1031,7 +1035,9 @@
   "protectedRoute":{
     "loginRequiredTitle":"Login Required!",
     "loginRequiredSubTitle":"You need to be logged in to access this page.",
-    "cancel":"Cancel",
     "login":"Login"
-  }
+  },
+  "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
+  "cancel":"Cancel"
+
 }

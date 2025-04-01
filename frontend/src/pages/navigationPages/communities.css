@@ -17,7 +17,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--darkOverlay);
 }
 .navigation {
   z-index: 10;
@@ -77,5 +77,8 @@
 @media(max-width:780px){
   .communitiesBox{
     max-width:300px;
+  }
+  .communitiesGoToSub{
+    width:90%;
   }
 }

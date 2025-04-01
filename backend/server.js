@@ -1,11 +1,11 @@
 const express = require("express");
-const rateLimit = require('express-rate-limit');
+const rateLimit = require("express-rate-limit");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 5000;
-require('dotenv').config();
+require("dotenv").config();
 
 const authMiddleware = require("./middleware/authMiddleware.js");
 const authController = require("./controllers/authController.js");
@@ -14,7 +14,7 @@ const pool = require("./dataBase.js");
 
 app.use(
   cors({
-    origin: ['http://localhost:5173','http://localhost:5174','https://freshbalance.onrender.com','http://localhost:3000','http://192.168.0.156:3000',],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://freshbalance.onrender.com", "http://localhost:3000", "http://192.168.0.156:3000"],
     credentials: true,
   })
 );
@@ -26,13 +26,15 @@ app.post("/register", authController.verifyEmailVerificationCode, authController
 app.post("/login", authController.login);
 app.post("/username-check", authController.checkUsername);
 app.get("/user", authController.getUser);
-app.post('/send-message', supportController.emailIpRateLimiter, supportController.sendMessage);
+app.post("/send-message", supportController.emailIpRateLimiter, supportController.sendMessage);
 
-// Protected routes (example)
-// app.get("/protected-route", authMiddleware.authenticateJWT, (req, res) => {
-//   res.json({ message: "This is a protected route", user: req.user });
-// });
-
+/*---------------------------------------------CALLING-AUTH-MIDDLEWARE-----------------------------------------------*/
+app.post("/validate-token", authMiddleware.authenticateJWT, (req, res) => {
+  res.json({
+     valid: true,
+    user: req.user
+  });
+});
 
 /*---------------------------------------------START-SERVER-----------------------------------------------*/
 app.listen(PORT, () => {

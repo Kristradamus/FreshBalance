@@ -371,7 +371,7 @@
     z-index: 40;
     opacity: 0;
     height: calc(100% - var(--headerHeight, 60px));
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color:var(--darkOverlay);
     transition: var(--transition);
   }
   .navOverlay.show {

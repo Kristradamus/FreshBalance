@@ -1,16 +1,16 @@
 .logRegGoBackButton {
-    position: absolute;
-    border: none;
-    cursor: pointer;
-    left: 0px;
-    top: 0px;
-    padding: 7.5px 15px;
-    border-radius: var(--smallRadius) 0 var(--smallRadius) 0;
-    background-color: var(--green);
-    color: var(--white);
-    font-size:var(--smallTextFont);
-    transition: var(--transition);
-  }
-  .logRegGoBackButton:hover {
-    background-color: var(--mainButtonHover);
-  }
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  left: 0px;
+  top: 0px;
+  padding: 7.5px 15px;
+  border-radius: var(--smallRadius) 0 var(--smallRadius) 0;
+  background-color: var(--green);
+  color: var(--white);
+  font-size:var(--smallTextFont);
+  transition: var(--transition);
+}
+.logRegGoBackButton:hover {
+  background-color: var(--mainButtonHover);
+}

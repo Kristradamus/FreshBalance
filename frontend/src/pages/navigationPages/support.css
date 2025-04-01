@@ -108,7 +108,7 @@
   min-height: 2px;
   border-radius: var(--normalRadius);
   background-color: var(--green);
-  transition: width 0.4s ease;
+  transition: var(--transition);
 }
 .supportSideElement:hover a::after {
   width: 100%;

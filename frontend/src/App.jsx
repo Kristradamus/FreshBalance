@@ -1,11 +1,12 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 import MainLayout from "./components/layout/MainLayout.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import LoadingAnimation from "./components/layout/LoadingAnimation.jsx";
 import { AuthProvider } from "./components/AuthContext.jsx";
-import ProtectedRoute from './components/ProtectedRoute.jsx';
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import NavigationTracker from "./components/NavigationTracker.jsx";
 
 const AboutUs = React.lazy(() => import("./pages/navigationPages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/navigationPages/communities.jsx"));
@@ -24,6 +25,7 @@ return (
   <div>
     <BrowserRouter>
       <AuthProvider>
+        <NavigationTracker />
         <Suspense fallback={<LoadingAnimation />}>
           <ScrollToTop />
           <Routes>

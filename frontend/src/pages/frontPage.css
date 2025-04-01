@@ -125,7 +125,7 @@
   flex-direction: row;
   justify-content:flex-start;
   align-items: center;
-  border: 3px solid var(--green);
+  border: 3px solid var(--mainButtonColor);
   border-radius: var(--smallRadius);
   padding: 8px;
   gap: 10px;
@@ -145,7 +145,7 @@
   padding: 20px;
   border: 3px solid var(--green);
   border-radius: var(--smallRadius);
-  background-color: var(--green);
+  background-color: var(--mainButtonColor);
   color: var(--white);
   transition:var(--transition);
 }
@@ -162,11 +162,11 @@
 .fPTopProductsBenefit:hover {
   background-color:var(--mainBackground);
   box-shadow: var(--boxShadowLight);
-  border:3px solid var(--lightGreen);
+  border:3px solid var(--mainButtonHover);
 }
 .fPTopProductsBenefit:hover .fPTopProductsIconBox{
-  background-color:var(--lightGreen);
-  border:2px solid var(--lightGreen);
+  background-color:var(--mainButtonHover);
+  border:2px solid var(--mainButtonHover);
 }
 @keyframes slideInLeft {
   from {

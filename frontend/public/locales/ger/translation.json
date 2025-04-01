@@ -1006,7 +1006,8 @@
   "protectedRoute": {
     "loginRequiredTitle": "Login nötig!",
     "loginRequiredSubTitle": "Bitte anmelden für Zugriff.",
-    "cancel": "Abbrechen",
     "login": "Anmelden"
-  }
+  },
+  "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
+  "cancel": "Abbrechen"
 }
