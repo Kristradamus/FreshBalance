@@ -1,0 +1,89 @@
+.authAlertContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.3s ease-out;
+}
+.authAlertBox {
+  display:flex;
+  flex-direction:column;
+  text-align: center;
+  border-radius: var(--smallRadius);
+  background-color: var(--white);
+  gap:30px;
+  padding: 30px 10px;
+  width: 90%;
+  max-width: 400px;
+  animation: slideUp 0.3s ease-out;
+}
+.authAlertText{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.authAlertMainTitle,
+.authAlertSubTitle{
+  color:var(--mainTextColor);
+}
+.authAlertButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.authAlertBtn, .authAlertCancelBtn {
+  border: none;
+  cursor: pointer;
+  border-radius: var(--smallRadius);
+  font-size: var(--textFont);
+  transition: var(--transition);
+  padding: 15px 20px;
+  min-width: 150px;
+}
+.authAlertBtn {
+  background-color: var(--mainButtonColor);
+  color:var(--white);
+}
+.authAlertBtn:hover {
+  background-color: var(--mainButtonHover);
+  transform: translateY(-1px);
+}
+.authAlertCancelBtn {
+  background-color: var(--secondButtonColor);
+  color:var(--mainTextColor);
+}
+.authAlertCancelBtn:hover {
+  background-color:var(--secondButtonHover);
+  transform: translateY(-1px);
+}
+
+/*-------------------------------------------ANIMATIONS-----------------------------------------------*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/*----------------------------------------RESPONSIVE---------------------------------------------*/
+@media (max-width: 480px) {
+  .authAlertBox {
+    padding: 20px 15px;
+  }
+  .authAlertButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .authAlertBtn, .authAlertCancelBtn {
+    width: 100%;
+  }
+}

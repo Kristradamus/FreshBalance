@@ -21,7 +21,7 @@
   width: 200px;
   height: 50px;
   border-radius: 30px;
-  border: 2px solid var(--green);
+  border: 2px solid var(--mainButtonColor);
   background-color: var(--white);
   box-shadow: var(--boxShadow);
   font-size: var(--textFont);
@@ -30,7 +30,7 @@
 }
 .subToggleCircle {
   position: absolute;
-  background: var(--green);
+  background-color: var(--mainButtonColor);
   width: 90px;
   height: 40px;
   border-radius: 30px;
@@ -38,10 +38,10 @@
   transition: transform 0.4s ease-in-out, background 0.3s ease-in-out;
 }
 .subToggleContainer:hover {
-  border: 2px solid var(--lightGreen);
+  border: 2px solid var(--mainButtonHover);
 }
 .subToggleContainer:hover .subToggleCircle {
-  background-color: var(--lightGreen);
+  background-color: var(--mainButtonHover);
 }
 .subToggleCircle.moveRight {
   transform: translateX(102px);
@@ -128,11 +128,11 @@
   border: none;
   border-radius: var(--normalRadius);
   color: var(--white);
-  background-color: var(--green);
+  background-color: var(--mainButtonColor);
 }
 .subTryFree:hover {
   box-shadow:none;
-  background-color: var(--lightGreen);
+  background-color: var(--mainButtonHover);
 }
 .subBuyNow {
   display: flex;
@@ -141,7 +141,7 @@
   align-items: center;
   background-color: transparent;
   color: var(--green);
-  border: 2px solid var(--green);
+  border: 2px solid var(--mainButtonColor);
 }
 .subBuyNow i {
   margin-left: var(--iconDistance);
@@ -149,7 +149,7 @@
 .subBuyNow:hover {
   box-shadow: none;
   color: var(--lightGreen);
-  border: 2px solid var(--lightGreen);
+  border: 2px solid var(--mainButtonHover);
 }
 
 /*--------------------CATEGORIES-BOTTOM------------------------*/

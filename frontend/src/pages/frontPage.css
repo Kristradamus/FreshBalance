@@ -1,582 +1,585 @@
 /*------------------------------------------FRONT-PAGE-----------------------------------------------*/
 .frontPage{
-   display:flex;
-   flex-direction:column;
+  display:flex;
+  flex-direction:column;
 }
 
 /*------------------------------------------HERO-SECTION---------------------------------------------*/
 .fPHeroSection{
-   background-image: url(../../public/images/HeroSection1.jpeg);
-   background-repeat:no-repeat;
-   background-position:center;
-   background-size:cover;
-   display:flex;
-   flex-direction:column;
-   width:100%;
-   padding:17.5vw 10vw;
-   padding-right:20vw;
+  background-image: url(../../public/images/HeroSection1.jpeg);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  padding:17.5vw 10vw;
+  padding-right:20vw;
 }
 .fPHeroSectionTitle1{
-   color:var(--green);
+  color:var(--green);
 }
 .fPHeroSectionTitle2{
-   margin-bottom:10px;
-   color:var(--mainTextColor);
+  margin-bottom:10px;
+  color:var(--mainTextColor);
 }
 .fPHeroSectionLearnMore{
-   border:none;
-   cursor:pointer;
-   max-width:200px;
-   margin:10px 0px;
-   padding:15px 15px;
-   background-color:var(--green);
-   color:var(--white);
-   border-radius:var(--normalRadius);
-   transition:var(--transition);
-   font-size:calc(var(--textFont) + 2px);
+  border:none;
+  cursor:pointer;
+  max-width:200px;
+  margin:10px 0px;
+  padding:15px 15px;
+  background-color:var(--mainButtonColor);
+  color:var(--white);
+  border-radius:var(--smallRadius);
+  transition:var(--transition);
+  font-size:calc(var(--textFont) + 2px);
 }
 .fPHeroSectionLearnMore i{
-   margin-left:var(--iconDistance);
+  margin-left:var(--iconDistance);
 }
 .fPHeroSectionLearnMore:hover{
-   background-color:var(--lightGreen);
+  transform:translateY(-1px);
+  background-color:var(--mainButtonHover);
 }
  
 /*-----------------HERO-SECTION-ANIMATIONS-----------------*/
 .fPHeroSectionTitle1.hidden{
-   opacity: 0;
-   transition:0.4s ease-in-out;
-   transform: translateX(-40px);
+  opacity: 0;
+  transition:0.4s ease-in-out;
+  transform: translateX(-40px);
 }
 .fPHeroSectionTitle2.hidden{
-   opacity: 0;
-   transition:0.4s ease-in-out;
-   transform: translateX(40px);
+  opacity: 0;
+  transition:0.4s ease-in-out;
+  transform: translateX(40px);
 }
 .fPHeroSectionTitle1.show,
 .fPHeroSectionTitle2.show{
-   opacity:1;
-   transform:translateX(0px);
+  opacity:1;
+  transform:translateX(0px);
 }
 .fPHeroSectionSubTitle.hidden,
 .fPHeroSectionLearnMore.hidden{
-   opacity:0;
-   transition:0.4s ease-in-out;
+  opacity:0;
+  transition:0.4s ease-in-out;
 }
 .fPHeroSectionSubTitle.show,
 .fPHeroSectionLearnMore.show{
-   opacity:1;
+  opacity:1;
 }
 
 /*-------------------------------------------TOP-PRODUCTS---------------------------------------------*/
 .fPTopProducts{
-   display:flex;
-   flex-direction:column;
-   align-items:center;
-   justify-content:center;
-   gap:40px;
-   padding:3vw 5vw;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  padding:3vw 5vw;
 }
 .fPTopProductsTitleBox {
-   text-align: center;
-   margin:0px 20px;
-   padding-bottom:10px;
-   border-radius: var(--normalRadius);
+  text-align: center;
+  margin:0px 20px;
+  padding-bottom:10px;
+  border-radius: var(--normalRadius);
 }
 .fPTopProductsTitle1{
-   position: relative;
-   color:var(--green);
+  position: relative;
+  color:var(--green);
 }
 .fPTopProductsTitle1::after {
-   display: block;
-   position: absolute;
-   content: "";
-   height: 3px;
-   width: 0;
-   left: 0;
-   margin-top: 5px;
-   border-radius: var(--normalRadius);
-   background-color: var(--mainTextColor);
-   transform: translateY(-50%);
+  display: block;
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 0;
+  left: 0;
+  margin-top: 5px;
+  border-radius: var(--normalRadius);
+  background-color: var(--mainTextColor);
+  transform: translateY(-50%);
 }
 
 /*--------------TOP-PRODUCTS-ANIMATIONS----------------*/
 .fPTopProductsTitle1.hidden::after {
-   width: 0vw;
-   transition: 0.5s ease-out;
+  width: 0vw;
+  transition: 0.5s ease-out;
 }
 .fPTopProductsTitle1.show::after{
-   width: 13vw;
+  width: 13vw;
 }
 
 /*---------------------BENEFITS-------------------------*/
 .fPTopProductsBenefitsBox {
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: stretch;
-   gap: 2vw;
-   background-color: var(--lightBackground);
-   border-radius: var(--smallRadius);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2vw;
+  background-color: var(--lightBackground);
+  border-radius: var(--smallRadius);
 }
 .fPTopProductsBenefit {
-   display: flex;
-   flex-direction: row;
-   justify-content:flex-start;
-   align-items: center;
-   border: 3px solid var(--green);
-   border-radius: var(--smallRadius);
-   padding: 8px;
-   gap: 10px;
-   flex-grow: 1;
-   min-width:250px;
-   color: var(--green);
-   background-color: var(--mainBackground);
-   transition: var(--transition);
-   box-shadow: var(--boxShadowBottom);
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items: center;
+  border: 3px solid var(--green);
+  border-radius: var(--smallRadius);
+  padding: 8px;
+  gap: 10px;
+  flex-grow: 1;
+  min-width:250px;
+  color: var(--green);
+  background-color: var(--mainBackground);
+  transition: var(--transition);
+  box-shadow: var(--boxShadowBottom);
 }
 .fPTopProductsIconBox {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 50px;
-   height: 50px;
-   padding: 20px;
-   border: 3px solid var(--green);
-   border-radius: var(--smallRadius);
-   background-color: var(--green);
-   color: var(--white);
-   transition:var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 20px;
+  border: 3px solid var(--green);
+  border-radius: var(--smallRadius);
+  background-color: var(--green);
+  color: var(--white);
+  transition:var(--transition);
 }
 .fPTopProductsIconBox i{
-   font-size:var(--iconFont);
+  font-size:var(--iconFont);
 }
 .fPTopProductsBenefitText {
-   font-weight: bold;
-   color: var(--mainTextColor);
-   font-size:calc(var(--textFont) + 2px);
+  font-weight: bold;
+  color: var(--mainTextColor);
+  font-size:calc(var(--textFont) + 2px);
 }
 
 /*-----------------BENEFITS-ANIMATIONS-----------------*/
 .fPTopProductsBenefit:hover {
-   background-color:var(--mainBackground);
-   box-shadow: var(--boxShadowLight);
-   border:3px solid var(--lightGreen);
+  background-color:var(--mainBackground);
+  box-shadow: var(--boxShadowLight);
+  border:3px solid var(--lightGreen);
 }
 .fPTopProductsBenefit:hover .fPTopProductsIconBox{
-   background-color:var(--lightGreen);
-   border:2px solid var(--lightGreen);
+  background-color:var(--lightGreen);
+  border:2px solid var(--lightGreen);
 }
 @keyframes slideInLeft {
-   from {
-      transform: translateY(50px);
-      opacity: 0;
-   }
-   to {
-      transform: translateY(0);
-      opacity: 1;
-   }
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 .fPTopProductsBenefit {
-   opacity: 0;
-   transform: translateY(50px);
+  opacity: 0;
+  transform: translateY(50px);
 }
 .fPTopProductsBenefit.show {
-   animation: slideInLeft 0.5s ease-out forwards;
+  animation: slideInLeft 0.5s ease-out forwards;
 }
 
 /*--------------------PRODUCTS-----------------------*/
 .fPTopProductsPart1{
-   display:flex;
-   flex-direction:row;
+  display:flex;
+  flex-direction:row;
 }
 .fPTopProductsPart1Column1{
-   display:flex;
-   flex-direction:column;
+  display:flex;
+  flex-direction:column;
 }
 .fPTopProductsPart1Column2{
-   display:flex;
-   flex-direction:column;
+  display:flex;
+  flex-direction:column;
 }
 .fPTopProductsPart2{
-   display:flex;
-   flex-direction:column;
+  display:flex;
+  flex-direction:column;
 }
 .fPTopProductsPart2Row1{
-   display:flex;
-   flex-direction:row;
+  display:flex;
+  flex-direction:row;
 }
 
 /*-------------------------------------------WHO-WE-ARE---------------------------------------------*/
 .fPWhoWeAre{
-   display:flex;
-   flex-direction:column;
-   align-items:center;
-   padding-top:70px;
-   gap:20px;
-   background-color:var(--frontPageBackground);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:70px;
+  gap:20px;
+  background-color:var(--frontPageBackground);
 }
 .fPWhoWeAreBox{
-   display:flex;
-   flex-direction:column;
-   gap:20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
 }
 .fPWhoWeAreRow{
-   display: flex;
-   flex-direction: row;
-   justify-content:center;
-   align-items:center;
-   gap: 30px;
-   width: 100%;
-   max-width: 1200px;
-   padding: 20px;
-   border-radius:var(--normalRadius);
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  border-radius:var(--normalRadius);
 }
 .fPWhoWeAreImage1,
 .fPWhoWeAreImage2{
-   width:600px;
-   border:2px solid var(--green);
-   border-radius:var(--normalRadius);
+  width:600px;
+  border:2px solid var(--green);
+  border-radius:var(--normalRadius);
 }
 .fPWhoWeAreTitle{
-   position:relative;
-   color:var(--green);
+  position:relative;
+  color:var(--green);
 }
 .fPWhoWeAreTextBox{
-   display:flex;
-   flex-direction:column;
-   gap:20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
 }
 .fPWhoWeAreText{
-   font-weight: bold;
-   color: var(--mainTextColor);
-   font-size:calc(var(--textFont) + 2px);
+  font-weight: bold;
+  color: var(--mainTextColor);
+  font-size:calc(var(--textFont) + 2px);
 }
 .fPWhoWeAreImage2 {
-   order: 2;
+  order: 2;
 }
 .fPWhoWeAreTextBox{
-   order: 1;
+  order: 1;
 }
 
 /*-------------WHO-WE-ARE-ANIMATIONS-------------*/
 .fPWhoWeAreImage2.hidden{
-   opacity: 0;
-   transform: rotate(-10deg);
-   transition: transform 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: rotate(-10deg);
+  transition: transform 0.5s ease, opacity 0.3s ease;
 }
 .fPWhoWeAreImage2.show{
-   opacity: 1;
-   transform: rotate(3deg);
+  opacity: 1;
+  transform: rotate(3deg);
 }
 .fPWhoWeAreImage1.hidden{
-   opacity: 0;
-   transform: rotate(10deg);
-   transition: transform 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+  transform: rotate(10deg);
+  transition: transform 0.5s ease, opacity 0.3s ease;
 }
 .fPWhoWeAreImage1.show{
-   opacity: 1;
-   transform: rotate(-3deg);
+  opacity: 1;
+  transform: rotate(-3deg);
 }
 .fPWhoWeAreTitle::after{
-   content: "";
-   position: absolute;
-   display: block;
-   height: 3px;
-   width: 10vw;
-   left: 0;
-   margin-top:5px;
-   border-radius: var(--normalRadius);
-   background-color: var(--mainTextColor);
-   transform: translateY(-50%);
+  content: "";
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 10vw;
+  left: 0;
+  margin-top:5px;
+  border-radius: var(--normalRadius);
+  background-color: var(--mainTextColor);
+  transform: translateY(-50%);
 }
 .fPWhoWeAreTitle.hidden::after {
-   width: 0vw;
-   transition: 0.5s ease-out;
+  width: 0vw;
+  transition: 0.5s ease-out;
 }
 .fPWhoWeAreTitle.show::after{
-   width: 13vw;
+  width: 13vw;
 }
 
 /*------------------------------------------WHO-WE-WORK-WITH-----------------------------------------*/
 .fPWhoWeWorkWith{
-   margin-top:0px;
-   padding:0px 0px;
-   background-color:var(--frontPageBackground);
+  margin-top:0px;
+  padding:0px 0px;
+  background-color:var(--frontPageBackground);
 }
 .fPWhoWeWorkWithMainBox{
-   display: flex;
-   flex-direction: column;
-   align-items:center;
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: cover;
-   background-color:var(--green);
-   width: 100%;
-   padding: 10vw 1vw;
-   gap:20px;
-   clip-path: polygon(
-      0% 20%,
-      100% 10%,
-      100% 90%,
-      0% 80%
-   );
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color:var(--green);
+  width: 100%;
+  padding: 10vw 1vw;
+  gap:20px;
+  clip-path: polygon(
+    0% 20%,
+    100% 10%,
+    100% 90%,
+    0% 80%
+  );
 }
 .fPWhoWeWorkWithTitle1{
-   display:flex;
-   justify-content:flex-start;
-   color:var(--white);
+  display:flex;
+  justify-content:flex-start;
+  color:var(--white);
 }
 .fPWhoWeWorkWithImagesBox{
-   display:flex;
-   flex-direction:row;
-   flex-wrap:wrap;
-   justify-content:center;
-   gap:10px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
 }
 .fPWhoWeWorkWithImageBox{
-   display:flex;
-   align-items:center;
-   justify-content:center;
-   width:100px;
-   height:100px;
-   opacity:0;
-   background-color:var(--white);
-   border-radius:var(--normalRadius);
-   box-shadow:var(--boxShadow);
-   transition:var(--transition);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100px;
+  height:100px;
+  opacity:0;
+  background-color:var(--white);
+  border-radius:var(--normalRadius);
+  box-shadow:var(--boxShadow);
+  transition:var(--transition);
 }
 .fPWhoWeWorkWithCollaborator{
-   width:100px;
+  width:100px;
 }
 
 /*------------WHO-WE-WORK-WITH-ANIMATIONS-------------*/
 .fPWhoWeWorkWithImageBox:hover{
-   box-shadow:var(--boxShadowLight);
+  box-shadow:var(--boxShadowLight);
 }
 @keyframes collaboratorsComeUp{
-   from{
-      opacity:0;
-      transform:translateY((30px));
-   }
-   to{
-      opacity:1;
-      transform:translateY((0px));
-   }
+  from{
+    opacity:0;
+    transform:translateY((30px));
+  }
+  to{
+    opacity:1;
+    transform:translateY((0px));
+  }
 }
 .fPWhoWeWorkWithImageBox.hidden{
-   opacity:0;
-   transform:translateY((30px))
+  opacity:0;
+  transform:translateY((30px))
 }
 .fPWhoWeWorkWithImageBox.show{
-   animation: slideInLeft 0.5s ease-out forwards;
+  animation: slideInLeft 0.5s ease-out forwards;
 }
  
 /*---------------------------------------REVIEWS------------------------------------------*/
 .fPReviews{
-   display:flex;
-   flex-direction:column;
-   background-color:var(--frontPageBackground);
+  display:flex;
+  flex-direction:column;
+  background-color:var(--frontPageBackground);
 }
 .fPReviewsTitleBox{
-   display:flex;
-   flex-direction:column;
-   align-items:center;
-   justify-content:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
  
- /*----------------------------------------RESPONSIVE---------------------------------------*/
+/*----------------------------------------RESPONSIVE---------------------------------------*/
 @media (max-width: 1200px) {
-
-/*--------------HERO-SECTION----------------*/
-   .fPHeroSection {
-      padding: 15vw 5vw;
-      padding-right: 40vw;
-   }
-   .fPHeroSectionTitle1,
-   .fPHeroSectionTitle2{
-      font-size: calc(var(--textFont) + 15px);
-   }
-   .fPHeroSectionSubTitle {
-      font-size: var(--smallTextFont);
-   }
-   .fPHeroSectionLearnMore{
-      max-width:190px;
-      padding:15px 10px;
-   }
- 
-/*--------------TOP-PRODUCTS----------------*/
-   .fPTopProductsBenefitsBox{
-      flex-direction:column;
-   }
-   .fPTopProducts{
-      gap:15px;
-   }
-   .fPTopProductsTitle1.show::after{
-      width: 26vw;
-   }
-   .fPTopProductsTitle1{
-      font-size: calc(var(--textFont) + 10px);
-   }
-   .fPTopProductsTitleBox {
-      padding-top:10px;
-   }
- 
-/*---------------WHO-WE-ARE-----------------*/
-   .fPWhoWeAre{
-      padding-top:60px;
-   }
-   .fPWhoWeAreRow{
-      flex-direction:column;
-      max-width:780px;
-   }
-   .fPWhoWeAreTitle{
-      font-size: calc(var(--textFont) + 10px);
-   }
-   .fPWhoWeAreText{
-      text-align:center;
-   }
-   .fPWhoWeAreImage1,
-   .fPWhoWeAreImage2{
-      width:400px;
-   }
-   .fPWhoWeAreTitle.show::after{
-      width: 28vw;
-   }
-   .fPWhoWeAreImage2{
-      order: 1;
-   }
-   .fPWhoWeAreTextBox{
-      justify-content:center;
-      align-items:center;
-      order: 2;
-   }
-/*---------------WHO-WE-WORK-WITH---------------*/
-   .fPWhoWeWorkWithMainBox{
-      padding: 15vw 1vw;
-      gap:20px;
-   }
-   .fPWhoWeWorkWithTitle1{
-      font-size: calc(var(--textFont) + 10px);
-   }
-   .fPWhoWeWorkWithImageBox{
-      width:80px;
-      height:80px;
-   }
-   .fPWhoWeWorkWithCollaborator{
-      width:80px;
-   }
-   
+  
+  /*--------------HERO-SECTION----------------*/
+  .fPHeroSection {
+    padding: 15vw 5vw;
+    padding-right: 40vw;
+  }
+  .fPHeroSectionTitle1,
+  .fPHeroSectionTitle2{
+    font-size: calc(var(--textFont) + 15px);
+  }
+  .fPHeroSectionSubTitle {
+    font-size: var(--smallTextFont);
+  }
+  .fPHeroSectionLearnMore{
+    max-width:190px;
+    padding:15px 10px;
+  }
+  
+  /*--------------TOP-PRODUCTS----------------*/
+  .fPTopProductsBenefitsBox{
+    flex-direction:column;
+  }
+  .fPTopProducts{
+    gap:15px;
+  }
+  .fPTopProductsTitle1.show::after{
+    width: 26vw;
+  }
+  .fPTopProductsTitle1{
+    font-size: calc(var(--textFont) + 10px);
+  }
+  .fPTopProductsTitleBox {
+    padding-top:10px;
+  }
+  
+  /*---------------WHO-WE-ARE-----------------*/
+  .fPWhoWeAre{
+    padding-top:60px;
+  }
+  .fPWhoWeAreRow{
+    flex-direction:column;
+    max-width:780px;
+  }
+  .fPWhoWeAreTitle{
+    font-size: calc(var(--textFont) + 10px);
+  }
+  .fPWhoWeAreText{
+    text-align:center;
+  }
+  .fPWhoWeAreImage1,
+  .fPWhoWeAreImage2{
+    width:400px;
+  }
+  .fPWhoWeAreTitle.show::after{
+    width: 28vw;
+  }
+  .fPWhoWeAreImage2{
+    order: 1;
+  }
+  .fPWhoWeAreTextBox{
+    justify-content:center;
+    align-items:center;
+    order: 2;
+  }
+  
+  /*---------------WHO-WE-WORK-WITH---------------*/
+  .fPWhoWeWorkWithMainBox{
+    padding: 15vw 1vw;
+    gap:20px;
+  }
+  .fPWhoWeWorkWithTitle1{
+    font-size: calc(var(--textFont) + 10px);
+  }
+  .fPWhoWeWorkWithImageBox{
+    width:80px;
+    height:80px;
+  }
+  .fPWhoWeWorkWithCollaborator{
+    width:80px;
+  }  
 }
 @media (max-width: 780px) {
 
-/*--------------HERO-SECTION----------------*/
-   .fPHeroSection {
-      padding: 15vw 5vw;
-      padding-right: 25vw;
-   }
-   .fPHeroSectionTitle1,
-   .fPHeroSectionTitle2{
-      font-size: calc(var(--textFont) + 10px);
-   }
-   .fPHeroSectionSubTitle {
-      font-size: var(--smallTextFont);
-   }
-   .fPHeroSectionLearnMore{
-      max-width:180px;
-      padding:15px 7.5px;
-   }
+  /*--------------HERO-SECTION----------------*/
+  .fPHeroSection {
+    padding: 15vw 5vw;
+    padding-right: 25vw;
+  }
+  .fPHeroSectionTitle1,
+  .fPHeroSectionTitle2{
+    font-size: calc(var(--textFont) + 10px);
+  }
+  .fPHeroSectionSubTitle {
+    font-size: var(--smallTextFont);
+  }
+  .fPHeroSectionLearnMore{
+    max-width:180px;
+    padding:15px 7.5px;
+  }
  
-/*--------------TOP-PRODUCTS----------------*/
-   .fPTopProductsBenefitText {
-      font-size:var(--smallTextFont);
-   }
-   .fPTopProductsBenefit{
-      padding:5px;
-   }
-   .fPTopProductsIconBox {
-      width: 40px;
-      height: 40px;
-      padding:10px;
-   }
-   .fPTopProductsTitleBox{
-      margin:0px 10px;
-   }
-   .fPTopProductsTitle1.show::after{
-      width: 36vw;
-   }
-   .fPTopProductsTitle1{
-      font-size: calc(var(--textFont) + 5px);
-   }
+  /*--------------TOP-PRODUCTS----------------*/
+  .fPTopProductsBenefitText {
+    font-size:var(--smallTextFont);
+  }
+  .fPTopProductsBenefit{
+    padding:5px;
+  }
+  .fPTopProductsIconBox {
+    width: 40px;
+    height: 40px;
+    padding:10px;
+  }
+  .fPTopProductsTitleBox{
+    margin:0px 10px;
+  }
+  .fPTopProductsTitle1.show::after{
+    width: 36vw;
+  }
+  .fPTopProductsTitle1{
+    font-size: calc(var(--textFont) + 5px);
+  }
  
-/*-------------------WHO-WE-ARE-----------------------*/
-   .fPWhoWeAre{
-      padding-top:50px;
-   }
-   .fPWhoWeAreRow{
-      max-width:600px;
-   }
-   .fPWhoWeAreTitle{
-      font-size: calc(var(--textFont) + 5px);
-   }
-   .fPWhoWeAreImage1,
-   .fPWhoWeAreImage2{
-      width:350px;
-   }
-   .fPWhoWeAreTitle.show::after{
-      width: 36vw;
-   }
-   /*---------------WHO-WE-WORK-WITH---------------*/
-   .fPWhoWeWorkWithMainBox{
-      padding: 30vw 1vw;
-      gap:20px;
-   }
-   .fPWhoWeWorkWithTitle1{
-      font-size: calc(var(--textFont) + 5px);
-   }
+  /*-------------------WHO-WE-ARE-----------------------*/
+  .fPWhoWeAre{
+    padding-top:50px;
+  }
+  .fPWhoWeAreRow{
+    max-width:600px;
+  }
+  .fPWhoWeAreTitle{
+    font-size: calc(var(--textFont) + 5px);
+  }
+  .fPWhoWeAreImage1,
+  .fPWhoWeAreImage2{
+    width:350px;
+  }
+  .fPWhoWeAreTitle.show::after{
+    width: 36vw;
+  }
+  /*---------------WHO-WE-WORK-WITH---------------*/
+  .fPWhoWeWorkWithMainBox{
+    padding: 30vw 1vw;
+    gap:20px;
+  }
+  .fPWhoWeWorkWithTitle1{
+    font-size: calc(var(--textFont) + 5px);
+  }
 }
 @media (max-width: 600px) {
-/*--------------HERO-SECTION----------------*/
-   .fPHeroSectionTitle1,
-   .fPHeroSectionTitle2{
-      font-size: calc(var(--textFont) + 5px);
-   }
-   .fPHeroSectionLearnMore{
-      padding:12.5px 0px;
-   }
+
+  /*--------------HERO-SECTION----------------*/
+  .fPHeroSectionTitle1,
+  .fPHeroSectionTitle2{
+    font-size: calc(var(--textFont) + 5px);
+  }
+  .fPHeroSectionLearnMore{
+    padding:12.5px 0px;
+  }
  
-/*--------------TOP-PRODUCTS----------------*/
-   .fPTopProductsTitle1{
-      font-size:var(--smallTextFont);
-   }
-   .fPTopProductsTitle1.show::after{
-      width: 40vw;
-   }
+  /*--------------TOP-PRODUCTS----------------*/
+  .fPTopProductsTitle1{
+    font-size:var(--smallTextFont);
+  }
+  .fPTopProductsTitle1.show::after{
+    width: 40vw;
+  }
  
-/*---------------------WHO-WE-ARE---------------------------*/
-   .fPWhoWeAre{
-      padding-top:40px;
-   }
-   .fPWhoWeAreRow{
-      max-width:500px;
-   }
-   .fPWhoWeAreTitle{
-      font-size: var(--smallTextFont);
-   }
-   .fPWhoWeAreImage1,
-   .fPWhoWeAreImage2{
-      width:300px;
-   }
-   .fPWhoWeAreTitle.show::after{
-      width: 40vw;
-   }
-   /*---------------WHO-WE-WORK-WITH---------------*/
-   .fPWhoWeWorkWithMainBox{
-      padding:150px 10px;
-      padding-top:200px;
-      gap:20px;
-   }
-   .fPWhoWeWorkWithTitle1{
-      font-size: var(--smallTextFont);
-   }
+  /*---------------------WHO-WE-ARE---------------------------*/
+  .fPWhoWeAre{
+    padding-top:40px;
+  }
+  .fPWhoWeAreRow{
+    max-width:500px;
+  }
+  .fPWhoWeAreTitle{
+    font-size: var(--smallTextFont);
+  }
+  .fPWhoWeAreImage1,
+  .fPWhoWeAreImage2{
+    width:300px;
+  }
+  .fPWhoWeAreTitle.show::after{
+    width: 40vw;
+  }
+
+  /*---------------WHO-WE-WORK-WITH---------------*/
+  .fPWhoWeWorkWithMainBox{
+    padding:150px 10px;
+    padding-top:200px;
+    gap:20px;
+  }
+  .fPWhoWeWorkWithTitle1{
+    font-size: var(--smallTextFont);
+  }
 }

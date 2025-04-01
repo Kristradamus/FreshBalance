@@ -30,7 +30,7 @@
   transform: rotate(0deg);
 }
 .languageSwitcherToggle:hover{
-  background-color:var(--lightGreen);
+  background-color:var(--mainButtonHover);
   box-shadow: var(--boxShadowLight);
 }
 

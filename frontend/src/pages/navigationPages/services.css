@@ -51,7 +51,7 @@
   color: var(--green);
 }
 .servService:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   box-shadow: var(--boxShadowLight);
 }
 .servServiceTitle {
@@ -110,20 +110,18 @@
   position: relative;
   overflow: hidden;
   text-align: center;
-  border: 2px solid transparent;
+  border-radius:var(--smallRadius);
   padding: 10px;
   margin: 10px;
   max-height: 50px;
   color: var(--mainTextColor);
-  background-color: var(--secondBackground);
-  border-radius: var(--smallRadius);
+  background-color: var(--secondButtonColor);
   transition: var(--transition);
   font-size:var(--textFont);
 }
 .servCities:hover {
-  background-color: var(--white);
+  background-color: var(--secondButtonHover);
   color: var(--mainTextColor);
-  border: 2px solid var(--secondBackground);
 }
 .servDeliveryTerms {
   display: flex;
@@ -137,13 +135,14 @@
   list-style-type: none;
   font-size: var(--textFont);
   color: var(--mainTextColor);
-  background-color: var(--secondBackground);
+  background-color: var(--secondButtonColor);
   border-radius: var(--smallRadius);
   transition: var(--transition);
   padding: 10px;
 }
 .servTerms:hover {
   transform: translateY(-5px);
+  background-color:var(--secondButtonHover)
 }
 
 /*------------------------------COMMENTS----------------------------------*/

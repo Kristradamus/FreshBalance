@@ -143,14 +143,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: var(--green);
+  background-color: var(--mainButtonColor);
   border-radius: var(--circle);
   height: calc(var(--iconFont) * 2);
   width: calc(var(--iconFont) * 2);
   transition: var(--transition);
 }
 .footerSocialMedia li:hover {
-  background-color: var(--lightGreen);
+  background-color: var(--mainButtonHover);
 }
 .footerSocialMedia i {
   color: var(--white);
@@ -182,13 +182,13 @@
   font-size:var(--smallTextFont);
 }
 .footerCreator a{
-  color:var(--green);
+  color:var(--mainButtonColor);
   transition:var(--transition);
   
 }
 .footerCreator a:hover{
   text-decoration:underline;
-  color:var(--lightGreen);
+  color:var(--mainButtonHover);
 }
 
 /*-----------------------------------------------RESPONSIVE--------------------------------------------*/

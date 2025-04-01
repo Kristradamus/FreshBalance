@@ -12,5 +12,5 @@
     transition: var(--transition);
   }
   .logRegGoBackButton:hover {
-    background-color: var(--lightGreen);
+    background-color: var(--mainButtonHover);
   }

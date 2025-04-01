@@ -1026,5 +1026,12 @@
         ]
       }
     ]
+  },
+  "--------------------------------------------------PROTECTED-ROUTE-------------------------------------------": {},
+  "protectedRoute":{
+    "loginRequiredTitle":"Login Required!",
+    "loginRequiredSubTitle":"You need to be logged in to access this page.",
+    "cancel":"Cancel",
+    "login":"Login"
   }
 }

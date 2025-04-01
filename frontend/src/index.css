@@ -6,8 +6,8 @@
 }
 :root {
   /*----------------------COLORS---------------------*/
-  --green: #2e8b56;
-  --lightGreen: #4ca55a;
+  --green: #3a9e65;
+  --lightGreen: #4ba359;
   --veryLightGreen: #7bce8744;
   --white: white;
 
@@ -25,7 +25,7 @@
   --circle: 50%;
   --bigRadius: 30px;
   --normalRadius: 25px;
-  --smallRadius: 15px;
+  --smallRadius: 10px;
 
   /*------------------ELEMENT-SHADOW-----------------*/
   --boxShadow: 0 0 20px rgb(0, 0, 3, 0.2);
@@ -44,6 +44,12 @@
   
   /*-----------------ELEMENT-DISTANCE----------------*/
   --iconDistance: 8px;
+  
+  /*---------------------BUTTONS---------------------*/
+  --mainButtonColor: #3a9e65;
+  --mainButtonHover: #348b5a;
+  --secondButtonColor: #e3e3e3bb;
+  --secondButtonHover: #d6d6d6bb; 
 }
 .darkMode {
   /*------------------ELEMENT-COLORS-----------------*/
