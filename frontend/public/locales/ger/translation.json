@@ -617,84 +617,39 @@
         {
           "name": "Bestseller",
           "category": [
-            {
-              "name": "Empfohlene Produkte",
-              "link": "/product/featured-products"
-            },
-            {
-              "name": "Kundenfavoriten",
-              "link": "/product/customer-favorites"
-            },
-            {
-              "name": "Top bewertete Produkte",
-              "link": "/product/top-rated-products"
-            },
+            {"name": "Empfohlene Produkte", "link": "/product/featured-products"},
+            {"name": "Kundenfavoriten", "link": "/product/customer-favorites"},
+            {"name": "Top bewertete Produkte", "link": "/product/top-rated-products"},
             { "name": "Neuheiten", "link": "/product/new-arrivals" },
-            { "name": "Aktuelle Trends", "link": "/product/trending-now" },
-            {
-              "name": "Must-Have-Produkte",
-              "link": "/product/must-have-products"
-            },
-            {
-              "name": "Saisonale Angebote",
-              "link": "/product/seasonal-specials"
-            }
+            { "name": "Aktuelle Trends", "link": "/product/trending-now"},
+            {"name": "Must-Have-Produkte", "link": "/product/must-have-products"},
+            {"name": "Saisonale Angebote", "link": "/product/seasonal-specials"}
           ]
         },
         {
           "name": "Aktionen",
           "category": [
-            {
-              "name": "Zeitlich begrenzte Angebote",
-              "link": "/product/limited-time-offers"
-            },
+            {"name": "Zeitlich begrenzte Angebote", "link": "/product/limited-time-offers"},
             { "name": "Saisonale Rabatte", "link": "/product/seasonal-sales" },
             { "name": "Restposten", "link": "/product/clearance-items" },
             { "name": "Rabattpakete", "link": "/product/discounted-bundles" },
-            {
-              "name": "Kauf 1, erhalte 1 gratis",
-              "link": "/product/buy-1-get-1-free"
-            },
+            {"name": "Kauf 1, erhalte 1 gratis", "link": "/product/buy-1-get-1-free"},
             { "name": "Flash-Sales", "link": "/product/flash-sales" },
-            {
-              "name": "Exklusive Rabatte",
-              "link": "/product/exclusive-discounts"
-            },
-            {
-              "name": "Kostenloser Versand",
-              "link": "/product/free-shipping-deals"
-            },
-            {
-              "name": "Sonderangebote für Mitglieder",
-              "link": "/product/special-offers-for-members"
-            }
+            {"name": "Exklusive Rabatte", "link": "/product/exclusive-discounts"},
+            {"name": "Kostenloser Versand", "link": "/product/free-shipping-deals"},
+            {"name": "Sonderangebote für Mitglieder", "link": "/product/special-offers-for-members"}
           ]
         },
         {
           "name": "Bio",
           "category": [
             { "name": "Bio-Produkte", "link": "/product/organic-products" },
-            {
-              "name": "Umweltfreundliche Produkte",
-              "link": "/product/eco-friendly-products"
-            },
-            {
-              "name": "Pflanzliche Nahrungsergänzungsmittel",
-              "link": "/product/plant-based-supplements"
-            },
+            {"name": "Umweltfreundliche Produkte", "link": "/product/eco-friendly-products"},
+            {"name": "Pflanzliche Nahrungsergänzungsmittel", "link": "/product/plant-based-supplements"},
             { "name": "Nicht-GVO-Produkte", "link": "/product/non-gmo-items" },
-            {
-              "name": "Nachhaltige Marken",
-              "link": "/product/sustainable-brands"
-            },
-            {
-              "name": "Tierfreie Produkte",
-              "link": "/product/cruelty-free-products"
-            },
-            {
-              "name": "Natürliche Hautpflege",
-              "link": "/product/natural-skincare"
-            },
+            {"name": "Nachhaltige Marken", "link": "/product/sustainable-brands"},
+            {"name": "Tierfreie Produkte", "link": "/product/cruelty-free-products"},
+            {"name": "Natürliche Hautpflege", "link": "/product/natural-skincare"},
             { "name": "Kräuterheilmittel", "link": "/product/herbal-remedies" }
           ]
         },
@@ -702,24 +657,12 @@
           "name": "Proteine & Aminosäuren",
           "category": [
             { "name": "Molkenprotein", "link": "/product/whey-protein" },
-            {
-              "name": "Pflanzliches Protein",
-              "link": "/product/plant-based-protein"
-            },
-            {
-              "name": "Pre-Workout-Protein",
-              "link": "/product/pre-workout-protein"
-            },
+            {"name": "Pflanzliches Protein", "link": "/product/plant-based-protein"},
+            {"name": "Pre-Workout-Protein", "link": "/product/pre-workout-protein"},
             { "name": "Kaseinprotein", "link": "/product/casein-protein" },
             { "name": "Veganes Protein", "link": "/product/vegan-protein" },
-            {
-              "name": "Protein-Shakes & -Riegel",
-              "link": "/product/protein-shake-bars"
-            },
-            {
-              "name": "Aminosäure-Ergänzungen",
-              "link": "/product/amino-acid-supplements"
-            },
+            {"name": "Protein-Shakes & -Riegel", "link": "/product/protein-shake-bars"},
+            {"name": "Aminosäure-Ergänzungen", "link": "/product/amino-acid-supplements"},
             { "name": "BCAA", "link": "/product/bcaa" }
           ]
         },
@@ -741,32 +684,14 @@
         {
           "name": "Leistungssteigerer",
           "category": [
-            {
-              "name": "Pre-Workout-Ergänzungen",
-              "link": "/product/pre-workout-supplements"
-            },
-            {
-              "name": "Post-Workout-Erholung",
-              "link": "/product/post-workout-recovery"
-            },
+            {"name": "Pre-Workout-Ergänzungen", "link": "/product/pre-workout-supplements"},
+            {"name": "Post-Workout-Erholung", "link": "/product/post-workout-recovery"},
             { "name": "Energiebooster", "link": "/product/energy-boosters" },
-            {
-              "name": "Muskelaufbaupräparate",
-              "link": "/product/muscle-mass-gainers"
-            },
-            {
-              "name": "Ausdauerergänzungen",
-              "link": "/product/endurance-supplements"
-            },
+            {"name": "Muskelaufbaupräparate", "link": "/product/muscle-mass-gainers"},
+            {"name": "Ausdauerergänzungen", "link": "/product/endurance-supplements"},
             { "name": "Kreatin", "link": "/product/creatine" },
-            {
-              "name": "Stickoxid-Booster",
-              "link": "/product/nitric-oxide-boosters"
-            },
-            {
-              "name": "Fokus- & kognitive Ergänzungen",
-              "link": "/product/focus-cognitive-supplements"
-            },
+            {"name": "Stickoxid-Booster", "link": "/product/nitric-oxide-boosters"},
+            {"name": "Fokus- & kognitive Ergänzungen", "link": "/product/focus-cognitive-supplements"},
             { "name": "Kraftsteigerer", "link": "/product/strength-enhancers" }
           ]
         },
@@ -774,42 +699,15 @@
           "name": "Gewichtsmanagement",
           "category": [
             { "name": "Fettverbrenner", "link": "/product/fat-burners" },
-            {
-              "name": "Appetitzügler",
-              "link": "/product/appetite-suppressants"
-            },
-            {
-              "name": "Kalorienarme Snacks",
-              "link": "/product/low-calorie-snacks"
-            },
-            {
-              "name": "Mahlzeitenersatz-Shakes",
-              "link": "/product/meal-replacement-shakes"
-            },
-            {
-              "name": "Entgiftungs- & Reinigungsprodukte",
-              "link": "/product/detox-cleanse-products"
-            },
-            {
-              "name": "Gewichtsverlustpräparate",
-              "link": "/product/weight-loss-supplements"
-            },
-            {
-              "name": "Gesunde Gewichtszunahme-Produkte",
-              "link": "/product/healthy-weight-gain-products"
-            },
-            {
-              "name": "Stoffwechsel-Booster",
-              "link": "/product/metabolism-boosters"
-            },
-            {
-              "name": "Keto-Diät-Produkte",
-              "link": "/product/keto-diet-products"
-            },
-            {
-              "name": "Kohlenhydratarme Snacks",
-              "link": "/product/low-carb-snacks"
-            }
+            {"name": "Appetitzügler", "link": "/product/appetite-suppressants"},
+            {"name": "Kalorienarme Snacks", "link": "/product/low-calorie-snacks"},
+            {"name": "Mahlzeitenersatz-Shakes", "link": "/product/meal-replacement-shakes"},
+            {"name": "Entgiftungs- & Reinigungsprodukte", "link": "/product/detox-cleanse-products"},
+            {"name": "Gewichtsverlustpräparate", "link": "/product/weight-loss-supplements"},
+            {"name": "Gesunde Gewichtszunahme-Produkte", "link": "/product/healthy-weight-gain-products"},
+            {"name": "Stoffwechsel-Booster", "link": "/product/metabolism-boosters"},
+            {"name": "Keto-Diät-Produkte", "link": "/product/keto-diet-products"},
+            {"name": "Kohlenhydratarme Snacks", "link": "/product/low-carb-snacks"}
           ]
         },
         {
@@ -818,15 +716,9 @@
             {
               "title": "Hautpflege",
               "subcategory": [
-                {
-                  "name": "Feuchtigkeitscremes",
-                  "link": "/product/moisturizers"
-                },
+                { "name": "Feuchtigkeitscremes", "link": "/product/moisturizers"},
                 { "name": "Gesichtsmasken", "link": "/product/face-masks" },
-                {
-                  "name": "Anti-Aging-Produkte",
-                  "link": "/product/anti-aging-products"
-                },
+                { "name": "Anti-Aging-Produkte", "link": "/product/anti-aging-products"},
                 { "name": "Augencremes", "link": "/product/eye-creams" },
                 { "name": "Seren", "link": "/product/serums" }
               ]
@@ -834,16 +726,10 @@
             {
               "title": "Haarpflege",
               "subcategory": [
-                {
-                  "name": "Shampoo & Conditioner",
-                  "link": "/product/shampoo-conditioner"
-                },
+                { "name": "Shampoo & Conditioner", "link": "/product/shampoo-conditioner"},
                 { "name": "Haarmasken", "link": "/product/hair-masks" },
                 { "name": "Haaröle", "link": "/product/hair-oils" },
-                {
-                  "name": "Haarwuchsmittel",
-                  "link": "/product/hair-growth-products"
-                }
+                { "name": "Haarwuchsmittel", "link": "/product/hair-growth-products"}
               ]
             },
             {
@@ -859,10 +745,7 @@
               "title": "Schönheitswerkzeuge",
               "subcategory": [
                 { "name": "Gesichtsroller", "link": "/product/face-rollers" },
-                {
-                  "name": "Dermaplaning-Werkzeuge",
-                  "link": "/product/dermaplaning-tools"
-                },
+                { "name": "Dermaplaning-Werkzeuge", "link": "/product/dermaplaning-tools"},
                 { "name": "LED-Masken", "link": "/product/led-masks" }
               ]
             },
@@ -870,10 +753,7 @@
               "title": "Nagelpflege",
               "subcategory": [
                 { "name": "Nagellack", "link": "/product/nail-polish" },
-                {
-                  "name": "Nagelbehandlungen",
-                  "link": "/product/nail-treatments"
-                },
+                { "name": "Nagelbehandlungen", "link": "/product/nail-treatments"},
                 { "name": "Nagelhautöle", "link": "/product/cuticle-oils" }
               ]
             }

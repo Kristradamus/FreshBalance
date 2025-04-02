@@ -620,96 +620,39 @@
         {
           "name": "Най-продавани",
           "category": [
-            {
-              "name": "Препоръчани продукти",
-              "link": "/product/featured-products"
-            },
-            {
-              "name": "Любими на клиентите",
-              "link": "/product/customer-favorites"
-            },
-            {
-              "name": "Най-харесвани продукти",
-              "link": "/product/top-rated-products"
-            },
+            { "name": "Препоръчани продукти", "link": "/product/featured-products" },
+            { "name": "Любими на клиентите", "link": "/product/customer-favorites" },
+            { "name": "Най-харесвани продукти", "link": "/product/top-rated-products" },
             { "name": "Нови продукти", "link": "/product/new-arrivals" },
             { "name": "Трендове сега", "link": "/product/trending-now" },
-            {
-              "name": "Необходими продукти",
-              "link": "/product/must-have-products"
-            },
-            {
-              "name": "Сезонни предложения",
-              "link": "/product/seasonal-specials"
-            }
+            { "name": "Необходими продукти", "link": "/product/must-have-products" },
+            { "name": "Сезонни предложения", "link": "/product/seasonal-specials" }
           ]
         },
         {
           "name": "Промоции",
           "category": [
-            {
-              "name": "Оферти за ограничено време",
-              "link": "/product/limited-time-offers"
-            },
-            {
-              "name": "Сезонни разпродажби",
-              "link": "/product/seasonal-sales"
-            },
+            { "name": "Оферти за ограничено време", "link": "/product/limited-time-offers" },
+            { "name": "Сезонни разпродажби", "link": "/product/seasonal-sales" },
             { "name": "Последни бройки", "link": "/product/clearance-items" },
-            {
-              "name": "Намалени комплекти",
-              "link": "/product/discounted-bundles"
-            },
-            {
-              "name": "Купи 1, вземи 1 безплатно",
-              "link": "/product/buy-1-get-1-free"
-            },
-            {
-              "name": "Светкавични разпродажби",
-              "link": "/product/flash-sales"
-            },
-            {
-              "name": "Ексклузивни отстъпки",
-              "link": "/product/exclusive-discounts"
-            },
-            {
-              "name": "Оферти с безплатна доставка",
-              "link": "/product/free-shipping-deals"
-            },
-            {
-              "name": "Специални оферти за членове",
-              "link": "/product/special-offers-for-members"
-            }
+            { "name": "Намалени комплекти", "link": "/product/discounted-bundles" },
+            { "name": "Купи 1, вземи 1 безплатно", "link": "/product/buy-1-get-1-free" },
+            { "name": "Светкавични разпродажби", "link": "/product/flash-sales" },
+            { "name": "Ексклузивни отстъпки", "link": "/product/exclusive-discounts" },
+            { "name": "Оферти с безплатна доставка", "link": "/product/free-shipping-deals" },
+            { "name": "Специални оферти за членове", "link": "/product/special-offers-for-members" }
           ]
         },
         {
           "name": "Био",
           "category": [
-            {
-              "name": "Органични продукти",
-              "link": "/product/organic-products"
-            },
-            {
-              "name": "Екологични продукти",
-              "link": "/product/eco-friendly-products"
-            },
-            {
-              "name": "Растителни добавки",
-              "link": "/product/plant-based-supplements"
-            },
+            { "name": "Органични продукти", "link": "/product/organic-products" },
+            { "name": "Екологични продукти", "link": "/product/eco-friendly-products" },
+            { "name": "Растителни добавки", "link": "/product/plant-based-supplements" },
             { "name": "Не-ГМО продукти", "link": "/product/non-gmo-items" },
-            {
-              "name": "Устойчиви марки",
-              "link": "/product/sustainable-brands"
-            },
-            {
-              "name": "Продукти, които не са тествани на животни",
-              "link": "/product/cruelty-free-products"
-            },
-            {
-              "name": "Натурална грижа за кожата",
-              "link": "/product/natural-skincare"
-            },
+            { "name": "Устойчиви марки", "link": "/product/sustainable-brands" },
+            { "name": "Продукти, които не са тествани на животни", "link": "/product/cruelty-free-products" },
+            { "name": "Натурална грижа за кожата", "link": "/product/natural-skincare" },
             { "name": "Билкови препарати", "link": "/product/herbal-remedies" }
           ]
         },
@@ -717,28 +660,13 @@
           "name": "Протеини и аминокиселини",
           "category": [
             { "name": "Суроватъчен протеин", "link": "/product/whey-protein" },
-            {
-              "name": "Растителен протеин",
-              "link": "/product/plant-based-protein"
-            },
-            {
-              "name": "Протеин преди тренировка",
-              "link": "/product/pre-workout-protein"
-            },
-            {
-              "name": "Възстановяване след тренировка",
-              "link": "/product/post-workout-recovery"
-            },
+            { "name": "Растителен протеин", "link": "/product/plant-based-protein" },
+            { "name": "Протеин преди тренировка", "link": "/product/pre-workout-protein" },
+            { "name": "Възстановяване след тренировка", "link": "/product/post-workout-recovery" },
             { "name": "Казеинов протеин", "link": "/product/casein-protein" },
             { "name": "Веган протеин", "link": "/product/vegan-protein" },
-            {
-              "name": "Протеинови шейкове и барове",
-              "link": "/product/protein-shake-bars"
-            },
-            {
-              "name": "Аминокиселинни добавки",
-              "link": "/product/amino-acid-supplements"
-            },
+            { "name": "Протеинови шейкове и барове", "link": "/product/protein-shake-bars" },
+            { "name": "Аминокиселинни добавки", "link": "/product/amino-acid-supplements" },
             { "name": "BCAA", "link": "/product/bcaa" }
           ]
         },
@@ -753,88 +681,37 @@
             { "name": "Калций", "link": "/product/calcium" },
             { "name": "Желязо", "link": "/product/iron-supplements" },
             { "name": "Магнезий", "link": "/product/magnesium" },
-            {
-              "name": "Омега-3 рибено масло",
-              "link": "/product/omega-3-fish-oil"
-            },
+            { "name": "Омега-3 рибено масло", "link": "/product/omega-3-fish-oil" },
             { "name": "Пробиотици", "link": "/product/probiotics" }
           ]
         },
         {
           "name": "Подобрители на производителността",
           "category": [
-            {
-              "name": "Добавки преди тренировка",
-              "link": "/product/pre-workout-supplements"
-            },
-            {
-              "name": "Възстановяване след тренировка",
-              "link": "/product/post-workout-recovery"
-            },
+            { "name": "Добавки преди тренировка", "link": "/product/pre-workout-supplements" },
+            { "name": "Възстановяване след тренировка", "link": "/product/post-workout-recovery" },
             { "name": "Енергийни бустери", "link": "/product/energy-boosters" },
-            {
-              "name": "Добавки за увеличаване на мускулната маса",
-              "link": "/product/muscle-mass-gainers"
-            },
-            {
-              "name": "Добавки за издръжливост",
-              "link": "/product/endurance-supplements"
-            },
+            { "name": "Добавки за увеличаване на мускулната маса", "link": "/product/muscle-mass-gainers" },
+            { "name": "Добавки за издръжливост", "link": "/product/endurance-supplements" },
             { "name": "Креатин", "link": "/product/creatine" },
-            {
-              "name": "Бустери за азотен оксид",
-              "link": "/product/nitric-oxide-boosters"
-            },
-            {
-              "name": "Добавки за фокус и когнитивна функция",
-              "link": "/product/focus-cognitive-supplements"
-            },
-            {
-              "name": "Подобрители на силата",
-              "link": "/product/strength-enhancers"
-            }
+            { "name": "Бустери за азотен оксид", "link": "/product/nitric-oxide-boosters" },
+            { "name": "Добавки за фокус и когнитивна функция", "link": "/product/focus-cognitive-supplements" },
+            { "name": "Подобрители на силата", "link": "/product/strength-enhancers" }
           ]
         },
         {
           "name": "Управление на теглото",
           "category": [
             { "name": "Мастни изгарятели", "link": "/product/fat-burners" },
-            {
-              "name": "Потискатели на апетита",
-              "link": "/product/appetite-suppressants"
-            },
-            {
-              "name": "Нискокалорични закуски",
-              "link": "/product/low-calorie-snacks"
-            },
-            {
-              "name": "Шейкове за заместване на ядене",
-              "link": "/product/meal-replacement-shakes"
-            },
-            {
-              "name": "Детокс и почистващи продукти",
-              "link": "/product/detox-cleanse-products"
-            },
-            {
-              "name": "Добавки за отслабване",
-              "link": "/product/weight-loss-supplements"
-            },
-            {
-              "name": "Продукти за здравословно качване на тегло",
-              "link": "/product/healthy-weight-gain-products"
-            },
-            {
-              "name": "Бустери за метаболизма",
-              "link": "/product/metabolism-boosters"
-            },
-            {
-              "name": "Продукти за кето диета",
-              "link": "/product/keto-diet-products"
-            },
-            {
-              "name": "Нисковъглехидратни закуски",
-              "link": "/product/low-carb-snacks"
-            }
+            { "name": "Потискатели на апетита", "link": "/product/appetite-suppressants" },
+            { "name": "Нискокалорични закуски", "link": "/product/low-calorie-snacks" },
+            { "name": "Шейкове за заместване на ядене", "link": "/product/meal-replacement-shakes" },
+            { "name": "Детокс и почистващи продукти", "link": "/product/detox-cleanse-products" },
+            { "name": "Добавки за отслабване", "link": "/product/weight-loss-supplements" },
+            { "name": "Продукти за здравословно качване на тегло", "link": "/product/healthy-weight-gain-products" },
+            { "name": "Бустери за метаболизма", "link": "/product/metabolism-boosters" },
+            { "name": "Продукти за кето диета", "link": "/product/keto-diet-products" },
+            { "name": "Нисковъглехидратни закуски", "link": "/product/low-carb-snacks" }
           ]
         },
         {
@@ -845,10 +722,7 @@
               "subcategory": [
                 { "name": "Овлажнители", "link": "/product/moisturizers" },
                 { "name": "Маски за лице", "link": "/product/face-masks" },
-                {
-                  "name": "Продукти против старене",
-                  "link": "/product/anti-aging-products"
-                },
+                { "name": "Продукти против старене", "link": "/product/anti-aging-products" },
                 { "name": "Кремове за очи", "link": "/product/eye-creams" },
                 { "name": "Серуми", "link": "/product/serums" }
               ]
@@ -856,16 +730,10 @@
             {
               "title": "Грижа за косата",
               "subcategory": [
-                {
-                  "name": "Шампоани и балсами",
-                  "link": "/product/shampoo-conditioner"
-                },
+                { "name": "Шампоани и балсами", "link": "/product/shampoo-conditioner" },
                 { "name": "Маски за коса", "link": "/product/hair-masks" },
                 { "name": "Масла за коса", "link": "/product/hair-oils" },
-                {
-                  "name": "Продукти за растеж на косата",
-                  "link": "/product/hair-growth-products"
-                }
+                { "name": "Продукти за растеж на косата", "link": "/product/hair-growth-products" }
               ]
             },
             {
@@ -881,10 +749,7 @@
               "title": "Аксесоари за красота",
               "subcategory": [
                 { "name": "Ролки за лице", "link": "/product/face-rollers" },
-                {
-                  "name": "Инструменти за дермапланинг",
-                  "link": "/product/dermaplaning-tools"
-                },
+                { "name": "Инструменти за дермапланинг", "link": "/product/dermaplaning-tools" },
                 { "name": "LED маски", "link": "/product/led-masks" }
               ]
             },
@@ -892,10 +757,7 @@
               "title": "Грижа за ноктите",
               "subcategory": [
                 { "name": "Лак за нокти", "link": "/product/nail-polish" },
-                {
-                  "name": "Препарати за нокти",
-                  "link": "/product/nail-treatments"
-                },
+                { "name": "Препарати за нокти", "link": "/product/nail-treatments" },
                 { "name": "Масла за кутикула", "link": "/product/cuticle-oils" }
               ]
             }
