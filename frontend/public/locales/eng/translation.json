@@ -629,7 +629,7 @@
         { "name": "Cart", "link": "/profile/cart" }
       ],
       "navAdmin": [
-        { "name": "Admin panel", "link": "/admin" }
+        { "name": "Admin panel", "link": "/admin/settings" }
       ],
       "icons": {
         "Admin panel":"fa-solid fa-screwdriver-wrench",

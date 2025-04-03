@@ -11,8 +11,8 @@ return (
 
     {/*------------------------------HEADER----------------------------------*/}
     <div className="servHeader">
-      <h1><strong>{servicesData.paragraphs.services.title}</strong></h1>
-      <h3><strong>{servicesData.paragraphs.services.subTitle}</strong></h3>
+      <h1>{servicesData.paragraphs.services.title}</h1>
+      <h3>{servicesData.paragraphs.services.subTitle}</h3>
     </div>
 
     {/*------------------------------SERVICES----------------------------------*/}
@@ -20,7 +20,7 @@ return (
       {servicesData.services.map((service, index) => (
         <div className="servService" key={index}>
           <i className={service.icon}></i>
-          <h3 className="servServiceTitle"><strong>{service.title}</strong></h3>
+          <h3 className="servServiceTitle">{service.title}</h3>
           <p className="servServiceDescription">{service.description}</p>
         </div>
       ))}
@@ -29,11 +29,11 @@ return (
     {/*------------------------------LOCATION----------------------------------*/}
     <div className="servBox">
     <div className="servHeader">
-      <h1><strong>{servicesData.paragraphs.location.title}</strong></h1>
-      <h3><strong>{servicesData.paragraphs.location.subTitle}</strong></h3>
+      <h1>{servicesData.paragraphs.location.title}</h1>
+      <h3>{servicesData.paragraphs.location.subTitle}</h3>
     </div>
       <div className="servLocation">
-        <h3 className="servServiceTitle"><strong>{servicesData.location.name}: </strong></h3>
+        <h3 className="servServiceTitle">{servicesData.location.name}: </h3>
         <p className="servLocationText"><strong>{servicesData.location.address.addressTitle}</strong>{servicesData.location.address.addressDescription}</p>
         <p className="servLocationText"><strong>{servicesData.location.phone.phoneTitle}</strong>{servicesData.location.phone.phoneDescription}</p>
         <p className="servLocationText"><strong>{servicesData.location.workHours.workHoursTitle}</strong></p>
@@ -47,8 +47,8 @@ return (
     {/*------------------------------DELIVERY----------------------------------*/}
     <div className="servBox">
       <div className="servHeader">
-        <h1><strong>{servicesData.paragraphs.delivery.title}</strong></h1>
-        <h3><strong>{servicesData.paragraphs.delivery.subTitle}</strong></h3>
+        <h1>{servicesData.paragraphs.delivery.title}</h1>
+        <h3>{servicesData.paragraphs.delivery.subTitle}</h3>
       </div>
       <div className="servDelivery">
         <ul className="servDeliveryAreas">
@@ -56,7 +56,7 @@ return (
         <li className="servCities" key={index}><p>{area}</p></li>
         ))}
         </ul>
-        <h3><strong>{servicesData.delivery.subTitle1}</strong></h3>
+        <h3>{servicesData.delivery.subTitle1}</h3>
         <ul className="servDeliveryTerms">
         {servicesData.delivery.terms.map((term, index) => (
         <li className="servTerms" key={index}><p><strong>{term.title} </strong>{term.description}</p></li>
@@ -68,8 +68,8 @@ return (
     {/*------------------------------COMMENTS----------------------------------*/}
     <div className="servBox">
       <div className="servHeader">
-        <h1><strong>{servicesData.paragraphs.comments.title}</strong></h1>
-        <h3><strong>{servicesData.paragraphs.comments.subTitle}</strong></h3>
+        <h1>{servicesData.paragraphs.comments.title}</h1>
+        <h3>{servicesData.paragraphs.comments.subTitle}</h3>
       </div>
       <Comments/>
     </div>

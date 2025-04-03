@@ -91,9 +91,7 @@ return (
       <Terms setIsTermsVisible={setIsTermsVisible}/>
     )}
     <Link className="loginRegisterNeedHelp" to="/support">
-      <p>
-        <strong>{t("loginRegistration.needHelp")}</strong>
-      </p>
+      <p><strong>{t("loginRegistration.needHelp")}</strong></p>
     </Link>
   </div>
 );};

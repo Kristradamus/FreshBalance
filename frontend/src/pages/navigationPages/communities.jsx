@@ -23,7 +23,7 @@ return (
           <h1>{t("communities.accessDenied")}</h1>
         </div>
         <div className="communitiesBottom">
-          <h5 className="communitiesPlan"><strong>{t("communities.personalPlan")}</strong></h5>
+          <h5 className="communitiesPlan">{t("communities.personalPlan")}</h5>
           <button className="communitiesGoToSub" onClick={() => goToSubscriptions("/subscriptions")}>
             {t("communities.goToSubscriptions")}
           </button>

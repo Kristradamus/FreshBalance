@@ -597,7 +597,7 @@
         { "name": "Количка", "link": "/profile/cart" }
       ],
       "navAdmin": [
-        { "name": "Админ панел", "link": "/admin" }
+        { "name": "Админ панел", "link": "/admin/settings" }
       ],
       "icons": {
         "Админ панел":"fa-solid fa-screwdriver-wrench",

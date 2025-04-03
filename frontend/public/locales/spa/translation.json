@@ -597,7 +597,7 @@
         { "name": "Carrito", "link": "/profile/cart" }
       ],
       "navAdmin": [
-        { "name": "Panel Admin", "link": "/admin" }
+        { "name": "Panel Admin", "link": "/admin/settings" }
       ],
       "icons": {
         "Panel Admin":"fa-solid fa-screwdriver-wrench",

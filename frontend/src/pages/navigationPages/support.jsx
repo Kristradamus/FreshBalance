@@ -210,17 +210,11 @@ export default function Support() {
           <div className="supportSideBar">
             {Object.keys(filteredData).map((category) => (
               <div key={category} className="supportSideElements">
-                <h3>
-                  <strong>{category}</strong>
-                </h3>
+                <h3>{category}</h3>
                 <ul className="supportSideElements">
                   {filteredData[category].map((item, index) => (
                     <li className="supportSideElement" key={index}>
-                      <Link
-                        to={`/support/topic/${encodeURIComponent(
-                          item.issue.toLowerCase().replace(/\s+/g, "-")
-                        )}`}
-                      >
+                      <Link to={`/support/topic/${encodeURIComponent(item.issue.toLowerCase().replace(/\s+/g, "-"))}`}>
                         {item.issue}
                       </Link>
                     </li>
@@ -238,35 +232,24 @@ export default function Support() {
               {t("support.backToSupport")}
             </button>
           )}
-          <h1>
-            <strong>{currentTitle || t("support.welcome")}</strong>
-          </h1>
+          <h1>{currentTitle || t("support.welcome")}</h1>
           {currentTitle !== "Terms and Conditions" ? (
             <p>{currentContent || t("support.selectTopic")}</p>
           ) : (
             <TermsAndConditions />
           )}
           {!currentTitle && !showContactForm && (
-            <button
-              className="supportContactButton"
-              onClick={handleContactButtonClick}
-            >
+            <button className="supportContactButton" onClick={handleContactButtonClick}>
               {t("support.contactSupport")}
             </button>
           )}
           {showContactForm && (
             <div className="supportContactFormBox">
-              <h2 className="title">
-                <strong>{t("support.contactSupport")}:</strong>
-              </h2>
+              <h2 className="title">{t("support.contactSupport")}:</h2>
               <form className="supportContactForm" onSubmit={handleSubmit}>
                 <label htmlFor="name">
                   {t("support.name")}
-                  <span
-                    className={`supportCharCounter ${
-                      charCount.name > 100 ? "error" : ""
-                    }`}
-                  >
+                  <span className={`supportCharCounter ${charCount.name > 100 ? "error" : "" }`}>
                     {charCount.name}/100
                   </span>
                 </label>

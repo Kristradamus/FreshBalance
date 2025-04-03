@@ -594,7 +594,7 @@
         { "name": "Korb", "link": "/profile/cart" }
       ],
       "navAdmin": [
-        { "name": "Admin-Bereich", "link": "/admin" }
+        { "name": "Admin-Bereich", "link": "/admin/settings" }
       ],
       "icons": {
         "Admin-Bereich":"fa-solid fa-screwdriver-wrench",
