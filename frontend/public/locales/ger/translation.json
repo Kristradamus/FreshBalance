@@ -593,7 +593,11 @@
         { "name": "Favoriten", "link": "/profile/favourites" },
         { "name": "Korb", "link": "/profile/cart" }
       ],
+      "navAdmin": [
+        { "name": "Admin-Bereich", "link": "/admin" }
+      ],
       "icons": {
+        "Admin-Bereich":"fa-solid fa-screwdriver-wrench",
         "Profil":"fa-solid fa-user",
         "Login": "fa-solid fa-user",
         "Favoriten": "fa-solid fa-heart",
@@ -886,7 +890,11 @@
   "protectedRoute": {
     "loginRequiredTitle": "Login nötig!",
     "loginRequiredSubTitle": "Bitte anmelden für Zugriff.",
-    "login": "Anmelden"
+    "login": "Anmelden",
+
+    "restrictedTitle": "Zugriff beschränkt!",
+    "restrictedSubTitle": "Zugriff nur für Administratoren gestattet.",
+    "restrictedGoBack": "Zurück"
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel": "Abbrechen"

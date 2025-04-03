@@ -628,7 +628,11 @@
         { "name": "Favourites", "link": "/profile/favourites" },
         { "name": "Cart", "link": "/profile/cart" }
       ],
+      "navAdmin": [
+        { "name": "Admin panel", "link": "/admin" }
+      ],
       "icons": {
+        "Admin panel":"fa-solid fa-screwdriver-wrench",
         "Profile":"fa-solid fa-user",
         "Login": "fa-solid fa-user",
         "Favourites": "fa-solid fa-heart",
@@ -921,7 +925,11 @@
   "protectedRoute":{
     "loginRequiredTitle":"Login Required!",
     "loginRequiredSubTitle":"You need to be logged in to access this page.",
-    "login":"Login"
+    "login":"Login",
+
+    "restrictedTitle":"Restricted Page!",
+    "restrictedSubTitle":"You need to have admin rights to access it.",
+    "restrictedGoBack":"Go Back"
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel":"Cancel"

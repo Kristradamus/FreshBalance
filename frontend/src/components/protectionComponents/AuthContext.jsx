@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
-
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   
   const checkAuthStatus = async () => {
     setIsLoading(true);
@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
       setUser(null);
       setIsLoading(false);
+      setIsAdmin(false);
       return;
     }
     
@@ -31,47 +32,48 @@ export const AuthProvider = ({ children }) => {
             },
             credentials: "include"
           });
-          
           if (response.ok) {
             const data = await response.json();
+            console.log(data);
             setIsAuthenticated(true);
             setUser({
               id: decoded.userId,
               username: decoded.username,
               email: decoded.email,
+              role:decoded.role || "user"
             });
+            setIsAdmin(decoded.role === "admin");
           }
-          
           else {
             console.error("Server rejected token");
             localStorage.removeItem("authToken");
             setIsAuthenticated(false);
+            setIsAdmin(false);
             setUser(null);
           }
         }
-        
         catch (serverError) {
           console.error("Server validation error:", serverError);
           localStorage.removeItem("authToken");
           setIsAuthenticated(false);
+          setIsAdmin(false);
           setUser(null);
         }
       }
-      
       else {
         localStorage.removeItem("authToken");
         setIsAuthenticated(false);
+        setIsAdmin(false);
         setUser(null);
       }
     }
-    
     catch (error) {
       console.error("Token validation error:", error);
       localStorage.removeItem("authToken");
       setIsAuthenticated(false);
+      setIsAdmin(false);
       setUser(null);
     }
-    
     finally {
       setIsLoading(false);
     }
@@ -85,6 +87,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("authToken");
     setIsAuthenticated(false);
+    setIsAdmin(false);
     setUser(null);
   };
   
@@ -93,14 +96,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ 
-      isAuthenticated, 
-      user, 
-      isLoading, 
-      checkAuthStatus,
-      login,
-      logout 
-    }}>
+    <AuthContext.Provider value={{isAuthenticated, isAdmin, user, isLoading, checkAuthStatus, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

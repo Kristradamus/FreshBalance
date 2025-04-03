@@ -163,14 +163,15 @@ const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
     await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)",
+      "INSERT INTO users (user_name, user_email, user_password, user_role) VALUES (?, ?, ?, 'user')",
       [username, email, hashedPassword]
     );
 
     emailVerificationCode.delete(email);
     res.status(201).json({ success: true });
     console.log(`New registration: ${username} (${email})`);
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Registration error:", error);
 
     const errorResponse = {
@@ -240,7 +241,8 @@ const login = async (req, res) => {
     const authToken = generateToken(
       user.user_id,
       user.user_name,
-      user.user_email
+      user.user_email,
+      user.user_role
     );
     res.json({
       token: authToken,
@@ -248,6 +250,7 @@ const login = async (req, res) => {
         id: user.user_id,
         username: user.user_name,
         email: user.user_email,
+        role: user.user_role
       },
     });
   } catch (error) {

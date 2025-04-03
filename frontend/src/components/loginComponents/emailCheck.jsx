@@ -96,7 +96,8 @@ export default function EmailCheck({
       sessionStorage.setItem("verifiedEmail", email);
       if (!sessionStorage.getItem("emailVerificationCode")) {
         console.error("Verification code failed to persist in sessionStorage!");
-      } else {
+      } 
+      else {
         console.log("Verification code was stored successfully!");
       }
 
@@ -114,7 +115,8 @@ export default function EmailCheck({
           { params: { email } }
         );
         setUsername(userResponse.data.username);
-      } else {
+      } 
+      else {
         setUserProgress((prev) => ({
           ...prev,
           emailChecked: true,
@@ -124,7 +126,8 @@ export default function EmailCheck({
         setEmailExists(false);
       }
       setEmailCheckComplete(true);
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Error checking email:", error);
       setEmailError(true);
       const errorMessage =
@@ -139,57 +142,32 @@ export default function EmailCheck({
   return (
     <div className="emailLogRegBox">
       <div className="emailTop">
-        <h1>
-          <strong>{t("loginRegistration.emailGreeting")}</strong>
-        </h1>
+        <h1><strong>{t("loginRegistration.emailGreeting")}</strong></h1>
         <p className="emailPls">{t("loginRegistration.emailPls")}</p>
-        <div
-          className={`emailLogRegInputBox ${emailError ? "Error" : ""}`}
-          onClick={handleEmailDivClick}
-        >
+        <div className={`emailLogRegInputBox ${emailError ? "Error" : ""}`} onClick={handleEmailDivClick}>
           <i className="fa-solid fa-envelope"></i>
-          <input
-            className="emailLogRegInput"
-            placeholder={t("loginRegistration.emailPlaceholder")}
-            value={displayEmail}
-            ref={emailInputRef}
-            onChange={handleEmailChange}
-            onKeyDown={handleEmailKeyChange}
-          />
+          <input className="emailLogRegInput" placeholder={t("loginRegistration.emailPlaceholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange}/>
         </div>
-        {emailError && (
-          <p className="emailLogRegErrorMessage">
-            {t("loginRegistration.emailWarning")}
-          </p>
-        )}
-        <button
-          className="emailLogRegContinue"
-          onClick={handleEmailCheckContinue}
-        >
+        {emailError && (<p className="emailLogRegErrorMessage">{t("loginRegistration.emailWarning")}</p>)}
+        <button className="emailLogRegContinue" onClick={handleEmailCheckContinue} >
           <strong>{t("loginRegistration.emailContinue")}</strong>
         </button>
-        <p className="emailDontWorry">
-          {t("loginRegistration.emailDontWorry")}
-        </p>
+        <p className="emailDontWorry">{t("loginRegistration.emailDontWorry")}</p>
       </div>
       <div className="emailDivider">
         <hr />
-        <p>{t("loginRegistration.emailOr")}</p>
+          <p>{t("loginRegistration.emailOr")}</p>
         <hr />
       </div>
       <div className="emailBottom">
         <p className="emailAlso">{t("loginRegistration.emailAlso")}</p>
         <div className="emailGoogle">
           <i className="fa-brands fa-google"></i>
-          <p className="emailGoogleText">
-            <strong>Google</strong>
-          </p>
+          <p className="emailGoogleText"><strong>Google</strong></p>
         </div>
         <div className="emailFacebook">
           <i className="fa-brands fa-facebook-f"></i>
-          <p className="emailFacebookText">
-            <strong>Facebook</strong>
-          </p>
+          <p className="emailFacebookText"><strong>Facebook</strong></p>
         </div>
       </div>
     </div>

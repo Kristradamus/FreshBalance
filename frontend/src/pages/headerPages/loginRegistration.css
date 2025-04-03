@@ -230,8 +230,8 @@
 /*---------------------LOGIN-BOTTOM----------------------*/
 .loginBottom {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns:1fr;
+  gap: 10px;
 }
 .emailLogRegCheckboxBox {
   grid-column: 1;

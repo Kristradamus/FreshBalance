@@ -13,9 +13,7 @@ const handleGoBack = () => {
 
 return (
   <div className="termsPageBox">
-    <button className="termsGoBackButton" onClick={handleGoBack}>
-      {t("loginRegistration.loginRegisterGoBack")}
-    </button>
+    <button className="termsGoBackButton" onClick={handleGoBack}>{t("loginRegistration.loginRegisterGoBack")}</button>
     <LegalPolicies />
   </div>
 );};

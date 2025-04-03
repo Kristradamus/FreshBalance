@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext.jsx";
+import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import GoBackButton from "../reusableComponents/LRGoBackButton";
 
@@ -115,7 +115,6 @@ export default function Login({ username }) {
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
       <h1 className="loginWelcome">
-        {" "}
         {t("loginRegistration.loginWelcome")}&nbsp;{" "}
         <p className="loginWelcomeUsername">{username}</p>&nbsp;!
       </h1>

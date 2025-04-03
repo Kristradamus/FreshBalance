@@ -17,7 +17,7 @@
   --secondBackground:#e7e7e7bb;
   --frontPageBackground:rgb(250, 243, 211);
 
-  --mainTextColor: rgba(58, 58, 58, 0.911);
+  --mainTextColor: rgba(63, 63, 63, 0.911);
   --secondTextColor: rgba(27, 27, 27, 0.623);
 
   --errorColor: rgb(216, 27, 27);
@@ -100,6 +100,7 @@ h3,
 h4,
 h5{
   color:var(--mainTextColor);
+  font-weight:600;
 }
 hr {
   background-color: var(--green);
@@ -108,4 +109,7 @@ hr {
   height: 2px;
   width: 100%;
   margin: 10px 0;
+}
+strong{
+  font-weight:600;
 }

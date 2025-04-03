@@ -1,0 +1,69 @@
+.restrictedAlertContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: var(--darkOverlay);
+  backdrop-filter: blur(1px);
+  animation: fadeIn var(--transition);
+}
+
+.restrictedAlertBox {
+  display:flex;
+  flex-direction:column;
+  text-align: center;
+  align-items:center;
+  border-radius: var(--smallRadius);
+  background-color: var(--white);
+  gap:20px;
+  padding: 20px 10px;
+  width: 90%;
+  max-width: 400px;
+  animation: slideUp var(--transition);
+}
+.restrictedAlertText{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.restrictedAlertMainTitle,
+.authAlertSubTitle{
+  color:var(--mainTextColor);
+}
+.restrictedAlertGoBackBtn{
+  border: none;
+  cursor: pointer;
+  border-radius: var(--smallRadius);
+  font-size: var(--textFont);
+  transition: var(--transition);
+  padding: 12px 20px;
+  min-width: 240px;
+  background-color: var(--thirdButtonColor);
+  color:var(--white);
+}
+.restrictedAlertGoBackBtn:hover {
+  background-color: var(--thirdButtonHover);
+  transform: translateY(-1px);
+}
+
+/*-------------------------------------------ANIMATIONS-----------------------------------------------*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/*----------------------------------------RESPONSIVE---------------------------------------------*/
+@media (max-width: 480px) {
+  .restrictedAlertBox {
+    padding: 20px 15px;
+  }
+}

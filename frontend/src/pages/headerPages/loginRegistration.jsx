@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../../public/images/freshBalance.png";
-import EmailCheck from "../components/loginComponents/emailCheck.jsx";
-import Login from "../components/loginComponents/login.jsx";
-import Register from "../components/loginComponents/register.jsx";
-import Terms from "../components/loginComponents/terms.jsx";
+import logo from "../../../public/images/freshBalance.png";
+import EmailCheck from "../../components/loginComponents/emailCheck.jsx";
+import Login from "../../components/loginComponents/login.jsx";
+import Register from "../../components/loginComponents/register.jsx";
+import Terms from "../../components/loginComponents/terms.jsx";
 import { useTranslation } from "react-i18next";
 import "./loginRegistration.css";
 

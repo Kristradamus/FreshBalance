@@ -596,7 +596,11 @@
         { "name": "Любими", "link": "/profile/favourites" },
         { "name": "Количка", "link": "/profile/cart" }
       ],
+      "navAdmin": [
+        { "name": "Админ панел", "link": "/admin" }
+      ],
       "icons": {
+        "Админ панел":"fa-solid fa-screwdriver-wrench",
         "Профил": "fa-solid fa-user",
         "Вход": "fa-solid fa-user",
         "Любими": "fa-solid fa-heart",
@@ -890,7 +894,11 @@
   "protectedRoute": {
     "loginRequiredTitle": "Изисква се вход!",
     "loginRequiredSubTitle": "Трябва да си влезете в профила, за да продължите.",
-    "login": "Вход"
+    "login": "Вход",
+
+    "restrictedTitle": "Ограничен достъп!",
+    "restrictedSubTitle": "Необходими са администраторски права за достъп.",
+    "restrictedGoBack": "Назад"
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel": "Отказ"

@@ -276,86 +276,36 @@ export default function Register({
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
       <div className="registerWelcomeBox">
-        <h1 className="registerWelcome">
-          {t("loginRegistration.registerWelcome")}
-        </h1>
+        <h1 className="registerWelcome">{t("loginRegistration.registerWelcome")}</h1>
         <p className="registerEmail">{email}</p>
       </div>
       <div className="registerTop">
         <div className="registerInputErrorBox">
-          <div
-            className={`emailLogRegInputBox ${usernameError ? "Error" : ""}`}
-            onClick={handleUsernameDivClick}
-          >
+          <div className={`emailLogRegInputBox ${usernameError ? "Error" : ""}`} onClick={handleUsernameDivClick}>
             <i className="fa-solid fa-user"></i>
-            <input
-              className="emailLogRegInput"
-              placeholder={t("loginRegistration.registerTitleUsername") + "..."}
-              value={usernameInput}
-              ref={usernameInputRef}
-              onChange={handleUsernameChange}
-              onKeyDown={handleUsernameKeyChange}
-            />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleUsername") + "..."} value={usernameInput} ref={usernameInputRef} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange}/>
           </div>
-          {usernameError && (
-            <p className="emailLogRegErrorMessage">{usernameErrorMessage}</p>
-          )}
+          {usernameError && (<p className="emailLogRegErrorMessage">{usernameErrorMessage}</p>)}
         </div>
         <div className="registerInputErrorBox">
-          <div
-            className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`}
-            onClick={handlePasswordDivClick}
-          >
+          <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick} >
             <i className="fa-solid fa-lock"></i>
-            <input
-              className="emailLogRegInput"
-              placeholder={t("loginRegistration.registerTitlePassword") + "..."}
-              type={isPasswordVisible ? "text" : "password"}
-              value={passwordInput}
-              ref={passwordInputRef}
-              onChange={handlePasswordChange}
-              onKeyDown={handlePasswordKeyChange}
-            />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}/>
             {isPasswordVisible ? (
-              <i
-                className="fa-solid fa-eye-slash"
-                onClick={handlePasswordVisibility}
-              ></i>
+              <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility}></i>
             ) : (
-              <i
-                className="fa-solid fa-eye"
-                onClick={handlePasswordVisibility}
-              ></i>
+              <i className="fa-solid fa-eye" onClick={handlePasswordVisibility}></i>
             )}
           </div>
         </div>
         <div className="registerInputErrorBox">
-          <div
-            className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`}
-            onClick={handleConfirmPasswordDivClick}
-          >
+          <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handleConfirmPasswordDivClick}>
             <i className="fa-solid fa-lock"></i>
-            <input
-              className="emailLogRegInput"
-              placeholder={
-                t("loginRegistration.registerTitleConfirmPassword") + "..."
-              }
-              type={isConfirmPasswordVisible ? "text" : "password"}
-              value={confirmPasswordInput}
-              ref={confirmPasswordInputRef}
-              onChange={handleConfirmPasswordChange}
-              onKeyDown={handleConfirmPasswordKeyChange}
-            />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleConfirmPassword") + "..." } type={isConfirmPasswordVisible ? "text" : "password"} value={confirmPasswordInput} ref={confirmPasswordInputRef} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange}/>
             {isConfirmPasswordVisible ? (
-              <i
-                className="fa-solid fa-eye-slash"
-                onClick={handleConfirmPasswordVisibility}
-              ></i>
+              <i className="fa-solid fa-eye-slash" onClick={handleConfirmPasswordVisibility}></i>
             ) : (
-              <i
-                className="fa-solid fa-eye"
-                onClick={handleConfirmPasswordVisibility}
-              ></i>
+              <i className="fa-solid fa-eye" onClick={handleConfirmPasswordVisibility}></i>
             )}
           </div>
           {passwordError && (
@@ -365,35 +315,17 @@ export default function Register({
       </div>
       <div className="registerBottom">
         <div className="registerInputErrorBox">
-          <div
-            className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}
-          >
-            <input
-              type="checkbox"
-              checked={isTermsAccepted}
-              onChange={handleTermsAcceptance}
-            />
+          <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
+            <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsAcceptance}/>
             <p className="emailLogRegCheckbox">
               {t("loginRegistration.registerTerms")}&nbsp;
-              <a
-                className="emailLogRegCheckboxLink"
-                onClick={handleTermsVisibility}
-              >
-                <strong>{t("loginRegistration.registerLegalPolicies")}</strong>
-              </a>
+              <a className="emailLogRegCheckboxLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registerLegalPolicies")}</strong></a>
             </p>
           </div>
-          {termsError && (
-            <p className="emailLogRegErrorMessage">{termsErrorMessage}</p>
-          )}
+          {termsError && (<p className="emailLogRegErrorMessage">{termsErrorMessage}</p>)}
         </div>
-        <button
-          className="emailLogRegContinue"
-          onClick={handleRegistrationSubmit}
-        >
-          {t("loginRegistration.registerContinue")}
-        </button>
+        <button className="emailLogRegContinue" onClick={handleRegistrationSubmit}>{t("loginRegistration.registerContinue")}</button>
       </div>
     </div>
   );
-}
+};

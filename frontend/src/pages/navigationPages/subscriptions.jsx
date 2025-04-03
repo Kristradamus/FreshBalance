@@ -17,7 +17,7 @@ const SubscriptionPlan = ({ plan }) => {
 return (
   <div className={`subPlan sub${plan.type}`}>
     <div className={`subPlanTop sub${plan.type}Top`}>
-      <h1 className="subTopTitle">{plan.type}</h1>
+      <h2 className="subTopTitle">{plan.type}</h2>
       <div className="subPrice">
         <h1 className="subTopTitle">{isYearly ? plan.priceYear : plan.priceMonth}</h1>
         <div className="subSidePrice">
