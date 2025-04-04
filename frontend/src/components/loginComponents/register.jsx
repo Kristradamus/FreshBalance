@@ -1,24 +1,27 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import { z } from "zod";
 import GoBackButton from "../reusableComponents/LRGoBackButton";
 
-export default function Register({
-  email,
-  setIsTermsVisible,
-  userProgress,
-  setUserProgress,
-}) {
+export default function Register({email, setIsTermsVisible, userProgress, setUserProgress}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { checkAuthStatus } = useContext(AuthContext);
+  const [registerFormData, setRegisterFormData] = useState(() => {
+    return userProgress.registerFormDataMain || {
+      username: "",
+      password: "",
+      confirmPassword: "",
+      termsAccepted: false
+    };
+  });
 
   // PASSWORD STATES
   const [passwordError, setPasswordError] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
@@ -27,12 +30,10 @@ export default function Register({
   const [usernameError, setUsernameError] = useState(false);
   const [usernameAvailable, setUsernameAvailable] = useState(true);
   const [usernameErrorMessage, setUsernameErrorMessage] = useState("");
-  const [usernameInput, setUsernameInput] = useState("");
 
   // TERMS STATES
   const [termsError, setTermsError] = useState(false);
   const [termsErrorMessage, setTermsErrorMessage] = useState("");
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
 
   // REFS
   const usernameInputRef = useRef(null);
@@ -41,13 +42,20 @@ export default function Register({
 
   /*------------------------------------INPUT-CUSTOMIZATIONS------------------------------------*/
   useEffect(() => {
+    setUserProgress(prevProgress => ({
+      ...prevProgress,
+      registerFormDataMain: registerFormData
+    }));
+  }, [registerFormData, setUserProgress]);
+
+  useEffect(() => {
     if (usernameInputRef.current) {
       usernameInputRef.current.focus();
     }
   }, []);
 
   const handleUsernameChange = (e) => {
-    setUsernameInput(e.target.value);
+    setRegisterFormData({...registerFormData, username: e.target.value});
     setUsernameError(false);
   };
 
@@ -68,7 +76,7 @@ export default function Register({
 
   // PASSWORD
   const handlePasswordChange = (e) => {
-    setPasswordInput(e.target.value);
+    setRegisterFormData({...registerFormData, password: e.target.value});
     setPasswordError(false);
   };
 
@@ -93,7 +101,7 @@ export default function Register({
 
   // CONFIRM PASSWORD
   const handleConfirmPasswordChange = (e) => {
-    setConfirmPasswordInput(e.target.value);
+    setRegisterFormData({...registerFormData, confirmPassword: e.target.value});
     setPasswordError(false);
   };
 
@@ -118,7 +126,7 @@ export default function Register({
 
   // Terms
   const handleTermsAcceptance = (e) => {
-    setIsTermsAccepted(e.target.checked);
+    setRegisterFormData({...registerFormData, termsAccepted: e.target.checked});
     setTermsError(false);
   };
 
@@ -131,31 +139,28 @@ export default function Register({
   /*------------------------------------USERNAME-AVAILABILITY-CHECK------------------------------------*/
   useEffect(() => {
     const timer = setTimeout(async () => {
-      if (usernameInput.trim().length > 0) {
+      if (registerFormData.username.trim().length > 0) {
         try {
-          const response = await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}/username-check`,
-            {
-              username: usernameInput.trim(),
-            }
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/username-check`,
+            {username: registerFormData.username.trim(),}
           );
           if (!response.data.exists) {
             setUsernameAvailable(true);
             setUsernameError(false);
-          } else {
+          } 
+          else {
             setUsernameAvailable(false);
             setUsernameError(true);
-            setUsernameErrorMessage(
-              t("loginRegistration.registerUsernameTaken")
-            );
+            setUsernameErrorMessage(t("loginRegistration.registerUsernameTaken"));
           }
-        } catch (error) {
+        } 
+        catch (error) {
           console.error("Username check failed:", error);
         }
       }
     }, 1000);
     return () => clearTimeout(timer);
-  }, [usernameInput, t]);
+  }, [registerFormData.username, t]);
 
   /*------------------------------------ZOD-VALIDATION-SCHEMA------------------------------------*/
   const RegistrationSchema = z
@@ -212,37 +217,43 @@ export default function Register({
     if (isValid) {
       try {
         const validatedData = await RegistrationSchema.parseAsync({
-          username: usernameInput,
-          password: passwordInput,
-          confirmPassword: confirmPasswordInput,
-          termsAccepted: isTermsAccepted,
+          username: registerFormData.username,
+          password: registerFormData.password,
+          confirmPassword: registerFormData.confirmPassword,
+          termsAccepted: registerFormData.termsAccepted,
         });
         try {
           const verificationCode = sessionStorage.getItem(
             "emailVerificationCode"
           );
           const verifiedEmail = sessionStorage.getItem("verifiedEmail");
-          const response = await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}/register`,
-            {
-              email: verifiedEmail,
-              verificationCode: verificationCode,
-              username: validatedData.username,
-              password: validatedData.password,
-            },
-            {
-              validateStatus: (status) =>
-                (status >= 200 && status < 300) || status === 401,
-            }
-          );
-          console.log("Full Response:", response);
-          if (response.status === 200 || response.status === 201) {
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`,{
+            email: verifiedEmail,
+            verificationCode: verificationCode,
+            username: validatedData.username,
+            password: validatedData.password,
+          },
+          {
+            validateStatus: (status) =>
+            (status >= 200 && status < 300) || status === 401,
+          });
+
+          console.log("Registration response:", response);
+          if (response.status === 201) {
             sessionStorage.removeItem("emailVerificationCode");
             sessionStorage.removeItem("verifiedEmail");
-            alert(t("loginRegistration.registrationSuccessfull"));
-            navigate("/");
+            if (response.data.token) {
+              localStorage.setItem("authToken", response.data.token);
+
+              console.log("Token stored successfully!");
+              await checkAuthStatus();
+
+              const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
+              navigate(lastPublicPage);
+            }
           }
-        } catch (error) {
+        } 
+        catch (error) {
           const errorMessage =
             error.response?.data?.message ||
             t("loginRegistration.registrationFailed");
@@ -283,14 +294,14 @@ export default function Register({
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${usernameError ? "Error" : ""}`} onClick={handleUsernameDivClick}>
             <i className="fa-solid fa-user"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleUsername") + "..."} value={usernameInput} ref={usernameInputRef} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange}/>
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleUsername") + "..."} value={registerFormData.username} ref={usernameInputRef} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange}/>
           </div>
           {usernameError && (<p className="emailLogRegErrorMessage">{usernameErrorMessage}</p>)}
         </div>
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick} >
             <i className="fa-solid fa-lock"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={passwordInput} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}/>
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={registerFormData.password} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}/>
             {isPasswordVisible ? (
               <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility}></i>
             ) : (
@@ -301,7 +312,7 @@ export default function Register({
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handleConfirmPasswordDivClick}>
             <i className="fa-solid fa-lock"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleConfirmPassword") + "..." } type={isConfirmPasswordVisible ? "text" : "password"} value={confirmPasswordInput} ref={confirmPasswordInputRef} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange}/>
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleConfirmPassword") + "..." } type={isConfirmPasswordVisible ? "text" : "password"} value={registerFormData.confirmPassword} ref={confirmPasswordInputRef} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange}/>
             {isConfirmPasswordVisible ? (
               <i className="fa-solid fa-eye-slash" onClick={handleConfirmPasswordVisibility}></i>
             ) : (
@@ -316,7 +327,7 @@ export default function Register({
       <div className="registerBottom">
         <div className="registerInputErrorBox">
           <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
-            <input type="checkbox" checked={isTermsAccepted} onChange={handleTermsAcceptance}/>
+            <input type="checkbox" checked={registerFormData.termsAccepted} onChange={handleTermsAcceptance}/>
             <p className="emailLogRegCheckbox">
               {t("loginRegistration.registerTerms")}&nbsp;
               <a className="emailLogRegCheckboxLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registerLegalPolicies")}</strong></a>

@@ -4,18 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import validator from "validator";
 
-export default function EmailCheck({
-  email,
-  setEmail,
-  displayEmail,
-  setDisplayEmail,
-  setEmailCheckComplete,
-  setEmailExists,
-  userProgress,
-  setUserProgress,
-  resetFormData,
-  setUsername,
-}) {
+export default function EmailCheck({email, setEmail, displayEmail, setDisplayEmail, setEmailCheckComplete, setEmailExists, userProgress, setUserProgress, resetFormData, setUsername,}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const emailInputRef = useRef(null);
@@ -107,14 +96,11 @@ export default function EmailCheck({
           emailChecked: true,
           emailVerified: true,
         }));
+        const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`,{ params: { email } });
+        setUsername(userResponse.data.username);
+        
         navigate("/email-check/login");
         setEmailExists(true);
-
-        const userResponse = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/user`,
-          { params: { email } }
-        );
-        setUsername(userResponse.data.username);
       } 
       else {
         setUserProgress((prev) => ({

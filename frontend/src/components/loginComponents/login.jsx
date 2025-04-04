@@ -5,21 +5,34 @@ import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import GoBackButton from "../reusableComponents/LRGoBackButton";
 
-export default function Login({ username }) {
+export default function Login({ username, userProgress, setUserProgress }) {
   const [passwordError, setPasswordError] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [termsError, setTermsError] = useState(false);
   const { checkAuthStatus } = useContext(AuthContext);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const passwordInputRef = useRef(null);
+  const [loginFormData, setLoginFormData] = useState(() => {
+    return userProgress.loginFormDataMain || {
+      password: "",
+      rememberMe: false
+    };
+  });
 
   /*-----------------------------------------SMALL-JS--------------------------------------------------*/
+  useEffect(() => {
+    if (setUserProgress) {
+      setUserProgress(prevProgress => ({
+        ...prevProgress,
+        loginFormDataMain: loginFormData
+      }));
+    }
+  }, [loginFormData, setUserProgress]);
+
   const handlePasswordChange = (e) => {
-    setPasswordInput(e.target.value);
+    setLoginFormData({...loginFormData, password: e.target.value});
     setPasswordError(false);
   };
 
@@ -43,7 +56,7 @@ export default function Login({ username }) {
   };
 
   const handleTermsAcceptance = (e) => {
-    setIsTermsAccepted(e.target.checked);
+    setLoginFormData({...loginFormData, rememberMe: e.target.checked});
     setTermsError(false);
   };
 
@@ -58,7 +71,7 @@ export default function Login({ username }) {
     setPasswordError(false);
 
     let isValid = true;
-    if (!passwordInput) {
+    if (!loginFormData.password) {
       setPasswordError(true);
       setPasswordErrorMessage(t("loginRegistration.loginPlsPassword"));
       isValid = false;
@@ -71,32 +84,33 @@ export default function Login({ username }) {
           throw new Error("Email verification missing!");
         }
 
-        const VerificationCode = sessionStorage.getItem(
-          "emailVerificationCode"
-        );
+        const VerificationCode = sessionStorage.getItem("emailVerificationCode");
 
-        const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/login`,
-          {
-            email: verifiedEmail,
-            password: passwordInput.trim(),
-            ...(VerificationCode && { verificationCode: VerificationCode }),
-          }
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`,{
+          email: verifiedEmail,
+          password: loginFormData.password.trim(),
+          ...(VerificationCode && { verificationCode: VerificationCode }),}
         );
 
         if (response.data.token) {
-          localStorage.setItem("authToken", response.data.token);
+          const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
+          navigate(lastPublicPage);
 
-          const storedToken = localStorage.getItem("authToken");
-          console.log("Token stored successfully:", storedToken);
+          if (formData.rememberMe) {
+            //------------------TODO----------------
+            console.log("Remember me option selected.");
+          }
+
+          localStorage.setItem("authToken", response.data.token);
+          console.log("Token stored successfully!");
           await checkAuthStatus();
         }
 
         sessionStorage.removeItem("emailVerificationCode");
         sessionStorage.removeItem("verifiedEmail");
 
-        navigate("/");
-      } catch (error) {
+      } 
+      catch (error) {
         if (error.message.includes("Email verification")) {
           alert(t("loginRegistration.sessionExpired"));
           navigate("/login");
@@ -121,54 +135,25 @@ export default function Login({ username }) {
       <i className="fa-solid fa-circle-user"></i>
       <div className="loginTop">
         <div className="registerInputErrorBox">
-          <div
-            className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`}
-            onClick={handlePasswordDivClick}
-          >
+          <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick} >
             <i className="fa-solid fa-lock"></i>
-            <input
-              className="emailLogRegInput"
-              placeholder={t("loginRegistration.registerTitlePassword") + "..."}
-              type={isPasswordVisible ? "text" : "password"}
-              value={passwordInput}
-              ref={passwordInputRef}
-              onChange={handlePasswordChange}
-              onKeyDown={handlePasswordKeyChange}
-            />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={loginFormData.password} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange} />
             {isPasswordVisible ? (
-              <i
-                className="fa-solid fa-eye-slash"
-                onClick={handlePasswordVisibility}
-              ></i>
+              <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility} ></i>
             ) : (
-              <i
-                className="fa-solid fa-eye"
-                onClick={handlePasswordVisibility}
-              ></i>
+              <i className="fa-solid fa-eye" onClick={handlePasswordVisibility} ></i>
             )}
           </div>
-          {passwordError && (
-            <p className="emailLogRegErrorMessage">{passwordErrorMessage}</p>
-          )}
+          {passwordError && (<p className="emailLogRegErrorMessage">{passwordErrorMessage}</p>)}
         </div>
       </div>
       <div className="loginBottom">
         <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
-          <input
-            type="checkbox"
-            checked={isTermsAccepted}
-            onChange={handleTermsAcceptance}
-          />
-          <p className="emailLogRegCheckbox">
-            {t("loginRegistration.loginRememberMe")}
-          </p>
+          <input type="checkbox" checked={loginFormData.rememberMe} onChange={handleTermsAcceptance}/>
+          <p className="emailLogRegCheckbox">{t("loginRegistration.loginRememberMe")}</p>
         </div>
-        <button className="emailLogRegContinue" onClick={handleLoginSubmit}>
-          {t("loginRegistration.loginLogIn")}
-        </button>
-        <a className="loginForgotPassword">
-          {t("loginRegistration.loginForgottenPassword")}
-        </a>
+        <button className="emailLogRegContinue" onClick={handleLoginSubmit}>{t("loginRegistration.loginLogIn")}</button>
+        <a className="loginForgotPassword">{t("loginRegistration.loginForgottenPassword")}</a>
       </div>
     </div>
   );

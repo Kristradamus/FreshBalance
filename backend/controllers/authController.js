@@ -28,7 +28,7 @@ const emailCheckLimiter = rateLimit({
   skip: (req) => {
     const whitelist = ["84.43.144.178", "::1", "127.0.0.1"];
     return whitelist.includes(req.ip);
-  },
+  }
 });
 
 const verifyEmailDomain = async (email) => {
@@ -162,13 +162,31 @@ const register = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    await pool.query(
+    const [result] = await pool.query(
       "INSERT INTO users (user_name, user_email, user_password, user_role) VALUES (?, ?, ?, 'user')",
       [username, email, hashedPassword]
     );
 
+    const userId = result.insertId;
+    const authToken = generateToken(
+      userId,
+      username,
+      email,
+      'user'
+    );
+
     emailVerificationCode.delete(email);
-    res.status(201).json({ success: true });
+    res.status(201).json({
+      success: true,
+      token: authToken,
+      user: {
+        id: userId,
+        username: username,
+        email: email,
+        role: 'user'
+      }
+    });
+    
     console.log(`New registration: ${username} (${email})`);
   } 
   catch (error) {
@@ -253,7 +271,8 @@ const login = async (req, res) => {
         role: user.user_role
       },
     });
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Login error:", error);
     res.status(500).json({
       error: "Login failed",

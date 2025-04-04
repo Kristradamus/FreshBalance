@@ -3,9 +3,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../../public/images/freshBalance.png";
 import EmailCheck from "../../components/loginComponents/emailCheck.jsx";
-import Login from "../../components/loginComponents/login.jsx";
-import Register from "../../components/loginComponents/register.jsx";
-import Terms from "../../components/loginComponents/terms.jsx";
+import Login from "../../components/loginComponents/Login.jsx";
+import Register from "../../components/loginComponents/Register.jsx";
+import Terms from "../../components/loginComponents/Terms.jsx";
 import { useTranslation } from "react-i18next";
 import "./loginRegistration.css";
 
@@ -17,7 +17,17 @@ const currentStep = location.pathname.split("/").pop();
 const [userProgress, setUserProgress] = useState({
   emailChecked: false, 
   emailVerified: false, 
-  termsViewed: false
+  termsViewed: false,
+  registerFormDataMain: {
+    username: "",
+    password: "",
+    confirmPassword: "",
+    termsAccepted: false
+  },
+  loginFormDataMain: {
+    password: "",
+    rememberMe: false
+  }
 });
 
 // STATE VARIABLES SHARED ACROSS COMPONENTS
@@ -47,6 +57,7 @@ useEffect(() => {
   else if (currentStep === "register") {
     setEmailCheckComplete(true);
     setEmailExists(false);
+    setIsTermsVisible(false);
   } 
   else if(currentStep === "terms"){
     setEmailCheckComplete(true);
@@ -63,7 +74,17 @@ const resetFormData = () => {
   setUserProgress({
     emailChecked: false, 
     emailVerified: false, 
-    termsViewed: false
+    termsViewed: false,
+    registerFormDataMain: {
+      username: "",
+      password: "",
+      confirmPassword: "",
+      termsAccepted: false
+    },
+    loginFormDataMain: {
+      password: "",
+      rememberMe: false
+    }
   });
 };
 
@@ -72,24 +93,10 @@ return (
     <Link to="/">
       <img className="loginRegisterLogo" src={logo} alt="Fresh Balance" />
     </Link>
-    {!emailCheckComplete && (
-      <EmailCheck email={email} setEmail={setEmail} displayEmail={displayEmail} 
-        setDisplayEmail={setDisplayEmail} setEmailCheckComplete={setEmailCheckComplete}
-        setEmailExists={setEmailExists} 
-        userProgress={userProgress} setUserProgress={setUserProgress}
-        resetFormData={resetFormData}
-        setUsername={setUsername}
-      />
-    )}
-    {emailCheckComplete && emailExists && currentStep === "login" && (
-      <Login username={username} resetFormData={resetFormData}/>
-    )}
-    {emailCheckComplete && !emailExists && (currentStep === "register" || currentStep === "terms") && !isTermsVisible && (
-      <Register email={email} setIsTermsVisible={setIsTermsVisible} userProgress={userProgress} setUserProgress={setUserProgress}/>
-    )}
-    {emailCheckComplete && !emailExists && currentStep === "terms" && isTermsVisible && (
-      <Terms setIsTermsVisible={setIsTermsVisible}/>
-    )}
+    {!emailCheckComplete && (<EmailCheck email={email} setEmail={setEmail} displayEmail={displayEmail} setDisplayEmail={setDisplayEmail} setEmailCheckComplete={setEmailCheckComplete}setEmailExists={setEmailExists} userProgress={userProgress} setUserProgress={setUserProgress}resetFormData={resetFormData}setUsername={setUsername}/>)}
+    {emailCheckComplete && emailExists && currentStep === "login" && (<Login username={username} userProgress={userProgress} setUserProgress={setUserProgress}/>)}
+    {emailCheckComplete && !emailExists && (currentStep === "register" || currentStep === "terms") && !isTermsVisible && (<Register email={email} setIsTermsVisible={setIsTermsVisible} userProgress={userProgress} setUserProgress={setUserProgress}/>)}
+    {emailCheckComplete && !emailExists && currentStep === "terms" && isTermsVisible && (<Terms setIsTermsVisible={setIsTermsVisible}/>)}
     <Link className="loginRegisterNeedHelp" to="/support">
       <p><strong>{t("loginRegistration.needHelp")}</strong></p>
     </Link>

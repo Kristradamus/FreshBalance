@@ -3,7 +3,7 @@ import {Routes, Route, useNavigate, useLocation, Outlet,} from "react-router-dom
 import FavouritesComponent from "../../components/profileComponents/FavouritesComponent.jsx";
 import CartComponent from "../../components/profileComponents/CartComponent.jsx";
 import SecurityComponent from "../../components/profileComponents/SecurityComponent.jsx";
-import LogOutComponent from "../../components/profileComponents/LogOut.jsx";
+import LogOutComponent from "../../components/reusableComponents/LogOut.jsx";
 import { useTranslation } from "react-i18next";
 import "./profile.css";
 

@@ -114,6 +114,7 @@
 .emailDivider hr {
   height: 1px;
 }
+
 /*--------------------EMAIL-BOX-TOP--------------------*/
 .emailTop h1 {
   padding: 10px 0px;
@@ -254,6 +255,7 @@
   flex-direction:column;
   gap:15px;
 }
+
 /*-------------------------REGISTER-TOP--------------------------*/
 .registerTop{
   display:flex;

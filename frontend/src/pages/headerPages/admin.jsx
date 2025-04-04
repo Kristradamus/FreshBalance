@@ -40,11 +40,7 @@ function AdminLayout() {
         <i className="fa-solid fa-user-shield adminIcon"></i>
         <div className="adminSidebarNav">
           {sidebarItems.map((item) => (
-            <button
-              key={item.key}
-              className={`adminButton ${activeSection === item.path ? "active" : ""}`}
-              onClick={() => handleNavigation(item)}
-            >
+            <button key={item.key} className={`adminButton ${activeSection === item.path ? "active" : ""}`} onClick={() => handleNavigation(item)} >
               <i className={item.icon} />
               <p>{item.title}</p>
             </button>
@@ -62,13 +58,11 @@ export default function AdminPage() {
   return (
     <Routes>
       <Route path="/" element={<AdminLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
         <Route path="products" element={<ProductManagement />} />
         <Route path="accounts" element={<AccountManagement />} />
         <Route path="orders" element={<AdminOrders/>} />
         <Route path="settings" element={<AdminSettings/>} />
         <Route path="logout" element={<LogOutComponent />} />
-        <Route index element={<Dashboard />} />
       </Route>
     </Routes>
   );

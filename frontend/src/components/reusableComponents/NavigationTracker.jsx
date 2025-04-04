@@ -5,8 +5,7 @@ const NavigationTracker = () => {
 const location = useLocation();
 
 useEffect(() => {
-  const publicPaths = ["/", "/about-us", "/services", "/subscriptions", "/support", "/support/topic/*", "/support/contact", "/communities", "/product/*", "/legal-policies", "/email-check/*",
-  ];
+  const publicPaths = ["/", "/about-us", "/services", "/subscriptions", "/support", "/support/topic/*", "/support/contact", "/communities", "/product/*", "/legal-policies"];
 
   const isPublicPath = publicPaths.some(
     (path) =>
