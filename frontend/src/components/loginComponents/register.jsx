@@ -223,10 +223,10 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
           termsAccepted: registerFormData.termsAccepted,
         });
         try {
-          const verificationCode = sessionStorage.getItem(
-            "emailVerificationCode"
-          );
+
           const verifiedEmail = sessionStorage.getItem("verifiedEmail");
+          const verificationCode = sessionStorage.getItem("emailVerificationCode");
+
           const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`,{
             email: verifiedEmail,
             verificationCode: verificationCode,
@@ -254,11 +254,9 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
           }
         } 
         catch (error) {
-          const errorMessage =
-            error.response?.data?.message ||
-            t("loginRegistration.registrationFailed");
+          const errorMessage = t("loginRegistration.registrationFailed");
           alert(errorMessage);
-          console.error("Registration failed:", error);
+          console.error("Registration failed:", error.response?.data?.message);
         }
       } catch (error) {
         if (error instanceof z.ZodError) {

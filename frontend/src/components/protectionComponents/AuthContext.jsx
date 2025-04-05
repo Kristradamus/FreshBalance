@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
       
       if (decoded.exp * 1000 > Date.now()) {
         try {
-          const response = await fetch("http://localhost:5000/validate-token", {
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/validate-token`, {
             method: "POST",
             headers: {
               "Authorization": `Bearer ${token}`,

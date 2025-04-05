@@ -159,7 +159,7 @@
     "registerContinue": "Continuar",
     "registerTermsRequired": "Debes aceptar los términos",
     "registrationSuccessfull": "Registro exitoso",
-    "registrationFailed": "Registro fallido",
+    "registrationFailed": "Registro fallido!",
 
     "registerUsernameRequired": "Usuario requerido",
     "registerUsernameTaken": "Usuario ya existe",
@@ -179,7 +179,10 @@
     "loginLogIn": "Iniciar sesión",
     "loginRememberMe": "Recordarme",
     "loginPlsPassword": "Ingresa tu contraseña",
+    "loginInvalidPassword": "¡Contraseña incorrecta!",
+    "generalError": "Hay un problema con tu inicio de sesión. Por favor, inténtalo de nuevo o contacta al soporte.",
 
+    "plsTryAgain": "El tiempo ha expirado. ¡Por favor, inténtalo de nuevo!",
     "needHelp": "¿Ayuda?"
   },
   "-------------------------------------------------------------product---------------------------------------------------": {},
@@ -448,7 +451,7 @@
           "solution": "Si experimentas un rendimiento lento del sitio web, intenta borrar la caché y los datos de la aplicación de tu navegador. Asegúrate de estar utilizando la última versión de tu navegador o aplicación, ya que las versiones desactualizadas pueden afectar el rendimiento. Si el problema persiste, revisa nuestra página de estado del sistema para ver si hay problemas actuales que afecten la velocidad del sitio."
         },
         {
-          "issue": "No Se Puede Instalar el Software/App",
+          "issue": "No Se Puede Instalar el App",
           "solution": "Si no puedes instalar nuestro software o aplicación, asegúrate de que tu dispositivo cumple con los requisitos mínimos del sistema. Reinicia tu dispositivo e intenta nuevamente, ya que algunos problemas pueden resolverse con un simple reinicio. Si la instalación falla, consulta nuestra guía de instalación para obtener consejos adicionales de solución de problemas o contacta al soporte para obtener más ayuda."
         },
         {

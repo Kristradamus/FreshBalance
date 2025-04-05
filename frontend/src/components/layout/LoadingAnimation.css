@@ -10,14 +10,12 @@
   background-color: var(--mainBackground);
   z-index: 9999;
 }
-
 .spinnerContainer {
   position: relative;
   width: 150px;
   height: 150px;
   margin: 0 auto;
 }
-
 .spinnerArc {
   position: absolute;
   width: 100%;
@@ -26,7 +24,6 @@
   border: 0 solid transparent;
   animation: taperedSpin 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
-
 .spinnerArc1 {
   border-top: 8px solid #4da35a;
   border-right: 2px solid transparent;
@@ -35,7 +32,6 @@
   animation-delay: 0.1s;
   filter: blur(0.35px);
 }
-
 .spinnerArc2 {
   border-top: 6px solid var(--lightGreen);
   border-right: 1px solid transparent;
@@ -44,7 +40,6 @@
   animation-delay: 0.2s;
   filter: blur(0.3px);
 }
-
 .spinnerArc3 {
   border-top: 4px solid #459952;
   border-right: 0.5px solid transparent;
@@ -53,7 +48,6 @@
   animation-delay:0.3s;
   filter: blur(0.25px);
 }
-
 .textBox {
   position: absolute;
   text-align: center;
@@ -62,13 +56,13 @@
   transform: translate(-50%, -50%);
   width: 100%;
 }
-
 .textBox h2 {
   font-weight: bold;
   color: var(--mainTextColor);
   filter: blur(0.25px);
 }
 
+/*------------------------------------ANIMATIONS---------------------------------------*/
 @keyframes taperedSpin {
   0%{
     transform: rotate(0deg);

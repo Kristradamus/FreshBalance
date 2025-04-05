@@ -197,6 +197,12 @@
 }
 
 /*----------------------------------------------LOGIN----------------------------------------*/
+.loginWelcomeBox{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
 .loginTop,
 .loginBottom{
   display:flex;
@@ -210,7 +216,6 @@
 .loginTop{
   padding-top:20px;
 }
-
 .loginWelcome{
   margin:20px 0px;
 }
@@ -223,7 +228,7 @@
   color:var(--green);
   text-decoration:underline;
 }
-.fa-circle-user{
+.loginWelcomeBox .fa-circle-user{
   font-size:150px;
   color:var(--secondBackground);
 }

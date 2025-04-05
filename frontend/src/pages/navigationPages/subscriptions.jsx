@@ -1,15 +1,22 @@
 import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./subscriptions.css"
 
 export default function Subscriptions() {
 const [isYearly,setIsYearly] = useState(false);
+const navigate = useNavigate();
 const { t } = useTranslation();
 const subscriptionPlans = t("subscriptions.subscriptionPlans", {returnObject:true});
 
 {/*-----------------------------------SMALL-JS----------------------------------*/}
-const subHandleToggle = () => {
-setIsYearly(!isYearly);
+const subHandleToggle = () => {setIsYearly(!isYearly);}
+
+const handleTryFree = (type) => {
+  navigate(`/try-free/${type.toLowerCase()}`);
+}
+const handleBuyNow = (type) => {
+  navigate(`/buy-now/${type.toLowerCase()}`);
 }
 
 {/*--------------------------------------REUSABLE--------------------------------------*/}
@@ -26,8 +33,8 @@ return (
         </div>
       </div>
       <div className="subButtons">
-        <button className={`subTryFree ${plan.type}TryFree`}><strong>{t("subscriptions.tryFree")}</strong></button>
-        <button className={`subBuyNow ${plan.type}BuyNow`}><strong>{t("subscriptions.buyNow")}</strong><i className="fa-solid fa-location-arrow"></i></button>
+        <button className={`subTryFree ${plan.type}TryFree`} onClick={() => handleTryFree(plan.type)}><strong>{t("subscriptions.tryFree")}</strong></button>
+        <button className={`subBuyNow ${plan.type}BuyNow`} onClick={() => handleBuyNow(plan.type)}><strong>{t("subscriptions.buyNow")}</strong><i className="fa-solid fa-location-arrow"></i></button>
       </div>
     <hr></hr>
     </div>

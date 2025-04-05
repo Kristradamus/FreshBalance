@@ -156,7 +156,7 @@
     "registerContinue": "Weiter",
     "registerTermsRequired": "AGB müssen akzeptiert werden",
     "registrationSuccessfull": "Erfolgreich registriert",
-    "registrationFailed": "Registrierung fehlgeschlagen",
+    "registrationFailed": "Registrierung fehlgeschlagen!",
 
     "registerUsernameRequired": "Benutzername benötigt",
     "registerUsernameTaken": "Benutzername vergeben",
@@ -176,7 +176,10 @@
     "loginLogIn": "Anmelden",
     "loginRememberMe": "Eingeloggt bleiben",
     "loginPlsPassword": "Passwort eingeben",
+    "loginInvalidPassword": "Ungültiges Passwort!",
+    "generalError": "Es gibt ein Problem mit Ihrer Anmeldung. Bitte versuchen Sie es erneut oder kontaktieren Sie unseren Support.",
 
+    "plsTryAgain": "Die Zeit ist abgelaufen. Bitte versuchen Sie es erneut!",
     "needHelp": "Hilfe?"
   },
   "-------------------------------------------------------------product---------------------------------------------------": {},
@@ -445,7 +448,7 @@
           "solution": "Wenn Sie eine langsame Website-Leistung feststellen, versuchen Sie, den Cache und die App-Daten Ihres Browsers zu löschen. Stellen Sie sicher, dass Sie die neueste Version Ihres Browsers oder Ihrer App verwenden, da veraltete Versionen die Leistung beeinträchtigen können. Wenn das Problem weiterhin besteht, überprüfen Sie unsere Systemstatusseite, um festzustellen, ob es aktuelle Probleme gibt, die die Geschwindigkeit der Website beeinflussen."
         },
         {
-          "issue": "Software/App kann nicht installiert werden",
+          "issue": "App kann nicht installiert werden",
           "solution": "Wenn Sie unsere Software oder App nicht installieren können, stellen Sie sicher, dass Ihr Gerät die Mindestsystemanforderungen erfüllt. Starten Sie Ihr Gerät neu und versuchen Sie es erneut, da einige Probleme durch einen einfachen Neustart behoben werden können. Wenn die Installation fehlschlägt, konsultieren Sie unsere Installationsanleitung für zusätzliche Fehlerbehebungstipps oder wenden Sie sich an den Support, um weitere Hilfe zu erhalten."
         },
         {

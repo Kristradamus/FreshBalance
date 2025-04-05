@@ -8,6 +8,7 @@ export default function LogOut() {
   const [showAlert, setShowAlert] = useState(false);
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
+  const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
   const { t } = useTranslation();
 
   const handleCancelLogout = () => {
@@ -18,7 +19,7 @@ export default function LogOut() {
   const handleConfirmLogout = () => {
     logout();
     setShowAlert(false);
-    navigate("/");
+    navigate(lastPublicPage);
   };
 
   React.useEffect(() => {
@@ -37,16 +38,10 @@ export default function LogOut() {
               </p>
             </div>
             <div className="logoutAlertButtons">
-              <button
-                className="logoutCancelButton"
-                onClick={handleCancelLogout}
-              >
+              <button className="logoutCancelButton" onClick={handleCancelLogout} >
                 {t("cancel")}
               </button>
-              <button
-                className="logoutConfirmButton"
-                onClick={handleConfirmLogout}
-              >
+              <button className="logoutConfirmButton" onClick={handleConfirmLogout} >
                 {t("profile.logoutConfirm")}
               </button>
             </div>

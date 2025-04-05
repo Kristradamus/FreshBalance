@@ -28,17 +28,17 @@ return (
 
     {/*------------------------------LOCATION----------------------------------*/}
     <div className="servBox">
-    <div className="servHeader">
-      <h1>{servicesData.paragraphs.location.title}</h1>
-      <h3>{servicesData.paragraphs.location.subTitle}</h3>
-    </div>
+      <div className="servHeader">
+        <h1>{servicesData.paragraphs.location.title}</h1>
+        <h3>{servicesData.paragraphs.location.subTitle}</h3>
+      </div>
       <div className="servLocation">
         <h3 className="servServiceTitle">{servicesData.location.name}: </h3>
         <p className="servLocationText"><strong>{servicesData.location.address.addressTitle}</strong>{servicesData.location.address.addressDescription}</p>
         <p className="servLocationText"><strong>{servicesData.location.phone.phoneTitle}</strong>{servicesData.location.phone.phoneDescription}</p>
         <p className="servLocationText"><strong>{servicesData.location.workHours.workHoursTitle}</strong></p>
         {servicesData.location.workHours.workHoursDescription.map((item,index) => (
-        <p className="servLocationText" key={index}>{item.hours}</p>
+          <p className="servLocationText" key={index}>{item.hours}</p>
         ))}
         <iframe title={servicesData.location.name} src={servicesData.location.mapUrl} className="servMap" allowFullScreen="" loading="lazy"></iframe>
       </div>
@@ -52,15 +52,15 @@ return (
       </div>
       <div className="servDelivery">
         <ul className="servDeliveryAreas">
-        {servicesData.delivery.areas.map((area, index) => (
-        <li className="servCities" key={index}><p>{area}</p></li>
-        ))}
+          {servicesData.delivery.areas.map((area, index) => (
+            <li className="servCities" key={index}><p>{area}</p></li>
+          ))}
         </ul>
         <h3>{servicesData.delivery.subTitle1}</h3>
         <ul className="servDeliveryTerms">
-        {servicesData.delivery.terms.map((term, index) => (
-        <li className="servTerms" key={index}><p><strong>{term.title} </strong>{term.description}</p></li>
-        ))}
+          {servicesData.delivery.terms.map((term, index) => (
+            <li className="servTerms" key={index}><p><strong>{term.title} </strong>{term.description}</p></li>
+          ))}
         </ul>
       </div>
     </div>

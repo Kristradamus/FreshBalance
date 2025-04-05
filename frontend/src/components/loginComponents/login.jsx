@@ -5,7 +5,7 @@ import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import GoBackButton from "../reusableComponents/LRGoBackButton";
 
-export default function Login({ username, userProgress, setUserProgress }) {
+export default function Login({email, username, userProgress, setUserProgress }) {
   const [passwordError, setPasswordError] = useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -80,23 +80,19 @@ export default function Login({ username, userProgress, setUserProgress }) {
     if (isValid) {
       try {
         const verifiedEmail = sessionStorage.getItem("verifiedEmail");
-        if (!verifiedEmail) {
-          throw new Error("Email verification missing!");
-        }
-
-        const VerificationCode = sessionStorage.getItem("emailVerificationCode");
-
+        const verificationCode = sessionStorage.getItem("emailVerificationCode");
+        
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`,{
           email: verifiedEmail,
           password: loginFormData.password.trim(),
-          ...(VerificationCode && { verificationCode: VerificationCode }),}
+          ...(verificationCode && { verificationCode: verificationCode }),}
         );
 
         if (response.data.token) {
           const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
           navigate(lastPublicPage);
 
-          if (formData.rememberMe) {
+          if (loginFormData.rememberMe) {
             //------------------TODO----------------
             console.log("Remember me option selected.");
           }
@@ -105,19 +101,15 @@ export default function Login({ username, userProgress, setUserProgress }) {
           console.log("Token stored successfully!");
           await checkAuthStatus();
         }
-
         sessionStorage.removeItem("emailVerificationCode");
         sessionStorage.removeItem("verifiedEmail");
-
       } 
       catch (error) {
-        if (error.message.includes("Email verification")) {
-          alert(t("loginRegistration.sessionExpired"));
-          navigate("/login");
-        } else if (error.response?.data?.error === "invalidPassword") {
+        if (error.response?.data?.error === "Invalid password!") {
           setPasswordError(true);
-          setPasswordErrorMessage(t("loginRegistration.invalidPassword"));
-        } else {
+          setPasswordErrorMessage(t("loginRegistration.loginInvalidPassword"));
+        } 
+        else {
           console.error("Login error:", error);
           alert(t("loginRegistration.generalError"));
         }
@@ -128,11 +120,14 @@ export default function Login({ username, userProgress, setUserProgress }) {
   return (
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
-      <h1 className="loginWelcome">
-        {t("loginRegistration.loginWelcome")}&nbsp;{" "}
-        <p className="loginWelcomeUsername">{username}</p>&nbsp;!
-      </h1>
-      <i className="fa-solid fa-circle-user"></i>
+      <div className="loginWelcomeBox">
+        <h1 className="loginWelcome">
+          {t("loginRegistration.loginWelcome")}&nbsp;{" "}
+          <p className="loginWelcomeUsername">{username}</p>&nbsp;!
+        </h1>
+        <i className="fa-solid fa-circle-user"></i>
+        <p className="registerEmail">{email}</p>
+      </div>
       <div className="loginTop">
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick} >

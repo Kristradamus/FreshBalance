@@ -167,7 +167,7 @@
     "registerContinue": "Continue",
     "registerTermsRequired": "You must accept the Legal Policies to continue!",
     "registrationSuccessfull":"Registration successfull!",
-    "registrationFailed":"RegistrationFailed!",
+    "registrationFailed":"Registration failed!",
 
     "registerUsernameRequired": "Username is required!",
     "registerUsernameTaken": "This username is already taken!",
@@ -187,7 +187,10 @@
     "loginLogIn":"Log in",
     "loginRememberMe":"Remember me",
     "loginPlsPassword":"Please enter your password!",
+    "loginInvalidPassword":"Invalid password!",
+    "generalError":"There is an issue with your login. Please try again or contact our support.",
 
+    "plsTryAgain":"Time has expired. Please try again!",
     "needHelp": "Need help?"
   },
   "--------------------------------------------------------------product---------------------------------------------------": {},
@@ -480,7 +483,7 @@
           "solution": "If you're experiencing slow website performance, try clearing your browser's cache and app data. Make sure you're using the latest version of your browser or app, as outdated versions can affect performance. If the issue persists, check our system status page to see if there are any ongoing issues affecting website speed."
         },
         {
-          "issue": "Unable to Install Software/App",
+          "issue": "Unable to Install App",
           "solution": "If you're unable to install our software or app, ensure that your device meets the minimum system requirements. Restart your device and try again, as some issues may be resolved by a simple reboot. If installation fails, consult our installation guide for additional troubleshooting tips or contact support for further assistance."
         },
         {

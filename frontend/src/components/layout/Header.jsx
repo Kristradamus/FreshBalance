@@ -18,7 +18,7 @@ export default function Header() {
   const { t } = useTranslation();
   const headerData = t("header.headerData", { returnObject: true });
   const headerNav = isAuthenticated
-    ? /*isAdmin ? headerData?.navAdmin :*/ headerData?.navUser
+    ? (isAdmin ? headerData?.navAdmin : headerData?.navUser)
     : headerData?.navGuest;
 
   useEffect(() => {
@@ -27,9 +27,8 @@ export default function Header() {
       console.log("Navigation items:", headerNav);
     }
   }, [isAuthenticated, headerNav]);
-  {
-    /*--------------------------------SMALL-JS-----------------------------------*/
-  }
+  
+  {/*--------------------------------SMALL-JS-----------------------------------*/}
   const handleFavCartLogClick = (item) => {
     if (location.pathname === item.link) {
       window.location.reload();
@@ -107,15 +106,11 @@ export default function Header() {
       ]
     : headerData.recommendations;
 
-  {
-    /*------------------------------------------------MAIN--------------------------------------------------*/
-  }
+  {/*------------------------------------------------MAIN--------------------------------------------------*/}
   return (
     <div className="header">
       <div className="headerBox">
-        <div
-          className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}
-        />
+        <div className={`headerColorOverlay ${isSearchExpanded ? "clicked" : ""}`}/>
         <div className="headerLogoBox">
           <Link to="/" onClick={handleLogoClick}>
             <img className="headerLogo" src={logo} alt="freshBalance" />
@@ -124,62 +119,29 @@ export default function Header() {
             <LanguageSwitcher />
           </div>
         </div>
+
         {/*--------------------------------SEARCH-BAR-----------------------------------*/}
-        <div
-          className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`}
-          onClick={handleSearchBoxClick}
-          ref={searchBoxRef}
-        >
-          <div
-            className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`}
-            onClick={handleSearchBoxClick}
-            ref={searchBoxRef}
-          >
-            <i
-              className="fa-solid fa-magnifying-glass"
-              onClick={() => {
-                const trimmedQuery = searchQuery.trim().toLowerCase();
-                if (trimmedQuery !== "") {
-                  navigate(`/product/${trimmedQuery}`);
-                }
-              }}
-            ></i>
-            <input
-              ref={searchInputRef}
-              className="headerSearchBar"
-              placeholder={t("header.searchPlaceholder")}
-              value={searchQuery}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-            />
-            <i
-              className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`}
-              onClick={handleClearSearch}
-            />
+        <div className={`headerSearchBox ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef} >
+          <div className={`headerSearchBox2 ${isSearchExpanded ? "clicked" : ""}`} onClick={handleSearchBoxClick} ref={searchBoxRef} >
+            <i className="fa-solid fa-magnifying-glass" onClick={() => {const trimmedQuery = searchQuery.trim().toLowerCase(); if (trimmedQuery !== "") {navigate(`/product/${trimmedQuery}`);} }} ></i>
+            <input ref={searchInputRef} className="headerSearchBar" placeholder={t("header.searchPlaceholder")} value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+            <i className={`fa-solid fa-x ${isSearchExpanded ? "clicked" : ""}`} onClick={handleClearSearch} />
           </div>
+
           {/*--------------------------------DROP-DOWN-----------------------------------*/}
           <ul className={`headerSearchDropdown`}>
             {filteredRecommendations.map((item, index) => (
-              <li
-                className="headerRecommendations"
-                key={index}
-                onClick={(e) => handleRecommendationClick(item, e)}
-              >
+              <li className="headerRecommendations" key={index} onClick={(e) => handleRecommendationClick(item, e)} >
                 <p>{item}</p>
               </li>
             ))}
           </ul>
         </div>
+
         {/*--------------------------------FAV-CART-LOG-----------------------------------*/}
         <ul className="headerFavCartLog">
           {headerNav.map((item, index) => (
-            <li
-              key={index}
-              className={`headerNavElement ${
-                location.pathname === item.link ? "active" : ""
-              }`}
-              onClick={() => handleFavCartLogClick(item)}
-            >
+            <li key={index} className={`headerNavElement ${location.pathname === item.link ? "active" : "" }`} onClick={() => handleFavCartLogClick(item)} >
               <Link className="" to={item.link}>
                 {headerData.icons[item.name] && (
                   <i className={headerData.icons[item.name]}></i>

@@ -4,7 +4,6 @@ require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
 
-// Generate JWT token
 const generateToken = (userId, username, email, role) => {
   return jwt.sign(
     { userId, username, email, role },
@@ -13,7 +12,6 @@ const generateToken = (userId, username, email, role) => {
   );
 };
 
-// Verify JWT token
 const verifyToken = (token) => {
   try {
     return jwt.verify(token, JWT_SECRET);
@@ -24,7 +22,6 @@ const verifyToken = (token) => {
   }
 };
 
-// JWT Authentication middleware
 const authenticateJWT = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const token = authHeader?.split(" ")[1] || req.cookies.authToken;

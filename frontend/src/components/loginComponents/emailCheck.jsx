@@ -11,20 +11,6 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
   const [emailError, setEmailError] = useState(false);
 
   /*-----------------------------------------SMALL-JS--------------------------------------------------*/
-  /*RELOAD AND LEAVE SITE PREVENTER*/
-  useEffect(() => {
-    const handleBeforeUnload = (e) => {
-      if (email) {
-        e.preventDefault();
-        e.returnValue = "";
-      }
-    };
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [email]);
-
   /*IF USER GOES BACK AND CHANGES HIS EMAIL TO RESET ALL VARIABLES*/
   const handleEmailChange = (e) => {
     const rawInput = e.target.value;
@@ -74,14 +60,9 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
       return;
     }
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/check-email`,
-        { email }
-      );
-      sessionStorage.setItem(
-        "emailVerificationCode",
-        response.data.verificationCode
-      );
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/check-email`, { email });
+      
+      sessionStorage.setItem("emailVerificationCode",response.data.verificationCode);
       sessionStorage.setItem("verifiedEmail", email);
       if (!sessionStorage.getItem("emailVerificationCode")) {
         console.error("Verification code failed to persist in sessionStorage!");
