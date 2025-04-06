@@ -166,6 +166,7 @@
     "registerUsername3Chars": "Mín. 3 caracteres",
     "registerUsername30Chars": "Máx. 30 caracteres",
     "registerUsernameAllowedCharacters": "Solo letras, números y guiones bajos",
+    "registerSuccess": "Te has registrado con éxito.",
 
     "registerConfirmPassword": "Confirmar contraseña",
     "registerPasswordsDoNotMatch": "Las contraseñas no coinciden",
@@ -180,12 +181,13 @@
     "loginRememberMe": "Recordarme",
     "loginPlsPassword": "Ingresa tu contraseña",
     "loginInvalidPassword": "¡Contraseña incorrecta!",
-    "generalError": "Hay un problema con tu inicio de sesión. Por favor, inténtalo de nuevo o contacta al soporte.",
+    "loginSuccess": "Has iniciado sesión con éxito.",
 
+    "generalError": "Hay un problema con tu inicio de sesión. Por favor, inténtalo de nuevo o contacta al soporte.",
     "plsTryAgain": "El tiempo ha expirado. ¡Por favor, inténtalo de nuevo!",
     "needHelp": "¿Ayuda?"
   },
-  "-------------------------------------------------------------product---------------------------------------------------": {},
+  "-------------------------------------------------------------PRODUCT---------------------------------------------------": {},
   "productPage": {
     "loading": "Cargando...",
     "errorLoading": "Parece que hay un problema con la página del producto. Por favor, inténtelo de nuevo."
@@ -301,7 +303,7 @@
       }
     }
   },
-  "-------------------------------------------------SINGLE-product--------------------------------------------------------": {},
+  "-------------------------------------------------SINGLE-PRODUCT--------------------------------------------------------": {},
   "singleProductPage": {},
   "-----------------------------------------------------------SUBSCRIPTIONS-----------------------------------------------------": {},
   "subscriptions": {
@@ -414,6 +416,22 @@
     "yearly": "Anual",
     "lv": "lv."
   },
+  "----------------------------------------------------------TRY-FREE----------------------------------------------------------": {},
+  "tryFree": {
+    "mainTitle": "Comienza tu prueba gratuita de 14 días",
+    "subTitlePart1": "Disfruta del plan",
+    "subTitlePart2": "completamente gratis.",
+    "goBack": "Volver",
+    "startTrial": "Iniciar prueba gratuita",
+    "features": [
+      { "feature": "No se requiere tarjeta de crédito" },
+      { "feature": "Acceso completo a todas las funciones de este plan" },
+      { "feature": "Cancela en cualquier momento" }
+    ],
+    "success": "¡Tu prueba gratuita ha sido activada con éxito!"
+  },
+  "----------------------------------------------------------BUY-NOW-----------------------------------------------------------": {},
+  
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {

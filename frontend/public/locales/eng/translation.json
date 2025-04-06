@@ -174,6 +174,7 @@
     "registerUsername3Chars": "Username must contain at least 3 characters!",
     "registerUsername30Chars": "Username cannot exceed 30 characters!",
     "registerUsernameAllowedCharacters": "Only letters, numbers, and underscores are allowed in the username!",
+    "registerSuccess": "You have successfully registered!",
 
     "registerConfirmPassword":"Please confirm your password!",
     "registerPasswordsDoNotMatch": "Passwords do not match!",
@@ -188,8 +189,9 @@
     "loginRememberMe":"Remember me",
     "loginPlsPassword":"Please enter your password!",
     "loginInvalidPassword":"Invalid password!",
-    "generalError":"There is an issue with your login. Please try again or contact our support.",
+    "loginSuccess": "You have successfully logged in!",
 
+    "generalError":"There is an issue with your login. Please try again or contact our support.",
     "plsTryAgain":"Time has expired. Please try again!",
     "needHelp": "Need help?"
   },
@@ -333,7 +335,7 @@
       }
     }
   },
-  "---------------------------------------------------SINGLE-product------------------------------------------------------": {},
+  "---------------------------------------------------SINGLE-PRODUCT------------------------------------------------------": {},
   "singleProductPage": {},
   "--------------------------------------------------------SUBSCRIPTIONS--------------------------------------------------------": {},
   "subscriptions": {
@@ -446,6 +448,22 @@
     "yearly": "Yearly",
     "lv": "lv."
   },
+  "----------------------------------------------------------TRY-FREE----------------------------------------------------------": {},
+  "tryFree":{
+    "mainTitle":"Start Your 14-Day Free Trial",
+    "subTitlePart1":"Enjoy the full",
+    "subTitlePart2":"plan for completely free.",
+    "goBack":"Go back",
+    "startTrial":"Start Free Trial",
+    "features":[
+      {"feature":"No credit card required"},
+      {"feature":"Full acces to all features for this plan"},
+      {"feature":"Cancel anytime"}
+    ],
+    "success":"Your free trial has been succesfully activated!"
+  },
+  "----------------------------------------------------------BUY-NOW-----------------------------------------------------------": {},
+
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {
@@ -936,5 +954,4 @@
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel":"Cancel"
-
 }

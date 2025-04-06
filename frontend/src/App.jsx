@@ -21,7 +21,7 @@ const Subscriptions = React.lazy(() =>import("./pages/navigationPages/subscripti
 const Support = React.lazy(() => import("./pages/navigationPages/support.jsx"));
 const ProductPage = React.lazy(() =>import("./pages/productPages/productPage.jsx"));
 const LegalPage = React.lazy(() =>import("./pages/navigationPages/legalPage.jsx"));
-const BuyNowSubscription = React.lazy(() => import("./pages/navigationPages/BuyNowSubscription.jsx"));
+const BuyNowSubscription = React.lazy(() => import("./pages/navigationPages/buyNowSubscription.jsx"));
 const TryFreeSubscription = React.lazy(() => import("./pages/navigationPages/tryFreeSubscription.jsx"));
 
 export default function App() {
@@ -33,29 +33,22 @@ export default function App() {
           <Suspense fallback={<LoadingAnimation />}>
             <ScrollToTop />
             <Routes>
-              <Route element={<MainLayout />}>
-                <Route path="/about-us" element={<AboutUs />} />
-                <Route path="/" element={<FrontPage />} />
-                <Route path="/services" element={<Services />} />
-
-                <Route path="/subscriptions" element={<Subscriptions />} />
-                <Route path="/buy-now/:planType" element={<ProtectedRoute><BuyNowSubscription/></ProtectedRoute>} />
-                <Route path="/try-free/:planType" element={<ProtectedRoute><TryFreeSubscription/></ProtectedRoute>} />
-                <Route path="/new" element={<Navigate to="/subscriptions" replace/>}/>
-                <Route path="/intermediate" element={<Navigate to="/subscriptions" replace/>}/>
-                <Route path="/professional" element={<Navigate to="/subscriptions" replace/>}/>
-
-                <Route path="/support" element={<Support />} />
-                <Route path="/support/topic/:topicId" element={<Support />} />
-                <Route path="/support/contact" element={<Support />} />
-                <Route path="/cart" element={<Profile />} />
-                <Route path="/favourites" element={<Profile />} />
-                <Route path="/admin/*" element={<ProtectedRouteAdmin><Admin /></ProtectedRouteAdmin>} />
-                <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-                <Route path="/product/:promotionName" element={<ProductPage />} />
-                <Route path="/legal-policies" element={<LegalPage />} />
-              </Route>
-              <Route path="/communities" element={<Communities />} />
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<FrontPage />} />
+                  <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/subscriptions" element={<Subscriptions />} />
+                  <Route path="/buy-now/:planType" element={<ProtectedRoute><BuyNowSubscription/></ProtectedRoute>} />
+                  <Route path="/try-free/:planType" element={<ProtectedRoute><TryFreeSubscription/></ProtectedRoute>} />
+                  <Route path="/support" element={<Support />}/>
+                  <Route path="/support/topic/:topicId" element={<Support />} />
+                  <Route path="/support/contact" element={<Support />} />
+                  <Route path="/admin/*"element={<ProtectedRouteAdmin><Admin /></ProtectedRouteAdmin>} />
+                  <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                  <Route path="/product/:promotionName" element={<ProductPage />} />
+                  <Route path="/legal-policies" element={<LegalPage />} />
+                  <Route path="/communities" element={<Communities />}/>
+                </Route>
               <Route path="/email-check/*" element={<RedirectTo><LoginRegistration /></RedirectTo>} />
             </Routes>
           </Suspense>

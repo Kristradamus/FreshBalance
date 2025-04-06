@@ -163,6 +163,7 @@
     "registerUsername3Chars": "Mind. 3 Zeichen",
     "registerUsername30Chars": "Max. 30 Zeichen",
     "registerUsernameAllowedCharacters": "Nur Buchstaben, Zahlen, Unterstriche",
+    "registerSuccess": "Sie haben sich erfolgreich registriert!",
 
     "registerConfirmPassword": "Passwort bestätigen",
     "registerPasswordsDoNotMatch": "Passwörter unterschiedlich",
@@ -177,8 +178,9 @@
     "loginRememberMe": "Eingeloggt bleiben",
     "loginPlsPassword": "Passwort eingeben",
     "loginInvalidPassword": "Ungültiges Passwort!",
-    "generalError": "Es gibt ein Problem mit Ihrer Anmeldung. Bitte versuchen Sie es erneut oder kontaktieren Sie unseren Support.",
+    "loginSuccess": "Sie haben sich erfolgreich angemeldet!",
 
+    "generalError": "Es gibt ein Problem mit Ihrer Anmeldung. Bitte versuchen Sie es erneut oder kontaktieren Sie unseren Support.",
     "plsTryAgain": "Die Zeit ist abgelaufen. Bitte versuchen Sie es erneut!",
     "needHelp": "Hilfe?"
   },
@@ -411,6 +413,22 @@
     "yearly": "Jährlich",
     "lv": "lv."
   },
+  "----------------------------------------------------------TRY-FREE----------------------------------------------------------": {},
+  "tryFree": {
+    "mainTitle": "Starten Sie Ihre 14-tägige kostenlose Testversion",
+    "subTitlePart1": "Genießen Sie den vollständigen",
+    "subTitlePart2": "Plan komplett kostenlos.",
+    "goBack": "Zurück",
+    "startTrial": "Kostenlose Testversion starten",
+    "features": [
+      { "feature": "Keine Kreditkarte erforderlich" },
+      { "feature": "Voller Zugriff auf alle Funktionen dieses Plans" },
+      { "feature": "Jederzeit kündbar" }
+    ],
+    "success": "Ihre kostenlose Testversion wurde erfolgreich aktiviert!"
+  },
+  "----------------------------------------------------------BUY-NOW-----------------------------------------------------------": {},
+  
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {

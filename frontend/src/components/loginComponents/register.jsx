@@ -243,13 +243,17 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
             sessionStorage.removeItem("emailVerificationCode");
             sessionStorage.removeItem("verifiedEmail");
             if (response.data.token) {
+              const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
+              navigate(lastPublicPage, {
+                state: {
+                  showToast: true,
+                  toastMessage: t("loginRegistration.registerSuccess")
+                }
+              });
+              
               localStorage.setItem("authToken", response.data.token);
-
               console.log("Token stored successfully!");
               await checkAuthStatus();
-
-              const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
-              navigate(lastPublicPage);
             }
           }
         } 

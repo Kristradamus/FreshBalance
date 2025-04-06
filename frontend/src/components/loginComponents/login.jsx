@@ -90,7 +90,12 @@ export default function Login({email, username, userProgress, setUserProgress })
 
         if (response.data.token) {
           const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
-          navigate(lastPublicPage);
+          navigate(lastPublicPage, {
+            state: {
+              showToast: true,
+              toastMessage: t("loginRegistration.loginSuccess")
+            }
+          });
 
           if (loginFormData.rememberMe) {
             //------------------TODO----------------

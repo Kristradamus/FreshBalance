@@ -11,13 +11,15 @@ const RestrictedPageAlert = () => {
     return lastPage || "/";
   };
   return (
-    <div className="restrictedAlertContainer">
-      <div className="restrictedAlertBox">
-        <div className="restrictedAlertText">
-          <h2 className="restrictedAlertMainTitle">{t("protectedRoute.restrictedTitle")}</h2>
-          <p className="restrictedAlertSubTitle">{t("protectedRoute.restrictedSubTitle")}</p>
+    <div className="restrictedAlert">
+      <div className="restrictedAlertContainer">
+        <div className="restrictedAlertBox">
+          <div className="restrictedAlertText">
+            <h2 className="restrictedAlertMainTitle">{t("protectedRoute.restrictedTitle")}</h2>
+            <p className="restrictedAlertSubTitle">{t("protectedRoute.restrictedSubTitle")}</p>
+          </div>
+          <button className="restrictedAlertGoBackBtn" onClick={() => { navigate(getLastPublicPage()); }}>{t("protectedRoute.restrictedGoBack")}</button>
         </div>
-        <button className="restrictedAlertGoBackBtn" onClick={() => { navigate(getLastPublicPage()); }}>{t("protectedRoute.restrictedGoBack")}</button>
       </div>
     </div>
   );

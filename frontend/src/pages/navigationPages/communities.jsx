@@ -1,5 +1,3 @@
-import Header from "../../components/layout/Header.jsx";
-import Navigation from "../../components/layout/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./communities.css";
@@ -14,8 +12,6 @@ const goToSubscriptions = (path) => {
 
 return (
 <>
-  <Header/>
-  <Navigation/>
   <div className="communities">
     <div className="communitiesColorOverlay">
       <div className="communitiesBox">

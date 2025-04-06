@@ -21,7 +21,7 @@
   font-size:calc(var(--textFont) + 2px);
 }
 .loginRegisterNeedHelp p:hover {
-  color: var(--lightGreen);
+  color: var(--mainButtonHover);
 }
 .emailLogRegBox {
   display: flex;
@@ -130,7 +130,7 @@
   font-size: var(--smallTextFont);
 }
 .emailLogRegContinue:hover {
-  background-color: var(--lightGreen);
+  background-color: var(--mainButtonHover);
 }
 .emailDontWorry {
   text-align: center;
@@ -167,18 +167,18 @@
   border-radius: var(--normalRadius);
 }
 .emailGoogle {
-  background-color: rgba(234, 68, 53, 0.89);
+  background-color: rgba(235, 64, 48, 0.89);
   color: var(--white);
 }
 .emailFacebook {
-  background-color: rgba(39, 39, 182, 0.89);
+  background-color: rgba(42, 42, 223, 0.89);
   color: var(--white);
 }
 .emailGoogle:hover {
-  background-color:rgba(255, 110, 96, 0.89);
+  background-color:rgba(197, 51, 37, 0.89);
 }
 .emailFacebook:hover {
-  background-color: rgba(66, 66, 218, 0.829);
+  background-color: rgba(34, 34, 146, 0.829);
 }
 .emailGoogle i,
 .emailFacebook i {
@@ -217,7 +217,7 @@
   padding-top:20px;
 }
 .loginWelcome{
-  margin:20px 0px;
+  margin-top:20px;
 }
 .loginWelcome,
 .loginWelcomeUsername{
@@ -315,7 +315,7 @@
 }
 .emailLogRegCheckboxLink:hover {
   text-decoration:underline;
-  color: var(--lightGreen);
+  color: var(--mainButtonHover);
 }
 .emailLogRegCheckboxBox input[type="checkbox"] {
   cursor: pointer;
@@ -338,7 +338,7 @@
   color:var(--errorColor);
 }
 .emailLogRegCheckboxBox input[type="checkbox"]:checked {
-  border-color: var(--lightGreen);
+  border-color: var(--mainButtonHover);
 }
 .emailLogRegCheckboxBox input[type="checkbox"]::after {
   content: "";
@@ -357,7 +357,7 @@
 }
 .emailLogRegCheckboxBox input[type="checkbox"]:checked::after {
   opacity: 1;
-  background-color: var(--lightGreen);
+  background-color: var(--mainButtonHover);
 }
 
 /*---------------TERMS-AND-CONDITIONS---------------*/
@@ -387,7 +387,8 @@
   transition:var(--transition);
 }
 .termsGoBackButton:hover{
-  background-color:var(--lightGreen);
+  background-color:var(--mainButtonHover);
+  transform:translateY(-1px);
 }
 
 /*---------------------------------RESPONSIVE----------------------------------*/

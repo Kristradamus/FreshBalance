@@ -1,0 +1,97 @@
+.buyNowSubscription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: var(--mainBackground);
+}
+.buyNowSubscriptionBox {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  border-radius: var(--smallRadius);
+  background-color: var(--white);
+  box-shadow: var(--boxShadow);
+  width: 90%;
+  max-width: 600px;
+}
+.buyNowSubscriptionBox hr {
+  width: 100%;
+  background-color: var(--secondBackground);
+  margin: 0px;
+}
+.buyNowTop,
+.buyNowBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+}
+
+/*-----------------------------TOP----------------------------------*/
+.buyNowButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+.buyNowSubmitButton,
+.buyNowGoBackButton {
+  border: none;
+  border-radius: var(--smallRadius);
+  cursor: pointer;
+  padding: 15px 10px;
+  transition: var(--transition);
+  width: 100%;
+  font-size: var(--textFont);
+}
+.buyNowGoBackButton {
+  background-color: var(--secondButtonColor);
+  color: var(--mainTextColor);
+}
+.buyNowGoBackButton:hover {
+  background-color: var(--secondButtonHover);
+  transform: translateY(-1px);
+}
+.buyNowSubmitButton {
+  background-color: var(--mainButtonColor);
+  color: var(--white);
+}
+.buyNowSubmitButton:hover {
+  background-color: var(--mainButtonHover);
+  transform: translateY(-1px);
+}
+
+/*-----------------------------BOTTOM----------------------------------*/
+.buyNowBottom {
+  background-color: rgb(247, 247, 247);
+}
+.buyNowFeaturesBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.buyNowFeature {
+  color: var(--mainTextColor);
+  font-size: var(--textFont);
+}
+.buyNowFeature .fa-check {
+  color: var(--green);
+  margin-right: var(--iconDistance);
+}
+/*------------------------------------RESPONSIVE------------------------------------------*/
+@media (max-width: 780px) {
+  .buyNowButtons {
+    flex-direction: column;
+  }
+  .buyNowTop,
+  .buyNowBottom {
+    padding: 20px;
+  }
+}
