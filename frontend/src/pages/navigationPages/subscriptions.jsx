@@ -16,7 +16,17 @@ const handleTryFree = (type) => {
   navigate(`/try-free/${type.toLowerCase()}`);
 }
 const handleBuyNow = (type) => {
-  navigate(`/buy-now/${type.toLowerCase()}`);
+  const selectedPlan = subscriptionPlans.find(plan => plan.type === type);
+  const price = isYearly ? selectedPlan.priceYear : selectedPlan.priceMonth;
+  const period = isYearly ? t("subscriptions.year") : t("subscriptions.month");
+  
+  navigate(`/buy-now/${type.toLowerCase()}`, {
+    state: {
+      planType: type,
+      planPrice: price,
+      planPeriod: period,
+    }
+  });
 }
 
 {/*--------------------------------------REUSABLE--------------------------------------*/}
@@ -29,7 +39,7 @@ return (
         <h1 className="subTopTitle">{isYearly ? plan.priceYear : plan.priceMonth}</h1>
         <div className="subSidePrice">
           <h4 className="subCurrency">{t("subscriptions.lv")}</h4>
-          <h4 className="subTime">{isYearly ? "/year" : "/month"}</h4>
+          <h4 className="subTime">{isYearly ? `/${t("subscriptions.year")}` : `/${t("subscriptions.month")}`}</h4>
         </div>
       </div>
       <div className="subButtons">

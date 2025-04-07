@@ -168,7 +168,7 @@
       "username3Chars": "Mín. 3 caracteres",
       "username30Chars": "Máx. 30 caracteres",
       "usernameAllowedCharacters": "Solo letras, números y guiones bajos",
-      "success": "Te has registrado con éxito.",
+      "success": "Te has registrado con éxito !",
       
       "confirmPassword": "Confirmar contraseña",
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
@@ -185,7 +185,7 @@
       "rememberMe": "Recordarme",
       "plsPassword": "Ingresa tu contraseña",
       "invalidPassword": "¡Contraseña incorrecta!",
-      "success": "Has iniciado sesión con éxito.",
+      "success": "Has iniciado sesión con éxito !",
       "titlePassword": "Contraseña"
     }
   },
@@ -416,7 +416,10 @@
     "buyNow": "Comprar ahora",
     "monthly": "Mensual",
     "yearly": "Anual",
-    "lv": "lv."
+    "lv": "lv.",
+    "month": "mes",
+    "year": "año"
+
   },
   "----------------------------------------------------------TRY-FREE----------------------------------------------------------": {},
   "tryFree": {
@@ -430,10 +433,24 @@
       { "feature": "Acceso completo a todas las funciones de este plan" },
       { "feature": "Cancela en cualquier momento" }
     ],
-    "success": "¡Tu prueba gratuita ha sido activada con éxito!"
+    "success": "¡Tu prueba gratuita ha sido activada con éxito !"
   },
   "----------------------------------------------------------BUY-NOW-----------------------------------------------------------": {},
-  
+  "buyNow": {
+    "mainTitlePart1": "Plan",
+    "mainTitlePart2": "Premium", 
+    "subTitlePart1": "Disfruta del",
+    "subTitlePart2": "plan completo.",
+    "successPart1": "¡Tu",
+    "successPart2": "plan se ha activado correctamente !",
+    "startPlan": "Comenzar Plan Premium",
+    "features": [
+      {"feature": "Comienza al momento de confirmar"},
+      {"feature": "Acceso completo a todas las funciones de este plan"},
+      {"feature": "Cancela en cualquier momento"}
+    ],
+    "lv": "lv"
+  },
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {

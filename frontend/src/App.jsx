@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import React from "react";
 import MainLayout from "./components/layout/MainLayout.jsx";
 import ScrollToTop from "./components/reusableComponents/ScrollToTop.jsx";
@@ -38,8 +38,8 @@ export default function App() {
                   <Route path="/about-us" element={<AboutUs />} />
                   <Route path="/services" element={<Services />} />
                   <Route path="/subscriptions" element={<Subscriptions />} />
-                  <Route path="/buy-now/:planType" element={<ProtectedRoute><BuyNowSubscription/></ProtectedRoute>} />
-                  <Route path="/try-free/:planType" element={<ProtectedRoute><TryFreeSubscription/></ProtectedRoute>} />
+                  <Route path="/buy-now/*" element={<ProtectedRoute><BuyNowSubscription/></ProtectedRoute>} />
+                  <Route path="/try-free/*" element={<ProtectedRoute><TryFreeSubscription/></ProtectedRoute>} />
                   <Route path="/support" element={<Support />}/>
                   <Route path="/support/:path" element={<Support />} />
                   <Route path="/support/contact" element={<Support />} />
