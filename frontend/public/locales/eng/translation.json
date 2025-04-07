@@ -105,16 +105,12 @@
     "finisher": "This About Us page combines our brand story, mission, and values with a personal touch, while also guiding customers toward the next steps to better life. It’s designed to build trust, create connection, and inspire action.",
     "developer": "Kristiyan Krustev"
   },
-  "---------------------------------------------------------CART---------------------------------------------------------------": {},
-  "cart": {},
   "-----------------------------------------------------------COMMUNITIES------------------------------------------------------": {},
   "communities": {
     "accessDenied": "Access denied!",
-    "personalPlan": "You need to get a personal plan first!",
+    "personalPlan": "You need to get a personal plan first",
     "goToSubscriptions": "Go to Subscriptions"
   },
-  "---------------------------------------------------------FAVOURITES----------------------------------------------------------": {},
-  "favourites": {},
   "-----------------------------------------------------------FRONT-PAGE--------------------------------------------------------": {},
   "frontPage": {
     "heroSectionTitle1": "PREMIUM NUTRITION PRODUCTS",
@@ -145,57 +141,63 @@
     "whoWeWorkWith":"HERE ARE SOME OF THE BRANDS WE WORK WITH"
   },
   "--------------------------------------------------------------LOGIN-REGISTRATION--------------------------------------------": {},
-  "loginRegistration": {
-    "loginRegisterGoBack":"Go back",
-
-    "emailGreeting": "Hello!",
-    "emailPls": "Please enter your email address",
-    "emailPlaceholder": "Email...",
-    "emailWarning": "Please, enter a valid email address!",
-    "emailContinue": "Continue",
-    "emailDontWorry": "You don't have an account? Don't worry, just input the email with which you want to create one.",
-    "emailOr": "or",
-    "emailAlso": "You can also log in with:",
-    "emailError":"Server error during email verification. Please contact support if this persists.",
-
-    "registerWelcome":"Create an account",
-    "registerLegalPolicies":"Legal Policies",
-    "registerTitleUsername": "Username",
-    "registerTitlePassword": "Password",
-    "registerTitleConfirmPassword": "Confirm Password",
-    "registerTerms": "I have read and agree to the",
-    "registerContinue": "Continue",
-    "registerTermsRequired": "You must accept the Legal Policies to continue!",
-    "registrationSuccessfull":"Registration successfull!",
-    "registrationFailed":"Registration failed!",
-
-    "registerUsernameRequired": "Username is required!",
-    "registerUsernameTaken": "This username is already taken!",
-    "registerUsername3Chars": "Username must contain at least 3 characters!",
-    "registerUsername30Chars": "Username cannot exceed 30 characters!",
-    "registerUsernameAllowedCharacters": "Only letters, numbers, and underscores are allowed in the username!",
-    "registerSuccess": "You have successfully registered!",
-
-    "registerConfirmPassword":"Please confirm your password!",
-    "registerPasswordsDoNotMatch": "Passwords do not match!",
-    "registerPasswordRequired": "Password is required!",
-    "registerPassword8Chars": "Password must be atleast 8 characters!",
-    "registerPassword1Number":"Password must contain atleast one number!",
-    "registerPasswordUpperCaseLetter":"Password must contain atleast one uppercase letter!",
-
-    "loginWelcome":"Hi",
-    "loginForgottenPassword":"Forgotten password?",
-    "loginLogIn":"Log in",
-    "loginRememberMe":"Remember me",
-    "loginPlsPassword":"Please enter your password!",
-    "loginInvalidPassword":"Invalid password!",
-    "loginSuccess": "You have successfully logged in!",
-
+  "loginRegistration":{
+    "goBack":"Go back",
     "generalError":"There is an issue with your login. Please try again or contact our support.",
     "plsTryAgain":"Time has expired. Please try again!",
-    "needHelp": "Need help?"
+    "needHelp": "Need help?",
+
+    "email":{
+      "greeting": "Hello!",
+      "pls": "Please enter your email address",
+      "placeholder": "Email...",
+      "warning": "Please, enter a valid email address!",
+      "continue": "Continue",
+      "dontWorry": "You don't have an account? Don't worry, just input the email with which you want to create one.",
+      "or": "or",
+      "also": "You can also log in with:",
+      "error":"Server error during email verification. Please contact support if this persists."
+    },
+
+    "registration":{
+      "welcome":"Create an account",
+      "legalPolicies":"Legal Policies",
+      "titleUsername": "Username",
+      "titlePassword": "Password",
+      "titleConfirmPassword": "Confirm Password",
+      "terms": "I have read and agree to the",
+      "continue": "Continue",
+      "termsRequired": "You must accept the Legal Policies to continue!",
+      "successfull":"Registration successfull!",
+      "failed":"Registration failed!",
+  
+      "usernameRequired": "Username is required!",
+      "usernameTaken": "This username is already taken!",
+      "username3Chars": "Username must contain at least 3 characters!",
+      "username30Chars": "Username cannot exceed 30 characters!",
+      "usernameAllowedCharacters": "Only letters, numbers, and underscores are allowed in the username!",
+      "success": "You have successfully registered!",
+  
+      "confirmPassword":"Please confirm your password!",
+      "passwordsDoNotMatch": "Passwords do not match!",
+      "passwordRequired": "Password is required!",
+      "password8Chars": "Password must be atleast 8 characters!",
+      "password1Number":"Password must contain atleast one number!",
+      "passwordUpperCaseLetter":"Password must contain atleast one uppercase letter!"
+    },
+
+    "login":{
+      "welcome":"Hi",
+      "forgottenPassword":"Forgotten password?",
+      "logIn":"Log in",
+      "rememberMe":"Remember me",
+      "plsPassword":"Please enter your password!",
+      "invalidPassword":"Invalid password!",
+      "success": "You have successfully logged in!",
+      "titlePassword":"Password"
+    }
   },
-  "--------------------------------------------------------------product---------------------------------------------------": {},
+  "--------------------------------------------------------------PRODUCT---------------------------------------------------": {},
   "productPage": {
     "loading": "Loading...",
     "errorLoading": "There seems to be an issue with the product page. Please try again."
@@ -203,6 +205,13 @@
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {
     "sideBarMainTitle":"My Account",
+    "sidebarItems":[
+      { "icon": "fa-solid fa-gear", "title": "Profile Settings", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-heart", "title": "Favourites", "key": "favourites", "path": "favourites" },
+      { "icon": "fa-solid fa-cart-shopping", "title": "Cart", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-shield-halved", "title": "Security", "key": "security", "path": "security" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Log out", "key": "logout", "path": "logout", "isLogout": true}
+    ],
 
     "securityMainTitle":"Security",
     "securityChangePasswordTitle":"Change Password",
@@ -225,6 +234,25 @@
     "logoutConfirmTitle":"Confirm Logout",
     "logoutConfirmMessage":"Are you sure you want to log out?",
     "logoutConfirm":"Yes, Log out"
+  },
+  "-------------------------------------------------------ADMIN-PROFILE--------------------------------------------------------": {},
+  "admin":{
+    "sidebarItems":[
+      { "icon": "fa-solid fa-gear", "title": "Settings", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-box-open", "title": "Product Management", "key": "products", "path": "products" },
+      { "icon": "fa-solid fa-users", "title": "Account Management", "key": "accounts", "path": "accounts" },
+      { "icon": "fa-solid fa-shopping-bag", "title": "Orders", "key": "orders", "path": "orders" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Log out", "key": "logout", "path": "logout", "isLogout": true }
+    ],
+    "sidebarMainTitle":"Admin Panel",
+
+    "settingsMainTitle":"Admin Settings",
+
+    "ordersMainTitle":"Order Management",
+
+    "accountManagementMainTitle":"Account Management",
+    "accountManagementRemoveAccount":"Remove Account"
+
   },
   "----------------------------------------------------SERVICES------------------------------------------------------------------": {},
   "services": {
@@ -470,75 +498,90 @@
       "Account": [
         {
           "issue": "Can't Log in",
-          "solution": "If you're unable to log in, double-check that you're entering the correct email address and password. Make sure that Caps Lock is not on, and try resetting your password if needed. If you're still having issues, clear your browser’s cache and cookies, and try logging in again. For further assistance, contact customer support and we’ll help you regain access to your account."
+          "solution": "If you're unable to log in, double-check that you're entering the correct email address and password. Make sure that Caps Lock is not on, and try resetting your password if needed. If you're still having issues, clear your browser’s cache and cookies, and try logging in again. For further assistance, contact customer support and we’ll help you regain access to your account.",
+          "path":"cant-log-in"
         },
         {
           "issue": "Forgoten Username or Email",
-          "solution": "If you've forgotten your username or email address, try checking your previous email accounts for any registration emails. If you're still unsure, contact our support team and provide any possible details you remember. We can help recover your account and assist in retrieving your username or email."
+          "solution": "If you've forgotten your username or email address, try checking your previous email accounts for any registration emails. If you're still unsure, contact our support team and provide any possible details you remember. We can help recover your account and assist in retrieving your username or email.",
+          "path":"forgoten-username-or-email"
         },
         {
           "issue": "Account Locked",
-          "solution": "If your account is locked, it may be due to suspicious activity or security concerns. To regain access, try resetting your password. If you're unable to unlock your account, reach out to customer support for assistance. They will help you verify your identity and secure your account as soon as possible."
+          "solution": "If your account is locked, it may be due to suspicious activity or security concerns. To regain access, try resetting your password. If you're unable to unlock your account, reach out to customer support for assistance. They will help you verify your identity and secure your account as soon as possible.",
+          "path":"account-locked"
         }
       ],
       "Billing": [
         {
           "issue": "Payment issues",
-          "solution": "If you're encountering payment issues, first ensure that your payment details are up-to-date and that your payment method has sufficient funds. Check if there are any issues with your bank or payment provider. If a payment is declined, contact your bank to resolve the issue. Additionally, you can visit our payment troubleshooting guide for step-by-step instructions on how to fix common payment problems."
+          "solution": "If you're encountering payment issues, first ensure that your payment details are up-to-date and that your payment method has sufficient funds. Check if there are any issues with your bank or payment provider. If a payment is declined, contact your bank to resolve the issue. Additionally, you can visit our payment troubleshooting guide for step-by-step instructions on how to fix common payment problems.",
+          "path":"payment-issues"
         },
         {
           "issue": "Subscription Not Working",
-          "solution": "If your subscription is not working, ensure that your subscription is active and that your payment has been successfully processed. You can verify the status of your subscription in your account settings. If everything appears correct but the issue continues, please reach out to our support team for further assistance."
+          "solution": "If your subscription is not working, ensure that your subscription is active and that your payment has been successfully processed. You can verify the status of your subscription in your account settings. If everything appears correct but the issue continues, please reach out to our support team for further assistance.",
+          "path":"subscription-not-working"
         },
         {
           "issue": "Refund Request Issues",
-          "solution": "If you're having trouble submitting a refund request, make sure that your purchase is eligible according to our refund policy. You can review the conditions under which refunds are granted on our website. If you're still uncertain or need further help, reach out to our support team and they’ll guide you through the refund process."
+          "solution": "If you're having trouble submitting a refund request, make sure that your purchase is eligible according to our refund policy. You can review the conditions under which refunds are granted on our website. If you're still uncertain or need further help, reach out to our support team and they’ll guide you through the refund process.",
+          "path":"refund-request-issues"
         }
       ],
       "Technical": [
         {
           "issue": "Slow Website Performance",
-          "solution": "If you're experiencing slow website performance, try clearing your browser's cache and app data. Make sure you're using the latest version of your browser or app, as outdated versions can affect performance. If the issue persists, check our system status page to see if there are any ongoing issues affecting website speed."
+          "solution": "If you're experiencing slow website performance, try clearing your browser's cache and app data. Make sure you're using the latest version of your browser or app, as outdated versions can affect performance. If the issue persists, check our system status page to see if there are any ongoing issues affecting website speed.",
+          "path":"slow-website-performance"
         },
         {
           "issue": "Unable to Install App",
-          "solution": "If you're unable to install our software or app, ensure that your device meets the minimum system requirements. Restart your device and try again, as some issues may be resolved by a simple reboot. If installation fails, consult our installation guide for additional troubleshooting tips or contact support for further assistance."
+          "solution": "If you're unable to install our software or app, ensure that your device meets the minimum system requirements. Restart your device and try again, as some issues may be resolved by a simple reboot. If installation fails, consult our installation guide for additional troubleshooting tips or contact support for further assistance.",
+          "path":"unable-to-install-app"
         },
         {
           "issue": "App Crashing or Freezing",
-          "solution": "If the app is crashing or freezing, try restarting your app and ensure you have the latest version installed. Sometimes clearing the app’s cache or reinstalling it can fix persistent issues. If the problem continues, refer to our troubleshooting guide or contact support for more advanced troubleshooting options."
+          "solution": "If the app is crashing or freezing, try restarting your app and ensure you have the latest version installed. Sometimes clearing the app’s cache or reinstalling it can fix persistent issues. If the problem continues, refer to our troubleshooting guide or contact support for more advanced troubleshooting options.",
+          "path":"app-crashing-or-freezing"
         },
         {
           "issue": "Error Messages",
-          "solution": "If you encounter an error message, note down the error code and message displayed. Check our error message troubleshooting page for a list of common errors and their solutions. If you're unable to resolve the issue using the guide, contact support and provide the error details so we can assist you more efficiently."
+          "solution": "If you encounter an error message, note down the error code and message displayed. Check our error message troubleshooting page for a list of common errors and their solutions. If you're unable to resolve the issue using the guide, contact support and provide the error details so we can assist you more efficiently.",
+          "path":"error-messages"
         }
       ],
       "Security": [
         {
           "issue": "Two-Factor Authentication Issues",
-          "solution": "If you're experiencing issues with two-factor authentication (2FA), ensure that you have access to the authentication app or backup codes. If you've lost access to the authentication method, you may need to reset your 2FA settings. If you’re unable to do this on your own, contact customer support, and we'll assist you in recovering access to your account."
+          "solution": "If you're experiencing issues with two-factor authentication (2FA), ensure that you have access to the authentication app or backup codes. If you've lost access to the authentication method, you may need to reset your 2FA settings. If you’re unable to do this on your own, contact customer support, and we'll assist you in recovering access to your account.",
+          "path":"two-factor-authentication-issues"
         },
         {
           "issue": "Account Hacked",
-          "solution": "If you suspect that your account has been hacked, reset your password immediately to secure your account. Enable two-factor authentication (2FA) for extra protection. Review any recent account activity for signs of unauthorized access, and report suspicious behavior to our security team. We will investigate and help you regain control of your account."
+          "solution": "If you suspect that your account has been hacked, reset your password immediately to secure your account. Enable two-factor authentication (2FA) for extra protection. Review any recent account activity for signs of unauthorized access, and report suspicious behavior to our security team. We will investigate and help you regain control of your account.",
+          "path":"account-hacked"
         }
       ],
       "Orders": [
         {
           "issue": "Missing Orders or Deliveries",
-          "solution": "In case your order is missing or delayed, first confirm the details of your order, including the tracking number. Check with the delivery provider for updates. If the delivery is significantly delayed or missing, report the issue to our customer support team and they will assist in resolving the matter with the provider."
+          "solution": "In case your order is missing or delayed, first confirm the details of your order, including the tracking number. Check with the delivery provider for updates. If the delivery is significantly delayed or missing, report the issue to our customer support team and they will assist in resolving the matter with the provider.",
+          "path":"missing-orders-or-deliveries"
         }
       ],
       "Email": [
         {
           "issue": "Email Not Received",
-          "solution": "If you're not receiving your emails, check your spam or junk folder, as the email may have been filtered incorrectly. Verify that your email address is correct and that your mailbox isn't full. If you still haven't received the email, try requesting a resend. If the issue persists, contact support and we'll investigate further."
+          "solution": "If you're not receiving your emails, check your spam or junk folder, as the email may have been filtered incorrectly. Verify that your email address is correct and that your mailbox isn't full. If you still haven't received the email, try requesting a resend. If the issue persists, contact support and we'll investigate further.",
+          "path":"email-not-received"
         }
       ],
       "Subscriptions": [
         {
           "issue": "Can't Cancel Subscription",
-          "solution": "If you're having trouble canceling your subscription, first make sure you're signed into the correct account. Go to your account settings and find the subscription management section. If you’re still unable to cancel, contact our support team as soon as possible to prevent further charges, especially before your next billing cycle."
+          "solution": "If you're having trouble canceling your subscription, first make sure you're signed into the correct account. Go to your account settings and find the subscription management section. If you’re still unable to cancel, contact our support team as soon as possible to prevent further charges, especially before your next billing cycle.",
+          "path":"cant-cancel-subscription"
         }
       ]
     },

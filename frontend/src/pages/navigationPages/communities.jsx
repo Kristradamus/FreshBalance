@@ -3,29 +3,27 @@ import { useTranslation } from "react-i18next";
 import "./communities.css";
 
 export default function Communities() {
-const navigate = useNavigate();
-const { t } = useTranslation();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-const goToSubscriptions = (path) => {
-  navigate(path);
-};
+  const goToSubscriptions = (path) => {
+    navigate(path);
+  };
 
-return (
-<>
-  <div className="communities">
-    <div className="communitiesColorOverlay">
-      <div className="communitiesBox">
-        <div className="communitiesTop">
-          <h1>{t("communities.accessDenied")}</h1>
-        </div>
-        <div className="communitiesBottom">
-          <h5 className="communitiesPlan">{t("communities.personalPlan")}</h5>
-          <button className="communitiesGoToSub" onClick={() => goToSubscriptions("/subscriptions")}>
-            {t("communities.goToSubscriptions")}
-          </button>
+  return (
+    <div className="communitiesAlert">
+        <div className="communitiesAlertContainer">
+          <div className="communitiesAlertBox">
+            <div className="communitiesAlertText">
+              <h2 className="communitiesAlertMainTitle">{t("communities.accessDenied")}</h2>
+              <p className="communitiesAlertSubTitle">{t("communities.personalPlan")}</p>
+            </div>
+            <div className="communitiesAlertButtons">
+              <button className="communitiesCancelBtn" onClick={() => navigate(-1)}>{t("cancel")}</button>
+              <button className="communitiesGoToBtn" onClick={() => goToSubscriptions("/subscriptions")}>{t("communities.goToSubscriptions")}</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</>
-);};
+  );
+};

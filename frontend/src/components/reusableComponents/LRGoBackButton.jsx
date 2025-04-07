@@ -7,5 +7,5 @@ const { t } = useTranslation();
 const navigate = useNavigate();
 
 return (
-  <button className="logRegGoBackButton" onClick={() => navigate(path)}>{t("loginRegistration.loginRegisterGoBack")}</button>
+  <button className="logRegGoBackButton" onClick={() => navigate(path)}>{t("loginRegistration.goBack")}</button>
 );};

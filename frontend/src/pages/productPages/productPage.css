@@ -1,0 +1,38 @@
+.productPage{
+  display:flex;
+  flex-direction:row;
+  padding:20px;
+  gap:20px;
+}
+
+/*--------------------------------------SIDEBAR---------------------------------------*/
+.pPSideBar{
+  display:flex;
+  flex-direction:column;
+  padding:20px;
+  background:var(--white);
+  border-radius:var(--smallRadius);
+  box-shadow:var(--boxShadow);
+  border:none;
+}
+
+/*---------------------------------------MAIN------------------------------------------*/
+.pPMain{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  width:100%;
+}
+.pPMainTop{
+  display:flex;
+  flex-direction:row;
+  border-radius:var(--smallRadius);
+  box-shadow:var(--boxShadow);
+  background-color:var(--white);
+  padding:20px;
+  width:100%;
+}
+.pPMainBottom{
+  display:flex;
+  flex-direction:column;
+}

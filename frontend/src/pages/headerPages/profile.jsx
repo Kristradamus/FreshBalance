@@ -13,13 +13,7 @@ function ProfileLayout() {
   const location = useLocation();
   const activeSection = location.pathname.split("/").pop() || "settings";
 
-  const sidebarItems = [
-    { icon: "fa-solid fa-gear", title: "Profile Settings", key: "settings", path: "settings" },
-    { icon: "fa-solid fa-heart", title: "Favourites", key: "favourites", path: "favourites" },
-    { icon: "fa-solid fa-cart-shopping", title: "Cart", key: "cart", path: "cart" },
-    { icon: "fa-solid fa-shield-halved", title: "Security", key: "security", path: "security", },
-    { icon: "fa-solid fa-right-from-bracket", title: "Log out", key: "logout", path: "logout", isLogout: true, },
-  ];
+  const sidebarItems = t("profile.sidebarItems", { returnObject: true});
 
   const handleNavigation = (item) => {
     if (item.isLogout) {

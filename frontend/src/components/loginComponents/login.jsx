@@ -73,7 +73,7 @@ export default function Login({email, username, userProgress, setUserProgress })
     let isValid = true;
     if (!loginFormData.password) {
       setPasswordError(true);
-      setPasswordErrorMessage(t("loginRegistration.loginPlsPassword"));
+      setPasswordErrorMessage(t("loginRegistration.login.plsPassword"));
       isValid = false;
     }
 
@@ -93,7 +93,7 @@ export default function Login({email, username, userProgress, setUserProgress })
           navigate(lastPublicPage, {
             state: {
               showToast: true,
-              toastMessage: t("loginRegistration.loginSuccess")
+              toastMessage: t("loginRegistration.login.success")
             }
           });
 
@@ -112,7 +112,7 @@ export default function Login({email, username, userProgress, setUserProgress })
       catch (error) {
         if (error.response?.data?.error === "Invalid password!") {
           setPasswordError(true);
-          setPasswordErrorMessage(t("loginRegistration.loginInvalidPassword"));
+          setPasswordErrorMessage(t("loginRegistration.login.invalidPassword"));
         } 
         else {
           console.error("Login error:", error);
@@ -127,7 +127,7 @@ export default function Login({email, username, userProgress, setUserProgress })
       <GoBackButton path="/email-check" />
       <div className="loginWelcomeBox">
         <h1 className="loginWelcome">
-          {t("loginRegistration.loginWelcome")}&nbsp;{" "}
+          {t("loginRegistration.login.welcome")}&nbsp;{" "}
           <p className="loginWelcomeUsername">{username}</p>&nbsp;!
         </h1>
         <i className="fa-solid fa-circle-user"></i>
@@ -137,7 +137,7 @@ export default function Login({email, username, userProgress, setUserProgress })
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick} >
             <i className="fa-solid fa-lock"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={loginFormData.password} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange} />
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.login.titlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={loginFormData.password} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange} />
             {isPasswordVisible ? (
               <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility} ></i>
             ) : (
@@ -150,10 +150,10 @@ export default function Login({email, username, userProgress, setUserProgress })
       <div className="loginBottom">
         <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
           <input type="checkbox" checked={loginFormData.rememberMe} onChange={handleTermsAcceptance}/>
-          <p className="emailLogRegCheckbox">{t("loginRegistration.loginRememberMe")}</p>
+          <p className="emailLogRegCheckbox">{t("loginRegistration.login.rememberMe")}</p>
         </div>
-        <button className="emailLogRegContinue" onClick={handleLoginSubmit}>{t("loginRegistration.loginLogIn")}</button>
-        <a className="loginForgotPassword">{t("loginRegistration.loginForgottenPassword")}</a>
+        <button className="emailLogRegContinue" onClick={handleLoginSubmit}>{t("loginRegistration.login.logIn")}</button>
+        <a className="loginForgotPassword">{t("loginRegistration.login.forgottenPassword")}</a>
       </div>
     </div>
   );

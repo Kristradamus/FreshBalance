@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import "./AccountManagement.css";
 
 export default function AccountManagement() {
   const { t } = useTranslation();
@@ -7,14 +8,12 @@ export default function AccountManagement() {
   return (
     <div className="adminContentAreaAccounts">
       <div className="accountManagementHeader">
-        <h2>{t("admin.accountsMainTitle", "Account Management")}</h2>
-        <button className="addAccountBtn">
+        <h2>{t("admin.accountManagementMainTitle")}</h2>
+        <button className="removeAccountBtn">
           <i className="fa-solid fa-user-plus"></i>
-          {t("admin.addAccount", "Add New Account")}
+          {t("admin.accountManagementRemoveAccount")}
         </button>
       </div>
-      
-      {/* ... rest of your account management code ... */}
     </div>
   );
 }

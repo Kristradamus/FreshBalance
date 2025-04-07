@@ -94,16 +94,12 @@
     "finisher": "Diese 'Über uns'-Seite kombiniert unsere Markengeschichte, Mission und Werte mit einer persönlichen Note und führt Kunden gleichzeitig zu den nächsten Schritten für ein besseres Leben. Sie wurde entwickelt, um Vertrauen aufzubauen, Verbindungen zu schaffen und zum Handeln zu inspirieren.",
     "developer": "Kristiyan Krustev"
   },
-  "---------------------------------------------------------CART---------------------------------------------------------------": {},
-  "cart": {},
   "-----------------------------------------------------------COMMUNITIES-----------------------------------------------------": {},
   "communities": {
     "accessDenied": "Zugriff verweigert",
     "personalPlan": "Persönlichen Plan erwerben",
     "goToSubscriptions": "Zu Abonnements"
   },
-  "---------------------------------------------------FAVOURITES---------------------------------------------------------------": {},
-  "favourites": {},
   "--------------------------------------------------------------FRONT-PAGE---------------------------------------------------": {},
   "frontPage": {
     "heroSectionTitle1": "PREMIUM-ERNÄHRUNG",
@@ -135,54 +131,60 @@
   },
   "--------------------------------------------------LOGIN-REGISTRATION-------------------------------------------------------": {},
   "loginRegistration": {
-    "loginRegisterGoBack": "Zurück",
-
-    "emailGreeting": "Willkommen",
-    "emailPls": "E-Mail eingeben",
-    "emailPlaceholder": "E-Mail",
-    "emailWarning": "Ungültige E-Mail",
-    "emailContinue": "Weiter",
-    "emailDontWorry": "Kein Konto? E-Mail für Neuregistrierung eingeben",
-    "emailOr": "oder",
-    "emailAlso": "Alternativ anmelden mit:",
-    "emailError": "Fehler bei E-Mail-Prüfung",
-
-    "registerWelcome": "Neues Konto",
-    "registerLegalPolicies": "AGB",
-    "registerTitleUsername": "Benutzername",
-    "registerTitlePassword": "Passwort",
-    "registerTitleConfirmPassword": "Passwort wiederholen",
-    "registerTerms": "Ich akzeptiere die",
-    "registerContinue": "Weiter",
-    "registerTermsRequired": "AGB müssen akzeptiert werden",
-    "registrationSuccessfull": "Erfolgreich registriert",
-    "registrationFailed": "Registrierung fehlgeschlagen!",
-
-    "registerUsernameRequired": "Benutzername benötigt",
-    "registerUsernameTaken": "Benutzername vergeben",
-    "registerUsername3Chars": "Mind. 3 Zeichen",
-    "registerUsername30Chars": "Max. 30 Zeichen",
-    "registerUsernameAllowedCharacters": "Nur Buchstaben, Zahlen, Unterstriche",
-    "registerSuccess": "Sie haben sich erfolgreich registriert!",
-
-    "registerConfirmPassword": "Passwort bestätigen",
-    "registerPasswordsDoNotMatch": "Passwörter unterschiedlich",
-    "registerPasswordRequired": "Passwort benötigt",
-    "registerPassword8Chars": "Mind. 8 Zeichen",
-    "registerPassword1Number": "Mind. 1 Zahl",
-    "registerPasswordUpperCaseLetter": "Mind. 1 Großbuchstabe",
-
-    "loginWelcome": "Anmeldung",
-    "loginForgottenPassword": "Passwort vergessen?",
-    "loginLogIn": "Anmelden",
-    "loginRememberMe": "Eingeloggt bleiben",
-    "loginPlsPassword": "Passwort eingeben",
-    "loginInvalidPassword": "Ungültiges Passwort!",
-    "loginSuccess": "Sie haben sich erfolgreich angemeldet!",
-
+    "goBack": "Zurück",
     "generalError": "Es gibt ein Problem mit Ihrer Anmeldung. Bitte versuchen Sie es erneut oder kontaktieren Sie unseren Support.",
     "plsTryAgain": "Die Zeit ist abgelaufen. Bitte versuchen Sie es erneut!",
-    "needHelp": "Hilfe?"
+    "needHelp": "Hilfe?",
+
+    "email": {
+      "greeting": "Willkommen",
+      "pls": "E-Mail eingeben",
+      "placeholder": "E-Mail",
+      "warning": "Ungültige E-Mail",
+      "continue": "Weiter",
+      "dontWorry": "Kein Konto? E-Mail für Neuregistrierung eingeben",
+      "or": "oder",
+      "also": "Alternativ anmelden mit:",
+      "error": "Fehler bei E-Mail-Prüfung"
+    },
+
+    "registration": {
+      "welcome": "Neues Konto",
+      "legalPolicies": "AGB",
+      "titleUsername": "Benutzername",
+      "titlePassword": "Passwort",
+      "titleConfirmPassword": "Passwort wiederholen",
+      "terms": "Ich akzeptiere die",
+      "continue": "Weiter",
+      "termsRequired": "AGB müssen akzeptiert werden",
+      "successfull": "Erfolgreich registriert",
+      "failed": "Registrierung fehlgeschlagen!",
+      
+      "usernameRequired": "Benutzername benötigt",
+      "usernameTaken": "Benutzername vergeben",
+      "username3Chars": "Mind. 3 Zeichen",
+      "username30Chars": "Max. 30 Zeichen",
+      "usernameAllowedCharacters": "Nur Buchstaben, Zahlen, Unterstriche",
+      "success": "Sie haben sich erfolgreich registriert!",
+      
+      "confirmPassword": "Passwort bestätigen",
+      "passwordsDoNotMatch": "Passwörter unterschiedlich",
+      "passwordRequired": "Passwort benötigt",
+      "password8Chars": "Mind. 8 Zeichen",
+      "password1Number": "Mind. 1 Zahl",
+      "passwordUpperCaseLetter": "Mind. 1 Großbuchstabe"
+    },
+
+    "login": {
+      "welcome": "Anmeldung",
+      "forgottenPassword": "Passwort vergessen?",
+      "logIn": "Anmelden",
+      "rememberMe": "Eingeloggt bleiben",
+      "plsPassword": "Passwort eingeben",
+      "invalidPassword": "Ungültiges Passwort!",
+      "success": "Sie haben sich erfolgreich angemeldet!",
+      "titlePassword": "Passwort"
+    }
   },
   "-------------------------------------------------------------product---------------------------------------------------": {},
   "productPage": {
@@ -300,7 +302,7 @@
       }
     }
   },
-  "-------------------------------------------------SINGLE-product--------------------------------------------------------": {},
+  "-------------------------------------------------SINGLE-PRODUCT--------------------------------------------------------": {},
   "singleProductPage": {},
   "-----------------------------------------------------------SUBSCRIPTIONS-----------------------------------------------------": {},
   "subscriptions": {
@@ -435,75 +437,90 @@
       "Account": [
         {
           "issue": "Kann mich nicht anmelden",
-          "solution": "Wenn Sie sich nicht anmelden können, überprüfen Sie, ob Sie die richtige E-Mail-Adresse und das richtige Passwort eingeben. Stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist, und versuchen Sie, Ihr Passwort zurückzusetzen, falls nötig. Wenn das Problem weiterhin besteht, löschen Sie den Cache und die Cookies Ihres Browsers und versuchen Sie es erneut. Für weitere Hilfe kontaktieren Sie den Kundensupport, und wir helfen Ihnen, wieder Zugriff auf Ihr Konto zu erhalten."
+          "solution": "Wenn Sie sich nicht anmelden können, überprüfen Sie, ob Sie die richtige E-Mail-Adresse und das richtige Passwort eingeben. Stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist, und versuchen Sie, Ihr Passwort zurückzusetzen, falls nötig. Wenn das Problem weiterhin besteht, löschen Sie den Cache und die Cookies Ihres Browsers und versuchen Sie es erneut. Für weitere Hilfe kontaktieren Sie den Kundensupport, und wir helfen Ihnen, wieder Zugriff auf Ihr Konto zu erhalten.",
+          "path":"cant-log-in"
         },
         {
           "issue": "Benutzername oder E-Mail vergessen",
-          "solution": "Wenn Sie Ihren Benutzernamen oder Ihre E-Mail-Adresse vergessen haben, überprüfen Sie Ihre vorherigen E-Mail-Konten auf Registrierungs-E-Mails. Wenn Sie sich immer noch nicht sicher sind, kontaktieren Sie unser Support-Team und geben Sie alle möglichen Details an, an die Sie sich erinnern. Wir können Ihnen helfen, Ihr Konto wiederherzustellen und Ihren Benutzernamen oder Ihre E-Mail-Adresse zu ermitteln."
+          "solution": "Wenn Sie Ihren Benutzernamen oder Ihre E-Mail-Adresse vergessen haben, überprüfen Sie Ihre vorherigen E-Mail-Konten auf Registrierungs-E-Mails. Wenn Sie sich immer noch nicht sicher sind, kontaktieren Sie unser Support-Team und geben Sie alle möglichen Details an, an die Sie sich erinnern. Wir können Ihnen helfen, Ihr Konto wiederherzustellen und Ihren Benutzernamen oder Ihre E-Mail-Adresse zu ermitteln.",
+          "path":"forgoten-username-or-email"
         },
         {
           "issue": "Konto gesperrt",
-          "solution": "Wenn Ihr Konto gesperrt ist, kann dies auf verdächtige Aktivitäten oder Sicherheitsbedenken zurückzuführen sein. Um den Zugriff wiederherzustellen, versuchen Sie, Ihr Passwort zurückzusetzen. Wenn Sie Ihr Konto nicht entsperren können, wenden Sie sich an den Kundensupport, um Hilfe zu erhalten. Sie helfen Ihnen, Ihre Identität zu überprüfen und Ihr Konto so schnell wie möglich zu sichern."
+          "solution": "Wenn Ihr Konto gesperrt ist, kann dies auf verdächtige Aktivitäten oder Sicherheitsbedenken zurückzuführen sein. Um den Zugriff wiederherzustellen, versuchen Sie, Ihr Passwort zurückzusetzen. Wenn Sie Ihr Konto nicht entsperren können, wenden Sie sich an den Kundensupport, um Hilfe zu erhalten. Sie helfen Ihnen, Ihre Identität zu überprüfen und Ihr Konto so schnell wie möglich zu sichern.",
+          "path":"account-locked"
         }
       ],
       "Billing": [
         {
           "issue": "Probleme mit der Zahlung",
-          "solution": "Wenn Sie Probleme mit der Zahlung haben, stellen Sie sicher, dass Ihre Zahlungsdaten aktuell sind und dass Ihre Zahlungsmethode über ausreichende Mittel verfügt. Überprüfen Sie, ob es Probleme mit Ihrer Bank oder Ihrem Zahlungsanbieter gibt. Wenn eine Zahlung abgelehnt wird, kontaktieren Sie Ihre Bank, um das Problem zu lösen. Darüber hinaus können Sie unsere Zahlungsproblembehandlungsanleitung besuchen, um Schritt-für-Schritt-Anleitungen zur Behebung häufiger Zahlungsprobleme zu erhalten."
+          "solution": "Wenn Sie Probleme mit der Zahlung haben, stellen Sie sicher, dass Ihre Zahlungsdaten aktuell sind und dass Ihre Zahlungsmethode über ausreichende Mittel verfügt. Überprüfen Sie, ob es Probleme mit Ihrer Bank oder Ihrem Zahlungsanbieter gibt. Wenn eine Zahlung abgelehnt wird, kontaktieren Sie Ihre Bank, um das Problem zu lösen. Darüber hinaus können Sie unsere Zahlungsproblembehandlungsanleitung besuchen, um Schritt-für-Schritt-Anleitungen zur Behebung häufiger Zahlungsprobleme zu erhalten.",
+          "path":"payment-issues"
         },
         {
           "issue": "Abonnement funktioniert nicht",
-          "solution": "Wenn Ihr Abonnement nicht funktioniert, stellen Sie sicher, dass Ihr Abonnement aktiv ist und dass Ihre Zahlung erfolgreich verarbeitet wurde. Sie können den Status Ihres Abonnements in Ihren Kontoeinstellungen überprüfen. Wenn alles korrekt erscheint, das Problem jedoch weiterhin besteht, wenden Sie sich bitte an unser Support-Team, um weitere Hilfe zu erhalten."
+          "solution": "Wenn Ihr Abonnement nicht funktioniert, stellen Sie sicher, dass Ihr Abonnement aktiv ist und dass Ihre Zahlung erfolgreich verarbeitet wurde. Sie können den Status Ihres Abonnements in Ihren Kontoeinstellungen überprüfen. Wenn alles korrekt erscheint, das Problem jedoch weiterhin besteht, wenden Sie sich bitte an unser Support-Team, um weitere Hilfe zu erhalten.",
+          "path":"subscription-not-working"
         },
         {
           "issue": "Probleme mit Rückerstattungsanfragen",
-          "solution": "Wenn Sie Probleme haben, eine Rückerstattungsanfrage zu stellen, stellen Sie sicher, dass Ihr Kauf gemäß unserer Rückerstattungsrichtlinie berechtigt ist. Sie können die Bedingungen, unter denen Rückerstattungen gewährt werden, auf unserer Website überprüfen. Wenn Sie sich immer noch unsicher sind oder weitere Hilfe benötigen, wenden Sie sich an unser Support-Team, und wir führen Sie durch den Rückerstattungsprozess."
+          "solution": "Wenn Sie Probleme haben, eine Rückerstattungsanfrage zu stellen, stellen Sie sicher, dass Ihr Kauf gemäß unserer Rückerstattungsrichtlinie berechtigt ist. Sie können die Bedingungen, unter denen Rückerstattungen gewährt werden, auf unserer Website überprüfen. Wenn Sie sich immer noch unsicher sind oder weitere Hilfe benötigen, wenden Sie sich an unser Support-Team, und wir führen Sie durch den Rückerstattungsprozess.",
+          "path":"refund-request-issues"
         }
       ],
       "Technical": [
         {
           "issue": "Langsame Website-Leistung",
-          "solution": "Wenn Sie eine langsame Website-Leistung feststellen, versuchen Sie, den Cache und die App-Daten Ihres Browsers zu löschen. Stellen Sie sicher, dass Sie die neueste Version Ihres Browsers oder Ihrer App verwenden, da veraltete Versionen die Leistung beeinträchtigen können. Wenn das Problem weiterhin besteht, überprüfen Sie unsere Systemstatusseite, um festzustellen, ob es aktuelle Probleme gibt, die die Geschwindigkeit der Website beeinflussen."
+          "solution": "Wenn Sie eine langsame Website-Leistung feststellen, versuchen Sie, den Cache und die App-Daten Ihres Browsers zu löschen. Stellen Sie sicher, dass Sie die neueste Version Ihres Browsers oder Ihrer App verwenden, da veraltete Versionen die Leistung beeinträchtigen können. Wenn das Problem weiterhin besteht, überprüfen Sie unsere Systemstatusseite, um festzustellen, ob es aktuelle Probleme gibt, die die Geschwindigkeit der Website beeinflussen.",
+          "path":"slow-website-performance"
         },
         {
           "issue": "App kann nicht installiert werden",
-          "solution": "Wenn Sie unsere Software oder App nicht installieren können, stellen Sie sicher, dass Ihr Gerät die Mindestsystemanforderungen erfüllt. Starten Sie Ihr Gerät neu und versuchen Sie es erneut, da einige Probleme durch einen einfachen Neustart behoben werden können. Wenn die Installation fehlschlägt, konsultieren Sie unsere Installationsanleitung für zusätzliche Fehlerbehebungstipps oder wenden Sie sich an den Support, um weitere Hilfe zu erhalten."
+          "solution": "Wenn Sie unsere Software oder App nicht installieren können, stellen Sie sicher, dass Ihr Gerät die Mindestsystemanforderungen erfüllt. Starten Sie Ihr Gerät neu und versuchen Sie es erneut, da einige Probleme durch einen einfachen Neustart behoben werden können. Wenn die Installation fehlschlägt, konsultieren Sie unsere Installationsanleitung für zusätzliche Fehlerbehebungstipps oder wenden Sie sich an den Support, um weitere Hilfe zu erhalten.",
+          "path":"unable-to-install-app"
         },
         {
           "issue": "App stürzt ab oder friert ein",
-          "solution": "Wenn die App abstürzt oder einfriert, versuchen Sie, die App neu zu starten, und stellen Sie sicher, dass Sie die neueste Version installiert haben. Manchmal kann das Löschen des App-Cache oder eine Neuinstallation anhaltende Probleme beheben. Wenn das Problem weiterhin besteht, konsultieren Sie unsere Fehlerbehandlungsanleitung oder wenden Sie sich an den Support, um erweiterte Fehlerbehebungsoptionen zu erhalten."
+          "solution": "Wenn die App abstürzt oder einfriert, versuchen Sie, die App neu zu starten, und stellen Sie sicher, dass Sie die neueste Version installiert haben. Manchmal kann das Löschen des App-Cache oder eine Neuinstallation anhaltende Probleme beheben. Wenn das Problem weiterhin besteht, konsultieren Sie unsere Fehlerbehandlungsanleitung oder wenden Sie sich an den Support, um erweiterte Fehlerbehebungsoptionen zu erhalten.",
+          "path":"app-crashing-or-freezing"
         },
         {
           "issue": "Fehlermeldungen",
-          "solution": "Wenn Sie auf eine Fehlermeldung stoßen, notieren Sie den Fehlercode und die angezeigte Meldung. Überprüfen Sie unsere Fehlermeldungs-Fehlerbehandlungsseite für eine Liste häufiger Fehler und deren Lösungen. Wenn Sie das Problem nicht mithilfe der Anleitung beheben können, kontaktieren Sie den Support und geben Sie die Fehlerdetails an, damit wir Ihnen effizienter helfen können."
+          "solution": "Wenn Sie auf eine Fehlermeldung stoßen, notieren Sie den Fehlercode und die angezeigte Meldung. Überprüfen Sie unsere Fehlermeldungs-Fehlerbehandlungsseite für eine Liste häufiger Fehler und deren Lösungen. Wenn Sie das Problem nicht mithilfe der Anleitung beheben können, kontaktieren Sie den Support und geben Sie die Fehlerdetails an, damit wir Ihnen effizienter helfen können.",
+          "path":"error-messages"
         }
       ],
       "Security": [
         {
           "issue": "Probleme mit der Zwei-Faktor-Authentifizierung",
-          "solution": "Wenn Sie Probleme mit der Zwei-Faktor-Authentifizierung (2FA) haben, stellen Sie sicher, dass Sie Zugriff auf die Authentifizierungs-App oder die Backup-Codes haben. Wenn Sie den Zugriff auf die Authentifizierungsmethode verloren haben, müssen Sie möglicherweise die 2FA-Einstellungen zurücksetzen. Wenn Sie dies nicht selbst tun können, kontaktieren Sie den Kundensupport, und wir helfen Ihnen, den Zugriff auf Ihr Konto wiederherzustellen."
+          "solution": "Wenn Sie Probleme mit der Zwei-Faktor-Authentifizierung (2FA) haben, stellen Sie sicher, dass Sie Zugriff auf die Authentifizierungs-App oder die Backup-Codes haben. Wenn Sie den Zugriff auf die Authentifizierungsmethode verloren haben, müssen Sie möglicherweise die 2FA-Einstellungen zurücksetzen. Wenn Sie dies nicht selbst tun können, kontaktieren Sie den Kundensupport, und wir helfen Ihnen, den Zugriff auf Ihr Konto wiederherzustellen.",
+          "path":"two-factor-authentication-issues"
         },
         {
           "issue": "Konto gehackt",
-          "solution": "Wenn Sie vermuten, dass Ihr Konto gehackt wurde, setzen Sie Ihr Passwort sofort zurück, um Ihr Konto zu sichern. Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) für zusätzlichen Schutz. Überprüfen Sie die letzten Kontaktivitäten auf Anzeichen von unbefugtem Zugriff und melden Sie verdächtiges Verhalten unserem Sicherheitsteam. Wir werden den Vorfall untersuchen und Ihnen helfen, die Kontrolle über Ihr Konto zurückzugewinnen."
+          "solution": "Wenn Sie vermuten, dass Ihr Konto gehackt wurde, setzen Sie Ihr Passwort sofort zurück, um Ihr Konto zu sichern. Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) für zusätzlichen Schutz. Überprüfen Sie die letzten Kontaktivitäten auf Anzeichen von unbefugtem Zugriff und melden Sie verdächtiges Verhalten unserem Sicherheitsteam. Wir werden den Vorfall untersuchen und Ihnen helfen, die Kontrolle über Ihr Konto zurückzugewinnen.",
+          "path":"account-hacked"
         }
       ],
       "Orders": [
         {
           "issue": "Fehlende Bestellungen oder Lieferungen",
-          "solution": "Falls Ihre Bestellung fehlt oder verzögert ist, bestätigen Sie zunächst die Details Ihrer Bestellung, einschließlich der Tracking-Nummer. Überprüfen Sie beim Lieferanten auf Updates. Wenn die Lieferung erheblich verzögert ist oder fehlt, melden Sie das Problem unserem Kundensupport-Team, und sie werden Ihnen helfen, die Angelegenheit mit dem Lieferanten zu klären."
+          "solution": "Falls Ihre Bestellung fehlt oder verzögert ist, bestätigen Sie zunächst die Details Ihrer Bestellung, einschließlich der Tracking-Nummer. Überprüfen Sie beim Lieferanten auf Updates. Wenn die Lieferung erheblich verzögert ist oder fehlt, melden Sie das Problem unserem Kundensupport-Team, und sie werden Ihnen helfen, die Angelegenheit mit dem Lieferanten zu klären.",
+          "path":"missing-orders-or-deliveries"
         }
       ],
       "Email": [
         {
           "issue": "E-Mail nicht erhalten",
-          "solution": "Wenn Sie Ihre E-Mails nicht erhalten, überprüfen Sie Ihren Spam- oder Junk-Ordner, da die E-Mail möglicherweise falsch gefiltert wurde. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist und dass Ihr Postfach nicht voll ist. Wenn Sie die E-Mail immer noch nicht erhalten haben, versuchen Sie, eine erneute Zusendung anzufordern. Wenn das Problem weiterhin besteht, kontaktieren Sie den Support, und wir werden die Angelegenheit weiter untersuchen."
+          "solution": "Wenn Sie Ihre E-Mails nicht erhalten, überprüfen Sie Ihren Spam- oder Junk-Ordner, da die E-Mail möglicherweise falsch gefiltert wurde. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist und dass Ihr Postfach nicht voll ist. Wenn Sie die E-Mail immer noch nicht erhalten haben, versuchen Sie, eine erneute Zusendung anzufordern. Wenn das Problem weiterhin besteht, kontaktieren Sie den Support, und wir werden die Angelegenheit weiter untersuchen.",
+          "path":"email-not-received"
         }
       ],
       "Subscriptions": [
         {
           "issue": "Abonnement kann nicht gekündigt werden",
-          "solution": "Wenn Sie Probleme haben, Ihr Abonnement zu kündigen, stellen Sie sicher, dass Sie im richtigen Konto angemeldet sind. Gehen Sie zu Ihren Kontoeinstellungen und suchen Sie den Abschnitt zur Abonnementverwaltung. Wenn Sie das Abonnement immer noch nicht kündigen können, kontaktieren Sie unser Support-Team so schnell wie möglich, um weitere Gebühren zu vermeiden, insbesondere vor Ihrem nächsten Abrechnungszyklus."
+          "solution": "Wenn Sie Probleme haben, Ihr Abonnement zu kündigen, stellen Sie sicher, dass Sie im richtigen Konto angemeldet sind. Gehen Sie zu Ihren Kontoeinstellungen und suchen Sie den Abschnitt zur Abonnementverwaltung. Wenn Sie das Abonnement immer noch nicht kündigen können, kontaktieren Sie unser Support-Team so schnell wie möglich, um weitere Gebühren zu vermeiden, insbesondere vor Ihrem nächsten Abrechnungszyklus.",
+          "path":"cant-cancel-subscription"
         }
       ]
     },

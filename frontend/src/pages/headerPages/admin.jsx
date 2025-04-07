@@ -13,16 +13,9 @@ function AdminLayout() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const activeSection = location.pathname.split("/").pop() || "dashboard";
+  const activeSection = location.pathname.split("/").pop() || "settings";
 
-  const sidebarItems = [
-    { icon: "fa-solid fa-chart-line", title: "Dashboard", key: "dashboard", path: "dashboard" },
-    { icon: "fa-solid fa-box", title: "Product Management", key: "products", path: "products" },
-    { icon: "fa-solid fa-users", title: "Account Management", key: "accounts", path: "accounts" },
-    { icon: "fa-solid fa-shopping-bag", title: "Orders", key: "orders", path: "orders" },
-    { icon: "fa-solid fa-gear", title: "Settings", key: "settings", path: "settings" },
-    { icon: "fa-solid fa-right-from-bracket", title: "Log out", key: "logout", path: "logout", isLogout: true },
-  ];
+  const sidebarItems = t("admin.sidebarItems", {returnObject:true});
 
   const handleNavigation = (item) => {
     if (item.isLogout) {
@@ -36,8 +29,8 @@ function AdminLayout() {
   return (
     <div className="admin">
       <div className="adminSidebar">
-        <h2>{t("admin.sideBarMainTitle", "Admin Panel")}</h2>
-        <i className="fa-solid fa-user-shield adminIcon"></i>
+        <h2>{t("admin.sidebarMainTitle")}</h2>
+        <i className="fa-solid fa-circle-user"></i>
         <div className="adminSidebarNav">
           {sidebarItems.map((item) => (
             <button key={item.key} className={`adminButton ${activeSection === item.path ? "active" : ""}`} onClick={() => handleNavigation(item)} >

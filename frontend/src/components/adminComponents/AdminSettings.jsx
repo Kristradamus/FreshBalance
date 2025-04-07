@@ -1,16 +1,17 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import "./AdminSettings.css";
 
-// Use either this syntax:
 const AdminSettings = () => {
   const { t } = useTranslation();
 
   return (
     <div className="adminContentAreaSettings">
-      <h2>{t("admin.settingsMainTitle", "Admin Settings")}</h2>
-      {/* Your settings content */}
+      <h2>{t("admin.settingsMainTitle")}</h2>
+      <div className="adminSettings">
+      </div>
     </div>
   );
 };
 
-export default AdminSettings; // Must include this line
+export default AdminSettings;

@@ -101,7 +101,7 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
         error.response?.data?.message ||
         error.response?.data?.error ||
         error.message ||
-        t("loginRegistration.registerEmailError");
+        t("loginRegistration.email.error");
       alert(errorMessage);
     }
   };
@@ -109,25 +109,25 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
   return (
     <div className="emailLogRegBox">
       <div className="emailTop">
-        <h1><strong>{t("loginRegistration.emailGreeting")}</strong></h1>
-        <p className="emailPls">{t("loginRegistration.emailPls")}</p>
+        <h1><strong>{t("loginRegistration.email.greeting")}</strong></h1>
+        <p className="emailPls">{t("loginRegistration.email.pls")}</p>
         <div className={`emailLogRegInputBox ${emailError ? "Error" : ""}`} onClick={handleEmailDivClick}>
           <i className="fa-solid fa-envelope"></i>
-          <input className="emailLogRegInput" placeholder={t("loginRegistration.emailPlaceholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange}/>
+          <input className="emailLogRegInput" placeholder={t("loginRegistration.email.placeholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange}/>
         </div>
-        {emailError && (<p className="emailLogRegErrorMessage">{t("loginRegistration.emailWarning")}</p>)}
+        {emailError && (<p className="emailLogRegErrorMessage">{t("loginRegistration.email.warning")}</p>)}
         <button className="emailLogRegContinue" onClick={handleEmailCheckContinue} >
-          <strong>{t("loginRegistration.emailContinue")}</strong>
+          <strong>{t("loginRegistration.email.continue")}</strong>
         </button>
-        <p className="emailDontWorry">{t("loginRegistration.emailDontWorry")}</p>
+        <p className="emailDontWorry">{t("loginRegistration.email.dontWorry")}</p>
       </div>
       <div className="emailDivider">
         <hr />
-          <p>{t("loginRegistration.emailOr")}</p>
+          <p>{t("loginRegistration.email.or")}</p>
         <hr />
       </div>
       <div className="emailBottom">
-        <p className="emailAlso">{t("loginRegistration.emailAlso")}</p>
+        <p className="emailAlso">{t("loginRegistration.email.also")}</p>
         <div className="emailGoogle">
           <i className="fa-brands fa-google"></i>
           <p className="emailGoogleText"><strong>Google</strong></p>

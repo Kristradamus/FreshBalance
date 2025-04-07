@@ -41,7 +41,7 @@ export default function App() {
                   <Route path="/buy-now/:planType" element={<ProtectedRoute><BuyNowSubscription/></ProtectedRoute>} />
                   <Route path="/try-free/:planType" element={<ProtectedRoute><TryFreeSubscription/></ProtectedRoute>} />
                   <Route path="/support" element={<Support />}/>
-                  <Route path="/support/topic/:topicId" element={<Support />} />
+                  <Route path="/support/:path" element={<Support />} />
                   <Route path="/support/contact" element={<Support />} />
                   <Route path="/admin/*"element={<ProtectedRouteAdmin><Admin /></ProtectedRouteAdmin>} />
                   <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />

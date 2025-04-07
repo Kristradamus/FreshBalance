@@ -151,7 +151,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
           else {
             setUsernameAvailable(false);
             setUsernameError(true);
-            setUsernameErrorMessage(t("loginRegistration.registerUsernameTaken"));
+            setUsernameErrorMessage(t("loginRegistration.registration.usernameTaken"));
           }
         } 
         catch (error) {
@@ -167,36 +167,36 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
     .object({
       username: z
         .string()
-        .max(30, { message: t("loginRegistration.registerUsername30Chars") })
-        .min(3, { message: t("loginRegistration.registerUsername3Chars") })
+        .max(30, { message: t("loginRegistration.registration.username30Chars") })
+        .min(3, { message: t("loginRegistration.registration.username3Chars") })
         .regex(/^[a-zA-Z0-9_]+$/, {
-          message: t("loginRegistration.registerUsernameAllowedCharacters"),
+          message: t("loginRegistration.registration.usernameAllowedCharacters"),
         })
-        .min(1, { message: t("loginRegistration.registerUsernameRequired") })
+        .min(1, { message: t("loginRegistration.registration.usernameRequired") })
         .trim(),
       confirmPassword: z
         .string()
-        .min(1, { message: t("loginRegistration.registerConfirmPassword") })
+        .min(1, { message: t("loginRegistration.registration.confirmPassword") })
         .trim(),
       password: z
         .string()
         .regex(/[A-Z]/, {
-          message: t("loginRegistration.registerPasswordUpperCaseLetter"),
+          message: t("loginRegistration.registration.passwordUpperCaseLetter"),
         })
         .regex(/[0-9]/, {
-          message: t("loginRegistration.registerPassword1Number"),
+          message: t("loginRegistration.registration.password1Number"),
         })
-        .min(8, { message: t("loginRegistration.registerPassword8Chars") })
-        .min(1, { message: t("loginRegistration.registerPasswordRequired") })
+        .min(8, { message: t("loginRegistration.registration.password8Chars") })
+        .min(1, { message: t("loginRegistration.registration.passwordRequired") })
         .trim(),
       termsAccepted: z.literal(true, {
         errorMap: () => ({
-          message: t("loginRegistration.registerTermsRequired"),
+          message: t("loginRegistration.registration.termsRequired"),
         }),
       }),
     })
     .refine((data) => data.password === data.confirmPassword, {
-      message: t("loginRegistration.registerPasswordsDoNotMatch"),
+      message: t("loginRegistration.registration.passwordsDoNotMatch"),
       path: ["confirmPassword"],
     });
 
@@ -210,7 +210,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
 
     if (!usernameAvailable) {
       setUsernameError(true);
-      setUsernameErrorMessage(t("loginRegistration.registerUsernameTaken"));
+      setUsernameErrorMessage(t("loginRegistration.registration.usernameTaken"));
       isValid = false;
     }
 
@@ -247,7 +247,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
               navigate(lastPublicPage, {
                 state: {
                   showToast: true,
-                  toastMessage: t("loginRegistration.registerSuccess")
+                  toastMessage: t("loginRegistration.registration.success")
                 }
               });
               
@@ -258,7 +258,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
           }
         } 
         catch (error) {
-          const errorMessage = t("loginRegistration.registrationFailed");
+          const errorMessage = t("loginRegistration.registration.failed");
           alert(errorMessage);
           console.error("Registration failed:", error.response?.data?.message);
         }
@@ -289,21 +289,21 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
       <div className="registerWelcomeBox">
-        <h1 className="registerWelcome">{t("loginRegistration.registerWelcome")}</h1>
+        <h1 className="registerWelcome">{t("loginRegistration.registration.welcome")}</h1>
         <p className="registerEmail">{email}</p>
       </div>
       <div className="registerTop">
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${usernameError ? "Error" : ""}`} onClick={handleUsernameDivClick}>
             <i className="fa-solid fa-user"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleUsername") + "..."} value={registerFormData.username} ref={usernameInputRef} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange}/>
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registration.titleUsername") + "..."} value={registerFormData.username} ref={usernameInputRef} onChange={handleUsernameChange} onKeyDown={handleUsernameKeyChange}/>
           </div>
           {usernameError && (<p className="emailLogRegErrorMessage">{usernameErrorMessage}</p>)}
         </div>
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handlePasswordDivClick} >
             <i className="fa-solid fa-lock"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={registerFormData.password} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}/>
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registration.titlePassword") + "..."} type={isPasswordVisible ? "text" : "password"} value={registerFormData.password} ref={passwordInputRef} onChange={handlePasswordChange} onKeyDown={handlePasswordKeyChange}/>
             {isPasswordVisible ? (
               <i className="fa-solid fa-eye-slash" onClick={handlePasswordVisibility}></i>
             ) : (
@@ -314,7 +314,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
         <div className="registerInputErrorBox">
           <div className={`emailLogRegInputBox ${passwordError ? "Error" : ""}`} onClick={handleConfirmPasswordDivClick}>
             <i className="fa-solid fa-lock"></i>
-            <input className="emailLogRegInput" placeholder={t("loginRegistration.registerTitleConfirmPassword") + "..." } type={isConfirmPasswordVisible ? "text" : "password"} value={registerFormData.confirmPassword} ref={confirmPasswordInputRef} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange}/>
+            <input className="emailLogRegInput" placeholder={t("loginRegistration.registration.titleConfirmPassword") + "..." } type={isConfirmPasswordVisible ? "text" : "password"} value={registerFormData.confirmPassword} ref={confirmPasswordInputRef} onChange={handleConfirmPasswordChange} onKeyDown={handleConfirmPasswordKeyChange}/>
             {isConfirmPasswordVisible ? (
               <i className="fa-solid fa-eye-slash" onClick={handleConfirmPasswordVisibility}></i>
             ) : (
@@ -331,13 +331,13 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
           <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
             <input type="checkbox" checked={registerFormData.termsAccepted} onChange={handleTermsAcceptance}/>
             <p className="emailLogRegCheckbox">
-              {t("loginRegistration.registerTerms")}&nbsp;
-              <a className="emailLogRegCheckboxLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registerLegalPolicies")}</strong></a>
+              {t("loginRegistration.registration.terms")}&nbsp;
+              <a className="emailLogRegCheckboxLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registration.legalPolicies")}</strong></a>
             </p>
           </div>
           {termsError && (<p className="emailLogRegErrorMessage">{termsErrorMessage}</p>)}
         </div>
-        <button className="emailLogRegContinue" onClick={handleRegistrationSubmit}>{t("loginRegistration.registerContinue")}</button>
+        <button className="emailLogRegContinue" onClick={handleRegistrationSubmit}>{t("loginRegistration.registration.continue")}</button>
       </div>
     </div>
   );

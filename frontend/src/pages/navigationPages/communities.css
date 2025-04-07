@@ -1,88 +1,99 @@
-.communities {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position: fixed;
-  text-align:center;
-  top:0;
-  left:0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  background-color: var(--mainBackground);
-}
-.communities h1{
-  color:var(--white);
-}
-.communitiesColorOverlay {
+.communitiesAlert{
   display: flex;
-  position: fixed;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index:1000;
+}
+.communitiesAlertContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
   background-color: var(--darkOverlay);
+  backdrop-filter: blur(1px);
+  animation: fadeIn var(--transition);
 }
-.navigation {
-  z-index: 10;
-}
-.communitiesBox {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  width:100%;
-  max-width: 400px;
-  background-color: var(--green);
-  border: 3px solid var(--green);
-  border-radius: var(--normalRadius);
-}
-.communitiesTop {
-  background-color: transparent;
-  padding: 5px 0px;
-  margin: 0px;
-  color: var(--white);
-}
-.communitiesBottom {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
+.communitiesAlertBox {
+  display:flex;
+  flex-direction:column;
+  text-align: center;
+  align-items:center;
+  border-radius: var(--smallRadius);
   background-color: var(--white);
-  color: var(--green);
-  border-radius: var(--normalRadius);
-  font-size: calc(var(--textFont) + 5px);
+  gap:20px;
+  padding: 20px 20px;
+  width: 90%;
+  max-width: 400px;
+  animation: slideUp var(--transition);
 }
-.communitiesGoToSub {
+.communitiesAlertText{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  gap:10px;
+  align-items:flex-start;
+}
+.communitiesAlertMainTitle,
+.communitiesAlertSubTitle{
+  color:var(--mainTextColor);
+}
+.communitiesAlertButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.communitiesCancelBtn, .communitiesGoToBtn {
   border: none;
   cursor: pointer;
-  width: 60%;
-  padding: 10px 20px;
-  margin: 10px 0px;
-  margin-top: 15px;
-  background-color: var(--green);
-  border-radius: var(--normalRadius);
-  color: var(--white);
+  border-radius: var(--smallRadius);
+  font-size: var(--textFont);
   transition: var(--transition);
-  box-shadow: var(--boxShadowLight);
-  font-size: calc(var(--textFont) + 2.5px);
+  padding: 14px 20px;
+  flex: 1;
+  min-width: 180px;
+  text-align: center;
+  box-sizing: border-box;
 }
-.communitiesGoToSub:hover {
-  box-shadow: none;
+.communitiesGoToBtn {
+  background-color: var(--mainButtonColor);
+  color:var(--white);
+}
+.communitiesGoToBtn:hover {
   background-color: var(--mainButtonHover);
+  transform: translateY(-1px);
+}
+.communitiesCancelBtn {
+  background-color: var(--secondButtonColor);
+  color:var(--mainTextColor);
+}
+.communitiesCancelBtn:hover {
+  background-color:var(--secondButtonHover);
+  transform: translateY(-1px);
 }
 
-/*------------------------------------------RESPONSIVE----------------------------------------*/
-@media(max-width:780px){
-  .communitiesBox{
-    max-width:300px;
-  }
-  .communitiesGoToSub{
-    width:90%;
+/*-------------------------------------------ANIMATIONS-----------------------------------------------*/
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/*----------------------------------------RESPONSIVE---------------------------------------------*/
+@media (max-width: 480px) {
+  .communitiesAlertBox {
+    padding: 20px 15px;
   }
 }

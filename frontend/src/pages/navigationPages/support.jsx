@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
@@ -20,6 +19,7 @@ export default function Support() {
   const { topicId } = useParams();
   const allTopicsRef = useRef({});
   const [isLoading, setIsLoading] = useState(true);
+  const { path } = useParams();
 
   useEffect(() => {
     if (supportData) {
@@ -27,11 +27,8 @@ export default function Support() {
       Object.values(supportData)
         .flat()
         .forEach((topic) => {
-          if (topic && topic.issue) {
-            const id = encodeURIComponent(
-              topic.issue.toLowerCase().replace(/\s+/g, "-")
-            );
-            topicMap[id] = topic;
+          if (topic && topic.path) {
+            topicMap[topic.path] = topic;
           }
         });
       allTopicsRef.current = topicMap;
@@ -39,17 +36,17 @@ export default function Support() {
     }
   }, [supportData]);
 
-  const currentTopic = topicId ? allTopicsRef.current[topicId] : null;
+  const currentTopic = path ? allTopicsRef.current[path] : null;
   const showContactForm = location.pathname === "/support/contact";
   const currentTitle = currentTopic ? currentTopic.issue : "";
   const currentContent = currentTopic ? currentTopic.solution : "";
 
   useEffect(() => {
-    if (!isLoading && topicId && !currentTopic) {
-      console.warn(`Topic not found: ${topicId}`);
+    if (!isLoading && path && !currentTopic) {
+      console.warn(`Topic not found: ${path}`);
       navigate("/support", { replace: true });
     }
-  }, [topicId, currentTopic, navigate, isLoading]);
+  }, [path, currentTopic, navigate, isLoading]);
 
   {/*--------------------------------------FILTERING--------------------------------------*/}
   const filteredData = Object.keys(supportData || {}).reduce(
@@ -189,8 +186,8 @@ export default function Support() {
                 <h3>{category}</h3>
                 <ul className="supportSideElements">
                   {filteredData[category].map((item, index) => (
-                    <li className="supportSideElement" key={index}>
-                      <Link to={`/support/topic/${encodeURIComponent(item.issue.toLowerCase().replace(/\s+/g, "-"))}`}>
+                    <li className={`supportSideElement ${item.path === path ? "active" : ""}`} key={index} onClick={() => navigate(`/support/${item.path}`)}>
+                      <Link to={`/support/${item.path}`}>
                         {item.issue}
                       </Link>
                     </li>

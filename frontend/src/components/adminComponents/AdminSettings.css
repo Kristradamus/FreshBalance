@@ -1,0 +1,10 @@
+.adminContentAreaSettings{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding: 20px;
+  background-color: var(--white);
+  border-radius: var(--smallRadius);
+  box-shadow: var(--boxShadowLight);
+  width: 100%;
+}

@@ -1,16 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import "./AdminOrders.css";
 
-// Make sure to use default export
 const AdminOrders = () => {
   const { t } = useTranslation();
 
   return (
     <div className="adminContentAreaOrders">
-      <h2>{t("admin.ordersMainTitle", "Order Management")}</h2>
-      {/* Your orders content */}
+      <h2>{t("admin.ordersMainTitle")}</h2>
     </div>
   );
 };
 
-export default AdminOrders; // This is crucial
+export default AdminOrders;

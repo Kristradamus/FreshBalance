@@ -110,10 +110,12 @@
   background-color: var(--green);
   transition: var(--transition);
 }
-.supportSideElement:hover a::after {
+.supportSideElement:hover a::after,
+.supportSideElement.active a::after{
   width: 100%;
 }
-.supportSideElement:hover a {
+.supportSideElement:hover a,
+.supportSideElement.active a{
   color: var(--green);
 }
 
