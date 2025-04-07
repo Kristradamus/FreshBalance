@@ -10,6 +10,7 @@ require("dotenv").config();
 const authMiddleware = require("./middleware/authMiddleware.js");
 const authController = require("./controllers/authController.js");
 const supportController = require("./controllers/supportController.js");
+const productRoutes = require("./routes/productRoutes.js"); //PRODUCT MANAGEMENT
 const pool = require("./dataBase.js");
 
 app.use(
@@ -18,8 +19,12 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+app.use('/uploads', express.static('uploads'));//PRODUCT MANAGEMENT
+app.use("/products", productRoutes);//PRODUCT MANAGEMENT
 
 app.post("/check-email", authController.emailCheckLimiter, authController.checkEmail);
 app.post("/register", authController.verifyEmailVerificationCode, authController.register);
@@ -31,7 +36,7 @@ app.post("/send-message", supportController.emailIpRateLimiter, supportControlle
 /*---------------------------------------------CALLING-AUTH-MIDDLEWARE-----------------------------------------------*/
 app.post("/validate-token", authMiddleware.authenticateJWT, (req, res) => {
   res.json({
-     valid: true,
+    valid: true,
     user: req.user
   });
 });

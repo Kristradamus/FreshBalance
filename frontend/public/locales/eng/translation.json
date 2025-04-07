@@ -246,13 +246,40 @@
     ],
     "sidebarMainTitle":"Admin Panel",
 
-    "settingsMainTitle":"Admin Settings",
+    "settings":{
+      "mainTitle":"Admin Settings"
+    },
 
-    "ordersMainTitle":"Order Management",
+    "orders":{
+      "mainTitle":"Order Management"
+    },
 
-    "accountManagementMainTitle":"Account Management",
-    "accountManagementRemoveAccount":"Remove Account"
+    "accountManagement":{
+      "mainTitle":"Account Management",
+      "removeAccount":"Remove Account"
+    },
 
+    "productManagement":{
+      "mainTitle":"Product Management",
+
+      "add":{
+        "productMainTitle":"Add New Product",
+        "productBtnText":"Add New Product",
+        "formNameTitle":"Product Name",
+        "formPriceTitle":"Price",
+        "formCategoryTitle":"Category",
+        "formStockTitle":"Stock",
+        "formDescriptionTitle":"Description",
+        "formDetailsTitle":"Details",
+        "formImageTitle":"Product Image"
+        
+      },
+
+      "remove":{
+        "productMainTitle":"Remove Product",
+        "productBtnText":"Remove Product"
+      }
+    }
   },
   "----------------------------------------------------SERVICES------------------------------------------------------------------": {},
   "services": {

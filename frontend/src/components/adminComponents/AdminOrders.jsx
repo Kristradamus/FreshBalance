@@ -7,7 +7,7 @@ const AdminOrders = () => {
 
   return (
     <div className="adminContentAreaOrders">
-      <h2>{t("admin.ordersMainTitle")}</h2>
+      <h2>{t("admin.orders.mainTitle")}</h2>
     </div>
   );
 };

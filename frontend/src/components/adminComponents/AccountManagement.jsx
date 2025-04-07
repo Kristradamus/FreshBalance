@@ -8,10 +8,10 @@ export default function AccountManagement() {
   return (
     <div className="adminContentAreaAccounts">
       <div className="accountManagementHeader">
-        <h2>{t("admin.accountManagementMainTitle")}</h2>
+        <h2>{t("admin.accountManagement.mainTitle")}</h2>
         <button className="removeAccountBtn">
           <i className="fa-solid fa-user-plus"></i>
-          {t("admin.accountManagementRemoveAccount")}
+          {t("admin.accountManagement.removeAccount")}
         </button>
       </div>
     </div>
