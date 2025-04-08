@@ -540,7 +540,7 @@
         }
       ]
     },
-    "messageSent": "Nachricht erfolgreich gesendet!",
+    "messageSent": "Nachricht erfolgreich gesendet !",
     "messageError": "Beim Senden der Nachricht ist ein Fehler aufgetreten.",
     "placeholder": "Nach Lösung suchen...",
     "backToSupport": "Zurück zum Support",
@@ -551,9 +551,27 @@
     "email": "E-Mail:",
     "message": "Nachricht:",
     "submit": "Senden",
-    "messageIsTooLong": "Die Nachricht ist zu lang (max. 3000 Zeichen)",
-    "nameIsTooLong": "Der Name ist zu lang (max. 100 Zeichen)",
-    "tooManyAttempts": "Zu viele Versuche. Bitte versuchen Sie es in 15 Minuten erneut."
+    "validation": {
+      "name": {
+        "min": "Name muss mindestens 3 Zeichen lang sein !",
+        "max": "Name darf maximal 100 Zeichen lang sein !",
+        "required": "Name ist erforderlich!"
+      },
+      "email": {
+        "invalid": "Ungültige E-Mail-Adresse !",
+        "required": "E-Mail ist erforderlich !"
+      },
+      "message": {
+        "max": "Nachricht darf maximal 3000 Zeichen lang sein !",
+        "required": "Nachricht ist erforderlich !"
+      }
+    },
+    "errors": {
+      "ERR_EMAIL_DOMAIN": "Die E-Mail existiert nicht oder kann keine Nachrichten empfangen !",
+      "ERR_RATE_LIMIT": "Zu viele Versuche. Bitte versuchen Sie es in 15 Minuten erneut !",
+      "ERR_EMAIL_SEND": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut !",
+      "ERR_VALIDATION": "Ungültige Formulardaten"
+    }
   },
   "----------------------------------------------------------APP-----------------------------------------------------------": {},
   "app": {

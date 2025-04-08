@@ -1,35 +1,55 @@
 const pool = require("../dataBase.js");
 
 const addProduct = async (req, res) => {
+  console.log("Add product request received");
+  console.log("Form data:", req.body);
+  console.log("File received:", req.file);
+  
   try {
     const { name, description, price, stock, details, categories } = req.body;
-    const image = req.file ? req.file.filename : null; // Get filename from multer
-
+    
+    // Get the image buffer instead of filename
+    const imageBuffer = req.file ? req.file.buffer : null;
+    
     if (!name || !price) {
       return res.status(400).json({ message: "Name and price are required." });
     }
-
-    const [result] = await pool.query(
-      "INSERT INTO products (name, description, price, stock, details, image) VALUES (?, ?, ?, ?, ?, ?)",
-      [name, description, price, stock, details, image]
-    );
-
-    const productId = result.insertId;
-
-    if (categories && JSON.parse(categories).length > 0) {
-      const categoryIds = JSON.parse(categories);
-      for (const categoryId of categoryIds) {
-        await pool.query(
-          "INSERT INTO product_categories (product_id, category_id) VALUES (?, ?)",
-          [productId, categoryId]
-        );
+    
+    // Log before database operation
+    console.log("Attempting database insert with:", {
+      name, description, price, stock, details, 
+      image: imageBuffer ? `[Binary data - ${imageBuffer.length} bytes]` : null
+    });
+    
+    try {
+      const [result] = await pool.query(
+        "INSERT INTO products (name, description, price, stock, details, image) VALUES (?, ?, ?, ?, ?, ?)",
+        [name, description, price, stock, details, imageBuffer]
+      );
+      console.log("Database insert successful:", result);
+      
+      const productId = result.insertId;
+      
+      if (categories && JSON.parse(categories).length > 0) {
+        console.log("Processing categories:", categories);
+        const categoryIds = JSON.parse(categories);
+        for (const categoryId of categoryIds) {
+          await pool.query(
+            "INSERT INTO product_categories (product_id, category_id) VALUES (?, ?)",
+            [productId, categoryId]
+          );
+        }
+        console.log("Categories processed successfully");
       }
+      
+      res.status(201).json({ message: "Product added successfully." });
+    } catch (dbError) {
+      console.error("Database operation failed:", dbError);
+      return res.status(500).json({ message: "Database error: " + dbError.message });
     }
-
-    res.status(201).json({ message: "Product added successfully." });
   } catch (err) {
     console.error("Error adding product:", err);
-    res.status(500).json({ message: "Server error." });
+    res.status(500).json({ message: "Server error: " + err.message });
   }
 };
 

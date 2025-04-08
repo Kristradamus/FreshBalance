@@ -4,13 +4,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const cookieParser = require("cookie-parser");
+const fs = require('fs');
+const path = require('path');
 const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
 const authMiddleware = require("./middleware/authMiddleware.js");
 const authController = require("./controllers/authController.js");
 const supportController = require("./controllers/supportController.js");
-const productRoutes = require("./routes/productRoutes.js"); //PRODUCT MANAGEMENT
+const productRoutes = require("./routes/productRoutes.js");
 const pool = require("./dataBase.js");
 
 app.use(
@@ -23,8 +25,7 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-app.use('/uploads', express.static('uploads'));//PRODUCT MANAGEMENT
-app.use("/products", productRoutes);//PRODUCT MANAGEMENT
+app.use("/products", productRoutes);
 
 app.post("/check-email", authController.emailCheckLimiter, authController.checkEmail);
 app.post("/register", authController.verifyEmailVerificationCode, authController.register);

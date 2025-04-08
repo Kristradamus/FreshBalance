@@ -544,7 +544,7 @@
         }
       ]
     },
-    "messageSent": "¡Mensaje enviado con éxito!",
+    "messageSent": "¡Mensaje enviado con éxito !",
     "messageError": "Ocurrió un error al enviar el mensaje.",
     "placeholder": "Buscar solución...",
     "backToSupport": "Volver al Soporte",
@@ -555,9 +555,27 @@
     "email": "Correo electrónico:",
     "message": "Mensaje:",
     "submit": "Enviar",
-    "messageIsTooLong": "El mensaje excede el límite (máx. 3000 caracteres)",
-    "nameIsTooLong": "El nombre excede el límite (máx. 100 caracteres)",
-    "tooManyAttempts": "Demasiados intentos. Por favor, inténtalo de nuevo en 15 minutos."
+    "validation": {
+      "name": {
+        "min": "¡El nombre debe tener al menos 3 caracteres !",
+        "max": "¡El nombre debe tener menos de 100 caracteres !",
+        "required": "¡Se requiere el nombre !"
+      },
+      "email": {
+        "invalid": "¡Correo electrónico inválido !",
+        "required": "¡Se requiere el correo electrónico !"
+      },
+      "message": {
+        "max": "¡El mensaje debe tener menos de 3000 caracteres !",
+        "required": "¡Se requiere el mensaje !"
+      }
+    },
+    "errors": {
+      "ERR_EMAIL_DOMAIN": "¡El correo no existe o no puede recibir mensajes !",
+      "ERR_RATE_LIMIT": "¡Demasiados intentos. Por favor intente nuevamente en 15 minutos !",
+      "ERR_EMAIL_SEND": "¡Error al enviar el mensaje. Por favor intente más tarde !",
+      "ERR_VALIDATION": "Datos del formulario inválidos"
+    }
   },
   "----------------------------------------------------------APP-----------------------------------------------------------": {},
   "app": {

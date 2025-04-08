@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./ProductManagement.css";
-import axios from 'axios';
+import axios from "axios";
 
 export default function ProductManagement() {
   const { t } = useTranslation();
@@ -72,30 +72,27 @@ export default function ProductManagement() {
         setCategories(response.data);
       })
       .catch(error => {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
       });
   }, []);
 
-
-
-
-
+  /*--------------------------------IMAGE-UPLOAD--------------------------------*/
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
 
       if (!file.type.match("image.*")) {
         setFeedback({
-          type: 'error',
-          message: t("admin.imageTypeError", "Please select an image file")
+          type: "error",
+          message: "Please select an image file"
         });
         return;
       }
 
       if (file.size > 16 * 1024 * 1024) {
         setFeedback({
-          type: 'error',
-          message: t("admin.imageSizeError", "Image size should be less than 16MB")
+          type: "error",
+          message: "Image size should be less than 16MB"
         });
         return;
       }
@@ -110,63 +107,64 @@ export default function ProductManagement() {
     }
   };
 
+  /*--------------------------------ADD-SUBMIT--------------------------------*/
   const handleAddSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.price) {
       setFeedback({
-        type: 'error',
-        message: t("admin.requiredFields", "Name and price are required")
+        type: "error",
+        message: "Name and price are required"
       });
       return;
     }
 
     try {
-      console.log("everything is good for now")
       setIsSubmitting(true);
 
       const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('description', formData.description);
-      formDataToSend.append('price', formData.price);
-      formDataToSend.append('stock', formData.stock);
-      formDataToSend.append('details', formData.details);
-      formDataToSend.append('categories', JSON.stringify(selectedCategories));
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("description", formData.description);
+      formDataToSend.append("price", formData.price);
+      formDataToSend.append("stock", formData.stock);
+      formDataToSend.append("details", formData.details);
+      formDataToSend.append("categories", JSON.stringify(selectedCategories));
 
       if (selectedImage) {
-        formDataToSend.append('image', selectedImage);
+        formDataToSend.append("image", selectedImage);
       }
-      const token = localStorage.getItem('authToken');
+      const token = localStorage.getItem("authToken");
+      console.log("everything is good for now frontend");
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/products/admin/products`, formDataToSend, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+          "Authorization": `Bearer ${token}`,
         },
         withCredentials: true,
       });
 
       setFeedback({
-        type: 'success',
+        type: "success",
         message:"Product added successfully!",
       });
 
       setFormData({
-        name: '',
-        description: '',
-        price: '',
-        stock: '',
-        details: ''
+        name: "",
+        description: "",
+        price: "",
+        stock: "",
+        details: ""
       });
       setSelectedImage(null);
       setImagePreview(null);
-      setSelectedCategories([]); // Reset selected categories
+      setSelectedCategories([]);
     } 
     catch (error) {
       setFeedback({
-        type: 'error',
+        type: "error",
         message: error.response?.data?.message || "Error connecting to server"
       });
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     } 
     finally {
       setIsSubmitting(false);
@@ -190,7 +188,7 @@ export default function ProductManagement() {
           </div>
         </div>
         {feedback.message && (
-          <div className={`productFeedback ${feedback.type === 'success' ? 'success' : 'error'}`}>
+          <div className={`productFeedback ${feedback.type === "success" ? "success" : "error"}`}>
             {feedback.message}
           </div>
         )}
@@ -202,11 +200,11 @@ export default function ProductManagement() {
           <form onSubmit={handleAddSubmit}>
             <div className="formGrid">
               <div className="formGroup">
-                <label>{t("admin.productManagement.add.formNameTitle")} *</label>
+                <label>{t("admin.productManagement.add.formNameTitle")}</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} required />
               </div>
               <div className="formGroup">
-                <label>{t("admin.productManagement.add.formPriceTitle")} *</label>
+                <label>{t("admin.productManagement.add.formPriceTitle")}</label>
                 <input type="number" name="price" value={formData.price} onChange={handleChange} step="0.01" min="0" required />
               </div>
               <div className="formGroup">

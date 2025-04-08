@@ -8,7 +8,8 @@ const sendMessage = async (req, res) => {
   catch (error) {
     res.status(400).json({
       status: "error",
-      message: error.message
+      message: error.message,
+      errorCode: error.errorCode,
     });
   }
 };

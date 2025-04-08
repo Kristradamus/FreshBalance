@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 import axios from "axios";
 import validator from "validator";
 
@@ -9,6 +10,7 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
   const navigate = useNavigate();
   const emailInputRef = useRef(null);
   const [emailError, setEmailError] = useState(false);
+  const [toast, setToast] = useState({show:false, message:"", type:""})
 
   /*-----------------------------------------SMALL-JS--------------------------------------------------*/
   /*IF USER GOES BACK AND CHANGES HIS EMAIL TO RESET ALL VARIABLES*/
@@ -102,12 +104,17 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
         error.response?.data?.error ||
         error.message ||
         t("loginRegistration.email.error");
-      alert(errorMessage);
+      setToast({
+        show:true,
+        message:errorMessage,
+        type:"error",
+      })
     }
   };
 
   return (
     <div className="emailLogRegBox">
+      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <div className="emailTop">
         <h1><strong>{t("loginRegistration.email.greeting")}</strong></h1>
         <p className="emailPls">{t("loginRegistration.email.pls")}</p>

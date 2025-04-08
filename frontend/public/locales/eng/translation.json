@@ -628,7 +628,7 @@
         }
       ]
     },
-    "messageSent": "Message sent successfully!",
+    "messageSent": "Message sent successfully !",
     "messageError": "An error occurred while sending the message.",
     "placeholder": "Search for solution...",
     "backToSupport": "Back to Support",
@@ -639,9 +639,27 @@
     "email": "Email:",
     "message": "Message:",
     "submit": "Submit",
-    "messageIsTooLong":"Message is too long (max 3000 characters)",
-    "nameIsTooLong":"Name is too long (max 100 characters)",
-    "tooManyAttempts":"Too many attempts. Please try again in 15 minutes."
+    "validation": {
+      "name": {
+        "min": "Name must be at least 3 characters !",
+        "max": "Name must be less than 100 characters !",
+        "required": "Name is required !"
+      },
+      "email": {
+        "invalid": "Invalid email address !",
+        "required": "Email is required !"
+      },
+      "message": {
+        "max": "Message must be less than 3000 characters !",
+        "required": "Message is required !"
+      }
+    },
+    "errors": {
+    "ERR_EMAIL_DOMAIN": "The email doesn't exist or can't receive emails !",
+    "ERR_RATE_LIMIT": "Too many attempts. Please try again in 15 minutes !",
+    "ERR_EMAIL_SEND": "Failed to send your message. Please try again later !",
+    "ERR_VALIDATION": "Invalid form data"
+    }
   },
   "-----------------------------------------------------------APP--------------------------------------------------------------": {},
   "app": {

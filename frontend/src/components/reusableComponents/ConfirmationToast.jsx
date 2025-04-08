@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import './ConfirmationToast.css';
 
-const ConfirmationToast = ({ message, show, onClose }) => {
+const ConfirmationToast = ({ message, show, onClose, type="success"}) => {
   const [isVisible, setIsVisible] = useState(false);
   const timerRef = useRef(null);
 
@@ -17,7 +17,7 @@ const ConfirmationToast = ({ message, show, onClose }) => {
     timerRef.current = setTimeout(() => {
       setIsVisible(false);
       onClose();
-    }, 3500);
+    }, 4000);
   }
 
   useEffect(() => {
@@ -39,9 +39,9 @@ const ConfirmationToast = ({ message, show, onClose }) => {
   }
 
   return (
-    <div className={`confirmationToast ${isVisible ? 'show' : ''}`}>
+    <div className={`confirmationToast ${isVisible ? 'show' : ''} ${type}`}>
       <div className="toastContent">
-        <i className="fa-solid fa-circle-check"></i>
+        <i className={`fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-exclamation"}`}></i>
         <span className="toastMessage">{message}</span>
         <i className="fa-solid fa-xmark" onClick={handleToastClose}></i>
       </div>

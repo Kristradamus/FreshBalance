@@ -36,7 +36,8 @@ const verifyEmailDomain = async (email) => {
     const domain = email.split("@")[1];
     const mxRecords = await dns.promises.resolveMx(domain);
     return mxRecords && mxRecords.length > 0;
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("DNS verification failed:", error);
     return false;
   }

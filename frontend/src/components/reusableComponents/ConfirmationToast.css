@@ -1,10 +1,9 @@
-.confirmationToast {
+.confirmationToast{
   position: fixed;
   display: flex;
   align-items: center;
   top: 130px;
   right: -800px;
-  background-color:var(--green);
   color: var(--white);
   border-radius: var(--smallRadius);
   box-shadow: var(--boxShadow);
@@ -12,6 +11,12 @@
   padding:15px 0px;
   opacity:0;
   transition: 0.5s ease-in-out;
+}
+.confirmationToast.success {
+  background-color: var(--green);
+}
+.confirmationToast.error {
+  background-color: var(--errorColor);
 }
 .confirmationToast.show {
   right: 20px;
@@ -29,14 +34,13 @@
 .toastContent .fa-xmark{
   font-size: 30px;
   padding:0px 15px;
-}
-.toastContent .fa-circle-check{
-  font-size: 25px;
-  padding-left:15px;
-}
-.toastContent .fa-xmark{
   border-left:2px solid var(--white);
   cursor:pointer;
+}
+.toastContent .fa-circle-check,
+.toastContent .fa-circle-exclamation{
+  font-size: 25px;
+  padding-left:15px;
 }
 
 /*--------------------------------------RESPONSIVE-----------------------------------------*/

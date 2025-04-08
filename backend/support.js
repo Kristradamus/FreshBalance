@@ -5,6 +5,25 @@ const validator = require("validator");
 const dns = require("dns");
 const { z } = require("zod");
 
+const errorCodes = {
+  EMAIL_DOMAIN_INVALID: {
+    code: "ERR_EMAIL_DOMAIN",
+    message: "Email domain doesn't exist or can't receive emails!"
+  },
+  RATE_LIMITED: {
+    code: "ERR_RATE_LIMIT",
+    message: "Too many attempts. Please try again in 15 minutes!"
+  },
+  EMAIL_SEND_FAILED: {
+    code: "ERR_EMAIL_SEND",
+    message: "Failed to send message!"
+  },
+  VALIDATION_ERROR: {
+    code: "ERR_VALIDATION",
+    message: "Validation failed!"
+  }
+};
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -19,7 +38,12 @@ const emailIpRateLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   keyGenerator: (req) => req.ip,
-  message: "Too many attempts. Please try again in 15 minutes.",
+  handler: (req, res) => {
+    res.status(429).json({
+      errorCode: errorCodes.RATE_LIMITED.code,
+      message: errorCodes.RATE_LIMITED.message
+    });
+  },
   skip: (req) => {
     const whitelist = ["84.43.144.178", "::1", "127.0.0.1"];
     return whitelist.includes(req.ip);
@@ -31,7 +55,8 @@ const verifyEmailDomain = async (email) => {
     const domain = email.split("@")[1];
     await dns.promises.resolveMx(domain);
     return true;
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("DNS verification failed:", error);
     return false;
   }
@@ -46,7 +71,10 @@ const contactFormSchema = z.object({
   email: z.string()
     .email("Invalid email address!")
     .min(1, "Email is required!")
-    .refine(async (email) => await verifyEmailDomain(email), "Email does not exist or cannot receive emails!"),
+    .refine(
+      async (email) => await verifyEmailDomain(email), 
+      {message: errorCodes.EMAIL_DOMAIN_INVALID.message, params: { code: errorCodes.EMAIL_DOMAIN_INVALID.code }}
+    ),
   message: z.string()
     .max(3000, "Message must be less than 3000 characters!")
     .min(1, "Message is required!")
@@ -57,9 +85,19 @@ const sendEmail = async (name, email, message) => {
   try {
     const result = await contactFormSchema.safeParseAsync({ name, email, message });
 
+    const isValidDomain = await verifyEmailDomain(email);
+    if (!isValidDomain) {
+      throw {
+        errorCode: errorCodes.EMAIL_DOMAIN_INVALID.code,
+        message: errorCodes.EMAIL_DOMAIN_INVALID.message
+      };
+    }
     if (!result.success) {
-      const errors = result.error.issues.map(issue => issue.message);
-      throw new Error(errors.join(", "));
+      const firstError = result.error.issues[0];
+      throw {
+        errorCode: firstError.params?.code || errorCodes.VALIDATION_ERROR.code,
+        message: firstError.message || errorCodes.VALIDATION_ERROR.message
+      };
     }
 
     const { name: safeName, email: safeEmail, message: safeMessage } = result.data;
@@ -76,7 +114,14 @@ const sendEmail = async (name, email, message) => {
   } 
   catch (error) {
     console.error("Error:", error);
-    throw new Error(error.message || "Failed to send message!");
+
+    if (error.errorCode) {
+      throw error;
+    }
+    throw {
+      errorCode: errorCodes.EMAIL_SEND_FAILED.code,
+      message: error.message || errorCodes.EMAIL_SEND_FAILED.message
+    };
   }
 };
 

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
 import ScrollToTop from "../../components/reusableComponents/ScrollToTop.jsx";
+import ConfirmationToast from "../../components/reusableComponents/ConfirmationToast.jsx";
 import axios from "axios";
 import { z } from "zod";
 import "./support.css";
@@ -20,6 +21,7 @@ export default function Support() {
   const allTopicsRef = useRef({});
   const [isLoading, setIsLoading] = useState(true);
   const { path } = useParams();
+  const [toast, setToast] = useState({show: false, message:"", type:""});
 
   useEffect(() => {
     if (supportData) {
@@ -110,19 +112,16 @@ export default function Support() {
   };
 
   const contactFormSchema = z.object({
-    name: z
-      .string()
-      .min(3, "Name must be at least 3 characters!")
-      .max(100, "Name must be less than 100 characters!")
-      .min(1, "Name is required!"),
-    email: z
-      .string()
-      .email("Invalid email address!")
-      .min(1, "Email is required!"),
-    message: z
-      .string()
-      .max(3000, "Message must be less than 3000 characters!")
-      .min(1, "Message is required!"),
+    name: z.string()
+      .min(3, "support.validation.name.min")
+      .max(100, "support.validation.name.max")
+      .min(1, "support.validation.name.required"),
+    email: z.string()
+      .email("support.validation.email.invalid")
+      .min(1, "support.validation.email.required"),
+    message: z.string()
+      .max(3000, "support.validation.message.max")
+      .min(1, "support.validation.message.required")
   });
 
   const handleSubmit = async (e) => {
@@ -139,26 +138,42 @@ export default function Support() {
       setCharCount({ name: 0, message: 0 });
 
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/send-message`, data);
-      alert(t("support.messageSent"));
+      setToast({
+        show: true,
+        message: t("support.messageSent"),
+        type:"success"
+      });
       console.log("Success response:", response.data);
     } 
     catch (error) {
       if (error instanceof z.ZodError) {
         const firstError = error.errors[0];
-        alert(firstError.message);
+        setToast({
+          show: true,
+          message: t(firstError.message),
+          type:"error"
+        });
       } 
       else if (error.response) {
-        let errorMessage;
-        if (error.response.status === 429) {
-          errorMessage = t("support.tooManyAttempts");
-        } 
-        else if (error.response.status === 400) {
-          errorMessage = t("support.messageError");
-        }
-        alert(errorMessage);
+        const errorData = error.response.data;
+        const errorCode = errorData.errorCode;
+
+        const toastMessage = errorCode 
+        ? t(`support.errors.${errorCode}`)
+        : errorData.message || t("support.messageError");
+
+        setToast({
+          show: true,
+          message: toastMessage,
+          type: "error"
+        });
       } 
       else {
-        alert(t("support.messageError"));
+        setToast({
+          show: true,
+          message: t("support.messageError"),
+          type:"error"
+        });
       }
       console.error("Error details:", error);
     }
@@ -169,6 +184,7 @@ export default function Support() {
   {/*--------------------------------------------------MAIN-----------------------------------------------------*/}
   return (
     <div className="support">
+      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <ScrollToTop />
 
       {/*--------------------------------------SEARCH-BAR---------------------------------------*/}
