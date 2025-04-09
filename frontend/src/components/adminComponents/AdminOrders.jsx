@@ -8,6 +8,8 @@ const AdminOrders = () => {
   return (
     <div className="adminContentAreaOrders">
       <h2>{t("admin.orders.mainTitle")}</h2>
+      <div className="adminOrders">
+      </div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const errorCodes = {
   },
   RATE_LIMITED: {
     code: "ERR_RATE_LIMIT",
-    message: "Too many attempts. Please try again in 15 minutes!"
+    message: "Too many attempts. Please try again in 15 minutes."
   },
   EMAIL_SEND_FAILED: {
     code: "ERR_EMAIL_SEND",

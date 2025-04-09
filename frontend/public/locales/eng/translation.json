@@ -156,7 +156,8 @@
       "dontWorry": "You don't have an account? Don't worry, just input the email with which you want to create one.",
       "or": "or",
       "also": "You can also log in with:",
-      "error":"Server error during email verification. Please contact support if this persists."
+      "error":"Server error during email verification. Please contact support if this persists.",
+      "tooManyAttempts":"Too many attempts. Please try again in 15 minutes."
     },
 
     "registration":{
@@ -656,7 +657,7 @@
     },
     "errors": {
     "ERR_EMAIL_DOMAIN": "The email doesn't exist or can't receive emails !",
-    "ERR_RATE_LIMIT": "Too many attempts. Please try again in 15 minutes !",
+    "ERR_RATE_LIMIT": "Too many attempts. Please try again in 15 minutes.",
     "ERR_EMAIL_SEND": "Failed to send your message. Please try again later !",
     "ERR_VALIDATION": "Invalid form data"
     }
@@ -781,38 +782,38 @@
         {
           "name": "Best Sellers",
           "category": [
-            {"name": "Featured Products", "link": "/product/featured-products"},
-            {"name": "Customer Favorites", "link": "/product/customer-favorites"},
-            {"name": "Top Rated Products", "link": "/product/top-rated-products"},
+            { "name": "Featured Products", "link": "/product/featured-products"},
+            { "name": "Customer Favorites", "link": "/product/customer-favorites"},
+            { "name": "Top Rated Products", "link": "/product/top-rated-products"},
             { "name": "New Arrivals", "link": "/product/new-arrivals" },
             { "name": "Trending Now", "link": "/product/trending-now" },
-            {"name": "Must-Have Products", "link": "/product/must-have-products"},
-            {"name": "Seasonal Specials", "link": "/product/seasonal-specials"}
+            { "name": "Must-Have Products", "link": "/product/must-have-products"},
+            { "name": "Seasonal Specials", "link": "/product/seasonal-specials"}
           ]
         },
         {
           "name": "Promotions",
           "category": [
-            {"name": "Limited Time Offers", "link": "/product/limited-time-offers"},
+            { "name": "Limited Time Offers", "link": "/product/limited-time-offers"},
             { "name": "Seasonal Sales", "link": "/product/seasonal-sales" },
             { "name": "Clearance Items", "link": "/product/clearance-items" },
-            {"name": "Discounted Bundles", "link": "/product/discounted-bundles"},
+            { "name": "Discounted Bundles", "link": "/product/discounted-bundles"},
             { "name": "Buy 1 Get 1 Free", "link": "/product/buy-1-get-1-free" },
             { "name": "Flash Sales", "link": "/product/flash-sales" },
-            {"name": "Exclusive Discounts", "link": "/product/exclusive-discounts"},
-            {"name": "Free Shipping Deals", "link": "/product/free-shipping-deals"},
-            {"name": "Special Offers for Members", "link": "/product/special-offers-for-members"}
+            { "name": "Exclusive Discounts", "link": "/product/exclusive-discounts"},
+            { "name": "Free Shipping Deals", "link": "/product/free-shipping-deals"},
+            { "name": "Special Offers for Members", "link": "/product/special-offers-for-members"}
           ]
         },
         {
           "name": "Bio",
           "category": [
             { "name": "Organic Products", "link": "/product/organic-products" },
-            {"name": "Eco-Friendly Products", "link": "/product/eco-friendly-products"},
-            {"name": "Plant-Based Supplements", "link": "/product/plant-based-supplements"},
+            { "name": "Eco-Friendly Products", "link": "/product/eco-friendly-products"},
+            { "name": "Plant-Based Supplements", "link": "/product/plant-based-supplements"},
             { "name": "Non-GMO Items", "link": "/product/non-gmo-items" },
-            {"name": "Sustainable Brands", "link": "/product/sustainable-brands"},
-            {"name": "Cruelty-Free Products", "link": "/product/cruelty-free-products"},
+            { "name": "Sustainable Brands", "link": "/product/sustainable-brands"},
+            { "name": "Cruelty-Free Products", "link": "/product/cruelty-free-products"},
             { "name": "Natural Skincare", "link": "/product/natural-skincare" },
             { "name": "Herbal Remedies", "link": "/product/herbal-remedies" }
           ]
@@ -821,12 +822,12 @@
           "name": "Protein & Amino Acids",
           "category": [
             { "name": "Whey Protein", "link": "/product/whey-protein" },
-            {"name": "Plant-Based Protein", "link": "/product/plant-based-protein"},
-            {"name": "Pre-Workout Protein", "link": "/product/pre-workout-protein"},
+            { "name": "Plant-Based Protein", "link": "/product/plant-based-protein"},
+            { "name": "Pre-Workout Protein", "link": "/product/pre-workout-protein"},
             { "name": "Casein Protein", "link": "/product/casein-protein" },
             { "name": "Vegan Protein", "link": "/product/vegan-protein" },
-            {"name": "Protein Shake & Bars", "link": "/product/protein-shake-bars"},
-            {"name": "Amino Acid Supplements", "link": "/product/amino-acid-supplements"},
+            { "name": "Protein Shake & Bars", "link": "/product/protein-shake-bars"},
+            { "name": "Amino Acid Supplements", "link": "/product/amino-acid-supplements"},
             { "name": "BCAA", "link": "/product/bcaa" }
           ]
         },
@@ -848,29 +849,29 @@
         {
           "name": "Performance Enhancers",
           "category": [
-            {"name": "Pre-Workout Supplements", "link": "/product/pre-workout-supplements"},
-            {"name": "Post-Workout Recovery", "link": "/product/post-workout-recovery"},
+            { "name": "Pre-Workout Supplements", "link": "/product/pre-workout-supplements"},
+            { "name": "Post-Workout Recovery", "link": "/product/post-workout-recovery"},
             { "name": "Energy Boosters", "link": "/product/energy-boosters" },
-            {"name": "Muscle Mass Gainers", "link": "/product/muscle-mass-gainers"},
-            {"name": "Endurance Supplements", "link": "/product/endurance-supplements"},
+            { "name": "Muscle Mass Gainers", "link": "/product/muscle-mass-gainers"},
+            { "name": "Endurance Supplements", "link": "/product/endurance-supplements"},
             { "name": "Creatine", "link": "/product/creatine" },
-            {"name": "Nitric Oxide Boosters", "link": "/product/nitric-oxide-boosters"},
-            {"name": "Focus & Cognitive Supplements", "link": "/product/focus-cognitive-supplements"},
-            {"name": "Strength Enhancers", "link": "/product/strength-enhancers"}
+            { "name": "Nitric Oxide Boosters", "link": "/product/nitric-oxide-boosters"},
+            { "name": "Focus & Cognitive Supplements", "link": "/product/focus-cognitive-supplements"},
+            { "name": "Strength Enhancers", "link": "/product/strength-enhancers"}
           ]
         },
         {
           "name": "Weight Management",
           "category": [
             { "name": "Fat Burners", "link": "/product/fat-burners" },
-            {"name": "Appetite Suppressants", "link": "/product/appetite-suppressants"},
-            {"name": "Low-Calorie Snacks", "link": "/product/low-calorie-snacks"},
-            {"name": "Meal Replacement Shakes", "link": "/product/meal-replacement-shakes"},
-            {"name": "Detox & Cleanse Products","link": "/product/detox-cleanse-products"},
-            {"name": "Weight Loss Supplements", "link": "/product/weight-loss-supplements"},
-            {"name": "Healthy Weight Gain Products", "link": "/product/healthy-weight-gain-products"},
-            {"name": "Metabolism Boosters", "link": "/product/metabolism-boosters"},
-            {"name": "Keto Diet Products", "link": "/product/keto-diet-products"},
+            { "name": "Appetite Suppressants", "link": "/product/appetite-suppressants"},
+            { "name": "Low-Calorie Snacks", "link": "/product/low-calorie-snacks"},
+            { "name": "Meal Replacement Shakes", "link": "/product/meal-replacement-shakes"},
+            { "name": "Detox & Cleanse Products","link": "/product/detox-cleanse-products"},
+            { "name": "Weight Loss Supplements", "link": "/product/weight-loss-supplements"},
+            { "name": "Healthy Weight Gain Products", "link": "/product/healthy-weight-gain-products"},
+            { "name": "Metabolism Boosters", "link": "/product/metabolism-boosters"},
+            { "name": "Keto Diet Products", "link": "/product/keto-diet-products"},
             { "name": "Low-Carb Snacks", "link": "/product/low-carb-snacks" }
           ]
         },

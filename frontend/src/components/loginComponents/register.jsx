@@ -5,11 +5,13 @@ import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import { z } from "zod";
 import GoBackButton from "../reusableComponents/LRGoBackButton";
+import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 
 export default function Register({email, setIsTermsVisible, userProgress, setUserProgress}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { checkAuthStatus } = useContext(AuthContext);
+  const [toast, setToast] = useState({show:false, message:"", type:""})
   const [registerFormData, setRegisterFormData] = useState(() => {
     return userProgress.registerFormDataMain || {
       username: "",
@@ -259,7 +261,11 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
         } 
         catch (error) {
           const errorMessage = t("loginRegistration.registration.failed");
-          alert(errorMessage);
+          setToast({
+            show: true,
+            message: errorMessage,
+            type:"error",
+          })
           console.error("Registration failed:", error.response?.data?.message);
         }
       } catch (error) {
@@ -288,6 +294,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
   return (
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
+      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <div className="registerWelcomeBox">
         <h1 className="registerWelcome">{t("loginRegistration.registration.welcome")}</h1>
         <p className="registerEmail">{email}</p>

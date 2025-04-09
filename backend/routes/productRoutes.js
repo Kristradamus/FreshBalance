@@ -14,5 +14,6 @@ router.delete('/:id', authMiddleware.authenticateJWT, productController.removePr
 router.get('/', productController.getProducts);
 router.get('/category/:link', productController.getProductsByCategory);
 router.get('/categories', productController.getCategories);
+router.get('/category-groups', productController.getCategoryGroupsWithCategories);
 
 module.exports = router;

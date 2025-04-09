@@ -101,10 +101,30 @@ const getCategories = async (req, res) => {
   }
 };
 
+const getCategoryGroupsWithCategories = async (req, res) => {
+  try {
+    const [groups] = await pool.query("SELECT * FROM category_groups ORDER BY display_order");
+    const [categories] = await pool.query("SELECT * FROM categories ORDER BY display_order");
+
+    const groupedCategories = groups.map(group => {
+      return {
+        ...group,
+        categories: categories.filter(category => category.group_id === group.id)
+      };
+    });
+
+    res.json(groupedCategories);
+  } catch (err) {
+    console.error("Error fetching category groups with categories:", err);
+    res.status(500).json({ message: "Server error." });
+  }
+};
+
 module.exports = {
   addProduct,
   removeProduct,
   getProducts,
   getProductsByCategory,
   getCategories,
+  getCategoryGroupsWithCategories,
 };

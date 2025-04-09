@@ -67,15 +67,15 @@ export default function ProductManagement() {
   };
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/products/categories`)
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/products/category-groups`)
       .then(response => {
+        console.log(response.data);
         setCategories(response.data);
       })
       .catch(error => {
-        console.error("Error fetching categories:", error);
+        console.error("Error fetching category groups:", error);
       });
   }, []);
-
   /*--------------------------------IMAGE-UPLOAD--------------------------------*/
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -200,28 +200,31 @@ export default function ProductManagement() {
           <form onSubmit={handleAddSubmit}>
             <div className="formGrid">
               <div className="formGroup">
-                <label>{t("admin.productManagement.add.formNameTitle")}</label>
+                <label className="formGroupTitle">{t("admin.productManagement.add.formNameTitle")}</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} required />
               </div>
               <div className="formGroup">
-                <label>{t("admin.productManagement.add.formPriceTitle")}</label>
+                <label className="formGroupTitle">{t("admin.productManagement.add.formPriceTitle")}</label>
                 <input type="number" name="price" value={formData.price} onChange={handleChange} step="0.01" min="0" required />
               </div>
               <div className="formGroup">
-                <label>{t("admin.productManagement.add.formStockTitle")}</label>
+                <label className="formGroupTitle">{t("admin.productManagement.add.formStockTitle")}</label>
                 <input type="number" name="stock" value={formData.stock} onChange={handleChange} min="0" />
               </div>
             </div>
             <div className="formGroup">
-              <label>{t("admin.productManagement.add.formDescriptionTitle")}</label>
+              <label className="formGroupTitle">{t("admin.productManagement.add.formDescriptionTitle")}</label>
               <textarea name="description" value={formData.description} onChange={handleChange} rows="3" ></textarea>
             </div>
             <div className="formGroup">
-              <label>{t("admin.productManagement.add.formDetailsTitle")}</label>
+              <label className="formGroupTitle">{t("admin.productManagement.add.formDetailsTitle")}</label>
               <textarea name="details" value={formData.details} onChange={handleChange} rows="3" ></textarea>
             </div>
+
+            {/*------------------------------------CATEGORIES--------------------------------*/}
             <div className="formGroup">
-              <label>{t("admin.productManagement.add.formImageTitle")}</label>
+              <label className="formGroupTitle">{t("admin.productManagement.add.formImageTitle")}</label>
+              <hr></hr>
               <div className="imageUploadContainer">
                 <input type="file" accept="image/*" onChange={handleImageChange} />
                 {imagePreview && (
@@ -234,21 +237,37 @@ export default function ProductManagement() {
                 Max size: 16MB. Supported formats: JPEG, PNG, GIF
               </p>
             </div>
+
+            {/*------------------------------------CATEGORIES--------------------------------*/}
             <div className="formGroup">
-              <label>Categories</label>
-              {categories.map(category => (
-                <div key={category.id}>
-                  <label>
-                    <input type="checkbox" value={category.id} checked={selectedCategories.includes(category.id)} onChange={handleCategoryChange}/>
-                    {category.name}
-                  </label>
-                </div>
-              ))}
+              <label className="formGroupTitle">Categories</label>
+              <hr></hr>
+              <div className="categoriesWrapper">
+                {categories && categories.reduce((acc, group) => {
+                  if (!acc.names.includes(group.name)) {
+                    acc.names.push(group.name);
+                    acc.elements.push(
+                      <div className="categoriesColumnBox" key={group.name}>
+                        <div className="categoriesBox">
+                          <h4>{group.name}</h4>
+                          {group.categories.map(category => (
+                            <div key={category.id} className="productCategoryCheckboxBox">
+                              <input type="checkbox" value={category.id} id={`category-${category.id}`} checked={selectedCategories.includes(category.id)} onChange={handleCategoryChange} />
+                              <div className="productCategoryCheckbox" onClick={() => {document.getElementById(`category-${category.id}`).click(); }} >
+                                <p className="productCategoryCheckboxText">{category.name}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return acc;
+                }, { names: [], elements: [] }).elements}
+              </div>
             </div>
             <button type="submit" className="submitBtn" disabled={isSubmitting} >
-              {isSubmitting
-                ? "Adding Product..."
-                : "Add Product"}
+              {isSubmitting ? "Adding Product..." : "Add Product"}
             </button>
           </form>
         </div>

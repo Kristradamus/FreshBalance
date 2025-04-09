@@ -82,30 +82,30 @@ const checkEmail = async (req, res) => {
 /*------------------------------------------EMAIL-VERIFICATION-CODE------------------------------------------*/
 const verifyEmailVerificationCode = (req, res, next) => {
   const { email: submittedEmail, verificationCode } = req.body;
-
+  
   if (!submittedEmail || !verificationCode) {
     return res.status(400).json({ error: "Email and verification code are required!" });
   }
-
+  
   const verificationCodeEntry = emailVerificationCode.get(submittedEmail);
-
+  
   if (!verificationCodeEntry) {
     return res
       .status(401)
       .json({ error: "No verification code found for this email!" });
   }
-
+  
   if (verificationCodeEntry.verificationCode !== verificationCode) {
     return res.status(403).json({
       error: "Invalid verification code!",
       detail: "The provided verification code does not match the expected verification code.",
     });
   }
-
+  
   const currentTime = Date.now();
   const verificationCodeAge = currentTime - verificationCodeEntry.createdAt;
   const CODE_EXPIRATION = 15 * 60 * 1000;
-
+  
   if (verificationCodeAge > CODE_EXPIRATION) {
     emailVerificationCode.delete(submittedEmail);
     return res.status(401).json({
@@ -113,8 +113,9 @@ const verifyEmailVerificationCode = (req, res, next) => {
       detail: "Please request a new verification code.",
     });
   }
-
-  emailVerificationCode.delete(submittedEmail);
+  
+  req.verificationPassed = true;
+  
   next();
 };
 
@@ -231,38 +232,35 @@ const checkUsername = async (req, res) => {
 const login = async (req, res) => {
   const { email, password, verificationCode } = req.body;
   console.log("Login request received:", req.body);
+  
   try {
-    if (!verificationCode) {
-      return res.status(401).json({ error: "Verification code is required!" });
-    }
-    if (verificationCode) {
-      const verificationCodeEntry = emailVerificationCode.get(email);
-      if (!verificationCodeEntry || verificationCodeEntry.verificationCode !== verificationCode) {
-        return res.status(401).json({ error: "Invalid verification code!" });
-      }
-      emailVerificationCode.delete(email);
-    }
-
     const [users] = await pool.query(
       "SELECT * FROM users WHERE user_email = ?",
       [email]
     );
+    
     if (users.length === 0) {
       return res.status(401).json({ error: "Invalid credentials!" });
     }
-
+    
     const user = users[0];
+    
     const isPasswordValid = await bcrypt.compare(password, user.user_password);
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid password!" });
     }
 
+    if (req.verificationPassed) {
+      emailVerificationCode.delete(email);
+    }
+    
     const authToken = generateToken(
       user.user_id,
       user.user_name,
       user.user_email,
       user.user_role
     );
+    
     res.json({
       token: authToken,
       user: {

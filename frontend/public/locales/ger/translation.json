@@ -145,7 +145,8 @@
       "dontWorry": "Kein Konto? E-Mail für Neuregistrierung eingeben",
       "or": "oder",
       "also": "Alternativ anmelden mit:",
-      "error": "Fehler bei E-Mail-Prüfung"
+      "error": "Fehler bei E-Mail-Prüfung",
+      "tooManyAttempts": "Zu viele Versuche. Bitte versuchen Sie es in 15 Minuten erneut."
     },
 
     "registration": {
@@ -568,7 +569,7 @@
     },
     "errors": {
       "ERR_EMAIL_DOMAIN": "Die E-Mail existiert nicht oder kann keine Nachrichten empfangen !",
-      "ERR_RATE_LIMIT": "Zu viele Versuche. Bitte versuchen Sie es in 15 Minuten erneut !",
+      "ERR_RATE_LIMIT": "Zu viele Versuche. Bitte versuchen Sie es in 15 Minuten erneut.",
       "ERR_EMAIL_SEND": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es später erneut !",
       "ERR_VALIDATION": "Ungültige Formulardaten"
     }
@@ -733,12 +734,12 @@
           "name": "Proteine & Aminosäuren",
           "category": [
             { "name": "Molkenprotein", "link": "/product/whey-protein" },
-            {"name": "Pflanzliches Protein", "link": "/product/plant-based-protein"},
-            {"name": "Pre-Workout-Protein", "link": "/product/pre-workout-protein"},
+            { "name": "Pflanzliches Protein", "link": "/product/plant-based-protein"},
+            { "name": "Pre-Workout-Protein", "link": "/product/pre-workout-protein"},
             { "name": "Kaseinprotein", "link": "/product/casein-protein" },
             { "name": "Veganes Protein", "link": "/product/vegan-protein" },
-            {"name": "Protein-Shakes & -Riegel", "link": "/product/protein-shake-bars"},
-            {"name": "Aminosäure-Ergänzungen", "link": "/product/amino-acid-supplements"},
+            { "name": "Protein-Shakes & -Riegel", "link": "/product/protein-shake-bars"},
+            { "name": "Aminosäure-Ergänzungen", "link": "/product/amino-acid-supplements"},
             { "name": "BCAA", "link": "/product/bcaa" }
           ]
         },

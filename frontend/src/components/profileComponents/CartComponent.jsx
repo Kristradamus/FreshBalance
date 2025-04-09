@@ -14,7 +14,9 @@ export default function CartComponent() {
         </div>
         <div className="cartProductsBox"></div>
       </div>
-      <div className="cartPaying"></div>
+      <div className="cartPaying">
+        <h2>Pay Now</h2>
+      </div>
     </div>
   );
 }

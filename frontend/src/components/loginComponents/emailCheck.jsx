@@ -97,18 +97,24 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
       setEmailCheckComplete(true);
     } 
     catch (error) {
-      console.error("Error checking email:", error);
+      console.error("Error checking email:", error.response?.data?.message || error.response?.data?.error || error.message || error);
       setEmailError(true);
-      const errorMessage =
-        error.response?.data?.message ||
-        error.response?.data?.error ||
-        error.message ||
-        t("loginRegistration.email.error");
+    
+      let errorMessage;
+      
+      if (error.response?.status === 429) {
+        errorMessage = t("loginRegistration.email.tooManyAttempts");
+        setEmailError(false);
+      } 
+      else {
+        errorMessage = t("loginRegistration.email.error");
+      }
+    
       setToast({
-        show:true,
-        message:errorMessage,
-        type:"error",
-      })
+        show: true,
+        message: errorMessage,
+        type: "error",
+      });
     }
   };
 

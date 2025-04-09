@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
+import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 import GoBackButton from "../reusableComponents/LRGoBackButton";
 
 export default function Login({email, username, userProgress, setUserProgress }) {
@@ -14,6 +15,7 @@ export default function Login({email, username, userProgress, setUserProgress })
   const { t } = useTranslation();
   const navigate = useNavigate();
   const passwordInputRef = useRef(null);
+  const [toast, setToast] = useState({show:false, message:"", type:""})
   const [loginFormData, setLoginFormData] = useState(() => {
     return userProgress.loginFormDataMain || {
       password: "",
@@ -116,7 +118,11 @@ export default function Login({email, username, userProgress, setUserProgress })
         } 
         else {
           console.error("Login error:", error);
-          alert(t("loginRegistration.generalError"));
+          setToast({
+            show: true,
+            message: t("loginRegistration.generalError"),
+            type:"error",
+          })
         }
       }
     }
@@ -125,6 +131,7 @@ export default function Login({email, username, userProgress, setUserProgress })
   return (
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
+      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <div className="loginWelcomeBox">
         <h1 className="loginWelcome">
           {t("loginRegistration.login.welcome")}&nbsp;{" "}

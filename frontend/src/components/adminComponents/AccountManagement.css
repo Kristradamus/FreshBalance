@@ -1,0 +1,58 @@
+.adminContentAreaAccounts{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.accountManagementHeader{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding: 20px;
+  background-color: var(--white);
+  border-radius: var(--smallRadius);
+  box-shadow: var(--boxShadowLight);
+  width: 100%;
+}
+.removeAccountBtn{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:var(--iconDistance);
+  border:2px solid transparent;
+  cursor:pointer;
+  border-radius:var(--smallRadius);
+  background-color:var(--mainButtonColor);
+  font-size:var(--textFont);
+  padding:10px 20px;
+  transition:var(--transition);
+  color:var(--white);
+  max-width:200px;
+}
+.removeAccountBtn:hover{
+  background-color:var(--mainButtonHover);
+  transform: translateY(-1px);
+}
+.removeAccountBtn.show{
+  border:2px solid var(--mainButtonHover);
+  background-color:var(--white);
+  color:var(--mainButtonHover);
+  transform: translateY(-1px);
+}
+.removeAccountMain{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding: 20px;
+  background-color: var(--white);
+  border-radius: var(--smallRadius);
+  box-shadow: var(--boxShadowLight);
+  width: 100%;
+}
+
+/*----------------------------------------RESPONSIVE--------------------------------------*/
+@media(max-width:1000px){
+  .removeAccountBtn{
+    max-width:none;
+  }
+}

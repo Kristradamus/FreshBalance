@@ -148,7 +148,8 @@
       "dontWorry": "¿Sin cuenta? Ingresa email para registrarte",
       "or": "o",
       "also": "También puedes ingresar con:",
-      "error": "Error al verificar email"
+      "error": "Error al verificar email",
+      "tooManyAttempts": "Demasiados intentos. Por favor, inténtalo de nuevo en 15 minutos."
     },
 
     "registration": {
@@ -572,7 +573,7 @@
     },
     "errors": {
       "ERR_EMAIL_DOMAIN": "¡El correo no existe o no puede recibir mensajes !",
-      "ERR_RATE_LIMIT": "¡Demasiados intentos. Por favor intente nuevamente en 15 minutos !",
+      "ERR_RATE_LIMIT": "¡Demasiados intentos. Por favor intente nuevamente en 15 minutos.",
       "ERR_EMAIL_SEND": "¡Error al enviar el mensaje. Por favor intente más tarde !",
       "ERR_VALIDATION": "Datos del formulario inválidos"
     }

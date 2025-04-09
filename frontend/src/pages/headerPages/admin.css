@@ -10,7 +10,8 @@
   flex-direction:column;
   align-items:center;
   gap:20px;
-  width: 300px;
+  width:100%;
+  max-width:300px;
   padding: 20px;
   background-color:var(--white);
   border-radius:var(--smallRadius);
@@ -49,4 +50,13 @@
 }
 .adminContentArea {
   flex-grow: 1;
+}
+/*-------------------------------RESPONSIVE-------------------------------------------*/
+@media(max-width:1000px){
+  .admin{
+    flex-direction:column;
+  }
+  .adminSidebar{
+    max-width:none;
+  }
 }

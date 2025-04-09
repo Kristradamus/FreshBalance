@@ -113,3 +113,6 @@ hr {
 strong{
   font-weight:600;
 }
+button{
+  font-size:var(--smallTextFont);
+}
