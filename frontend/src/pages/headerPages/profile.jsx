@@ -1,6 +1,6 @@
 import React from "react";
-import {Routes, Route, useNavigate, useLocation, Outlet,} from "react-router-dom";
-import FavouritesComponent from "../../components/profileComponents/FavouritesComponent.jsx";
+import { Routes, Route, useNavigate, useLocation, Outlet } from "react-router-dom";
+import favoritesComponent from "../../components/profileComponents/favoritesComponent.jsx";
 import CartComponent from "../../components/profileComponents/CartComponent.jsx";
 import SecurityComponent from "../../components/profileComponents/SecurityComponent.jsx";
 import LogOutComponent from "../../components/reusableComponents/LogOut.jsx";
@@ -13,13 +13,12 @@ function ProfileLayout() {
   const location = useLocation();
   const activeSection = location.pathname.split("/").pop() || "settings";
 
-  const sidebarItems = t("profile.sidebarItems", { returnObject: true});
+  const sidebarItems = t("profile.sidebarItems", { returnObject: true });
 
   const handleNavigation = (item) => {
     if (item.isLogout) {
       navigate("logout");
-    } 
-    else {
+    } else {
       navigate(item.path);
     }
   };
@@ -44,7 +43,9 @@ function ProfileLayout() {
   );
 }
 
-{/*--------------------------------------PROFILE-SETTINGS--------------------------------------------*/}
+{
+  /*--------------------------------------PROFILE-SETTINGS--------------------------------------------*/
+}
 function ProfileSettings() {
   const { t } = useTranslation();
 
@@ -79,13 +80,15 @@ function ProfileSettings() {
   );
 }
 
-{/*--------------------------------------PROFILE-ROUTING--------------------------------------------*/}
+{
+  /*--------------------------------------PROFILE-ROUTING--------------------------------------------*/
+}
 export default function ProfilePage() {
   return (
     <Routes>
       <Route path="/" element={<ProfileLayout />}>
         <Route path="settings" element={<ProfileSettings />} />
-        <Route path="favourites" element={<FavouritesComponent />} />
+        <Route path="favorites" element={<favoritesComponent />} />
         <Route path="cart" element={<CartComponent />} />
         <Route path="security" element={<SecurityComponent />} />
         <Route path="logout" element={<LogOutComponent />} />

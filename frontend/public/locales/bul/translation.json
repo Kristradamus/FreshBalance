@@ -197,6 +197,74 @@
   },
   "-------------------------------------------------------PROFILE----------------------------------------------------------------": {},
   "profile": {},
+  "-------------------------------------------------------ADMIN-PROFILE--------------------------------------------------------": {},
+  "admin": {
+    "sidebarItems": [
+      { "icon": "fa-solid fa-gear", "title": "Настройки", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-box-open", "title": "Управление на продукти", "key": "products", "path": "products" },
+      { "icon": "fa-solid fa-users", "title": "Управление на акаунти", "key": "accounts", "path": "accounts" },
+      { "icon": "fa-solid fa-shopping-bag", "title": "Поръчки", "key": "orders", "path": "orders" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Изход", "key": "logout", "path": "logout", "isLogout": true }
+    ],
+    "sidebarMainTitle": "Администраторски панел",
+
+    "settings": {
+      "mainTitle": "Администраторски настройки"
+    },
+
+    "orders": {
+      "mainTitle": "Управление на поръчки"
+    },
+
+    "accountManagement": {
+      "mainTitle": "Управление на акаунти",
+      "removeAccount": "Изтриване на акаунт"
+    },
+
+    "productManagement": {
+      "mainTitle": "Управление на продукти",
+
+      "add": {
+        "productMainTitle": "Добавяне на нов продукт",
+        "productBtnText": "Добави нов продукт",
+        "formNameTitle": "Име на продукта",
+        "formPriceTitle": "Цена",
+        "formCategoryTitle": "Категория",
+        "formStockTitle": "Наличност",
+        "formDescriptionTitle": "Описание",
+        "formDetailsTitle": "Детайли",
+        "formImageTitle": "Изображение на продукта",
+        "errorNotImage": "Моля изберете изображение!",
+        "errorImageTooBig": "Размерът на изображението трябва да е под 5MB!",
+        "errorNameAndPrice": "Име и цена са задължителни!",
+        "errorConectingToServer": "Грешка при връзка със сървъра!",
+        "success": "Продуктът е добавен успешно!",
+        "uploadImage": "Кликнете за качване на изображение",
+        "uploadLimitations": "Макс. размер: 5MB. Поддържани формати: JPEG, PNG, GIF",
+        "addBtnTitle": "Добави продукт",
+        "addBtnWorking": "Добавяне на продукт",
+        "clearImage": "Изчисти изображението",
+        "categoriesTitle": "Категории"
+      },
+
+      "remove": {
+        "productMainTitle": "Премахване на продукт",
+        "productBtnText": "Премахни продукт",
+        "selectAProductTitle": "Изберете продукт за премахване",
+        "seachMainTitle": "Търсене на продукти",
+        "searchPlaceholder": "Търсете по име, ID или описание",
+        "noProductsFound": "Не са намерени продукти, отговарящи на търсенето.",
+        "removeBtnTitle": "Премахни продукт",
+        "removeBtnWorking": "Премахване",
+        "checkboxText": "Потвърждавам, че искам да премахна",
+        "lv": "лв",
+        "id": "ID",
+        "failedToLoadProducts": "Грешка при зареждане на продуктите",
+        "failedToRemoveProduct": "Грешка при премахване на продукта!",
+        "success": "Продуктът е премахнат успешно!"
+      }
+    }
+  },
   "-----------------------------------------------------------SERVICES------------------------------------------------------------": {},
   "services": {
     "servicesData": {
@@ -662,12 +730,12 @@
       ],
       "navGuest": [
         { "name": "Вход", "link": "/email-check" },
-        { "name": "Любими", "link": "/profile/favourites" },
+        { "name": "Любими", "link": "/profile/favorites" },
         { "name": "Количка", "link": "/profile/cart" }
       ],
       "navUser": [
         { "name": "Профил", "link": "/profile/settings" },
-        { "name": "Любими", "link": "/profile/favourites" },
+        { "name": "Любими", "link": "/profile/favorites" },
         { "name": "Количка", "link": "/profile/cart" }
       ],
       "navAdmin": [
@@ -971,7 +1039,8 @@
 
     "restrictedTitle": "Ограничен достъп!",
     "restrictedSubTitle": "Необходими са администраторски права за достъп.",
-    "restrictedGoBack": "Назад"
+    "restrictedGoBack": "Назад",
+    "functionalityRestricted": "Трябва да влезете в профила си, за да използвате тази функция"
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel": "Отказ"

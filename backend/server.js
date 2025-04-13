@@ -13,6 +13,7 @@ const authMiddleware = require("./middleware/authMiddleware.js");
 const authController = require("./controllers/authController.js");
 const supportController = require("./controllers/supportController.js");
 const productRoutes = require("./routes/productRoutes.js");
+const favoriteRoutes = require("./routes/favoriteRoutes.js");
 const pool = require("./dataBase.js");
 
 app.use(
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use("/products", productRoutes);
+app.use("/favorites", favoriteRoutes);
 
 app.post("/check-email", authController.emailCheckLimiter, authController.checkEmail);
 app.post("/register", authController.verifyEmailVerificationCode, authController.register);

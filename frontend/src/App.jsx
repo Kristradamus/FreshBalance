@@ -23,6 +23,7 @@ const ProductPage = React.lazy(() =>import("./pages/productPages/productPage.jsx
 const LegalPage = React.lazy(() =>import("./pages/navigationPages/legalPage.jsx"));
 const BuyNowSubscription = React.lazy(() => import("./pages/navigationPages/buyNowSubscription.jsx"));
 const TryFreeSubscription = React.lazy(() => import("./pages/navigationPages/tryFreeSubscription.jsx"));
+const SingleProductPage = React.lazy(() => import("./pages/productPages/singleProductPage.jsx"));
 
 export default function App() {
   return (
@@ -46,6 +47,7 @@ export default function App() {
                   <Route path="/admin/*"element={<ProtectedRouteAdmin><Admin /></ProtectedRouteAdmin>} />
                   <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
                   <Route path="/product/:promotionName" element={<ProductPage />} />
+                  <Route path="/singleProductPage/:promotionName" element={<SingleProductPage/>}></Route>
                   <Route path="/legal-policies" element={<LegalPage />} />
                   <Route path="/communities" element={<Communities />}/>
                 </Route>

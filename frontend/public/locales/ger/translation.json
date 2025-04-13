@@ -127,7 +127,7 @@
         "text": "Unser Sortiment umfasst über 100 wissenschaftlich fundierte Produkte, die auf die individuellen Bedürfnisse unserer Kunden abgestimmt sind. Von nahrhaften Mahlzeiten bis hin zu hochwertigen Nahrungsergänzungsmitteln – unsere Lösungen unterstützen Sie auf Ihrem Weg zu mehr Wohlbefinden und Vitalität."
       }
     ],
-    "whoWeWorkWith":"HIER SIND UNSERE PARTNERMARKEN"
+    "whoWeWorkWith": "HIER SIND UNSERE PARTNERMARKEN"
   },
   "--------------------------------------------------LOGIN-REGISTRATION-------------------------------------------------------": {},
   "loginRegistration": {
@@ -160,14 +160,14 @@
       "termsRequired": "AGB müssen akzeptiert werden",
       "successfull": "Erfolgreich registriert",
       "failed": "Registrierung fehlgeschlagen!",
-      
+
       "usernameRequired": "Benutzername benötigt",
       "usernameTaken": "Benutzername vergeben",
       "username3Chars": "Mind. 3 Zeichen",
       "username30Chars": "Max. 30 Zeichen",
       "usernameAllowedCharacters": "Nur Buchstaben, Zahlen, Unterstriche",
       "success": "Sie haben sich erfolgreich registriert !",
-      
+
       "confirmPassword": "Passwort bestätigen",
       "passwordsDoNotMatch": "Passwörter unterschiedlich",
       "passwordRequired": "Passwort benötigt",
@@ -192,8 +192,78 @@
     "loading": "Laden...",
     "errorLoading": "Es scheint ein Problem mit der Produktseite zu geben. Bitte versuchen Sie es erneut."
   },
+
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {},
+
+  "-------------------------------------------------------ADMIN-PROFILE--------------------------------------------------------": {},
+  "admin": {
+    "sidebarItems": [
+      { "icon": "fa-solid fa-gear", "title": "Einstellungen", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-box-open", "title": "Produktverwaltung", "key": "products", "path": "products" },
+      { "icon": "fa-solid fa-users", "title": "Kontoverwaltung", "key": "accounts", "path": "accounts" },
+      { "icon": "fa-solid fa-shopping-bag", "title": "Bestellungen", "key": "orders", "path": "orders" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Abmelden", "key": "logout", "path": "logout", "isLogout": true }
+    ],
+    "sidebarMainTitle": "Admin-Panel",
+
+    "settings": {
+      "mainTitle": "Admin-Einstellungen"
+    },
+
+    "orders": {
+      "mainTitle": "Bestellverwaltung"
+    },
+
+    "accountManagement": {
+      "mainTitle": "Kontoverwaltung",
+      "removeAccount": "Konto löschen"
+    },
+
+    "productManagement": {
+      "mainTitle": "Produktverwaltung",
+
+      "add": {
+        "productMainTitle": "Neues Produkt hinzufügen",
+        "productBtnText": "Neues Produkt hinzufügen",
+        "formNameTitle": "Produktname",
+        "formPriceTitle": "Preis",
+        "formCategoryTitle": "Kategorie",
+        "formStockTitle": "Bestand",
+        "formDescriptionTitle": "Beschreibung",
+        "formDetailsTitle": "Details",
+        "formImageTitle": "Produktbild",
+        "errorNotImage": "Bitte wählen Sie eine Bilddatei aus!",
+        "errorImageTooBig": "Die Bildgröße sollte weniger als 5MB betragen!",
+        "errorNameAndPrice": "Name und Preis sind erforderlich!",
+        "errorConectingToServer": "Fehler bei der Verbindung zum Server!",
+        "success": "Produkt erfolgreich hinzugefügt!",
+        "uploadImage": "Klicken Sie, um ein Bild hochzuladen",
+        "uploadLimitations": "Max. Größe: 5MB. Unterstützte Formate: JPEG, PNG, GIF",
+        "addBtnTitle": "Produkt hinzufügen",
+        "addBtnWorking": "Produkt wird hinzugefügt",
+        "clearImage": "Bild löschen",
+        "categoriesTitle": "Kategorien"
+      },
+
+      "remove": {
+        "productMainTitle": "Produkt entfernen",
+        "productBtnText": "Produkt entfernen",
+        "selectAProductTitle": "Produkt zum Entfernen auswählen",
+        "seachMainTitle": "Produkte suchen",
+        "searchPlaceholder": "Suche nach Name, ID oder Beschreibung",
+        "noProductsFound": "Keine Produkte gefunden, die Ihrer Suche entsprechen.",
+        "removeBtnTitle": "Produkt entfernen",
+        "removeBtnWorking": "Wird entfernt",
+        "checkboxText": "Ich bestätige, dass ich entfernen möchte",
+        "lv": "lv",
+        "id": "ID",
+        "failedToLoadProducts": "Laden der Produkte fehlgeschlagen",
+        "failedToRemoveProduct": "Entfernen des Produkts fehlgeschlagen!",
+        "success": "Produkt erfolgreich entfernt!"
+      }
+    }
+  },
   "-------------------------------------------------------SERVICES--------------------------------------------------------------": {},
   "services": {
     "servicesData": {
@@ -249,27 +319,13 @@
         },
         "workHours": {
           "workHoursTitle": "Öffnungszeiten: ",
-          "workHoursDescription": [
-            { "hours": "Mo-Fr: 8 AM - 8 PM" },
-            { "hours": "Sa-So: 10 AM - 6 PM" }
-          ]
+          "workHoursDescription": [{ "hours": "Mo-Fr: 8 AM - 8 PM" }, { "hours": "Sa-So: 10 AM - 6 PM" }]
         },
         "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.141318950937!2d27.9386521!3d43.2241237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a45580c8146d6b%3A0x887e796bb95a5497!2sProfessional%20High%20School%20of%20Computer%20Modeling%20and%20Systems%20%22Academic%20Blagovest%20Sendov%22!5e0!3m2!1sen!2sbg!4v1691234567890!5m2!1sen!2sbg"
       },
       "delivery": {
         "subTitle1": "Unsere Lieferbedingungen:",
-        "areas": [
-          "Sofia",
-          "Plovdiv",
-          "Varna",
-          "Burgas",
-          "Ruse",
-          "Stara Zagora",
-          "Pleven",
-          "Sliven",
-          "Dobrich",
-          "Shumen"
-        ],
+        "areas": ["Sofia", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora", "Pleven", "Sliven", "Dobrich", "Shumen"],
         "terms": [
           {
             "title": "Liefergebiete: ",
@@ -425,11 +481,7 @@
     "subTitlePart2": "Plan komplett kostenlos.",
     "goBack": "Zurück",
     "startTrial": "Kostenlose Testversion starten",
-    "features": [
-      { "feature": "Keine Kreditkarte erforderlich" },
-      { "feature": "Voller Zugriff auf alle Funktionen dieses Plans" },
-      { "feature": "Jederzeit kündbar" }
-    ],
+    "features": [{ "feature": "Keine Kreditkarte erforderlich" }, { "feature": "Voller Zugriff auf alle Funktionen dieses Plans" }, { "feature": "Jederzeit kündbar" }],
     "success": "Ihre kostenlose Testversion wurde erfolgreich aktiviert !"
   },
   "----------------------------------------------------------BUY-NOW-----------------------------------------------------------": {},
@@ -441,11 +493,7 @@
     "successPart1": "Ihr",
     "successPart2": "Plan wurde erfolgreich aktiviert !",
     "startPlan": "Premium-Plan starten",
-    "features": [
-      {"feature": "Beginnt sofort nach der Bestätigung"},
-      {"feature": "Voller Zugriff auf alle Funktionen dieses Plans"},
-      {"feature": "Jederzeit kündbar"}
-    ],
+    "features": [{ "feature": "Beginnt sofort nach der Bestätigung" }, { "feature": "Voller Zugriff auf alle Funktionen dieses Plans" }, { "feature": "Jederzeit kündbar" }],
     "lv": "lv"
   },
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
@@ -455,89 +503,89 @@
         {
           "issue": "Kann mich nicht anmelden",
           "solution": "Wenn Sie sich nicht anmelden können, überprüfen Sie, ob Sie die richtige E-Mail-Adresse und das richtige Passwort eingeben. Stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist, und versuchen Sie, Ihr Passwort zurückzusetzen, falls nötig. Wenn das Problem weiterhin besteht, löschen Sie den Cache und die Cookies Ihres Browsers und versuchen Sie es erneut. Für weitere Hilfe kontaktieren Sie den Kundensupport, und wir helfen Ihnen, wieder Zugriff auf Ihr Konto zu erhalten.",
-          "path":"cant-log-in"
+          "path": "cant-log-in"
         },
         {
           "issue": "Benutzername oder E-Mail vergessen",
           "solution": "Wenn Sie Ihren Benutzernamen oder Ihre E-Mail-Adresse vergessen haben, überprüfen Sie Ihre vorherigen E-Mail-Konten auf Registrierungs-E-Mails. Wenn Sie sich immer noch nicht sicher sind, kontaktieren Sie unser Support-Team und geben Sie alle möglichen Details an, an die Sie sich erinnern. Wir können Ihnen helfen, Ihr Konto wiederherzustellen und Ihren Benutzernamen oder Ihre E-Mail-Adresse zu ermitteln.",
-          "path":"forgoten-username-or-email"
+          "path": "forgoten-username-or-email"
         },
         {
           "issue": "Konto gesperrt",
           "solution": "Wenn Ihr Konto gesperrt ist, kann dies auf verdächtige Aktivitäten oder Sicherheitsbedenken zurückzuführen sein. Um den Zugriff wiederherzustellen, versuchen Sie, Ihr Passwort zurückzusetzen. Wenn Sie Ihr Konto nicht entsperren können, wenden Sie sich an den Kundensupport, um Hilfe zu erhalten. Sie helfen Ihnen, Ihre Identität zu überprüfen und Ihr Konto so schnell wie möglich zu sichern.",
-          "path":"account-locked"
+          "path": "account-locked"
         }
       ],
       "Billing": [
         {
           "issue": "Probleme mit der Zahlung",
           "solution": "Wenn Sie Probleme mit der Zahlung haben, stellen Sie sicher, dass Ihre Zahlungsdaten aktuell sind und dass Ihre Zahlungsmethode über ausreichende Mittel verfügt. Überprüfen Sie, ob es Probleme mit Ihrer Bank oder Ihrem Zahlungsanbieter gibt. Wenn eine Zahlung abgelehnt wird, kontaktieren Sie Ihre Bank, um das Problem zu lösen. Darüber hinaus können Sie unsere Zahlungsproblembehandlungsanleitung besuchen, um Schritt-für-Schritt-Anleitungen zur Behebung häufiger Zahlungsprobleme zu erhalten.",
-          "path":"payment-issues"
+          "path": "payment-issues"
         },
         {
           "issue": "Abonnement funktioniert nicht",
           "solution": "Wenn Ihr Abonnement nicht funktioniert, stellen Sie sicher, dass Ihr Abonnement aktiv ist und dass Ihre Zahlung erfolgreich verarbeitet wurde. Sie können den Status Ihres Abonnements in Ihren Kontoeinstellungen überprüfen. Wenn alles korrekt erscheint, das Problem jedoch weiterhin besteht, wenden Sie sich bitte an unser Support-Team, um weitere Hilfe zu erhalten.",
-          "path":"subscription-not-working"
+          "path": "subscription-not-working"
         },
         {
           "issue": "Probleme mit Rückerstattungsanfragen",
           "solution": "Wenn Sie Probleme haben, eine Rückerstattungsanfrage zu stellen, stellen Sie sicher, dass Ihr Kauf gemäß unserer Rückerstattungsrichtlinie berechtigt ist. Sie können die Bedingungen, unter denen Rückerstattungen gewährt werden, auf unserer Website überprüfen. Wenn Sie sich immer noch unsicher sind oder weitere Hilfe benötigen, wenden Sie sich an unser Support-Team, und wir führen Sie durch den Rückerstattungsprozess.",
-          "path":"refund-request-issues"
+          "path": "refund-request-issues"
         }
       ],
       "Technical": [
         {
           "issue": "Langsame Website-Leistung",
           "solution": "Wenn Sie eine langsame Website-Leistung feststellen, versuchen Sie, den Cache und die App-Daten Ihres Browsers zu löschen. Stellen Sie sicher, dass Sie die neueste Version Ihres Browsers oder Ihrer App verwenden, da veraltete Versionen die Leistung beeinträchtigen können. Wenn das Problem weiterhin besteht, überprüfen Sie unsere Systemstatusseite, um festzustellen, ob es aktuelle Probleme gibt, die die Geschwindigkeit der Website beeinflussen.",
-          "path":"slow-website-performance"
+          "path": "slow-website-performance"
         },
         {
           "issue": "App kann nicht installiert werden",
           "solution": "Wenn Sie unsere Software oder App nicht installieren können, stellen Sie sicher, dass Ihr Gerät die Mindestsystemanforderungen erfüllt. Starten Sie Ihr Gerät neu und versuchen Sie es erneut, da einige Probleme durch einen einfachen Neustart behoben werden können. Wenn die Installation fehlschlägt, konsultieren Sie unsere Installationsanleitung für zusätzliche Fehlerbehebungstipps oder wenden Sie sich an den Support, um weitere Hilfe zu erhalten.",
-          "path":"unable-to-install-app"
+          "path": "unable-to-install-app"
         },
         {
           "issue": "App stürzt ab oder friert ein",
           "solution": "Wenn die App abstürzt oder einfriert, versuchen Sie, die App neu zu starten, und stellen Sie sicher, dass Sie die neueste Version installiert haben. Manchmal kann das Löschen des App-Cache oder eine Neuinstallation anhaltende Probleme beheben. Wenn das Problem weiterhin besteht, konsultieren Sie unsere Fehlerbehandlungsanleitung oder wenden Sie sich an den Support, um erweiterte Fehlerbehebungsoptionen zu erhalten.",
-          "path":"app-crashing-or-freezing"
+          "path": "app-crashing-or-freezing"
         },
         {
           "issue": "Fehlermeldungen",
           "solution": "Wenn Sie auf eine Fehlermeldung stoßen, notieren Sie den Fehlercode und die angezeigte Meldung. Überprüfen Sie unsere Fehlermeldungs-Fehlerbehandlungsseite für eine Liste häufiger Fehler und deren Lösungen. Wenn Sie das Problem nicht mithilfe der Anleitung beheben können, kontaktieren Sie den Support und geben Sie die Fehlerdetails an, damit wir Ihnen effizienter helfen können.",
-          "path":"error-messages"
+          "path": "error-messages"
         }
       ],
       "Security": [
         {
           "issue": "Probleme mit der Zwei-Faktor-Authentifizierung",
           "solution": "Wenn Sie Probleme mit der Zwei-Faktor-Authentifizierung (2FA) haben, stellen Sie sicher, dass Sie Zugriff auf die Authentifizierungs-App oder die Backup-Codes haben. Wenn Sie den Zugriff auf die Authentifizierungsmethode verloren haben, müssen Sie möglicherweise die 2FA-Einstellungen zurücksetzen. Wenn Sie dies nicht selbst tun können, kontaktieren Sie den Kundensupport, und wir helfen Ihnen, den Zugriff auf Ihr Konto wiederherzustellen.",
-          "path":"two-factor-authentication-issues"
+          "path": "two-factor-authentication-issues"
         },
         {
           "issue": "Konto gehackt",
           "solution": "Wenn Sie vermuten, dass Ihr Konto gehackt wurde, setzen Sie Ihr Passwort sofort zurück, um Ihr Konto zu sichern. Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) für zusätzlichen Schutz. Überprüfen Sie die letzten Kontaktivitäten auf Anzeichen von unbefugtem Zugriff und melden Sie verdächtiges Verhalten unserem Sicherheitsteam. Wir werden den Vorfall untersuchen und Ihnen helfen, die Kontrolle über Ihr Konto zurückzugewinnen.",
-          "path":"account-hacked"
+          "path": "account-hacked"
         }
       ],
       "Orders": [
         {
           "issue": "Fehlende Bestellungen oder Lieferungen",
           "solution": "Falls Ihre Bestellung fehlt oder verzögert ist, bestätigen Sie zunächst die Details Ihrer Bestellung, einschließlich der Tracking-Nummer. Überprüfen Sie beim Lieferanten auf Updates. Wenn die Lieferung erheblich verzögert ist oder fehlt, melden Sie das Problem unserem Kundensupport-Team, und sie werden Ihnen helfen, die Angelegenheit mit dem Lieferanten zu klären.",
-          "path":"missing-orders-or-deliveries"
+          "path": "missing-orders-or-deliveries"
         }
       ],
       "Email": [
         {
           "issue": "E-Mail nicht erhalten",
           "solution": "Wenn Sie Ihre E-Mails nicht erhalten, überprüfen Sie Ihren Spam- oder Junk-Ordner, da die E-Mail möglicherweise falsch gefiltert wurde. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist und dass Ihr Postfach nicht voll ist. Wenn Sie die E-Mail immer noch nicht erhalten haben, versuchen Sie, eine erneute Zusendung anzufordern. Wenn das Problem weiterhin besteht, kontaktieren Sie den Support, und wir werden die Angelegenheit weiter untersuchen.",
-          "path":"email-not-received"
+          "path": "email-not-received"
         }
       ],
       "Subscriptions": [
         {
           "issue": "Abonnement kann nicht gekündigt werden",
           "solution": "Wenn Sie Probleme haben, Ihr Abonnement zu kündigen, stellen Sie sicher, dass Sie im richtigen Konto angemeldet sind. Gehen Sie zu Ihren Kontoeinstellungen und suchen Sie den Abschnitt zur Abonnementverwaltung. Wenn Sie das Abonnement immer noch nicht kündigen können, kontaktieren Sie unser Support-Team so schnell wie möglich, um weitere Gebühren zu vermeiden, insbesondere vor Ihrem nächsten Abrechnungszyklus.",
-          "path":"cant-cancel-subscription"
+          "path": "cant-cancel-subscription"
         }
       ]
     },
@@ -602,14 +650,7 @@
       },
       "services": {
         "title": "Dienstleistungen",
-        "items": [
-          { "text": "Individuelle Ernährungspläne" },
-          { "text": "Ernährungscoaching" },
-          { "text": "Nahrungsergänzungsleitfäden" },
-          { "text": "Fitnessprogramme" },
-          { "text": "Wellness-Workshops" },
-          { "text": "Betriebliches Gesundheitsmanagement" }
-        ]
+        "items": [{ "text": "Individuelle Ernährungspläne" }, { "text": "Ernährungscoaching" }, { "text": "Nahrungsergänzungsleitfäden" }, { "text": "Fitnessprogramme" }, { "text": "Wellness-Workshops" }, { "text": "Betriebliches Gesundheitsmanagement" }]
       },
       "contacts": {
         "title": "Kontakte",
@@ -650,28 +691,21 @@
   "----------------------------------------------------------HEADER-----------------------------------------------------------": {},
   "header": {
     "headerData": {
-      "recommendations": [
-        "Empfehlung1",
-        "Empfehlung2",
-        "Empfehlung3",
-        "Empfehlung4"
-      ],
+      "recommendations": ["Empfehlung1", "Empfehlung2", "Empfehlung3", "Empfehlung4"],
       "navGuest": [
         { "name": "Login", "link": "/email-check" },
-        { "name": "Favoriten", "link": "/profile/favourites" },
+        { "name": "Favoriten", "link": "/profile/favorites" },
         { "name": "Korb", "link": "/profile/cart" }
       ],
       "navUser": [
         { "name": "Profil", "link": "/profile/settings" },
-        { "name": "Favoriten", "link": "/profile/favourites" },
+        { "name": "Favoriten", "link": "/profile/favorites" },
         { "name": "Korb", "link": "/profile/cart" }
       ],
-      "navAdmin": [
-        { "name": "Admin-Bereich", "link": "/admin/settings" }
-      ],
+      "navAdmin": [{ "name": "Admin-Bereich", "link": "/admin/settings" }],
       "icons": {
-        "Admin-Bereich":"fa-solid fa-screwdriver-wrench",
-        "Profil":"fa-solid fa-user",
+        "Admin-Bereich": "fa-solid fa-screwdriver-wrench",
+        "Profil": "fa-solid fa-user",
         "Login": "fa-solid fa-user",
         "Favoriten": "fa-solid fa-heart",
         "Korb": "fa-solid fa-cart-shopping"
@@ -694,39 +728,39 @@
         {
           "name": "Bestseller",
           "category": [
-            {"name": "Empfohlene Produkte", "link": "/product/featured-products"},
-            {"name": "Kundenfavoriten", "link": "/product/customer-favorites"},
-            {"name": "Top bewertete Produkte", "link": "/product/top-rated-products"},
+            { "name": "Empfohlene Produkte", "link": "/product/featured-products" },
+            { "name": "Kundenfavoriten", "link": "/product/customer-favorites" },
+            { "name": "Top bewertete Produkte", "link": "/product/top-rated-products" },
             { "name": "Neuheiten", "link": "/product/new-arrivals" },
-            { "name": "Aktuelle Trends", "link": "/product/trending-now"},
-            {"name": "Must-Have-Produkte", "link": "/product/must-have-products"},
-            {"name": "Saisonale Angebote", "link": "/product/seasonal-specials"}
+            { "name": "Aktuelle Trends", "link": "/product/trending-now" },
+            { "name": "Must-Have-Produkte", "link": "/product/must-have-products" },
+            { "name": "Saisonale Angebote", "link": "/product/seasonal-specials" }
           ]
         },
         {
           "name": "Aktionen",
           "category": [
-            {"name": "Zeitlich begrenzte Angebote", "link": "/product/limited-time-offers"},
+            { "name": "Zeitlich begrenzte Angebote", "link": "/product/limited-time-offers" },
             { "name": "Saisonale Rabatte", "link": "/product/seasonal-sales" },
             { "name": "Restposten", "link": "/product/clearance-items" },
             { "name": "Rabattpakete", "link": "/product/discounted-bundles" },
-            {"name": "Kauf 1, erhalte 1 gratis", "link": "/product/buy-1-get-1-free"},
+            { "name": "Kauf 1, erhalte 1 gratis", "link": "/product/buy-1-get-1-free" },
             { "name": "Flash-Sales", "link": "/product/flash-sales" },
-            {"name": "Exklusive Rabatte", "link": "/product/exclusive-discounts"},
-            {"name": "Kostenloser Versand", "link": "/product/free-shipping-deals"},
-            {"name": "Sonderangebote für Mitglieder", "link": "/product/special-offers-for-members"}
+            { "name": "Exklusive Rabatte", "link": "/product/exclusive-discounts" },
+            { "name": "Kostenloser Versand", "link": "/product/free-shipping-deals" },
+            { "name": "Sonderangebote für Mitglieder", "link": "/product/special-offers-for-members" }
           ]
         },
         {
           "name": "Bio",
           "category": [
             { "name": "Bio-Produkte", "link": "/product/organic-products" },
-            {"name": "Umweltfreundliche Produkte", "link": "/product/eco-friendly-products"},
-            {"name": "Pflanzliche Nahrungsergänzungsmittel", "link": "/product/plant-based-supplements"},
+            { "name": "Umweltfreundliche Produkte", "link": "/product/eco-friendly-products" },
+            { "name": "Pflanzliche Nahrungsergänzungsmittel", "link": "/product/plant-based-supplements" },
             { "name": "Nicht-GVO-Produkte", "link": "/product/non-gmo-items" },
-            {"name": "Nachhaltige Marken", "link": "/product/sustainable-brands"},
-            {"name": "Tierfreie Produkte", "link": "/product/cruelty-free-products"},
-            {"name": "Natürliche Hautpflege", "link": "/product/natural-skincare"},
+            { "name": "Nachhaltige Marken", "link": "/product/sustainable-brands" },
+            { "name": "Tierfreie Produkte", "link": "/product/cruelty-free-products" },
+            { "name": "Natürliche Hautpflege", "link": "/product/natural-skincare" },
             { "name": "Kräuterheilmittel", "link": "/product/herbal-remedies" }
           ]
         },
@@ -734,12 +768,12 @@
           "name": "Proteine & Aminosäuren",
           "category": [
             { "name": "Molkenprotein", "link": "/product/whey-protein" },
-            { "name": "Pflanzliches Protein", "link": "/product/plant-based-protein"},
-            { "name": "Pre-Workout-Protein", "link": "/product/pre-workout-protein"},
+            { "name": "Pflanzliches Protein", "link": "/product/plant-based-protein" },
+            { "name": "Pre-Workout-Protein", "link": "/product/pre-workout-protein" },
             { "name": "Kaseinprotein", "link": "/product/casein-protein" },
             { "name": "Veganes Protein", "link": "/product/vegan-protein" },
-            { "name": "Protein-Shakes & -Riegel", "link": "/product/protein-shake-bars"},
-            { "name": "Aminosäure-Ergänzungen", "link": "/product/amino-acid-supplements"},
+            { "name": "Protein-Shakes & -Riegel", "link": "/product/protein-shake-bars" },
+            { "name": "Aminosäure-Ergänzungen", "link": "/product/amino-acid-supplements" },
             { "name": "BCAA", "link": "/product/bcaa" }
           ]
         },
@@ -761,14 +795,14 @@
         {
           "name": "Leistungssteigerer",
           "category": [
-            {"name": "Pre-Workout-Ergänzungen", "link": "/product/pre-workout-supplements"},
-            {"name": "Post-Workout-Erholung", "link": "/product/post-workout-recovery"},
+            { "name": "Pre-Workout-Ergänzungen", "link": "/product/pre-workout-supplements" },
+            { "name": "Post-Workout-Erholung", "link": "/product/post-workout-recovery" },
             { "name": "Energiebooster", "link": "/product/energy-boosters" },
-            {"name": "Muskelaufbaupräparate", "link": "/product/muscle-mass-gainers"},
-            {"name": "Ausdauerergänzungen", "link": "/product/endurance-supplements"},
+            { "name": "Muskelaufbaupräparate", "link": "/product/muscle-mass-gainers" },
+            { "name": "Ausdauerergänzungen", "link": "/product/endurance-supplements" },
             { "name": "Kreatin", "link": "/product/creatine" },
-            {"name": "Stickoxid-Booster", "link": "/product/nitric-oxide-boosters"},
-            {"name": "Fokus- & kognitive Ergänzungen", "link": "/product/focus-cognitive-supplements"},
+            { "name": "Stickoxid-Booster", "link": "/product/nitric-oxide-boosters" },
+            { "name": "Fokus- & kognitive Ergänzungen", "link": "/product/focus-cognitive-supplements" },
             { "name": "Kraftsteigerer", "link": "/product/strength-enhancers" }
           ]
         },
@@ -776,15 +810,15 @@
           "name": "Gewichtsmanagement",
           "category": [
             { "name": "Fettverbrenner", "link": "/product/fat-burners" },
-            {"name": "Appetitzügler", "link": "/product/appetite-suppressants"},
-            {"name": "Kalorienarme Snacks", "link": "/product/low-calorie-snacks"},
-            {"name": "Mahlzeitenersatz-Shakes", "link": "/product/meal-replacement-shakes"},
-            {"name": "Entgiftungs- & Reinigungsprodukte", "link": "/product/detox-cleanse-products"},
-            {"name": "Gewichtsverlustpräparate", "link": "/product/weight-loss-supplements"},
-            {"name": "Gesunde Gewichtszunahme-Produkte", "link": "/product/healthy-weight-gain-products"},
-            {"name": "Stoffwechsel-Booster", "link": "/product/metabolism-boosters"},
-            {"name": "Keto-Diät-Produkte", "link": "/product/keto-diet-products"},
-            {"name": "Kohlenhydratarme Snacks", "link": "/product/low-carb-snacks"}
+            { "name": "Appetitzügler", "link": "/product/appetite-suppressants" },
+            { "name": "Kalorienarme Snacks", "link": "/product/low-calorie-snacks" },
+            { "name": "Mahlzeitenersatz-Shakes", "link": "/product/meal-replacement-shakes" },
+            { "name": "Entgiftungs- & Reinigungsprodukte", "link": "/product/detox-cleanse-products" },
+            { "name": "Gewichtsverlustpräparate", "link": "/product/weight-loss-supplements" },
+            { "name": "Gesunde Gewichtszunahme-Produkte", "link": "/product/healthy-weight-gain-products" },
+            { "name": "Stoffwechsel-Booster", "link": "/product/metabolism-boosters" },
+            { "name": "Keto-Diät-Produkte", "link": "/product/keto-diet-products" },
+            { "name": "Kohlenhydratarme Snacks", "link": "/product/low-carb-snacks" }
           ]
         },
         {
@@ -793,9 +827,9 @@
             {
               "title": "Hautpflege",
               "subcategory": [
-                { "name": "Feuchtigkeitscremes", "link": "/product/moisturizers"},
+                { "name": "Feuchtigkeitscremes", "link": "/product/moisturizers" },
                 { "name": "Gesichtsmasken", "link": "/product/face-masks" },
-                { "name": "Anti-Aging-Produkte", "link": "/product/anti-aging-products"},
+                { "name": "Anti-Aging-Produkte", "link": "/product/anti-aging-products" },
                 { "name": "Augencremes", "link": "/product/eye-creams" },
                 { "name": "Seren", "link": "/product/serums" }
               ]
@@ -803,10 +837,10 @@
             {
               "title": "Haarpflege",
               "subcategory": [
-                { "name": "Shampoo & Conditioner", "link": "/product/shampoo-conditioner"},
+                { "name": "Shampoo & Conditioner", "link": "/product/shampoo-conditioner" },
                 { "name": "Haarmasken", "link": "/product/hair-masks" },
                 { "name": "Haaröle", "link": "/product/hair-oils" },
-                { "name": "Haarwuchsmittel", "link": "/product/hair-growth-products"}
+                { "name": "Haarwuchsmittel", "link": "/product/hair-growth-products" }
               ]
             },
             {
@@ -822,7 +856,7 @@
               "title": "Schönheitswerkzeuge",
               "subcategory": [
                 { "name": "Gesichtsroller", "link": "/product/face-rollers" },
-                { "name": "Dermaplaning-Werkzeuge", "link": "/product/dermaplaning-tools"},
+                { "name": "Dermaplaning-Werkzeuge", "link": "/product/dermaplaning-tools" },
                 { "name": "LED-Masken", "link": "/product/led-masks" }
               ]
             },
@@ -830,7 +864,7 @@
               "title": "Nagelpflege",
               "subcategory": [
                 { "name": "Nagellack", "link": "/product/nail-polish" },
-                { "name": "Nagelbehandlungen", "link": "/product/nail-treatments"},
+                { "name": "Nagelbehandlungen", "link": "/product/nail-treatments" },
                 { "name": "Nagelhautöle", "link": "/product/cuticle-oils" }
               ]
             }
@@ -864,12 +898,7 @@
           {
             "heading": "Urheber- und Nutzungsrechte",
             "content": "Sofern nicht ausdrücklich anders angegeben, liegen die Urheber- und Nutzungsrechte an sämtlichen Inhalten der Plattform „FreshBalance“ ausschließlich bei „FreshBalance“ und/oder seinen Lizenzgebern. Alle Rechte sind vorbehalten. Die Nutzung der Inhalte ist ausschließlich für persönliche Zwecke gestattet, sofern die nachfolgenden Einschränkungen beachtet werden.",
-            "subPoints": [
-              "Eine Veröffentlichung von Inhalten der Plattform bedarf der vorherigen schriftlichen Zustimmung von „FreshBalance“.",
-              "Die kommerzielle Nutzung, Vermietung oder Unterlizenzierung von Inhalten der Plattform ist untersagt.",
-              "Die Vervielfältigung, Duplizierung oder Kopierung von Inhalten der Plattform zu gewerblichen Zwecken ist nicht gestattet.",
-              "Eine Weitergabe von Inhalten der Plattform ist nur zulässig, sofern diese ausdrücklich zur Weiterverbreitung freigegeben sind."
-            ]
+            "subPoints": ["Eine Veröffentlichung von Inhalten der Plattform bedarf der vorherigen schriftlichen Zustimmung von „FreshBalance“.", "Die kommerzielle Nutzung, Vermietung oder Unterlizenzierung von Inhalten der Plattform ist untersagt.", "Die Vervielfältigung, Duplizierung oder Kopierung von Inhalten der Plattform zu gewerblichen Zwecken ist nicht gestattet.", "Eine Weitergabe von Inhalten der Plattform ist nur zulässig, sofern diese ausdrücklich zur Weiterverbreitung freigegeben sind."]
           },
           {
             "heading": "Verkauf und Erwerb von Produkten",
@@ -924,24 +953,12 @@
           {
             "heading": "Erfasste Daten",
             "content": "Wir erfassen die folgenden Arten von personenbezogenen Daten:",
-            "subPoints": [
-              "Persönliche Informationen: Name, E-Mail-Adresse, Telefonnummer usw.",
-              "Nutzungsdaten: IP-Adresse, Browsertyp, besuchte Seiten usw.",
-              "Cookies: Wir verwenden Cookies, um Ihr Nutzererlebnis auf unserer Website zu verbessern."
-            ]
+            "subPoints": ["Persönliche Informationen: Name, E-Mail-Adresse, Telefonnummer usw.", "Nutzungsdaten: IP-Adresse, Browsertyp, besuchte Seiten usw.", "Cookies: Wir verwenden Cookies, um Ihr Nutzererlebnis auf unserer Website zu verbessern."]
           },
           {
             "heading": "Verwendung Ihrer Daten",
             "content": "Die von uns erfassten Daten werden für folgende Zwecke verwendet:",
-            "subPoints": [
-              "Zur Bereitstellung und Aufrechterhaltung unserer Dienste.",
-              "Um Sie über Änderungen an unseren Diensten zu informieren.",
-              "Um Ihnen die Nutzung interaktiver Funktionen unserer Dienste zu ermöglichen.",
-              "Zur Bereitstellung von Kundensupport.",
-              "Zur Analyse und Verbesserung unserer Dienste.",
-              "Zur Überwachung der Nutzung unserer Dienste.",
-              "Zur Erkennung und Behebung technischer Probleme."
-            ]
+            "subPoints": ["Zur Bereitstellung und Aufrechterhaltung unserer Dienste.", "Um Sie über Änderungen an unseren Diensten zu informieren.", "Um Ihnen die Nutzung interaktiver Funktionen unserer Dienste zu ermöglichen.", "Zur Bereitstellung von Kundensupport.", "Zur Analyse und Verbesserung unserer Dienste.", "Zur Überwachung der Nutzung unserer Dienste.", "Zur Erkennung und Behebung technischer Probleme."]
           },
           {
             "heading": "Datensicherheit",
@@ -967,7 +984,8 @@
 
     "restrictedTitle": "Zugriff beschränkt!",
     "restrictedSubTitle": "Zugriff nur für Administratoren gestattet.",
-    "restrictedGoBack": "Zurück"
+    "restrictedGoBack": "Zurück",
+    "functionalityRestricted": "Bitte einloggen, um diese Funktion zu nutzen."
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel": "Abbrechen"

@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import "./FavouritesComponent.css";
+import "./favoritesComponent.css";
 import { useTranslation } from "react-i18next";
 
-export default function FavouritesComponent() {
+export default function favoritesComponent() {
   const { t } = useTranslation();
   return (
-    <div className="profileContentAriaFavourites">
-      <div className="favouritesMainTitleBox">
-        <h2 className="favouritesMainTitle">
-          {t("profile.favouritesMainTitle")}:&nbsp;
-        </h2>
-        <h2 className="favouritesMainTitleNumber">0 products</h2>
+    <div className="profileContentAriafavorites">
+      <div className="favoritesMainTitleBox">
+        <h2 className="favoritesMainTitle">{t("profile.favoritesMainTitle")}:&nbsp;</h2>
+        <h2 className="favoritesMainTitleNumber">0 products</h2>
       </div>
-      <div className="favouritesList"></div>
+      <div className="favoritesList"></div>
     </div>
   );
 }

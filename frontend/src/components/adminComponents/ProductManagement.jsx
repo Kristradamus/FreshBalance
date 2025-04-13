@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./ProductManagement.css";
+import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
+import ScrollToTop from "../reusableComponents/ScrollToTop.jsx"
 import axios from "axios";
 
 export default function ProductManagement() {
@@ -9,7 +11,6 @@ export default function ProductManagement() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [feedback, setFeedback] = useState({ type: "", message: "" });
   const [formData, setFormData] = useState({
       name: "",
       description: "",
@@ -17,23 +18,33 @@ export default function ProductManagement() {
       stock: "",
       details: ""
   });
+  const [toast, setToast] = useState({show:false, message:"", type:""});
+  const [scrollToTop, setScrollToTop] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [removeProductId, setRemoveProductId] = useState('');
   const [productList, setProductList] = useState([]);
   const [confirmRemoval, setConfirmRemoval] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState('');
 
   /*--------------------------------FORM-LOADING--------------------------------*/
   const handleAddClick = () => {
     setActiveForm(activeForm === "add" ? null : "add");
-    setFeedback({ type: "", message: "" });
   };
 
   const handleRemoveClick = () => {
     setActiveForm(activeForm === "remove" ? null : "remove");
-    setFeedback({ type: "", message: "" });
   };
+
+  /*-------------------------------SCROLL-TO-TOP-RESET----------------------------*/
+  useEffect(() => {
+    if (scrollToTop) {
+      const timer = setTimeout(() => {
+        setScrollToTop(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [scrollToTop]);
 
   /*--------------------------------FORM-LOADING--------------------------------*/
   const sanitizeInput = (value) => {
@@ -48,12 +59,6 @@ export default function ProductManagement() {
       ...formData,
       [name]: sanitizeInput(value)
     });
-  };
-
-  /*--------------------------------REMOVE-SUBMIT--------------------------------*/
-  const handleRemoveSubmit = async (e) => {
-    e.preventDefault();
-    console.log("REMOVE PRODUCT FUNCTIONALITIES NEED TO BE IMPLEMENTED");
   };
 
   /*--------------------------------CATEGORIES--------------------------------*/
@@ -76,24 +81,27 @@ export default function ProductManagement() {
         console.error("Error fetching category groups:", error);
       });
   }, []);
+
   /*--------------------------------IMAGE-UPLOAD--------------------------------*/
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
 
       if (!file.type.match("image.*")) {
-        setFeedback({
-          type: "error",
-          message: "Please select an image file"
-        });
+        setToast({
+          show:true,
+          message:t("admin.productManagement.add.errorNotImage"),
+          type:"error",
+        })
         return;
       }
 
-      if (file.size > 16 * 1024 * 1024) {
-        setFeedback({
-          type: "error",
-          message: "Image size should be less than 16MB"
-        });
+      if (file.size > 5 * 1024 * 1024) {
+        setToast({
+          show:true,
+          message:t("admin.productManagement.add.errorImageTooBig"),
+          type:"error",
+        })
         return;
       }
 
@@ -112,10 +120,11 @@ export default function ProductManagement() {
     e.preventDefault();
 
     if (!formData.name || !formData.price) {
-      setFeedback({
-        type: "error",
-        message: "Name and price are required"
-      });
+      setToast({
+        show:true,
+        message:t("admin.productManagement.add.errorNameAndPrice"),
+        type:"error",
+      })
       return;
     }
 
@@ -143,11 +152,12 @@ export default function ProductManagement() {
         withCredentials: true,
       });
 
-      setFeedback({
-        type: "success",
-        message:"Product added successfully!",
-      });
-
+      setScrollToTop(true);
+      setToast({
+        show:true,
+        message:t("admin.productManagement.add.success"),
+        type:"success",
+      })
       setFormData({
         name: "",
         description: "",
@@ -160,10 +170,12 @@ export default function ProductManagement() {
       setSelectedCategories([]);
     } 
     catch (error) {
-      setFeedback({
-        type: "error",
-        message: error.response?.data?.message || "Error connecting to server"
-      });
+      setScrollToTop(true);
+      setToast({
+        show:true,
+        message:t("admin.productManagement.add.errorConectingToServer"),
+        type:"error",
+      })
       console.error("Error submitting form:", error);
     } 
     finally {
@@ -171,8 +183,132 @@ export default function ProductManagement() {
     }
   };
 
+  /*--------------------------------REMOVE-SUBMIT--------------------------------*/
+  const handleRemoveSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!removeProductId) {
+      setToast({ show: true, message: "No product selected", type: "error" });
+      return;
+    }
+  
+    try {
+      setIsSubmitting(true);
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        throw new Error("Authentication token missing");
+      }
+
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/products/${removeProductId}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          withCredentials: true
+        }
+      );
+  
+      setProductList(prev => prev.filter(p => p.id !== removeProductId));
+      
+      setToast({
+        show: true,
+        message: t("admin.productManagement.remove.success"),
+        type: "success"
+      });
+      
+      setRemoveProductId(null);
+      setConfirmRemoval(false);
+      setSearchTerm("");
+    } 
+    catch (error) {
+      console.error("Remove error:", error);
+      setToast({
+        show: true,
+        message: t("admin.productManagement.remove.failedToRemoveProduct"),
+        type: "error"
+      });
+    } 
+    finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products`, {
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+  
+        const productsWithImages = response.data.map(product => {
+          if (product.image && product.image.data) {
+            return {
+              ...product,
+              imageUrl: `data:image/jpeg;base64,${product.image.data}`
+            };
+          }
+          return product;
+        });
+  
+        setProductList(productsWithImages);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setToast({
+          show: true,
+          message: t("admin.productManagement.remove.failedToLoadProducts"),
+          type: "error"
+        });
+      }
+    };
+  
+    if (activeForm === "remove") {
+      fetchProducts();
+    }
+  
+    return () => {
+      productList.forEach(product => {
+        if (product.imageUrl) {
+          URL.revokeObjectURL(product.imageUrl);
+        }
+      });
+    };
+  }, [activeForm]);
+
+  const filteredProducts = productList.filter(product => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.id.toString().includes(searchTerm) ||
+    (product.description && product.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
+  const handleSearchBar = (e) => {
+    setSearchTerm(e.target.value);
+    setConfirmRemoval(false);
+    setRemoveProductId("");
+  } 
+  
+  const handleProductSelect = (selectedId) => {
+    setRemoveProductId(selectedId);
+    if (selectedId !== removeProductId) {
+      setConfirmRemoval(false);
+    }
+    else{
+      setRemoveProductId("");
+    }
+  };
+
+  const clearImage = () => {
+    setImagePreview(null);
+    setSelectedImage(null);
+
+    document.getElementById('fileUpload').value = '';
+  }
+
   return (
     <div className="adminProductManagement">
+      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
+      <ScrollToTop trigger={scrollToTop}/>
       <div className="adminContentAreaProducts">
         <div className="productManagementHeader">
           <h2>{t("admin.productManagement.mainTitle")}</h2>
@@ -187,13 +323,9 @@ export default function ProductManagement() {
             </button>
           </div>
         </div>
-        {feedback.message && (
-          <div className={`productFeedback ${feedback.type === "success" ? "success" : "error"}`}>
-            {feedback.message}
-          </div>
-        )}
       </div>
 
+      {/*--------------------------------------------ADD-FORM------------------------------------------*/}
       {activeForm === "add" && (
         <div className="productForm">
           <h3 className="productFormMainTitle">{t("admin.productManagement.add.productMainTitle")}:</h3>
@@ -201,47 +333,56 @@ export default function ProductManagement() {
             <div className="formGrid">
               <div className="formGroup">
                 <label className="formGroupTitle">{t("admin.productManagement.add.formNameTitle")}</label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+                <input type="text" name="name" value={formData.name} placeholder={t("admin.productManagement.add.formNameTitle") + "..."} onChange={handleChange} required />
               </div>
               <div className="formGroup">
                 <label className="formGroupTitle">{t("admin.productManagement.add.formPriceTitle")}</label>
-                <input type="number" name="price" value={formData.price} onChange={handleChange} step="0.01" min="0" required />
+                <input type="number" name="price" value={formData.price} onChange={(e) => {const value = e.target.value;
+                  if (/^\d*\.?\d{0,2}$/.test(value)) {
+                    setFormData({
+                      ...formData,
+                      price: value
+                    });
+                  }
+                }} step="0.01" min="0.01" placeholder="0.00" required/>
               </div>
               <div className="formGroup">
                 <label className="formGroupTitle">{t("admin.productManagement.add.formStockTitle")}</label>
-                <input type="number" name="stock" value={formData.stock} onChange={handleChange} min="0" />
+                <input type="number" name="stock" placeholder="0" value={formData.stock} onChange={handleChange} min="0" />
               </div>
             </div>
             <div className="formGroup">
               <label className="formGroupTitle">{t("admin.productManagement.add.formDescriptionTitle")}</label>
-              <textarea name="description" value={formData.description} onChange={handleChange} rows="3" ></textarea>
+              <textarea name="description" value={formData.description} placeholder={t("admin.productManagement.add.formDescriptionTitle") + "..."} onChange={handleChange} rows="3" ></textarea>
             </div>
             <div className="formGroup">
               <label className="formGroupTitle">{t("admin.productManagement.add.formDetailsTitle")}</label>
-              <textarea name="details" value={formData.details} onChange={handleChange} rows="3" ></textarea>
+              <textarea className="details" name="details" value={formData.details} placeholder={t("admin.productManagement.add.formDetailsTitle") + "..."} onChange={handleChange} rows="3" ></textarea>
             </div>
 
-            {/*------------------------------------CATEGORIES--------------------------------*/}
+            {/*------------------------------------IMAGES--------------------------------*/}
             <div className="formGroup">
               <label className="formGroupTitle">{t("admin.productManagement.add.formImageTitle")}</label>
-              <hr></hr>
+              <hr/>
               <div className="imageUploadContainer">
-                <input type="file" accept="image/*" onChange={handleImageChange} />
+                <input type="file" accept="image/*" onChange={handleImageChange} id="fileUpload" />
+                <label htmlFor="fileUpload" className="uploadArea">{t("admin.productManagement.add.uploadImage")}</label>
                 {imagePreview && (
-                  <div className="imagePreview">
-                    <img src={imagePreview} alt="Preview" />
+                  <div className="imagePreviewContainer">
+                    <img className="imagePreview" src={imagePreview} alt="Preview" />
+                    <button onClick={clearImage} className="clearImageBtn">
+                      {t("admin.productManagement.add.clearImage")}
+                    </button>
                   </div>
                 )}
               </div>
-              <p className="imageUploadHint">
-                Max size: 16MB. Supported formats: JPEG, PNG, GIF
-              </p>
+              <p className="imageUploadHint" onClick={(e) => e.preventDefault()}>{t("admin.productManagement.add.uploadLimitations")}</p>
             </div>
-
+               
             {/*------------------------------------CATEGORIES--------------------------------*/}
             <div className="formGroup">
-              <label className="formGroupTitle">Categories</label>
-              <hr></hr>
+              <label className="formGroupTitle">{t("admin.productManagement.add.categoriesTitle")}</label>
+              <hr/>
               <div className="categoriesWrapper">
                 {categories && categories.reduce((acc, group) => {
                   if (!acc.names.includes(group.name)) {
@@ -251,9 +392,9 @@ export default function ProductManagement() {
                         <div className="categoriesBox">
                           <h4>{group.name}</h4>
                           {group.categories.map(category => (
-                            <div key={category.id} className="productCategoryCheckboxBox">
-                              <input type="checkbox" value={category.id} id={`category-${category.id}`} checked={selectedCategories.includes(category.id)} onChange={handleCategoryChange} />
-                              <div className="productCategoryCheckbox" onClick={() => {document.getElementById(`category-${category.id}`).click(); }} >
+                            <div key={category.id} className="productCategoryCheckboxBox" onClick={() => {document.getElementById(`category-${category.id}`).click(); }} >
+                              <input type="checkbox" onClick={(e) => e.stopPropagation()} value={category.id} id={`category-${category.id}`} checked={selectedCategories.includes(category.id)} onChange={handleCategoryChange} />
+                              <div className="productCategoryCheckbox">
                                 <p className="productCategoryCheckboxText">{category.name}</p>
                               </div>
                             </div>
@@ -266,34 +407,64 @@ export default function ProductManagement() {
                 }, { names: [], elements: [] }).elements}
               </div>
             </div>
-            <button type="submit" className="submitBtn" disabled={isSubmitting} >
-              {isSubmitting ? "Adding Product..." : "Add Product"}
+            <button type="submit" className="submitBtn" disabled={isSubmitting}>
+              {isSubmitting ? (t("admin.productManagement.add.addBtnWorking") + "...") : t("admin.productManagement.add.addBtnTitle")}
             </button>
           </form>
         </div>
       )}
 
+      {/*----------------------------------------REMOVE-FORM--------------------------------------------*/}
       {activeForm === "remove" && (
         <div className="productForm">
           <h3 className="productFormMainTitle">{t("admin.productManagement.remove.productMainTitle")}</h3>
           <form onSubmit={handleRemoveSubmit}>
             <div className="formGroup">
-              <label>Select Product to Remove *</label>
-              <select required value={removeProductId} onChange={(e) => setRemoveProductId(e.target.value)}>
-                <option value="">-- Select Product --</option>
-                {productList.map(product => (
-                  <option key={product.id} value={product.id}>{product.name}</option>
-                ))}
-              </select>
+              <label className="formGroupTitle">{t("admin.productManagement.remove.seachMainTitle")}</label>
+              <input type="text" className="searchInput" placeholder={t("admin.productManagement.remove.searchPlaceholder") + "..."} value={searchTerm} onChange={handleSearchBar} />
             </div>
+
             <div className="formGroup">
-              <label>
-                <input type="checkbox" checked={confirmRemoval} onChange={(e) => setConfirmRemoval(e.target.checked)} required />
-                I confirm I want to remove this product
-              </label>
+              <label className="formGroupTitle">{t("admin.productManagement.remove.selectAProductTitle")}</label>
+              <hr/>
+              {productList.length === 0 ? (
+                <p>Loading products...</p>
+              ) : filteredProducts.length === 0 ? (
+                <p className="noResults">{t("admin.productManagement.remove.noProductsFound")}</p>
+              ) : (
+                <div className="productGrid">
+                  {filteredProducts.map(product => (
+                    <div key={product.id} className={`productCard ${removeProductId === product.id ? 'selected' : ''}`} onClick={() => handleProductSelect(product.id)}>
+                      {product.imageUrl && (
+                        <div className="productImage">
+                          <img src={product.imageUrl} alt={product.name}onError={(e) => {e.target.onerror = null; e.target.src = '/default-product.png';}}/>
+                        </div>
+                      )}
+                      <div className="productDetails">
+                        <h4>{product.name}</h4>
+                        <p className="productId">{t("admin.productManagement.remove.id") + ":"} {product.id}</p>
+                        {product.price && <p className="productPrice">{product.price} {t("admin.productManagement.remove.lv") + "."}</p>}
+                      </div>
+                      <div className="selectionIndicator">
+                        {removeProductId === product.id ? <i className="fa-solid fa-check"></i> : ''}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <button type="submit" className="submitBtn remove">
-              Remove Product
+            
+            {removeProductId && (
+              <div className="productRemoveConfirmationCheckboxBox" onClick={() => {document.getElementById("removeConfirm").click(); }}>
+                <input  type="checkbox" onClick={(e) => e.stopPropagation()} checked={confirmRemoval} id="removeConfirm" onChange={(e) => setConfirmRemoval(e.target.checked)} required ></input>
+                <div className="productRemoveConfirmationCheckbox">
+                  <span className="productRemoveConfirmationCheckboxText">{t("admin.productManagement.remove.checkboxText") + ": "}<strong>{productList.find(p => p.id === removeProductId)?.name}</strong></span>
+                </div>
+              </div>
+            )}
+
+            <button type="submit" className="removeBtn" disabled={!removeProductId || !confirmRemoval || isSubmitting}>
+              {isSubmitting ? (t("admin.productManagement.remove.removeBtnWorking") + "...") : t("admin.productManagement.remove.removeBtnTitle")}
             </button>
           </form>
         </div>

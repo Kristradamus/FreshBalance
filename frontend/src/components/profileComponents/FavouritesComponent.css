@@ -1,22 +1,22 @@
-.profileContentAriaFavourites{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
+.profileContentAriafavorites {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.favouritesMainTitleBox{
-  display:flex;
-  flex-direction:row;
-  background-color:var(--white);
-  padding:20px;
-  border-radius:var(--smallRadius);
-  box-shadow:var(--boxShadowLight);
+.favoritesMainTitleBox {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: var(--smallRadius);
+  box-shadow: var(--boxShadowLight);
 }
-.favouritesMainTitle{
-  color:var(--mainTextColor);
+.favoritesMainTitle {
+  color: var(--mainTextColor);
 }
-.favouritesMainTitleNumber{
-  color:var(--green);
+.favoritesMainTitleNumber {
+  color: var(--green);
 }
-.favouritesList{
-  width:100%;
+.favoritesList {
+  width: 100%;
 }

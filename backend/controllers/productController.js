@@ -1,5 +1,6 @@
 const pool = require("../dataBase.js");
 
+/*-------------------------------ADDING-PRODUCTS----------------------------------------*/
 const addProduct = async (req, res) => {
   console.log("Add product request received");
   console.log("Form data:", req.body);
@@ -7,15 +8,12 @@ const addProduct = async (req, res) => {
   
   try {
     const { name, description, price, stock, details, categories } = req.body;
-    
-    // Get the image buffer instead of filename
     const imageBuffer = req.file ? req.file.buffer : null;
     
     if (!name || !price) {
       return res.status(400).json({ message: "Name and price are required." });
     }
     
-    // Log before database operation
     console.log("Attempting database insert with:", {
       name, description, price, stock, details, 
       image: imageBuffer ? `[Binary data - ${imageBuffer.length} bytes]` : null
@@ -43,64 +41,158 @@ const addProduct = async (req, res) => {
       }
       
       res.status(201).json({ message: "Product added successfully." });
-    } catch (dbError) {
+    } 
+    catch (dbError) {
       console.error("Database operation failed:", dbError);
       return res.status(500).json({ message: "Database error: " + dbError.message });
     }
-  } catch (err) {
-    console.error("Error adding product:", err);
-    res.status(500).json({ message: "Server error: " + err.message });
+  } 
+  catch (error) {
+    console.error("Error adding product:", error);
+    res.status(500).json({ message: "Server error: " + error.message });
   }
 };
 
+/*-------------------------------REMOVING-PRODUCTS----------------------------------------*/
 const removeProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    await pool.query("DELETE FROM products WHERE id = ?", [id]);
-    res.json({ message: "Product removed successfully." });
+    
+    if (!id || isNaN(Number(id))) {
+      return res.status(400).json({ message: "Invalid product ID" });
+    }
+
+    const connection = await pool.getConnection();
+    await connection.beginTransaction();
+
+    try {
+      await connection.query(
+        "DELETE FROM product_categories WHERE product_id = ?",
+        [id]
+      );
+
+      const [result] = await connection.query(
+        "DELETE FROM products WHERE id = ?",
+        [id]
+      );
+
+      if (result.affectedRows === 0) {
+        await connection.rollback();
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      await connection.commit();
+      return res.status(200).json({ 
+        success: true,
+        message: "Product removed successfully" 
+      });
+    } catch (err) {
+      await connection.rollback();
+      throw err;
+    } finally {
+      connection.release();
+    }
   } catch (err) {
-    console.error("Error removing product:", err);
-    res.status(500).json({ message: "Server error." });
+    console.error("Remove error:", err);
+    
+    if (err.code === 'ER_ROW_IS_REFERENCED_2') {
+      return res.status(409).json({ 
+        message: "Cannot delete - product exists in categories" 
+      });
+    }
+    
+    return res.status(500).json({ 
+      message: "Server error during removal",
+      error: err.message 
+    });
   }
 };
 
+/*------------------------------------GET-ALL-PRODUCTS----------------------------------------*/
 const getProducts = async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM products");
-    res.json(rows);
-  } catch (err) {
+    const processedProducts = rows.map(product => {
+      if (product.image) {
+        return {
+          ...product,
+          image: {
+            data: product.image.toString('base64')
+          }
+        };
+      }
+      return product;
+    });
+    
+    res.json(processedProducts);
+  } 
+  catch (err) {
     console.error("Error fetching products:", err);
     res.status(500).json({ message: "Server error." });
   }
 };
 
+/*------------------------------------GET-PRODUCTS-BY-CATEGORY----------------------------------------*/
 const getProductsByCategory = async (req, res) => {
   try {
     const { link } = req.params;
+    
+    const fullLink = `/product/${link}`;
+    
+    console.log("Looking for products with category link:", fullLink);
+    
+    const [categoryExists] = await pool.query(
+      "SELECT id FROM categories WHERE link = ?",
+      [fullLink]
+    );
+    
+    if (categoryExists.length === 0) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+    
     const [rows] = await pool.query(
       `SELECT p.* FROM products p
        JOIN product_categories pc ON p.id = pc.product_id
        JOIN categories c ON pc.category_id = c.id
        WHERE c.link = ?`,
-      [link]
+      [fullLink]
     );
-    res.json(rows);
-  } catch (err) {
+    
+    console.log(`Found ${rows.length} products in category`);
+    
+    const processedProducts = rows.map(product => {
+      if (product.image) {
+        return {
+          ...product,
+          image: {
+            data: product.image.toString('base64')
+          }
+        };
+      }
+      return product;
+    });
+  
+    res.json(processedProducts);
+  } 
+  catch (err) {
     console.error("Error fetching products by category:", err);
     res.status(500).json({ message: "Server error." });
   }
 };
 
+/*------------------------------------GET-ALL-CATEGORIES----------------------------------------*/
 const getCategories = async (req, res) => {
   try {
     const [rows] = await pool.query("SELECT * FROM categories");
     res.json(rows);
-  } catch (err) {
+  } 
+  catch (err) {
     console.error("Error fetching categories:", err);
     res.status(500).json({ message: "Server error." });
   }
 };
 
+/*------------------------------------GET-ALL-GROUPS-AND-ALL-CATEGORIES----------------------------------------*/
 const getCategoryGroupsWithCategories = async (req, res) => {
   try {
     const [groups] = await pool.query("SELECT * FROM category_groups ORDER BY display_order");
@@ -114,14 +206,59 @@ const getCategoryGroupsWithCategories = async (req, res) => {
     });
 
     res.json(groupedCategories);
-  } catch (err) {
+  } 
+  catch (err) {
     console.error("Error fetching category groups with categories:", err);
+    res.status(500).json({ message: "Server error." });
+  }
+};
+
+/*-------------------------------GET-PRODUCT-BY-ID-----------------------------------*/
+const getProductById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    if (!id) {
+      return res.status(400).json({ message: "Product ID is required" });
+    }
+
+    const [product] = await pool.query(
+      "SELECT * FROM products WHERE id = ?",
+      [id]
+    );
+
+    if (product.length === 0) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    const productData = product[0];
+    
+    if (productData.image) {
+      productData.image = {
+        data: productData.image.toString('base64')
+      };
+    }
+    
+    const [categories] = await pool.query(
+      `SELECT c.name, c.link 
+       FROM categories c
+       JOIN product_categories pc ON c.id = pc.category_id
+       WHERE pc.product_id = ?`,
+      [id]
+    );
+    
+    productData.categories = categories;
+    res.json(productData);
+  } 
+  catch (err) {
+    console.error("Error fetching product by ID:", err);
     res.status(500).json({ message: "Server error." });
   }
 };
 
 module.exports = {
   addProduct,
+  getProductById,
   removeProduct,
   getProducts,
   getProductsByCategory,

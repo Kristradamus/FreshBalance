@@ -198,17 +198,29 @@
       "titlePassword":"Password"
     }
   },
-  "--------------------------------------------------------------PRODUCT---------------------------------------------------": {},
+  "--------------------------------------------------------------PRODUCT-PAGE--------------------------------------------------": {},
   "productPage": {
-    "loading": "Loading...",
-    "errorLoading": "There seems to be an issue with the product page. Please try again."
+    "failedToLoadProducts": "Failed to load category products. Please try again later.",
+    "noProductImage":"No Image",
+    "sorryWeDontHaveIt":"Sorry we don't currently have what you are searching for",
+    "lv":"lv",
+    "addToCart":"Add to Cart",
+    "product":"Product",
+    "products":"Products",
+    "noProductsMatch":"No products match your search",
+    "lowToHigh":"Low to High",
+    "highToLow":"High to Low",
+    "from":"from",
+    "to":"to",
+    "filtration":"Filtration",
+    "price":"Price"
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {
     "sideBarMainTitle":"My Account",
     "sidebarItems":[
       { "icon": "fa-solid fa-gear", "title": "Profile Settings", "key": "settings", "path": "settings" },
-      { "icon": "fa-solid fa-heart", "title": "Favourites", "key": "favourites", "path": "favourites" },
+      { "icon": "fa-solid fa-heart", "title": "Favorites", "key": "favorites", "path": "favorites" },
       { "icon": "fa-solid fa-cart-shopping", "title": "Cart", "key": "cart", "path": "cart" },
       { "icon": "fa-solid fa-shield-halved", "title": "Security", "key": "security", "path": "security" },
       { "icon": "fa-solid fa-right-from-bracket", "title": "Log out", "key": "logout", "path": "logout", "isLogout": true}
@@ -221,7 +233,7 @@
     "securityTwoFactorVerificationTitle":"Two-Factor Authentication",
     "securityTwoFactorVerificationText":"Add an extra layer of security to your account",
 
-    "favouritesMainTitle":"Favourites",
+    "favoritesMainTitle":"Favorites",
 
     "settingsMainTitle":"Profile Settings",
     "settingsEmail":"Email",
@@ -272,13 +284,36 @@
         "formStockTitle":"Stock",
         "formDescriptionTitle":"Description",
         "formDetailsTitle":"Details",
-        "formImageTitle":"Product Image"
-        
+        "formImageTitle":"Product Image",
+        "errorNotImage":"Please select an image file !",
+        "errorImageTooBig":"Image size should be less than 5MB !",
+        "errorNameAndPrice":"Name and price are required !",
+        "errorConectingToServer":"Error connecting to server !",
+        "success":"Product added successfully !",
+        "uploadImage":"Click to upload an image",
+        "uploadLimitations":"Max size: 5MB. Supported formats: JPEG, PNG, GIF",
+        "addBtnTitle":"Add Product",
+        "addBtnWorking":"Adding Product",
+        "clearImage":"Clear Image",
+        "categoriesTitle":"Categories"
       },
 
       "remove":{
         "productMainTitle":"Remove Product",
-        "productBtnText":"Remove Product"
+        "productBtnText":"Remove Product",
+        "selectAProductTitle":"Select Product to Remove",
+        "seachMainTitle":"Search Products",
+        "searchPlaceholder":"Search by name, ID or description",
+        "noProductsFound":"No products found matching your search.",
+        "removeBtnTitle":"Remove Product",
+        "removeBtnWorking":"Removing",
+        "checkboxText":"I confirm I want to remove",
+        "lv":"lv",
+        "id":"ID",
+        "failedToLoadProducts":"Failed to load products",
+        "failedToRemoveProduct":"Failed to remove the product !",
+        "success":"Product removed successfully !"
+
       }
     }
   },
@@ -392,7 +427,16 @@
     }
   },
   "---------------------------------------------------SINGLE-PRODUCT------------------------------------------------------": {},
-  "singleProductPage": {},
+  "singleProductPage": {
+    "productNotFound":"Product Not Found",
+    "backToProducts":"Go back",
+    "noProductImage":"No Product Image",
+    "failedToLoadProduct":"Failed to Load Product !",
+    "lv":"lv",
+    "inStock":"Product is available",
+    "pieces":"pieces",
+    "soldOut":"Product is sold out"
+  },
   "--------------------------------------------------------SUBSCRIPTIONS--------------------------------------------------------": {},
   "subscriptions": {
     "subscriptionPlans": [
@@ -746,12 +790,12 @@
       ],
       "navGuest": [
         { "name": "Login", "link": "/email-check" },
-        { "name": "Favourites", "link": "/profile/favourites" },
+        { "name": "Favorites", "link": "/profile/favorites" },
         { "name": "Cart", "link": "/profile/cart" }
       ],
       "navUser": [
         { "name": "Profile", "link": "/profile/settings" },
-        { "name": "Favourites", "link": "/profile/favourites" },
+        { "name": "Favorites", "link": "/profile/favorites" },
         { "name": "Cart", "link": "/profile/cart" }
       ],
       "navAdmin": [
@@ -761,7 +805,7 @@
         "Admin panel":"fa-solid fa-screwdriver-wrench",
         "Profile":"fa-solid fa-user",
         "Login": "fa-solid fa-user",
-        "Favourites": "fa-solid fa-heart",
+        "Favorites": "fa-solid fa-heart",
         "Cart": "fa-solid fa-cart-shopping"
       }
     },
@@ -1055,8 +1099,10 @@
 
     "restrictedTitle":"Restricted Page!",
     "restrictedSubTitle":"You need to have admin rights to access it.",
-    "restrictedGoBack":"Go Back"
+    "restrictedGoBack":"Go Back",
+    "functionalityRestricted":"You need to be logged in to access this functionality."
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
-  "cancel":"Cancel"
+  "cancel":"Cancel",
+  "youNeedToAccessFunctionality":""
 }

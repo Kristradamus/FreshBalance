@@ -15,7 +15,7 @@ export default function AccountManagement() {
       <div className="accountManagementHeader">
         <h2>{t("admin.accountManagement.mainTitle")}</h2>
         <button className={`removeAccountBtn ${show ? "show" : ""}`} onClick={handleBtnClick}>
-          <i class="fa-solid fa-user-minus"></i>
+          <i className="fa-solid fa-user-minus"></i>
           {t("admin.accountManagement.removeAccount")}
         </button>
       </div>

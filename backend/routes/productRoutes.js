@@ -3,17 +3,21 @@ const router = express.Router();
 const multer = require('multer');
 const authMiddleware = require('../middleware/authMiddleware.js');
 const productController = require('../controllers/productController.js');
-
-// Configure multer for image uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Product routes
-router.post('/admin/products', authMiddleware.authenticateJWT, authMiddleware.verifyAdmin,upload.single('image'), productController.addProduct);
-router.delete('/:id', authMiddleware.authenticateJWT, productController.removeProduct);
+router.use((req, res, next) => {
+  console.log(`Product API Request: ${req.method} ${req.originalUrl}`);
+  next();
+});
+
+router.post('/admin/products', authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, upload.single('image'), productController.addProduct);
+router.delete('/:id', authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, productController.removeProduct);
+
 router.get('/', productController.getProducts);
-router.get('/category/:link', productController.getProductsByCategory);
 router.get('/categories', productController.getCategories);
 router.get('/category-groups', productController.getCategoryGroupsWithCategories);
+router.get('/category/:link', productController.getProductsByCategory);
+router.get('/:id', productController.getProductById);
 
 module.exports = router;

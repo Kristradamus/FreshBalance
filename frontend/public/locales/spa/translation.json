@@ -112,9 +112,9 @@
 
     "topProductsSectionTitle1": "TOP PRODUCTOS DESTACADOS",
     "topProductsData": [
-      {"icon": "fa-solid fa-truck-fast", "text": "Envío gratis por compras mayores a 100 lv."},
-      {"icon": "fa-solid fa-percent", "text": "10% de descuento en pedidos mayores a 200 lv."},
-      {"icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos"}
+      { "icon": "fa-solid fa-truck-fast", "text": "Envío gratis por compras mayores a 100 lv." },
+      { "icon": "fa-solid fa-percent", "text": "10% de descuento en pedidos mayores a 200 lv." },
+      { "icon": "fa-solid fa-leaf", "text": "Productos 100% orgánicos" }
     ],
     "whoWeAreData": [
       {
@@ -130,7 +130,7 @@
         "text": "Ofrecemos una selección de más de 100 productos respaldados científicamente, diseñados para satisfacer las necesidades individuales de nuestros clientes. Desde opciones nutritivas hasta suplementos de calidad premium, nuestras soluciones están diseñadas para apoyarle en su camino hacia una vida más saludable y plena."
       }
     ],
-    "whoWeWorkWith":"NUESTRAS MARCAS COLABORADORAS"
+    "whoWeWorkWith": "NUESTRAS MARCAS COLABORADORAS"
   },
   "--------------------------------------------------------------LOGIN-REGISTRATION---------------------------------------------------": {},
   "loginRegistration": {
@@ -163,14 +163,14 @@
       "termsRequired": "Debes aceptar los términos",
       "successfull": "Registro exitoso",
       "failed": "Registro fallido!",
-      
+
       "usernameRequired": "Usuario requerido",
       "usernameTaken": "Usuario ya existe",
       "username3Chars": "Mín. 3 caracteres",
       "username30Chars": "Máx. 30 caracteres",
       "usernameAllowedCharacters": "Solo letras, números y guiones bajos",
       "success": "Te has registrado con éxito !",
-      
+
       "confirmPassword": "Confirmar contraseña",
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
       "passwordRequired": "Contraseña requerida",
@@ -190,13 +190,84 @@
       "titlePassword": "Contraseña"
     }
   },
+
   "-------------------------------------------------------------PRODUCT---------------------------------------------------": {},
   "productPage": {
     "loading": "Cargando...",
     "errorLoading": "Parece que hay un problema con la página del producto. Por favor, inténtelo de nuevo."
   },
+
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {},
+
+  "-------------------------------------------------------ADMIN-PROFILE--------------------------------------------------------": {},
+  "admin": {
+    "sidebarItems": [
+      { "icon": "fa-solid fa-gear", "title": "Configuración", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-box-open", "title": "Gestión de Productos", "key": "products", "path": "products" },
+      { "icon": "fa-solid fa-users", "title": "Gestión de Cuentas", "key": "accounts", "path": "accounts" },
+      { "icon": "fa-solid fa-shopping-bag", "title": "Pedidos", "key": "orders", "path": "orders" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Cerrar Sesión", "key": "logout", "path": "logout", "isLogout": true }
+    ],
+    "sidebarMainTitle": "Panel de Administración",
+
+    "settings": {
+      "mainTitle": "Configuración del Administrador"
+    },
+
+    "orders": {
+      "mainTitle": "Gestión de Pedidos"
+    },
+
+    "accountManagement": {
+      "mainTitle": "Gestión de Cuentas",
+      "removeAccount": "Eliminar Cuenta"
+    },
+
+    "productManagement": {
+      "mainTitle": "Gestión de Productos",
+
+      "add": {
+        "productMainTitle": "Agregar Nuevo Producto",
+        "productBtnText": "Agregar Nuevo Producto",
+        "formNameTitle": "Nombre del Producto",
+        "formPriceTitle": "Precio",
+        "formCategoryTitle": "Categoría",
+        "formStockTitle": "Inventario",
+        "formDescriptionTitle": "Descripción",
+        "formDetailsTitle": "Detalles",
+        "formImageTitle": "Imagen del Producto",
+        "errorNotImage": "¡Por favor seleccione un archivo de imagen!",
+        "errorImageTooBig": "¡El tamaño de la imagen debe ser menor a 5MB!",
+        "errorNameAndPrice": "¡Nombre y precio son requeridos!",
+        "errorConectingToServer": "¡Error al conectar con el servidor!",
+        "success": "¡Producto agregado exitosamente!",
+        "uploadImage": "Haga clic para subir una imagen",
+        "uploadLimitations": "Tamaño máximo: 5MB. Formatos soportados: JPEG, PNG, GIF",
+        "addBtnTitle": "Agregar Producto",
+        "addBtnWorking": "Agregando Producto",
+        "clearImage": "Limpiar Imagen",
+        "categoriesTitle": "Categorías"
+      },
+
+      "remove": {
+        "productMainTitle": "Eliminar Producto",
+        "productBtnText": "Eliminar Producto",
+        "selectAProductTitle": "Seleccionar Producto a Eliminar",
+        "seachMainTitle": "Buscar Productos",
+        "searchPlaceholder": "Buscar por nombre, ID o descripción",
+        "noProductsFound": "No se encontraron productos que coincidan con su búsqueda.",
+        "removeBtnTitle": "Eliminar Producto",
+        "removeBtnWorking": "Eliminando",
+        "checkboxText": "Confirmo que deseo eliminar",
+        "lv": "lv",
+        "id": "ID",
+        "failedToLoadProducts": "Error al cargar los productos",
+        "failedToRemoveProduct": "¡Error al eliminar el producto!",
+        "success": "¡Producto eliminado exitosamente!"
+      }
+    }
+  },
   "-------------------------------------------------------SERVICES--------------------------------------------------------------": {},
   "services": {
     "servicesData": {
@@ -252,27 +323,13 @@
         },
         "workHours": {
           "workHoursTitle": "Horario de trabajo: ",
-          "workHoursDescription": [
-            { "hours": "Lun-Vie: 8 AM - 8 PM" },
-            { "hours": "Sáb-Dom: 10 AM - 6 PM" }
-          ]
+          "workHoursDescription": [{ "hours": "Lun-Vie: 8 AM - 8 PM" }, { "hours": "Sáb-Dom: 10 AM - 6 PM" }]
         },
         "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.141318950937!2d27.9386521!3d43.2241237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a45580c8146d6b%3A0x887e796bb95a5497!2sProfessional%20High%20School%20of%20Computer%20Modeling%20and%20Systems%20%22Academic%20Blagovest%20Sendov%22!5e0!3m2!1sen!2sbg!4v1691234567890!5m2!1sen!2sbg"
       },
       "delivery": {
         "subTitle1": "Nuestros términos y condiciones de entrega:",
-        "areas": [
-          "Sofía",
-          "Plovdiv",
-          "Varna",
-          "Burgas",
-          "Ruse",
-          "Stara Zagora",
-          "Pleven",
-          "Sliven",
-          "Dobrich",
-          "Shumen"
-        ],
+        "areas": ["Sofía", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora", "Pleven", "Sliven", "Dobrich", "Shumen"],
         "terms": [
           {
             "title": "Áreas de Servicio: ",
@@ -420,7 +477,6 @@
     "lv": "lv.",
     "month": "mes",
     "year": "año"
-
   },
   "----------------------------------------------------------TRY-FREE----------------------------------------------------------": {},
   "tryFree": {
@@ -429,27 +485,19 @@
     "subTitlePart2": "completamente gratis.",
     "goBack": "Volver",
     "startTrial": "Iniciar prueba gratuita",
-    "features": [
-      { "feature": "No se requiere tarjeta de crédito" },
-      { "feature": "Acceso completo a todas las funciones de este plan" },
-      { "feature": "Cancela en cualquier momento" }
-    ],
+    "features": [{ "feature": "No se requiere tarjeta de crédito" }, { "feature": "Acceso completo a todas las funciones de este plan" }, { "feature": "Cancela en cualquier momento" }],
     "success": "¡Tu prueba gratuita ha sido activada con éxito !"
   },
   "----------------------------------------------------------BUY-NOW-----------------------------------------------------------": {},
   "buyNow": {
     "mainTitlePart1": "Plan",
-    "mainTitlePart2": "Premium", 
+    "mainTitlePart2": "Premium",
     "subTitlePart1": "Disfruta del",
     "subTitlePart2": "plan completo.",
     "successPart1": "¡Tu",
     "successPart2": "plan se ha activado correctamente !",
     "startPlan": "Comenzar Plan Premium",
-    "features": [
-      {"feature": "Comienza al momento de confirmar"},
-      {"feature": "Acceso completo a todas las funciones de este plan"},
-      {"feature": "Cancela en cualquier momento"}
-    ],
+    "features": [{ "feature": "Comienza al momento de confirmar" }, { "feature": "Acceso completo a todas las funciones de este plan" }, { "feature": "Cancela en cualquier momento" }],
     "lv": "lv"
   },
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
@@ -459,89 +507,89 @@
         {
           "issue": "No Puedo Iniciar Sesión",
           "solution": "Si no puedes iniciar sesión, verifica que estás ingresando la dirección de correo electrónico y la contraseña correctas. Asegúrate de que la tecla Bloq Mayús no esté activada y, si es necesario, intenta restablecer tu contraseña. Si sigues teniendo problemas, borra la caché y las cookies de tu navegador e intenta iniciar sesión nuevamente. Para obtener más ayuda, contacta al soporte al cliente y te ayudaremos a recuperar el acceso a tu cuenta.",
-          "path":"cant-log-in"
+          "path": "cant-log-in"
         },
         {
           "issue": "Nombre de Usuario o Correo Electrónico Olvidado",
           "solution": "Si has olvidado tu nombre de usuario o dirección de correo electrónico, revisa tus cuentas de correo anteriores en busca de correos de registro. Si aún no estás seguro, contacta a nuestro equipo de soporte y proporciona cualquier detalle que recuerdes. Podemos ayudarte a recuperar tu cuenta y a recuperar tu nombre de usuario o correo electrónico.",
-          "path":"forgoten-username-or-email"
+          "path": "forgoten-username-or-email"
         },
         {
           "issue": "Cuenta Bloqueada",
           "solution": "Si tu cuenta está bloqueada, puede deberse a actividad sospechosa o preocupaciones de seguridad. Para recuperar el acceso, intenta restablecer tu contraseña. Si no puedes desbloquear tu cuenta, contacta al soporte al cliente para obtener ayuda. Ellos te ayudarán a verificar tu identidad y a asegurar tu cuenta lo antes posible.",
-          "path":"account-locked"
+          "path": "account-locked"
         }
       ],
       "Billing": [
         {
           "issue": "Problemas de Pago",
           "solution": "Si tienes problemas con el pago, primero asegúrate de que tus datos de pago estén actualizados y que tu método de pago tenga fondos suficientes. Verifica si hay algún problema con tu banco o proveedor de pago. Si un pago es rechazado, contacta a tu banco para resolver el problema. Además, puedes visitar nuestra guía de solución de problemas de pago para obtener instrucciones paso a paso sobre cómo solucionar problemas comunes de pago.",
-          "path":"payment-issues"
+          "path": "payment-issues"
         },
         {
           "issue": "Suscripción No Funciona",
           "solution": "Si tu suscripción no funciona, asegúrate de que tu suscripción esté activa y que tu pago se haya procesado correctamente. Puedes verificar el estado de tu suscripción en la configuración de tu cuenta. Si todo parece correcto pero el problema persiste, por favor contacta a nuestro equipo de soporte para obtener más ayuda.",
-          "path":"subscription-not-working"
+          "path": "subscription-not-working"
         },
         {
           "issue": "Problemas con Solicitudes de Reembolso",
           "solution": "Si tienes problemas para enviar una solicitud de reembolso, asegúrate de que tu compra sea elegible según nuestra política de reembolsos. Puedes revisar las condiciones bajo las cuales se otorgan reembolsos en nuestro sitio web. Si aún no estás seguro o necesitas más ayuda, contacta a nuestro equipo de soporte y te guiarán a través del proceso de reembolso.",
-          "path":"refund-request-issues"
+          "path": "refund-request-issues"
         }
       ],
       "Technical": [
         {
           "issue": "Rendimiento Lento del Sitio Web",
           "solution": "Si experimentas un rendimiento lento del sitio web, intenta borrar la caché y los datos de la aplicación de tu navegador. Asegúrate de estar utilizando la última versión de tu navegador o aplicación, ya que las versiones desactualizadas pueden afectar el rendimiento. Si el problema persiste, revisa nuestra página de estado del sistema para ver si hay problemas actuales que afecten la velocidad del sitio.",
-          "path":"slow-website-performance"
+          "path": "slow-website-performance"
         },
         {
           "issue": "No Se Puede Instalar el App",
           "solution": "Si no puedes instalar nuestro software o aplicación, asegúrate de que tu dispositivo cumple con los requisitos mínimos del sistema. Reinicia tu dispositivo e intenta nuevamente, ya que algunos problemas pueden resolverse con un simple reinicio. Si la instalación falla, consulta nuestra guía de instalación para obtener consejos adicionales de solución de problemas o contacta al soporte para obtener más ayuda.",
-          "path":"unable-to-install-app"
+          "path": "unable-to-install-app"
         },
         {
           "issue": "La App Se Bloquea o Se Congela",
           "solution": "Si la aplicación se bloquea o se congela, intenta reiniciar la aplicación y asegúrate de tener la última versión instalada. A veces, borrar la caché de la aplicación o reinstalarla puede solucionar problemas persistentes. Si el problema continúa, consulta nuestra guía de solución de problemas o contacta al soporte para obtener opciones de solución de problemas más avanzadas.",
-          "path":"app-crashing-or-freezing"
+          "path": "app-crashing-or-freezing"
         },
         {
           "issue": "Mensajes de Error",
           "solution": "Si encuentras un mensaje de error, anota el código de error y el mensaje que se muestra. Consulta nuestra página de solución de problemas de mensajes de error para obtener una lista de errores comunes y sus soluciones. Si no puedes resolver el problema usando la guía, contacta al soporte y proporciona los detalles del error para que podamos ayudarte de manera más eficiente.",
-          "path":"error-messages"
+          "path": "error-messages"
         }
       ],
       "Security": [
         {
           "issue": "Problemas con la Autenticación de Dos Factores",
           "solution": "Si tienes problemas con la autenticación de dos factores (2FA), asegúrate de tener acceso a la aplicación de autenticación o a los códigos de respaldo. Si has perdido acceso al método de autenticación, es posible que necesites restablecer la configuración de 2FA. Si no puedes hacer esto por tu cuenta, contacta al soporte al cliente y te ayudaremos a recuperar el acceso a tu cuenta.",
-          "path":"two-factor-authentication-issues"
+          "path": "two-factor-authentication-issues"
         },
         {
           "issue": "Cuenta Hackeada",
           "solution": "Si sospechas que tu cuenta ha sido hackeada, restablece tu contraseña de inmediato para asegurar tu cuenta. Habilita la autenticación de dos factores (2FA) para una protección adicional. Revisa cualquier actividad reciente de la cuenta en busca de signos de acceso no autorizado e informa cualquier comportamiento sospechoso a nuestro equipo de seguridad. Investigaremos y te ayudaremos a recuperar el control de tu cuenta.",
-          "path":"account-hacked"
+          "path": "account-hacked"
         }
       ],
       "Orders": [
         {
           "issue": "Pedidos o Entregas Perdidas",
           "solution": "En caso de que tu pedido esté perdido o retrasado, primero confirma los detalles de tu pedido, incluido el número de seguimiento. Consulta con el proveedor de entrega para obtener actualizaciones. Si la entrega está significativamente retrasada o perdida, informa el problema a nuestro equipo de soporte al cliente y ellos te ayudarán a resolver el problema con el proveedor.",
-          "path":"missing-orders-or-deliveries"
+          "path": "missing-orders-or-deliveries"
         }
       ],
       "Email": [
         {
           "issue": "No Se Recibe el Correo Electrónico",
           "solution": "Si no estás recibiendo tus correos electrónicos, revisa tu carpeta de spam o correo no deseado, ya que el correo puede haber sido filtrado incorrectamente. Verifica que tu dirección de correo electrónico sea correcta y que tu buzón no esté lleno. Si aún no has recibido el correo, intenta solicitar un reenvío. Si el problema persiste, contacta al soporte y lo investigaremos más a fondo.",
-          "path":"email-not-received"
+          "path": "email-not-received"
         }
       ],
       "Subscriptions": [
         {
           "issue": "No Se Puede Cancelar la Suscripción",
           "solution": "Si tienes problemas para cancelar tu suscripción, primero asegúrate de haber iniciado sesión en la cuenta correcta. Ve a la configuración de tu cuenta y busca la sección de gestión de suscripciones. Si aún no puedes cancelar, contacta a nuestro equipo de soporte lo antes posible para evitar cargos adicionales, especialmente antes de tu próximo ciclo de facturación.",
-          "path":"cant-cancel-subscription"
+          "path": "cant-cancel-subscription"
         }
       ]
     },
@@ -606,14 +654,7 @@
       },
       "services": {
         "title": "Servicios",
-        "items": [
-          { "text": "Planes de Comidas Personalizados" },
-          { "text": "Coaching de Nutrición" },
-          { "text": "Guías de Suplementos" },
-          { "text": "Programas de Fitness" },
-          { "text": "Talleres de Bienestar" },
-          { "text": "Bienestar Corporativo" }
-        ]
+        "items": [{ "text": "Planes de Comidas Personalizados" }, { "text": "Coaching de Nutrición" }, { "text": "Guías de Suplementos" }, { "text": "Programas de Fitness" }, { "text": "Talleres de Bienestar" }, { "text": "Bienestar Corporativo" }]
       },
       "contacts": {
         "title": "Contactos",
@@ -654,27 +695,20 @@
   "----------------------------------------------------------HEADER-----------------------------------------------------------": {},
   "header": {
     "headerData": {
-      "recommendations": [
-        "Recomendación1",
-        "Recomendación2",
-        "Recomendación3",
-        "Recomendación4"
-      ],
+      "recommendations": ["Recomendación1", "Recomendación2", "Recomendación3", "Recomendación4"],
       "navGuest": [
         { "name": "Ingresar", "link": "/email-check" },
-        { "name": "Favoritos", "link": "/profile/favourites" },
+        { "name": "Favoritos", "link": "/profile/favorites" },
         { "name": "Carrito", "link": "/profile/cart" }
       ],
       "navUser": [
         { "name": "Perfil", "link": "/profile/settings" },
-        { "name": "Favoritos", "link": "/profile/favourites" },
+        { "name": "Favoritos", "link": "/profile/favorites" },
         { "name": "Carrito", "link": "/profile/cart" }
       ],
-      "navAdmin": [
-        { "name": "Panel Admin", "link": "/admin/settings" }
-      ],
+      "navAdmin": [{ "name": "Panel Admin", "link": "/admin/settings" }],
       "icons": {
-        "Panel Admin":"fa-solid fa-screwdriver-wrench",
+        "Panel Admin": "fa-solid fa-screwdriver-wrench",
         "Perfil": "fa-solid fa-user",
         "Ingresar": "fa-solid fa-user",
         "Favoritos": "fa-solid fa-heart",
@@ -698,9 +732,9 @@
         {
           "name": "Más Vendidos",
           "category": [
-            { "name": "Productos Destacados", "link": "/product/featured-products"},
-            { "name": "Favoritos de los Clientes", "link": "/product/customer-favorites"},
-            { "name": "Productos Mejor Valorados", "link": "/product/top-rated-products"},
+            { "name": "Productos Destacados", "link": "/product/featured-products" },
+            { "name": "Favoritos de los Clientes", "link": "/product/customer-favorites" },
+            { "name": "Productos Mejor Valorados", "link": "/product/top-rated-products" },
             { "name": "Nuevos Lanzamientos", "link": "/product/new-arrivals" },
             { "name": "Tendencias Actuales", "link": "/product/trending-now" },
             { "name": "Productos Imprescindibles", "link": "/product/must-have-products" },
@@ -766,7 +800,7 @@
           "name": "Potenciadores de Rendimiento",
           "category": [
             { "name": "Suplementos Pre-Entrenamiento", "link": "/product/pre-workout-supplements" },
-            { "name": "Recuperación Post-Entrenamiento","link": "/product/post-workout-recovery" },
+            { "name": "Recuperación Post-Entrenamiento", "link": "/product/post-workout-recovery" },
             { "name": "Potenciadores de Energía", "link": "/product/energy-boosters" },
             { "name": "Ganadores de Masa Muscular", "link": "/product/muscle-mass-gainers" },
             { "name": "Suplementos de Resistencia", "link": "/product/endurance-supplements" },
@@ -868,12 +902,7 @@
           {
             "heading": "Derechos de Propiedad Intelectual",
             "content": "A menos que se indique lo contrario, „FreshBalance“ y/o sus licenciantes son los titulares de los derechos de propiedad intelectual sobre todo el contenido de la plataforma. Todos los derechos están reservados. Usted puede acceder a este contenido para uso personal, siempre que cumpla con las restricciones establecidas en estos Términos y Condiciones.",
-            "subPoints": [
-              "Publicar contenido de „FreshBalance“ sin el consentimiento previo por escrito.",
-              "Vender, alquilar o sublicenciar contenido de „FreshBalance“.",
-              "Reproducir, duplicar o copiar contenido de „FreshBalance“ con fines comerciales.",
-              "Redistribuir contenido de „FreshBalance“, a menos que esté específicamente destinado para su redistribución."
-            ]
+            "subPoints": ["Publicar contenido de „FreshBalance“ sin el consentimiento previo por escrito.", "Vender, alquilar o sublicenciar contenido de „FreshBalance“.", "Reproducir, duplicar o copiar contenido de „FreshBalance“ con fines comerciales.", "Redistribuir contenido de „FreshBalance“, a menos que esté específicamente destinado para su redistribución."]
           },
           {
             "heading": "Venta y Compra de Productos",
@@ -928,24 +957,12 @@
           {
             "heading": "Información que Recopilamos",
             "content": "Podemos recopilar los siguientes tipos de información:",
-            "subPoints": [
-              "Información personal: Nombre, dirección de correo electrónico, número de teléfono, etc.",
-              "Datos de uso: Dirección IP, tipo de navegador, páginas visitadas, etc.",
-              "Cookies: Utilizamos cookies para mejorar su experiencia en nuestro sitio."
-            ]
+            "subPoints": ["Información personal: Nombre, dirección de correo electrónico, número de teléfono, etc.", "Datos de uso: Dirección IP, tipo de navegador, páginas visitadas, etc.", "Cookies: Utilizamos cookies para mejorar su experiencia en nuestro sitio."]
           },
           {
             "heading": "Cómo Utilizamos su Información",
             "content": "Utilizamos la información recopilada para los siguientes fines:",
-            "subPoints": [
-              "Para proporcionar y mantener nuestros servicios.",
-              "Para notificarle sobre cambios en nuestros servicios.",
-              "Para permitirle participar en funciones interactivas de nuestros servicios.",
-              "Para brindar soporte al cliente.",
-              "Para recopilar análisis o información valiosa que nos permita mejorar nuestros servicios.",
-              "Para monitorear el uso de nuestros servicios.",
-              "Para detectar, prevenir y resolver problemas técnicos."
-            ]
+            "subPoints": ["Para proporcionar y mantener nuestros servicios.", "Para notificarle sobre cambios en nuestros servicios.", "Para permitirle participar en funciones interactivas de nuestros servicios.", "Para brindar soporte al cliente.", "Para recopilar análisis o información valiosa que nos permita mejorar nuestros servicios.", "Para monitorear el uso de nuestros servicios.", "Para detectar, prevenir y resolver problemas técnicos."]
           },
           {
             "heading": "Seguridad de los Datos",
@@ -971,7 +988,8 @@
 
     "restrictedTitle": "¡Zona solo para admins!",
     "restrictedSubTitle": "No tienes permisos para entrar aquí",
-    "restrictedGoBack": "Volver"
+    "restrictedGoBack": "Volver",
+    "functionalityRestricted": "Inicia sesión para usar esta función"
   },
   "--------------------------------------------------REUSABLE-LABELS-------------------------------------------": {},
   "cancel": "Cancelar"
