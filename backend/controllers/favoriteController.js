@@ -4,7 +4,7 @@ const checkFavorite = async (req, res) => {
   try {
     const [result] = await pool.query(
       'SELECT 1 FROM user_favorites WHERE user_id = ? AND product_id = ?',
-      [req.user.user_id, req.params.productId]
+      [req.user.userId, req.params.productId]
     );
     res.json({ isFavorite: result.length > 0 });
   } catch (err) {
@@ -17,7 +17,7 @@ const addFavorite = async (req, res) => {
   try {
     await pool.query(
       'INSERT INTO user_favorites (user_id, product_id) VALUES (?, ?)',
-      [req.user.user_id, req.params.productId || req.body.productId]
+      [req.user.userId, req.params.productId || req.body.productId]
     );
     res.json({ success: true });
   } catch (err) {
@@ -34,7 +34,7 @@ const removeFavorite = async (req, res) => {
   try {
     await pool.query(
       'DELETE FROM user_favorites WHERE user_id = ? AND product_id = ?',
-      [req.user.user_id, req.params.productId]
+      [req.user.userId, req.params.productId]
     );
     res.json({ success: true });
   } catch (err) {
@@ -49,7 +49,7 @@ const getUserFavorites = async (req, res) => {
       `SELECT p.* FROM products p
        JOIN user_favorites uf ON p.id = uf.product_id
        WHERE uf.user_id = ?`,
-      [req.user.user_id]
+      [req.user.userId]
     );
     
     res.json(favorites.map(product => {

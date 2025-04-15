@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, useNavigate, useLocation, Outlet } from "react-router-dom";
-import favoritesComponent from "../../components/profileComponents/favoritesComponent.jsx";
+import FavoritesComponent from "../../components/profileComponents/favoritesComponent.jsx";
 import CartComponent from "../../components/profileComponents/CartComponent.jsx";
 import SecurityComponent from "../../components/profileComponents/SecurityComponent.jsx";
 import LogOutComponent from "../../components/reusableComponents/LogOut.jsx";
@@ -88,7 +88,7 @@ export default function ProfilePage() {
     <Routes>
       <Route path="/" element={<ProfileLayout />}>
         <Route path="settings" element={<ProfileSettings />} />
-        <Route path="favorites" element={<favoritesComponent />} />
+        <Route path="favorites" element={<FavoritesComponent />} />
         <Route path="cart" element={<CartComponent />} />
         <Route path="security" element={<SecurityComponent />} />
         <Route path="logout" element={<LogOutComponent />} />

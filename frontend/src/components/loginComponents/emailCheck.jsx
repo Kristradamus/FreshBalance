@@ -134,6 +134,7 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
         </button>
         <p className="emailDontWorry">{t("loginRegistration.email.dontWorry")}</p>
       </div>
+      {/*
       <div className="emailDivider">
         <hr />
           <p>{t("loginRegistration.email.or")}</p>
@@ -149,7 +150,7 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
           <i className="fa-brands fa-facebook-f"></i>
           <p className="emailFacebookText"><strong>Facebook</strong></p>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

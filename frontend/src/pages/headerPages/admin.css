@@ -26,6 +26,9 @@
   color:var(--secondBackground);
   font-size:150px;
 }
+.adminSideBarMainTitle{
+  text-align:center;
+}
 .adminButton {
   display: flex;
   align-items: center;

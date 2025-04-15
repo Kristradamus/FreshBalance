@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navigation.css";
 
 export default function Navigation() {
@@ -13,6 +13,7 @@ const dropContentRef = useRef(null);
 const moreDropContentRef = useRef(null);
 const linkRefs = useRef([]);
 const location = useLocation();
+const navigate = useNavigate();
 const { t } = useTranslation();
 const navData = t("navigation.navData", {returnObject:true});
 
@@ -45,12 +46,22 @@ const handleSubMenuExpansion = (index, e) => {
   setExpandedSubMenuIndex(prevIndex => prevIndex === index ? null : index);
 
 }
-const handleNavReload = (item) => {
-  if(location.pathname === item.link){
+
+const handleNavReload = (item, e) => {
+  if (e) e.preventDefault();
+  
+  const currentPath = location.pathname;
+  
+  const linkPath = typeof item === 'object' ? item.link || item.path : item;
+  const itemName = typeof item === 'object' ? item.name : '';
+
+  if (currentPath === linkPath) {
+    console.log("Same path, reloading page");
     window.location.reload();
-  }
-  else{
-    navigate(item.link)
+  } 
+  else {
+    console.log("Navigating to new path with state");
+    navigate(linkPath, { state: { categoryName: itemName } });
   }
 }
 
@@ -102,11 +113,11 @@ return (
                     <h3 className="navSubMenuSubTitle">{subItem.title}</h3>
                     {subItem.subcategory.map((subSubItem, subSubIndex) => (
                       <li key={subSubIndex} className="navSubDropDownElement">
-                        <Link to={subSubItem.link} onClick={handleNavReload}>{subSubItem.name}</Link>
+                        <Link   to={subSubItem.link} state={{ categoryName: subSubItem.name }} onClick={(e) => handleNavReload(subSubItem, e)}></Link>
                       </li>))}
                   </div>) : 
                   (<li key={subIndex} className="navSubDropDownElement">
-                    <Link to={subItem.link} onClick={handleNavReload}>{subItem.name}</Link>
+                    <Link  to={subItem.link} state={{ categoryName: subItem.name }}  onClick={(e) => handleNavReload(subItem, e)}></Link>
                   </li>
                 ))}
               </ul>
@@ -129,7 +140,7 @@ return (
           </li>
           {navData.links.map((item, index) => (
             <li key={index} className="navDropDownMoreElement">
-              <Link to={item.path} onClick={handleNavReload}>
+              <Link to={item.path} onClick={(e) => handleNavReload(item, e)}>
                 {navData.icons[item.name] && <i className={navData.icons[item.name]}></i>}
                 {item.name}
               </Link>
@@ -138,7 +149,7 @@ return (
       </li>
       {navData.links.map((item, index) => (
         <li className="navMenuElement" key={index} ref={(el) => (linkRefs.current[index] = el)}>
-          <Link className={`${location.pathname.startsWith(item.path) ? "active" : ""}`} to={item.path} onClick={handleNavReload}>
+          <Link className={`${location.pathname.startsWith(item.path) ? "active" : ""}`} to={item.path} onClick={(e) => handleNavReload(item, e)}>
             {navData.icons[item.name] && <i className={navData.icons[item.name]}></i>}
             {item.name}
           </Link>

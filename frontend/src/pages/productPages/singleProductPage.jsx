@@ -3,8 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../components/protectionComponents/AuthContext.jsx";
 import RedirectAlertForFunctions from "../../components/protectionComponents/RedirectAlertForFunctions.jsx";
-import axios from "axios";
 import ConfirmationToast from "../../components/reusableComponents/ConfirmationToast";
+import useFavoritesHandler from "../../components/reusableComponents/RemoveAddFavorites.jsx";
+import axios from "axios";
 import "./singleProductPage.css";
 
 const SingleProductPage = () => {
@@ -15,6 +16,7 @@ const SingleProductPage = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const [showAlert, setShowAlert] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
+  const { favorites, handleAddTofavorites } = useFavoritesHandler();
   const [activeTab, setActiveTab] = useState("description");
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -54,15 +56,7 @@ const SingleProductPage = () => {
     }
   }, [productId, t]);
 
-  /*-------------------------------------------------favoriteS---------------------------------------------*/
-  const handleAddTofavorites = (e, productId) => {
-    e.stopPropagation();
-    if (!isAuthenticated) {
-      setShowAlert(true);
-      return;
-    }
-  };
-
+  /*-------------------------------------------------CART---------------------------------------------*/
   const handleAddToCart = (e, productId) => {
     e.stopPropagation();
     if (!isAuthenticated) {
@@ -125,18 +119,32 @@ const SingleProductPage = () => {
               <button className="goBackButtonForProduct" onClick={goBack}>
                 <i className="fa-solid fa-arrow-left"></i> {t("singleProductPage.backToProducts")}
               </button>
-              <button className="favoriteIconOverlay" onClick={(e) => handleAddTofavorites(e, product.id)}>
-                <i className={`fa-${isFavorite ? "solid" : "regular"} fa-heart`}></i>
+              <button
+                className="wishlistBtn"
+                onClick={(e) => {
+                  handleAddTofavorites(e, product.id, setToast, t, setShowAlert);
+                  setIsFavorite(!isFavorite);
+                }}
+              >
+                <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
               </button>
             </div>
           ) : (
             <div className="imageWrapper">
-              <p>{t("singleProductPage.noProductImage")}</p>
+              <p>
+                <i class="fa-solid fa-camera"></i> {t("singleProductPage.noProductImage")}
+              </p>
               <button className="goBackButtonForProduct" onClick={goBack}>
                 <i className="fa-solid fa-arrow-left"></i> {t("singleProductPage.backToProducts")}
               </button>
-              <button className="favoriteIconOverlay" onClick={(e) => handleAddTofavorites(e, product.id)}>
-                <i className={`fa-${isFavorite ? "solid" : "regular"} fa-heart`}></i>
+              <button
+                className="wishlistBtn"
+                onClick={(e) => {
+                  handleAddTofavorites(e, product.id, setToast, t, setShowAlert);
+                  setIsFavorite(!isFavorite);
+                }}
+              >
+                <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
               </button>
             </div>
           )}
@@ -149,30 +157,25 @@ const SingleProductPage = () => {
             {product?.categories?.length > 0 && (
               <div className="productCategories">
                 {product.categories.map((category, index) => (
-                  <span key={index} className="categoryTag" onClick={() => navigate(`${category.link}`)}>
+                  <p key={index} className="categoryTag" onClick={() => navigate(`${category.link}`)}>
                     {category.name}
-                  </span>
+                  </p>
                 ))}
               </div>
             )}
 
             <div className="productPriceBox">
               <div className="productPrice">
-                <span className="priceValue">{product.price}</span>
-                <span className="priceCurrency">{t("singleProductPage.lv")}.</span>
+                <p className="priceValue">{product.price}</p>
+                <p className="priceCurrency">{t("singleProductPage.lv")}.</p>
               </div>
-              <span className={`stockInfo ${product.stock > 0 ? "available" : "soldOut"}`}>
+              <div className={`stockInfo ${product.stock > 0 ? "available" : "soldOut"}`}>
                 {product.stock > 0 ? (
-                  <>
-                    <i className="fa-solid fa-check"></i> {t("singleProductPage.inStock")}: {product.stock} {t("singleProductPage.pieces")};
-                  </>
+                  <p><i className="fa-solid fa-check"></i> {t("singleProductPage.inStock")}: {product.stock} {t("singleProductPage.pieces")};</p>
                 ) : (
-                  <>
-                    <i className="fa-solid fa-xmark"></i>
-                    {t("singleProductPage.soldOut")}
-                  </>
+                  <p><i className="fa-solid fa-xmark"></i>{t("singleProductPage.soldOut")}</p>
                 )}
-              </span>
+              </div>
             </div>
 
             {/*------------------------------Ifdfdhsgs------------------------*/}
@@ -187,7 +190,7 @@ const SingleProductPage = () => {
                 </button>
               </div>
 
-              <button className="addToCartBtn" onClick={(e) => handleAddToCart(e, product.id)}>
+              <button className="singleProductAddToCartBtn" onClick={(e) => handleAddToCart(e, product.id)}>
                 <i className="fa-solid fa-cart-shopping"></i> {t("singleProductPage.addToCart")}
               </button>
             </div>

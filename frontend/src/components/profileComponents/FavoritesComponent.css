@@ -1,0 +1,127 @@
+.profileContentAriafavorites {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.favoritesMainTitleBox {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: var(--smallRadius);
+  box-shadow: var(--boxShadowLight);
+}
+.favoritesMainTitle {
+  color: var(--mainTextColor);
+}
+.favoritesMainTitleNumber {
+  color: var(--green);
+}
+
+/*---------------------------------PRODUCTS-----------------------------------*/
+.favoritesList {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  width: 100%;
+}
+.favoriteItem{
+  display:flex;
+  flex-direction:row;
+  gap:20px;
+  padding:20px;
+  background-color:var(--white);
+  border-radius:var(--smallRadius);
+  box-shadow:var(--boxShadowLight);
+  width:100%;
+}
+.favoritesImageBox,
+.noImageBox{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:150px;
+  height:150px;
+  cursor:pointer;
+}
+.noImageBox{
+  background-color: var(--secondBackground);
+  border-radius:var(--smallRadius);
+}
+.favoriteImage{
+  height:150px;
+}
+.favoriteInfo{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:100%;
+}
+.favoritePrice{
+  font-size:30px;
+  margin-top:10px;
+}
+.stockInfo {
+  display: flex;
+  height:100%;
+  align-items: end;
+  font-size:var(--textFont);
+  margin-bottom:10px;
+}
+.stockInfo.soldOut p{
+  color:var(--errorColor);
+}
+.stockInfo.available p{
+  color:var(--green);
+}
+.stockInfo i {
+  margin-right:var(--iconDistance);
+  font-size:18px;
+}
+.favoritesButtons{
+  display:flex;
+  flex-direction:row;
+  align-items:end;
+  justify-content:end;
+  gap:20px;
+}
+.favoritesRemoveBtn, 
+.favoritesAddToCartBtn{
+  padding:10px 20px;
+  border:none;
+  border-radius:var(--smallRadius);
+  width:100%;
+  min-width:200px;
+  transition:var(--transition);
+}
+.favoritesRemoveBtn{
+  background-color:var(--secondButtonColor);
+  color:var(--mainTextColor);
+}
+.favoritesRemoveBtn:hover{
+  background-color:var(--secondButtonHover);
+  transform:translateY(-1px);
+}
+.favoritesAddToCartBtn{
+  color:var(--white);
+  background-color:var(--mainButtonColor);
+}
+.favoritesAddToCartBtn:hover{
+  background-color:var(--mainButtonHover);
+  transform:translateY(-1px);
+}
+
+/*-----------------------RESPONSIVE----------------------------*/
+@media(max-width:1000px){
+
+}
+@media(max-width:780px){
+  .favoriteItem{
+    flex-direction:column;
+  }
+  .favoritesButtons{
+    flex-direction:column;
+    gap:10px;
+  }
+}

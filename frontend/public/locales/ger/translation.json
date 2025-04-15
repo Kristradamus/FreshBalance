@@ -187,15 +187,73 @@
       "titlePassword": "Passwort"
     }
   },
-  "-------------------------------------------------------------product---------------------------------------------------": {},
+  "-------------------------------------------------------------PRODUCT-PAGE--------------------------------------------------": {},
   "productPage": {
-    "loading": "Laden...",
-    "errorLoading": "Es scheint ein Problem mit der Produktseite zu geben. Bitte versuchen Sie es erneut."
+    "failedToLoadProducts": "Fehler beim Laden der Kategorieprodukte. Bitte versuchen Sie es später noch einmal.",
+    "noProductImage": "Kein Bild",
+    "sorryWeDontHaveIt": "Entschuldigung, wir haben derzeit nicht, wonach Sie suchen",
+    "lv": "лв",
+    "addToCart": "In den Warenkorb",
+    "product": "Produkt",
+    "products": "Produkte",
+    "noProductsMatch": "Keine Produkte entsprechen Ihrer Suche",
+    "lowToHigh": "Niedrig bis Hoch",
+    "highToLow": "Hoch bis Niedrig",
+    "from": "von",
+    "to": "bis",
+    "filtration": "Filterung",
+    "price": "Preis",
+    "removedFromFavorites": "Das Produkt wurde von Ihrer Wunschliste entfernt",
+    "addedToFavorites": "Das Produkt wurde zu Ihrer Wunschliste hinzugefügt",
+    "favoritesError": "Es gibt ein Problem mit dieser Funktion. Bitte versuchen Sie es später noch einmal!"
   },
-
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
-  "profile": {},
+  "profile": {
+    "sideBarMainTitle": "Mein Konto",
+    "sidebarItems": [
+      { "icon": "fa-solid fa-gear", "title": "Profileinstellungen", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-heart", "title": "Favoriten", "key": "favorites", "path": "favorites" },
+      { "icon": "fa-solid fa-cart-shopping", "title": "Warenkorb", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-shield-halved", "title": "Sicherheit", "key": "security", "path": "security" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Abmelden", "key": "logout", "path": "logout", "isLogout": true }
+    ],
+    "products": "produkte",
+    "product": "produkt",
+    "lv": "lv",
 
+    "securityMainTitle": "Sicherheit",
+    "securityChangePasswordTitle": "Passwort ändern",
+    "securityChange": "Ändern",
+    "securityRecommendation": "Es wird empfohlen, ein starkes Passwort mit einer Mischung aus Zeichen zu verwenden",
+    "securityTwoFactorVerificationTitle": "Zwei-Faktor-Authentifizierung",
+    "securityTwoFactorVerificationText": "Fügen Sie Ihrem Konto eine zusätzliche Sicherheitsebene hinzu",
+
+    "favorites": {
+      "mainTitle": "Favoriten",
+      "addToCart": "In den Warenkorb legen",
+      "remove": "Produkt entfernen",
+      "removeSuccess": "Produkt wurde erfolgreich entfernt!",
+      "error": "Etwas ist schiefgelaufen, bitte versuchen Sie es später noch einmal!",
+      "only": "Nur",
+      "areLeft": "Stück sind übrig",
+      "isLeft": "Stück ist übrig",
+      "noProductsLeft": "Produkt ist ausverkauft",
+      "noImage": "Kein Bild"
+    },
+
+    "settingsMainTitle": "Profileinstellungen",
+    "settingsEmail": "E-Mail",
+    "settingsFirstName": "Vorname",
+    "settingsLastName": "Nachname",
+    "settingsPhoneNumber": "Telefonnummer",
+    "settingsSaveChanges": "Änderungen speichern",
+
+    "cartMainTitle": "Warenkorb",
+    
+    "logoutConfirmTitle": "Abmeldung bestätigen",
+    "logoutConfirmMessage": "Möchten Sie sich wirklich abmelden?",
+    "logoutConfirm": "Ja, abmelden"
+  },
   "-------------------------------------------------------ADMIN-PROFILE--------------------------------------------------------": {},
   "admin": {
     "sidebarItems": [
@@ -499,7 +557,9 @@
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {
-      "Account": [
+    "Account": {
+      "title": "Konto",
+      "items": [
         {
           "issue": "Kann mich nicht anmelden",
           "solution": "Wenn Sie sich nicht anmelden können, überprüfen Sie, ob Sie die richtige E-Mail-Adresse und das richtige Passwort eingeben. Stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist, und versuchen Sie, Ihr Passwort zurückzusetzen, falls nötig. Wenn das Problem weiterhin besteht, löschen Sie den Cache und die Cookies Ihres Browsers und versuchen Sie es erneut. Für weitere Hilfe kontaktieren Sie den Kundensupport, und wir helfen Ihnen, wieder Zugriff auf Ihr Konto zu erhalten.",
@@ -515,8 +575,11 @@
           "solution": "Wenn Ihr Konto gesperrt ist, kann dies auf verdächtige Aktivitäten oder Sicherheitsbedenken zurückzuführen sein. Um den Zugriff wiederherzustellen, versuchen Sie, Ihr Passwort zurückzusetzen. Wenn Sie Ihr Konto nicht entsperren können, wenden Sie sich an den Kundensupport, um Hilfe zu erhalten. Sie helfen Ihnen, Ihre Identität zu überprüfen und Ihr Konto so schnell wie möglich zu sichern.",
           "path": "account-locked"
         }
-      ],
-      "Billing": [
+      ]
+    },
+    "Billing": {
+      "title": "Abrechnung",
+      "items": [
         {
           "issue": "Probleme mit der Zahlung",
           "solution": "Wenn Sie Probleme mit der Zahlung haben, stellen Sie sicher, dass Ihre Zahlungsdaten aktuell sind und dass Ihre Zahlungsmethode über ausreichende Mittel verfügt. Überprüfen Sie, ob es Probleme mit Ihrer Bank oder Ihrem Zahlungsanbieter gibt. Wenn eine Zahlung abgelehnt wird, kontaktieren Sie Ihre Bank, um das Problem zu lösen. Darüber hinaus können Sie unsere Zahlungsproblembehandlungsanleitung besuchen, um Schritt-für-Schritt-Anleitungen zur Behebung häufiger Zahlungsprobleme zu erhalten.",
@@ -532,8 +595,11 @@
           "solution": "Wenn Sie Probleme haben, eine Rückerstattungsanfrage zu stellen, stellen Sie sicher, dass Ihr Kauf gemäß unserer Rückerstattungsrichtlinie berechtigt ist. Sie können die Bedingungen, unter denen Rückerstattungen gewährt werden, auf unserer Website überprüfen. Wenn Sie sich immer noch unsicher sind oder weitere Hilfe benötigen, wenden Sie sich an unser Support-Team, und wir führen Sie durch den Rückerstattungsprozess.",
           "path": "refund-request-issues"
         }
-      ],
-      "Technical": [
+      ]
+    },
+    "Technical": {
+      "title": "Technisch",
+      "items": [
         {
           "issue": "Langsame Website-Leistung",
           "solution": "Wenn Sie eine langsame Website-Leistung feststellen, versuchen Sie, den Cache und die App-Daten Ihres Browsers zu löschen. Stellen Sie sicher, dass Sie die neueste Version Ihres Browsers oder Ihrer App verwenden, da veraltete Versionen die Leistung beeinträchtigen können. Wenn das Problem weiterhin besteht, überprüfen Sie unsere Systemstatusseite, um festzustellen, ob es aktuelle Probleme gibt, die die Geschwindigkeit der Website beeinflussen.",
@@ -554,8 +620,11 @@
           "solution": "Wenn Sie auf eine Fehlermeldung stoßen, notieren Sie den Fehlercode und die angezeigte Meldung. Überprüfen Sie unsere Fehlermeldungs-Fehlerbehandlungsseite für eine Liste häufiger Fehler und deren Lösungen. Wenn Sie das Problem nicht mithilfe der Anleitung beheben können, kontaktieren Sie den Support und geben Sie die Fehlerdetails an, damit wir Ihnen effizienter helfen können.",
           "path": "error-messages"
         }
-      ],
-      "Security": [
+      ]
+    },
+    "Security": {
+      "title": "Sicherheit",
+      "items": [
         {
           "issue": "Probleme mit der Zwei-Faktor-Authentifizierung",
           "solution": "Wenn Sie Probleme mit der Zwei-Faktor-Authentifizierung (2FA) haben, stellen Sie sicher, dass Sie Zugriff auf die Authentifizierungs-App oder die Backup-Codes haben. Wenn Sie den Zugriff auf die Authentifizierungsmethode verloren haben, müssen Sie möglicherweise die 2FA-Einstellungen zurücksetzen. Wenn Sie dies nicht selbst tun können, kontaktieren Sie den Kundensupport, und wir helfen Ihnen, den Zugriff auf Ihr Konto wiederherzustellen.",
@@ -566,29 +635,39 @@
           "solution": "Wenn Sie vermuten, dass Ihr Konto gehackt wurde, setzen Sie Ihr Passwort sofort zurück, um Ihr Konto zu sichern. Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) für zusätzlichen Schutz. Überprüfen Sie die letzten Kontaktivitäten auf Anzeichen von unbefugtem Zugriff und melden Sie verdächtiges Verhalten unserem Sicherheitsteam. Wir werden den Vorfall untersuchen und Ihnen helfen, die Kontrolle über Ihr Konto zurückzugewinnen.",
           "path": "account-hacked"
         }
-      ],
-      "Orders": [
+      ]
+    },
+    "Orders": {
+      "title": "Bestellungen",
+      "items": [
         {
           "issue": "Fehlende Bestellungen oder Lieferungen",
           "solution": "Falls Ihre Bestellung fehlt oder verzögert ist, bestätigen Sie zunächst die Details Ihrer Bestellung, einschließlich der Tracking-Nummer. Überprüfen Sie beim Lieferanten auf Updates. Wenn die Lieferung erheblich verzögert ist oder fehlt, melden Sie das Problem unserem Kundensupport-Team, und sie werden Ihnen helfen, die Angelegenheit mit dem Lieferanten zu klären.",
           "path": "missing-orders-or-deliveries"
         }
-      ],
-      "Email": [
+      ]
+    },
+    "Email": {
+      "title": "E-Mail",
+      "items": [
         {
           "issue": "E-Mail nicht erhalten",
           "solution": "Wenn Sie Ihre E-Mails nicht erhalten, überprüfen Sie Ihren Spam- oder Junk-Ordner, da die E-Mail möglicherweise falsch gefiltert wurde. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist und dass Ihr Postfach nicht voll ist. Wenn Sie die E-Mail immer noch nicht erhalten haben, versuchen Sie, eine erneute Zusendung anzufordern. Wenn das Problem weiterhin besteht, kontaktieren Sie den Support, und wir werden die Angelegenheit weiter untersuchen.",
           "path": "email-not-received"
         }
-      ],
-      "Subscriptions": [
+      ]
+    },
+    "Subscriptions": {
+      "title": "Abonnements",
+      "items": [
         {
           "issue": "Abonnement kann nicht gekündigt werden",
           "solution": "Wenn Sie Probleme haben, Ihr Abonnement zu kündigen, stellen Sie sicher, dass Sie im richtigen Konto angemeldet sind. Gehen Sie zu Ihren Kontoeinstellungen und suchen Sie den Abschnitt zur Abonnementverwaltung. Wenn Sie das Abonnement immer noch nicht kündigen können, kontaktieren Sie unser Support-Team so schnell wie möglich, um weitere Gebühren zu vermeiden, insbesondere vor Ihrem nächsten Abrechnungszyklus.",
           "path": "cant-cancel-subscription"
         }
       ]
-    },
+    }
+  },
     "messageSent": "Nachricht erfolgreich gesendet !",
     "messageError": "Beim Senden der Nachricht ist ein Fehler aufgetreten.",
     "placeholder": "Nach Lösung suchen...",
@@ -691,7 +770,12 @@
   "----------------------------------------------------------HEADER-----------------------------------------------------------": {},
   "header": {
     "headerData": {
-      "recommendations": ["Empfehlung1", "Empfehlung2", "Empfehlung3", "Empfehlung4"],
+      "recommendations": [
+        "Протеин",
+        "Сила",
+        "Балсам",
+        "Енергия"
+      ],
       "navGuest": [
         { "name": "Login", "link": "/email-check" },
         { "name": "Favoriten", "link": "/profile/favorites" },
@@ -702,7 +786,10 @@
         { "name": "Favoriten", "link": "/profile/favorites" },
         { "name": "Korb", "link": "/profile/cart" }
       ],
-      "navAdmin": [{ "name": "Admin-Bereich", "link": "/admin/settings" }],
+      "navAdmin": [
+        { "name": "Profil", "link": "/profile/settings" },
+        { "name": "Admin-Bereich", "link": "/admin/settings" }
+      ],
       "icons": {
         "Admin-Bereich": "fa-solid fa-screwdriver-wrench",
         "Profil": "fa-solid fa-user",

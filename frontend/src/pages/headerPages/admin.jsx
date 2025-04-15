@@ -29,7 +29,7 @@ function AdminLayout() {
   return (
     <div className="admin">
       <div className="adminSidebar">
-        <h2>{t("admin.sidebarMainTitle")}</h2>
+        <h2 className="adminSideBarMainTitle">{t("admin.sidebarMainTitle")}</h2>
         <i className="fa-solid fa-circle-user"></i>
         <div className="adminSidebarNav">
           {sidebarItems.map((item) => (

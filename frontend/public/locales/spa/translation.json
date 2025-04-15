@@ -191,15 +191,73 @@
     }
   },
 
-  "-------------------------------------------------------------PRODUCT---------------------------------------------------": {},
+  "-------------------------------------------------------------PRODUCT-PAGE--------------------------------------------------": {},
   "productPage": {
-    "loading": "Cargando...",
-    "errorLoading": "Parece que hay un problema con la página del producto. Por favor, inténtelo de nuevo."
+    "failedToLoadProducts": "Error al cargar los productos de la categoría. Por favor, inténtelo de nuevo más tarde.",
+    "noProductImage": "Sin imagen",
+    "sorryWeDontHaveIt": "Lo sentimos, actualmente no tenemos lo que está buscando",
+    "lv": "lv",
+    "addToCart": "Añadir al carrito",
+    "product": "Producto",
+    "products": "Productos",
+    "noProductsMatch": "No se encontraron productos que coincidan con su búsqueda",
+    "lowToHigh": "De menor a mayor precio",
+    "highToLow": "De mayor a menor precio",
+    "from": "desde",
+    "to": "hasta",
+    "filtration": "Filtración",
+    "price": "Precio",
+    "removedFromFavorites": "El producto fue eliminado de su lista de deseos",
+    "addedToFavorites": "El producto fue añadido a su lista de deseos",
+    "favoritesError": "Hubo un problema con esta función. Por favor, inténtelo de nuevo más tarde."
   },
-
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
-  "profile": {},
+  "profile": {
+    "sideBarMainTitle": "Mi Cuenta",
+    "sidebarItems": [
+      { "icon": "fa-solid fa-gear", "title": "Configuración del Perfil", "key": "settings", "path": "settings" },
+      { "icon": "fa-solid fa-heart", "title": "Favoritos", "key": "favorites", "path": "favorites" },
+      { "icon": "fa-solid fa-cart-shopping", "title": "Carrito", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-shield-halved", "title": "Seguridad", "key": "security", "path": "security" },
+      { "icon": "fa-solid fa-right-from-bracket", "title": "Cerrar Sesión", "key": "logout", "path": "logout", "isLogout": true }
+    ],
+    "products": "productos",
+    "product": "producto",
+    "lv": "lv",
+    
+    "securityMainTitle": "Seguridad",
+    "securityChangePasswordTitle": "Cambiar Contraseña",
+    "securityChange": "Cambiar",
+    "securityRecommendation": "Se recomienda usar una contraseña segura con una mezcla de caracteres",
+    "securityTwoFactorVerificationTitle": "Autenticación de Dos Factores",
+    "securityTwoFactorVerificationText": "Añade una capa extra de seguridad a tu cuenta",
 
+    "favorites": {
+      "mainTitle": "Favoritos",
+      "addToCart": "Añadir al Carrito",
+      "remove": "Eliminar Producto",
+      "removeSuccess": "¡El producto se eliminó correctamente!",
+      "error": "Algo salió mal, ¡por favor intenta de nuevo más tarde!",
+      "only": "Solo",
+      "areLeft": "quedan",
+      "isLeft": "queda",
+      "noProductsLeft": "Producto agotado",
+      "noImage": "Sin Imagen"
+    },
+
+    "settingsMainTitle": "Configuración del Perfil",
+    "settingsEmail": "Correo Electrónico",
+    "settingsFirstName": "Nombre",
+    "settingsLastName": "Apellido",
+    "settingsPhoneNumber": "Número de Teléfono",
+    "settingsSaveChanges": "Guardar Cambios",
+    
+    "cartMainTitle": "Carrito",
+
+    "logoutConfirmTitle": "Confirmar Cierre de Sesión",
+    "logoutConfirmMessage": "¿Estás seguro de que quieres cerrar sesión?",
+    "logoutConfirm": "Sí, Cerrar Sesión"
+  },
   "-------------------------------------------------------ADMIN-PROFILE--------------------------------------------------------": {},
   "admin": {
     "sidebarItems": [
@@ -503,7 +561,9 @@
   "----------------------------------------------------------SUPPORT-----------------------------------------------------------": {},
   "support": {
     "supportData": {
-      "Account": [
+    "Account": {
+      "title": "Cuenta",
+      "items": [
         {
           "issue": "No Puedo Iniciar Sesión",
           "solution": "Si no puedes iniciar sesión, verifica que estás ingresando la dirección de correo electrónico y la contraseña correctas. Asegúrate de que la tecla Bloq Mayús no esté activada y, si es necesario, intenta restablecer tu contraseña. Si sigues teniendo problemas, borra la caché y las cookies de tu navegador e intenta iniciar sesión nuevamente. Para obtener más ayuda, contacta al soporte al cliente y te ayudaremos a recuperar el acceso a tu cuenta.",
@@ -519,8 +579,11 @@
           "solution": "Si tu cuenta está bloqueada, puede deberse a actividad sospechosa o preocupaciones de seguridad. Para recuperar el acceso, intenta restablecer tu contraseña. Si no puedes desbloquear tu cuenta, contacta al soporte al cliente para obtener ayuda. Ellos te ayudarán a verificar tu identidad y a asegurar tu cuenta lo antes posible.",
           "path": "account-locked"
         }
-      ],
-      "Billing": [
+      ]
+    },
+    "Billing": {
+      "title": "Facturación",
+      "items": [
         {
           "issue": "Problemas de Pago",
           "solution": "Si tienes problemas con el pago, primero asegúrate de que tus datos de pago estén actualizados y que tu método de pago tenga fondos suficientes. Verifica si hay algún problema con tu banco o proveedor de pago. Si un pago es rechazado, contacta a tu banco para resolver el problema. Además, puedes visitar nuestra guía de solución de problemas de pago para obtener instrucciones paso a paso sobre cómo solucionar problemas comunes de pago.",
@@ -536,8 +599,11 @@
           "solution": "Si tienes problemas para enviar una solicitud de reembolso, asegúrate de que tu compra sea elegible según nuestra política de reembolsos. Puedes revisar las condiciones bajo las cuales se otorgan reembolsos en nuestro sitio web. Si aún no estás seguro o necesitas más ayuda, contacta a nuestro equipo de soporte y te guiarán a través del proceso de reembolso.",
           "path": "refund-request-issues"
         }
-      ],
-      "Technical": [
+      ]
+    },
+    "Technical": {
+      "title": "Técnico",
+      "items": [
         {
           "issue": "Rendimiento Lento del Sitio Web",
           "solution": "Si experimentas un rendimiento lento del sitio web, intenta borrar la caché y los datos de la aplicación de tu navegador. Asegúrate de estar utilizando la última versión de tu navegador o aplicación, ya que las versiones desactualizadas pueden afectar el rendimiento. Si el problema persiste, revisa nuestra página de estado del sistema para ver si hay problemas actuales que afecten la velocidad del sitio.",
@@ -558,8 +624,11 @@
           "solution": "Si encuentras un mensaje de error, anota el código de error y el mensaje que se muestra. Consulta nuestra página de solución de problemas de mensajes de error para obtener una lista de errores comunes y sus soluciones. Si no puedes resolver el problema usando la guía, contacta al soporte y proporciona los detalles del error para que podamos ayudarte de manera más eficiente.",
           "path": "error-messages"
         }
-      ],
-      "Security": [
+      ]
+    },
+    "Security": {
+      "title": "Seguridad",
+      "items": [
         {
           "issue": "Problemas con la Autenticación de Dos Factores",
           "solution": "Si tienes problemas con la autenticación de dos factores (2FA), asegúrate de tener acceso a la aplicación de autenticación o a los códigos de respaldo. Si has perdido acceso al método de autenticación, es posible que necesites restablecer la configuración de 2FA. Si no puedes hacer esto por tu cuenta, contacta al soporte al cliente y te ayudaremos a recuperar el acceso a tu cuenta.",
@@ -570,29 +639,39 @@
           "solution": "Si sospechas que tu cuenta ha sido hackeada, restablece tu contraseña de inmediato para asegurar tu cuenta. Habilita la autenticación de dos factores (2FA) para una protección adicional. Revisa cualquier actividad reciente de la cuenta en busca de signos de acceso no autorizado e informa cualquier comportamiento sospechoso a nuestro equipo de seguridad. Investigaremos y te ayudaremos a recuperar el control de tu cuenta.",
           "path": "account-hacked"
         }
-      ],
-      "Orders": [
+      ]
+    },
+    "Orders": {
+      "title": "Pedidos",
+      "items": [
         {
           "issue": "Pedidos o Entregas Perdidas",
           "solution": "En caso de que tu pedido esté perdido o retrasado, primero confirma los detalles de tu pedido, incluido el número de seguimiento. Consulta con el proveedor de entrega para obtener actualizaciones. Si la entrega está significativamente retrasada o perdida, informa el problema a nuestro equipo de soporte al cliente y ellos te ayudarán a resolver el problema con el proveedor.",
           "path": "missing-orders-or-deliveries"
         }
-      ],
-      "Email": [
+      ]
+    },
+    "Email": {
+      "title": "Correo Electrónico",
+      "items": [
         {
           "issue": "No Se Recibe el Correo Electrónico",
           "solution": "Si no estás recibiendo tus correos electrónicos, revisa tu carpeta de spam o correo no deseado, ya que el correo puede haber sido filtrado incorrectamente. Verifica que tu dirección de correo electrónico sea correcta y que tu buzón no esté lleno. Si aún no has recibido el correo, intenta solicitar un reenvío. Si el problema persiste, contacta al soporte y lo investigaremos más a fondo.",
           "path": "email-not-received"
         }
-      ],
-      "Subscriptions": [
+      ]
+    },
+    "Subscriptions": {
+      "title": "Suscripciones",
+      "items": [
         {
           "issue": "No Se Puede Cancelar la Suscripción",
           "solution": "Si tienes problemas para cancelar tu suscripción, primero asegúrate de haber iniciado sesión en la cuenta correcta. Ve a la configuración de tu cuenta y busca la sección de gestión de suscripciones. Si aún no puedes cancelar, contacta a nuestro equipo de soporte lo antes posible para evitar cargos adicionales, especialmente antes de tu próximo ciclo de facturación.",
           "path": "cant-cancel-subscription"
         }
       ]
-    },
+    }
+  },
     "messageSent": "¡Mensaje enviado con éxito !",
     "messageError": "Ocurrió un error al enviar el mensaje.",
     "placeholder": "Buscar solución...",
@@ -695,7 +774,11 @@
   "----------------------------------------------------------HEADER-----------------------------------------------------------": {},
   "header": {
     "headerData": {
-      "recommendations": ["Recomendación1", "Recomendación2", "Recomendación3", "Recomendación4"],
+      "recommendations": [        
+        "Протеин",
+        "Сила",
+        "Балсам",
+        "Енергия"],
       "navGuest": [
         { "name": "Ingresar", "link": "/email-check" },
         { "name": "Favoritos", "link": "/profile/favorites" },
@@ -706,7 +789,10 @@
         { "name": "Favoritos", "link": "/profile/favorites" },
         { "name": "Carrito", "link": "/profile/cart" }
       ],
-      "navAdmin": [{ "name": "Panel Admin", "link": "/admin/settings" }],
+      "navAdmin": [
+        { "name": "Perfil", "link": "/profile/settings" },
+        { "name": "Panel Admin", "link": "/admin/settings" }
+      ],
       "icons": {
         "Panel Admin": "fa-solid fa-screwdriver-wrench",
         "Perfil": "fa-solid fa-user",

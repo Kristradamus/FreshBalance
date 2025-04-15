@@ -40,6 +40,9 @@
   transition: var(--transition);
   cursor: pointer;
 }
+.goBackButton i{
+  margin-right:var(--iconDistance);
+}
 .goBackButton:hover {
   background-color: var(--mainButtonHover);
   transform: translateY(-1px);
@@ -88,7 +91,7 @@
   object-fit: contain;
   border-radius: 4px;
 }
-.favoriteIconOverlay {
+.wishlistBtn {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -106,7 +109,10 @@
   box-shadow: var(--boxShadow);
   transition: var(--transition);
 }
-.favoriteIconOverlay:hover {
+.wishlistBtn:hover {
+  color: var(--errorColor);
+}
+.wishlistBtn .fa-heart.active{
   color: var(--errorColor);
 }
 
@@ -174,10 +180,10 @@
   align-items: end;
   font-size:var(--textFont);
 }
-.stockInfo.soldOut{
+.stockInfo.soldOut p{
   color:var(--errorColor);
 }
-.stockInfo.available{
+.stockInfo.available p{
   color:var(--green);
 }
 .stockInfo i {

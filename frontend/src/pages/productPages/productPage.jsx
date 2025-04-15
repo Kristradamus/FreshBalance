@@ -1,9 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import ConfirmationToast from "../../components/reusableComponents/ConfirmationToast.jsx";
 import RedirectAlertForFunctions from "../../components/protectionComponents/RedirectAlertForFunctions.jsx";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../components/protectionComponents/AuthContext.jsx";
+import useFavoritesHandler from "../../components/reusableComponents/RemoveAddFavorites.jsx";
 import axios from "axios";
 import "./productPage.css";
 
@@ -17,11 +18,12 @@ const ProductPage = () => {
   const [upperPrice, setUpperPrice] = useState("");
   const [sortOrder, setSortOrder] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
-  const [favorites, setFavorites] = useState([]);
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, user } = useContext(AuthContext);
   const { promotionName } = useParams();
   const { t } = useTranslation();
+  const location = useLocation();
   const navigate = useNavigate();
+  const { favorites, handleAddTofavorites } = useFavoritesHandler();
 
   /*-----------------------------------------GETTING-PRODUCTS-----------------------------------------*/
   useEffect(() => {
@@ -31,7 +33,10 @@ const ProductPage = () => {
       try {
         setIsLoading(true);
         if (!promotionName) {
-          await fetchAllProducts();
+          const allProducts = await fetchAllProducts();
+          if (isMounted) {
+            setFilteredProducts(allProducts);
+          }
           return;
         }
 
@@ -47,21 +52,31 @@ const ProductPage = () => {
           if (categoryResponse.status >= 200 && categoryResponse.status < 300) {
             console.log(`Found ${categoryResponse.data.length} products in category`);
             setIsCategory(true);
-            processAndSetProducts(categoryResponse.data);
+            const processedProducts = processProducts(categoryResponse.data);
+            if (isMounted) {
+              setProducts(processedProducts);
+              setFilteredProducts(processedProducts);
+            }
           }
         } catch (categoryError) {
           if (categoryError.response && categoryError.response.status === 404) {
             console.log("Category not found, loading all products for search filtering");
             setIsCategory(false);
-            await fetchAllProducts();
+            const allProducts = await fetchAllProducts();
+            if (isMounted && promotionName) {
+              filterProductsBySearchTerm(allProducts, promotionName);
+            }
           } else {
             console.error("Error fetching category:", categoryError);
-            setToast({
-              show: true,
-              message: t("productPage.failedToLoadProducts"),
-              type: "error",
-            });
-            setProducts([]);
+            if (isMounted) {
+              setToast({
+                show: true,
+                message: t("productPage.failedToLoadProducts"),
+                type: "error",
+              });
+              setProducts([]);
+              setFilteredProducts([]);
+            }
           }
         }
       } catch (error) {
@@ -89,13 +104,15 @@ const ProductPage = () => {
         withCredentials: true,
       });
 
-      if (!isMounted) return;
+      if (!isMounted) return [];
 
-      processAndSetProducts(response.data);
+      const processedProducts = processProducts(response.data);
+      setProducts(processedProducts);
+      return processedProducts;
     };
 
-    const processAndSetProducts = (data) => {
-      const productsWithImages = data.map((product) => {
+    const processProducts = (data) => {
+      return data.map((product) => {
         if (product.image && product.image.data) {
           return {
             ...product,
@@ -104,16 +121,6 @@ const ProductPage = () => {
         }
         return product;
       });
-
-      setProducts(productsWithImages);
-
-      if (!isCategory && promotionName) {
-        filterProductsBySearchTerm(productsWithImages, promotionName);
-      } else {
-        setFilteredProducts(productsWithImages);
-      }
-
-      console.log("Processed products:", productsWithImages.length);
     };
 
     fetchProducts();
@@ -126,22 +133,22 @@ const ProductPage = () => {
         }
       });
     };
-  }, [promotionName, isCategory, t]);
+  }, [promotionName, t]);
 
   /*------------------------------------SEARCH-------------------------------------*/
-  useEffect(() => {
-    if (!isCategory && promotionName && products.length > 0) {
-      filterProductsBySearchTerm(products, promotionName);
-    }
-  }, [isCategory, promotionName, products]);
-
   const filterProductsBySearchTerm = (productsList, searchTerm) => {
     if (!searchTerm || searchTerm.trim() === "") {
       setFilteredProducts(productsList);
       return;
     }
 
-    const decodedSearchTerm = decodeURIComponent(searchTerm.replace(/-/g, " "));
+    const decodedSearchTerm = decodeURIComponent(searchTerm.replace(/-/g, " ")).trim();
+
+    if (decodedSearchTerm === "") {
+      setFilteredProducts(productsList);
+      return;
+    }
+
     const searchWords = decodedSearchTerm
       .toLowerCase()
       .split(/\s+/)
@@ -153,9 +160,11 @@ const ProductPage = () => {
     }
 
     const filtered = productsList.filter((product) => {
-      const productText = `${product.name} ${product.description || ""} ${product.categories || ""}`.toLowerCase();
+      const productName = (product.name || "").toLowerCase();
+      const productDescription = (product.description || "").toLowerCase();
+      const productCategories = (product.categories || "").toLowerCase();
 
-      return searchWords.some((word) => productText.includes(word));
+      return searchWords.some((word) => productName.includes(word) || productDescription.includes(word) || productCategories.includes(word));
     });
 
     setFilteredProducts(filtered);
@@ -164,6 +173,12 @@ const ProductPage = () => {
 
   /*--------------------------------------GET-DISPLAY-NAME-------------------------------------*/
   const getDisplayName = () => {
+    const categoryNameFromNav = location.state?.categoryName;
+    
+    if (categoryNameFromNav) {
+      return categoryNameFromNav;
+    }
+    
     if (!promotionName) return t("productPage.allProducts");
 
     if (isCategory) {
@@ -173,64 +188,11 @@ const ProductPage = () => {
         .join(" ");
     } else {
       const decodedSearchTerm = decodeURIComponent(promotionName.replace(/-/g, " "));
-      return `„${decodedSearchTerm}”`;
+      return `„${decodedSearchTerm}"`;
     }
   };
 
-  /*--------------------------------------favoriteS-CART-------------------------------------*/
-  const handleAddTofavorites = async (e, productId) => {
-    e.stopPropagation();
-    if (!isAuthenticated) {
-      setShowAlert(true);
-      return;
-    }
-    try {
-      const token = localStorage.getItem("authToken");
-      const isCurrentlyFavorite = favorites.includes(productId);
-
-      if (isCurrentlyFavorite) {
-        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/favorites/${productId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        });
-        setFavorites(favorites.filter((id) => id !== productId));
-        setToast({
-          show: true,
-          message: t("productPage.removedFromFavorites"),
-          type: "success",
-        });
-      } else {
-        await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/favorites`,
-          { productId },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          }
-        );
-        setFavorites([...favorites, productId]);
-        setToast({
-          show: true,
-          message: t("productPage.addedToFavorites"),
-          type: "success",
-        });
-      }
-    } catch (error) {
-      console.error("Error updating favorites:", error);
-      setToast({
-        show: true,
-        message: t("productPage.favoritesError"),
-        type: "error",
-      });
-    }
-  };
-
+  /*-------------------------------------CART-------------------------------------*/
   const handleAddToCart = (e, productId) => {
     e.stopPropagation();
     if (!isAuthenticated) {
@@ -251,7 +213,14 @@ const ProductPage = () => {
 
   /*--------------------------------------FILTERING---------------------------------------*/
   const applyFilters = () => {
-    let filtered = [...products];
+    let currentProducts = [...products];
+
+    if (!isCategory && promotionName) {
+      filterProductsBySearchTerm(currentProducts, promotionName);
+      return;
+    }
+
+    let filtered = currentProducts;
 
     if (lowerPrice !== "" || upperPrice !== "") {
       filtered = filtered.filter((product) => {
@@ -289,8 +258,16 @@ const ProductPage = () => {
   };
 
   useEffect(() => {
-    applyFilters();
+    if (products.length > 0) {
+      applyFilters();
+    }
   }, [lowerPrice, upperPrice, sortOrder, products]);
+
+  useEffect(() => {
+    if (!isCategory && promotionName && products.length > 0) {
+      filterProductsBySearchTerm(products, promotionName);
+    }
+  }, [isCategory, products]);
 
   return (
     <div className="productPage">
@@ -343,33 +320,28 @@ const ProductPage = () => {
               <article key={product.id} className="pPProductCard" onClick={() => handleProductClick(product.id)}>
                 <div className="pPImageContainer">
                   {product.imageUrl ? (
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                      className="pPProductImage"
-                      loading="lazy"
-                      onError={(e) => {
-                        console.error("Image failed to load for product:", product.id);
-                        e.target.style.display = "none";
-                      }}
-                    />
+                    <img src={product.imageUrl} alt={product.name} className="pPProductImage" loading="lazy" onError={(e) => {   console.error("Image failed to load for product:", product.id);   e.target.style.display = "none"; }} />
                   ) : (
-                    <div className="pPImagePlaceholder">{t("productPage.noProductImage")}</div>
+                    <h3 className="pPImagePlaceholder">
+                      <i class="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
+                    </h3>
                   )}
-                  <button className="wishlistButton" onClick={(e) => handleAddTofavorites(e, product.id)}>
-                    <i className="fa-regular fa-heart"></i>
+                  <button className="wishlistButton" onClick={(e) => handleAddTofavorites(e, product.id, setToast, t, setShowAlert)}>
+                    <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
                   </button>
                 </div>
                 <div className="pPProductInfo">
-                  <h3 className="pPProductTitle">{product.name}</h3>
+                  <h4 className="pPProductTitle">{product.name}</h4>
                   <div className="pPProductFooter">
-                    <span className="pPProductPrice">
+                    <p className="pPProductPrice">
                       {product.price} {t("productPage.lv")}.
-                    </span>
-                    <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id)}>
-                      <i className="fa-solid fa-cart-shopping"></i>
-                      {t("productPage.addToCart")}
-                    </button>
+                    </p>
+                    {!user?.isAdmin && (
+                      <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id)}>
+                        <i className="fa-solid fa-cart-shopping"></i>
+                        {t("productPage.addToCart")}
+                      </button>
+                    )}
                   </div>
                 </div>
               </article>

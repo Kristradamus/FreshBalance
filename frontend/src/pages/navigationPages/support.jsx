@@ -17,22 +17,21 @@ export default function Support() {
   const supportData = t("support.supportData", { returnObjects: true });
   const navigate = useNavigate();
   const location = useLocation();
-  const { topicId } = useParams();
   const allTopicsRef = useRef({});
   const [isLoading, setIsLoading] = useState(true);
   const { path } = useParams();
-  const [toast, setToast] = useState({show: false, message:"", type:""});
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   useEffect(() => {
     if (supportData) {
       const topicMap = {};
-      Object.values(supportData)
-        .flat()
-        .forEach((topic) => {
+      Object.entries(supportData).forEach(([category, data]) => {
+        data.items.forEach((topic) => {
           if (topic && topic.path) {
             topicMap[topic.path] = topic;
           }
         });
+      });
       allTopicsRef.current = topicMap;
       setIsLoading(false);
     }
@@ -50,19 +49,20 @@ export default function Support() {
     }
   }, [path, currentTopic, navigate, isLoading]);
 
-  {/*--------------------------------------FILTERING--------------------------------------*/}
-  const filteredData = Object.keys(supportData || {}).reduce(
-    (info, category) => {
-      const filteredTopics = supportData[category].filter((item) =>
-        item.issue.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      if (filteredTopics.length > 0) {
-        info[category] = filteredTopics;
-      }
-      return info;
-    },
-    {}
-  );
+  {/*--------------------------------------FILTERING--------------------------------------*/ }
+  const filteredData = Object.keys(supportData || {}).reduce((info, category) => {
+    const categoryData = supportData[category];
+    const filteredTopics = categoryData.items.filter((item) => 
+      item.issue.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    if (filteredTopics.length > 0) {
+      info[category] = {
+        title: categoryData.title,
+        items: filteredTopics
+      };
+    }
+    return info;
+  }, {});
 
   const handleBack = () => {
     navigate("/support");
@@ -78,9 +78,7 @@ export default function Support() {
       if (e.target === searchInputRef.current) {
         setIsSearchFocused(false);
         searchInputRef.current?.blur();
-      } 
-      else if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") 
-      {
+      } else if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
         e.target.blur();
       }
     }
@@ -112,16 +110,9 @@ export default function Support() {
   };
 
   const contactFormSchema = z.object({
-    name: z.string()
-      .min(3, "support.validation.name.min")
-      .max(100, "support.validation.name.max")
-      .min(1, "support.validation.name.required"),
-    email: z.string()
-      .email("support.validation.email.invalid")
-      .min(1, "support.validation.email.required"),
-    message: z.string()
-      .max(3000, "support.validation.message.max")
-      .min(1, "support.validation.message.required")
+    name: z.string().min(3, "support.validation.name.min").max(100, "support.validation.name.max").min(1, "support.validation.name.required"),
+    email: z.string().email("support.validation.email.invalid").min(1, "support.validation.email.required"),
+    message: z.string().max(3000, "support.validation.message.max").min(1, "support.validation.message.required"),
   });
 
   const handleSubmit = async (e) => {
@@ -141,7 +132,7 @@ export default function Support() {
       setToast({
         show: true,
         message: t("support.messageSent"),
-        type:"success"
+        type: "success",
       });
       console.log("Success response:", response.data);
     } 
@@ -151,46 +142,46 @@ export default function Support() {
         setToast({
           show: true,
           message: t(firstError.message),
-          type:"error"
+          type: "error",
         });
       } 
       else if (error.response) {
         const errorData = error.response.data;
         const errorCode = errorData.errorCode;
 
-        const toastMessage = errorCode 
-        ? t(`support.errors.${errorCode}`)
-        : errorData.message || t("support.messageError");
+        const toastMessage = errorCode ? t(`support.errors.${errorCode}`) : errorData.message || t("support.messageError");
 
         setToast({
           show: true,
           message: toastMessage,
-          type: "error"
+          type: "error",
         });
       } 
       else {
         setToast({
           show: true,
           message: t("support.messageError"),
-          type:"error"
+          type: "error",
         });
       }
       console.error("Error details:", error);
     }
   };
 
-  const handleContactButtonClick = () => {navigate("/support/contact");};
-  
+  const handleContactButtonClick = () => {
+    navigate("/support/contact");
+  };
+
   {/*--------------------------------------------------MAIN-----------------------------------------------------*/}
   return (
     <div className="support">
-      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
+      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({ show: false, message: "", type: "" })} />
       <ScrollToTop />
 
       {/*--------------------------------------SEARCH-BAR---------------------------------------*/}
-      <div className={`supportSearchBox ${isSearchFocused ? "clicked" : ""}`} onClick={() => {setIsSearchFocused(true);searchInputRef.current?.focus();}} ref={searchBoxRef}>
+      <div className={`supportSearchBox ${isSearchFocused ? "clicked" : ""}`} onClick={() => {   setIsSearchFocused(true);   searchInputRef.current?.focus(); }} ref={searchBoxRef}>
         <input ref={searchInputRef} className="supportSearchBar" placeholder={t("support.placeholder")} value={searchQuery} onChange={handleInputChange} onKeyDown={handleKeyDown} />
-        {isSearchFocused && (<i className="fa-solid fa-x" onClick={handleClearSearch} />)}
+        {isSearchFocused && <i className="fa-solid fa-x" onClick={handleClearSearch} />}
       </div>
 
       {/*--------------------------------------SIDE-BAR---------------------------------------*/}
@@ -199,13 +190,11 @@ export default function Support() {
           <div className="supportSideBar">
             {Object.keys(filteredData).map((category) => (
               <div key={category} className="supportSideElements">
-                <h3>{category}</h3>
+                <h3>{filteredData[category].title}</h3>
                 <ul className="supportSideElements">
-                  {filteredData[category].map((item, index) => (
+                  {filteredData[category].items.map((item, index) => (
                     <li className={`supportSideElement ${item.path === path ? "active" : ""}`} key={index} onClick={() => navigate(`/support/${item.path}`)}>
-                      <Link to={`/support/${item.path}`}>
-                        {item.issue}
-                      </Link>
+                      <Link to={`/support/${item.path}`}>{item.issue}</Link>
                     </li>
                   ))}
                 </ul>
@@ -234,20 +223,16 @@ export default function Support() {
               <form className="supportContactForm" onSubmit={handleSubmit}>
                 <label htmlFor="name">
                   {t("support.name")}
-                  <span className={`supportCharCounter ${charCount.name > 100 ? "error" : "" }`}>
-                    {charCount.name}/100
-                  </span>
+                  <span className={`supportCharCounter ${charCount.name > 100 ? "error" : ""}`}>{charCount.name}/100</span>
                 </label>
                 <input type="text" id="name" name="name" required onChange={handleFormInputChange("name")} onKeyDown={handleKeyDown} />
                 <label htmlFor="email">{t("support.email")}</label>
                 <input type="email" id="email" name="email" required onKeyDown={handleKeyDown} />
                 <label htmlFor="message">
                   {t("support.message")}
-                  <span className={`supportCharCounter ${charCount.message > 3000 ? "error" : "" }`} >
-                    {charCount.message}/3000
-                  </span>
+                  <span className={`supportCharCounter ${charCount.message > 3000 ? "error" : ""}`}>{charCount.message}/3000</span>
                 </label>
-                <textarea id="message" name="message" rows="15" required onChange={handleFormInputChange("message")} onKeyDown={handleKeyDown} ></textarea>
+                <textarea id="message" name="message" rows="15" required onChange={handleFormInputChange("message")} onKeyDown={handleKeyDown}></textarea>
                 <button type="submit">{t("support.submit")}</button>
               </form>
             </div>
