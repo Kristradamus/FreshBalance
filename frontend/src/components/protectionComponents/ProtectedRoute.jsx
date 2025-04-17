@@ -4,7 +4,7 @@ import LoadingAnimation from "../layout/LoadingAnimation.jsx";
 import RedirectAlert from "./RedirectAlert.jsx";
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, isLoading, user } = useContext(AuthContext);
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
 
   if (isLoading) {
     return <LoadingAnimation />;

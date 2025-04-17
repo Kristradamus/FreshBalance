@@ -135,6 +135,7 @@
     "generalError": "Es gibt ein Problem mit Ihrer Anmeldung. Bitte versuchen Sie es erneut oder kontaktieren Sie unseren Support.",
     "plsTryAgain": "Die Zeit ist abgelaufen. Bitte versuchen Sie es erneut!",
     "needHelp": "Hilfe?",
+    "isLoading": "Wird geladen",
 
     "email": {
       "greeting": "Willkommen",
@@ -205,7 +206,9 @@
     "price": "Preis",
     "removedFromFavorites": "Das Produkt wurde von Ihrer Wunschliste entfernt",
     "addedToFavorites": "Das Produkt wurde zu Ihrer Wunschliste hinzugefügt",
-    "favoritesError": "Es gibt ein Problem mit dieser Funktion. Bitte versuchen Sie es später noch einmal!"
+    "favoritesError": "Es gibt ein Problem mit dieser Funktion. Bitte versuchen Sie es später noch einmal!",
+    "addedToCart": "Produkt wurde zum Warenkorb hinzugefügt",
+    "cartError": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut!"
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {
@@ -231,7 +234,9 @@
     "favorites": {
       "mainTitle": "Favoriten",
       "addToCart": "In den Warenkorb legen",
+      "addingToCart": "Wird hinzugefügt",
       "remove": "Produkt entfernen",
+      "removing": "Produkt wird entfernt",
       "removeSuccess": "Produkt wurde erfolgreich entfernt!",
       "error": "Etwas ist schiefgelaufen, bitte versuchen Sie es später noch einmal!",
       "only": "Nur",
@@ -418,7 +423,20 @@
     }
   },
   "-------------------------------------------------SINGLE-PRODUCT--------------------------------------------------------": {},
-  "singleProductPage": {},
+  "singleProductPage": {
+    "productNotFound": "Produkt nicht gefunden",
+    "backToProducts": "Zurück",
+    "noProductImage": "Kein Produktbild",
+    "failedToLoadProduct": "Produkt konnte nicht geladen werden!",
+    "lv": "Lew",
+    "inStock": "Produkt ist verfügbar",
+    "pieces": "Stück",
+    "piece": "Stück",
+    "soldOut": "Produkt ist ausverkauft",
+    "addToCart": "In den Warenkorb",
+    "description": "Beschreibung",
+    "details": "Details"
+  },
   "-----------------------------------------------------------SUBSCRIPTIONS-----------------------------------------------------": {},
   "subscriptions": {
     "subscriptionPlans": [

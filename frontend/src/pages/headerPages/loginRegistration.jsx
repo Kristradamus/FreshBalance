@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import logo from "../../../public/images/freshBalance.png";
 import EmailCheck from "../../components/loginComponents/EmailCheck.jsx";
 import Login from "../../components/loginComponents/Login.jsx";

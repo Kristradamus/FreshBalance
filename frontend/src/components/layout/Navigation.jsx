@@ -44,7 +44,6 @@ const handleSubMenuExpansion = (index, e) => {
   e.stopPropagation();
   setIsDropdownVisible(true);
   setExpandedSubMenuIndex(prevIndex => prevIndex === index ? null : index);
-
 }
 
 const handleNavReload = (item, e) => {
@@ -98,7 +97,7 @@ return (
               <h3 className="navDropDownCloseTitle">Categories</h3>
               <i className="fa-solid fa-x" onClick={handleDropDownClosing}/>
             </div>
-            <hr></hr>
+            <hr/>
           </li>
           {navData.categories.map((item, index) => (
             <li className={`navDropDownElement ${expandedSubMenuIndex === index ? "active" : ""}`} key={index}>
@@ -113,11 +112,11 @@ return (
                     <h3 className="navSubMenuSubTitle">{subItem.title}</h3>
                     {subItem.subcategory.map((subSubItem, subSubIndex) => (
                       <li key={subSubIndex} className="navSubDropDownElement">
-                        <Link   to={subSubItem.link} state={{ categoryName: subSubItem.name }} onClick={(e) => handleNavReload(subSubItem, e)}></Link>
+                        <Link   to={subSubItem.link} state={{ categoryName: subSubItem.name }} onClick={(e) => handleNavReload(subSubItem, e)}>{subSubItem.name}</Link>
                       </li>))}
                   </div>) : 
                   (<li key={subIndex} className="navSubDropDownElement">
-                    <Link  to={subItem.link} state={{ categoryName: subItem.name }}  onClick={(e) => handleNavReload(subItem, e)}></Link>
+                    <Link  to={subItem.link} state={{ categoryName: subItem.name }}  onClick={(e) => handleNavReload(subItem, e)}>{subItem.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -125,6 +124,7 @@ return (
           ))}
         </ul>
       </li>
+      
       {/*--------------------------------------MAIN-NAVIGATION-LINKS-------------------------------------------------*/}
       <li className="navMore">
         <a ref={moreToggleRef} className="navCatToggle" href="#" onClick={handleMoreToggle}>
@@ -136,7 +136,7 @@ return (
               <h3 className="navDropDownCloseTitle">More</h3>
               <i className="fa-solid fa-x" onClick={handleDropDownClosing}/>
             </div>
-            <hr></hr>
+            <hr/>
           </li>
           {navData.links.map((item, index) => (
             <li key={index} className="navDropDownMoreElement">

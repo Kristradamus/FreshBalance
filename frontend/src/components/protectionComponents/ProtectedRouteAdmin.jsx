@@ -5,7 +5,7 @@ import RestrictedPageAlert from "./RestrictedPageAlert.jsx";
 import RedirectAlert from "./RedirectAlert.jsx";
 
 const ProtectedRouteAdmin = ({ children }) => {
-  const { isAuthenticated, isLoading, user, isAdmin } = useContext(AuthContext);
+  const { isAuthenticated, isLoading, isAdmin } = useContext(AuthContext);
 
   if (isLoading) {
     return <LoadingAnimation />;

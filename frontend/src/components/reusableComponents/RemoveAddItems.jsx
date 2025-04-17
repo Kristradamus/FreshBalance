@@ -2,8 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 
-const useFavoritesHandler = () => {
+const useRemoveAddHandler = () => {
   const [favorites, setFavorites] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { isAuthenticated, user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -32,7 +34,8 @@ const useFavoritesHandler = () => {
     fetchUserFavorites();
   }, [isAuthenticated, user]);
 
-  const handleAddTofavorites = async (e, productId, setToast, t, setShowAlert) => {
+  /*-------------------------------FAVORITES------------------------------------*/
+  const handleAddToFavorites = async (e, productId, setToast, t, setShowAlert) => {
     e.stopPropagation();
     if (!isAuthenticated) {
       setShowAlert(true);
@@ -59,7 +62,8 @@ const useFavoritesHandler = () => {
           message: t("productPage.removedFromFavorites"),
           type: "success",
         });
-      } else {
+      } 
+      else {
         await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/favorites/${productId}`,
           {},
@@ -78,7 +82,8 @@ const useFavoritesHandler = () => {
           type: "success",
         });
       }
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Error updating favorites:", error);
       setToast({
         show: true,
@@ -88,7 +93,48 @@ const useFavoritesHandler = () => {
     }
   };
 
-  return { favorites, handleAddTofavorites };
+  /*------------------------------CART--------------------------------------*/
+  const handleAddToCart = async (e, productId, setToast, t, setShowAlert, quantity = 1) => {
+    e.stopPropagation();
+    
+    if (!isAuthenticated) {
+      setShowAlert(true);
+      return;
+    }
+    try {
+      setIsAddingToCart(true);
+      const token = localStorage.getItem("authToken");
+      
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/cart/add/${productId}`,{ quantity: quantity },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }
+      );
+      
+      setToast({
+        show: true,
+        message: t("productPage.addedToCart"),
+        type: "success",
+      });
+      
+    } 
+    catch (error) {
+      console.error("Error adding item to cart:", error);
+      
+      setToast({
+        show: true,
+        message: t("productPage.cartError"),
+        type: "error",
+      });
+    }
+    finally{
+      setIsAddingToCart(false);
+    }
+  };
+
+  return { favorites, handleAddToFavorites, isAddingToCart, handleAddToCart };
 };
 
-export default useFavoritesHandler;
+export default useRemoveAddHandler;

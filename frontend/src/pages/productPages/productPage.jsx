@@ -1,10 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import ConfirmationToast from "../../components/reusableComponents/ConfirmationToast.jsx";
 import RedirectAlertForFunctions from "../../components/protectionComponents/RedirectAlertForFunctions.jsx";
 import { useTranslation } from "react-i18next";
-import { AuthContext } from "../../components/protectionComponents/AuthContext.jsx";
-import useFavoritesHandler from "../../components/reusableComponents/RemoveAddFavorites.jsx";
+import useRemoveAddHandler from "../../components/reusableComponents/RemoveAddItems.jsx";
 import axios from "axios";
 import "./productPage.css";
 
@@ -12,21 +11,27 @@ const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isCategory, setIsCategory] = useState(false);
   const [lowerPrice, setLowerPrice] = useState("");
   const [upperPrice, setUpperPrice] = useState("");
   const [sortOrder, setSortOrder] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
-  const { isAuthenticated, user } = useContext(AuthContext);
   const { promotionName } = useParams();
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
-  const { favorites, handleAddTofavorites } = useFavoritesHandler();
+  const { favorites, handleAddToFavorites, handleAddToCart } = useRemoveAddHandler();
 
   /*-----------------------------------------GETTING-PRODUCTS-----------------------------------------*/
   useEffect(() => {
+    setFilteredProducts([]);
+    setLowerPrice("");
+    setUpperPrice("");
+    setSortOrder(null);
+    setIsLoading(true);
+    setIsCategory(false);
+
     let isMounted = true;
 
     const fetchProducts = async () => {
@@ -41,33 +46,34 @@ const ProductPage = () => {
         }
 
         try {
-          const categoryResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products/category/${promotionName}`, {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          });
+          const categoryResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products/category/${promotionName}`);
 
           if (categoryResponse.status >= 200 && categoryResponse.status < 300) {
             console.log(`Found ${categoryResponse.data.length} products in category`);
+
             setIsCategory(true);
             const processedProducts = processProducts(categoryResponse.data);
+
             if (isMounted) {
               setProducts(processedProducts);
               setFilteredProducts(processedProducts);
             }
           }
-        } catch (categoryError) {
+        } 
+        catch (categoryError) {
           if (categoryError.response && categoryError.response.status === 404) {
             console.log("Category not found, loading all products for search filtering");
+
             setIsCategory(false);
             const allProducts = await fetchAllProducts();
+
             if (isMounted && promotionName) {
               filterProductsBySearchTerm(allProducts, promotionName);
             }
-          } else {
+          } 
+          else {
             console.error("Error fetching category:", categoryError);
+
             if (isMounted) {
               setToast({
                 show: true,
@@ -79,7 +85,8 @@ const ProductPage = () => {
             }
           }
         }
-      } catch (error) {
+      } 
+      catch (error) {
         if (!isMounted) return;
 
         console.error("Error in main fetchProducts function:", error);
@@ -88,7 +95,8 @@ const ProductPage = () => {
           message: t("productPage.failedToLoadProducts"),
           type: "error",
         });
-      } finally {
+      } 
+      finally {
         if (isMounted) {
           setIsLoading(false);
         }
@@ -96,14 +104,7 @@ const ProductPage = () => {
     };
 
     const fetchAllProducts = async () => {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/products`);
       if (!isMounted) return [];
 
       const processedProducts = processProducts(response.data);
@@ -133,7 +134,7 @@ const ProductPage = () => {
         }
       });
     };
-  }, [promotionName, t]);
+  }, [promotionName, location.pathname, t]);
 
   /*------------------------------------SEARCH-------------------------------------*/
   const filterProductsBySearchTerm = (productsList, searchTerm) => {
@@ -192,21 +193,14 @@ const ProductPage = () => {
     }
   };
 
-  /*-------------------------------------CART-------------------------------------*/
-  const handleAddToCart = (e, productId) => {
-    e.stopPropagation();
-    if (!isAuthenticated) {
-      setShowAlert(true);
-      return;
-    }
-  };
-
+  /*-------------------------------------PRODUCT-CLICK-------------------------------------*/
   const handleProductClick = (productOrId) => {
     const productId = typeof productOrId === "object" && productOrId !== null ? productOrId.id : productOrId;
 
     if (productId) {
-      navigate(`/singleProductPage/${productId}`);
-    } else {
+      navigate(`/single-product/${productId}`);
+    } 
+    else {
       console.error("Invalid product ID for navigation:", productOrId);
     }
   };
@@ -234,7 +228,8 @@ const ProductPage = () => {
 
     if (sortOrder === "lowToHigh") {
       filtered.sort((a, b) => a.price - b.price);
-    } else if (sortOrder === "highToLow") {
+    } 
+    else if (sortOrder === "highToLow") {
       filtered.sort((a, b) => b.price - a.price);
     }
 
@@ -247,7 +242,8 @@ const ProductPage = () => {
     if (value === "" || Number(value) >= 0) {
       if (type === "lower") {
         setLowerPrice(value);
-      } else {
+      } 
+      else {
         setUpperPrice(value);
       }
     }
@@ -277,7 +273,7 @@ const ProductPage = () => {
       {/*------------------------------------------FILTRATION------------------------------------------*/}
       <div className="productFilters">
         <h2 className="filtersTitle">{t("productPage.filtration")}: </h2>
-        <hr></hr>
+        <hr/>
         <h3 className="filtersTitlePrice">{t("productPage.price")}: </h3>
         <div className="priceFilterBox">
           <div className="priceFilterInputs">
@@ -323,10 +319,10 @@ const ProductPage = () => {
                     <img src={product.imageUrl} alt={product.name} className="pPProductImage" loading="lazy" onError={(e) => {   console.error("Image failed to load for product:", product.id);   e.target.style.display = "none"; }} />
                   ) : (
                     <h3 className="pPImagePlaceholder">
-                      <i class="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
+                      <i className="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
                     </h3>
                   )}
-                  <button className="wishlistButton" onClick={(e) => handleAddTofavorites(e, product.id, setToast, t, setShowAlert)}>
+                  <button className="wishlistButton" onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)}>
                     <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
                   </button>
                 </div>
@@ -336,12 +332,10 @@ const ProductPage = () => {
                     <p className="pPProductPrice">
                       {product.price} {t("productPage.lv")}.
                     </p>
-                    {!user?.isAdmin && (
-                      <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id)}>
-                        <i className="fa-solid fa-cart-shopping"></i>
-                        {t("productPage.addToCart")}
-                      </button>
-                    )}
+                    <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert)}>
+                      <i className="fa-solid fa-cart-shopping"></i>
+                      {t("productPage.addToCart")}
+                    </button>
                   </div>
                 </div>
               </article>

@@ -11,6 +11,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { checkAuthStatus } = useContext(AuthContext);
+  const [isLoading, setIsLoading ] = useState(false);
   const [toast, setToast] = useState({show:false, message:"", type:""})
   const [registerFormData, setRegisterFormData] = useState(() => {
     return userProgress.registerFormDataMain || {
@@ -208,89 +209,89 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
     setPasswordError(false);
     setTermsError(false);
     setUsernameErrorMessage("");
-    let isValid = true;
 
     if (!usernameAvailable) {
       setUsernameError(true);
       setUsernameErrorMessage(t("loginRegistration.registration.usernameTaken"));
-      isValid = false;
+      return;
     }
-
-    if (isValid) {
-      try {
-        const validatedData = await RegistrationSchema.parseAsync({
-          username: registerFormData.username,
-          password: registerFormData.password,
-          confirmPassword: registerFormData.confirmPassword,
-          termsAccepted: registerFormData.termsAccepted,
-        });
-        try {
-
-          const verifiedEmail = sessionStorage.getItem("verifiedEmail");
-          const verificationCode = sessionStorage.getItem("emailVerificationCode");
-
-          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`,{
-            email: verifiedEmail,
-            verificationCode: verificationCode,
-            username: validatedData.username,
-            password: validatedData.password,
-          },
-          {
-            validateStatus: (status) =>
-            (status >= 200 && status < 300) || status === 401,
-          });
-
-          console.log("Registration response:", response);
-          if (response.status === 201) {
-            sessionStorage.removeItem("emailVerificationCode");
-            sessionStorage.removeItem("verifiedEmail");
-            if (response.data.token) {
-              const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
-              navigate(lastPublicPage, {
-                state: {
-                  showToast: true,
-                  toastMessage: t("loginRegistration.registration.success")
-                }
-              });
-              
-              localStorage.setItem("authToken", response.data.token);
-              console.log("Token stored successfully!");
-              await checkAuthStatus();
-            }
-          }
-        } 
-        catch (error) {
-          const errorMessage = t("loginRegistration.registration.failed");
-          setToast({
-            show: true,
-            message: errorMessage,
-            type:"error",
-          })
-          console.error("Registration failed:", error.response?.data?.message);
-        }
-      } catch (error) {
-        if (error instanceof z.ZodError) {
-          error.errors.forEach((err) => {
-            switch (err.path[0]) {
-              case "username":
-                setUsernameError(true);
-                setUsernameErrorMessage(err.message);
-                break;
-              case "password":
-              case "confirmPassword":
-                setPasswordError(true);
-                setPasswordErrorMessage(err.message);
-                break;
-              case "termsAccepted":
-                setTermsError(true);
-                setTermsErrorMessage(err.message);
-                break;
+  
+    try {
+      setIsLoading(true);
+      const validatedData = await RegistrationSchema.parseAsync({
+        username: registerFormData.username,
+        password: registerFormData.password,
+        confirmPassword: registerFormData.confirmPassword,
+        termsAccepted: registerFormData.termsAccepted,
+      });
+  
+      const verifiedEmail = sessionStorage.getItem("verifiedEmail");
+      const verificationCode = sessionStorage.getItem("emailVerificationCode");
+  
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`,{
+          email: verifiedEmail,
+          verificationCode: verificationCode,
+          username: validatedData.username,
+          password: validatedData.password,
+        },
+        {validateStatus: (status) => (status >= 200 && status < 300) || status === 401,}
+      );
+  
+      if (response.status === 201) {
+        sessionStorage.removeItem("emailVerificationCode");
+        sessionStorage.removeItem("verifiedEmail");
+        
+        if (response.data.token) {
+          const lastPublicPage = sessionStorage.getItem("lastPublicPage") || "/";
+          navigate(lastPublicPage, {
+            state: {
+              showToast: true,
+              toastMessage: t("loginRegistration.registration.success"),
+              type:"success",
             }
           });
+          localStorage.setItem("authToken", response.data.token);
+          await checkAuthStatus();
         }
+      } 
+      else {
+        throw new Error(response.data?.message || "Registration failed");
       }
+    } 
+    catch (error) {
+      if (error instanceof z.ZodError) {
+        error.errors.forEach((err) => {
+          switch (err.path[0]) {
+            case "username":
+              setUsernameError(true);
+              setUsernameErrorMessage(err.message);
+              break;
+            case "password":
+            case "confirmPassword":
+              setPasswordError(true);
+              setPasswordErrorMessage(err.message);
+              break;
+            case "termsAccepted":
+              setTermsError(true);
+              setTermsErrorMessage(err.message);
+              break;
+          }
+        });
+      } 
+      else {
+        setToast({
+          show: true,
+          message: t("loginRegistration.registration.failed"),
+          type: "error",
+        });
+        console.error("Registration failed:", error.message);
+      }
+    } 
+    finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <div className="emailLogRegBox">
       <GoBackButton path="/email-check" />
@@ -338,13 +339,19 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
           <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
             <input type="checkbox" checked={registerFormData.termsAccepted} onChange={handleTermsAcceptance}/>
             <p className="emailLogRegCheckbox">
-              {t("loginRegistration.registration.terms")}&nbsp;
+              <span>{t("loginRegistration.registration.terms")}&nbsp;</span>
               <a className="emailLogRegCheckboxLink" onClick={handleTermsVisibility}><strong>{t("loginRegistration.registration.legalPolicies")}</strong></a>
             </p>
           </div>
           {termsError && (<p className="emailLogRegErrorMessage">{termsErrorMessage}</p>)}
         </div>
-        <button className="emailLogRegContinue" onClick={handleRegistrationSubmit}>{t("loginRegistration.registration.continue")}</button>
+        <button className="emailLogRegContinue" onClick={handleRegistrationSubmit} disabled={isLoading}>
+          {isLoading ? (
+            <span><strong>{t("loginRegistration.isLoading") + "..."}</strong></span>
+          ) : (
+            <span><strong>{t("loginRegistration.registration.continue")}</strong></span>
+          )}
+          </button>
       </div>
     </div>
   );

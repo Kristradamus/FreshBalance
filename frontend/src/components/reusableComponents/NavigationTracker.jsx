@@ -9,12 +9,15 @@ useEffect(() => {
     "/", 
     "/about-us", 
     "/services", 
-    "/subscriptions", 
+    "/subscriptions",
+    "/buy-now/",
+    "/try-free/",
     "/support", 
     "/support/topic/", 
     "/support/contact", 
     "/communities", 
-    "/product/", 
+    "/product/",
+    "/single-product/",
     "/legal-policies"];
 
   const isPublicPath = publicPaths.some(

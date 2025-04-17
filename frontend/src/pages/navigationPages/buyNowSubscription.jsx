@@ -28,7 +28,7 @@ const BuyNowSubscription = () => {
             <button className="buyNowSubmitButton" onClick={() => navigate(lastPublicPage, {state:{showToast:true, toastMessage:`${t("buyNow.successPart1")} ${state.planType} ${t("buyNow.successPart2")}`}})}>{t("buyNow.startPlan")}</button>
           </div>
         </div>
-        <hr></hr>
+        <hr/>
         <div className="buyNowBottom">
           <ul className="buyNowFeaturesBox">
             {buyNowFeatures.map((item, index) => (

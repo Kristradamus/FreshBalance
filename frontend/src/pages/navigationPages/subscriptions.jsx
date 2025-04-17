@@ -9,9 +9,7 @@ export default function Subscriptions() {
   const { t } = useTranslation();
   const subscriptionPlans = t("subscriptions.subscriptionPlans", { returnObject: true });
 
-  {
-    /*-----------------------------------SMALL-JS----------------------------------*/
-  }
+  {/*-----------------------------------SMALL-JS----------------------------------*/}
   const subHandleToggle = () => {
     setIsYearly(!isYearly);
   };
@@ -33,9 +31,7 @@ export default function Subscriptions() {
     });
   };
 
-  {
-    /*--------------------------------------REUSABLE--------------------------------------*/
-  }
+  {/*--------------------------------------REUSABLE--------------------------------------*/}
   const SubscriptionPlan = ({ plan }) => {
     return (
       <div className={`subPlan sub${plan.type}`}>
@@ -57,7 +53,7 @@ export default function Subscriptions() {
               <i className="fa-solid fa-location-arrow"></i>
             </button>
           </div>
-          <hr></hr>
+          <hr/>
         </div>
         <div className={`subBottom sub${plan.type}Bottom`}>
           <ul className={`subBenefits sub${plan.type}Benefits`}>
@@ -76,9 +72,7 @@ export default function Subscriptions() {
     );
   };
 
-  {
-    /*--------------------------------------MAIN--------------------------------------*/
-  }
+  {/*--------------------------------------MAIN--------------------------------------*/}
   return (
     <div className="subscriptions">
       <div className="subBox">

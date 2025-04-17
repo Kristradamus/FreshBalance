@@ -13,7 +13,6 @@ router.use((req, res, next) => {
 
 router.post('/admin/products', authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, upload.single('image'), productController.addProduct);
 router.delete('/:id', authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, productController.removeProduct);
-
 router.get('/', productController.getProducts);
 router.get('/categories', productController.getCategories);
 router.get('/category-groups', productController.getCategoryGroupsWithCategories);

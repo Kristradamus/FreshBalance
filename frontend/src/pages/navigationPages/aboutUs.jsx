@@ -26,7 +26,7 @@ return(
       <div className="aboutUsInsideBox">
         <div>
           <p className="aboutUsText">{t("aboutUs.starter")}</p>
-          <hr></hr>
+          <hr/>
         </div>
         {aboutUsData.map((section, index) => (
           <ul className="aboutUsMain" key={index}>
@@ -45,7 +45,7 @@ return(
           </ul>
         ))}
         <div>
-          <hr></hr>
+          <hr/>
           <p className="aboutUsText">{t("aboutUs.finisher")}</p>
         </div>
       </div>

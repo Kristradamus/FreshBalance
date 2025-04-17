@@ -37,9 +37,7 @@ export default function LanguageSwitcher() {
     <div className="languageSwitcher" ref={dropDownRef}>
       <button className="languageSwitcherToggle" onClick={() => setIsDropdownVisible(!isDropdownVisible)} aria-expanded={isDropdownVisible} aria-haspopup="true">
         {t("languageSwitcher.currentLanguage")}
-        <span className={`languageSwitcherArrow ${isDropdownVisible ? "rotateUp" : "rotateDown"}`}>
-          <i className="fa-solid fa-chevron-down"></i>
-        </span>
+        <span className={`languageSwitcherArrow ${isDropdownVisible ? "rotateUp" : "rotateDown"}`}><i className="fa-solid fa-chevron-down"></i></span>
       </button>
       <ul className={`languageSwitcherDropDown ${isDropdownVisible ? "open" : ""}`}>
         {languages.map((item, index) => (

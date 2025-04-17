@@ -138,6 +138,7 @@
     "generalError": "Hay un problema con tu inicio de sesión. Por favor, inténtalo de nuevo o contacta al soporte.",
     "plsTryAgain": "El tiempo ha expirado. ¡Por favor, inténtalo de nuevo!",
     "needHelp": "¿Ayuda?",
+    "isLoading": "Cargando",
 
     "email": {
       "greeting": "Bienvenido",
@@ -209,7 +210,9 @@
     "price": "Precio",
     "removedFromFavorites": "El producto fue eliminado de su lista de deseos",
     "addedToFavorites": "El producto fue añadido a su lista de deseos",
-    "favoritesError": "Hubo un problema con esta función. Por favor, inténtelo de nuevo más tarde."
+    "favoritesError": "Hubo un problema con esta función. Por favor, inténtelo de nuevo más tarde.",
+    "addedToCart": "Producto agregado al carro de compras",
+    "cartError": "Se ha producido un error. Por favor, vuelva a intentarlo más tarde."
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {
@@ -235,7 +238,9 @@
     "favorites": {
       "mainTitle": "Favoritos",
       "addToCart": "Añadir al Carrito",
+      "addingToCart": "Agregando",
       "remove": "Eliminar Producto",
+      "removing": "Eliminando producto",
       "removeSuccess": "¡El producto se eliminó correctamente!",
       "error": "Algo salió mal, ¡por favor intenta de nuevo más tarde!",
       "only": "Solo",
@@ -422,7 +427,20 @@
     }
   },
   "-------------------------------------------------SINGLE-PRODUCT--------------------------------------------------------": {},
-  "singleProductPage": {},
+  "singleProductPage": {
+    "productNotFound": "Producto no encontrado",
+    "backToProducts": "Volver",
+    "noProductImage": "Sin imagen del producto",
+    "failedToLoadProduct": "¡Error al cargar el producto!",
+    "lv": "lv",
+    "inStock": "Producto disponible",
+    "pieces": "unidades",
+    "piece": "unidad",
+    "soldOut": "Producto agotado",
+    "addToCart": "Añadir al carrito",
+    "description": "Descripción",
+    "details": "Detalles"
+  },
   "-----------------------------------------------------------SUBSCRIPTIONS-----------------------------------------------------": {},
   "subscriptions": {
     "subscriptionPlans": [

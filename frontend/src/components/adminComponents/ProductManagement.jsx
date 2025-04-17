@@ -69,11 +69,7 @@ export default function ProductManagement() {
     }
   };
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/products/category-groups`)
-      .then((response) => {
-        console.log(response.data);
+  useEffect(() => {axios.get(`${import.meta.env.VITE_BACKEND_URL}/products/category-groups`).then((response) => {
         setCategories(response.data);
       })
       .catch((error) => {
@@ -143,7 +139,7 @@ export default function ProductManagement() {
       }
       const token = localStorage.getItem("authToken");
       console.log("everything is good for now frontend");
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/products/admin/products`, formDataToSend, {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/products/admin/products`, formDataToSend, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -167,7 +163,8 @@ export default function ProductManagement() {
       setSelectedImage(null);
       setImagePreview(null);
       setSelectedCategories([]);
-    } catch (error) {
+    } 
+    catch (error) {
       setScrollToTop(true);
       setToast({
         show: true,
@@ -175,7 +172,8 @@ export default function ProductManagement() {
         type: "error",
       });
       console.error("Error submitting form:", error);
-    } finally {
+    } 
+    finally {
       setIsSubmitting(false);
     }
   };
@@ -215,14 +213,16 @@ export default function ProductManagement() {
       setRemoveProductId(null);
       setConfirmRemoval(false);
       setSearchTerm("");
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Remove error:", error);
       setToast({
         show: true,
         message: t("admin.productManagement.remove.failedToRemoveProduct"),
         type: "error",
       });
-    } finally {
+    } 
+    finally {
       setIsSubmitting(false);
     }
   };
@@ -326,24 +326,7 @@ export default function ProductManagement() {
               </div>
               <div className="formGroup">
                 <label className="formGroupTitle">{t("admin.productManagement.add.formPriceTitle")}</label>
-                <input
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (/^\d*\.?\d{0,2}$/.test(value)) {
-                      setFormData({
-                        ...formData,
-                        price: value,
-                      });
-                    }
-                  }}
-                  step="0.01"
-                  min="0.01"
-                  placeholder="0.00"
-                  required
-                />
+                <input type="number" name="price" value={formData.price} onChange={(e) => { const value = e.target.value; if (/^\d*\.?\d{0,2}$/.test(value)) { setFormData({ ...formData, price: value }); }}} step="0.01" min="0.01" placeholder="0.00" required />
               </div>
               <div className="formGroup">
                 <label className="formGroupTitle">{t("admin.productManagement.add.formStockTitle")}</label>
@@ -387,37 +370,30 @@ export default function ProductManagement() {
               <label className="formGroupTitle">{t("admin.productManagement.add.categoriesTitle")}</label>
               <hr />
               <div className="categoriesWrapper">
-                {categories &&
-                  categories.reduce(
-                    (acc, group) => {
-                      if (!acc.names.includes(group.name)) {
-                        acc.names.push(group.name);
-                        acc.elements.push(
-                          <div className="categoriesColumnBox" key={group.name}>
-                            <div className="categoriesBox">
-                              <h4>{group.name}</h4>
-                              {group.categories.map((category) => (
-                                <div
-                                  key={category.id}
-                                  className="productCategoryCheckboxBox"
-                                  onClick={() => {
-                                    document.getElementById(`category-${category.id}`).click();
-                                  }}
-                                >
-                                  <input type="checkbox" onClick={(e) => e.stopPropagation()} value={category.id} id={`category-${category.id}`} checked={selectedCategories.includes(category.id)} onChange={handleCategoryChange} />
-                                  <div className="productCategoryCheckbox">
-                                    <p className="productCategoryCheckboxText">{category.name}</p>
-                                  </div>
+                {categories && categories.reduce(
+                  (acc, group) => {
+                    if (!acc.names.includes(group.name)) {
+                      acc.names.push(group.name);
+                      acc.elements.push(
+                        <div className="categoriesColumnBox" key={group.name}>
+                          <div className="categoriesBox">
+                            <h4>{group.name}</h4>
+                            {group.categories.map((category) => (
+                              <div key={category.id} className="productCategoryCheckboxBox" onClick={() => { document.getElementById(`category-${category.id}`).click(); }} >
+                                <input type="checkbox" onClick={(e) => e.stopPropagation()} value={category.id} id={`category-${category.id}`} checked={selectedCategories.includes(category.id)} onChange={handleCategoryChange} />
+                                <div className="productCategoryCheckbox">
+                                  <p className="productCategoryCheckboxText">{category.name}</p>
                                 </div>
-                              ))}
-                            </div>
+                              </div>
+                            ))}
                           </div>
-                        );
-                      }
-                      return acc;
-                    },
-                    { names: [], elements: [] }
-                  ).elements}
+                        </div>
+                      );
+                    }
+                    return acc;
+                  },
+                  { names: [], elements: [] }
+                ).elements}
               </div>
             </div>
             <button type="submit" className="submitBtn" disabled={isSubmitting}>
@@ -479,12 +455,7 @@ export default function ProductManagement() {
             </div>
 
             {removeProductId && (
-              <div
-                className="productRemoveConfirmationCheckboxBox"
-                onClick={() => {
-                  document.getElementById("removeConfirm").click();
-                }}
-              >
+              <div className="productRemoveConfirmationCheckboxBox" onClick={() => {   document.getElementById("removeConfirm").click(); }} >
                 <input type="checkbox" onClick={(e) => e.stopPropagation()} checked={confirmRemoval} id="removeConfirm" onChange={(e) => setConfirmRemoval(e.target.checked)} required></input>
                 <div className="productRemoveConfirmationCheckbox">
                   <p className="productRemoveConfirmationCheckboxText">

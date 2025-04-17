@@ -47,7 +47,7 @@ export default function App() {
                   <Route path="/admin/*"element={<ProtectedRouteAdmin><Admin /></ProtectedRouteAdmin>} />
                   <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
                   <Route path="/product/:promotionName" element={<ProductPage />} />
-                  <Route path="/singleProductPage/:promotionName" element={<SingleProductPage/>}></Route>
+                  <Route path="/single-product/:promotionName" element={<SingleProductPage/>}></Route>
                   <Route path="/legal-policies" element={<LegalPage />} />
                   <Route path="/communities" element={<Communities />}/>
                 </Route>

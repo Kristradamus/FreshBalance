@@ -146,6 +146,7 @@
     "generalError":"There is an issue with your login. Please try again or contact our support.",
     "plsTryAgain":"Time has expired. Please try again!",
     "needHelp": "Need help?",
+    "isLoading":"Loading...",
 
     "email":{
       "greeting": "Hello!",
@@ -216,7 +217,10 @@
     "price":"Price",
     "removedFromFavorites":"The product was removed from your wishlist",
     "addedToFavorites":"The product was added to your wishlist",
-    "favoritesError":"There is a problem with this functionality, please try again later !"
+    "favoritesError":"There is a problem with this functionality, please try again later !",
+
+    "addedToCart":"Product was added to cart !",
+    "cartError":"There is a problem with this functionality, please try again later !"
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {
@@ -242,7 +246,9 @@
     "favorites":{
       "mainTitle":"Favorites",
       "addToCart":"Add to Cart",
+      "addingToCart":"Adding",
       "remove":"Remove Product",
+      "removing":"Removing Product",
       "removeSuccess":"Product was removed successfully !",
       "error":"Something went wrong, please try again later !",
       "only":"Only",
@@ -259,7 +265,10 @@
     "settingsPhoneNumber":"Phone Number",
     "settingsSaveChanges":"Save Changes",
     
-    "cartMainTitle":"Cart",
+    "cart":{
+      "mainTitle":"Cart",
+      "gettingItemsError":"There is a problem with displaying your items, please contact support !"
+    },
 
     "logoutConfirmTitle":"Confirm Logout",
     "logoutConfirmMessage":"Are you sure you want to log out?",
@@ -452,7 +461,11 @@
     "lv":"lv",
     "inStock":"Product is available",
     "pieces":"pieces",
-    "soldOut":"Product is sold out"
+    "piece":"piece",
+    "soldOut":"Product is sold out",
+    "addToCart":"Add to Cart",
+    "description":"Description",
+    "details":"Details"
   },
   "--------------------------------------------------------SUBSCRIPTIONS--------------------------------------------------------": {},
   "subscriptions": {

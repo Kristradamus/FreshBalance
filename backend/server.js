@@ -1,17 +1,13 @@
 const express = require("express");
-const rateLimit = require("express-rate-limit");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const cookieParser = require("cookie-parser");
-const fs = require('fs');
-const path = require('path');
 const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
 const authMiddleware = require("./middleware/authMiddleware.js");
 const authController = require("./controllers/authController.js");
 const supportController = require("./controllers/supportController.js");
+const cartRoutes = require("./routes/cartRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 const favoriteRoutes = require("./routes/favoriteRoutes.js");
 const pool = require("./dataBase.js");
@@ -23,9 +19,9 @@ app.use(
   })
 );
 
-app.use(cookieParser());
-app.use(bodyParser.json());
+app.use(express.json());
 
+app.use("/cart", cartRoutes);
 app.use("/products", productRoutes);
 app.use("/favorites", favoriteRoutes);
 

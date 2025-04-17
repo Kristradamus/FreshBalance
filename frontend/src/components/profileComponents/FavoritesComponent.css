@@ -17,6 +17,7 @@
 }
 .favoritesMainTitleNumber {
   color: var(--green);
+  font-size:24px;
 }
 
 /*---------------------------------PRODUCTS-----------------------------------*/

@@ -4,29 +4,32 @@ import "./FavoritesComponent.css";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
+import LoadingAnimation from "../layout/LoadingAnimation.jsx";
+import useRemoveAddHandler from "../reusableComponents/RemoveAddItems.jsx";
 import axios from "axios";
 
 export default function FavoritesComponent() {
   const { t } = useTranslation();
-  const { isAuthenticated, user } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const [favorites, setFavorites] = useState([]);
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [isRemoving, setIsRemoving] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const {handleAddToCart, isAddingToCart} = useRemoveAddHandler();
   const navigate = useNavigate();
+  const token = localStorage.getItem("authToken");
 
   useEffect(() => {
     const fetchUserFavorites = async () => {
-      if (isAuthenticated && user) {
+      if (isAuthenticated) {
         try {
-          const token = localStorage.getItem("authToken");
+          setIsLoading(true)
           const response = await axios.get(
             `${import.meta.env.VITE_BACKEND_URL}/favorites`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
               },
-              withCredentials: true,
             }
           );
 
@@ -51,22 +54,24 @@ export default function FavoritesComponent() {
             type:"error"
           })
         }
+        finally{
+          setIsLoading(false);
+        }
       } 
       else {
         setFavorites([]);
       }
     };
     fetchUserFavorites();
-  }, [isAuthenticated, user, t]);
+  }, [isAuthenticated]);
 
   const handleRemoveProduct = async(productId) => {
     if(!isAuthenticated || isRemoving){
       return;
     }
     
-    setIsRemoving(true);
     try{
-      const token = localStorage.getItem("authToken");
+      setIsRemoving(true);
       await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/favorites/${productId}`,
         {
           headers: {
@@ -99,7 +104,10 @@ export default function FavoritesComponent() {
   };
  
   return (
-    <div className="profileContentAriafavorites">
+    <>{isLoading ? (
+      <LoadingAnimation/>
+    ) : (
+      <div className="profileContentAriafavorites">
       <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <div className="favoritesMainTitleBox">
         <h2 className="favoritesMainTitle">
@@ -107,9 +115,9 @@ export default function FavoritesComponent() {
         </h2>
         <h3 className="favoritesMainTitleNumber">
           {favorites.length === 1 ? (
-            <h3 className="favoritesMainTitleNumber">{favorites.length} {t("profile.product")}</h3>
+            <p className="favoritesMainTitleNumber">{favorites.length} {t("profile.product")}</p>
           ) : (
-            <h3 className="favoritesMainTitleNumber">{favorites.length} {t("profile.products")}</h3>
+            <p className="favoritesMainTitleNumber">{favorites.length} {t("profile.products")}</p>
           )}
         </h3>
       </div>
@@ -117,12 +125,12 @@ export default function FavoritesComponent() {
         {favorites.map((product) => (
           <div key={product.id} className="favoriteItem">
             {product.imageUrl ? (
-              <div className="favoritesImageBox" onClick={() => navigate(`/singleProductPage/${product.id}`)}>
+              <div className="favoritesImageBox" onClick={() => navigate(`/single-product/${product.id}`)}>
                 <img src={product.imageUrl} alt={product.name} className="favoriteImage"/>
               </div>
             ) : (
-              <div className="noImageBox" onClick={() => navigate(`/singleProductPage/${product.id}`)}>
-                <p><i class="fa-solid fa-camera"></i> <span>{t("profile.favorites.noImage")}</span></p>
+              <div className="noImageBox" onClick={() => navigate(`/single-product/${product.id}`)}>
+                <p><i className ="fa-solid fa-camera"></i> <span>{t("profile.favorites.noImage")}</span></p>
               </div>
             )}
             <div className="favoriteInfo">
@@ -139,16 +147,26 @@ export default function FavoritesComponent() {
               </div>
             </div>
             <div className="favoritesButtons">
-              <button className="favoritesRemoveBtn" onClick={() => handleRemoveProduct(product.id)} disabled={isRemoving}>
-                <i class="fa-solid fa-trash"></i> {t("profile.favorites.remove")}
+              <button className="favoritesRemoveBtn" onClick={() => handleRemoveProduct(product.id)} disabled={isAddingToCart || isRemoving}>
+                {isRemoving ? (
+                  <span><i className="fa-solid fa-trash"></i> {t("profile.favorites.remove") + "..."}</span>
+                ) : (
+                  <span><i className="fa-solid fa-trash"></i> {t("profile.favorites.remove")}</span>
+                )}
               </button>
-              <button className="favoritesAddToCartBtn">
-                <i className="fa-solid fa-cart-shopping"></i> {t("profile.favorites.addToCart")}
+              <button className="favoritesAddToCartBtn" onClick={(e) => handleAddToCart(e, product.id, setToast, t)} disabled={isAddingToCart || isRemoving}>
+                {isAddingToCart ? (
+                  <span><i className="fa-solid fa-cart-shopping"></i> {t("profile.favorites.addingToCart") + "..."}</span>
+                ) : (
+                  <span><i className="fa-solid fa-cart-shopping"></i> {t("profile.favorites.addToCart")}</span>
+                )}
               </button>
             </div>
           </div>
         ))}
       </div>
     </div>
+    )}
+    </>
   );
 }

@@ -182,6 +182,17 @@
 .headerRecommendations:hover {
   background-color: var(--secondBackground);
 }
+.headerRecommendation{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+}
+.headerRecommendation i{
+  padding:0px;
+  color:var(--secondTextColor);
+  margin-right:var(--iconDistance);
+  font-size:calc(var(--smallTextFont) - 1px);
+}
 .headerSearchDropdown {
   position: absolute;
   top: 100%;

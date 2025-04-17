@@ -66,12 +66,12 @@ return (
     </div>
     
     {/*------------------------------COMMENTS----------------------------------*/}
-    <div className="servBox">
+    {/*<div className="servBox">
       <div className="servHeader">
         <h1>{servicesData.paragraphs.comments.title}</h1>
         <h3>{servicesData.paragraphs.comments.subTitle}</h3>
       </div>
       <Comments/>
-    </div>
+    </div>*/}
   </div>
 )};

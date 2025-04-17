@@ -8,13 +8,14 @@ import GoBackButton from "../reusableComponents/LRGoBackButton";
 
 export default function Login({email, username, userProgress, setUserProgress }) {
   const [passwordError, setPasswordError] = useState(false);
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [termsError, setTermsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const passwordInputRef = useRef(null);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const { checkAuthStatus } = useContext(AuthContext);
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const passwordInputRef = useRef(null);
   const [toast, setToast] = useState({show:false, message:"", type:""})
   const [loginFormData, setLoginFormData] = useState(() => {
     return userProgress.loginFormDataMain || {
@@ -81,6 +82,7 @@ export default function Login({email, username, userProgress, setUserProgress })
 
     if (isValid) {
       try {
+        setIsLoading(true);
         const verifiedEmail = sessionStorage.getItem("verifiedEmail");
         const verificationCode = sessionStorage.getItem("emailVerificationCode");
         
@@ -95,7 +97,8 @@ export default function Login({email, username, userProgress, setUserProgress })
           navigate(lastPublicPage, {
             state: {
               showToast: true,
-              toastMessage: t("loginRegistration.login.success")
+              toastMessage: t("loginRegistration.login.success"),
+              type:"success",
             }
           });
 
@@ -124,6 +127,9 @@ export default function Login({email, username, userProgress, setUserProgress })
             type:"error",
           })
         }
+      }
+      finally{
+        setIsLoading(false);
       }
     }
   };
@@ -155,11 +161,17 @@ export default function Login({email, username, userProgress, setUserProgress })
         </div>
       </div>
       <div className="loginBottom">
-        <div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
+        {/*<div className={`emailLogRegCheckboxBox ${termsError ? "error" : ""}`}>
           <input type="checkbox" checked={loginFormData.rememberMe} onChange={handleTermsAcceptance}/>
           <p className="emailLogRegCheckbox">{t("loginRegistration.login.rememberMe")}</p>
-        </div>
-        <button className="emailLogRegContinue" onClick={handleLoginSubmit}>{t("loginRegistration.login.logIn")}</button>
+        </div>*/}
+        <button className="emailLogRegContinue" onClick={handleLoginSubmit} disabled={isLoading}>
+          {isLoading ? (
+            <span><strong>{t("loginRegistration.isLoading") + "..."}</strong></span>
+          ) : (
+            <span><strong>{t("loginRegistration.login.logIn")}</strong></span>
+          )}
+         </button>
         <a className="loginForgotPassword">{t("loginRegistration.login.forgottenPassword")}</a>
       </div>
     </div>

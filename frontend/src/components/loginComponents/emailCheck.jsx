@@ -10,7 +10,8 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
   const navigate = useNavigate();
   const emailInputRef = useRef(null);
   const [emailError, setEmailError] = useState(false);
-  const [toast, setToast] = useState({show:false, message:"", type:""})
+  const [toast, setToast] = useState({show:false, message:"", type:""});
+  const [isLoading, setIsLoading] = useState(false);
 
   /*-----------------------------------------SMALL-JS--------------------------------------------------*/
   /*IF USER GOES BACK AND CHANGES HIS EMAIL TO RESET ALL VARIABLES*/
@@ -62,6 +63,7 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
       return;
     }
     try {
+      setIsLoading(true);
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/check-email`, { email });
       
       sessionStorage.setItem("emailVerificationCode",response.data.verificationCode);
@@ -116,6 +118,9 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
         type: "error",
       });
     }
+    finally{
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -129,8 +134,12 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
           <input className="emailLogRegInput" placeholder={t("loginRegistration.email.placeholder")} value={displayEmail} ref={emailInputRef} onChange={handleEmailChange} onKeyDown={handleEmailKeyChange}/>
         </div>
         {emailError && (<p className="emailLogRegErrorMessage">{t("loginRegistration.email.warning")}</p>)}
-        <button className="emailLogRegContinue" onClick={handleEmailCheckContinue} >
-          <strong>{t("loginRegistration.email.continue")}</strong>
+        <button className="emailLogRegContinue" onClick={handleEmailCheckContinue} disabled={isLoading}>
+          {isLoading ? (
+            <span><strong>{t("loginRegistration.isLoading") + "..."}</strong></span>
+          ) : (
+            <span><strong>{t("loginRegistration.email.continue")}</strong></span>
+          )}
         </button>
         <p className="emailDontWorry">{t("loginRegistration.email.dontWorry")}</p>
       </div>

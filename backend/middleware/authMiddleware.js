@@ -27,7 +27,7 @@ const verifyToken = (token) => {
 
 const authenticateJWT = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1] || req.cookies.authToken;
+  const token = authHeader?.split(" ")[1];
 
   if (!token) {
     return res.status(401).json({ error: "Unauthorized" });

@@ -56,20 +56,20 @@ function ProfileSettings() {
         <div className="settingsFormRow">
           <div className="settingsFormGroup">
             <label>{t("profile.settingsFirstName")}</label>
-            <input type="text" defaultValue="John" />
+            <input type="text" />
           </div>
           <div className="settingsFormGroup">
             <label>{t("profile.settingsLastName")}</label>
-            <input type="text" defaultValue="Doe" />
+            <input type="text" />
           </div>
         </div>
         <div className="settingsFormGroup">
           <label>{t("profile.settingsEmail")}</label>
-          <input type="email" defaultValue="johndoe@example.com" />
+          <input type="email" />
         </div>
         <div className="settingsFormGroup">
           <label>{t("profile.settingsPhoneNumber")}</label>
-          <input type="tel" defaultValue="+1 (555) 123-4567" />
+          <input type="tel" />
         </div>
         <button type="submit" className="settingsSaveBtn">
           <i className="fa-solid fa-floppy-disk"></i>

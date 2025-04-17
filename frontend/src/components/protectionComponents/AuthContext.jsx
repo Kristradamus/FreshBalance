@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
   
   const checkAuthStatus = async () => {
     setIsLoading(true);
-    
     const token = localStorage.getItem("authToken");
     if (!token) {
       setIsAuthenticated(false);
@@ -28,10 +27,9 @@ export const AuthProvider = ({ children }) => {
             method: "POST",
             headers: {
               "Authorization": `Bearer ${token}`,
-              "Content-Type": "application/json"
             },
-            credentials: "include"
           });
+          
           if (response.ok) {
             const data = await response.json();
             console.log(data);

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./tryFreeSubscription.css";
@@ -21,7 +20,7 @@ const TryFreeSubscription = () => {
             <button className="tryFreeSubmitButton" onClick={() => navigate(lastPublicPage, {state:{showToast:true, toastMessage:t("tryFree.success")}})}>{t("tryFree.startTrial")}</button>
           </div>
         </div>
-        <hr></hr>
+        <hr/>
         <div className="tryFreeBottom">
           <ul className="tryFreeFeaturesBox">
             {freeTrialFeatures.map((item, index) => (
