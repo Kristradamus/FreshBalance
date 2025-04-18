@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import { z } from "zod";
-import GoBackButton from "../reusableComponents/LRGoBackButton";
 import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 
-export default function Register({email, setIsTermsVisible, userProgress, setUserProgress}) {
+const Register = ({email, setIsTermsVisible, userProgress, setUserProgress}) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { checkAuthStatus } = useContext(AuthContext);
@@ -294,7 +293,7 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
 
   return (
     <div className="emailLogRegBox">
-      <GoBackButton path="/email-check" />
+      <button className="lRGoBackButton" onClick={() => navigate("/email-check")}>{t("loginRegistration.goBack")}</button>
       <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <div className="registerWelcomeBox">
         <h1 className="registerWelcome">{t("loginRegistration.registration.welcome")}</h1>
@@ -356,3 +355,5 @@ export default function Register({email, setIsTermsVisible, userProgress, setUse
     </div>
   );
 };
+
+export default Register;

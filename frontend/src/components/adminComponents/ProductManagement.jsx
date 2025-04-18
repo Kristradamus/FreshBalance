@@ -5,7 +5,7 @@ import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 import ScrollToTop from "../reusableComponents/ScrollToTop.jsx";
 import axios from "axios";
 
-export default function ProductManagement() {
+const ProductManagement = () => {
   const { t } = useTranslation();
   const [activeForm, setActiveForm] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -474,4 +474,6 @@ export default function ProductManagement() {
       )}
     </div>
   );
-}
+};
+
+export default ProductManagement;

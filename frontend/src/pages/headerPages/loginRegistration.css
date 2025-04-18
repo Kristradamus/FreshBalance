@@ -10,6 +10,22 @@
   gap: 10px;
   background-color: var(--mainBackground);
 }
+.lRGoBackButton {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  left: 0px;
+  top: 0px;
+  padding: 7.5px 15px;
+  border-radius: var(--smallRadius) 0 var(--smallRadius) 0;
+  background-color: var(--green);
+  color: var(--white);
+  font-size:var(--smallTextFont);
+  transition: var(--transition);
+}
+.lRGoBackButton:hover {
+  background-color: var(--mainButtonHover);
+}
 .loginRegisterLogo {
   width: 150px;
   margin-bottom: 10px;
@@ -48,7 +64,8 @@
   box-shadow: var(--boxShadow);
   font-size:var(--smallTextFont);
 }
-.emailLogRegContinue:disabled{
+.emailLogRegContinue:disabled,
+.emailLogRegContinue:disabled:hover{
   background-color:var(--secondButtonColor);
   color:var(--mainTextColor);
 }

@@ -7,7 +7,7 @@ import axios from "axios";
 import { z } from "zod";
 import "./support.css";
 
-export default function Support() {
+const Support = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [charCount, setCharCount] = useState({ name: 0, message: 0 });
@@ -241,4 +241,6 @@ export default function Support() {
       </div>
     </div>
   );
-}
+};
+
+export default Support;

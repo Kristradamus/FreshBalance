@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./AccountManagement.css";
 
-export default function AccountManagement() {
+const AccountManagement = () => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
@@ -26,4 +26,6 @@ export default function AccountManagement() {
       )}
     </div>
   );
-}
+};
+
+export default AccountManagement;

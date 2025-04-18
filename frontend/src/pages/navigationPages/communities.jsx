@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./communities.css";
 
-export default function Communities() {
+const Communities = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -27,3 +27,5 @@ export default function Communities() {
       </div>
   );
 };
+
+export default Communities;

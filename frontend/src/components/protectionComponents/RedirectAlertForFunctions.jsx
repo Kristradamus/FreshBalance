@@ -25,6 +25,6 @@ const RedirectAlertForFunctions = ({show, onClose}) => {
       </div>
     </div>
   );
-}
+};
 
 export default RedirectAlertForFunctions;

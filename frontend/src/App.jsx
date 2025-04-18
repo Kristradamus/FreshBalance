@@ -25,9 +25,9 @@ const BuyNowSubscription = React.lazy(() => import("./pages/navigationPages/buyN
 const TryFreeSubscription = React.lazy(() => import("./pages/navigationPages/tryFreeSubscription.jsx"));
 const SingleProductPage = React.lazy(() => import("./pages/productPages/singleProductPage.jsx"));
 
-export default function App() {
+const App = () => {
   return (
-    <div>
+    <>
       <BrowserRouter>
         <AuthProvider>
           <NavigationTracker />
@@ -56,6 +56,8 @@ export default function App() {
           </Suspense>
         </AuthProvider>
       </BrowserRouter>
-    </div>
+    </>
   );
-}
+};
+
+export default App;

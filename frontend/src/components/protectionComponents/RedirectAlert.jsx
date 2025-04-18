@@ -29,6 +29,6 @@ const RedirectTo = () => {
       </div>
     </div>
   );
-}
+};
 
 export default RedirectTo;

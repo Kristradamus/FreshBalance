@@ -1,10 +1,12 @@
 import TermsAndConditions from "../../components/reusableComponents/LegalPolicies.jsx";
 import "./legalPage.css";
 
-export default function legalPage() {
+const legalPage = () => {
+  return (
+    <div className="legalPage">
+      <TermsAndConditions />
+    </div>
+  );
+};
 
-return (
-  <div className="legalPage">
-    <TermsAndConditions />
-  </div>
-);};
+export default legalPage;

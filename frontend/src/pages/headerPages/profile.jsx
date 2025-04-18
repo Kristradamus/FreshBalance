@@ -43,10 +43,8 @@ function ProfileLayout() {
   );
 }
 
-{
-  /*--------------------------------------PROFILE-SETTINGS--------------------------------------------*/
-}
-function ProfileSettings() {
+{/*--------------------------------------PROFILE-SETTINGS--------------------------------------------*/}
+const ProfileSettings = () => {
   const { t } = useTranslation();
 
   return (
@@ -78,12 +76,10 @@ function ProfileSettings() {
       </form>
     </div>
   );
-}
+};
 
-{
-  /*--------------------------------------PROFILE-ROUTING--------------------------------------------*/
-}
-export default function ProfilePage() {
+{/*--------------------------------------PROFILE-ROUTING--------------------------------------------*/}
+const ProfilePage = () => {
   return (
     <Routes>
       <Route path="/" element={<ProfileLayout />}>
@@ -96,4 +92,6 @@ export default function ProfilePage() {
       </Route>
     </Routes>
   );
-}
+};
+
+export default ProfilePage;

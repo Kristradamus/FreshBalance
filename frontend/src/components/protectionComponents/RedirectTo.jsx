@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./AuthContext.jsx";
 
-export default function RedirectIfAuthenticated({ children }) {
+const RedirectIfAuthenticated = ({ children }) => {
   const { isAuthenticated, isAdmin } = useContext(AuthContext);
 
   if (isAuthenticated && isAdmin) {
@@ -13,4 +13,6 @@ export default function RedirectIfAuthenticated({ children }) {
   }
 
   return children;
-}
+};
+
+export default RedirectIfAuthenticated;

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate} from "react-router-dom";
 import "./Footer.css";
 
-export default function Footer() {
+const Footer = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const footerData = t("footer.footerData", {returnObject:true});
@@ -93,3 +93,5 @@ export default function Footer() {
     </div>
   );
 };
+
+export default Footer;

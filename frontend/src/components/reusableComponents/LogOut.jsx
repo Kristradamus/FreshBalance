@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import "./LogOut.css";
 
-export default function LogOut() {
+const LogOut = () => {
   const [showAlert, setShowAlert] = useState(false);
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -50,4 +50,6 @@ export default function LogOut() {
       )}
     </div>
   );
-}
+};
+
+export default LogOut;

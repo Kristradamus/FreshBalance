@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export default function ScrollToTop({ trigger }) {
+const ScrollToTop = ({ trigger }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -12,4 +12,6 @@ export default function ScrollToTop({ trigger }) {
   }, [location.pathname, trigger]);
 
   return null;
-}
+};
+
+export default ScrollToTop;

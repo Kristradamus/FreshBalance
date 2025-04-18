@@ -9,7 +9,7 @@ import LoadingAnimation from "./LoadingAnimation.jsx";
 import axios from "axios";
 import "./Header.css";
 
-export default function Header() {
+const Header = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const searchInputRef = useRef(null);
@@ -251,4 +251,6 @@ export default function Header() {
       )}
     </>
   );
-}
+};
+
+export default Header;

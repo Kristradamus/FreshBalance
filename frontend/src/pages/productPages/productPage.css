@@ -162,13 +162,13 @@
   overflow: hidden;
   box-shadow: var(--boxShadow);
   transition: var(--transition);
-  cursor:pointer;
 }
 .pPProductCard:hover {
   box-shadow:var(--boxShadowLight);;
 }
 .pPProductImage {
   position: absolute;
+  cursor:pointer;
   top: 0;
   left: 0;
   width: 100%;
@@ -203,6 +203,9 @@
 .wishlistButton .fa-heart.active{
   color:var(--errorColor);
 }
+.wishlistButton:disabled .fa-heart {
+  color: var(--secondButtonHover);
+}
 .pPProductPrice {
   font-weight: bold;
   color: var(--mainTextColor);
@@ -222,6 +225,13 @@
 }
 .pPAddToCart i{
   margin-right:var(--iconDistance);
+}
+.pPAddToCart:disabled,
+.pPAddToCart:disabled:hover{
+  background-color:var(--secondButtonColor);
+}
+.pPAddToCart:disabled span{
+  color:var(--mainTextColor);
 }
 .noProducts {
   display:flex;

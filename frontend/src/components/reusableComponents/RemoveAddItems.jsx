@@ -4,14 +4,16 @@ import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 
 const useRemoveAddHandler = () => {
   const [favorites, setFavorites] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
-  const [isAddingToCart, setIsAddingToCart] = useState(false);
-  const { isAuthenticated, user } = useContext(AuthContext);
+  const [isAddingToCart, setIsAddingToCart] = useState(null);
+  const [isAddingToFavorites, setIsAddingToFavorites] = useState(false);
+  const [isFetchingFavorites, setIsFetchingFavorites] = useState(false);
+  const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUserFavorites = async () => {
-      if (isAuthenticated && user) {
+      if (isAuthenticated) {
         try {
+          setIsFetchingFavorites(true);
           const token = localStorage.getItem("authToken");
           const response = await axios.get(
             `${import.meta.env.VITE_BACKEND_URL}/favorites`,
@@ -24,19 +26,25 @@ const useRemoveAddHandler = () => {
             }
           );
           setFavorites(response.data.map((item) => item.id));
-        } catch (error) {
+        } 
+        catch (error) {
           console.error("Error fetching user favorites:", error);
         }
-      } else {
+        finally{
+          setIsFetchingFavorites(false);
+        }
+      } 
+      else {
         setFavorites([]);
       }
     };
     fetchUserFavorites();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated]);
 
   /*-------------------------------FAVORITES------------------------------------*/
   const handleAddToFavorites = async (e, productId, setToast, t, setShowAlert) => {
     e.stopPropagation();
+    setIsAddingToFavorites(true);
     if (!isAuthenticated) {
       setShowAlert(true);
       return;
@@ -91,6 +99,9 @@ const useRemoveAddHandler = () => {
         type: "error",
       });
     }
+    finally{
+      setIsAddingToFavorites(false);
+    }
   };
 
   /*------------------------------CART--------------------------------------*/
@@ -102,7 +113,7 @@ const useRemoveAddHandler = () => {
       return;
     }
     try {
-      setIsAddingToCart(true);
+      setIsAddingToCart(productId);
       const token = localStorage.getItem("authToken");
       
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/cart/add/${productId}`,{ quantity: quantity },
@@ -130,11 +141,11 @@ const useRemoveAddHandler = () => {
       });
     }
     finally{
-      setIsAddingToCart(false);
+      setIsAddingToCart(null);
     }
   };
 
-  return { favorites, handleAddToFavorites, isAddingToCart, handleAddToCart };
+  return { favorites, handleAddToFavorites, isAddingToCart, handleAddToCart, isAddingToFavorites, isFetchingFavorites};
 };
 
 export default useRemoveAddHandler;

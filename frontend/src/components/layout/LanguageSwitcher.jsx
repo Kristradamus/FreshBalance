@@ -3,7 +3,7 @@ import i18n from "i18next";
 import { useTranslation } from "react-i18next";
 import "./LanguageSwitcher.css";
 
-export default function LanguageSwitcher() {
+const LanguageSwitcher = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropDownRef = useRef(null);
   const { t } = useTranslation();
@@ -48,4 +48,6 @@ export default function LanguageSwitcher() {
       </ul>
     </div>
   );
-}
+};
+
+export default LanguageSwitcher;

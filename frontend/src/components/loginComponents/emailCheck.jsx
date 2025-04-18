@@ -5,7 +5,7 @@ import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 import axios from "axios";
 import validator from "validator";
 
-export default function EmailCheck({email, setEmail, displayEmail, setDisplayEmail, setEmailCheckComplete, setEmailExists, userProgress, setUserProgress, resetFormData, setUsername,}) {
+const EmailCheck = ({email, setEmail, displayEmail, setDisplayEmail, setEmailCheckComplete, setEmailExists, userProgress, setUserProgress, resetFormData, setUsername,}) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const emailInputRef = useRef(null);
@@ -162,4 +162,6 @@ export default function EmailCheck({email, setEmail, displayEmail, setDisplayEma
       </div>*/}
     </div>
   );
-}
+};
+
+export default EmailCheck;

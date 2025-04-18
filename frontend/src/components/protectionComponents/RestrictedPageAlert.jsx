@@ -23,5 +23,6 @@ const RestrictedPageAlert = () => {
       </div>
     </div>
   );
-}
+};
+
 export default RestrictedPageAlert;

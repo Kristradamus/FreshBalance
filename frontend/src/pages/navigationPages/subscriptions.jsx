@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./subscriptions.css";
 
-export default function Subscriptions() {
+const Subscriptions = () => {
   const [isYearly, setIsYearly] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -93,4 +93,6 @@ export default function Subscriptions() {
       </div>
     </div>
   );
-}
+};
+
+export default Subscriptions;

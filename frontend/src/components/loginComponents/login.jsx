@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 import axios from "axios";
 import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
-import GoBackButton from "../reusableComponents/LRGoBackButton";
 
-export default function Login({email, username, userProgress, setUserProgress }) {
+const Login = ({email, username, userProgress, setUserProgress }) => {
   const [passwordError, setPasswordError] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [termsError, setTermsError] = useState(false);
@@ -136,7 +135,7 @@ export default function Login({email, username, userProgress, setUserProgress })
 
   return (
     <div className="emailLogRegBox">
-      <GoBackButton path="/email-check" />
+      <button className="lRGoBackButton" onClick={() => navigate("/email-check")}>{t("loginRegistration.goBack")}</button>
       <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({show:false, message:"", type:""})}/>
       <div className="loginWelcomeBox">
         <h1 className="loginWelcome">
@@ -176,4 +175,6 @@ export default function Login({email, username, userProgress, setUserProgress })
       </div>
     </div>
   );
-}
+};
+
+export default Login;

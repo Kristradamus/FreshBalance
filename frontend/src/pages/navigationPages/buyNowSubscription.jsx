@@ -38,6 +38,7 @@ const BuyNowSubscription = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
 export default BuyNowSubscription;

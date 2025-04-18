@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import ConfirmationToast from "../../components/reusableComponents/ConfirmationToast.jsx";
+import LoadingAnimation from "../../components/layout/LoadingAnimation.jsx";
 import RedirectAlertForFunctions from "../../components/protectionComponents/RedirectAlertForFunctions.jsx";
 import { useTranslation } from "react-i18next";
 import useRemoveAddHandler from "../../components/reusableComponents/RemoveAddItems.jsx";
@@ -21,7 +22,7 @@ const ProductPage = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
-  const { favorites, handleAddToFavorites, handleAddToCart } = useRemoveAddHandler();
+  const { favorites, handleAddToFavorites, handleAddToCart, isAddingToCart, isAddingToFavorites, isFetchingFavorites } = useRemoveAddHandler();
 
   /*-----------------------------------------GETTING-PRODUCTS-----------------------------------------*/
   useEffect(() => {
@@ -266,93 +267,102 @@ const ProductPage = () => {
   }, [isCategory, products]);
 
   return (
-    <div className="productPage">
-      <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({ show: false, message: "", type: "" })} />
-      <RedirectAlertForFunctions show={showAlert} onClose={() => setShowAlert(false)} />
-
-      {/*------------------------------------------FILTRATION------------------------------------------*/}
-      <div className="productFilters">
-        <h2 className="filtersTitle">{t("productPage.filtration")}: </h2>
-        <hr/>
-        <h3 className="filtersTitlePrice">{t("productPage.price")}: </h3>
-        <div className="priceFilterBox">
-          <div className="priceFilterInputs">
-            <input className="priceInput" placeholder="0.00" type="number" min="0" value={lowerPrice} onChange={(e) => handlePriceChange(e, "lower")} />
-            <p>-</p>
-            <input className="priceInput" placeholder="0.00" type="number" min="0" value={upperPrice} onChange={(e) => handlePriceChange(e, "upper")} />
-          </div>
-          <div className="priceCheckboxBox" onClick={() => handleSortToggle("lowToHigh")}>
-            <input type="checkbox" className="priceCheckbox" checked={sortOrder === "lowToHigh"} onChange={() => {}} />
-            <div>
-              <p className="priceCheckboxText">{t("productPage.lowToHigh")}</p>
+    <>
+      {isLoading ? (
+        <LoadingAnimation/>
+      ) : (
+        <div className="productPage">
+          <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({ show: false, message: "", type: "" })} />
+          <RedirectAlertForFunctions show={showAlert} onClose={() => setShowAlert(false)} />
+    
+          {/*------------------------------------------FILTRATION------------------------------------------*/}
+          <div className="productFilters">
+            <h2 className="filtersTitle">{t("productPage.filtration")}: </h2>
+            <hr/>
+            <h3 className="filtersTitlePrice">{t("productPage.price")}: </h3>
+            <div className="priceFilterBox">
+              <div className="priceFilterInputs">
+                <input className="priceInput" placeholder="0.00" type="number" min="0" value={lowerPrice} onChange={(e) => handlePriceChange(e, "lower")} />
+                <p>-</p>
+                <input className="priceInput" placeholder="0.00" type="number" min="0" value={upperPrice} onChange={(e) => handlePriceChange(e, "upper")} />
+              </div>
+              <div className="priceCheckboxBox" onClick={() => handleSortToggle("lowToHigh")}>
+                <input type="checkbox" className="priceCheckbox" checked={sortOrder === "lowToHigh"} onChange={() => {}} />
+                <div>
+                  <p className="priceCheckboxText">{t("productPage.lowToHigh")}</p>
+                </div>
+              </div>
+              <div className="priceCheckboxBox" onClick={() => handleSortToggle("highToLow")}>
+                <input type="checkbox" className="priceCheckbox" checked={sortOrder === "highToLow"} onChange={() => {}} />
+                <div>
+                  <p className="priceCheckboxText">{t("productPage.highToLow")}</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="priceCheckboxBox" onClick={() => handleSortToggle("highToLow")}>
-            <input type="checkbox" className="priceCheckbox" checked={sortOrder === "highToLow"} onChange={() => {}} />
-            <div>
-              <p className="priceCheckboxText">{t("productPage.highToLow")}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/*------------------------------------------HEADER------------------------------------------*/}
-      <main className="pPMain">
-        <header className="pPMainHeader">
-          <h2>
-            {getDisplayName()}:{" "}
-            <span className="pPProductCount">
-              {filteredProducts.length} {filteredProducts.length === 1 ? t("productPage.product") : t("productPage.products")}
-            </span>
-          </h2>
-        </header>
-
-        {/*------------------------------------------MAIN------------------------------------------*/}
-        {isLoading ? (
-          <div className="loading"></div>
-        ) : filteredProducts.length > 0 ? (
-          <div className="pPProductGrid">
-            {filteredProducts.map((product) => (
-              <article key={product.id} className="pPProductCard" onClick={() => handleProductClick(product.id)}>
-                <div className="pPImageContainer">
-                  {product.imageUrl ? (
-                    <img src={product.imageUrl} alt={product.name} className="pPProductImage" loading="lazy" onError={(e) => {   console.error("Image failed to load for product:", product.id);   e.target.style.display = "none"; }} />
-                  ) : (
-                    <h3 className="pPImagePlaceholder">
-                      <i className="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
-                    </h3>
-                  )}
-                  <button className="wishlistButton" onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)}>
-                    <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
-                  </button>
-                </div>
-                <div className="pPProductInfo">
-                  <h4 className="pPProductTitle">{product.name}</h4>
-                  <div className="pPProductFooter">
-                    <p className="pPProductPrice">
-                      {product.price} {t("productPage.lv")}.
-                    </p>
-                    <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert)}>
-                      <i className="fa-solid fa-cart-shopping"></i>
-                      {t("productPage.addToCart")}
-                    </button>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="noProducts">
-            <h2>{t("productPage.sorryWeDontHaveIt")}</h2>
-            {!isCategory && promotionName && (
-              <p>
-                {t("productPage.noProductsMatch")}: „{decodeURIComponent(promotionName.replace(/-/g, " "))}“
-              </p>
+    
+          {/*------------------------------------------HEADER------------------------------------------*/}
+          <main className="pPMain">
+            <header className="pPMainHeader">
+              <h2>
+                {getDisplayName()}:{" "}
+                <span className="pPProductCount">
+                  {filteredProducts.length} {filteredProducts.length === 1 ? t("productPage.product") : t("productPage.products")}
+                </span>
+              </h2>
+            </header>
+    
+            {/*------------------------------------------MAIN------------------------------------------*/}
+            {(isLoading || isFetchingFavorites) ? (
+              <div className="loading"></div>
+            ) : filteredProducts.length > 0 ? (
+              <div className="pPProductGrid">
+                {filteredProducts.map((product) => (
+                  <article key={product.id} className="pPProductCard">
+                    <div className="pPImageContainer" onClick={() => handleProductClick(product.id)}>
+                      {product.imageUrl ? (
+                        <img src={product.imageUrl} alt={product.name} className="pPProductImage" loading="lazy" onError={(e) => {   console.error("Image failed to load for product:", product.id);   e.target.style.display = "none"; }} />
+                      ) : (
+                        <h3 className="pPImagePlaceholder">
+                          <i className="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
+                        </h3>
+                      )}
+                      <button className="wishlistButton" onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)} disabled={isAddingToFavorites}>
+                        <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
+                      </button>
+                    </div>
+                    <div className="pPProductInfo">
+                      <h4 className="pPProductTitle">{product.name}</h4>
+                      <div className="pPProductFooter">
+                        <p className="pPProductPrice">
+                          {product.price} {t("productPage.lv")}.
+                        </p>
+                        <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert)} disabled={isAddingToCart === product.id}>
+                          {isAddingToCart === product.id ? (
+                            <span><i className="fa-solid fa-cart-shopping"></i>{t("productPage.addingToCart") + "..."}</span>
+                          ) : (
+                            <span><i className="fa-solid fa-cart-shopping"></i>{t("productPage.addToCart")}</span>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="noProducts">
+                <h2>{t("productPage.sorryWeDontHaveIt")}</h2>
+                {!isCategory && promotionName && (
+                  <p>
+                    {t("productPage.noProductsMatch")}: „{decodeURIComponent(promotionName.replace(/-/g, " "))}“
+                  </p>
+                )}
+              </div>
             )}
-          </div>
-        )}
-      </main>
-    </div>
+          </main>
+        </div>
+      )}
+    </>
   );
 };
 

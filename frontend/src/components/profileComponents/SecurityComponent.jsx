@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SecurityComponent.css";
 import { useTranslation } from "react-i18next";
 
-export default function SecurityComponent() {
+const SecurityComponent = () => {
   const { t } = useTranslation();
 
   return (
@@ -33,4 +33,6 @@ export default function SecurityComponent() {
       </div>
     </div>
   );
-}
+};
+
+export default SecurityComponent;

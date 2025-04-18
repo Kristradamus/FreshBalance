@@ -9,7 +9,7 @@ import AdminOrders from "../../components/adminComponents/AdminOrders.jsx";
 import AdminSettings from "../../components/adminComponents/AdminSettings.jsx";
 import LogOutComponent from "../../components/reusableComponents/LogOut.jsx";
 
-function AdminLayout() {
+const AdminLayout = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,7 +47,7 @@ function AdminLayout() {
   );
 }
 
-export default function AdminPage() {
+const AdminPage = () => {
   return (
     <Routes>
       <Route path="/" element={<AdminLayout />}>
@@ -59,4 +59,6 @@ export default function AdminPage() {
       </Route>
     </Routes>
   );
-}
+};
+
+export default AdminPage;

@@ -206,6 +206,7 @@
     "sorryWeDontHaveIt":"Sorry we don't currently have what you are searching for",
     "lv":"lv",
     "addToCart":"Add to Cart",
+    "addingToCart":"Adding to cart",
     "product":"Product",
     "products":"Products",
     "noProductsMatch":"No products match your search",
@@ -218,7 +219,6 @@
     "removedFromFavorites":"The product was removed from your wishlist",
     "addedToFavorites":"The product was added to your wishlist",
     "favoritesError":"There is a problem with this functionality, please try again later !",
-
     "addedToCart":"Product was added to cart !",
     "cartError":"There is a problem with this functionality, please try again later !"
   },

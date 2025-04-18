@@ -445,18 +445,15 @@
   max-width:250px;
   font-size:var(--textFont);
 }
-.removeBtn:disabled {
-  background: var(--secondButtonHover);
-  cursor: not-allowed;
+.removeBtn:disabled,
+.removeBtn:disabled:hover{
+  background: var(--secondButtonColor);
+  transform:translateY(0px);
   color:var(--mainTextColor);
 }
 .removeBtn{
   background: var(--thirdButtonColor);
   color:var(--white);
-}
-.removeBtn:not(:disabled):hover {
-  background-color: var(--thirdButtonHover);
-  transform: translateY(-1px);
 }
 
 /*-----------------------------RESPONSIVE--------------------------------------------*/

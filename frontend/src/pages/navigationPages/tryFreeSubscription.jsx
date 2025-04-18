@@ -30,6 +30,7 @@ const TryFreeSubscription = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
 export default TryFreeSubscription;
