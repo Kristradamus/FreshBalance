@@ -124,6 +124,11 @@
       { "icon": "fa-solid fa-percent", "text": "10% off orders over 200lv." },
       { "icon": "fa-solid fa-leaf", "text": "100% bio products" }
     ],
+    "topProductsRows":[
+      { "link": "trending-now", "displayName": "Trending Now" },
+      { "link": "featured-products", "displayName": "Featured Products" },
+      { "link": "new-arrivals", "displayName": "New Arrivals" }
+    ],
     "whoWeAreData":[
       {
         "img": "../../public/images/frontPageWhoWeAre1.jpg",

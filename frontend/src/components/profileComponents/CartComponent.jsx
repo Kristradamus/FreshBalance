@@ -72,10 +72,7 @@ const CartComponent = () => {
                 <div key={item.product_id} className="cartItem">
                   <div className="cartItemImage">
                     {item.image ? (
-                      <img 
-                        src={`data:image/jpeg;base64,${item.image.data}`} 
-                        alt={item.name} 
-                      />
+                      <img src={`data:image/jpeg;base64,${item.image.data}`} alt={item.name} />
                     ) : (
                       <div className="noImage">No Image</div>
                     )}

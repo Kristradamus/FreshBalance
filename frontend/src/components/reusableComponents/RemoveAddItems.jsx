@@ -5,7 +5,7 @@ import { AuthContext } from "../protectionComponents/AuthContext.jsx";
 const useRemoveAddHandler = () => {
   const [favorites, setFavorites] = useState([]);
   const [isAddingToCart, setIsAddingToCart] = useState(null);
-  const [isAddingToFavorites, setIsAddingToFavorites] = useState(false);
+  const [isAddingToFavorites, setIsAddingToFavorites] = useState(null);
   const [isFetchingFavorites, setIsFetchingFavorites] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -44,9 +44,11 @@ const useRemoveAddHandler = () => {
   /*-------------------------------FAVORITES------------------------------------*/
   const handleAddToFavorites = async (e, productId, setToast, t, setShowAlert) => {
     e.stopPropagation();
-    setIsAddingToFavorites(true);
+    setIsAddingToFavorites(productId);
     if (!isAuthenticated) {
+
       setShowAlert(true);
+      setIsAddingToFavorites(null);
       return;
     }
     try {
@@ -100,7 +102,7 @@ const useRemoveAddHandler = () => {
       });
     }
     finally{
-      setIsAddingToFavorites(false);
+      setIsAddingToFavorites(null);
     }
   };
 
@@ -110,6 +112,7 @@ const useRemoveAddHandler = () => {
     
     if (!isAuthenticated) {
       setShowAlert(true);
+      setIsAddingToCart(null);
       return;
     }
     try {

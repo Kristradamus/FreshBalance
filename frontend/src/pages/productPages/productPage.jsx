@@ -138,7 +138,7 @@ const ProductPage = () => {
   }, [promotionName, location.pathname, t]);
 
   /*------------------------------------SEARCH-------------------------------------*/
-  const filterProductsBySearchTerm = (productsList, searchTerm) => {
+  const filterProductsBySearchTerm = (productsList, searchTerm) => {  
     if (!searchTerm || searchTerm.trim() === "") {
       setFilteredProducts(productsList);
       return;
@@ -314,7 +314,7 @@ const ProductPage = () => {
     
             {/*------------------------------------------MAIN------------------------------------------*/}
             {(isLoading || isFetchingFavorites) ? (
-              <div className="loading"></div>
+              <LoadingAnimation/>
             ) : filteredProducts.length > 0 ? (
               <div className="pPProductGrid">
                 {filteredProducts.map((product) => (
@@ -327,7 +327,7 @@ const ProductPage = () => {
                           <i className="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
                         </h3>
                       )}
-                      <button className="wishlistButton" onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)} disabled={isAddingToFavorites}>
+                      <button className="wishlistButton" onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)} disabled={isAddingToFavorites === product.id}>
                         <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
                       </button>
                     </div>
