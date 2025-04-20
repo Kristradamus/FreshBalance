@@ -213,7 +213,8 @@
     "addedToFavorites": "El producto fue añadido a tu lista de deseos",
     "favoritesError": "Hay un problema con esta funcionalidad, por favor intenta de nuevo más tarde.",
     "addedToCart": "¡El producto fue añadido al carrito!",
-    "cartError": "Hay un problema con esta funcionalidad, por favor intenta de nuevo más tarde."
+    "cartError": "Hay un problema con esta funcionalidad, por favor intenta de nuevo más tarde.",
+    "notEnoughProducts": "Lo sentimos, excederías el límite de stock. Puedes añadir un máximo de:"
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {

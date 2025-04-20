@@ -209,7 +209,8 @@
     "addedToFavorites": "Das Produkt wurde zur Wunschliste hinzugefügt",
     "favoritesError": "Es gibt ein Problem mit dieser Funktion. Bitte versuchen Sie es später erneut!",
     "addedToCart": "Produkt wurde zum Warenkorb hinzugefügt!",
-    "cartError": "Es gibt ein Problem mit dieser Funktion. Bitte versuchen Sie es später erneut!"
+    "cartError": "Es gibt ein Problem mit dieser Funktion. Bitte versuchen Sie es später erneut!",
+    "notEnoughProducts":"Entschuldigung, dies würde die verfügbare Menge überschreiten. Sie können maximal hinzufügen:"
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {

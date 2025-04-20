@@ -57,20 +57,32 @@ const SingleProductPage = () => {
 
   /*---------------------------------------------QUANTITY-BEHAIVIOR--------------------------------------------*/
   const handleQuantityChange = (e) => {
-    const value = parseInt(e.target.value);
-    if (!isNaN(value) && value > 0) {
-      setQuantity(value);
+    const value = e.target.value;
+  
+    if (value === "") {
+      setQuantity("");
+    } 
+    else {
+      const parsed = parseInt(value);
+      if (!isNaN(parsed) && parsed > 0) {
+        const limitedValue = Math.min(parsed, product.stock);
+        setQuantity(limitedValue);
+      }
     }
   };
 
   const incrementQuantity = () => {
-    setQuantity((prev) => prev + 1);
+    setQuantity((prev) => {
+      const next = parseInt(prev) || 1;
+      return next < product.stock ? next + 1 : product.stock;
+    });
   };
-
+  
   const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-    }
+    setQuantity((prev) => {
+      const next = parseInt(prev) || 1;
+      return next > 1 ? next - 1 : 1;
+    });
   };
 
   const goBack = () => {
@@ -112,9 +124,7 @@ const SingleProductPage = () => {
                 </div>
               ) : (
                 <div className="imageWrapper">
-                  <p>
-                    <i className="fa-solid fa-camera"></i> {t("singleProductPage.noProductImage")}
-                  </p>
+                  <p className="imagePlaceholder"><i className="fa-solid fa-camera"></i> {t("singleProductPage.noProductImage")}</p>
                   <button className="goBackButtonForProduct" onClick={goBack}>
                     <i className="fa-solid fa-arrow-left"></i> {t("singleProductPage.backToProducts")}
                   </button>
@@ -156,16 +166,15 @@ const SingleProductPage = () => {
                 {/*------------------------------PURCASE------------------------*/}
                 <div className="purchaseControls">
                   <div className="quantityControl">
-                    <button className="quantityBtn" onClick={decrementQuantity}>
+                    <button className="quantityBtn" onClick={decrementQuantity} disabled={quantity <= 1}>
                       <i className="fa-solid fa-minus"></i>
                     </button>
-                    <input type="number" min="1" value={quantity} onChange={handleQuantityChange} className="quantityInput" />
-                    <button className="quantityBtn" onClick={incrementQuantity}>
+                    <input type="number" min="null" max={product.stock} value={quantity} onChange={handleQuantityChange} onBlur={() => {if (quantity === "") setQuantity(1);}} className="quantityInput" />
+                    <button className="quantityBtn" onClick={incrementQuantity} disabled={quantity >= product.stock}>
                       <i className="fa-solid fa-plus"></i>
                     </button>
                   </div>
-    
-                  <button className="singleProductAddToCartBtn" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert, quantity)} disabled={isAddingToCart === product.id}>
+                  <button className="singleProductAddToCartBtn" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert, quantity)} disabled={isAddingToCart === product.id || product.stock <= 0}>
                     {isAddingToCart === product.id ? (
                       <span><i className="fa-solid fa-cart-shopping"></i> {t("productPage.addingToCart")}</span>
                     ) : (

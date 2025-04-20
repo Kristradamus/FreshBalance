@@ -10,6 +10,7 @@ router.use((req, res, next) => {
 
 router.use(authMiddleware.authenticateJWT);
 
+router.get("/stock/:productId", cartController.getAvailableStock);
 router.get("/", cartController.getCart);
 router.post("/add/:productId", cartController.addToCart);
 router.put("/update/:productId", cartController.updateCartItem);

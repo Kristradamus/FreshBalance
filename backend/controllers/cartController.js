@@ -1,5 +1,76 @@
 const pool = require("../dataBase.js");
 
+/*---------------------------------GET-AVAILABLE-STOCK--------------------------------------*/
+const getAvailableStock = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    const [[product], [cartItem]] = await Promise.all([
+      pool.query("SELECT stock FROM products WHERE id = ?", [productId]),
+      pool.query("SELECT quantity FROM user_cart WHERE user_id = ? AND product_id = ?", [req.user.userId, productId])
+    ]);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found!" });
+    }
+
+    const available = product[0].stock - (cartItem[0]?.quantity || 0);
+    
+    res.json({
+      availableStock: available
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+/*-----------------------------ADD-TO-CART------------------------------*/
+const addToCart = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const quantity = parseInt(req.body.quantity) || 1;
+
+    const [product] = await pool.query(
+      "SELECT stock FROM products WHERE id = ?",
+      [productId]
+    );
+
+    if (!product.length) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    const [cartItem] = await pool.query(
+      "SELECT quantity FROM user_cart WHERE user_id = ? AND product_id = ?",
+      [req.user.userId, productId]
+    );
+
+    const currentInCart = cartItem[0]?.quantity || 0;
+    const requestedTotal = currentInCart + quantity;
+
+    if (requestedTotal > product[0].stock) {
+      return res.status(400).json({
+        message: `Only ${product[0].stock - currentInCart} available (you have ${currentInCart} in cart)`,
+        code: "STOCK_LIMIT"
+      });
+    }
+
+    await pool.query(
+      `INSERT INTO user_cart (user_id, product_id, quantity)
+       VALUES (?, ?, ?)
+       ON DUPLICATE KEY UPDATE
+       quantity = quantity + ?`,
+      [req.user.userId, productId, quantity, quantity]
+    );
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+/*----------------------------------GET-CART-----------------------------------*/
 const getCart = async (req, res) => {
   try {
     const [cartItems] = await pool.query(
@@ -31,37 +102,6 @@ const getCart = async (req, res) => {
       totalItems,
       totalAmount
     });
-  } 
-  catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
-/*-----------------------------ADD-TO-CART------------------------------*/
-const addToCart = async (req, res) => {
-  try {
-    const { productId } = req.params || req.body;
-    const quantity = req.body.quantity || 1;
-    
-    const [product] = await pool.query(
-      "SELECT * FROM products WHERE id = ? AND stock >= ?",
-      [productId, quantity]
-    );
-    
-    if (product.length === 0) {
-      return res.status(400).json({ message: "Product not available or insufficient stock"});
-    }
-    
-    await pool.query(
-      `INSERT INTO user_cart (user_id, product_id, quantity)
-      VALUES (?, ?, ?)
-      ON DUPLICATE KEY UPDATE
-      quantity = quantity + ?`,
-      [req.user.userId, productId, quantity, quantity]
-    );
-    
-    res.json({ success: true });
   } 
   catch (err) {
     console.error(err);
@@ -113,12 +153,24 @@ const removeFromCart = async (req, res) => {
   try {
     const { productId } = req.params;
     
+    const [item] = await pool.query(
+      "SELECT * FROM user_cart WHERE user_id = ? AND product_id = ?",
+      [req.user.userId, productId]
+    );
+    
+    if (!item.length) {
+      return res.status(404).json({ message: "Item not found in cart" });
+    }
+    
     await pool.query(
       "DELETE FROM user_cart WHERE user_id = ? AND product_id = ?",
       [req.user.userId, productId]
     );
     
-    res.json({ success: true });
+    res.json({ 
+      success: true,
+      removedItem: item[0]
+    });
   } 
   catch (err) {
     console.error(err);
@@ -212,5 +264,6 @@ module.exports = {
   addToCart,
   updateCartItem,
   removeFromCart,
+  getAvailableStock,
   checkout
 };

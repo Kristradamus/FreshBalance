@@ -118,6 +118,23 @@ const useRemoveAddHandler = () => {
     try {
       setIsAddingToCart(productId);
       const token = localStorage.getItem("authToken");
+    
+      const stockResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/cart/stock/${productId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+      
+      const availableStock = stockResponse.data.availableStock;
+      
+      if (quantity > availableStock) {
+        setToast({
+          show: true,
+          message: (t("productPage.notEnoughProducts") + ` ${availableStock} ` + t("productPage.products")),
+          type: "error"
+        });
+        return;
+      }
       
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/cart/add/${productId}`,{ quantity: quantity },
         {
@@ -148,7 +165,7 @@ const useRemoveAddHandler = () => {
     }
   };
 
-  return { favorites, handleAddToFavorites, isAddingToCart, handleAddToCart, isAddingToFavorites, isFetchingFavorites};
+  return { favorites, handleAddToFavorites, isAddingToCart, handleAddToCart, isAddingToFavorites, isFetchingFavorites };
 };
 
 export default useRemoveAddHandler;

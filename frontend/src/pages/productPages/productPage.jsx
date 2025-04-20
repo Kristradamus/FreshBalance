@@ -268,7 +268,7 @@ const ProductPage = () => {
 
   return (
     <>
-      {isLoading ? (
+      {(isLoading || isFetchingFavorites) ? (
         <LoadingAnimation/>
       ) : (
         <div className="productPage">
@@ -313,9 +313,7 @@ const ProductPage = () => {
             </header>
     
             {/*------------------------------------------MAIN------------------------------------------*/}
-            {(isLoading || isFetchingFavorites) ? (
-              <LoadingAnimation/>
-            ) : filteredProducts.length > 0 ? (
+            {filteredProducts.length > 0 ? (
               <div className="pPProductGrid">
                 {filteredProducts.map((product) => (
                   <article key={product.id} className="pPProductCard">

@@ -225,7 +225,8 @@
     "addedToFavorites":"The product was added to your wishlist",
     "favoritesError":"There is a problem with this functionality, please try again later !",
     "addedToCart":"Product was added to cart !",
-    "cartError":"There is a problem with this functionality, please try again later !"
+    "cartError":"There is a problem with this functionality, please try again later !",
+    "notEnoughProducts":"Sorry but you will exceed the stock limit. You can add maximum:"
   },
   "---------------------------------------------------------PROFILE--------------------------------------------------------------": {},
   "profile": {

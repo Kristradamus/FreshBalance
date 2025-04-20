@@ -130,30 +130,31 @@ const Header = () => {
   const handleSearchSubmit = () => {
     const trimmedQuery = searchQuery.trim().toLowerCase();
     const foundProduct = allProducts.find((product) => product.name.toLowerCase() === trimmedQuery);
+
+    searchInputRef.current?.blur();
     
     if (foundProduct) {
       handleSearchClose();
+      saveRecommendation(trimmedQuery);
       const productPath = `/single-product/${foundProduct.id}`;
       
       if (location.pathname === productPath) {
         window.location.reload();
       } else {
-        window.location.reload();
         navigate(productPath);
       }
-      saveRecommendation(trimmedQuery);
     } 
+
     else {
+      saveRecommendation(trimmedQuery);
       const targetLink = `/product/${trimmedQuery}`;
       
       if (location.pathname === targetLink) {
         window.location.reload();
       } 
       else {
-        window.location.reload();
         navigate(targetLink);
         handleSearchClose();
-        saveRecommendation(trimmedQuery);
       }
     }
   };
@@ -175,8 +176,6 @@ const Header = () => {
       navigate(targetLink);
       saveRecommendation(item);
     }
-
-    window.location.reload();
   };
 
   const saveRecommendation = (term) => {
