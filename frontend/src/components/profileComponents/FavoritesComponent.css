@@ -93,8 +93,9 @@
   border:none;
   border-radius:var(--smallRadius);
   width:100%;
-  min-width:200px;
+  min-width:210px;
   transition:var(--transition);
+  cursor:pointer
 }
 .favoritesRemoveBtn{
   background-color:var(--secondButtonColor);
@@ -112,12 +113,12 @@
   background-color:var(--mainButtonHover);
   transform:translateY(-1px);
 }
-
+.favoritesRemoveBtn i,
+.favoritesAddToCartBtn i{
+  margin-right:var(--iconDistance);
+}
 /*-----------------------RESPONSIVE----------------------------*/
 @media(max-width:1000px){
-
-}
-@media(max-width:780px){
   .favoriteItem{
     flex-direction:column;
   }

@@ -102,7 +102,7 @@
   color: var(--secondBackgrund);
   font-size: var(--textFont);
   border: none;
-  border-radius: 50%;
+  border-radius: var(--circle);
   width: 35px;
   height: 35px;
   display: flex;
@@ -204,7 +204,7 @@
   display: flex;
   align-items: center;
   border: 1px solid var(--secondBackground);
-  border-radius: 4px;
+  border-radius: calc(var(--smallRadius) - 2px);
   overflow: hidden;
 }
 .quantityBtn {
@@ -236,7 +236,7 @@
   border-left: 1px solid var(--secondBackground);;
   border-right: 1px solid var(--secondBackground);;
   text-align: center;
-  font-size: var(--textFont);
+  font-size: calc(var(--textFont) + 4px);
 }
 .quantityInput::-webkit-inner-spin-button,
 .quantityInput::-webkit-outer-spin-button {

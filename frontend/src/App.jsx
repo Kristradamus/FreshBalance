@@ -10,6 +10,7 @@ import ProtectedRouteAdmin from "./components/protectionComponents/ProtectedRout
 import NavigationTracker from "./components/reusableComponents/NavigationTracker.jsx";
 import RedirectTo from "./components/protectionComponents/RedirectTo.jsx";
 
+const Checkout = React.lazy(() => import("./pages/headerPages/CheckoutPage.jsx"));
 const Admin = React.lazy(() => import("./pages/headerPages/admin.jsx"));
 const AboutUs = React.lazy(() => import("./pages/navigationPages/aboutUs.jsx"));
 const Communities = React.lazy(() => import("./pages/navigationPages/communities.jsx"));
@@ -46,10 +47,11 @@ const App = () => {
                   <Route path="/support/contact" element={<Support />} />
                   <Route path="/admin/*"element={<ProtectedRouteAdmin><Admin /></ProtectedRouteAdmin>} />
                   <Route path="/profile/*" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-                  <Route path="/product/:promotionName" element={<ProductPage />} />
-                  <Route path="/single-product/:promotionName" element={<SingleProductPage/>}></Route>
+                  <Route path="/product/:promotionName" element={<ProductPage/>} />
+                  <Route path="/single-product/:promotionName" element={<SingleProductPage/>} />
                   <Route path="/legal-policies" element={<LegalPage />} />
                   <Route path="/communities" element={<Communities />}/>
+                  <Route path="/checkout" element={<Checkout/>} />
                 </Route>
               <Route path="/email-check/*" element={<RedirectTo><LoginRegistration /></RedirectTo>} />
             </Routes>

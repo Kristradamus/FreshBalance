@@ -22,7 +22,7 @@ export default function FrontPage() {
   const sliderIntervals = useRef({});
   const sliderRefs = useRef({});
   const productsPerCategory = 7;
-  const visibleProductsCount = 4;
+  const visibleProductsCount = 5;
   const frontPageCategories = t("frontPage.topProductsRows", { returnObject: true });
 
   const fPImagesData = [
@@ -313,56 +313,54 @@ export default function FrontPage() {
             <div className="fPTopProductsRows">
               {frontPageCategories.map((category) => (
                 <div key={category.link} className="fPTopProductsRowBox">
-                  <h2 className="categoryTitle">{category.displayName}:</h2>
+                  <div className="fPTopProductsCategoryTitle">
+                    <h2 className="categoryTitle">{category.displayName}:</h2>
+                  </div>
                   {productGroups[category.link] && productGroups[category.link].length > 0 && (
                     <div className="fPProductsRowContainer" onMouseEnter={() => handleMouseEnter(category.link)} onMouseLeave={() => handleMouseLeave(category.link)}ref={el => sliderRefs.current[category.link] = el}>
                       <div className="fPProductsRowSubContainer">
-                        <button className="sliderArrowPrev" onClick={(e) => handlePrevSlide(category.link, e)}>
+                        <button className="sliderArrow Prev" onClick={(e) => handlePrevSlide(category.link, e)}>
                           <i className="fa-solid fa-chevron-left"></i>
                         </button>
-                        <div className="fPProductsRow">
-                          <div className="sliderTrack" style={{ transform: `translateX(0)`, transition: 'transform 0.5s ease-in-out'}}>
-                            {getVisibleProducts(category.link).map((product) => (
-                              <article key={product.key || product.id} className="pPProductCard hidden slider-item">
-                                <div className="pPImageContainer" onClick={() => handleProductClick(product.id)}>
-                                  {product.imageUrl ? (
-                                    <img src={product.imageUrl} alt={product.name} className="pPProductImage" loading="lazy" onError={(e) => {  console.error("Image failed to load for product:", product.id);  e.target.style.display = "none";}} />
-                                  ) : (
-                                    <h3 className="pPImagePlaceholder">
-                                      <i className="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
-                                    </h3>
-                                  )}
-                                  <button className="wishlistButton"  onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)}  disabled={isAddingToFavorites === product.id}>
-                                    <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
+                        <div className="sliderTrack">
+                          {getVisibleProducts(category.link).map((product) => (
+                            <article key={product.key || product.id} className="pPProductCard hidden slider-item">
+                              <div className="pPImageContainer" onClick={() => handleProductClick(product.id)}>
+                                {product.imageUrl ? (
+                                  <img src={product.imageUrl} alt={product.name} className="pPProductImage" loading="lazy" onError={(e) => {  console.error("Image failed to load for product:", product.id);  e.target.style.display = "none";}} />
+                                ) : (
+                                  <h3 className="pPImagePlaceholder">
+                                    <i className="fa-solid fa-camera"></i> {t("productPage.noProductImage")}
+                                  </h3>
+                                )}
+                                <button className="wishlistButton"  onClick={(e) => handleAddToFavorites(e, product.id, setToast, t, setShowAlert)}  disabled={isAddingToFavorites === product.id}>
+                                  <i className={`fa-heart ${favorites.includes(product.id) ? "fa-solid active" : "fa-regular"}`}></i>
+                                </button>
+                              </div>
+                              <div className="pPProductInfo">
+                                <h4 className="pPProductTitle">{product.name}</h4>
+                                <div className="pPProductFooter">
+                                  <p className="pPProductPrice">{product.price} {t("productPage.lv")}.</p>
+                                  <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert)} disabled={isAddingToCart === product.id}>
+                                    {isAddingToCart === product.id ? (
+                                      <span><i className="fa-solid fa-cart-shopping"></i>{t("productPage.addingToCart") + "..."}</span>
+                                    ) : (
+                                      <span><i className="fa-solid fa-cart-shopping"></i>{t("productPage.addToCart")}</span>
+                                    )}
                                   </button>
                                 </div>
-                                <div className="pPProductInfo">
-                                  <h4 className="pPProductTitle">{product.name}</h4>
-                                  <div className="pPProductFooter">
-                                    <p className="pPProductPrice">
-                                      {product.price} {t("productPage.lv")}.
-                                    </p>
-                                    <button className="pPAddToCart" onClick={(e) => handleAddToCart(e, product.id, setToast, t, setShowAlert)} disabled={isAddingToCart === product.id}>
-                                      {isAddingToCart === product.id ? (
-                                        <span><i className="fa-solid fa-cart-shopping"></i>{t("productPage.addingToCart") + "..."}</span>
-                                      ) : (
-                                        <span><i className="fa-solid fa-cart-shopping"></i>{t("productPage.addToCart")}</span>
-                                      )}
-                                    </button>
-                                  </div>
-                                </div>
-                              </article>
-                            ))}
-                          </div>
+                              </div>
+                            </article>
+                          ))}
                         </div>
-                        <button className="sliderArrowNext" onClick={(e) => handleNextSlide(category.link, e)} aria-label="Next products" >
+                        <button className="sliderArrow Next" onClick={(e) => handleNextSlide(category.link, e)} aria-label="Next products" >
                           <i className="fa-solid fa-chevron-right"></i>
                         </button>
                       </div>
                       {productGroups[category.link] && productGroups[category.link].length > visibleProductsCount && (
-                        <div className="slider-pagination">
+                        <div className="sliderPagination">
                           {getPaginationDots(category.link).map((_, index) => (
-                            <button  key={index} className={`pagination-dot ${currentSlides[category.link] === index ? 'active' : ''}`} onClick={(e) => goToSlide(category.link, index, e)} />
+                            <button  key={index} className={`paginationDot ${currentSlides[category.link] === index ? 'active' : ''}`} onClick={(e) => goToSlide(category.link, index, e)} />
                           ))}
                         </div>
                       )}

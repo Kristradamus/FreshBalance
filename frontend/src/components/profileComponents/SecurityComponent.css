@@ -77,7 +77,7 @@
   bottom: 4px;
   background-color: var(--white);
   transition:var(--transition);
-  border-radius: 50%;
+  border-radius: var(--circle);
 }
 .toggleSwitch input:checked + .slider {
   background-color: var(--green);

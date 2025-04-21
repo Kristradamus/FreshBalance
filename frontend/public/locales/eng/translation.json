@@ -273,7 +273,17 @@
     
     "cart":{
       "mainTitle":"Cart",
-      "gettingItemsError":"There is a problem with displaying your items, please contact support !"
+      "cartSummary":"Cart Summary",
+      "gettingItemsError":"There is a problem with displaying your items, please contact support !",
+      "removeError":"There is a problem removing this product, please try later !",
+      "removeSuccess":"Product was removed succesfully !",
+      "remove":"Remove",
+      "removing":"Removing",
+      "updateError":"There is a problem changing the quantity of the product, please try later !",
+      "shippingPrice":"Shipping price",
+      "productsPrice":"All products",
+      "totalAmount":"Total amount",
+      "checkout":"Checkout"
     },
 
     "logoutConfirmTitle":"Confirm Logout",

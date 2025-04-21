@@ -148,17 +148,19 @@ import axios from "axios";
                   </div>
                   <div className="favoritesButtons">
                     <button className="favoritesRemoveBtn" onClick={() => handleRemoveProduct(product.id)} disabled={isAddingToCart === product.id || isRemoving === product.id}>
+                      <i className="fa-solid fa-trash"></i>
                       {isRemoving === product.id ? (
-                        <span><i className="fa-solid fa-trash"></i> {t("profile.favorites.remove") + "..."}</span>
+                        <span>{t("profile.favorites.remove") + "..."}</span>
                       ) : (
-                        <span><i className="fa-solid fa-trash"></i> {t("profile.favorites.remove")}</span>
+                        <span>{t("profile.favorites.remove")}</span>
                       )}
                     </button>
                     <button className="favoritesAddToCartBtn" onClick={(e) => handleAddToCart(e, product.id, setToast, t)} disabled={isAddingToCart === product.id || isRemoving === product.id}>
+                      <i className="fa-solid fa-cart-shopping"></i>
                       {isAddingToCart === product.id ? (
-                        <span><i className="fa-solid fa-cart-shopping"></i> {t("profile.favorites.addingToCart") + "..."}</span>
+                        <span>{t("profile.favorites.addingToCart") + "..."}</span>
                       ) : (
-                        <span><i className="fa-solid fa-cart-shopping"></i> {t("profile.favorites.addToCart")}</span>
+                        <span>{t("profile.favorites.addToCart")}</span>
                       )}
                     </button>
                   </div>

@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(false);
             setIsAdmin(false);
             setUser(null);
+            window.location.reload();
           }
         }
         catch (serverError) {
@@ -56,6 +57,7 @@ export const AuthProvider = ({ children }) => {
           setIsAuthenticated(false);
           setIsAdmin(false);
           setUser(null);
+          window.location.reload();
         }
       }
       else {
@@ -63,6 +65,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         setIsAdmin(false);
         setUser(null);
+        window.location.reload();
       }
     }
     catch (error) {
@@ -71,6 +74,7 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
       setIsAdmin(false);
       setUser(null);
+      window.location.reload();
     }
     finally {
       setIsLoading(false);

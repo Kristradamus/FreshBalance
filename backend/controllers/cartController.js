@@ -211,10 +211,7 @@ const checkout = async (req, res) => {
       }
     }
     
-    const totalAmount = cartItems.reduce(
-      (sum, item) => sum + (item.price * item.quantity), 
-      0
-    );
+    const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
     const [orderResult] = await connection.query(
       `INSERT INTO orders (user_id, total_amount, shipping_address, payment_method)

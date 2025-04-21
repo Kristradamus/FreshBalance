@@ -31,7 +31,7 @@
   padding:15px 15px;
   background-color:var(--mainButtonColor);
   color:var(--white);
-  border-radius:var(--smallRadius);
+  border-radius:var(--normalRadius);
   transition:var(--transition);
   font-size:calc(var(--textFont) + 2px);
 }
@@ -187,109 +187,84 @@
 }
 
 /*--------------------PRODUCTS-----------------------*/
-.categoryTitle{
-  color:var(--green);
+.fPTopProductsCategoryTitle{
+  background-color:var(--green);
+  border-radius:var(--smallRadius);
+  box-shadow:var(--boxShadow);
+  transition:var(--transition);
+  padding:4px 0px;
 }
-.fPTopProductsRows{
-  align-items:center;
+.fPTopProductsCategoryTitle h2{
+  color:var(--white);
+  text-align:center;
 }
 .fPTopProductsRows,
-.fPTopProductsRowBox{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-.fPTopProductsRowBox{
-  margin-top:30px;
-}
-.fPProductsRow{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  gap:20px;
-}
+.fPTopProductsRowBox,
 .fPProductsRowContainer{
   display:flex;
   flex-direction:column;
-  gap:10px;
+}
+.fPTopProductsRows{
+  gap:30px;
+}
+.fPTopProductsRowBox{
+  gap:15px;
 }
 .fPProductsRowSubContainer{
   display:flex;
   flex-direction:row;
+  align-items:center;
   gap:20px;
 }
-
-.sliderArrow:hover {
-  background: rgba(255, 255, 255, 0.9);
+.sliderTrack{
+  display:flex;
+  flex-direction:row;
+  gap:20px;
 }
-
-.scrollArrow i {
-  font-size: 1.2rem;
-  color: #333;
+.sliderArrow{
+  border:1px solid transparent;
+  border-radius:var(--circle);
+  background-color:var(--white);
+  box-shadow:var(--boxShadow);
+  width:50px;
+  height:50px;
+  transition:var(--transition);
+  cursor:pointer;
+  color:var(--green);
+  font-size:20px;
 }
-
-.sliderArrowPrev {
-  margin-left: 10px;
-  left:10px;
+.sliderArrow:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--boxShadowLight);
+  border:1px solid var(--secondButtonColor);
 }
-
-.sliderArrowNext {
-  margin-right: 10px;
-}
-
-
 
 .sliderTrack {
   display: flex;
-  flex-direction:row;
-  gap:20px;
-  width: 96%;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
 }
 
-.pPProductCard.slider-item {
-  flex: 0 0 23%;
-  min-width: 25%;
-  padding: 0 10px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
-}
-
-.slider-arrow:hover {
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.slider-prev {
-  left: 0;
-}
-
-.slider-next {
-  right: 0;
-}
-
-/* Pagination Dots */
-.slider-pagination {
+/*---------------------------------SLIDER-DOTS---------------------------------*/
+.sliderPagination {
   display: flex;
   justify-content: center;
   margin-top: 15px;
 }
-
-.pagination-dot {
+.paginationDot {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
+  border-radius: var(--circle);
   border: none;
-  background-color: #ddd;
+  background-color: var(--secondButtonHover);
   margin: 0 5px;
   padding: 0;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
 }
-
-.pagination-dot.active {
-  background-color: #333;
+.paginationDot.active {
+  background-color: var(--green);
 }
-
 
 
 .pPImageContainer{
@@ -315,12 +290,13 @@
 }
 .pPProductGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
   gap:20px;
 }
 .pPProductCard {
   background-color:var(--white);
-  max-width:300px;
+  max-width:275px;
+  min-width:275px;
   border-radius: var(--smallRadius);
   overflow: hidden;
   box-shadow: var(--boxShadow);
@@ -348,7 +324,7 @@
   border:none;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: var(--circle);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -372,16 +348,17 @@
 .pPProductPrice {
   font-weight: bold;
   color: var(--mainTextColor);
-  font-size: var(--textFont)
+  font-size:calc(var(--smallTextFont) - 1px);
 }
 .pPAddToCart {
   background-color: var(--mainButtonColor);
   color: var(--white);
   border: none;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: var(--smallRadius);
   cursor: pointer;
   transition: var(--transition);
+  font-size:calc(var(--smallTextFont) - 1px);
 }
 .pPAddToCart:hover {
   background-color: var(--mainButtonHover);
@@ -639,7 +616,7 @@
   .fPTopProductsTitleBox {
     padding-top:10px;
   }
-  
+
   /*---------------WHO-WE-ARE-----------------*/
   .fPWhoWeAre{
     padding-top:60px;
@@ -726,6 +703,7 @@
   .fPTopProductsTitle1{
     font-size: calc(var(--textFont) + 5px);
   }
+
  
   /*-------------------WHO-WE-ARE-----------------------*/
   .fPWhoWeAre{
@@ -799,4 +777,7 @@
   .fPWhoWeWorkWithTitle1{
     font-size: var(--smallTextFont);
   }
+}
+.fPTopProducts {
+  overflow: hidden; 
 }

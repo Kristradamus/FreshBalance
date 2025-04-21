@@ -303,12 +303,10 @@ const ProductManagement = () => {
           <h2>{t("admin.productManagement.mainTitle")}</h2>
           <div className="productManagementButtons">
             <button className={`removeProductBtn ${activeForm === "remove" ? "active" : ""}`} onClick={handleRemoveClick}>
-              <i className="fa-solid fa-minus"></i>
-              {t("admin.productManagement.remove.productBtnText")}
+              <span><i className="fa-solid fa-minus"></i>{t("admin.productManagement.remove.productBtnText")}</span>
             </button>
             <button className={`addProductBtn ${activeForm === "add" ? "active" : ""}`} onClick={handleAddClick}>
-              <i className="fa-solid fa-plus"></i>
-              {t("admin.productManagement.add.productBtnText")}
+              <span><i className="fa-solid fa-plus"></i>{t("admin.productManagement.add.productBtnText")}</span>
             </button>
           </div>
         </div>

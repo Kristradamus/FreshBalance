@@ -185,7 +185,7 @@
   border:none;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: var(--circle);
   display: flex;
   align-items: center;
   justify-content: center;

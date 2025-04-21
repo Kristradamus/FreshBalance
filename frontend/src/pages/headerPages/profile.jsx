@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, useNavigate, useLocation, Outlet } from "react-router-dom";
-import FavoritesComponent from "../../components/profileComponents/favoritesComponent.jsx";
+import FavoritesComponent from "../../components/profileComponents/FavoritesComponent.jsx";
 import CartComponent from "../../components/profileComponents/CartComponent.jsx";
 import SecurityComponent from "../../components/profileComponents/SecurityComponent.jsx";
 import LogOutComponent from "../../components/reusableComponents/LogOut.jsx";
