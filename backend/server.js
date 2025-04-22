@@ -10,6 +10,7 @@ const supportController = require("./controllers/supportController.js");
 const cartRoutes = require("./routes/cartRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 const favoriteRoutes = require("./routes/favoriteRoutes.js");
+const orderRoutes = require("./routes/orderRoutes.js")
 const pool = require("./dataBase.js");
 
 app.use(
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/cart", cartRoutes);
 app.use("/products", productRoutes);
 app.use("/favorites", favoriteRoutes);
+app.use("/orders", orderRoutes);
 
 app.post("/check-email", authController.emailCheckLimiter, authController.checkEmail);
 app.post("/register", authController.verifyEmailVerificationCode, authController.register);

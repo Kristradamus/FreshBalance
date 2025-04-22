@@ -222,6 +222,7 @@
       { "icon": "fa-solid fa-gear", "title": "Настройки на профила", "key": "settings", "path": "settings" },
       { "icon": "fa-solid fa-heart", "title": "Любими", "key": "favorites", "path": "favorites" },
       { "icon": "fa-solid fa-cart-shopping", "title": "Количка", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-box", "title": "Поръчки", "key": "orders", "path": "orders"},
       { "icon": "fa-solid fa-shield-halved", "title": "Сигурност", "key": "security", "path": "security" },
       { "icon": "fa-solid fa-right-from-bracket", "title": "Изход", "key": "logout", "path": "logout", "isLogout": true }
     ],
@@ -258,8 +259,53 @@
     "settingsPhoneNumber": "Телефонен номер",
     "settingsSaveChanges": "Запази промените",
 
-    "cartMainTitle": "Количка",
+    "cart": {
+      "mainTitle": "Количка",
+      "cartSummary": "Стойност на количката",
+      "gettingItemsError": "Има проблем с показването на артикулите ви, моля свържете се с поддръжката!",
+      "removeError": "Възникна проблем при премахването на този продукт, моля опитайте по-късно!",
+      "removeSuccess": "Продуктът беше премахнат успешно!",
+      "updateError": "Възникна проблем при промяна на количеството на продукта, моля опитайте по-късно!",
+      "shippingPrice": "Цена на доставка",
+      "productsPrice": "Всички продукти",
+      "totalAmount": "Обща сума",
+      "checkout": "Плащане"
+    },
+
+    "checkout": {
+      "mainTitle": "Информация за поръчката",
+      "firstName": "Име",
+      "lastName": "Фамилия",
+      "phoneNumber": "Телефонен номер",
+      "email": "Имейл",
+      "userInformation": "Информация за контакт",
+      "deliveryWay": "Доставка",
+      "deliveryWayOptions": "Изберете начин на доставка",
+      "cantReachCheckout": "Възникна проблем с финализирането на поръчката, моля опитайте по-късно!",
+      "allFieldsRequiered": "Всички полета са задължителни!",
+      "error": "Някой артикул е разпродаден, моля коригирайте поръчката си!",
+      "emptyCartError": "Вашата количка е празна, моля изберете нещо преди да продължите!",
+      "toAddress": "до адрес",
+      "toOffice": "до офис",
+      "toStore": "до магазин",
+      "deliveryToAddress": "Доставка до адрес",
+      "deliveryToOffice": "Доставка до офис на Speedy",
+      "deliveryToStore": "Доставка до магазин на FreshBalance",
     
+      "city": "Град",
+      "postalCode": "Пощенски код",
+      "addressPart1": "Адрес (квартал, улица)",
+      "addressPart2": "Адрес (блок, номер, вход, етаж)",
+    
+      "selectCity": "Изберете град",
+      "selectOffice": "Изберете офис",
+      "selectStore": "Изберете магазин",
+    
+      "paymentInformation": "Платежна информация",
+    
+      "additionalInformation": "Допълнителна информация"
+    },
+
     "logoutConfirmTitle": "Потвърждение за изход",
     "logoutConfirmMessage": "Сигурни ли сте, че искате да излезете?",
     "logoutConfirm": "Да, изход"

@@ -4,6 +4,7 @@ import FavoritesComponent from "../../components/profileComponents/FavoritesComp
 import CartComponent from "../../components/profileComponents/CartComponent.jsx";
 import SecurityComponent from "../../components/profileComponents/SecurityComponent.jsx";
 import LogOutComponent from "../../components/reusableComponents/LogOut.jsx";
+import OrderComponent from "../../components/profileComponents/OrdersComponent.jsx";
 import { useTranslation } from "react-i18next";
 import "./profile.css";
 
@@ -88,6 +89,7 @@ const ProfilePage = () => {
         <Route path="cart" element={<CartComponent />} />
         <Route path="security" element={<SecurityComponent />} />
         <Route path="logout" element={<LogOutComponent />} />
+        <Route path="orders" element={<OrderComponent/>}/>
         <Route index element={<ProfileSettings />} />
       </Route>
     </Routes>

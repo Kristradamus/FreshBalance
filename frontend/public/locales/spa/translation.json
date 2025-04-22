@@ -223,6 +223,7 @@
       { "icon": "fa-solid fa-gear", "title": "Configuración del Perfil", "key": "settings", "path": "settings" },
       { "icon": "fa-solid fa-heart", "title": "Favoritos", "key": "favorites", "path": "favorites" },
       { "icon": "fa-solid fa-cart-shopping", "title": "Carrito", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-box", "title": "Pedidos", "key": "orders", "path": "orders" },
       { "icon": "fa-solid fa-shield-halved", "title": "Seguridad", "key": "security", "path": "security" },
       { "icon": "fa-solid fa-right-from-bracket", "title": "Cerrar Sesión", "key": "logout", "path": "logout", "isLogout": true }
     ],
@@ -259,8 +260,53 @@
     "settingsPhoneNumber": "Número de Teléfono",
     "settingsSaveChanges": "Guardar Cambios",
     
-    "cartMainTitle": "Carrito",
+    "cart": {
+      "mainTitle": "Carrito",
+      "cartSummary": "Resumen del carrito",
+      "gettingItemsError": "Hay un problema al mostrar tus artículos, ¡por favor contacta al soporte!",
+      "removeError": "Hubo un problema al eliminar este producto, ¡inténtalo más tarde!",
+      "removeSuccess": "¡El producto se eliminó correctamente!",
+      "updateError": "Hubo un problema al cambiar la cantidad del producto, ¡inténtalo más tarde!",
+      "shippingPrice": "Costo de envío",
+      "productsPrice": "Todos los productos",
+      "totalAmount": "Monto total",
+      "checkout": "Pagar"
+    },
 
+    "checkout": {
+    "mainTitle": "Información sobre el pedido",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phoneNumber": "Número de teléfono",
+    "email": "Correo electrónico",
+    "userInformation": "Información de contacto",
+    "deliveryWay": "Entrega",
+    "deliveryWayOptions": "Elige una opción de entrega",
+    "cantReachCheckout": "Hay un problema con el proceso de pago, ¡por favor intenta de nuevo más tarde!",
+    "allFieldsRequiered": "¡Todos los campos son obligatorios!",
+    "error": "Algún artículo se ha agotado, ¡por favor revisa tu pedido!",
+    "emptyCartError": "Tu carrito está vacío, ¡elige algo antes de continuar con el pago!",
+    "toAddress": "a la dirección",
+    "toOffice": "a la oficina",
+    "toStore": "a la tienda",
+    "deliveryToAddress": "Entrega a domicilio",
+    "deliveryToOffice": "Entrega a oficina de Speedy",
+    "deliveryToStore": "Entrega a tienda FreshBalance",
+  
+    "city": "Ciudad",
+    "postalCode": "Código postal",
+    "addressPart1": "Dirección (barrio, calle)",
+    "addressPart2": "Dirección (bloque, número, entrada, piso)",
+  
+    "selectCity": "Seleccionar ciudad",
+    "selectOffice": "Seleccionar oficina",
+    "selectStore": "Seleccionar tienda",
+  
+    "paymentInformation": "Información de pago",
+  
+    "additionalInformation": "Información adicional"
+  },
+  
     "logoutConfirmTitle": "Confirmar Cierre de Sesión",
     "logoutConfirmMessage": "¿Estás seguro de que quieres cerrar sesión?",
     "logoutConfirm": "Sí, Cerrar Sesión"

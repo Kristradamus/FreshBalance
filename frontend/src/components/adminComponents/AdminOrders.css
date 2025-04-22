@@ -1,10 +1,138 @@
-.adminContentAreaOrders{
-display:flex;
-flex-direction:column;
-gap:20px;
-padding: 20px;
-background-color: var(--white);
-border-radius: var(--smallRadius);
-box-shadow: var(--boxShadowLight);
-width: 100%;
+/* AdminOrders.css */
+.adminContentAreaOrders {
+  padding: 20px;
+}
+
+.adminContentAreaOrders h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.adminOrders {
+  overflow-x: auto;
+}
+
+.ordersTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.ordersTable th,
+.ordersTable td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.ordersTable th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  color: #555;
+}
+
+.ordersTable tbody tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.ordersTable td select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.ordersTable td button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.ordersTable td button:hover {
+  background-color: #0056b3;
+}
+
+.ordersTable td button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.orderDetailsRow {
+  background-color: #f9f9f9;
+}
+
+.orderDetails {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.orderDetails h3 {
+  margin-top: 0;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.orderDetails h4 {
+  color: #555;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.orderDetails p {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.orderDetails .orderItemsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.orderDetails .orderItemsTable th,
+.orderDetails .orderItemsTable td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.orderDetails .orderItemsTable th {
+  background-color: #eee;
+  font-weight: bold;
+  color: #555;
+}
+
+.orderDetails .summary {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.orderDetails .summary p {
+  margin-bottom: 5px;
+}
+
+.orderDetails .summary .total {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #007bff;
+}
+
+.adminOrdersError {
+  color: red;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.orderRow.expanded {
+  background-color: #e9ecef;
 }

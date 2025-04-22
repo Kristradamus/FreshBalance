@@ -185,8 +185,6 @@ const CartComponent = () => {
     }
   };
 
-
-
   const incrementQuantity = (productId, stock) => {
     setItemQuantities(prev => {
       const currentQty = prev[productId] === "" ? 0 : (parseInt(prev[productId]) || 0);
@@ -214,11 +212,61 @@ const CartComponent = () => {
     return qty === "" ? "" : (qty || defaultQty);
   };
 
-  const updateCartItemQuantity = async () => {
-  }
+  const updateCartItemQuantity = async (productId, newQuantity) => {
+    if (isAuthenticated) {
+      try {
+        const quantityToSend = newQuantity === "" || !newQuantity ? 1 : newQuantity;
+        
+        const token = localStorage.getItem("authToken");
+        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/cart/update/${productId}`,
+          { quantity: quantityToSend },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
+        setCart(prev => {
+          const updatedItems = prev.items.map(item => {
+            if (item.product_id === productId) {
+              return {
+                ...item,
+                quantity: quantityToSend
+              };
+            }
+            return item;
+          });
+
+          let newTotalItems = 0;
+          let newTotalAmount = 0;
+          
+          updatedItems.forEach(item => {
+            newTotalItems += item.quantity;
+            newTotalAmount += item.price * item.quantity;
+          });
+
+          return {
+            ...prev,
+            items: updatedItems,
+            totalItems: newTotalItems,
+            totalAmount: newTotalAmount
+          };
+        });
+      } 
+      catch (error) {
+        console.error("Error updating quantity:", error);
+        setToast({
+          show: true,
+          message: t("profile.cart.updateError"),
+          type: "error",
+        });
+      }
+    }
+  };
+
+  /*------------------------------CHECKOUT-----------------------------*/
   const handleCheckout = () => {
-    // Stock validation remains the same
     const outOfStockItems = cart.items.filter(item => item.stock <= 0);
     const itemsExceedingStock = cart.items.filter(item => 
       item.quantity > item.stock && item.stock > 0
@@ -237,39 +285,34 @@ const CartComponent = () => {
     }
   
     try {
-      // Ensure we have cart data
       if (!cart || !cart.items || cart.items.length === 0) {
         throw new Error("Cart is empty");
       }
-  
-      // Create checkout data
+
       const checkoutData = {
         items: cart.items.map(item => ({
           product_id: item.product_id,
           quantity: item.quantity,
-          price: parseFloat(item.price),
+          price: item.price,
           name: item.name,
           imageUrl: item.imageUrl,
           stock: item.stock
         })),
-        subtotal: parseFloat(cart.totalAmount) || 0,
-        shipping: 4.99,
-        total: (parseFloat(cart.totalAmount) || 0) + 4.99,
+        subtotal: Number(cart.totalAmount) || 0,
+        shipping: Number(shippingPrice),
+        total: Number(totalAmountWithShipping),
         timestamp: new Date().getTime()
       };
   
-      // Verify the data is serializable before storing
       const testJson = JSON.stringify(checkoutData);
       if (!testJson) {
         throw new Error("Failed to serialize checkout data");
       }
       
-      // Store in sessionStorage with error handling
       try {
         sessionStorage.removeItem('checkoutData');
         sessionStorage.setItem('checkoutData', testJson);
         
-        // Verify data was stored correctly
         const verifyData = sessionStorage.getItem('checkoutData');
         if (!verifyData) {
           throw new Error("Failed to verify stored data");
@@ -277,9 +320,9 @@ const CartComponent = () => {
         
         console.log("Successfully stored checkout data:", JSON.parse(verifyData));
         
-        // Navigate to checkout
         navigate('/checkout');
-      } catch (storageError) {
+      } 
+      catch (storageError) {
         console.error("Storage error:", storageError);
         throw new Error("Failed to store checkout data in session");
       }

@@ -235,6 +235,7 @@
       { "icon": "fa-solid fa-gear", "title": "Profile Settings", "key": "settings", "path": "settings" },
       { "icon": "fa-solid fa-heart", "title": "Favorites", "key": "favorites", "path": "favorites" },
       { "icon": "fa-solid fa-cart-shopping", "title": "Cart", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-box", "title": "Orders", "key": "orders", "path": "orders"},
       { "icon": "fa-solid fa-shield-halved", "title": "Security", "key": "security", "path": "security" },
       { "icon": "fa-solid fa-right-from-bracket", "title": "Log out", "key": "logout", "path": "logout", "isLogout": true}
     ],
@@ -277,13 +278,45 @@
       "gettingItemsError":"There is a problem with displaying your items, please contact support !",
       "removeError":"There is a problem removing this product, please try later !",
       "removeSuccess":"Product was removed succesfully !",
-      "remove":"Remove",
-      "removing":"Removing",
       "updateError":"There is a problem changing the quantity of the product, please try later !",
       "shippingPrice":"Shipping price",
       "productsPrice":"All products",
       "totalAmount":"Total amount",
       "checkout":"Checkout"
+    },
+
+    "checkout":{
+      "mainTitle":"Information about the order",
+      "firstName":"First Name",
+      "lastName":"Last Name",
+      "phoneNumber":"Phone Number",
+      "email":"Email",
+      "userInformation":"Contact information",
+      "deliveryWay":"Delivery",
+      "deliveryWayOptions":"Choose a delivery option",
+      "cantReachCheckout":"There is a problem with the checkout, please try again later !",
+      "allFieldsRequiered":"All fields are requiered !",
+      "error":"Some item has been sold please fix your orders !",
+      "emptyCartError":"You cart is empty please choose something before checking out !",
+      "toAddress":"to address",
+      "toOffice":"to office",
+      "toStore":"to store",
+      "deliveryToAddress":"Delivery to address",
+      "deliveryToOffice":"Delivery to Speedy office",
+      "deliveryToStore":"Delivery to FreshBalance store",
+
+      "city":"City",
+      "postalCode":"Postal Code",
+      "addressPart1":"Address (neighborhood, street)",
+      "addressPart2":"Address (block, number, entrance, floor)",
+
+      "selectCity":"Select City",
+      "selectOffice":"Select Office",
+      "selectStore":"Select Store",
+
+      "paymentInformation":"Payment information",
+
+      "additionalInformation":"Additional information"
     },
 
     "logoutConfirmTitle":"Confirm Logout",

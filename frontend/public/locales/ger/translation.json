@@ -219,6 +219,7 @@
       { "icon": "fa-solid fa-gear", "title": "Profileinstellungen", "key": "settings", "path": "settings" },
       { "icon": "fa-solid fa-heart", "title": "Favoriten", "key": "favorites", "path": "favorites" },
       { "icon": "fa-solid fa-cart-shopping", "title": "Warenkorb", "key": "cart", "path": "cart" },
+      { "icon": "fa-solid fa-box", "title": "Bestellungen", "key": "orders", "path": "orders" },
       { "icon": "fa-solid fa-shield-halved", "title": "Sicherheit", "key": "security", "path": "security" },
       { "icon": "fa-solid fa-right-from-bracket", "title": "Abmelden", "key": "logout", "path": "logout", "isLogout": true }
     ],
@@ -255,7 +256,52 @@
     "settingsPhoneNumber": "Telefonnummer",
     "settingsSaveChanges": "Änderungen speichern",
 
-    "cartMainTitle": "Warenkorb",
+    "cart": {
+      "mainTitle": "Warenkorb",
+      "cartSummary": "Warenkorbübersicht",
+      "gettingItemsError": "Es gibt ein Problem mit der Anzeige Ihrer Artikel, bitte kontaktieren Sie den Support!",
+      "removeError": "Es gab ein Problem beim Entfernen dieses Produkts, bitte versuchen Sie es später noch einmal!",
+      "removeSuccess": "Produkt wurde erfolgreich entfernt!",
+      "updateError": "Es gab ein Problem bei der Änderung der Produktmenge, bitte versuchen Sie es später noch einmal!",
+      "shippingPrice": "Versandkosten",
+      "productsPrice": "Alle Produkte",
+      "totalAmount": "Gesamtbetrag",
+      "checkout": "Zur Kasse"
+    },
+
+    "checkout": {
+    "mainTitle": "Informationen zur Bestellung",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "phoneNumber": "Telefonnummer",
+    "email": "E-Mail",
+    "userInformation": "Kontaktinformationen",
+    "deliveryWay": "Lieferung",
+    "deliveryWayOptions": "Liefermethode wählen",
+    "cantReachCheckout": "Es gibt ein Problem mit dem Checkout. Bitte versuchen Sie es später erneut!",
+    "allFieldsRequiered": "Alle Felder sind erforderlich!",
+    "error": "Ein Artikel wurde verkauft. Bitte überprüfen Sie Ihre Bestellung!",
+    "emptyCartError": "Ihr Warenkorb ist leer. Bitte wählen Sie etwas aus, bevor Sie zur Kasse gehen!",
+    "toAddress": "zur Adresse",
+    "toOffice": "zum Büro",
+    "toStore": "zum Geschäft",
+    "deliveryToAddress": "Lieferung zur Adresse",
+    "deliveryToOffice": "Lieferung an Speedy-Büro",
+    "deliveryToStore": "Lieferung an FreshBalance-Geschäft",
+  
+    "city": "Stadt",
+    "postalCode": "Postleitzahl",
+    "addressPart1": "Adresse (Stadtteil, Straße)",
+    "addressPart2": "Adresse (Block, Nummer, Eingang, Etage)",
+  
+    "selectCity": "Stadt auswählen",
+    "selectOffice": "Büro auswählen",
+    "selectStore": "Geschäft auswählen",
+  
+    "paymentInformation": "Zahlungsinformationen",
+  
+    "additionalInformation": "Zusätzliche Informationen"
+  },
     
     "logoutConfirmTitle": "Abmeldung bestätigen",
     "logoutConfirmMessage": "Möchten Sie sich wirklich abmelden?",
