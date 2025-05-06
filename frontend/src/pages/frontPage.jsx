@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState, useRef } from "react";
 import LoadingAnimation from "../components/layout/LoadingAnimation.jsx";
@@ -11,6 +11,7 @@ import "./frontPage.css";
 export default function FrontPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const fPTopProductsData = t("frontPage.topProductsData", { returnObject: true });
   const fPWhoWeAreData = t("frontPage.whoWeAreData", { returnObject: true });
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
@@ -114,22 +115,54 @@ export default function FrontPage() {
   /*----------------------ANIMATION------------------------*/
   useEffect(() => {
     if (isLoading) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        console.log(entry);
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-        } else {
-          entry.target.classList.remove("show");
-        }
+
+    const resetAnimations = () => {
+      const hiddenElements = document.querySelectorAll(".hidden");
+      hiddenElements.forEach(el => {
+        el.classList.remove("show");
       });
-    });
-    const hiddenElements = document.querySelectorAll(".hidden");
-    hiddenElements.forEach((el) => observer.observe(el));
-    return () => {
-      hiddenElements.forEach((el) => observer.unobserve(el));
     };
-  }, [isLoading]);
+
+    const initializeAnimations = () => {
+      setTimeout(() => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            } 
+            else {
+              entry.target.classList.remove("show");
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        const hiddenElements = document.querySelectorAll(".hidden");
+        
+        hiddenElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = (
+            rect.top <= window.innerHeight &&
+            rect.bottom >= 0
+          );
+          
+          if (isVisible) {
+            el.classList.add("show");
+          }
+          observer.observe(el);
+        });
+        
+        return () => {
+          hiddenElements.forEach((el) => observer.unobserve(el));
+        };
+      }, 100);
+    };
+
+    resetAnimations();
+    initializeAnimations();
+
+  }, [isLoading, location.key]);
 
   /*-----------------------SLIDING--------------------*/
   useEffect(() => {

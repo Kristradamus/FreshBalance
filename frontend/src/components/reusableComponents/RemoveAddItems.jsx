@@ -126,12 +126,23 @@ const useRemoveAddHandler = () => {
       );
       
       const availableStock = stockResponse.data.availableStock;
-      
+      const productNotAvailable = stockResponse.data.productNotAvailable;
+
+      console.log("Available Stock:" + availableStock);
+
+      if (productNotAvailable){
+        setToast({
+          show:true,
+          message:(t("productSoldOut")),
+          type:"error",
+        })
+        return;
+      }
       if (quantity > availableStock) {
         setToast({
           show: true,
           message: (t("productPage.notEnoughProducts") + ` ${availableStock} ` + t("productPage.products")),
-          type: "error"
+          type: "error",
         });
         return;
       }

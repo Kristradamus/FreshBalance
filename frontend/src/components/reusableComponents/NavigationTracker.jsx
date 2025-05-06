@@ -10,8 +10,6 @@ const NavigationTracker = () => {
       "/about-us", 
       "/services", 
       "/subscriptions",
-      "/buy-now/",
-      "/try-free/",
       "/support", 
       "/support/topic/", 
       "/support/contact", 

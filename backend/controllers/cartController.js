@@ -13,11 +13,17 @@ const getAvailableStock = async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found!" });
     }
+    
+    let notAvailable = false;
+    if(product[0].stock === 0){
+      notAvailable = true;
+    }
 
     const available = product[0].stock - (cartItem[0]?.quantity || 0);
     
     res.json({
-      availableStock: available
+      availableStock: available,
+      productNotAvailable: notAvailable,
     });
   } catch (error) {
     console.error(error);
