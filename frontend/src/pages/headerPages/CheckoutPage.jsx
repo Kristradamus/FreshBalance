@@ -20,6 +20,7 @@ const CheckoutPage = () => {
   const [cities, setCities] = useState([]);
   const [offices, setOffices] = useState([]);
   const [stores, setStores] = useState([]);
+  const token = localStorage.getItem("authToken");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -44,6 +45,7 @@ const CheckoutPage = () => {
   });
   const navigate = useNavigate();
 
+  /*---------------------CHEKING-DATA---------------------*/
   useEffect(() => {
     if (user?.email) {
       setFormData(prev => ({
@@ -53,10 +55,9 @@ const CheckoutPage = () => {
     }
 
     const storedCheckoutData = sessionStorage.getItem("checkoutData");
-    console.log("Retrieved checkout data:", storedCheckoutData);
     
     if (!storedCheckoutData) {
-      console.log("No checkout data found, redirecting to cart");
+      console.log("No checkout data found, redirecting to cart!");
       navigate("/profile/cart");
       return;
     }
@@ -75,7 +76,7 @@ const CheckoutPage = () => {
           typeof parsedData.subtotal !== "number" ||
           typeof parsedData.shipping !== "number" ||
           typeof parsedData.total !== "number") {
-        console.log("Invalid checkout data, redirecting to cart");
+        console.log("Invalid checkout data, redirecting to cart!");
         setToast({
           show:true,
           message:t("profile.checkout.cantReachCheckout"),
@@ -98,46 +99,11 @@ const CheckoutPage = () => {
       navigate("/profile/cart");
     }
 
-    setCities(["София", "Пловдив", "Варна", "Burgas", "Stara Zagora"]);
-    setStores(["FreshBalance Sofia Mall", "FreshBalance Paradise Center", "FreshBalance The Mall", "FreshBalance Serdika Center"]);
+    loadStores();
+    loadCities();
   }, [navigate]);
 
-  useEffect(() => {
-    if (formData.selectedCity) {
-      const cityOffices = {
-        "Sofia": ["Office Sofia 1", "Office Sofia 2", "Office Sofia 3", "Central Sofia Office"],
-        "Plovdiv": ["Office Plovdiv 1", "Office Plovdiv 2"],
-        "Varna": ["Office Varna 1", "Office Varna 2", "Office Varna 3"],
-        "Burgas": ["Office Burgas 1", "Office Burgas 2"],
-        "Stara Zagora": ["Office Stara Zagora 1"]
-      };
-      
-      setOffices(cityOffices[formData.selectedCity] || []);
-    } 
-    else {
-      setOffices([]);
-    }
-  }, [formData.selectedCity]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const handleDeliveryMethodSelect = (method) => {
-    setSelectedDeliveryMethod(method);
-    setFormData({
-      ...formData,
-      deliveryMethod: method,
-      selectedCity: "",
-      selectedOffice: "",
-      selectedStore: ""
-    });
-  };
-
+  /*---------------------REQUIRED-FIELDS--------------------*/
   const validateForm = () => {
     const requiredFields = ["firstName", "lastName", "phone", "email"];
     
@@ -175,6 +141,75 @@ const CheckoutPage = () => {
     }
     
     return true;
+  };
+
+  /*-------------------------------------DELIVERY--------------------------------------*/
+  const handleDeliveryMethodSelect = (method) => {
+    setSelectedDeliveryMethod(method);
+    setFormData({
+      ...formData,
+      deliveryMethod: method,
+      selectedCity: "",
+      selectedOffice: "",
+      selectedStore: ""
+    });
+  };
+
+  /*----------------GETTING-CITIES---------------*/
+  const loadCities = async() => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/cities`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
+      setCities(response.data);
+    }
+    catch (error) {
+      console.error("Error fetching cities:", error);
+      setToast({
+        show: true,
+        message: t("profile.checkout.loadingError"),
+        type: "error"
+      });
+      setCities([]);
+    }
+  }
+
+  /*-----------GETTING-SPEEDY-OFFICES------------*/
+  const loadSpeedyOffices = async() => {
+    try{
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/speedy-offices`)
+    }
+    catch{
+
+    }
+  }
+
+  /*--------GETTING-FRESHBALANCE-STORES----------*/
+  const loadStores = async() => {
+    try{
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/stores`, {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+    setStores(response.data);
+  } 
+  catch (error) {
+    console.error("Error loading stores:", error);
+  }
+};
+
+
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
   const handleCheckout = () => {
@@ -315,6 +350,7 @@ const CheckoutPage = () => {
     }
   };
 
+  /*-----------------------LOAIDNG-ANIMATION-------------------------*/
   if (isLoading) {
     return <LoadingAnimation />;
   }
@@ -408,7 +444,6 @@ const CheckoutPage = () => {
                           <div className="formGroup">
                             <label htmlFor="selectedCity">{t("profile.checkout.selectCity")}: </label>
                             <select id="selectedCity" name="selectedCity" value={formData.selectedCity} onChange={handleInputChange} required >
-                              <option value="">{t("profile.checkout.selectCity")}</option>
                               {cities.map(city => (
                                 <option key={city} value={city}>{city}</option>
                               ))}
@@ -417,7 +452,6 @@ const CheckoutPage = () => {
                           <div className="formGroup">
                             <label htmlFor="selectedOffice">{t("profile.checkout.selectOffice")}: </label>
                             <select id="selectedOffice" name="selectedOffice" value={formData.selectedOffice} onChange={handleInputChange} required disabled={!formData.selectedCity} >
-                              <option value="">{t("profile.checkout.selectOffice")}</option>
                               {offices.map(office => (
                                 <option key={office} value={office}>{office}</option>
                               ))}
@@ -428,21 +462,32 @@ const CheckoutPage = () => {
                     )}
 
                     {selectedDeliveryMethod === "freshBalance" && (
-                      <div className="storeDelivery">
-                        <h3>{t("profile.checkout.deliveryToStore")}</h3>
-                        <div className="storeForm">
-                          <div className="formGroup">
-                            <label htmlFor="selectedStore">{t("profile.checkout.selectStore")}: </label>
-                            <select id="selectedStore" name="selectedStore" value={formData.selectedStore} onChange={handleInputChange} required >
-                              <option value="">{t("profile.checkout.selectStore")}</option>
-                              {stores.map(store => (
-                                <option key={store} value={store}>{store}</option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+  <div className="storeDelivery">
+    <h3>{t("profile.checkout.deliveryToStore")}</h3>
+    <div className="storeForm">
+      <div className="formGroup">
+        <label htmlFor="selectedStore">{t("profile.checkout.selectStore")}: </label>
+        <select
+          id="selectedStore"
+          name="selectedStore"
+          value={formData.selectedStore}
+          onChange={handleInputChange}
+          required
+        >
+          <option value="">{t("profile.checkout.selectStore")}</option>
+          {stores.map(store => (
+            <option 
+              key={store.id} // Unique key from database
+              value={store.id} // Store ID as value
+            >
+              {store.displayText} {/* Formatted display */}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  </div>
+)}
                   </div>
                 )}
               </div>

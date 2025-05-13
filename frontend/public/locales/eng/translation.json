@@ -298,6 +298,7 @@
       "allFieldsRequiered":"All fields are requiered !",
       "error":"Some item has been sold please fix your orders !",
       "emptyCartError":"You cart is empty please choose something before checking out !",
+      "loadingError":"There is a problem with loading certan elements for this page. Please try again later.",
       "toAddress":"to address",
       "toOffice":"to office",
       "toStore":"to store",
@@ -462,11 +463,7 @@
           "Varna",
           "Burgas",
           "Ruse",
-          "Stara Zagora",
-          "Pleven",
-          "Sliven",
-          "Dobrich",
-          "Shumen"
+          "Stara Zagora"
         ],
         "terms": [
           {

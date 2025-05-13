@@ -440,7 +440,7 @@
       },
       "delivery": {
         "subTitle1": "Nuestros términos y condiciones de entrega:",
-        "areas": ["Sofía", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora", "Pleven", "Sliven", "Dobrich", "Shumen"],
+        "areas": ["Sofía", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora"],
         "terms": [
           {
             "title": "Áreas de Servicio: ",

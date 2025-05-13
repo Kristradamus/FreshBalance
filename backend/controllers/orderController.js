@@ -1,4 +1,4 @@
-const pool = require('../dataBase.js');
+const pool = require("../dataBase.js");
 
   const createOrder = async (req, res) => {
     let connection;
@@ -48,12 +48,45 @@ const pool = require('../dataBase.js');
           [orderId, item.product_id, item.quantity, item.price]
         );
 
-        await connection.execute(
-          `UPDATE products SET stock = stock - ? WHERE id = ? AND stock >= ?`,
-          [item.quantity, item.product_id, item.quantity]
-        );
-      }
+        const [updateProduct] = await connection.execute(
+          `Update products SET stock = stock - ? WHERE id = ?`,
+          [item.quantity, item.product_id]
+        )
 
+        if(updateProduct.affectedRows === 0){
+          throw new Error(`Failed to update stock for product: ${item.product_id}`);
+        }
+
+        const [cartEntries] = await connection.execute (
+          `SELECT user_id, quantity FROM user_cart WHERE product_id = ?`,
+          [item.product_id]
+        )
+
+        const [[product]] = await connection.execute(
+          `SELECT stock FROM products WHERE id = ?`,
+          [item.product_id]
+        )
+
+        const currentStock = product.stock;
+
+        for(const cartEntry of cartEntries){
+          if (cartEntry.quantity > currentStock) {
+            const newQuantity = currentStock > 0 ? currentStock : 0;
+            
+            if (newQuantity > 0) {
+              await connection.execute(
+                `UPDATE user_cart SET quantity = ? WHERE user_id = ? AND product_id = ?`,
+                [newQuantity, cartEntry.user_id, item.product_id]
+              );
+            } else {
+              await connection.execute(
+                `DELETE FROM user_cart WHERE user_id = ? AND product_id = ?`,
+                [cartEntry.user_id, item.product_id]
+              );
+            }
+          }
+        }
+      }
       if (user_id) {
         await connection.execute(
           `DELETE FROM user_cart WHERE user_id = ?`,
@@ -80,6 +113,62 @@ const pool = require('../dataBase.js');
       if (connection) connection.release();
     }
   }
+
+  /*-----------------------GET-CITIES--------------------------*/
+  const getCities = async (req, res) => {
+    console.log("getCities function has been called!");
+    try {
+      const [results] = await pool.query(
+        `SELECT DISTINCT city FROM speedy_offices GROUP BY city`
+      );
+      
+      if (results.length === 0) {
+        console.log("No cities found in database");
+        return res.json([]);
+      }
+      
+      const cities = results.map(row => row.city);
+      console.log("Sending cities to client:", cities);
+      res.json(cities);
+    } 
+    catch (error) {
+      console.error("Database error when fetching cities:", error);
+      res.status(500).json({ error: "Failed to load cities" });
+    }
+  };
+
+  /*-----------------------GET-SPEEDY-OFFICES--------------------------*/
+  const getSpeedyOffices = async (req, res) => {
+    
+  };
+
+  /*-----------------------GET-STORES--------------------------*/
+const getStores = async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      `SELECT store_id, store_name, address FROM freshbalance_stores`
+      // Removed GROUP BY city to show all stores
+    );
+
+    if (results.length === 0) {
+      return res.json([]);
+    }
+
+    const stores = results.map(row => ({
+      id: row.id, // Essential for React keys
+      displayText: `${row.store_name} - ${row.address}`, // For dropdown display
+      originalData: { // Keep raw data for reference
+        store_name: row.store_name,
+        address: row.address
+      }
+    }));
+
+    res.json(stores);
+  } catch (error) {
+    console.error("Database error:", error);
+    res.status(500).json({ error: "Failed to load stores" });
+  }
+};
 
   /*----------------------GET-ORDER-BY-ID-----------------------*/
   const getOrderById = async (req, res) => {
@@ -215,67 +304,13 @@ const pool = require('../dataBase.js');
       });
     }
   }
-  /*---------------------------SPEEDY-OFFICESS----------------------------*/
-  const getSpeedyOffices = async (req, res) => {
-    try {
-      const { city } = req.query;
-      
-      if (!city) {
-        return res.status(400).json({ 
-          success: false, 
-          message: 'City parameter is required' 
-        });
-      }
-
-      const officesByCity = {
-        'София': ['Office Sofia 1', 'Office Sofia 2', 'Office Sofia 3', 'Central Sofia Office'],
-        'Пловдив': ['Office Plovdiv 1', 'Office Plovdiv 2'],
-        'Варна': ['Office Varna 1', 'Office Varna 2', 'Office Varna 3'],
-        'Burgas': ['Office Burgas 1', 'Office Burgas 2'],
-        'Stara Zagora': ['Office Stara Zagora 1']
-      };
-
-      res.json({
-        success: true,
-        offices: officesByCity[city] || []
-      });
-    } catch (error) {
-      console.error('Error fetching offices:', error);
-      res.status(500).json({ 
-        success: false, 
-        message: error.message || 'An error occurred while fetching offices' 
-      });
-    }
+  
+  module.exports = {
+    createOrder,
+    getCities,
+    getStores,
+    getSpeedyOffices,
+    getOrderById,
+    getUserOrders,
+    updateOrderStatus,
   }
-
-  /*-----------------------------FRESH-BALANCE-STORES------------------------------*/
-  const getFreshBalanceStores = async (req, res) => {
-    try {
-      const stores = [
-        'FreshBalance Sofia Mall',
-        'FreshBalance Paradise Center',
-        'FreshBalance The Mall',
-        'FreshBalance Serdika Center'
-      ];
-
-      res.json({
-        success: true,
-        stores
-      });
-    } catch (error) {
-      console.error('Error fetching stores:', error);
-      res.status(500).json({ 
-        success: false, 
-        message: error.message || 'An error occurred while fetching stores' 
-      });
-    }
-  }
-
-module.exports = {
-  createOrder,
-  getOrderById,
-  getUserOrders,
-  updateOrderStatus,
-  getSpeedyOffices,
-  getFreshBalanceStores
-}

@@ -10,9 +10,9 @@ router.use((req, res, next) => {
 
 router.use(authMiddleware.authenticateJWT);
 
-router.post('/:productId', favoriteController.addFavorite);
-router.delete('/:productId', favoriteController.removeFavorite);
-router.get('/check/:productId', favoriteController.checkFavorite);
-router.get('/', favoriteController.getUserFavorites);
+router.post("/:productId", favoriteController.addFavorite);
+router.delete("/:productId", favoriteController.removeFavorite);
+router.get("/check/:productId", favoriteController.checkFavorite);
+router.get("/", favoriteController.getUserFavorites);
 
 module.exports = router;

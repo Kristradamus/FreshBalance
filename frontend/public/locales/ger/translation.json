@@ -436,7 +436,7 @@
       },
       "delivery": {
         "subTitle1": "Unsere Lieferbedingungen:",
-        "areas": ["Sofia", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora", "Pleven", "Sliven", "Dobrich", "Shumen"],
+        "areas": ["Sofia", "Plovdiv", "Varna", "Burgas", "Ruse", "Stara Zagora"],
         "terms": [
           {
             "title": "Liefergebiete: ",

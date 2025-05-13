@@ -8,11 +8,13 @@ router.use((req, res, next) => {
   next();
 });
 
-router.post('/', orderController.createOrder);
-router.get('/:orderId', orderController.getOrderById);
-router.get('/', authMiddleware.authenticateJWT, orderController.getUserOrders);
-router.patch('/:orderId/status', authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, orderController.updateOrderStatus);
-router.get('/delivery/speedy-offices', orderController.getSpeedyOffices);
-router.get('/delivery/fb-stores', orderController.getFreshBalanceStores);
+router.get("/stores", authMiddleware.authenticateJWT, orderController.getStores);
+
+router.get("/cities", authMiddleware.authenticateJWT, orderController.getCities);
+router.get("/speedy-offices", authMiddleware.authenticateJWT, orderController.getSpeedyOffices);
+router.post("/", orderController.createOrder);
+router.get("/:orderId", orderController.getOrderById);
+router.get("/", authMiddleware.authenticateJWT, orderController.getUserOrders);
+router.patch("/:orderId/status", authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, orderController.updateOrderStatus);
 
 module.exports = router;

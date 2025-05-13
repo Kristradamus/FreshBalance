@@ -258,32 +258,6 @@
   cursor: not-allowed;
 }
 
-/* Toast Message Styles */
-.confirmationToast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  padding: 15px 20px;
-  border-radius: var(--radius);
-  color: white;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.3s ease-out;
-  max-width: 400px;
-}
-
-.confirmationToast.success {
-  background-color: var(--success-color);
-}
-
-.confirmationToast.error {
-  background-color: var(--error-color);
-}
-
-.confirmationToast.info {
-  background-color: var(--primary-color);
-}
-
 @keyframes slideIn {
   from {
     transform: translateX(100%);
