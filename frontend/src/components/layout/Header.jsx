@@ -37,7 +37,7 @@ const Header = () => {
         }
       } 
       catch (error) {
-        console.log("Error with getting products: ", error);
+        console.error("Error with getting products: ", error);
       } 
       finally {
         setIsLoading(false);

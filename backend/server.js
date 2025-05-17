@@ -48,7 +48,7 @@ app.listen(PORT, () => {
 });
 
 const startServer = async () => {
-  try {
+  try{
     const connection = await pool.getConnection();
     console.log("Connected to the database!");
     connection.release();
@@ -56,8 +56,8 @@ const startServer = async () => {
     const [rows] = await pool.query("SELECT * FROM users");
     console.log("Query data:", rows);
   } 
-  catch (err) {
-    console.error("Error connecting to the database:", err);
+  catch(error){
+    console.error("Error connecting to the database:", error);
   }
 };
 startServer();

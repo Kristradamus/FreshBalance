@@ -1,49 +1,83 @@
 const pool = require("../dataBase.js");
 
+/*-------------------------CHECK-FAVORITE----------------------*/
 const checkFavorite = async (req, res) => {
+  console.log("checkFavorites function has been called!");
+
   try {
+    const { productId } = req.params;
+
+    if (!productId || isNaN(Number(productId))) {
+      return res.status(400).json({ message: "Invalid product ID!" });
+    }
+
     const [result] = await pool.query(
-      'SELECT 1 FROM user_favorites WHERE user_id = ? AND product_id = ?',
-      [req.user.userId, req.params.productId]
+      "SELECT 1 FROM user_favorites WHERE user_id = ? AND product_id = ?",
+      [req.user.userId, productId]
     );
     res.json({ isFavorite: result.length > 0 });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+  } 
+  catch(error){
+    console.error("Error checking favorites: ", error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 
+/*-------------------------ADD-FAVORITE----------------------*/
 const addFavorite = async (req, res) => {
+  console.log("addFavorites function has been called!");
+
   try {
+    const { productId } = req.params;
+
+    if (!productId || isNaN(Number(productId))) {
+      return res.status(400).json({ message: "Invalid product ID!" });
+    }
+
     await pool.query(
-      'INSERT INTO user_favorites (user_id, product_id) VALUES (?, ?)',
-      [req.user.userId, req.params.productId || req.body.productId]
+      "INSERT INTO user_favorites (user_id, product_id) VALUES (?, ?)",
+      [req.user.userId, productId]
     );
     res.json({ success: true });
-  } catch (err) {
-    console.error(err);
-    if (err.code === 'ER_DUP_ENTRY') {
-      res.status(409).json({ message: 'Product already in favorites' });
-    } else {
-      res.status(500).json({ message: 'Server error' });
+  } 
+  catch(error){
+    console.error("Error adding favorites: ", error);
+    if (error.code === "ER_DUP_ENTRY") {
+      res.status(409).json({ message: "Product already in favorites" });
+    } 
+    else {
+      res.status(500).json({ message: "Server error" });
     }
   }
 };
 
+/*-------------------------REMOVE-FAVORITE----------------------*/
 const removeFavorite = async (req, res) => {
+  console.log("removeFavorites function has been called!");
+
   try {
+    const { productId } = req.params;
+    
+    if (!productId || isNaN(Number(productId))) {
+      return res.status(400).json({ message: "Invalid product ID!" });
+    }
+
     await pool.query(
-      'DELETE FROM user_favorites WHERE user_id = ? AND product_id = ?',
-      [req.user.userId, req.params.productId]
+      "DELETE FROM user_favorites WHERE user_id = ? AND product_id = ?",
+      [req.user.userId, productId]
     );
     res.json({ success: true });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+  } 
+  catch(error){
+    console.error("Error removing favorites: ", error);
+    res.status(500).json({ message: "Server error"});
   }
 };
 
+/*-------------------------GET-FAVORITES----------------------*/
 const getUserFavorites = async (req, res) => {
+  console.log("getUserFavorites function has been called!");
+
   try {
     const [favorites] = await pool.query(
       `SELECT p.* FROM products p
@@ -57,15 +91,16 @@ const getUserFavorites = async (req, res) => {
         return {
           ...product,
           image: {
-            data: product.image.toString('base64')
+            data: product.image.toString("base64")
           }
         };
       }
       return product;
     }));
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
+  }
+  catch(error){
+    console.error("Error getting user favorites: ",error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 

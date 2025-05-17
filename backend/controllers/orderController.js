@@ -117,6 +117,7 @@ const pool = require("../dataBase.js");
   /*-----------------------GET-CITIES--------------------------*/
   const getCities = async (req, res) => {
     console.log("getCities function has been called!");
+
     try {
       const [results] = await pool.query(
         `SELECT DISTINCT city FROM speedy_offices GROUP BY city`
@@ -139,15 +140,35 @@ const pool = require("../dataBase.js");
 
   /*-----------------------GET-SPEEDY-OFFICES--------------------------*/
   const getSpeedyOffices = async (req, res) => {
-    
+    console.log("getSpeedyOffices function has been called!");
+
+    const {city} = req.query; 
+    try{
+      const [result] = await pool.query(
+        `SELECT office_name, address FROM speedy_offices WHERE city = ?`, 
+        [city]
+      )
+
+      if(result.lentgth === 0){
+        console.log("No offices found in database!");
+        return res.json([]);
+      }
+
+      const offices = result.map(row => ({
+        office
+      }))
+    }
+    catch(error){
+
+    }
   };
 
   /*-----------------------GET-STORES--------------------------*/
 const getStores = async (req, res) => {
+  console.log("getStores function has been called!");
   try {
     const [results] = await pool.query(
       `SELECT store_id, store_name, address FROM freshbalance_stores`
-      // Removed GROUP BY city to show all stores
     );
 
     if (results.length === 0) {
@@ -155,16 +176,17 @@ const getStores = async (req, res) => {
     }
 
     const stores = results.map(row => ({
-      id: row.id, // Essential for React keys
-      displayText: `${row.store_name} - ${row.address}`, // For dropdown display
-      originalData: { // Keep raw data for reference
+      id: row.id,
+      displayText: `${row.store_name} - ${row.address}`,
+      originalData: {
         store_name: row.store_name,
         address: row.address
       }
     }));
 
     res.json(stores);
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Database error:", error);
     res.status(500).json({ error: "Failed to load stores" });
   }

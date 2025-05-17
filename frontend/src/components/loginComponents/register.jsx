@@ -283,7 +283,7 @@ const Register = ({email, setIsTermsVisible, userProgress, setUserProgress}) => 
           message: t("loginRegistration.registration.failed"),
           type: "error",
         });
-        console.error("Registration failed:", error.message);
+        console.error("Registration failed:", error);
       }
     } 
     finally {

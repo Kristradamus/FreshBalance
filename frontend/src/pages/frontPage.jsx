@@ -90,7 +90,7 @@ export default function FrontPage() {
         setCurrentSlides(initialSlides);
       } 
       catch (error) {
-        console.log("There is an error:", error);
+        console.error("There is an error:", error);
       } 
       finally {
         setIsLoading(false);

@@ -103,6 +103,15 @@ const CheckoutPage = () => {
     loadCities();
   }, [navigate]);
 
+  useEffect(() => {
+    if(formData.selectedCity){
+      loadSpeedyOffices(formData.selectedCity);
+    }
+    else{
+      setOffices([]);
+    }
+  }, [formData.selectedCity]);
+
   /*---------------------REQUIRED-FIELDS--------------------*/
   const validateForm = () => {
     const requiredFields = ["firstName", "lastName", "phone", "email"];
@@ -178,12 +187,23 @@ const CheckoutPage = () => {
   }
 
   /*-----------GETTING-SPEEDY-OFFICES------------*/
-  const loadSpeedyOffices = async() => {
-    try{
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/speedy-offices`)
+  const loadSpeedyOffices = async(city) => {
+    if (!city) {
+      setOffices([]);
+      return;
     }
-    catch{
 
+    try{
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/speedy-offices`, {
+        params: {city},
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setOffices(response.data);
+    }
+    catch (error){
+      console.error("Error loading offices:", error);
     }
   }
 

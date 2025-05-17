@@ -35,7 +35,8 @@ const AdminOrders = () => {
         } else {
           throw new Error(response.data.message || "Failed to fetch admin orders");
         }
-      } catch (error) {
+      } 
+      catch (error) {
         console.error("Error fetching admin orders:", error);
         setError(error.message || "An error occurred while fetching admin orders");
         setToast({
@@ -43,7 +44,8 @@ const AdminOrders = () => {
           message: t("admin.orders.fetchError"),
           type: "error",
         });
-      } finally {
+      } 
+      finally {
         setIsLoading(false);
       }
     };
@@ -67,8 +69,7 @@ const AdminOrders = () => {
     try {
       const token = localStorage.getItem("authToken");
       const newStatus = statusUpdates[orderId];
-      const response = await axios.patch(
-        `${import.meta.env.VITE_BACKEND_URL}/orders/${orderId}/status`,
+      const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/orders/${orderId}/status`,
         { status: newStatus },
         {
           headers: {

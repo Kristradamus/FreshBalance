@@ -8,13 +8,14 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/stores", authMiddleware.authenticateJWT, orderController.getStores);
+router.use(authMiddleware.authenticateJWT);
 
-router.get("/cities", authMiddleware.authenticateJWT, orderController.getCities);
-router.get("/speedy-offices", authMiddleware.authenticateJWT, orderController.getSpeedyOffices);
+router.get("/stores", orderController.getStores);
+router.get("/cities", orderController.getCities);
+router.get("/speedy-offices", orderController.getSpeedyOffices);
 router.post("/", orderController.createOrder);
 router.get("/:orderId", orderController.getOrderById);
-router.get("/", authMiddleware.authenticateJWT, orderController.getUserOrders);
-router.patch("/:orderId/status", authMiddleware.authenticateJWT, authMiddleware.verifyAdmin, orderController.updateOrderStatus);
+router.get("/", orderController.getUserOrders);
+router.patch("/:orderId/status", authMiddleware.verifyAdmin, orderController.updateOrderStatus);
 
 module.exports = router;

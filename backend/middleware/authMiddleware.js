@@ -5,7 +5,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN;
 
 const generateToken = (userId, username, email, role) => {
+  console.log("generateToken function has been called!");
   console.log("Generating token for:", {username});
+
   return jwt.sign(
     { userId, username, email, role },
     JWT_SECRET,
@@ -14,18 +16,22 @@ const generateToken = (userId, username, email, role) => {
 };
 
 const verifyToken = (token) => {
+  console.log("verifyToken function has been called!");
+
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     console.log("Token verified successfully!");
     return decoded;
   }
-  catch(err) {
-    console.error("JWT verification error:", err);
+  catch(error) {
+    console.error("JWT verification error:", error);
     return null;
   }
 };
 
 const authenticateJWT = (req, res, next) => {
+  console.log("authenticateJWT function has been called!");
+
   const authHeader = req.headers.authorization;
   const token = authHeader?.split(" ")[1];
 
@@ -38,15 +44,16 @@ const authenticateJWT = (req, res, next) => {
     return res.status(401).json({ error: "Invalid token" });
   }
 
-  console.log("Authenticated user !");
+  console.log("Authenticated user!");
   req.user = decoded;
   next();
 };
 
 const verifyAdmin = (req, res, next) => {
-  console.log("Checking admin privileges !");
-  if (req.user && req.user.role === 'admin') {
-    console.log("Admin access granted !");
+  console.log("verifyAdmin function has been called!");
+
+  if (req.user && req.user.role === "admin") {
+    console.log("Admin access granted!");
     next();
   } 
   else {

@@ -46,7 +46,6 @@ const useRemoveAddHandler = () => {
     e.stopPropagation();
     setIsAddingToFavorites(productId);
     if (!isAuthenticated) {
-
       setShowAlert(true);
       setIsAddingToFavorites(null);
       return;

@@ -51,6 +51,8 @@ const emailIpRateLimiter = rateLimit({
 });
 
 const verifyEmailDomain = async (email) => {
+  console.log("verifyEmailDomain function has been called!");
+
   try {
     const domain = email.split("@")[1];
     await dns.promises.resolveMx(domain);
@@ -82,6 +84,8 @@ const contactFormSchema = z.object({
 }).strict();
 
 const sendEmail = async (name, email, message) => {
+  console.log("sendEmail function has been called!");
+  
   try {
     const result = await contactFormSchema.safeParseAsync({ name, email, message });
 

@@ -247,7 +247,8 @@ const ProductManagement = () => {
         });
 
         setProductList(productsWithImages);
-      } catch (error) {
+      } 
+      catch (error) {
         console.error("Error fetching products:", error);
         setToast({
           show: true,

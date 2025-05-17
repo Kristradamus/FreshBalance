@@ -63,7 +63,7 @@ const ProductPage = () => {
         } 
         catch (categoryError) {
           if (categoryError.response && categoryError.response.status === 404) {
-            console.log("Category not found, loading all products for search filtering");
+            console.error("Category not found, loading all products for search filtering");
 
             setIsCategory(false);
             const allProducts = await fetchAllProducts();
