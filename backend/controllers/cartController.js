@@ -74,7 +74,7 @@ const addToCart = async (req, res) => {
     );
 
     if (!product || product.length === 0) {
-      return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ message: "Product not found!" });
     }
 
     const [cartItem] = await pool.query(
@@ -104,7 +104,7 @@ const addToCart = async (req, res) => {
   } 
   catch(error){
     console.error("Error adding to cart: ", error);
-    res.status(500).json({ message: "Server error", error:error.message });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -145,7 +145,7 @@ const getCart = async (req, res) => {
   } 
   catch(error){
     console.error("Error getting cart: ", error);
-    res.status(500).json({ message: "Server error", error:error.message });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -188,14 +188,14 @@ const updateCartItem = async (req, res) => {
     );
     
     if (result.affectedRows === 0) {
-      return res.status(404).json({ message: "Item not found in cart" });
+      return res.status(404).json({ message: "Item not found in cart!" });
     }
     
     res.json({ success: true });
   } 
   catch (error) {
     console.error("Error updating cart: ", error);
-    res.status(500).json({ message: "Server error", error:error.message });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -218,7 +218,7 @@ const removeFromCart = async (req, res) => {
     );
     
     if (!item.length) {
-      return res.status(404).json({ message: "Item not found in cart" });
+      return res.status(404).json({ message: "Item not found in cart!" });
     }
     
     await pool.query(
@@ -233,7 +233,7 @@ const removeFromCart = async (req, res) => {
   } 
   catch(error){
     console.error("Error removing from cart: ", error);
-    res.status(500).json({ message: "Server error", error:error.message });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 

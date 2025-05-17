@@ -1,15 +1,23 @@
 const pool = require("../dataBase.js");
+const { z } = require("zod");
+
+/*---------------------ZOD-VALIDATION-------------------------*/
+const productIdSchema = z.string({required_error: "Product ID is required.",invalid_type_error: "Product ID must be a string.",})
+  .regex(/^\d+$/, { message: "Product ID must contain only digits." })
+  .transform(Number);
 
 /*-------------------------CHECK-FAVORITE----------------------*/
 const checkFavorite = async (req, res) => {
   console.log("checkFavorites function has been called!");
 
   try {
-    const { productId } = req.params;
+    const productIdValidation = productIdSchema.safeParse(req.params.productId);
 
-    if (!productId || isNaN(Number(productId))) {
-      return res.status(400).json({ message: "Invalid product ID!" });
+    if(!productIdValidation.success){
+      return res.status(400).json({message:"Invalid favorites item data!", error:productIdValidation.error.issues});
     }
+
+    const productId = productIdValidation.data;
 
     const [result] = await pool.query(
       "SELECT 1 FROM user_favorites WHERE user_id = ? AND product_id = ?",
@@ -19,7 +27,7 @@ const checkFavorite = async (req, res) => {
   } 
   catch(error){
     console.error("Error checking favorites: ", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -28,11 +36,13 @@ const addFavorite = async (req, res) => {
   console.log("addFavorites function has been called!");
 
   try {
-    const { productId } = req.params;
+    const productIdValidation = productIdSchema.safeParse(req.params.productId);
 
-    if (!productId || isNaN(Number(productId))) {
-      return res.status(400).json({ message: "Invalid product ID!" });
+    if(!productIdValidation.success){
+      return res.status(400).json({message:"Invalid favorites item data!", error:productIdValidation.error.issues});
     }
+
+    const productId = productIdValidation.data;
 
     await pool.query(
       "INSERT INTO user_favorites (user_id, product_id) VALUES (?, ?)",
@@ -43,10 +53,10 @@ const addFavorite = async (req, res) => {
   catch(error){
     console.error("Error adding favorites: ", error);
     if (error.code === "ER_DUP_ENTRY") {
-      res.status(409).json({ message: "Product already in favorites" });
+      res.status(409).json({ message: "Product already in favorites!", error:error.message });
     } 
     else {
-      res.status(500).json({ message: "Server error" });
+      res.status(500).json({ message: "Server error!", error:error.message});
     }
   }
 };
@@ -56,11 +66,13 @@ const removeFavorite = async (req, res) => {
   console.log("removeFavorites function has been called!");
 
   try {
-    const { productId } = req.params;
-    
-    if (!productId || isNaN(Number(productId))) {
-      return res.status(400).json({ message: "Invalid product ID!" });
+    const productIdValidation = productIdSchema.safeParse(req.params.productId);
+
+    if(!productIdValidation.success){
+      return res.status(400).json({message:"Invalid favorites item data!", error:productIdValidation.error.issues});
     }
+
+    const productId = productIdValidation.data;
 
     await pool.query(
       "DELETE FROM user_favorites WHERE user_id = ? AND product_id = ?",
@@ -70,7 +82,7 @@ const removeFavorite = async (req, res) => {
   } 
   catch(error){
     console.error("Error removing favorites: ", error);
-    res.status(500).json({ message: "Server error"});
+    res.status(500).json({ message: "Server error!", error:error.message});
   }
 };
 
@@ -100,7 +112,7 @@ const getUserFavorites = async (req, res) => {
   }
   catch(error){
     console.error("Error getting user favorites: ",error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 

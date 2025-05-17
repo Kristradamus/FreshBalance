@@ -2,6 +2,10 @@ const pool = require("../dataBase.js");
 const { z } = require("zod");
 
 /*----------------------------ZOD-VALIDATION-------------------------------*/
+const productIdSchema = z.string({required_error: "Product ID is required.",invalid_type_error: "Product ID must be a string.",})
+  .regex(/^\d+$/, { message: "Product ID must contain only digits." })
+  .transform(Number);
+
 const productSchema = z.object({
   name: z.string().min(1, "Name is required!"),
   description: z.string().optional().nullish(),
@@ -10,7 +14,7 @@ const productSchema = z.object({
   details: z.string().optional().nullish(),
   categories: z.preprocess(
     val => {
-      try { return typeof val === 'string' ? JSON.parse(val) : val; }
+      try { return typeof val === "string" ? JSON.parse(val) : val; }
       catch { return []; }
     },
     z.array(z.number()).default([])
@@ -29,7 +33,7 @@ const addProduct = async (req, res) => {
     if (!validation.success) {
       const errorMessages = validation.error.errors.map(err => err.message);
       return res.status(400).json({
-        message: "Validation failed",
+        message: "Validation failed!",
         errors: errorMessages
       });
     }
@@ -42,7 +46,7 @@ const addProduct = async (req, res) => {
         console.error("Image is bigger than 5MB!");
         return res.status(400).json({
           message: "Validation failed!",
-          errors: ["Max image size is 5MB"]
+          errors: ["Max image size is 5MB!"]
         });
       }
     }
@@ -73,19 +77,19 @@ const addProduct = async (req, res) => {
             [productId, categoryId]
           );
         }
-        console.log("Categories processed successfully");
+        console.log("Categories processed successfully.");
       }
       
       res.status(201).json({ message: "Product added successfully." });
     } 
     catch (dbError) {
       console.error("Database operation failed:", dbError);
-      return res.status(500).json({ message: "Database error: " + dbError.message });
+      return res.status(500).json({ message: "Database error!", error:dbError.message });
     }
   } 
   catch (error) {
     console.error("Error adding product:", error);
-    res.status(500).json({ message: "Server error: " + error.message });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -94,11 +98,12 @@ const removeProduct = async (req, res) => {
   console.log("removeProduct function has been called!");
 
   try {
-    const { id } = req.params;
-    
-    if (!id || isNaN(Number(id))) {
-      return res.status(400).json({ message: "Invalid product ID!"});
+    const productIdValidation = productIdSchema.safeParse(req.params.productId);
+
+    if(!productIdValidation.success){
+      return res.status(400).json({message:"Invalid products item data!", error:productIdValidation.error.issues});
     }
+    const productId = productIdValidation.data;
 
     const connection = await pool.getConnection();
     await connection.beginTransaction();
@@ -106,12 +111,12 @@ const removeProduct = async (req, res) => {
     try {
       await connection.query(
         "DELETE FROM product_categories WHERE product_id = ?",
-        [id]
+        [productId]
       );
 
       const [result] = await connection.query(
         "DELETE FROM products WHERE id = ?",
-        [id]
+        [productId]
       );
 
       if (result.affectedRows === 0) {
@@ -122,7 +127,7 @@ const removeProduct = async (req, res) => {
       await connection.commit();
       return res.status(200).json({ 
         success: true,
-        message: "Product removed successfully" 
+        message: "Product removed successfully." 
       });
     } 
     catch (error) {
@@ -135,7 +140,7 @@ const removeProduct = async (req, res) => {
   } 
   catch (error) {
     console.error("Remove error:", error);
-    res.status(500).json({message: "Server error during removal: " + error.message});
+    res.status(500).json({message: "Server error!", error:error.message});
   }
 };
 
@@ -161,7 +166,7 @@ const getProducts = async (req, res) => {
   } 
   catch(error){
     console.error("Error fetching products:", error);
-    res.status(500).json({ message: "Server error." });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -170,7 +175,7 @@ const getProductsByCategory = async (req, res) => {
   console.log("getProductsByCategory function has been called!");
 
   try {
-    const { link } = req.params;
+    const link = req.params.link;
     const fullLink = `/product/${link}`;
     
     console.log("Looking for products with category link:", fullLink);
@@ -180,7 +185,7 @@ const getProductsByCategory = async (req, res) => {
       [fullLink]
     );
     
-    if (categoryExists.length === 0) {
+    if (!categoryExists || categoryExists.length === 0) {
       return res.status(404).json({ message: "Category not found!"});
     }
     
@@ -210,7 +215,7 @@ const getProductsByCategory = async (req, res) => {
   } 
   catch(error){
     console.error("Error fetching products by category:", error);
-    res.status(500).json({ message: "Server error." });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -224,7 +229,7 @@ const getCategories = async (req, res) => {
   } 
   catch(error){
     console.error("Error fetching categories:", error);
-    res.status(500).json({ message: "Server error." });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -247,7 +252,7 @@ const getCategoryGroupsWithCategories = async (req, res) => {
   } 
   catch(error){
     console.error("Error fetching category groups with categories:", error);
-    res.status(500).json({ message: "Server error." });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 
@@ -256,18 +261,20 @@ const getProductById = async (req, res) => {
   console.log("getProductsById function has been called!");
 
   try {
-    const { id } = req.params;
-    
-    if (!id || isNaN(Number(id))) {
-      return res.status(400).json({ message: "Product ID is required!" });
+    const productIdValidation = productIdSchema.safeParse(req.params.productId);
+
+    if(!productIdValidation.success){
+      return res.status(400).json({message:"Invalid products item data!", error:productIdValidation.error.issues});
     }
+    
+    const productId = productIdValidation.data;
 
     const [product] = await pool.query(
       "SELECT * FROM products WHERE id = ?",
-      [id]
+      [productId]
     );
 
-    if (product.length === 0) {
+    if (!product || product.length === 0) {
       return res.status(404).json({ message: "Product not found!" });
     }
 
@@ -275,7 +282,7 @@ const getProductById = async (req, res) => {
     
     if (productData.image) {
       productData.image = {
-        data: productData.image.toString('base64')
+        data: productData.image.toString("base64")
       };
     }
     
@@ -284,7 +291,7 @@ const getProductById = async (req, res) => {
        FROM categories c
        JOIN product_categories pc ON c.id = pc.category_id
        WHERE pc.product_id = ?`,
-      [id]
+      [productId]
     );
     
     productData.categories = categories;
@@ -292,7 +299,7 @@ const getProductById = async (req, res) => {
   } 
   catch(error){
     console.error("Error fetching product by ID:", error);
-    res.status(500).json({ message: "Server error." });
+    res.status(500).json({ message: "Server error!", error:error.message });
   }
 };
 

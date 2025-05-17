@@ -146,7 +146,7 @@ const useRemoveAddHandler = () => {
         return;
       }
       
-      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/cart/add/${productId}`,{ quantity: quantity },
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/cart/add/${productId}`, { quantity: quantity },
         {
           headers: {
             Authorization: `Bearer ${token}`,

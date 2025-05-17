@@ -44,8 +44,8 @@ const verifyEmailDomain = async (email) => {
 };
 
 const checkEmail = async (req, res) => {
-  const { email } = req.body;
-  console.log(email);
+  const email = req.body.email;
+  console.log("User email:", email);
 
   if (!email) {
     return res.status(400).json({ error: "Email is required" });
@@ -70,12 +70,14 @@ const checkEmail = async (req, res) => {
     console.log(rows);
     if (rows.length > 0) {
       res.status(200).json({ exists: true, verificationCode });
-    } else {
+    } 
+    else {
       res.status(200).json({ exists: false, verificationCode });
     }
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error checking email:", error);
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: "Database error!", details:error.message });
   }
 };
 
@@ -125,8 +127,7 @@ const register = async (req, res) => {
     const { email, username, password } = req.body;
 
     const registerSchema = z.object({
-      username: z
-        .string()
+      username: z.string()
         .max(30, "Username cannot exceed 30 characters!")
         .min(3, "Username must contain at least 3 characters!")
         .regex(
@@ -135,8 +136,7 @@ const register = async (req, res) => {
         )
         .min(1, "Username is required!")
         .trim(),
-      password: z
-        .string()
+      password:z.string()
         .regex(/[A-Z]/, "Password must contain atleast one uppercase letter!")
         .regex(/[0-9]/, "Password must contain atleast one number!")
         .min(8, "Password must be atleast 8 characters!")
@@ -147,12 +147,9 @@ const register = async (req, res) => {
     const validationResult = registerSchema.safeParse({ username, password });
     if (!validationResult.success) {
       const errorMessages = validationResult.error.errors.map(
-        (err) => err.message
+        (error) => error.message
       );
-      return res.status(400).json({
-        error: "Validation failed",
-        messages: errorMessages,
-      });
+      return res.status(400).json({error: "Validation failed", messages: errorMessages,});
     }
 
     const [usernameExists] = await pool.query(
@@ -174,7 +171,7 @@ const register = async (req, res) => {
       userId,
       username,
       email,
-      'user'
+      "user"
     );
 
     emailVerificationCode.delete(email);
@@ -185,7 +182,7 @@ const register = async (req, res) => {
         id: userId,
         username: username,
         email: email,
-        role: 'user'
+        role: "user"
       }
     });
     
@@ -195,12 +192,12 @@ const register = async (req, res) => {
     console.error("Registration error:", error);
 
     const errorResponse = {
-      error: "Registration failed",
-      message: "An error occurred during registration",
+      error: "Registration failed!",
+      message: "An error occurred during registration.",
     };
 
     if (error.code === "ER_DUP_ENTRY") {
-      errorResponse.details = "Email already registered";
+      errorResponse.details = "Email already registered!";
     }
 
     res.status(500).json(errorResponse);
@@ -219,12 +216,14 @@ const checkUsername = async (req, res) => {
     ]);
     if (rows.length > 0) {
       res.status(200).json({ exists: true });
-    } else {
+    } 
+    else {
       res.status(200).json({ exists: false });
     }
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error checking username:", error);
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: "Database error!", details:error.message });
   }
 };
 
@@ -273,10 +272,7 @@ const login = async (req, res) => {
   } 
   catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({
-      error: "Login failed",
-      details: error.message,
-    });
+    res.status(500).json({error: "Login failed",details: error.message,});
   }
 };
 
