@@ -3,9 +3,29 @@ const rateLimit = require("express-rate-limit");
 const validator = require("validator");
 const dns = require("dns");
 const crypto = require("crypto");
+const pool = require("../dataBase.js");
 const { z } = require("zod");
-const pool = require("../dataBase");
 const { generateToken } = require("../middleware/authMiddleware");
+
+/*------------------------------ZOD-VALIDATION---------------------------------*/
+const usernameSchema = z.string()
+    .max(30, "Username cannot exceed 30 characters!")
+    .min(3, "Username must contain at least 3 characters!")
+    .regex(/^[a-zA-Z0-9_]+$/,"Only letters, numbers, and underscores are allowed in the username!")
+    .min(1, "Username is required!")
+    .trim();
+
+const passwordSchema = z.string()
+    .regex(/[A-Z]/, "Password must contain atleast one uppercase letter!")
+    .regex(/[0-9]/, "Password must contain atleast one number!")
+    .min(8, "Password must be atleast 8 characters!")
+    .min(1, "Password is required!")
+    .trim();
+
+const combinedSchema = z.object({
+  username:usernameSchema,
+  password:passwordSchema,
+})
 
 /*--------------------------------------------------------START----------------------------------------------------*/
 const emailVerificationCode = new Map();
@@ -44,11 +64,13 @@ const verifyEmailDomain = async (email) => {
 };
 
 const checkEmail = async (req, res) => {
-  const email = req.body.email;
+  console.log("checkEmail function has been called!");
+
+  const email = req.body.email?.toLowerCase().trim();;
   console.log("User email:", email);
 
   if (!email) {
-    return res.status(400).json({ error: "Email is required" });
+    return res.status(400).json({ error: "Email is required!" });
   }
   if (!validator.isEmail(email)) {
     return res.status(400).json({ error: "Invalid email address!" });
@@ -83,6 +105,8 @@ const checkEmail = async (req, res) => {
 
 /*------------------------------------------EMAIL-VERIFICATION-CODE------------------------------------------*/
 const verifyEmailVerificationCode = (req, res, next) => {
+  console.log("verifyEmailVerificationCode function has been called!");
+
   const { email: submittedEmail, verificationCode } = req.body;
   
   if (!submittedEmail || !verificationCode) {
@@ -123,30 +147,14 @@ const verifyEmailVerificationCode = (req, res, next) => {
 
 /*----------------------------------------------REGISTRATION--------------------------------------------*/
 const register = async (req, res) => {
+  console.log("register function has been called!");
+
   try {
     const { email, username, password } = req.body;
 
-    const registerSchema = z.object({
-      username: z.string()
-        .max(30, "Username cannot exceed 30 characters!")
-        .min(3, "Username must contain at least 3 characters!")
-        .regex(
-          /^[a-zA-Z0-9_]+$/,
-          "Only letters, numbers, and underscores are allowed in the username!"
-        )
-        .min(1, "Username is required!")
-        .trim(),
-      password:z.string()
-        .regex(/[A-Z]/, "Password must contain atleast one uppercase letter!")
-        .regex(/[0-9]/, "Password must contain atleast one number!")
-        .min(8, "Password must be atleast 8 characters!")
-        .min(1, "Password is required!")
-        .trim(),
-    });
-
-    const validationResult = registerSchema.safeParse({ username, password });
+    const validationResult = combinedSchema.safeParse({ username, password });
     if (!validationResult.success) {
-      const errorMessages = validationResult.error.errors.map(
+      const errorMessages = validationResult.error.issues.map(
         (error) => error.message
       );
       return res.status(400).json({error: "Validation failed", messages: errorMessages,});
@@ -206,14 +214,13 @@ const register = async (req, res) => {
 
 /*------------------------------------------USERNAME-AVAILABILITY-CHECK---------------------------------------------*/
 const checkUsername = async (req, res) => {
-  const { username } = req.body;
-  if (!username) {
-    return res.status(400).json({ error: "Username is required!" });
-  }
+  console.log("checkUsername function has been called!");
+
   try {
-    const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", [
-      username,
-    ]);
+    const username = req.body.username;
+
+    const [rows] = await pool.query("SELECT * FROM users WHERE user_name = ?", 
+      [username]);
     if (rows.length > 0) {
       res.status(200).json({ exists: true });
     } 
@@ -229,7 +236,9 @@ const checkUsername = async (req, res) => {
 
 /*----------------------------------------------LOGIN-------------------------------------------------*/
 const login = async (req, res) => {
-  const { email, password, verificationCode } = req.body;
+  console.log("login function has been called!");
+
+  const { email, password } = req.body;
   console.log("Login request received:", req.body);
   
   try {
@@ -272,16 +281,18 @@ const login = async (req, res) => {
   } 
   catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({error: "Login failed",details: error.message,});
+    res.status(500).json({error: "Login failed!",details: error.message,});
   }
 };
 
 /*---------------------------------------GET-USERNAME-BY-EMAIL---------------------------------------*/
 const getUser = async (req, res) => {
+  console.log("getUser function has been called!");
+
   const { email } = req.query;
 
   if (!email) {
-    return res.status(400).json({ error: "Email is required" });
+    return res.status(400).json({ error: "Email is required!" });
   }
   try {
     const [rows] = await pool.query(
@@ -290,21 +301,21 @@ const getUser = async (req, res) => {
     );
     if (rows.length > 0) {
       res.status(200).json({ username: rows[0].user_name });
-    } else {
-      res.status(404).json({ error: "User not found" });
+    } 
+    else {
+      res.status(404).json({ error: "User not found!" });
     }
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error fetching user:", error);
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: "Database error!", details:error.message});
   }
 };
 
 module.exports = {
-  emailCheckLimiter,
-  verifyEmailVerificationCode,
-  checkEmail,
-  register,
-  checkUsername,
+  emailCheckLimiter, checkEmail,
+  verifyEmailVerificationCode, register,
   login,
+  checkUsername,
   getUser,
 };

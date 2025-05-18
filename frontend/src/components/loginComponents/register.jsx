@@ -143,7 +143,7 @@ const Register = ({email, setIsTermsVisible, userProgress, setUserProgress}) => 
     const timer = setTimeout(async () => {
       if (registerFormData.username.trim().length > 0) {
         try {
-          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/username-check`,
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/username-check`,
             {username: registerFormData.username.trim(),}
           );
           if (!response.data.exists) {
@@ -227,7 +227,7 @@ const Register = ({email, setIsTermsVisible, userProgress, setUserProgress}) => 
       const verifiedEmail = sessionStorage.getItem("verifiedEmail");
       const verificationCode = sessionStorage.getItem("emailVerificationCode");
   
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`,{
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`,{
           email: verifiedEmail,
           verificationCode: verificationCode,
           username: validatedData.username,

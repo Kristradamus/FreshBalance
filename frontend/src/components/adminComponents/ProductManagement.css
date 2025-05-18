@@ -89,7 +89,9 @@
   color: var(--mainTextColor);
 }
 .formGroupTitle{
-  font-size:calc(var(--textFont) + 1px);
+  font-size: calc(var(--textFont) + 1px);
+  min-width: 120px;
+  display: inline-block;
 }
 .formGroup input[type="text"],
 .formGroup input[type="number"],
@@ -462,6 +464,9 @@
     flex-direction:column;
     width:100%;
   }
+  .imagePreviewContainer{
+    flex-direction:column;
+  }
   .submitBtn,
   .removeBtn,
   .addProductBtn,
@@ -481,5 +486,8 @@
   .clearImageBtn{
     width:100%;
     max-width:none;
+  }
+  .formGroup label {
+    min-height:40px;
   }
 }

@@ -4,7 +4,7 @@ const authMiddleware = require("../middleware/authMiddleware.js");
 const cartController = require("../controllers/cartController.js");
 
 router.use((req, res, next) => {
-  console.log(`Favorites API Request: ${req.method} ${req.originalUrl}`);
+  console.log(`Cart API Request: ${req.method} ${req.originalUrl}`);
   next();
 });
 

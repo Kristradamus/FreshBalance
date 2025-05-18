@@ -7,7 +7,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 router.use((req, res, next) => {
-  console.log(`Product API Request: ${req.method} ${req.originalUrl}`);
+  console.log(`Products API Request: ${req.method} ${req.originalUrl}`);
   next();
 });
 

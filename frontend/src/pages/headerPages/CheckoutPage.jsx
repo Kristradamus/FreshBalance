@@ -335,7 +335,7 @@ const CheckoutPage = () => {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/orders`, orderData);
       
       if (response.data && response.data.success) {
-        sessionStorage.removeItem('checkoutData');
+        sessionStorage.removeItem("checkoutData");
         
         setToast({
           show: true,

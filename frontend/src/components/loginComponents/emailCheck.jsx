@@ -64,7 +64,7 @@ const EmailCheck = ({email, setEmail, displayEmail, setDisplayEmail, setEmailChe
     }
     try {
       setIsLoading(true);
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/check-email`, { email });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/check-email`, { email });
       
       sessionStorage.setItem("emailVerificationCode",response.data.verificationCode);
       sessionStorage.setItem("verifiedEmail", email);
@@ -81,7 +81,7 @@ const EmailCheck = ({email, setEmail, displayEmail, setDisplayEmail, setEmailChe
           emailChecked: true,
           emailVerified: true,
         }));
-        const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user`,{ params: { email } });
+        const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/user`,{ params: { email } });
         setUsername(userResponse.data.username);
         
         navigate("/email-check/login");
@@ -99,7 +99,7 @@ const EmailCheck = ({email, setEmail, displayEmail, setDisplayEmail, setEmailChe
       setEmailCheckComplete(true);
     } 
     catch (error) {
-      console.error("Error checking email:", error.response?.data?.message || error.response?.data?.error || error.message || error);
+      console.error("Error checking email: ", error)
       setEmailError(true);
     
       let errorMessage;

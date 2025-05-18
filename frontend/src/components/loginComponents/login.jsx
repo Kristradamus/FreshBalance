@@ -85,7 +85,7 @@ const Login = ({email, username, userProgress, setUserProgress }) => {
         const verifiedEmail = sessionStorage.getItem("verifiedEmail");
         const verificationCode = sessionStorage.getItem("emailVerificationCode");
         
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`,{
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`,{
           email: verifiedEmail,
           password: loginFormData.password.trim(),
           ...(verificationCode && { verificationCode: verificationCode }),}

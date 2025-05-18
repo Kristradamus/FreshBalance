@@ -46,9 +46,11 @@
 .communitiesAlertMainTitle,
 .communitiesAlertSubTitle{
   color:var(--mainTextColor);
+  margin: 0 auto;
 }
 .communitiesAlertButtons {
   display: flex;
+  flex-direction:row;
   justify-content: center;
   gap: 10px;
 }
@@ -95,5 +97,12 @@
 @media (max-width: 480px) {
   .communitiesAlertBox {
     padding: 20px 15px;
+  }
+  .communitiesAlertButtons{
+    flex-direction:column;
+    width:100%
+  }
+  .communitiesCancelBtn, .communitiesGoToBtn {
+    min-width: 100%;
   }
 }

@@ -5,12 +5,12 @@ const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
 const authMiddleware = require("./middleware/authMiddleware.js");
-const authController = require("./controllers/authController.js");
 const supportController = require("./controllers/supportController.js");
 const cartRoutes = require("./routes/cartRoutes.js");
 const productRoutes = require("./routes/productRoutes.js");
 const favoriteRoutes = require("./routes/favoriteRoutes.js");
 const orderRoutes = require("./routes/orderRoutes.js")
+const authRoutes = require("./routes/authRoutes.js");
 const pool = require("./dataBase.js");
 
 app.use(
@@ -26,12 +26,8 @@ app.use("/cart", cartRoutes);
 app.use("/products", productRoutes);
 app.use("/favorites", favoriteRoutes);
 app.use("/orders", orderRoutes);
+app.use("/auth", authRoutes)
 
-app.post("/check-email", authController.emailCheckLimiter, authController.checkEmail);
-app.post("/register", authController.verifyEmailVerificationCode, authController.register);
-app.post("/login", authController.login);
-app.post("/username-check", authController.checkUsername);
-app.get("/user", authController.getUser);
 app.post("/send-message", supportController.emailIpRateLimiter, supportController.sendMessage);
 
 /*---------------------------------------------CALLING-AUTH-MIDDLEWARE-----------------------------------------------*/
