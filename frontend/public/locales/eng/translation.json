@@ -311,13 +311,18 @@
       "addressPart1":"Address (neighborhood, street)",
       "addressPart2":"Address (block, number, entrance, floor)",
 
+      "select":"Select",
       "selectCity":"Select City",
       "selectOffice":"Select Office",
       "selectStore":"Select Store",
+      "selectNoOptions":"No options",
 
       "paymentInformation":"Payment information",
+      "paymentMethodTitle":"Payment method",
 
-      "additionalInformation":"Additional information"
+      "additionalInformation":"Additional information",
+      "additionalInformationTextareaTitle":"",
+      "additionalInformationTextareaPlaceholder":""
     },
 
     "logoutConfirmTitle":"Confirm Logout",

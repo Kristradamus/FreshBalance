@@ -95,39 +95,29 @@
 .freshBalanceLogo{
   height:45px;
 }
-
-
-
-
-
-
-.payment-methods {
+.paymentMethods {
   margin-bottom: 20px;
 }
-
-.payment-options {
+.paymentOptions {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   margin-top: 10px;
 }
-
-.payment-option {
+.paymentOption {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 15px;
+  gap: 10px;
+  padding: 10px 15px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: var(--transition);
 }
-
-.payment-option:hover {
+.paymentOption:hover {
   background-color: rgba(0, 102, 204, 0.05);
 }
-
-.payment-option input[type="radio"] {
+.paymentOption input[type="radio"] {
   margin: 0;
   width: auto;
 }
@@ -215,13 +205,6 @@
   margin-top: 20px;
 }
 
-@media (min-width: 768px) {
-  .checkout-buttons {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
 .back-to-cart-btn, .place-order-btn {
   padding: 12px 20px;
   border-radius: var(--radius);
@@ -287,4 +270,10 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+@media (min-width: 768px) {
+  .checkout-buttons {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

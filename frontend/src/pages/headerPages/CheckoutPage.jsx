@@ -7,6 +7,8 @@ import "./CheckoutPage.css";
 import { AuthContext } from "../../components/protectionComponents/AuthContext.jsx";
 import SpeedyLogo from "../../../public/images/speedyLogo.png";
 import FreshBalanceLogo from "../../../public/images/freshBalance.png";
+import CustomDropdown from "../../components/reusableComponents/CustomDropdown.jsx";
+import { z } from "zod";
 import axios from "axios";
 
 const CheckoutPage = () => {
@@ -112,6 +114,100 @@ const CheckoutPage = () => {
     }
   }, [formData.selectedCity]);
 
+    /*---------------------ZOD-VALIDATION-SCHEMA--------------------*/
+  const checkoutSchema = z.object({
+    firstName: z.string()
+      .trim()
+      .min(1, t("validation.firstNameRequired")),
+    lastName: z.string()
+      .trim()
+      .min(1, t("validation.lastNameRequired")),
+    phone: z.string()
+      .trim()
+      .min(1, t("validation.phoneRequired"))
+      .regex(/^\+?[0-9\s-()]{6,20}$/, t("validation.phoneInvalid")),
+    email: z.string()
+      .trim()
+      .min(1, t("validation.emailRequired"))
+      .email(t("validation.emailInvalid")),
+    deliveryMethod: z.enum(["speedyAddress", "speedyOffice", "freshBalance"], {message: t("validation.deliveryMethodRequired"),}),
+    address: z.string()
+      .trim()
+      .min(1, t("validation.addressRequired"))
+      .optional(),
+    city: z.string()
+      .trim()
+      .min(1, t("validation.cityRequired"))
+      .optional(),
+    addressDetails: z.string()
+      .trim()
+      .min(1, t("validation.addressDetailsRequired"))
+      .optional(),
+    postalCode: z.string()
+      .trim()
+      .min(1, t("validation.postalCodeRequired"))
+      .optional(),
+    selectedCity: z.string()
+      .trim()
+      .min(1, t("validation.selectedCityRequired"))
+      .optional(),
+    selectedOffice: z.string()
+      .trim()
+      .min(1, t("validation.selectedOfficeRequired"))
+      .optional(),
+    selectedStore: z.string()
+      .or(z.number())
+      .pipe(z.coerce.string()
+      .trim()
+      .min(1, t("validation.selectedStoreRequired")))
+      .optional(),
+    paymentMethod: z.enum(["cash", "card"], {message: t("validation.paymentMethodRequired"),}),
+    cardName: z.string()
+      .trim()
+      .min(1, t("validation.cardNameRequired"))
+      .optional(),
+    cardNumber: z.string()
+      .trim()
+      .min(1, t("validation.cardNumberRequired"))
+      .regex(/^[0-9]{13,19}$/, t("validation.cardNumberInvalid"))
+      .optional(),
+    expiryDate: z.string().trim()
+      .min(1, t("validation.expiryDateRequired"))
+      .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, t("validation.expiryDateInvalid"))
+      .optional(),
+    cvv: z.string()
+      .trim()
+      .min(1, t("validation.cvvRequired"))
+      .regex(/^[0-9]{3,4}$/, t("validation.cvvInvalid"))
+      .optional(),
+    notes: z.string()
+      .trim()
+      .optional(),
+  }).superRefine((data, ctx) => {
+    if (data.deliveryMethod === "speedyAddress") {
+      if (!data.city) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cityRequired"), path: ['city'] });
+      if (!data.address) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.addressRequired"), path: ['address'] });
+      if (!data.addressDetails) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.addressDetailsRequired"), path: ['addressDetails'] });
+      if (!data.postalCode) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.postalCodeRequired"), path: ['postalCode'] });
+    } 
+    else if (data.deliveryMethod === "speedyOffice") {
+      if (!data.selectedCity) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.selectedCityRequired"), path: ['selectedCity'] });
+      if (!data.selectedOffice) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.selectedOfficeRequired"), path: ['selectedOffice'] });
+    }
+    else if (data.deliveryMethod === "freshBalance") {
+      if (!data.selectedStore || String(data.selectedStore).trim() === "") {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.selectedStoreRequired"), path: ['selectedStore'] });
+      }
+    }
+
+    if (data.paymentMethod === "card") {
+      if (!data.cardName) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cardNameRequired"), path: ['cardName'] });
+      if (!data.cardNumber) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cardNumberRequired"), path: ['cardNumber'] });
+      if (!data.expiryDate) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.expiryDateRequired"), path: ['expiryDate'] });
+      if (!data.cvv) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cvvRequired"), path: ['cvv'] });
+    }
+  })
+
   /*---------------------REQUIRED-FIELDS--------------------*/
   const validateForm = () => {
     const requiredFields = ["firstName", "lastName", "phone", "email"];
@@ -192,20 +288,22 @@ const CheckoutPage = () => {
       setOffices([]);
       return;
     }
-
-    try{
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/speedy-offices`, {
-        params: {city},
-        headers:{
+    
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders/speedy-offices/${city}`, {
+        headers: {
           Authorization: `Bearer ${token}`
         }
-      })
-      setOffices(response.data);
+      });
+      
+      console.log(response.data);
+      setOffices(response.data || []);
     }
-    catch (error){
+    catch (error) {
       console.error("Error loading offices:", error);
+      setOffices([]);
     }
-  }
+  };
 
   /*--------GETTING-FRESHBALANCE-STORES----------*/
   const loadStores = async() => {
@@ -215,15 +313,14 @@ const CheckoutPage = () => {
           Authorization: `Bearer ${token}`
         }
       })
-    setStores(response.data);
-  } 
-  catch (error) {
-    console.error("Error loading stores:", error);
-  }
-};
+      setStores(response.data);
+    } 
+    catch (error) {
+      console.error("Error loading stores:", error);
+    }
+  };
 
-
-
+  /*--------------CUSTOM-DROPDOWN---------------*/
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -232,6 +329,22 @@ const CheckoutPage = () => {
     });
   };
 
+  const handleDropdownSelect = (name, value) => {
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    if (name === "selectedCity") {
+      setFormData(prev => ({
+        ...prev,
+        selectedCity: value,
+        selectedOffice:"",
+      }))
+      loadSpeedyOffices(value);
+    }
+  };
+
+  /*BLABLABLABLELBLEBLELBELBE*/
   const handleCheckout = () => {
     const outOfStockItems = checkoutData.items.filter(item => item.stock <= 0);
     const itemsExceedingStock = checkoutData.items.filter(item => 
@@ -382,7 +495,7 @@ const CheckoutPage = () => {
       <div className="checkoutHeader">
         <h1>{t("profile.checkout.mainTitle")}</h1>
       </div>
-      
+
       <div className="checkoutContent">
         <div className="checkoutFormContainer">
           <form className="checkoutForm" onSubmit={handleSubmit}>
@@ -463,51 +576,27 @@ const CheckoutPage = () => {
                         <div className="officeForm">
                           <div className="formGroup">
                             <label htmlFor="selectedCity">{t("profile.checkout.selectCity")}: </label>
-                            <select id="selectedCity" name="selectedCity" value={formData.selectedCity} onChange={handleInputChange} required >
-                              {cities.map(city => (
-                                <option key={city} value={city}>{city}</option>
-                              ))}
-                            </select>
+                            <CustomDropdown options={cities} selectedValue={formData.selectedCity} onSelect={handleDropdownSelect} placeholder={t("profile.checkout.selectCity")} name="selectedCity"/>
                           </div>
                           <div className="formGroup">
                             <label htmlFor="selectedOffice">{t("profile.checkout.selectOffice")}: </label>
-                            <select id="selectedOffice" name="selectedOffice" value={formData.selectedOffice} onChange={handleInputChange} required disabled={!formData.selectedCity} >
-                              {offices.map(office => (
-                                <option key={office} value={office}>{office}</option>
-                              ))}
-                            </select>
+                            <CustomDropdown options={offices.map((office, index) => ({value: index.toString(), label: `${office.name} - ${office.address}`}))} selectedValue={formData.selectedOffice} onSelect={handleDropdownSelect} placeholder={t("profile.checkout.selectOffice")} name="selectedOffice" disabled={!formData.selectedCity} />
                           </div>
                         </div>
                       </div>
                     )}
 
                     {selectedDeliveryMethod === "freshBalance" && (
-  <div className="storeDelivery">
-    <h3>{t("profile.checkout.deliveryToStore")}</h3>
-    <div className="storeForm">
-      <div className="formGroup">
-        <label htmlFor="selectedStore">{t("profile.checkout.selectStore")}: </label>
-        <select
-          id="selectedStore"
-          name="selectedStore"
-          value={formData.selectedStore}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="">{t("profile.checkout.selectStore")}</option>
-          {stores.map(store => (
-            <option 
-              key={store.id} // Unique key from database
-              value={store.id} // Store ID as value
-            >
-              {store.displayText} {/* Formatted display */}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-  </div>
-)}
+                      <div className="storeDelivery">
+                        <h3>{t("profile.checkout.deliveryToStore")}</h3>
+                        <div className="storeForm">
+                          <div className="formGroup">
+                            <label htmlFor="selectedStore">{t("profile.checkout.selectStore")}: </label>
+                            <CustomDropdown options={stores.map(store => ({value: store.id, label:store.displayText }))} selectedValue={formData.selectedStore} onSelect={handleDropdownSelect} placeholder={t("profile.checkout.selectStore")} name="selectedStore"/>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -517,22 +606,20 @@ const CheckoutPage = () => {
             <div className="formSection paymentSection">
               <h2>{t("profile.checkout.paymentInformation")}</h2>
               <div className="formGroup paymentMethods">
-                <label>{t("checkout.paymentMethod")} *</label>
-                <div className="payment-options">
-                  <label className="paymentOption">
-                    <input type="radio" name="paymentMethod" value="cash" checked={formData.paymentMethod === "cash"} onChange={handleInputChange} />
+                <div className="paymentOptions">
+                  <button type="button" className={`paymentBtn ${formData.paymentMethod === "cash" ? "active" : ""}`} onClick={() => handleInputChange({ target: { name: "paymentMethod", value: "cash" } })} >
                     <span>{t("checkout.cash")}</span>
-                  </label>
-                  <label className="paymentOption">
-                    <input type="radio" name="paymentMethod" value="card" checked={formData.paymentMethod === "card"} onChange={handleInputChange} />
+                  </button>
+                  <button type="button" className={`paymentBtn ${formData.paymentMethod === "card" ? "active" : ""}`} onClick={() => handleInputChange({ target: { name: "paymentMethod", value: "card" } })} >
                     <span>{t("checkout.creditCard")}</span>
-                  </label>
+                  </button>
                 </div>
               </div>
 
               {formData.paymentMethod === "cash" && (
-                <div className="cashDetails"></div>
+                <div className="cashDetails">You chose to pay with cash on the arrival of the product you must pay the correct price</div>
               )}
+
               {formData.paymentMethod === "card" && (
                 <div className="cardDetails">
                   <div className="formGroup">

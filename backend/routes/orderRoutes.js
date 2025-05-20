@@ -12,7 +12,7 @@ router.use(authMiddleware.authenticateJWT);
 
 router.get("/stores", orderController.getStores);
 router.get("/cities", orderController.getCities);
-router.get("/speedy-offices", orderController.getSpeedyOffices);
+router.get("/speedy-offices/:city", orderController.getSpeedyOffices);
 router.post("/", orderController.createOrder);
 router.get("/:orderId", orderController.getOrderById);
 router.get("/", orderController.getUserOrders);

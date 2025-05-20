@@ -111,10 +111,7 @@ const createOrder = async (req, res) => {
   catch (error) {
     if (connection) await connection.rollback();
     console.error('Error creating order:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: error.message || 'An error occurred while creating your order' 
-    });
+    res.status(500).json({ success: false, message: "An error occurred while creating your order", error:error.message });
   } 
   finally {
     if (connection) connection.release();
@@ -147,28 +144,36 @@ const getCities = async (req, res) => {
 
 /*-----------------------GET-SPEEDY-OFFICES--------------------------*/
 const getSpeedyOffices = async (req, res) => {
-    console.log("getSpeedyOffices function has been called!");
-
-    const {city} = req.query; 
-    try{
-      const [result] = await pool.query(
-        `SELECT office_name, address FROM speedy_offices WHERE city = ?`, 
-        [city]
-      )
-
-      if(result.lentgth === 0){
-        console.log("No offices found in database!");
-        return res.json([]);
-      }
-
-      const offices = result.map(row => ({
-        office
-      }))
+  console.log("getSpeedyOffices function has been called!");
+  
+  try {
+    // ISSUE 1: It should be req.params.city not req.param.city
+    const city = req.params.city;
+    
+    const [result] = await pool.query(
+      `SELECT office_name, address FROM speedy_offices WHERE city = ?`,
+      [city]
+    );
+    
+    // ISSUE 2: Typo in length - should be result.length not result.lentgth
+    if (result.length === 0) {
+      console.log("No offices found in database!");
+      return res.json([]);
     }
-    catch(error){
-
-    }
-  };
+    
+    const offices = result.map(row => ({
+      name: row.office_name,
+      address: row.address
+    }));
+    
+    return res.json(offices);
+  }
+  catch (error) {
+    // ISSUE 3: Empty catch block - need to handle the error
+    console.error("Error fetching speedy offices:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
 
 /*-----------------------GET-STORES--------------------------*/
 const getStores = async (req, res) => {
@@ -183,7 +188,7 @@ const getStores = async (req, res) => {
     }
 
     const stores = results.map(row => ({
-      id: row.id,
+      id: row.store_id,
       displayText: `${row.store_name} - ${row.address}`,
       originalData: {
         store_name: row.store_name,
