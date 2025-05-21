@@ -8,7 +8,7 @@ import ConfirmationToast from "../reusableComponents/ConfirmationToast.jsx";
 import "./OrdersComponent.css";
 
 const UserOrdersPage = () => {
-  const { t } = useTranslation();
+  {/*const { t } = useTranslation();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
@@ -210,7 +210,7 @@ const UserOrdersPage = () => {
                     </div>
                     <div className="summaryRow totalRow">
                       <span>{t("checkout.total")}:</span>
-                      <span>{Numbд .er(order.total_amount).toFixed(2)} {t("profile.lv")}</span>
+                      <span>{Number(order.total_amount).toFixed(2)} {t("profile.lv")}</span>
                     </div>
                   </div>
                   
@@ -235,7 +235,7 @@ const UserOrdersPage = () => {
         </div>
       )}
     </div>
-  );
+  );*/}
 };
 
 export default UserOrdersPage;

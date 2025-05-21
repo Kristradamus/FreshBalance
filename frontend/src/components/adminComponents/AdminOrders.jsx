@@ -6,7 +6,7 @@ import ConfirmationToast from "../reusableComponents/ConfirmationToast";
 import "./AdminOrders.css";
 
 const AdminOrders = () => {
-  const { t } = useTranslation();
+ {/*const { t } = useTranslation();
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -245,7 +245,7 @@ const AdminOrders = () => {
         )}
       </div>
     </div>
-  );
+  );*/}
 };
 
 export default AdminOrders;

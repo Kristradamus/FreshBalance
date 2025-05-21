@@ -8,12 +8,14 @@ import { AuthContext } from "../../components/protectionComponents/AuthContext.j
 import SpeedyLogo from "../../../public/images/speedyLogo.png";
 import FreshBalanceLogo from "../../../public/images/freshBalance.png";
 import CustomDropdown from "../../components/reusableComponents/CustomDropdown.jsx";
+import ScrollToTop from "../../components/reusableComponents/ScrollToTop.jsx";
 import { z } from "zod";
 import axios from "axios";
 
 const CheckoutPage = () => {
   const { t } = useTranslation();
-  const { user } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
+  const [returnToTop, setReturnToTop] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkoutData, setCheckoutData] = useState(null);
@@ -38,7 +40,7 @@ const CheckoutPage = () => {
     selectedOffice: "",
     selectedStore: "",
     
-    paymentMethod: "cash",
+    paymentMethod: "",
     cardName: "",
     cardNumber: "",
     expiryDate: "",
@@ -48,62 +50,81 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
 
   /*---------------------CHEKING-DATA---------------------*/
-  useEffect(() => {
-    if (user?.email) {
-      setFormData(prev => ({
-        ...prev,
-        email: user.email
-      }));
-    }
-
-    const storedCheckoutData = sessionStorage.getItem("checkoutData");
-    
-    if (!storedCheckoutData) {
-      console.log("No checkout data found, redirecting to cart!");
-      navigate("/profile/cart");
-      return;
-    }
-    
-    try {
-      const parsedData = JSON.parse(storedCheckoutData);
-      console.log("Parsed checkout data:", parsedData);
-      
-      const isDataFresh = (new Date().getTime() - (parsedData.timestamp || 0)) < (30 * 60 * 1000);
-      console.log("Data freshness:", isDataFresh);
-      
-      if (!isDataFresh || 
-          !parsedData.items || 
-          !Array.isArray(parsedData.items) || 
-          parsedData.items.length === 0 ||
-          typeof parsedData.subtotal !== "number" ||
-          typeof parsedData.shipping !== "number" ||
-          typeof parsedData.total !== "number") {
-        console.log("Invalid checkout data, redirecting to cart!");
+   useEffect(() => {
+    const fetchLatestCart = async () => {
+      if (!isAuthenticated) {
+        console.log("User not authenticated, redirecting to cart.");
         setToast({
-          show:true,
-          message:t("profile.checkout.cantReachCheckout"),
-          type:"error",
-        })
+          show: true,
+          message: t("profile.checkout.cantReachCheckout"),
+          type: "error",
+        });
         navigate("/profile/cart");
         return;
       }
-      
-      setCheckoutData(parsedData);
-      setIsLoading(false);
-    } 
-    catch (error) {
-      console.error("Error parsing checkout data:", error);
-      setToast({
-        show:true,
-        message:t("profile.checkout.cantReachCheckout"),
-        type:"error",
-      })
-      navigate("/profile/cart");
-    }
+      try {
+        setIsLoading(true);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/cart`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        let calculatedTotalAmount = 0;
+        response.data.items.forEach(item => {
+          calculatedTotalAmount += item.price * item.quantity;
+        });
+        const processedItems = response.data.items.map(item => {
+          if (item.image && item.image.data) {
+            return {
+              ...item,
+              imageUrl: `data:image/jpeg;base64,${item.image.data}`
+            };
+          }
+          return item;
+        });
+        const currentShippingPrice = processedItems.length > 0 ? 4.99 : 0;
+        const currentTotalAmountWithShipping = ((Number(calculatedTotalAmount) + currentShippingPrice) || 0).toFixed(2);
+        const latestCheckoutData = {
+          items: processedItems,
+          subtotal: Number(calculatedTotalAmount) || 0,
+          shipping: Number(currentShippingPrice),
+          total: Number(currentTotalAmountWithShipping),
+          timestamp: new Date().getTime()
+        };
+        if (!latestCheckoutData.items || latestCheckoutData.items.length === 0) {
+          console.log("Cart is empty on checkout page load, redirecting to cart!");
+          setToast({
+            show: true,
+            message: t("profile.checkout.cantReachCheckout"),
+            type: "error",
+          });
+          navigate("/profile/cart");
+          return;
+        }
+        setCheckoutData(latestCheckoutData);
+        setFormData(prev => ({
+          ...prev,
+          email: user?.email || prev.email
+        }));
+      } 
+      catch (error) {
+        console.error("Error fetching latest cart data for checkout:", error);
+        setToast({
+          show: true,
+          message: t("profile.checkout.loadingError"),
+          type: "error",
+        });
+        navigate("/profile/cart");
+      } 
+      finally {
+        setIsLoading(false);
+      }
+    };
 
+    fetchLatestCart();
     loadStores();
     loadCities();
-  }, [navigate]);
+  }, [navigate, isAuthenticated, token, user?.email, t]);
 
   useEffect(() => {
     if(formData.selectedCity){
@@ -112,99 +133,99 @@ const CheckoutPage = () => {
     else{
       setOffices([]);
     }
-  }, [formData.selectedCity]);
+  }, [formData.selectedCity, token, t]);
 
-    /*---------------------ZOD-VALIDATION-SCHEMA--------------------*/
+  /*---------------------ZOD-VALIDATION-SCHEMA--------------------*/
   const checkoutSchema = z.object({
     firstName: z.string()
       .trim()
-      .min(1, t("validation.firstNameRequired")),
+      .min(1, t("profile.validation.firstNameRequired")),
     lastName: z.string()
       .trim()
-      .min(1, t("validation.lastNameRequired")),
+      .min(1, t("profile.validation.lastNameRequired")),
     phone: z.string()
       .trim()
-      .min(1, t("validation.phoneRequired"))
-      .regex(/^\+?[0-9\s-()]{6,20}$/, t("validation.phoneInvalid")),
+      .min(1, t("profile.validation.phoneRequired"))
+      .regex(/^\+?[0-9\s-()]{6,20}$/, t("profile.validation.phoneInvalid")),
     email: z.string()
       .trim()
-      .min(1, t("validation.emailRequired"))
-      .email(t("validation.emailInvalid")),
-    deliveryMethod: z.enum(["speedyAddress", "speedyOffice", "freshBalance"], {message: t("validation.deliveryMethodRequired"),}),
+      .min(1, t("profile.validation.emailRequired"))
+      .email(t("profile.validation.emailInvalid")),
+    deliveryMethod: z.enum(["speedyAddress", "speedyOffice", "freshBalance"], {message: t("profile.validation.deliveryMethodRequired"),}),
     address: z.string()
       .trim()
-      .min(1, t("validation.addressRequired"))
+      .min(1, t("profile.validation.addressRequired"))
       .optional(),
     city: z.string()
       .trim()
-      .min(1, t("validation.cityRequired"))
+      .min(1, t("profile.validation.cityRequired"))
       .optional(),
     addressDetails: z.string()
       .trim()
-      .min(1, t("validation.addressDetailsRequired"))
+      .min(1, t("profile.validation.addressDetailsRequired"))
       .optional(),
     postalCode: z.string()
       .trim()
-      .min(1, t("validation.postalCodeRequired"))
+      .min(1, t("profile.validation.postalCodeRequired"))
       .optional(),
     selectedCity: z.string()
       .trim()
-      .min(1, t("validation.selectedCityRequired"))
+      .min(1, t("profile.validation.selectedCityRequired"))
       .optional(),
     selectedOffice: z.string()
       .trim()
-      .min(1, t("validation.selectedOfficeRequired"))
+      .min(1, t("profile.validation.selectedOfficeRequired"))
       .optional(),
     selectedStore: z.string()
       .or(z.number())
       .pipe(z.coerce.string()
       .trim()
-      .min(1, t("validation.selectedStoreRequired")))
+      .min(1, t("profile.validation.selectedStoreRequired")))
       .optional(),
-    paymentMethod: z.enum(["cash", "card"], {message: t("validation.paymentMethodRequired"),}),
+    paymentMethod: z.enum(["cash", "card"], {message: t("profile.validation.paymentMethodRequired"),}),
     cardName: z.string()
       .trim()
-      .min(1, t("validation.cardNameRequired"))
+      .min(1, t("profile.validation.cardNameRequired"))
       .optional(),
     cardNumber: z.string()
       .trim()
-      .min(1, t("validation.cardNumberRequired"))
-      .regex(/^[0-9]{13,19}$/, t("validation.cardNumberInvalid"))
+      .min(1, t("profile.validation.cardNumberRequired"))
+      .regex(/^[0-9]{13,19}$/, t("profile.validation.cardNumberInvalid"))
       .optional(),
     expiryDate: z.string().trim()
-      .min(1, t("validation.expiryDateRequired"))
-      .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, t("validation.expiryDateInvalid"))
+      .min(1, t("profile.validation.expiryDateRequired"))
+      .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, t("profile.validation.expiryDateInvalid"))
       .optional(),
     cvv: z.string()
       .trim()
-      .min(1, t("validation.cvvRequired"))
-      .regex(/^[0-9]{3,4}$/, t("validation.cvvInvalid"))
+      .min(1, t("profile.validation.cvvRequired"))
+      .regex(/^[0-9]{3,4}$/, t("profile.validation.cvvInvalid"))
       .optional(),
     notes: z.string()
       .trim()
       .optional(),
   }).superRefine((data, ctx) => {
     if (data.deliveryMethod === "speedyAddress") {
-      if (!data.city) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cityRequired"), path: ['city'] });
-      if (!data.address) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.addressRequired"), path: ['address'] });
-      if (!data.addressDetails) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.addressDetailsRequired"), path: ['addressDetails'] });
-      if (!data.postalCode) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.postalCodeRequired"), path: ['postalCode'] });
+      if (!data.city) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cityRequired"), path: ["city"] });
+      if (!data.address) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.addressRequired"), path: ["address"] });
+      if (!data.addressDetails) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.addressDetailsRequired"), path: ["addressDetails"] });
+      if (!data.postalCode) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.postalCodeRequired"), path: ["postalCode"] });
     } 
     else if (data.deliveryMethod === "speedyOffice") {
-      if (!data.selectedCity) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.selectedCityRequired"), path: ['selectedCity'] });
-      if (!data.selectedOffice) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.selectedOfficeRequired"), path: ['selectedOffice'] });
+      if (!data.selectedCity) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.selectedCityRequired"), path: ["selectedCity"] });
+      if (!data.selectedOffice) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.selectedOfficeRequired"), path: ["selectedOffice"] });
     }
     else if (data.deliveryMethod === "freshBalance") {
       if (!data.selectedStore || String(data.selectedStore).trim() === "") {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.selectedStoreRequired"), path: ['selectedStore'] });
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.selectedStoreRequired"), path: ["selectedStore"] });
       }
     }
 
     if (data.paymentMethod === "card") {
-      if (!data.cardName) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cardNameRequired"), path: ['cardName'] });
-      if (!data.cardNumber) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cardNumberRequired"), path: ['cardNumber'] });
-      if (!data.expiryDate) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.expiryDateRequired"), path: ['expiryDate'] });
-      if (!data.cvv) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("validation.cvvRequired"), path: ['cvv'] });
+      if (!data.cardName) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cardNameRequired"), path: ["cardName"] });
+      if (!data.cardNumber) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cardNumberRequired"), path: ["cardNumber"] });
+      if (!data.expiryDate) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.expiryDateRequired"), path: ["expiryDate"] });
+      if (!data.cvv) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cvvRequired"), path: ["cvv"] });
     }
   })
 
@@ -344,39 +365,10 @@ const CheckoutPage = () => {
     }
   };
 
-  /*BLABLABLABLELBLEBLELBELBE*/
-  const handleCheckout = () => {
-    const outOfStockItems = checkoutData.items.filter(item => item.stock <= 0);
-    const itemsExceedingStock = checkoutData.items.filter(item => 
-      item.quantity > item.stock && item.stock > 0
-    );
-  
-    if (outOfStockItems.length > 0 || itemsExceedingStock.length > 0) {
-      setToast({
-        show: true,
-        message: t("profile.checkout.error", {
-          outOfStock: outOfStockItems.length,
-          exceedingStock: itemsExceedingStock.length
-        }),
-        type: "error"
-      });
-      return;
-    }
-  
-    if (!checkoutData.items || checkoutData.items.length === 0) {
-      setToast({
-        show: true,
-        message: t("profile.checkout.emptyCartError"),
-        type: "error"
-      });
-      return;
-    }
-  };
-
   /*----------------------------HANDLE-SUBMIT----------------------------------*/
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setReturnToTop(true);
     if (!validateForm()) {
       return;
     }
@@ -490,6 +482,7 @@ const CheckoutPage = () => {
 
   return (
     <div className="checkoutContainer">
+      <ScrollToTop trigger={returnToTop}/>
       <ConfirmationToast show={toast.show} message={toast.message} type={toast.type} onClose={() => setToast({ show:false, message: "", type: "" })}/>
       
       <div className="checkoutHeader">
@@ -608,37 +601,39 @@ const CheckoutPage = () => {
               <div className="formGroup paymentMethods">
                 <div className="paymentOptions">
                   <button type="button" className={`paymentBtn ${formData.paymentMethod === "cash" ? "active" : ""}`} onClick={() => handleInputChange({ target: { name: "paymentMethod", value: "cash" } })} >
-                    <span>{t("checkout.cash")}</span>
+                    <i className="fa-solid fa-money-bill-wave"></i>
+                    <span className="paymentBtnText">{t("profile.checkout.paymentCash")}</span>
                   </button>
                   <button type="button" className={`paymentBtn ${formData.paymentMethod === "card" ? "active" : ""}`} onClick={() => handleInputChange({ target: { name: "paymentMethod", value: "card" } })} >
-                    <span>{t("checkout.creditCard")}</span>
+                    <i className="fa-solid fa-credit-card"></i>
+                    <span className="paymentBtnText">{t("profile.checkout.paymentCreditCard")}</span>
                   </button>
                 </div>
               </div>
 
               {formData.paymentMethod === "cash" && (
-                <div className="cashDetails">You chose to pay with cash on the arrival of the product you must pay the correct price</div>
+                <div className="cashDetails"><i class="fa-solid fa-wallet"></i><span>{t("profile.checkout.paymentCashMessage")}</span></div>
               )}
 
               {formData.paymentMethod === "card" && (
                 <div className="cardDetails">
                   <div className="formGroup">
-                    <label htmlFor="cardName">{t("checkout.nameOnCard")} *</label>
+                    <label htmlFor="cardName">{t("profile.checkout.paymentNameOnCard")}:</label>
                     <input type="text" id="cardName" name="cardName" value={formData.cardName} onChange={handleInputChange} required />
                   </div>
                   
                   <div className="formGroup">
-                    <label htmlFor="cardNumber">{t("checkout.cardNumber")} *</label>
+                    <label htmlFor="cardNumber">{t("profile.checkout.paymentCardNumber")}:</label>
                     <input type="text" id="cardNumber" name="cardNumber" value={formData.cardNumber} onChange={handleInputChange} placeholder="xxxx xxxx xxxx xxxx" required />
                   </div>
                   
                   <div className="formRow">
                     <div className="formGroup">
-                      <label htmlFor="expiryDate">{t("checkout.expiryDate")} *</label>
+                      <label htmlFor="expiryDate">{t("profile.checkout.paymentExpiryDate")}:</label>
                       <input type="text" id="expiryDate" name="expiryDate" value={formData.expiryDate} onChange={handleInputChange} placeholder="MM/YY" required />
                     </div>
                     <div className="formGroup">
-                      <label htmlFor="cvv">CVV *</label>
+                      <label htmlFor="cvv">{t("profile.checkout.paymentCVV")}:</label>
                       <input type="text" id="cvv" name="cvv" value={formData.cvv} onChange={handleInputChange} placeholder="xxx" required />
                     </div>
                   </div>
@@ -650,50 +645,53 @@ const CheckoutPage = () => {
             <div className="formSection additionalSection">
               <h2>{t("profile.checkout.additionalInformation")}</h2>
               <div className="formGroup">
-                <label htmlFor="notes">{t("checkout.orderNotes")}</label>
-                <textarea id="notes" name="notes" value={formData.notes} onChange={handleInputChange} placeholder={t("checkout.notesPlaceholder")} rows="3" ></textarea>
+                <label htmlFor="notes">{t("profile.checkout.additionalInformationTextareaTitle")}:</label>
+                <textarea id="notes" name="notes" value={formData.notes} onChange={handleInputChange} rows="3" ></textarea>
               </div>
             </div>
             
             {/*-----------------------------CHECKOUT-BUTTON--------------------------------*/}
-            <div className="checkoutButtons">
-              <button type="button" className="backToCartBtn" onClick={() => navigate('/profile/cart')}>
-                {t("checkout.backToCart")}
-              </button>
-              <button type="submit" className="finishOrderBtn" disabled={isSubmitting}>
-                {isSubmitting ? t("checkout.processing") : t("checkout.placeOrder")}
-              </button>
+            <div className="finishOrderBox">
+              <h2>{t("profile.checkout.finishOrderTitle")}</h2>
+              <div className="finishOrderBtns">
+                <button type="button" className="backToCartBtn" onClick={() => navigate('/profile/cart')}>
+                  {t("profile.checkout.backToCart")}
+                </button>
+                <button type="submit" className={`finishOrderBtn${isSubmitting ? "blocked" : ""}`} disabled={isSubmitting}>
+                  {isSubmitting ? t("profile.checkout.confirmOrderLoading") : t("profile.checkout.confirmOrder")}
+                </button>
+              </div>
             </div>
           </form>
         </div>
       </div>
 
-
+      {/*--------------------------SUMMARY-SECTION-----------------------------*/}
       <div className="formSection orderSummarySection">
-        <h2>{t("checkout.orderSummary")}</h2>
+        <h2 className="orderSummaryTitle">{t("profile.checkout.orderSummary")}</h2>
         <div className="orderItems">
           {checkoutData.items.map((item) => (
             <div key={item.product_id} className="orderItem">
               <div className="itemDetails">
-                <h3>{item.name}</h3>
-                <p>{t("checkout.quantity")}: {item.quantity}</p>
-                <p>{t("checkout.price")}: {(item.price * item.quantity).toFixed(2)} {t("profile.lv")}</p>
+                <h3 className="orderSummarySubTitle">{item.name}</h3>
+                <p>{t("profile.checkout.quantityTitle")}: {item.quantity}</p>
+                <p>{t("profile.checkout.priceTitle")}: {(item.price * item.quantity).toFixed(2)} {t("profile.lv")}</p>
               </div>
             </div>
           ))}
         </div>
         
         <div className="orderTotals">
-          <div className="totalRow">
-            <span>{t("checkout.subtotal")}:</span>
+          <div className="orderSummaryTotalRow">
+            <span>{t("profile.checkout.subtotalTitle")}:</span>
             <span>{checkoutData.subtotal.toFixed(2)} {t("profile.lv")}</span>
           </div>
-          <div className="totalRow">
-            <span>{t("checkout.shipping")}:</span>
+          <div className="orderSummaryTotalRow">
+            <span>{t("profile.checkout.shippingTitle")}:</span>
             <span>{checkoutData.shipping.toFixed(2)} {t("profile.lv")}</span>
           </div>
-          <div className="totalRow total">
-            <span>{t("checkout.total")}:</span>
+          <div className="orderSummaryTotalRow total">
+            <span>{t("profile.checkout.totalTitle")}:</span>
             <span>{checkoutData.total.toFixed(2)} {t("profile.lv")}</span>
           </div>
         </div>
