@@ -13,7 +13,7 @@ router.use(authMiddleware.authenticateJWT);
 router.get("/stores", orderController.getStores);
 router.get("/cities", orderController.getCities);
 router.get("/speedy-offices/:city", orderController.getSpeedyOffices);
-router.post("/", orderController.createOrder);
+router.post("/", orderController.validateOrderData, orderController.createOrder);
 router.get("/:orderId", orderController.getOrderById);
 router.get("/", orderController.getUserOrders);
 router.patch("/:orderId/status", authMiddleware.verifyAdmin, orderController.updateOrderStatus);

@@ -137,137 +137,145 @@ const CheckoutPage = () => {
 
   /*---------------------ZOD-VALIDATION-SCHEMA--------------------*/
   const checkoutSchema = z.object({
-    firstName: z.string()
-      .trim()
-      .min(1, t("profile.validation.firstNameRequired")),
-    lastName: z.string()
-      .trim()
-      .min(1, t("profile.validation.lastNameRequired")),
-    phone: z.string()
-      .trim()
-      .min(1, t("profile.validation.phoneRequired"))
-      .regex(/^\+?[0-9\s-()]{6,20}$/, t("profile.validation.phoneInvalid")),
-    email: z.string()
-      .trim()
-      .min(1, t("profile.validation.emailRequired"))
-      .email(t("profile.validation.emailInvalid")),
-    deliveryMethod: z.enum(["speedyAddress", "speedyOffice", "freshBalance"], {message: t("profile.validation.deliveryMethodRequired"),}),
-    address: z.string()
-      .trim()
-      .min(1, t("profile.validation.addressRequired"))
-      .optional(),
-    city: z.string()
-      .trim()
-      .min(1, t("profile.validation.cityRequired"))
-      .optional(),
-    addressDetails: z.string()
-      .trim()
-      .min(1, t("profile.validation.addressDetailsRequired"))
-      .optional(),
-    postalCode: z.string()
-      .trim()
-      .min(1, t("profile.validation.postalCodeRequired"))
-      .optional(),
-    selectedCity: z.string()
-      .trim()
-      .min(1, t("profile.validation.selectedCityRequired"))
-      .optional(),
-    selectedOffice: z.string()
-      .trim()
-      .min(1, t("profile.validation.selectedOfficeRequired"))
-      .optional(),
-    selectedStore: z.string()
-      .or(z.number())
-      .pipe(z.coerce.string()
-      .trim()
-      .min(1, t("profile.validation.selectedStoreRequired")))
-      .optional(),
-    paymentMethod: z.enum(["cash", "card"], {message: t("profile.validation.paymentMethodRequired"),}),
-    cardName: z.string()
-      .trim()
-      .min(1, t("profile.validation.cardNameRequired"))
-      .optional(),
-    cardNumber: z.string()
-      .trim()
-      .min(1, t("profile.validation.cardNumberRequired"))
-      .regex(/^[0-9]{13,19}$/, t("profile.validation.cardNumberInvalid"))
-      .optional(),
-    expiryDate: z.string().trim()
-      .min(1, t("profile.validation.expiryDateRequired"))
-      .regex(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, t("profile.validation.expiryDateInvalid"))
-      .optional(),
-    cvv: z.string()
-      .trim()
-      .min(1, t("profile.validation.cvvRequired"))
-      .regex(/^[0-9]{3,4}$/, t("profile.validation.cvvInvalid"))
-      .optional(),
-    notes: z.string()
-      .trim()
-      .optional(),
-  }).superRefine((data, ctx) => {
-    if (data.deliveryMethod === "speedyAddress") {
-      if (!data.city) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cityRequired"), path: ["city"] });
-      if (!data.address) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.addressRequired"), path: ["address"] });
-      if (!data.addressDetails) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.addressDetailsRequired"), path: ["addressDetails"] });
-      if (!data.postalCode) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.postalCodeRequired"), path: ["postalCode"] });
-    } 
-    else if (data.deliveryMethod === "speedyOffice") {
-      if (!data.selectedCity) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.selectedCityRequired"), path: ["selectedCity"] });
-      if (!data.selectedOffice) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.selectedOfficeRequired"), path: ["selectedOffice"] });
-    }
-    else if (data.deliveryMethod === "freshBalance") {
-      if (!data.selectedStore || String(data.selectedStore).trim() === "") {
-        ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.selectedStoreRequired"), path: ["selectedStore"] });
-      }
-    }
+  firstName: z.string()
+    .trim()
+    .min(1, t("profile.validation.firstNameRequired")),
+  lastName: z.string()
+    .trim()
+    .min(1, t("profile.validation.lastNameRequired")),
+  phone: z.string()
+    .trim()
+    .min(1, t("profile.validation.phoneRequired"))
+    .regex(/^\+?[0-9\s-()]{6,20}$/, t("profile.validation.phoneInvalid")),
+  email: z.string()
+    .trim()
+    .min(1, t("profile.validation.emailRequired"))
+    .email(t("profile.validation.emailInvalid")),
+  deliveryMethod: z.enum(["speedyAddress", "speedyOffice", "freshBalance"], {
+    message: t("profile.validation.deliveryMethodRequired"),
+  }),
+  address: z.string().trim().optional(),
+  city: z.string().trim().optional(),
+  addressDetails: z.string().trim().optional(),
+  postalCode: z.string().trim().optional(),
+  selectedCity: z.string().trim().optional(),
+  selectedOffice: z.string().trim().optional(),
+  selectedStore: z.string()
+    .or(z.number())
+    .pipe(z.coerce.string().trim())
+    .optional(),
+  paymentMethod: z.enum(["cash", "card"], {
+    message: t("profile.validation.paymentMethodRequired"),
+  }),
+  cardName: z.string().trim().optional(),
+  cardNumber: z.string().trim().optional(),
+  expiryDate: z.string().trim().optional(),
+  cvv: z.string().trim().optional(),
+  notes: z.string().trim().optional(),
 
-    if (data.paymentMethod === "card") {
-      if (!data.cardName) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cardNameRequired"), path: ["cardName"] });
-      if (!data.cardNumber) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cardNumberRequired"), path: ["cardNumber"] });
-      if (!data.expiryDate) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.expiryDateRequired"), path: ["expiryDate"] });
-      if (!data.cvv) ctx.addIssue({ code: z.ZodIssueCode.custom, message: t("profile.validation.cvvRequired"), path: ["cvv"] });
-    }
-  })
-
-  /*---------------------REQUIRED-FIELDS--------------------*/
-  const validateForm = () => {
-    const requiredFields = ["firstName", "lastName", "phone", "email"];
-    
-    if (formData.deliveryMethod === "speedyAddress") {
-      requiredFields.push("city", "address", "addressDetails", "postalCode");
-    } 
-    else if (formData.deliveryMethod === "speedyOffice") {
-      requiredFields.push("selectedCity", "selectedOffice");
-    } 
-    else if (formData.deliveryMethod === "freshBalance") {
-      requiredFields.push("selectedStore");
-    } 
-    else {
-      setToast({
-        show: true,
-        message: t("profile.checkout.allFieldsRequiered"),
-        type: "error"
+}).superRefine((data, ctx) => {
+  if (data.deliveryMethod === "speedyAddress") {
+    if (!data.city || data.city.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.cityRequired"),
+        path: ["city"]
       });
-      return false;
     }
-    
-    if (formData.paymentMethod === "card") {
-      requiredFields.push("cardName", "cardNumber", "expiryDate", "cvv");
-    }
-
-    const emptyFields = requiredFields.filter(field => !formData[field]?.trim());
-    
-    if (emptyFields.length > 0) {
-      setToast({
-        show: true,
-        message: t("profile.checkout.allFieldsRequiered"),
-        type: "error"
+    if (!data.address || data.address.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.addressRequired"),
+        path: ["address"]
       });
-      return false;
     }
-    
-    return true;
-  };
+    if (!data.addressDetails || data.addressDetails.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.addressDetailsRequired"),
+        path: ["addressDetails"]
+      });
+    }
+    if (!data.postalCode || data.postalCode.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.postalCodeRequired"),
+        path: ["postalCode"]
+      });
+    }
+  } else if (data.deliveryMethod === "speedyOffice") {
+    if (!data.selectedCity || data.selectedCity.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.selectedCityRequired"),
+        path: ["selectedCity"]
+      });
+    }
+    if (!data.selectedOffice || data.selectedOffice.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.selectedOfficeRequired"),
+        path: ["selectedOffice"]
+      });
+    }
+  } else if (data.deliveryMethod === "freshBalance") {
+    if (!data.selectedStore || String(data.selectedStore).trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.selectedStoreRequired"),
+        path: ["selectedStore"]
+      });
+    }
+  }
+ if (data.paymentMethod === "card") {
+    if (!data.cardName || data.cardName.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.cardNameRequired"),
+        path: ["cardName"]
+      });
+    }
+    if (!data.cardNumber || data.cardNumber.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.cardNumberRequired"),
+        path: ["cardNumber"]
+      });
+    } else if (!/^[0-9]{13,19}$/.test(data.cardNumber.replace(/\s/g, ""))) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.cardNumberInvalid"),
+        path: ["cardNumber"]
+      });
+    }
+    if (!data.expiryDate || data.expiryDate.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.expiryDateRequired"),
+        path: ["expiryDate"]
+      });
+    } else if (!/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(data.expiryDate.trim())) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.expiryDateInvalid"),
+        path: ["expiryDate"]
+      });
+    }
+    if (!data.cvv || data.cvv.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.cvvRequired"),
+        path: ["cvv"]
+      });
+    } else if (!/^[0-9]{3,4}$/.test(data.cvv.trim())) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t("profile.validation.cvvInvalid"),
+        path: ["cvv"]
+      });
+    }
+  }
+});
 
   /*-------------------------------------DELIVERY--------------------------------------*/
   const handleDeliveryMethodSelect = (method) => {
@@ -365,115 +373,192 @@ const CheckoutPage = () => {
     }
   };
 
+  /*----------------------------PAYMENT-METHOD--------------------------------*/
+  const handlePaymentMethodSelect = (method) => {
+    setFormData({
+      ...formData,
+      paymentMethod: method,
+      cardName: method === "cash" ? "" : formData.cardName,
+      cardNumber: method === "cash" ? "" : formData.cardNumber,
+      expiryDate: method === "cash" ? "" : formData.expiryDate,
+      cvv: method === "cash" ? "" : formData.cvv,
+    });
+  };
   /*----------------------------HANDLE-SUBMIT----------------------------------*/
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  if (!isAuthenticated || !token) {
+    setToast({
+      show: true,
+      message: t("profile.checkout.notAuthenticatedError") || "You must be logged in to place an order",
+      type: "error"
+    });
+    navigate("/email-check");
+    return;
+  }
+
+  if (!checkoutData || !checkoutData.items || checkoutData.items.length === 0) {
     setReturnToTop(true);
-    if (!validateForm()) {
-      return;
-    }
-    
-    if (!checkoutData || !checkoutData.items || checkoutData.items.length === 0) {
+    setToast({
+      show: true,
+      message: t("profile.checkout.emptyCartError") || "Your cart is empty",
+      type: "error"
+    });
+    return;
+  }
+
+  const outOfStockItems = checkoutData.items.filter(item => item.stock <= 0);
+  const itemsExceedingStock = checkoutData.items.filter(item =>item.quantity > item.stock && item.stock > 0);
+
+  if (outOfStockItems.length > 0 || itemsExceedingStock.length > 0) {
+    setReturnToTop(true);
+    setToast({
+      show: true,
+      message: t("profile.checkout.stockError") || "Some items are out of stock or exceed available quantity",
+      type: "error"
+    });
+    return;
+  }
+
+  try {
+    checkoutSchema.parse(formData);
+  } 
+  catch (error) {
+    setReturnToTop(true);
+    if (error instanceof z.ZodError) {
       setToast({
         show: true,
-        message: t("profile.checkout.emptyCartError"),
+        message: error.errors[0].message,
         type: "error"
       });
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    try {
-      let deliveryInfo = {
-        method: formData.deliveryMethod,
-        country: "Bulgaria",
-      };
-      
-      if (formData.deliveryMethod === "speedyAddress") {
-        deliveryInfo = {
-          ...deliveryInfo,
-          address: formData.address,
-          addressDetails: formData.addressDetails,
-          city: formData.city,
-          postalCode: formData.postalCode,
-        };
-      } else if (formData.deliveryMethod === "speedyOffice") {
-        deliveryInfo = {
-          ...deliveryInfo,
-          city: formData.selectedCity,
-          office: formData.selectedOffice,
-        };
-      } else if (formData.deliveryMethod === "freshBalance") {
-        deliveryInfo = {
-          ...deliveryInfo,
-          store: formData.selectedStore,
-        };
-      }
-      
-      const orderData = {
-        user_id: user?.id || null,
-        customer_info: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone
-        },
-        delivery_info: deliveryInfo,
-        payment_info: {
-          method: formData.paymentMethod,
-          status: formData.paymentMethod === "cash" ? "pending" : "processing"
-        },
-        items: checkoutData.items.map(item => ({
-          product_id: item.product_id,
-          quantity: item.quantity,
-          price: item.price
-        })),
-        subtotal: checkoutData.subtotal,
-        shipping_cost: checkoutData.shipping,
-        total_amount: checkoutData.total,
-        notes: formData.notes,
-        status: "pending",
-        created_at: new Date().toISOString()
-      };
-      
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/orders`, orderData);
-      
-      if (response.data && response.data.success) {
-        sessionStorage.removeItem("checkoutData");
-        
-        setToast({
-          show: true,
-          message: t("profile.checkout.orderSuccessful"),
-          type: "success"
-        });
-      
-        setTimeout(() => {
-          navigate(`/profile/orders`);
-        }, 2000);
-      } 
-      else {
-        throw new Error(response.data?.message || "Unknown error occurred");
-      }
     } 
-    catch (error) {
-      console.error("Error creating order:", error);
-      console.error("Error details:", {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-        url: `${import.meta.env.VITE_BACKEND_URL}/orders`
-      });
+    else {
       setToast({
         show: true,
-        message: t("profile.checkout.orderError"),
+        message: t("profile.checkout.validationError") || "Please fill in all required fields correctly",
         type: "error"
       });
     }
-    finally {
-      setIsSubmitting(false);
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    let deliveryInfo = {
+      method: formData.deliveryMethod,
+      country: "Bulgaria",
+    };
+
+    if (formData.deliveryMethod === "speedyAddress") {
+      deliveryInfo = {
+        ...deliveryInfo,
+        address: formData.address,
+        addressDetails: formData.addressDetails,
+        city: formData.city,
+        postalCode: formData.postalCode,
+      };
+    } else if (formData.deliveryMethod === "speedyOffice") {
+      deliveryInfo = {
+        ...deliveryInfo,
+        city: formData.selectedCity,
+        office: formData.selectedOffice,
+      };
+    } else if (formData.deliveryMethod === "freshBalance") {
+      deliveryInfo = {
+        ...deliveryInfo,
+        store: formData.selectedStore,
+      };
     }
-  };
+
+    const orderData = {
+      user_id: user?.id || null,
+      customer_info: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone
+      },
+      delivery_info: deliveryInfo,
+      payment_info: {
+        method: formData.paymentMethod,
+        status: formData.paymentMethod === "cash" ? "pending" : "processing"
+      },
+      items: checkoutData.items.map(item => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+        price: item.price
+      })),
+      subtotal: checkoutData.subtotal,
+      shipping_cost: checkoutData.shipping,
+      total_amount: checkoutData.total,
+      notes: formData.notes,
+      status: "pending",
+      created_at: new Date().toISOString()
+    };
+
+    console.log("Making request with token:", token);
+    console.log("Order data:", orderData);
+
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/orders`, orderData, {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (response.data && response.data.success) {
+      sessionStorage.removeItem("checkoutData");
+
+      setToast({
+        show: true,
+        message: t("profile.checkout.orderSuccessful") || "Order placed successfully!",
+        type: "success"
+      });
+
+      setTimeout(() => {
+        navigate(`/profile/orders`);
+      }, 2000);
+    } 
+    else {
+      throw new Error(response.data?.message || "Unknown error occurred");
+    }
+  }
+  catch (error) {
+    setReturnToTop(true);
+    console.error("Error creating order:", error);
+    console.error("Error details:", {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      headers: error.response?.headers,
+      url: `${import.meta.env.VITE_BACKEND_URL}/orders`
+    });
+
+    let errorMessage = "An error occurred while placing your order";
+    
+    if (error.response?.status === 401) {
+      errorMessage = "Session expired. Please log in again.";
+      setTimeout(() => navigate("/login"), 2000);
+    } 
+    else if (error.response?.status === 400) {
+      errorMessage = error.response.data?.message || "Invalid order data";
+    } 
+    else if (error.response?.status === 500) {
+      errorMessage = "Server error. Please try again later.";
+    }
+
+    setToast({
+      show: true,
+      message: t("profile.checkout.orderError") || errorMessage,
+      type: "error"
+    });
+  } 
+  finally {
+    setIsSubmitting(false);
+  }
+};
 
   /*-----------------------LOAIDNG-ANIMATION-------------------------*/
   if (isLoading) {
@@ -600,11 +685,11 @@ const CheckoutPage = () => {
               <h2>{t("profile.checkout.paymentInformation")}</h2>
               <div className="formGroup paymentMethods">
                 <div className="paymentOptions">
-                  <button type="button" className={`paymentBtn ${formData.paymentMethod === "cash" ? "active" : ""}`} onClick={() => handleInputChange({ target: { name: "paymentMethod", value: "cash" } })} >
+                  <button type="button" className={`paymentBtn ${formData.paymentMethod === "cash" ? "active" : ""}`} onClick={() => handlePaymentMethodSelect("cash")} >
                     <i className="fa-solid fa-money-bill-wave"></i>
                     <span className="paymentBtnText">{t("profile.checkout.paymentCash")}</span>
                   </button>
-                  <button type="button" className={`paymentBtn ${formData.paymentMethod === "card" ? "active" : ""}`} onClick={() => handleInputChange({ target: { name: "paymentMethod", value: "card" } })} >
+                  <button type="button" className={`paymentBtn ${formData.paymentMethod === "card" ? "active" : ""}`} onClick={() => handlePaymentMethodSelect("card")} >
                     <i className="fa-solid fa-credit-card"></i>
                     <span className="paymentBtnText">{t("profile.checkout.paymentCreditCard")}</span>
                   </button>
@@ -612,7 +697,7 @@ const CheckoutPage = () => {
               </div>
 
               {formData.paymentMethod === "cash" && (
-                <div className="cashDetails"><i class="fa-solid fa-wallet"></i><span>{t("profile.checkout.paymentCashMessage")}</span></div>
+                <div className="cashDetails"><i className="fa-solid fa-wallet"></i><span>{t("profile.checkout.paymentCashMessage")}</span></div>
               )}
 
               {formData.paymentMethod === "card" && (
@@ -621,12 +706,10 @@ const CheckoutPage = () => {
                     <label htmlFor="cardName">{t("profile.checkout.paymentNameOnCard")}:</label>
                     <input type="text" id="cardName" name="cardName" value={formData.cardName} onChange={handleInputChange} required />
                   </div>
-                  
                   <div className="formGroup">
                     <label htmlFor="cardNumber">{t("profile.checkout.paymentCardNumber")}:</label>
                     <input type="text" id="cardNumber" name="cardNumber" value={formData.cardNumber} onChange={handleInputChange} placeholder="xxxx xxxx xxxx xxxx" required />
                   </div>
-                  
                   <div className="formRow">
                     <div className="formGroup">
                       <label htmlFor="expiryDate">{t("profile.checkout.paymentExpiryDate")}:</label>

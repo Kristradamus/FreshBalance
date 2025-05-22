@@ -340,7 +340,8 @@
       "subtotalTitle":"Subtotal",
       "totalTitle":"Total",
       "priceTitle":"Price",
-      "quantityTitle":"Quantity"
+      "quantityTitle":"Quantity",
+      "orderError":"There is a problem with your order, please try again!"
     },
     "validation": {
       "firstNameRequired": "Please enter your first name.",
